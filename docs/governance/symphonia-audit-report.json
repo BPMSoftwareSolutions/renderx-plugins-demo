@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T15:35:44.313Z",
+  "timestamp": "2025-11-26T15:40:36.009Z",
   "version": "1.0.0",
   "dimensions": {
     "orchestration-domains": {
@@ -227,7 +227,7 @@
     },
     "sequences": {
       "name": "Sequence Flow Conformity",
-      "artifactsScanned": 25,
+      "artifactsScanned": 26,
       "violations": [
         {
           "level": "MAJOR",
@@ -323,6 +323,13 @@
         {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
+          "artifact": "symphony-report-pipeline",
+          "message": "Invalid tempo: undefined",
+          "remediation": "Set tempo between 60-240 (standard: 120)"
+        },
+        {
+          "level": "MAJOR",
+          "rule": "sequence-tempo-valid",
           "artifact": "self-healing-anomaly-detect-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
@@ -409,7 +416,7 @@
     },
     "bdd-specs": {
       "name": "BDD Specification Conformity",
-      "artifactsScanned": 7,
+      "artifactsScanned": 8,
       "violations": [
         {
           "level": "MAJOR",
@@ -562,7 +569,7 @@
       "score": 0
     }
   },
-  "totalArtifacts": 364,
+  "totalArtifacts": 366,
   "violations": {
     "CRITICAL": [],
     "MAJOR": [
@@ -864,6 +871,13 @@
         "level": "MAJOR",
         "rule": "sequence-tempo-valid",
         "artifact": "control-panel-update-symphony",
+        "message": "Invalid tempo: undefined",
+        "remediation": "Set tempo between 60-240 (standard: 120)"
+      },
+      {
+        "level": "MAJOR",
+        "rule": "sequence-tempo-valid",
+        "artifact": "symphony-report-pipeline",
         "message": "Invalid tempo: undefined",
         "remediation": "Set tempo between 60-240 (standard: 120)"
       },

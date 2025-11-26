@@ -1,7 +1,7 @@
 # Symphonia Conformity Dashboard
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T15:35:44.313Z -->
+<!-- Generated: 2025-11-26T15:40:36.009Z -->
 
 ## 🎼 Overall Conformity Score
 
@@ -17,8 +17,8 @@
 |-----------|-------|-----------|------------|
 | Orchestration Domain Conformity | 0/100 | 61 | 30 |
 | Contract Schema Conformity | 100/100 | 8 | 0 |
-| Sequence Flow Conformity | 0/100 | 25 | 25 |
-| BDD Specification Conformity | 50/100 | 7 | 5 |
+| Sequence Flow Conformity | 0/100 | 26 | 26 |
+| BDD Specification Conformity | 50/100 | 8 | 5 |
 | Handler Specification Conformity | 0/100 | 263 | 15 |
 
 
@@ -27,7 +27,7 @@
 ✅ No critical violations
 
 
-## ⚠️  Major Violations (75)
+## ⚠️  Major Violations (76)
 
 - **cag-agent-workflow > Phase 0**: Phase has 4 items, but beats=41
 - **cag-agent-workflow > Phase 1**: Phase has 4 items, but beats=41
@@ -40,7 +40,7 @@
 - **orchestration-audit-session > Phase 0**: Phase has 3 items, but beats=25
 - **orchestration-audit-session > Phase 1**: Phase has 3 items, but beats=25
 
-... and 65 more
+... and 66 more
 
 
 ## 📋 Recommendations
@@ -50,5 +50,5 @@
 
 ---
 
-Generated: 2025-11-26T15:35:44.313Z
-Total Artifacts Scanned: 364
+Generated: 2025-11-26T15:40:36.009Z
+Total Artifacts Scanned: 366

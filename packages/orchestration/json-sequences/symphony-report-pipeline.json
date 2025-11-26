@@ -1,0 +1,344 @@
+{
+  "id": "symphony-report-pipeline",
+  "sequenceId": "symphony-report-pipeline",
+  "name": "symphony report pipeline",
+  "packageName": "orchestration",
+  "title": "Symphony Report Generation Pipeline",
+  "description": "Six-movement orchestration for generating comprehensive reports from symphony pipeline executions, metrics, and conformity audits.",
+  "purpose": "Automate multi-format report generation (Markdown, JSON, HTML) with traceability lineage, recommendations, and audit summaries.",
+  "trigger": "On-demand or post-execution via governance layer",
+  "kind": "reporting",
+  "beats": 30,
+  "status": "active",
+  "events": [
+    "report:generation:initiated",
+    "metrics:aggregation:complete",
+    "conformity:audit:complete",
+    "report:markdown:generated",
+    "report:json:generated",
+    "report:html:generated",
+    "recommendations:computed",
+    "lineage:audit:complete",
+    "report:delivery:complete"
+  ],
+  "movements": [
+    {
+      "movement": 1,
+      "name": "Data Collection & Aggregation",
+      "description": "Gather metrics from all pipeline executions, sequences, and audit systems",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Query Execution Metrics",
+          "description": "Fetch performance, latency, and resource metrics from execution logs",
+          "event": "metrics:execution:queried",
+          "handler": "queryExecutionMetrics",
+          "kind": "data-collection",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 2,
+          "title": "Query Conformity Audit Data",
+          "description": "Retrieve conformity scores, violations, and audit results",
+          "event": "metrics:audit:queried",
+          "handler": "queryConformityAudit",
+          "kind": "data-collection",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 3,
+          "title": "Query Sequence Traceability",
+          "description": "Collect sequence definitions, movements, beats, and handler mappings",
+          "event": "metrics:traceability:queried",
+          "handler": "querySequenceTraceability",
+          "kind": "data-collection",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 4,
+          "title": "Aggregate Handler Coverage",
+          "description": "Analyze handler implementations, usage, and orphaned handlers",
+          "event": "metrics:handlers:aggregated",
+          "handler": "aggregateHandlerCoverage",
+          "kind": "aggregation",
+          "timing": "< 200ms"
+        },
+        {
+          "beat": 5,
+          "title": "Normalize All Metrics",
+          "description": "Standardize metric formats, calculate derived metrics, prepare for analysis",
+          "event": "metrics:normalized",
+          "handler": "normalizeMetrics",
+          "kind": "transformation",
+          "timing": "< 150ms"
+        }
+      ]
+    },
+    {
+      "movement": 2,
+      "name": "Executive Summary Synthesis",
+      "description": "Create high-level overview with key metrics and status indicators",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Calculate Summary Metrics",
+          "description": "Compute conformity score, violation counts, coverage percentages",
+          "event": "summary:metrics:calculated",
+          "handler": "calculateSummaryMetrics",
+          "kind": "analysis",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 2,
+          "title": "Compute Health Indicators",
+          "description": "Determine system health status (green/yellow/red) and trends",
+          "event": "summary:health:computed",
+          "handler": "computeHealthIndicators",
+          "kind": "analysis",
+          "timing": "< 75ms"
+        },
+        {
+          "beat": 3,
+          "title": "Identify Critical Issues",
+          "description": "Extract CRITICAL violations and high-priority items for immediate action",
+          "event": "summary:issues:identified",
+          "handler": "identifyCriticalIssues",
+          "kind": "analysis",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 4,
+          "title": "Generate Trend Analysis",
+          "description": "Compare current metrics to historical data, identify patterns",
+          "event": "summary:trends:analyzed",
+          "handler": "generateTrendAnalysis",
+          "kind": "analysis",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 5,
+          "title": "Synthesize Summary Section",
+          "description": "Create formatted executive summary with visualizations and key findings",
+          "event": "summary:synthesized",
+          "handler": "synthesizeSummarySection",
+          "kind": "synthesis",
+          "timing": "< 100ms"
+        }
+      ]
+    },
+    {
+      "movement": 3,
+      "name": "Detailed Analysis & Recommendations",
+      "description": "Generate in-depth analysis with recommendations for each violation category",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Categorize Violations by Severity",
+          "description": "Group violations into CRITICAL, MAJOR, MINOR buckets with context",
+          "event": "analysis:violations:categorized",
+          "handler": "categorizeViolationsBySeverity",
+          "kind": "analysis",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 2,
+          "title": "Analyze Root Causes",
+          "description": "Identify patterns and root causes for each violation class",
+          "event": "analysis:causes:identified",
+          "handler": "analyzeRootCauses",
+          "kind": "analysis",
+          "timing": "< 200ms"
+        },
+        {
+          "beat": 3,
+          "title": "Generate Remediation Plans",
+          "description": "Create detailed fix strategies with effort estimates and dependencies",
+          "event": "analysis:remediation:generated",
+          "handler": "generateRemediationPlans",
+          "kind": "synthesis",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 4,
+          "title": "Compute Priority Scores",
+          "description": "Calculate priority (severity + impact + effort) for sequencing fixes",
+          "event": "analysis:priorities:computed",
+          "handler": "computePriorityScores",
+          "kind": "analysis",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 5,
+          "title": "Synthesize Detailed Section",
+          "description": "Create detailed analysis markdown with tables, code examples, and guidance",
+          "event": "analysis:synthesized",
+          "handler": "synthesizeDetailedAnalysis",
+          "kind": "synthesis",
+          "timing": "< 200ms"
+        }
+      ]
+    },
+    {
+      "movement": 4,
+      "name": "Report Generation (Multi-Format)",
+      "description": "Generate reports in Markdown, JSON, and HTML formats with consistent structure",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Generate Markdown Report",
+          "description": "Create primary Markdown report with all sections, links, and formatting",
+          "event": "report:markdown:generating",
+          "handler": "generateMarkdownReport",
+          "kind": "generation",
+          "timing": "< 300ms"
+        },
+        {
+          "beat": 2,
+          "title": "Generate JSON Report",
+          "description": "Export structured JSON with metrics, violations, and recommendations",
+          "event": "report:json:generating",
+          "handler": "generateJsonReport",
+          "kind": "generation",
+          "timing": "< 200ms"
+        },
+        {
+          "beat": 3,
+          "title": "Generate HTML Report",
+          "description": "Create interactive HTML dashboard with charts, filtering, and export options",
+          "event": "report:html:generating",
+          "handler": "generateHtmlReport",
+          "kind": "generation",
+          "timing": "< 500ms"
+        },
+        {
+          "beat": 4,
+          "title": "Validate Report Consistency",
+          "description": "Cross-check that all formats contain consistent data and recommendations",
+          "event": "report:validated",
+          "handler": "validateReportConsistency",
+          "kind": "validation",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 5,
+          "title": "Compute Report Hashes",
+          "description": "Generate integrity hashes for audit trail and change detection",
+          "event": "report:hashes:computed",
+          "handler": "computeReportHashes",
+          "kind": "validation",
+          "timing": "< 50ms"
+        }
+      ]
+    },
+    {
+      "movement": 5,
+      "name": "Lineage & Audit Trail Construction",
+      "description": "Build complete traceability chain showing source → transformation → output",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Build Data Lineage",
+          "description": "Trace each report output back to source metrics and audit data",
+          "event": "lineage:data:constructed",
+          "handler": "buildDataLineage",
+          "kind": "traceability",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 2,
+          "title": "Record Transformation Chain",
+          "description": "Log each analysis step, calculation, and decision with timestamps",
+          "event": "lineage:transformations:recorded",
+          "handler": "recordTransformationChain",
+          "kind": "audit",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 3,
+          "title": "Link Recommendations to Sources",
+          "description": "Create bidirectional links between recommendations and violation sources",
+          "event": "lineage:recommendations:linked",
+          "handler": "linkRecommendationsToSources",
+          "kind": "traceability",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 4,
+          "title": "Generate Audit Summary",
+          "description": "Create human-readable audit trail documenting all decisions and transformations",
+          "event": "lineage:audit:generated",
+          "handler": "generateAuditSummary",
+          "kind": "generation",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 5,
+          "title": "Attach Lineage to Reports",
+          "description": "Embed audit trail and lineage references in all report formats",
+          "event": "lineage:attached",
+          "handler": "attachLineageToReports",
+          "kind": "synthesis",
+          "timing": "< 100ms"
+        }
+      ]
+    },
+    {
+      "movement": 6,
+      "name": "Report Delivery & Distribution",
+      "description": "Publish reports to configured locations with notifications and archival",
+      "beats": 5,
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Write Reports to Disk",
+          "description": "Persist all report formats to docs/governance and output directories",
+          "event": "report:persisted",
+          "handler": "writeReportsToDisk",
+          "kind": "persistence",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 2,
+          "title": "Archive Previous Reports",
+          "description": "Move prior reports to archive with timestamp, maintain version history",
+          "event": "archive:previous:complete",
+          "handler": "archivePreviousReports",
+          "kind": "housekeeping",
+          "timing": "< 150ms"
+        },
+        {
+          "beat": 3,
+          "title": "Emit Notifications",
+          "description": "Send alerts to relevant teams (CRITICAL) or summary (all), include direct links",
+          "event": "notifications:emitted",
+          "handler": "emitNotifications",
+          "kind": "notification",
+          "timing": "< 200ms"
+        },
+        {
+          "beat": 4,
+          "title": "Update Dashboard Index",
+          "description": "Register reports in governance dashboard index for easy discovery",
+          "event": "dashboard:updated",
+          "handler": "updateDashboardIndex",
+          "kind": "integration",
+          "timing": "< 100ms"
+        },
+        {
+          "beat": 5,
+          "title": "Log Completion & Metrics",
+          "description": "Record report generation metrics, execution time, output sizes in telemetry",
+          "event": "report:generation:complete",
+          "handler": "logCompletionMetrics",
+          "kind": "telemetry",
+          "timing": "< 50ms"
+        }
+      ]
+    }
+  ]
+}
