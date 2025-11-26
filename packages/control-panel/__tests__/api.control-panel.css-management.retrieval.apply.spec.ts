@@ -18,6 +18,26 @@ function makeCtx() {
 }
 
 describe('control-panel css-management retrieval/apply handlers (public API)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // jsdom provides a clean document each test; ensure element space empty
     document.body.innerHTML = '';

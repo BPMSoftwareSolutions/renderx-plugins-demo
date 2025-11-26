@@ -3,6 +3,26 @@ import { RAGEnrichmentService } from '../src/services/rag-enrichment.service';
 import { ComponentJSON } from '../src/services/openai.types';
 
 describe('RAGEnrichmentService', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   const enrichmentService = new RAGEnrichmentService();
 
   // Sample AI-generated component (basic UI only)

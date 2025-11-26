@@ -7,6 +7,26 @@ function makeCtx() {
 }
 
 describe("canvas-component drag beat (DOM-only)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Host container used by Canvas
     document.body.innerHTML = '<div id="rx-canvas"></div>';

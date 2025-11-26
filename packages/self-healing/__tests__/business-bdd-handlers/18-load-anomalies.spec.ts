@@ -18,6 +18,26 @@ import * as path from 'path';
  */
 
 describe('Business BDD: loadAnomalies', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
 
   describe('Scenario: Load anomalies from generated persistence for analysis', () => {
     it('loads anomalies when file exists and provides structured envelope (Given anomalies stored, When load runs, Then anomalies available for analysis)', () => {

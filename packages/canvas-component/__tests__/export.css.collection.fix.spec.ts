@@ -3,6 +3,26 @@ import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/
 import { cssRegistry } from "../src/temp-deps/css-registry.store.ts";
 
 describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Ensure rx-button CSS is registered (simulating library load)
     const buttonCss = ".rx-button { background: var(--bg-color); } .rx-button--primary { --bg-color: #007bff; }";

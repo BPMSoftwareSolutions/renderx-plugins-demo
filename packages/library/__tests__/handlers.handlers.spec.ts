@@ -6,6 +6,26 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // Example: import { loadComponents } from '@renderx-plugins/library/src/...';
 
 describe('library handlers handlers', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   // TODO: Set up test context and mocks
   let _ctx: any;
 

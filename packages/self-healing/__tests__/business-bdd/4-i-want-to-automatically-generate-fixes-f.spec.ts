@@ -33,6 +33,26 @@ describe.skip('Feature: I want to automatically generate fixes for identified is
   });
 
   describe('Scenario: Generate code fix for performance issue', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions)
       // - diagnosis recommends adding database index

@@ -8,6 +8,26 @@ function makeCtx() {
 }
 
 describe('control-panel state/update/refresh handlers (public API)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => { document.body.innerHTML = ''; });
 
   it('setDirty marks isDirty with timestamp', () => {

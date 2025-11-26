@@ -13,6 +13,26 @@ import { getTelemetryBuffer } from '../../src/telemetry/emitter';
 import { ACCESSIBILITY_LABELS } from '../../src/domain/accessibility';
 
 describe('SLO Dashboard Business Scenarios', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('initial-load-shows-aggregate-compliance-slo-list', async () => {
     _testClearTelemetry();
     // Given: The dashboard is first loaded with valid metrics

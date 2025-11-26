@@ -3,6 +3,26 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { getCanvasOrThrow, createElementWithId, applyClasses, applyInlineStyle, appendTo } from '../src/symphonies/create/create.dom.stage-crew';
 
 describe('canvas-component create.dom.stage-crew handlers', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas"></div>';
   });

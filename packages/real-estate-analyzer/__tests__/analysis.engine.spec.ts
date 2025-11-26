@@ -3,6 +3,26 @@ import { AnalysisEngine } from '../src/services/analysis.engine';
 import type { PropertyData } from '../src/services/zillow.service';
 
 describe('AnalysisEngine', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   const mockProperty: PropertyData = {
     zpid: '12345',
     address: '123 Main St, Springfield, IL',

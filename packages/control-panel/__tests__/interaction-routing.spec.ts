@@ -2,6 +2,26 @@ import { describe, it, expect } from "vitest";
 import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 describe("Control Panel interaction routing", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("resolves control.panel.selection.show to ControlPanelPlugin", () => {
     const route = resolveInteraction("control.panel.selection.show");
     expect(route.pluginId).toBe("ControlPanelPlugin");

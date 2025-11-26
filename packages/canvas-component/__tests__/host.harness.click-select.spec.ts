@@ -20,6 +20,26 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 import { setupHostClickToSelectLegacy } from "./helpers/host-click-select";
 
 describe("Host-like click-to-select harness forwards to canvas.component.select", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let dispose: undefined | (() => void);
 
   beforeEach(() => {

@@ -7,6 +7,26 @@ import { assessImpact } from '../../src/handlers/diagnosis/assess.impact';
  */
 
 describe('Business BDD: assessImpact', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('Scenario: Aggregate issue severities into overall impact', () => {
     const slice: any = {
       performanceIssues: [ { anomalyId: 'p1', severity: 'medium' } ],

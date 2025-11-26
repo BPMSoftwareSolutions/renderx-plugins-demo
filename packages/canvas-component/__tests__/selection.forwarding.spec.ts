@@ -25,6 +25,26 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 import { handlers as selectHandlers } from "../src/symphonies/select/select.stage-crew.ts";
 
 describe("Canvas selection forwards to Control Panel (package)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("calls conductor.play for control.panel.selection.show when canvas component is selected", () => {
     const playMock = vi.fn();
     const ctx = { conductor: { play: playMock } } as any;

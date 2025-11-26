@@ -3,6 +3,26 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderReact, cleanupReactRoot, exposeEventRouterToReact } from "../src/symphonies/create/create.react.stage-crew";
 
 describe("React Component Rendering", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let container: HTMLElement;
   let mockConductor: any;
   let mockCtx: any;

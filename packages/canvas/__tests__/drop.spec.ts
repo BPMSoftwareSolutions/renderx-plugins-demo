@@ -25,6 +25,26 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
 import { onDropForTest } from "../src/ui/CanvasDrop";
 
 describe("canvas drop triggers library-component drop sequence", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it.skip("calls conductor.play with LibraryComponentPlugin and library-component-drop-symphony", async () => {
     const calls: any[] = [];
     const conductor = {

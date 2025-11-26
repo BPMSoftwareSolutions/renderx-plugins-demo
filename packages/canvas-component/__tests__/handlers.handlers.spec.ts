@@ -55,6 +55,26 @@ function makeCtx() {
 // Example: import { serializeSelectedComponent } from '@renderx-plugins/canvas-component/src/...';
 
 describe('canvas-component handlers handlers', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     document.body.innerHTML = '';
     (globalThis as any).__rawCssInjected = [];

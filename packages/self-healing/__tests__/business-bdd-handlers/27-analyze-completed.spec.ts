@@ -17,6 +17,26 @@ import { DiagnosisSlice } from '../../src/types';
  */
 
 describe('Business BDD: analyzeCompleted', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   describe('Scenario: Notify system that analysis is complete', () => {
     it('emits completion event with counts and overall severity', () => {
       // GIVEN a diagnosis slice with issues and recommendations

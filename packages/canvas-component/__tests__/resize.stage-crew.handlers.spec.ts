@@ -4,6 +4,25 @@ import { startResize, updateSize, endResize } from '../src/symphonies/resize/res
 import { createMockCtx } from './helpers/context.ts';
 
 describe('canvas-component resize.stage-crew handlers', () => {
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let ctx: any;
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas"></div><div id="rx-selection-overlay"></div><div id="comp-1" style="position:absolute;left:0px;top:0px;width:100px;height:50px"></div>';

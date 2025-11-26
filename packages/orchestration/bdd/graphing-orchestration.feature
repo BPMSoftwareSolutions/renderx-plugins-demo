@@ -6,6 +6,10 @@ Feature: graphing orchestration
   As a governance observer
   I want baseline BDD coverage for 'graphing-orchestration'
 
+  Background:
+    Given the system is in a valid state
+    And necessary preconditions are met
+
   Scenario: Baseline coverage placeholder for graphing-orchestration
     Given the orchestration audit system is initialized
     When the 'graphing-orchestration' sequence executes baseline flow

@@ -17,6 +17,26 @@ import { DiagnosisSlice } from '../../src/types';
  */
 
 describe('Business BDD: aggregateDiagnosis', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   describe('Scenario: Combine multiple diagnoses into coherent report', () => {
     it('groups issues and derives highest severity & prioritized categories', () => {
       // GIVEN multiple issue types detected

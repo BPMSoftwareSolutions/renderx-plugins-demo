@@ -4,6 +4,26 @@ import { startLineResize, updateLine, endLineResize } from '../src/symphonies/re
 import { createMockCtx } from './helpers/context';
 
 describe('canvas-component resize.line.stage-crew handlers', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let _ctx: any; // underscore to satisfy lint unused rule
   beforeEach(() => {
     document.body.innerHTML = '<div id="comp-line" class="rx-line" style="--x1:0;--y1:0;--x2:10;--y2:10"></div>';

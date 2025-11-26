@@ -3,6 +3,26 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 
 describe("@renderx-plugins/library package manifest/exports", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("package.json has correct name and exports fields", async () => {
     const pkgPath = path.resolve(__dirname, "../package.json");
     const pkg = JSON.parse(await readFile(pkgPath, "utf8"));

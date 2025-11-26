@@ -3,6 +3,26 @@ import { describe, it, expect } from "vitest";
 import { transformImportToCreatePayload } from "../src/symphonies/create/create.from-import";
 
 describe("transformImportToCreatePayload", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("maps import record to create payload with template, position, container and override id", () => {
     const rec = {
       id: "btn-1",

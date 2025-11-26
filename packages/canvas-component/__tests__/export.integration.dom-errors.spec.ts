@@ -20,6 +20,26 @@ function makeIntegrationCtx() {
 }
 
 describe("canvas-component export integration (DOM errors)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Ensure clean DOM; individual tests adjust as needed
     document.body.innerHTML = "";

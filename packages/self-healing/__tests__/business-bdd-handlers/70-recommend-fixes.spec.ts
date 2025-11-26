@@ -7,6 +7,26 @@ import { recommendFixes } from '../../src/handlers/diagnosis/recommend.fixes';
  */
 
 describe('Business BDD: recommendFixes', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('Scenario: Generate recommendations for mixed issues', () => {
     const slice: any = {
       performanceIssues: [ { anomalyId: 'p1', handler: 'slowHandler', latencyRatio: 4, severity: 'high', description: 'slow' } ],

@@ -19,6 +19,26 @@ vi.mock('gif.js.optimized', () => ({
 vi.mock('gif.js.optimized/dist/gif.worker.js?url', () => ({ default: 'worker.js' }));
 
 describe('exportSvgToGif isolated', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('success minimal export triggers download without error', async () => {
     const ctx: any = { payload: {}, logger: { info: vi.fn(), error: vi.fn(), warn: vi.fn() } };
     // Mock canvas context

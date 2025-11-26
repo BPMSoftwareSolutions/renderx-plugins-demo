@@ -3,6 +3,26 @@ import { describe, it, expect } from "vitest";
 import { toCreatePayloadFromData, transformClipboardToCreatePayload } from "../src/symphonies/create/create.from-import";
 
 describe("toCreatePayloadFromData (clipboard shape)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("builds create payload from clipboard-shaped component without preserving id", () => {
     const clip = {
       id: "btn-1",

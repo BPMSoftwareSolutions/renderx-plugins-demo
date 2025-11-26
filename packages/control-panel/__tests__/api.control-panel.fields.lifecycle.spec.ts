@@ -32,6 +32,26 @@ const selectedElement = {
 } as any;
 
 describe('control-panel field lifecycle handlers (public API)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => { /* reset */ });
 
   it('generateFields populates fields array with layout/styling fields', () => {

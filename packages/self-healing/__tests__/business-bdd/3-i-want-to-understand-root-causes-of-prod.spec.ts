@@ -33,6 +33,26 @@ describe.skip('Feature: I want to understand root causes of production issues', 
   });
 
   describe('Scenario: Diagnose performance issue with code analysis', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions)
       // - an anomaly indicates handler X is slow

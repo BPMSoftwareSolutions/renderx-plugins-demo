@@ -2,6 +2,26 @@ import { describe, it, expect } from "vitest";
 import { groupComponentsByCategory, getCategoryDisplayName, varsToStyle, pickDataAttrs } from "../src/utils/library.utils.js";
 
 describe("library.utils", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("groups components by category (template attr, metadata, default)", () => {
     const components = [
       { template: { attributes: { "data-category": "layout" } } },

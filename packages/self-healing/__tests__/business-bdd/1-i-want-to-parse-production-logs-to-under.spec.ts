@@ -33,6 +33,26 @@ describe.skip('Feature: I want to parse production logs to understand system beh
   });
 
   describe('Scenario: Parse valid production logs', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions)
       // - production logs exist in the .logs directory

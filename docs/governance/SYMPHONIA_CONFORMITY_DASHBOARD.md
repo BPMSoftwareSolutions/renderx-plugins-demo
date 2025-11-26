@@ -1,11 +1,11 @@
 # Symphonia Conformity Dashboard
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T14:40:06.887Z -->
+<!-- Generated: 2025-11-26T14:55:37.604Z -->
 
 ## 🎼 Overall Conformity Score
 
-**12/100**
+**20/100**
 
 🔴 POOR
 
@@ -15,11 +15,11 @@
 
 | Dimension | Score | Artifacts | Violations |
 |-----------|-------|-----------|------------|
-| Orchestration Domain Conformity | 0/100 | 61 | 32 |
-| Contract Schema Conformity | 60/100 | 8 | 4 |
+| Orchestration Domain Conformity | 0/100 | 61 | 30 |
+| Contract Schema Conformity | 100/100 | 8 | 0 |
 | Sequence Flow Conformity | 0/100 | 25 | 55 |
-| BDD Specification Conformity | 0/100 | 7 | 18 |
-| Handler Specification Conformity | 0/100 | 263 | 309 |
+| BDD Specification Conformity | 0/100 | 7 | 13 |
+| Handler Specification Conformity | 0/100 | 263 | 15 |
 
 
 ## 🚨 Critical Violations (38)
@@ -216,7 +216,7 @@
 - **Remediation**: Ensure all scenarios have complete Given-When-Then structure
 
 
-## ⚠️  Major Violations (380)
+## ⚠️  Major Violations (75)
 
 - **cag-agent-workflow > Phase 0**: Phase has 4 items, but beats=41
 - **cag-agent-workflow > Phase 1**: Phase has 4 items, but beats=41
@@ -226,10 +226,10 @@
 - **cag-agent-workflow > Phase 5**: Phase has 4 items, but beats=41
 - **cag-agent-workflow > Phase 6**: Phase has 4 items, but beats=41
 - **cag-agent-workflow > Phase 7**: Phase has 6 items, but beats=41
-- **orchestration-audit-session**: Invalid key: C
 - **orchestration-audit-session > Phase 0**: Phase has 3 items, but beats=25
+- **orchestration-audit-session > Phase 1**: Phase has 3 items, but beats=25
 
-... and 370 more
+... and 65 more
 
 
 ## 📋 Recommendations
@@ -240,5 +240,5 @@
 
 ---
 
-Generated: 2025-11-26T14:40:06.887Z
+Generated: 2025-11-26T14:55:37.604Z
 Total Artifacts Scanned: 364

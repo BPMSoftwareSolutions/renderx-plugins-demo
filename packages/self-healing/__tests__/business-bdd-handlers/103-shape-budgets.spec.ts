@@ -7,6 +7,26 @@ import { getAnomalies, clearAnomalies } from '../../src/telemetry/anomalies';
 installTelemetryMatcher();
 
 describe('Business BDD: shape-budgets (auto-generated GREEN)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('Scenario: Detect budget breach emits degradation anomaly and captures domain mutations.', async () => {
     clearTelemetry();
     clearAnomalies();

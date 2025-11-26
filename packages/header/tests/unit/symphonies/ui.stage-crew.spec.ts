@@ -4,6 +4,26 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { getCurrentTheme, toggleTheme } from "@src/symphonies/ui/ui.stage-crew";
 
 describe("ui.stage-crew handlers", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Reset DOM and storage
     document.documentElement.removeAttribute("data-theme");

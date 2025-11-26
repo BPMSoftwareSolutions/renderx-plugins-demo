@@ -1,7 +1,23 @@
 {
   "version": 1,
   "feature": "coverage-coupling",
-  "required": ["feature","event","beats","status","correlationId","coverageId"],
-  "optional": ["shapeHash","durationMs","batonDiffCount"],
-  "notes": "Coverage coupling contract baseline"
+  "required": [
+    "feature",
+    "event",
+    "beats",
+    "status",
+    "correlationId",
+    "coverageId"
+  ],
+  "optional": [
+    "shapeHash",
+    "durationMs",
+    "batonDiffCount"
+  ],
+  "notes": "Coverage coupling contract baseline",
+  "hashStrategy": "sha256(serializedWithoutMeta)",
+  "meta": {
+    "created": "2025-11-26T14:47:17.300Z",
+    "updated": "2025-11-26T14:47:17.301Z"
+  }
 }

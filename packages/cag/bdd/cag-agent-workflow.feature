@@ -6,6 +6,10 @@ Feature: cag agent workflow
   As a governance observer
   I want baseline BDD coverage for 'cag-agent-workflow'
 
+  Background:
+    Given the system is in a valid state
+    And necessary preconditions are met
+
   Scenario: Baseline coverage placeholder for cag-agent-workflow
     Given the orchestration audit system is initialized
     When the 'cag-agent-workflow' sequence executes baseline flow

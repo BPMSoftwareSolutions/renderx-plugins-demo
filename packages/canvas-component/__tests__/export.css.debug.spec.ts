@@ -3,6 +3,26 @@ import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/
 import { cssRegistry } from "../src/temp-deps/css-registry.store.ts";
 
 describe("Debug CSS collection in export (migrated)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Log current registry state (kept for parity with original test intent)
     console.log("CSS Registry state before test:");

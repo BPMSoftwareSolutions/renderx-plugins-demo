@@ -1,7 +1,7 @@
 # Symphonia Remediation Plan
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T14:40:06.887Z -->
+<!-- Generated: 2025-11-26T14:55:37.604Z -->
 
 ## 🎯 Prioritized Violations
 
@@ -239,7 +239,7 @@ Must be fixed before production deployment.
 - **Effort**: Immediate
 
 
-### Priority 2: MAJOR (380)
+### Priority 2: MAJOR (75)
 
 Should be addressed in next sprint.
 
@@ -259,8 +259,6 @@ Should be addressed in next sprint.
   → Align phase items to beat count
 - **cag-agent-workflow > Phase 7**: Phase has 6 items, but beats=41
   → Align phase items to beat count
-- **orchestration-audit-session**: Invalid key: C
-  → Use valid key, e.g., 'C Major' (current: 'C')
 - **orchestration-audit-session > Phase 0**: Phase has 3 items, but beats=25
   → Align phase items to beat count
 - **orchestration-audit-session > Phase 1**: Phase has 3 items, but beats=25
@@ -273,8 +271,10 @@ Should be addressed in next sprint.
   → Align phase items to beat count
 - **orchestration-audit-session > Phase 5**: Phase has 3 items, but beats=25
   → Align phase items to beat count
+- **orchestration-audit-session > Phase 6**: Phase has 3 items, but beats=25
+  → Align phase items to beat count
 
-... and 365 more
+... and 60 more
 
 
 ## 📈 Success Criteria
@@ -287,4 +287,4 @@ Should be addressed in next sprint.
 
 ---
 
-Generated: 2025-11-26T14:40:06.887Z
+Generated: 2025-11-26T14:55:37.604Z

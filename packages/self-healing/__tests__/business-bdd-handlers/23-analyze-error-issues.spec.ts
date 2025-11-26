@@ -16,6 +16,26 @@ import { analyzeErrorIssues } from '../../src/handlers/diagnosis/analyze.error.i
  */
 
 describe('Business BDD: analyzeErrorIssues', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let _ctx: any;
 
   beforeEach(() => {

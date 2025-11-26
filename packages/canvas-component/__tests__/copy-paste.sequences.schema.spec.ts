@@ -7,6 +7,26 @@ import { join } from 'node:path';
 type Beat = { dynamics?: string } & Record<string, unknown>;
 
 describe('copy/paste sequences schema (canvas-component)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   const root = join(__dirname, '..', 'json-sequences', 'canvas-component');
   const files = [
     'copy.json',

@@ -6,6 +6,26 @@ import { installTelemetryMatcher } from '../src/telemetry/matcher';
 installTelemetryMatcher();
 
 describe('BDD Telemetry Contract', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('emits telemetry with required fields via emitFeature wrapper', async () => {
     clearTelemetry();
     const { result, record } = await emitFeature('login', 'login:completed', () => ({ userId: 'u1' }), { sequenceSignature: 'abc123' });

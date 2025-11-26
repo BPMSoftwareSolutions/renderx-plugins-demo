@@ -6,6 +6,10 @@ Feature: orchestration audit session
   As a governance observer
   I want baseline BDD coverage for 'orchestration-audit-session'
 
+  Background:
+    Given the system is in a valid state
+    And necessary preconditions are met
+
   Scenario: Baseline coverage placeholder for orchestration-audit-session
     Given the orchestration audit system is initialized
     When the 'orchestration-audit-session' sequence executes baseline flow

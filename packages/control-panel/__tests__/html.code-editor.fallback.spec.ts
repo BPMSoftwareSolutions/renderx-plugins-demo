@@ -40,6 +40,26 @@ const baseConfig: ControlPanelConfig = {
 };
 
 describe("HTML component markup field fallback", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("forces code type even if ui.control missing (legacy cached schema)", () => {
     const resolver = new SchemaResolverService(baseConfig);
     const stale = JSON.parse(JSON.stringify(htmlSchemaOriginal)) as any;

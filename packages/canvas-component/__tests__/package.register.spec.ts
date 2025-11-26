@@ -13,6 +13,26 @@ function createFakeConductor() {
 }
 
 describe('@renderx-plugins/canvas-component: package surface + register()', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('exposes handlers and a register(conductor) function', async () => {
     expect(typeof (pkg as any).handlers).toBe('object');
     expect(typeof (pkg as any).register).toBe('function');

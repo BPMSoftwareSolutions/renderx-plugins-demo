@@ -10,6 +10,26 @@ import { loadBudgets, loadMetrics, computeCompliance, serializeDashboardState, t
 //  dashboard.export.report: serializeDashboardState -> triggerExportDownload
 
 describe('slo-dashboard handlers handlers', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let budgets: any; let metrics: any; let compliance: any;
 
   beforeEach(async () => {

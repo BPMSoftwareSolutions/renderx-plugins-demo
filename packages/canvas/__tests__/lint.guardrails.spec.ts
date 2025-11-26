@@ -5,6 +5,26 @@ import { ESLint } from "eslint";
 const cwd = path.resolve(__dirname, "..");
 
 describe("@renderx-plugins/canvas: ESLint guardrails", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("src is clean under local ESLint config", async () => {
     const eslint = new ESLint({ cwd });
     const results = await eslint.lintFiles(["src/**/*.{ts,tsx,js,jsx}"]);

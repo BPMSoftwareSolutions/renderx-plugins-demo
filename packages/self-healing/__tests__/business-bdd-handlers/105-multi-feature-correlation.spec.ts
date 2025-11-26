@@ -8,6 +8,26 @@ const { buildComposite } = require('../../../../scripts/build-composite-shapes.j
 installTelemetryMatcher();
 
 describe('Business BDD: multi-feature-correlation (auto-generated GREEN)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('Scenario: Build composite from two feature telemetry records aggregating beats.', async () => {
     clearTelemetry();
     // Emit first feature with manual beats

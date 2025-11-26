@@ -20,6 +20,26 @@ import baselineCompleted from '../../src/handlers/baseline/baseline.completed';
  */
 
 describe('Business BDD: baseline establishment sequence', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   function createSyntheticTelemetry(root: string) {
     const gen = join(root, '.generated');
     if (!existsSync(gen)) mkdirSync(gen);

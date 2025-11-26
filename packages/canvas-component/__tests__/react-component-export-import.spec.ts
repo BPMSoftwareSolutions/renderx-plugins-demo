@@ -4,6 +4,26 @@ import { buildUiFileContent } from "../src/symphonies/export/export.pure";
 import { parseUiFile } from "../src/symphonies/import/import.parse.pure";
 
 describe("React Component Export/Import", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let mockCtx: any;
 
   beforeEach(() => {

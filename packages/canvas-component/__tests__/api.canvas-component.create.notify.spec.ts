@@ -21,6 +21,26 @@ function makeCtx() {
 }
 
 describe('canvas-component create.notify notifyUi handler (public API)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     // Reset spy calls between tests to avoid cross-test pollution
     (EventRouter.publish as any).mockClear();

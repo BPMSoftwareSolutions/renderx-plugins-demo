@@ -2,6 +2,26 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { getTagForType, computeTagFromJson, setConfig } from '../component-mapper';
 
 describe('Component Mapper', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     delete (globalThis as any).window;
     delete (globalThis as any).RenderX;

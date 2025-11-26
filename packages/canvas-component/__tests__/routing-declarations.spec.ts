@@ -4,6 +4,26 @@ import fs from "node:fs";
 import path from "node:path";
 
 describe("Routing declarations for drag and resize.move sequences", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   const sequencesDir = path.join(__dirname, "..", "json-sequences", "canvas-component");
 
   it("drag.move.json should have topicMapping with routeToBase: true", () => {

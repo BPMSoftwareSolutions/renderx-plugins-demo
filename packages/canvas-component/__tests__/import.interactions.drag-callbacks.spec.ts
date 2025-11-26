@@ -12,6 +12,26 @@ import { EventRouter } from "@renderx-plugins/host-sdk";
 import { attachStandardImportInteractions } from "../src/symphonies/create/create.from-import";
 
 describe("attachStandardImportInteractions forwards drag positions", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     vi.clearAllMocks();
   });

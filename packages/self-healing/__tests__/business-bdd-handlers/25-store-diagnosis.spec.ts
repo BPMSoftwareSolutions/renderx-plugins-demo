@@ -17,6 +17,26 @@ import * as fs from 'fs';
  */
 
 describe('Business BDD: storeDiagnosis', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
 
   describe('Scenario: Store diagnosis results for fix generation', () => {
     it('persists diagnosis slice (all issue arrays present) and exposes file path (Given aggregated slice, When store runs, Then fix generation can proceed)', () => {

@@ -4,6 +4,26 @@ import { handlers as updateHandlers } from "../src/symphonies/update/update.symp
 import { handlers as selectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let mockCtx: any;
 
   beforeEach(() => {

@@ -10,6 +10,26 @@ function loadJson<T = any>(p: string): T {
 }
 
 describe("SVG schema → code editor mapping", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("maps ui.control = code to field.type = 'code' and applies preserveAspectRatio enum presets", async () => {
     const configPath = path.join(__dirname, "..", "src", "config", "control-panel.schema.json");
     const svgSchemaPath = path.join(__dirname, "__fixtures__", "json-components", "svg.json");

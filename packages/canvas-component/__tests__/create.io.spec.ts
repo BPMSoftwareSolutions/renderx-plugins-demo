@@ -2,6 +2,26 @@ import { describe, it, expect } from "vitest";
 import { registerInstance } from "@renderx-plugins/canvas-component/symphonies/create/create.io.ts";
 
 describe("canvas-component create.io", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   function makeCtx() {
     const ops: any[] = [];
     return {

@@ -21,6 +21,26 @@ function createSyntheticTelemetryMetrics(root: string) {
 }
 
 describe('Baseline Establishment Minimal Slice', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('establishes baseline metrics from synthetic telemetry artifact', () => {
     const root = process.cwd();
     const synthetic = createSyntheticTelemetryMetrics(root);

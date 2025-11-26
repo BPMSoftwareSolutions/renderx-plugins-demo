@@ -1,7 +1,23 @@
 {
   "version": 1,
   "feature": "shape-contracts",
-  "required": ["feature","event","beats","status","correlationId"],
-  "optional": ["shapeHash","coverageId","durationMs","batonDiffCount"],
-  "notes": "Placeholder contract for shape-contracts feature blueprint"
+  "required": [
+    "feature",
+    "event",
+    "beats",
+    "status",
+    "correlationId"
+  ],
+  "optional": [
+    "shapeHash",
+    "coverageId",
+    "durationMs",
+    "batonDiffCount"
+  ],
+  "notes": "Placeholder contract for shape-contracts feature blueprint",
+  "hashStrategy": "sha256(serializedWithoutMeta)",
+  "meta": {
+    "created": "2025-11-26T14:47:17.303Z",
+    "updated": "2025-11-26T14:47:17.303Z"
+  }
 }

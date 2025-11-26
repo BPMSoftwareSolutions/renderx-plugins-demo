@@ -21,6 +21,26 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 }
 
 describe("selection overlay remains aligned with component after resize (conductor)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => {
     document.body.innerHTML =
       '<div id="rx-canvas" style="position:relative"></div>';

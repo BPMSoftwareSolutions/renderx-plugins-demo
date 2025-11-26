@@ -2,6 +2,26 @@ import { describe, it, expect } from 'vitest';
 import { validateReactCode, validateReactCodeOrThrow } from '../src/symphonies/create/react-code-validator';
 
 describe('React Code Validator', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   describe('Valid React Code', () => {
     it('should validate simple React component', () => {
       const code = `function Hello() {

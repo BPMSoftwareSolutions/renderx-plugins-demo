@@ -5,6 +5,26 @@ import { describe, it, expect } from "vitest";
 // When moved to the standalone repo, this will become `import '@renderx-plugins/header'`
 
 describe("CSS side-effects (dist build)", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("injects a <style> tag with header CSS on import", async () => {
     const before = Array.from(document.head.querySelectorAll("style"));
 

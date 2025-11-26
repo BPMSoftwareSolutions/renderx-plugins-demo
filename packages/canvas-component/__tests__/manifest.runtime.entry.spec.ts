@@ -4,6 +4,26 @@ import { describe, it, expect } from "vitest";
 // Path is relative to this package test to the repo public/ directory
 
 describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it("includes a runtime entry for @renderx-plugins/canvas-component", async () => {
     // @ts-ignore - Vite raw import
     const raw = await import("../../../public/plugins/plugin-manifest.json?raw");

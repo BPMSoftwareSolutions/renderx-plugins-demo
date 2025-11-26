@@ -21,6 +21,26 @@ const minimalConfig = {
 } as any;
 
 describe('control-panel UI bootstrap handlers (public API)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   beforeEach(() => { /* reset DOM/context per test */ });
 
   it('initResolver initializes resolver and sets payload flags', () => {

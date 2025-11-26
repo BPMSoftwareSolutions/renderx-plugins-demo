@@ -19,6 +19,26 @@ function createFakeConductor() {
 }
 
 describe('renderx-plugin-library-component: register()', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('mounts the three library-component sequences exactly once with expected pluginIds', async () => {
     const c = createFakeConductor();
     await register(c);

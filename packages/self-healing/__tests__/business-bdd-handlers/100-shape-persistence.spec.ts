@@ -8,6 +8,26 @@ import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
 installTelemetryMatcher();
 
 describe('Business BDD: shape-persistence (auto-generated)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
 
   it('Scenario: Persist telemetry records and verify rolling history maintenance.', async () => {
     clearTelemetry();

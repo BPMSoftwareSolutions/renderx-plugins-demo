@@ -16,6 +16,26 @@ import { analyzeRequested } from '../../src/handlers/diagnosis/analyze.requested
  */
 
 describe('Business BDD: analyzeRequested', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
 
   describe('Scenario: User requests root cause analysis of detected anomalies', () => {
     it('initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)', () => {

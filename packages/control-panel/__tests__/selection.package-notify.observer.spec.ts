@@ -3,6 +3,26 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { handlers as packageSelectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel (package) selection notify -> EventRouter", () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   let mockEventRouter: any;
   let originalRenderX: any;
 

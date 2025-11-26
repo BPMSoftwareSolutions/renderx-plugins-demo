@@ -1,6 +1,26 @@
 import { describe, it, expect } from 'vitest';
 
 describe('@renderx-plugins/canvas-component package exports', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('exposes a callable register() and deep symphony subpaths', async () => {
     let pkg: any;
     try {

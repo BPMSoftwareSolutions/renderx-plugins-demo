@@ -11,6 +11,26 @@ vi.mock('@renderx-plugins/host-sdk', () => {
 });
 
 describe('library-component container drop handlers (package)', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('publishCreateRequested publishes canvas.component.create.requested with payload and ctx conductor', async () => {
     const data = {
       component: { id: 'btn-2', name: 'Button' },

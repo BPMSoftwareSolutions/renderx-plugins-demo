@@ -4,6 +4,26 @@ import { loadBudgets } from '../../src/handlers/metrics';
 
 // Sequence mapping: dashboard.load (beat 1: loadBudgets)
 describe('Business BDD Handler: loadBudgets', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   it('Scenario: Load initial SLO budgets for compliance baseline.', async () => {
     const result = await loadBudgets();
     expect(result).toBeDefined();

@@ -1,6 +1,26 @@
 import { describe, it, expect } from 'vitest';
 
 describe('handlers export', () => {
+  let ctx: any;
+  beforeEach(() => {
+    ctx = {
+      handler: null, // TODO: Import handler
+      mocks: {
+        database: vi.fn(),
+        fileSystem: vi.fn(),
+        logger: vi.fn(),
+        eventBus: vi.fn()
+      },
+      input: {},
+      output: null,
+      error: null
+    };
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    ctx = null;
+  });
   // TODO: This dist import can hang under certain watch/build states; skip while stabilizing build graph.
   it.skip('exports merged handlers object with expected handler functions', async () => {
     // Import from the built dist to test the actual export
