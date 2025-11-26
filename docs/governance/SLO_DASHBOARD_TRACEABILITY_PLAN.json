@@ -12,11 +12,26 @@
       "Stable IDs (sequenceId, shapeHash, coverageId, lineageId) for correlation"
     ],
     "successMetrics": {
-      "phaseCoveragePercent": {"target": 100, "description": "All SLO dashboard orchestration phases have telemetry + test + BDD mapping"},
-      "unannotatedShapeDiffs": {"target": 0, "description": "No failing shape diff checks"},
-      "telemetryToTestMappingRatio": {"target": 0.85, "description": "≥85% production events exercised in test mapping"},
-      "driftResolutionTimeMinutes": {"target": 5, "description": "Avg time from drift detection to annotation"},
-      "overlayProposalPromotion": {"target": 100, "description": "All ready orchestration sequence proposals promoted"}
+      "phaseCoveragePercent": {
+        "target": 100,
+        "description": "All SLO dashboard orchestration phases have telemetry + test + BDD mapping"
+      },
+      "unannotatedShapeDiffs": {
+        "target": 0,
+        "description": "No failing shape diff checks"
+      },
+      "telemetryToTestMappingRatio": {
+        "target": 0.85,
+        "description": "≥85% production events exercised in test mapping"
+      },
+      "driftResolutionTimeMinutes": {
+        "target": 5,
+        "description": "Avg time from drift detection to annotation"
+      },
+      "overlayProposalPromotion": {
+        "target": 100,
+        "description": "All ready orchestration sequence proposals promoted"
+      }
     }
   },
   "sprints": [
@@ -36,11 +51,26 @@
         ".generated/slo-dashboard/traceability-manifest.json"
       ],
       "tasks": [
-        {"key": "S1.1", "desc": "Ingest RenderX-Web telemetry anomalies into slo-dashboard enrichment step"},
-        {"key": "S1.2", "desc": "Map sequence phases → event IDs (phase metadata extension)"},
-        {"key": "S1.3", "desc": "Generate domain integration manifest (JSON)"},
-        {"key": "S1.4", "desc": "Patch slo-dashboard domain authority with manifest reference"},
-        {"key": "S1.5", "desc": "Add demo script: demo-slo-traceability-baseline.cjs"}
+        {
+          "key": "S1.1",
+          "desc": "Ingest RenderX-Web telemetry anomalies into slo-dashboard enrichment step"
+        },
+        {
+          "key": "S1.2",
+          "desc": "Map sequence phases → event IDs (phase metadata extension)"
+        },
+        {
+          "key": "S1.3",
+          "desc": "Generate domain integration manifest (JSON)"
+        },
+        {
+          "key": "S1.4",
+          "desc": "Patch slo-dashboard domain authority with manifest reference"
+        },
+        {
+          "key": "S1.5",
+          "desc": "Add demo script: demo-slo-traceability-baseline.cjs"
+        }
       ],
       "acceptanceCriteria": [
         "Manifest lists ≥3 phase→event correlations",
@@ -63,10 +93,22 @@
         "shape-evolutions.json new annotations for SLO features"
       ],
       "tasks": [
-        {"key": "S2.1", "desc": "Add coverage extraction for SLO test suites"},
-        {"key": "S2.2", "desc": "Link coverageId to telemetry anomalies in manifest"},
-        {"key": "S2.3", "desc": "Run shape-diff-check in CI pipeline for slo-dashboard"},
-        {"key": "S2.4", "desc": "Auto-add annotation on approved PR (optional)"}
+        {
+          "key": "S2.1",
+          "desc": "Add coverage extraction for SLO test suites"
+        },
+        {
+          "key": "S2.2",
+          "desc": "Link coverageId to telemetry anomalies in manifest"
+        },
+        {
+          "key": "S2.3",
+          "desc": "Run shape-diff-check in CI pipeline for slo-dashboard"
+        },
+        {
+          "key": "S2.4",
+          "desc": "Auto-add annotation on approved PR (optional)"
+        }
       ],
       "acceptanceCriteria": [
         "Each mapped event has coverageId",
@@ -89,10 +131,22 @@
         ".generated/slo-dashboard/bdd-event-cross-index.json"
       ],
       "tasks": [
-        {"key": "S3.1", "desc": "Select and promote proposals"},
-        {"key": "S3.2", "desc": "Inject phase scenario scaffolds into BDD spec"},
-        {"key": "S3.3", "desc": "Generate cross-index mapping scenario→event"},
-        {"key": "S3.4", "desc": "Validation script for BDD completeness"}
+        {
+          "key": "S3.1",
+          "desc": "Select and promote proposals"
+        },
+        {
+          "key": "S3.2",
+          "desc": "Inject phase scenario scaffolds into BDD spec"
+        },
+        {
+          "key": "S3.3",
+          "desc": "Generate cross-index mapping scenario→event"
+        },
+        {
+          "key": "S3.4",
+          "desc": "Validation script for BDD completeness"
+        }
       ],
       "acceptanceCriteria": [
         "100% ready proposals promoted",
@@ -112,13 +166,25 @@
       "deliverables": [
         "Updated DOMAIN_AUTHORITY_SCHEMA.json (integration spec)",
         "scripts/validate-slo-integration.cjs",
-        "dashboard: governance-traceability.md" 
+        "dashboard: governance-traceability.md"
       ],
       "tasks": [
-        {"key": "S4.1", "desc": "Schema extension + validation updates"},
-        {"key": "S4.2", "desc": "Implement multi-source drift verifier"},
-        {"key": "S4.3", "desc": "Generate governance dashboard doc"},
-        {"key": "S4.4", "desc": "CI integration for validation script"}
+        {
+          "key": "S4.1",
+          "desc": "Schema extension + validation updates"
+        },
+        {
+          "key": "S4.2",
+          "desc": "Implement multi-source drift verifier"
+        },
+        {
+          "key": "S4.3",
+          "desc": "Generate governance dashboard doc"
+        },
+        {
+          "key": "S4.4",
+          "desc": "CI integration for validation script"
+        }
       ],
       "acceptanceCriteria": [
         "Domain authorities validate with new block",
@@ -133,7 +199,7 @@
       "objectives": [
         "Add multi-feature correlation (SLO + Self-Healing + Telemetry Pipeline)",
         "Provide anomaly root-cause hints (component lineage + coverage fingerprint)",
-        "Expose REST/CLI to query traceability manifest" 
+        "Expose REST/CLI to query traceability manifest"
       ],
       "deliverables": [
         ".generated/correlation/slo-self-healing-map.json",
@@ -141,10 +207,22 @@
         "docs/slo-correlation-insights.md"
       ],
       "tasks": [
-        {"key": "S5.1", "desc": "Implement correlation aggregator"},
-        {"key": "S5.2", "desc": "Add coverage fingerprint diff logic"},
-        {"key": "S5.3", "desc": "CLI query tool"},
-        {"key": "S5.4", "desc": "Create insights markdown"}
+        {
+          "key": "S5.1",
+          "desc": "Implement correlation aggregator"
+        },
+        {
+          "key": "S5.2",
+          "desc": "Add coverage fingerprint diff logic"
+        },
+        {
+          "key": "S5.3",
+          "desc": "CLI query tool"
+        },
+        {
+          "key": "S5.4",
+          "desc": "Create insights markdown"
+        }
       ],
       "acceptanceCriteria": [
         "Correlation map lists ≥3 cross-feature anomaly linkages",
@@ -160,5 +238,7 @@
     "bddSpec": "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
     "sequenceRoot": "packages/ographx/.ographx/sequences/",
     "telemetrySource": ".generated/renderx-web-telemetry.json"
-  }
+  },
+  "id": "SLO_DASHBOARD_TRACEABILITY_PLAN",
+  "name": "unknown"
 }

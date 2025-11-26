@@ -1,52 +1,76 @@
 # Symphonia Remediation Plan
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T15:40:36.009Z -->
+<!-- Generated: 2025-11-26T18:44:53.123Z -->
 
 ## 🎯 Prioritized Violations
 
-### Priority 1: CRITICAL (0)
+### Priority 1: CRITICAL (4)
 
 Must be fixed before production deployment.
 
 
+#### 1. symphonia-conformity-alignment-pipeline
+- **Rule**: sequence-beats-positive
+- **Issue**: Invalid beat count
+- **Remediation**: Set beats to handler item count (current: undefined)
+- **Effort**: Immediate
 
-### Priority 2: MAJOR (76)
+#### 2. symphony-report-pipeline
+- **Rule**: sequence-beats-positive
+- **Issue**: Invalid beat count
+- **Remediation**: Set beats to handler item count (current: undefined)
+- **Effort**: Immediate
+
+#### 3. baseline.metrics.establish
+- **Rule**: sequence-beats-positive
+- **Issue**: Invalid beat count
+- **Remediation**: Set beats to handler item count (current: 0)
+- **Effort**: Immediate
+
+#### 4. handler-implementation.workflow
+- **Rule**: sequence-beats-positive
+- **Issue**: Invalid beat count
+- **Remediation**: Set beats to handler item count (current: 0)
+- **Effort**: Immediate
+
+
+### Priority 2: MAJOR (47)
 
 Should be addressed in next sprint.
 
-- **cag-agent-workflow > Phase 0**: Phase has 4 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 1**: Phase has 4 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 2**: Phase has 6 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 3**: Phase has 7 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 4**: Phase has 6 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 5**: Phase has 4 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 6**: Phase has 4 items, but beats=41
-  → Align phase items to beat count
-- **cag-agent-workflow > Phase 7**: Phase has 6 items, but beats=41
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 0**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 1**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 2**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 3**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 4**: Phase has 4 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 5**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
-- **orchestration-audit-session > Phase 6**: Phase has 3 items, but beats=25
-  → Align phase items to beat count
+- **control-panel-classes-add-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-classes-remove-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-css-create-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-css-delete-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-css-edit-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-selection-show-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-field-change-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-field-validate-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-init-batched-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-init-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-render-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-ui-section-toggle-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **control-panel-update-symphony**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **symphonia-conformity-alignment-pipeline**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
+- **symphony-report-pipeline**: Invalid tempo: undefined
+  → Set tempo between 60-240 (standard: 120)
 
-... and 61 more
+... and 32 more
 
 
 ## 📈 Success Criteria
@@ -59,4 +83,4 @@ Should be addressed in next sprint.
 
 ---
 
-Generated: 2025-11-26T15:40:36.009Z
+Generated: 2025-11-26T18:44:53.123Z

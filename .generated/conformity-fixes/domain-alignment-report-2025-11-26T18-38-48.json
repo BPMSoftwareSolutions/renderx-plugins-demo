@@ -1,0 +1,223 @@
+{
+  "timestamp": "2025-11-26T18:38:48.333Z",
+  "phase": 1,
+  "description": "Domain & Orchestration Alignment Report",
+  "summary": {
+    "totalDomains": 19,
+    "domainsWithIssues": 19,
+    "fixedDomains": 19,
+    "failedFixes": 0,
+    "successRate": "100.0%"
+  },
+  "details": [
+    {
+      "id": "symphony-report-pipeline",
+      "name": "symphony report pipeline",
+      "file": "packages\\orchestration\\json-sequences\\symphony-report-pipeline.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "symphonia-conformity-alignment-pipeline",
+      "name": "symphonia conformity alignment pipeline",
+      "file": "packages\\orchestration\\json-sequences\\symphonia-conformity-alignment-pipeline.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "UNIFIED_GOVERNANCE_AUTHORITY",
+      "name": "unknown",
+      "file": "docs\\governance\\UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "topic-telemetry-governance",
+      "name": "unknown",
+      "file": "docs\\governance\\topic-telemetry-governance.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "tools-registry",
+      "name": "unknown",
+      "file": "docs\\governance\\tools-registry.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "symphonia-auditing-system",
+      "name": "Symphonia Auditing System",
+      "file": "docs\\governance\\symphonia-auditing-system.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "symphonia-audit-report",
+      "name": "unknown",
+      "file": "docs\\governance\\symphonia-audit-report.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "SLO_DASHBOARD_TRACEABILITY_PLAN",
+      "name": "unknown",
+      "file": "docs\\governance\\SLO_DASHBOARD_TRACEABILITY_PLAN.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "ROOT_FILE_PLACEMENT_RULES",
+      "name": "unknown",
+      "file": "docs\\governance\\ROOT_FILE_PLACEMENT_RULES.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID"
+      ]
+    },
+    {
+      "id": "PROJECT_TAGS",
+      "name": "unknown",
+      "file": "docs\\governance\\PROJECT_TAGS.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "PROJECT_SCOPE",
+      "name": "unknown",
+      "file": "docs\\governance\\PROJECT_SCOPE.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "PROJECT_ROLES",
+      "name": "unknown",
+      "file": "docs\\governance\\PROJECT_ROLES.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "PROJECT_BOUNDARIES",
+      "name": "unknown",
+      "file": "docs\\governance\\PROJECT_BOUNDARIES.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "orchestration-domains",
+      "name": "unknown",
+      "file": "docs\\governance\\orchestration-domains.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "orchestration-audit-system-project-plan",
+      "name": "unknown",
+      "file": "docs\\governance\\orchestration-audit-system-project-plan.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "generated-docs-manifest",
+      "name": "unknown",
+      "file": "docs\\governance\\generated-docs-manifest.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "bdd-pipeline-visual-architecture",
+      "name": "unknown",
+      "file": "docs\\governance\\bdd-pipeline-visual-architecture.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "bdd-pipeline-analysis",
+      "name": "unknown",
+      "file": "docs\\governance\\bdd-pipeline-analysis.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    },
+    {
+      "id": "AGENT_SELF_GOVERNANCE_POLICY",
+      "name": "unknown",
+      "file": "docs\\governance\\AGENT_SELF_GOVERNANCE_POLICY.json",
+      "status": "FIXED",
+      "issues": [
+        "Missing domain name",
+        "Missing domain ID",
+        "Missing authority reference"
+      ]
+    }
+  ],
+  "improvements": [
+    "✅ Analyzed 19 domain/orchestration files",
+    "✅ Fixed 19 files with issues",
+    "✅ Verified 0 already-compliant files",
+    "⚠️  0 files could not be auto-fixed"
+  ]
+}

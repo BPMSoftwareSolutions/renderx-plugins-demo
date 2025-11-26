@@ -11,433 +11,61 @@
       "id": "phase-1-context-loading",
       "name": "Phase 1: Context Loading",
       "description": "Load the governance core and establish baseline context",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase1:load-shape-evolution-plan",
-          "title": "Load SHAPE_EVOLUTION_PLAN.json",
-          "description": "Extract rules, evolution phases, governance contracts",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase1:load-knowledge-index",
-          "title": "Load knowledge-index.json",
-          "description": "Extract artifact registry and canonical locations",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase1:load-root-context",
-          "title": "Load root-context.json",
-          "description": "Extract root goal, principles, boundaries",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase1:initialize-context-engine",
-          "title": "Initialize CAG Context Engine",
-          "description": "Create context envelope, session ID, timestamp",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 4
     },
     {
       "id": "phase-2-context-verification",
       "name": "Phase 2: Context Verification",
       "description": "Verify that loaded context is coherent and sufficient (≥ 80%)",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase2:verify-root-goal-alignment",
-          "title": "Verify Root Goal Alignment",
-          "description": "Check goal matches plan, no contradictions, goal achievable",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase2:verify-governance-rules",
-          "title": "Verify Governance Rules",
-          "description": "Check rules parseable, no conflicts, all phases covered",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase2:verify-artifact-registry",
-          "title": "Verify Artifact Registry",
-          "description": "Check artifacts reachable, no circular deps, canonical locations valid",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase2:calculate-coherence-score",
-          "title": "Calculate Coherence Score",
-          "description": "Compute (verified_items / total_items) * 100, threshold ≥ 80%",
-          "dynamics": "ff",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 4
     },
     {
       "id": "phase-3-workload-analysis",
       "name": "Phase 3: Workload Analysis",
       "description": "Understand what work needs to be done and map to evolution phase",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase3:receive-workload",
-          "title": "Receive Workload Description",
-          "description": "Extract feature, scope, constraints from user request",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase3:categorize-workload",
-          "title": "Categorize Workload",
-          "description": "Determine type (feature/fix/refactor/test/doc), scope, complexity",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase3:map-evolution-phase",
-          "title": "Map to Evolution Phase",
-          "description": "Check sprint/phase, in-scope for phase, aligns with plan",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase3:identify-affected-artifacts",
-          "title": "Identify Affected Artifacts",
-          "description": "List files to modify, dependencies, tests to update",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 5,
-          "event": "cag:phase3:extract-sub-context",
-          "title": "Extract Sub-Context",
-          "description": "Extract feature, layer, phase",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 6,
-          "event": "cag:phase3:define-boundaries",
-          "title": "Define Boundaries",
-          "description": "Define in-scope, out-of-scope, constraints",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 6
     },
     {
       "id": "phase-4-context-tree-mapping",
       "name": "Phase 4: Context Tree Mapping",
       "description": "Map complete governance context for all affected files",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase4:resolve-file-paths",
-          "title": "Resolve File Paths",
-          "description": "For each affected file: check exists, in repository, path canonical",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase4:categorize-files",
-          "title": "Categorize Files",
-          "description": "Determine type, purpose, role for each file",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase4:map-governance-context",
-          "title": "Map Governance Context",
-          "description": "Extract rules, contracts, phase, telemetry requirements",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase4:extract-dependencies",
-          "title": "Extract Dependencies",
-          "description": "Extract imports, references, dependents",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 5,
-          "event": "cag:phase4:map-context-layers",
-          "title": "Map Context Layers",
-          "description": "Map root context, sub-context, boundaries, previous context",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 6,
-          "event": "cag:phase4:generate-context-trees",
-          "title": "Generate Context Trees",
-          "description": "Output .generated/context-tree-{filename}.json for each file",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 7,
-          "event": "cag:phase4:aggregate-and-verify",
-          "title": "Aggregate and Verify",
-          "description": "Combine all context trees, detect cross-file deps, verify no violations",
-          "dynamics": "ff",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 7
     },
     {
       "id": "phase-5-action-planning",
       "name": "Phase 5: Action Planning",
       "description": "Plan the work within the established context",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase5:load-context-providers",
-          "title": "Load Context Providers",
-          "description": "Load BDD specs, telemetry shapes, TDD tests, integration tests, context remounting",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase5:rehydrate-full-context",
-          "title": "Rehydrate Full Context",
-          "description": "Combine governance core + context providers, assemble context envelope",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase5:generate-cag-context",
-          "title": "Generate CAG Context",
-          "description": "Output .generated/cag-context.json with all context layers",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase5:load-matching-docs",
-          "title": "Load Matching Documentation",
-          "description": "Query docs matching workload, filter by role, load context blocks",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "continue"
-        },
-        {
-          "beat": 5,
-          "event": "cag:phase5:plan-actions",
-          "title": "Plan Actions",
-          "description": "Identify changes needed, sequence actions, verify boundaries, estimate impact",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 6,
-          "event": "cag:phase5:verify-action-plan",
-          "title": "Verify Action Plan",
-          "description": "Check all in-scope, respects governance, aligns with goal, telemetry identified",
-          "dynamics": "ff",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 6
     },
     {
       "id": "phase-6-action-execution",
       "name": "Phase 6: Action Execution",
       "description": "Execute planned actions while maintaining context",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase6:pre-action-verification",
-          "title": "Pre-Action Verification",
-          "description": "Verify context coherent, boundaries unchanged, no conflicts",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase6:execute-actions",
-          "title": "Execute Actions",
-          "description": "Modify code, tests, specs, configs; generate new artifacts",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase6:post-action-verification",
-          "title": "Post-Action Verification",
-          "description": "Verify syntactically valid, respects governance, no violations, dependencies updated",
-          "dynamics": "ff",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase6:record-actions",
-          "title": "Record Actions",
-          "description": "Log what changed, why, context used, timestamp, session ID",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 4
     },
     {
       "id": "phase-7-telemetry-emission",
       "name": "Phase 7: Telemetry Emission",
       "description": "Emit structured telemetry about what was done",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase7:collect-telemetry",
-          "title": "Collect Telemetry Data",
-          "description": "Collect what, why, how, when, who, context",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase7:structure-telemetry",
-          "title": "Structure Telemetry",
-          "description": "Include root goal, feature, phase, changes, tests, verification",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase7:emit-telemetry",
-          "title": "Emit Telemetry",
-          "description": "Write .generated/telemetry/{timestamp}.json with structured data",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase7:verify-telemetry",
-          "title": "Verify Telemetry",
-          "description": "Check required fields present, matches plan, machine readable",
-          "dynamics": "ff",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 4
     },
     {
       "id": "phase-8-feedback-loop",
       "name": "Phase 8: Feedback Loop",
       "description": "Update context for next iteration and regenerate documentation",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "cag:phase8:load-previous-context",
-          "title": "Load Previous Context",
-          "description": "Load cag-context.json and telemetry",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 2,
-          "event": "cag:phase8:analyze-results",
-          "title": "Analyze Action Results",
-          "description": "Analyze success, alignment, governance compliance, telemetry",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 3,
-          "event": "cag:phase8:update-context",
-          "title": "Update Context for Next Iteration",
-          "description": "Record previous action, coherence, telemetry, lessons learned",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 4,
-          "event": "cag:phase8:generate-updated-context",
-          "title": "Generate Updated Context",
-          "description": "Output .generated/cag-context-next.json with all updates",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        },
-        {
-          "beat": 5,
-          "event": "cag:phase8:trigger-doc-regeneration",
-          "title": "Trigger Documentation Regeneration",
-          "description": "Check if JSON changed, regenerate docs if needed, verify up-to-date",
-          "dynamics": "mf",
-          "timing": "immediate",
-          "errorHandling": "continue"
-        },
-        {
-          "beat": 6,
-          "event": "cag:phase8:generate-feedback-report",
-          "title": "Generate Feedback Report",
-          "description": "Output .generated/cag-feedback.json with observations, updates, next steps",
-          "dynamics": "f",
-          "timing": "immediate",
-          "errorHandling": "abort"
-        }
-      ]
+      "beats": 6
     }
   ],
   "metadata": {
     "version": "1.0.0",
     "author": "CAG System",
     "created": "2025-11-24T02:45:00.000Z",
-    "tags": ["governance", "cag", "agent-workflow", "context-augmentation", "orchestration"]
+    "tags": [
+      "governance",
+      "cag",
+      "agent-workflow",
+      "context-augmentation",
+      "orchestration"
+    ]
   }
 }
-

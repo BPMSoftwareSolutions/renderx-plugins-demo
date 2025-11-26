@@ -8,7 +8,6 @@
   "purpose": "Automate multi-format report generation (Markdown, JSON, HTML) with traceability lineage, recommendations, and audit summaries.",
   "trigger": "On-demand or post-execution via governance layer",
   "kind": "reporting",
-  "beats": 30,
   "status": "active",
   "events": [
     "report:generation:initiated",
@@ -26,7 +25,6 @@
       "movement": 1,
       "name": "Data Collection & Aggregation",
       "description": "Gather metrics from all pipeline executions, sequences, and audit systems",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,
@@ -79,7 +77,6 @@
       "movement": 2,
       "name": "Executive Summary Synthesis",
       "description": "Create high-level overview with key metrics and status indicators",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,
@@ -132,7 +129,6 @@
       "movement": 3,
       "name": "Detailed Analysis & Recommendations",
       "description": "Generate in-depth analysis with recommendations for each violation category",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,
@@ -185,7 +181,6 @@
       "movement": 4,
       "name": "Report Generation (Multi-Format)",
       "description": "Generate reports in Markdown, JSON, and HTML formats with consistent structure",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,
@@ -238,7 +233,6 @@
       "movement": 5,
       "name": "Lineage & Audit Trail Construction",
       "description": "Build complete traceability chain showing source → transformation → output",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,
@@ -291,7 +285,6 @@
       "movement": 6,
       "name": "Report Delivery & Distribution",
       "description": "Publish reports to configured locations with notifications and archival",
-      "beats": 5,
       "steps": [
         {
           "beat": 1,

@@ -21,5 +21,7 @@
     "tool": "scripts/analyze-logs.js",
     "notes": "Telemetry extraction parses conductor logs for [topic:<name>] signatures so the SLO dashboard and self-healing agents can reconcile live interactions.",
     "pipeline": "plugin -> json-sequences -> pre:manifest -> interactions -> JSON-component-interaction-integration -> live-session-conductor-logs -> telemetry-extraction"
-  }
+  },
+  "id": "topic-telemetry-governance",
+  "name": "unknown"
 }

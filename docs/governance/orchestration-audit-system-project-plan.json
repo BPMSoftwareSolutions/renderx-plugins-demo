@@ -117,9 +117,18 @@
         "changed": 0
       },
       "telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": true,
-        "signatures": ["bootstrap.registry.init","bootstrap.diff.generate","bootstrap.baseline.persist"],
+        "signatures": [
+          "bootstrap.registry.init",
+          "bootstrap.diff.generate",
+          "bootstrap.baseline.persist"
+        ],
         "notes": "Baseline artifacts established at initial system setup"
       },
       "completedAt": "2025-11-24T18:40:00.000Z",
@@ -172,13 +181,21 @@
         "handlerCoveragePercent": 0
       },
       "telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": true,
-        "signatures": ["canonical.hash.compute","canonical.hash.compare"],
+        "signatures": [
+          "canonical.hash.compute",
+          "canonical.hash.compare"
+        ],
         "notes": "Telemetry for hash computation and comparison established"
       },
-      "completedAt": "2025-11-24T18:52:32.354Z"
-  ,"completionCommitSuggestion": "chore(sprint): complete sprint 1 - Canonical Integrity (version bump 1.2.1) criteria: Canonical equals raw where no volatile fields=PASS; Report generated in pre:manifests=PASS"
+      "completedAt": "2025-11-24T18:52:32.354Z",
+      "completionCommitSuggestion": "chore(sprint): complete sprint 1 - Canonical Integrity (version bump 1.2.1) criteria: Canonical equals raw where no volatile fields=PASS; Report generated in pre:manifests=PASS"
     },
     {
       "id": "2",
@@ -219,9 +236,14 @@
       "risks": [
         "Large doc set introduces false stale flags"
       ],
-      "blockers": []
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "blockers": [],
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Define telemetry signatures for provenance and compliance generation"
@@ -255,9 +277,14 @@
           "status": "PENDING"
         }
       ],
-      "velocityTarget": 2
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 2,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Telemetry for release note append events"
@@ -281,9 +308,14 @@
         "≥90% domains mapped"
       ],
       "status": "planned",
-      "velocityTarget": 3
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 3,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "BDD stub creation and coverage update telemetry"
@@ -307,9 +339,14 @@
         "≥85% coverage"
       ],
       "status": "planned",
-      "velocityTarget": 3
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 3,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Handler test run and coverage publication telemetry"
@@ -332,9 +369,14 @@
         "all reports consolidated"
       ],
       "status": "planned",
-      "velocityTarget": 2
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 2,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Dashboard render and aggregation telemetry"
@@ -357,9 +399,14 @@
         "≥70% sequences timed"
       ],
       "status": "planned",
-      "velocityTarget": 2
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 2,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Sequence timing instrumentation telemetry"
@@ -383,9 +430,14 @@
         "scores generated"
       ],
       "status": "planned",
-      "velocityTarget": 2
-    ,"telemetry": {
-        "requiredShapes": ["events","metrics","traces","logs"],
+      "velocityTarget": 2,
+      "telemetry": {
+        "requiredShapes": [
+          "events",
+          "metrics",
+          "traces",
+          "logs"
+        ],
         "baselineDefined": false,
         "signatures": [],
         "notes": "Semantic diff and impact scoring telemetry"
@@ -481,7 +533,11 @@
         {
           "name": "generate-telemetry-complete.js",
           "purpose": "Generate TELEMETRY_GOVERNANCE_COMPLETE.md aggregating all telemetry data",
-          "input": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json", "orchestration-audit-system-project-plan.json"],
+          "input": [
+            ".generated/telemetry-matrix.json",
+            ".generated/telemetry-validation-report.json",
+            "orchestration-audit-system-project-plan.json"
+          ],
           "output": "TELEMETRY_GOVERNANCE_COMPLETE.md",
           "pipelineOrder": 44,
           "status": "pending-creation"
@@ -621,11 +677,17 @@
             "categories": [
               {
                 "category": "JSON Artifacts",
-                "items": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json"]
+                "items": [
+                  ".generated/telemetry-matrix.json",
+                  ".generated/telemetry-validation-report.json"
+                ]
               },
               {
                 "category": "Markdown Artifacts",
-                "items": ["docs/generated/orchestration-telemetry-matrix.md", "docs/generated/orchestration-telemetry-validation.md"]
+                "items": [
+                  "docs/generated/orchestration-telemetry-matrix.md",
+                  "docs/generated/orchestration-telemetry-validation.md"
+                ]
               }
             ]
           }
@@ -829,10 +891,22 @@
           }
         ],
         "complianceStatus": {
-          "rule001": { "title": "JSON Authority Only", "status": "PASS" },
-          "rule002": { "title": "Single Source of Truth", "status": "PASS" },
-          "rule003": { "title": "Auto-Generation Script Required", "status": "PASS" },
-          "rule004": { "title": "Generated Document Marking", "status": "PASS" }
+          "rule001": {
+            "title": "JSON Authority Only",
+            "status": "PASS"
+          },
+          "rule002": {
+            "title": "Single Source of Truth",
+            "status": "PASS"
+          },
+          "rule003": {
+            "title": "Auto-Generation Script Required",
+            "status": "PASS"
+          },
+          "rule004": {
+            "title": "Generated Document Marking",
+            "status": "PASS"
+          }
         },
         "systemsNowFollowingPattern": 11,
         "newAutoGeneratedDocuments": 4,
@@ -950,7 +1024,10 @@
           "ORCHESTRATION_AUDIT_ARCHITECTURE.md",
           "ORCHESTRATION_AUDIT_IMPLEMENTATION_GUIDE.md"
         ],
-        "dependencies": ["self_sequences", "graphing-orchestration"]
+        "dependencies": [
+          "self_sequences",
+          "graphing-orchestration"
+        ]
       },
       {
         "domainId": "orchestration-audit-session",
@@ -971,7 +1048,9 @@
           }
         ],
         "manualDocuments": [],
-        "dependencies": ["orchestration-audit-system"]
+        "dependencies": [
+          "orchestration-audit-system"
+        ]
       },
       {
         "domainId": "cag-agent-workflow",
@@ -1008,7 +1087,9 @@
           }
         ],
         "manualDocuments": [],
-        "dependencies": ["orchestration-audit-system"]
+        "dependencies": [
+          "orchestration-audit-system"
+        ]
       },
       {
         "domainId": "self_sequences",
@@ -1024,7 +1105,9 @@
           }
         ],
         "manualDocuments": [],
-        "dependencies": ["orchestration-audit-system"]
+        "dependencies": [
+          "orchestration-audit-system"
+        ]
       }
     ],
     "globalDocumentationFolders": {
@@ -1053,7 +1136,9 @@
       },
       "docs/generated/{domain-id}": {
         "purpose": "Auto-generated documentation for each domain",
-        "required": ["INDEX.md"],
+        "required": [
+          "INDEX.md"
+        ],
         "regeneratedOn": "Every npm run build",
         "driftStatus": "DRIFT-PROOF"
       },
@@ -1069,7 +1154,10 @@
         "regeneration": "Every build via generation scripts",
         "editing": "Prohibited - pre-commit hooks block edits",
         "marking": "<!-- AUTO-GENERATED --> header + source JSON reference",
-        "examples": ["DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md", "Domain overview docs"]
+        "examples": [
+          "DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md",
+          "Domain overview docs"
+        ]
       },
       "driftCapable": {
         "classification": "Manually-Maintained",
@@ -1105,7 +1193,9 @@
               "last_modified_date": "ISO8601",
               "drift_status": "drift-proof | drift-capable | unknown",
               "is_referenced": "boolean",
-              "referenced_by": ["string"]
+              "referenced_by": [
+                "string"
+              ]
             }
           ]
         }
@@ -1134,5 +1224,7 @@
       "phase4": "Audit and report orphaned documents",
       "phase5": "Enforce document location rules in CI/CD"
     }
-  }
+  },
+  "id": "orchestration-audit-system-project-plan",
+  "name": "unknown"
 }

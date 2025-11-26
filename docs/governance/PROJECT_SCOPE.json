@@ -37,8 +37,21 @@
   ],
   "confirmationEnvVar": "ALLOW_OUT_OF_SCOPE",
   "categories": {
-    "governance": ["packages/self-healing/**", "scripts/generate-*", "scripts/validate-*", ".generated/**"],
-    "reporting": ["scripts/generate-project-report.js", "PROJECT_STATUS_REPORT.md"],
-    "contracts": ["contracts/**", "scripts/validate-shape-contracts.js"]
-  }
+    "governance": [
+      "packages/self-healing/**",
+      "scripts/generate-*",
+      "scripts/validate-*",
+      ".generated/**"
+    ],
+    "reporting": [
+      "scripts/generate-project-report.js",
+      "PROJECT_STATUS_REPORT.md"
+    ],
+    "contracts": [
+      "contracts/**",
+      "scripts/validate-shape-contracts.js"
+    ]
+  },
+  "id": "PROJECT_SCOPE",
+  "name": "unknown"
 }

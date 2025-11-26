@@ -128,7 +128,10 @@
           {
             "name": "verify:orchestration:governance",
             "role": "Ensures orchestration documentation governance compliance",
-            "checks": ["All expected generated files present", "No manual markdown violations"]
+            "checks": [
+              "All expected generated files present",
+              "No manual markdown violations"
+            ]
           },
           {
             "name": "Hash Validation (Layer 8)",
@@ -408,5 +411,7 @@
     "Governance documentation itself follows JSON→markdown pattern: authority file → auto-generated reflection",
     "Validation layers 8-9 ensure drift-free governance: SHA256 hashing + manifest completeness checks",
     "Integration point: BDD scenarios must map to actual orchestration phase transitions and event sequences"
-  ]
+  ],
+  "id": "bdd-pipeline-analysis",
+  "name": "unknown"
 }

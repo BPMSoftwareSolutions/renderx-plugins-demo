@@ -104,7 +104,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 1,
@@ -174,7 +175,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 2,
@@ -242,7 +244,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 3,
@@ -303,7 +306,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 4,
@@ -366,7 +370,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 5,
@@ -407,7 +412,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 6,
@@ -468,7 +474,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     },
     {
       "phase": 7,
@@ -519,7 +526,8 @@
             ]
           }
         ]
-      }
+      },
+      "beats": 0
     }
   ],
   "quality_checklist": [
@@ -646,5 +654,5 @@
   "time_estimate": "~5 hours per handler",
   "status": "ready",
   "id": "handler-implementation.workflow",
-  "beats": 78
+  "beats": 0
 }

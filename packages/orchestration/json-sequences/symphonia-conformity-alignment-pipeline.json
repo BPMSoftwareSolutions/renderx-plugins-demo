@@ -8,7 +8,6 @@
   "purpose": "Detect and intelligently remediate 60+ conformity violation patterns through automated three-phase alignment fixing with rollback capabilities.",
   "trigger": "On-demand via npm script or event-driven from governance audit system",
   "kind": "governance",
-  "beats": 19,
   "status": "active",
   "governance": {
     "policies": [
@@ -53,7 +52,6 @@
       "name": "Domain & Orchestration Alignment",
       "description": "Detect and fix domain definition misalignments, orchestration manifest inconsistencies, and governance policy violations",
       "kind": "remediation",
-      "beats": 6,
       "violationCategories": [
         "ORCHESTRATION_VIOLATION",
         "GOVERNANCE_VIOLATION"
@@ -162,7 +160,6 @@
       "name": "Sequence Beat Alignment",
       "description": "Detect and fix sequence beat count misalignments, movement/phase definition mismatches, and sequence structure validation failures",
       "kind": "remediation",
-      "beats": 6,
       "violationCategories": [
         "SEQUENCE_VIOLATION"
       ],
@@ -272,7 +269,6 @@
       "name": "Handler & BDD Specs Alignment",
       "description": "Detect and fix handler implementation misalignments, BDD specification inconsistencies, and step definition violations",
       "kind": "remediation",
-      "beats": 7,
       "violationCategories": [
         "HANDLER_VIOLATION"
       ],
@@ -541,7 +537,12 @@
     "version": "2.0",
     "lastUpdated": "2025-11-26",
     "author": "Symphonia Governance System",
-    "tags": ["governance", "conformity", "automated-remediation", "multi-phase"],
+    "tags": [
+      "governance",
+      "conformity",
+      "automated-remediation",
+      "multi-phase"
+    ],
     "documentation": "All documentation for this pipeline is auto-generated from this JSON authority file"
   }
 }

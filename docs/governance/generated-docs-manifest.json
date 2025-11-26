@@ -36,5 +36,7 @@
       "kind": "pipeline",
       "purpose": "Orchestration for automated conformity violation detection and remediation"
     }
-  ]
+  ],
+  "id": "generated-docs-manifest",
+  "name": "unknown"
 }

@@ -5,7 +5,6 @@
   "status": "MERGED - System A (root placement) + System B (JSON automation)",
   "mergeDate": "2025-11-24",
   "mergeSource": "Option 1: Merged B into A for single source of truth",
-
   "preamble": {
     "title": "Unified Repository Governance Framework",
     "purpose": "Single authoritative source for all repository governance including root file placement, JSON-driven automation, and enforcement layers",
@@ -18,7 +17,6 @@
     "consolidatedInto": "THIS FILE (UNIFIED_GOVERNANCE_AUTHORITY.json)",
     "liveAs": "Single source of truth for all governance"
   },
-
   "core_principles": [
     {
       "number": 1,
@@ -72,18 +70,30 @@
       "number": 4,
       "principle": "Drift Prevention",
       "statement": "No manual files in auto-generation patterns. All enforcement layers prevent manual creation.",
-      "patterns": [".generated/*", ".generated.*", "*.generated.spec.ts", "*.stub.ts"],
+      "patterns": [
+        ".generated/*",
+        ".generated.*",
+        "*.generated.spec.ts",
+        "*.stub.ts"
+      ],
       "enforcement": "7 layers (automatic detection and blocking)"
     },
     {
       "number": 5,
       "principle": "Governance Cascade",
       "statement": "Governance rules cascade from repository → package → directory with inheritance and override capability.",
-      "overridable": ["file_placement_patterns", "generation_frequency", "allowed_manual_files"],
-      "notOverridable": ["core_principles", "all_enforcement_layers", "JSON_is_authority"]
+      "overridable": [
+        "file_placement_patterns",
+        "generation_frequency",
+        "allowed_manual_files"
+      ],
+      "notOverridable": [
+        "core_principles",
+        "all_enforcement_layers",
+        "JSON_is_authority"
+      ]
     }
   ],
-
   "enforcement_layers_unified": [
     {
       "layer": 1,
@@ -91,7 +101,9 @@
       "system": "System A (root file placement)",
       "trigger": "File creation during development",
       "rule": "ESLint rule 'root-files-only' catches root file creation",
-      "scope": ["Root file placement violations"],
+      "scope": [
+        "Root file placement violations"
+      ],
       "action": "ERROR - Developer sees immediate feedback",
       "bypassable": "No (in editor)",
       "enforcement_point": "eslint-rules/root-files-only.js"
@@ -105,7 +117,10 @@
         "System A: No unauthorized root files in staged changes",
         "System B: No manual .generated files in staged changes"
       ],
-      "scope": ["Root placement violations", "Manual auto-generation violations"],
+      "scope": [
+        "Root placement violations",
+        "Manual auto-generation violations"
+      ],
       "action": "BLOCK - Commit cannot proceed",
       "bypassable": "Yes (git commit --no-verify - not recommended)",
       "enforcement_point": ".husky/pre-commit"
@@ -116,7 +131,9 @@
       "system": "System A (root file placement)",
       "trigger": "Before compilation",
       "rule": "Check no new root files before build starts",
-      "scope": ["Root placement violations"],
+      "scope": [
+        "Root placement violations"
+      ],
       "action": "FAIL - Build cannot start",
       "bypassable": "No",
       "enforcement_point": "Build script pre-flight check"
@@ -130,7 +147,10 @@
         "System A: Verify no root files created during build",
         "System B: Regenerate all .generated files and verify checksums"
       ],
-      "scope": ["Root placement violations", "Stale/manual auto-generation violations"],
+      "scope": [
+        "Root placement violations",
+        "Stale/manual auto-generation violations"
+      ],
       "action": "FAIL - Build stops, error reported",
       "bypassable": "No",
       "enforcement_point": "package.json build script includes verification"
@@ -144,7 +164,9 @@
         "System A: Full root file governance audit",
         "System B: Full auto-generation compliance audit"
       ],
-      "scope": ["All governance violations"],
+      "scope": [
+        "All governance violations"
+      ],
       "action": "BLOCK - PR cannot merge",
       "bypassable": "No (requires approval)",
       "enforcement_point": ".github/workflows/verify-governance.yml"
@@ -155,7 +177,9 @@
       "system": "System B (new)",
       "trigger": "Scheduled daily + on-demand",
       "rule": "Repository-wide compliance dashboard generation",
-      "scope": ["All packages, all files"],
+      "scope": [
+        "All packages, all files"
+      ],
       "action": "REPORT - No block, but violations documented",
       "bypassable": "No (reporting only)",
       "enforcement_point": ".github/workflows/audit-governance.yml + npm run audit:governance"
@@ -166,42 +190,50 @@
       "system": "System B (new)",
       "trigger": "Manual execution or as part of build",
       "rule": "Auto-fix violations with npm run verify:governance:fix",
-      "scope": ["All auto-generation violations"],
+      "scope": [
+        "All auto-generation violations"
+      ],
       "action": "FIX - Delete manual files, regenerate from source",
       "bypassable": "No (automatic)",
       "enforcement_point": "scripts/verify-governance.js --fix"
-    }
-    ,
+    },
     {
       "layer": 8,
       "name": "Governance Doc Hash Validation",
       "system": "System B (documentation governance)",
       "trigger": "npm run build / CI precheck",
       "rule": "Regenerate markdown from manifest and compare embedded SHA256 hash to JSON source hash",
-      "scope": ["docs/governance/*.md listed in generated-docs-manifest.json"],
+      "scope": [
+        "docs/governance/*.md listed in generated-docs-manifest.json"
+      ],
       "action": "FAIL - Build/CI stops on mismatch",
       "bypassable": "Yes (env ALLOW_DOC_DRIFT=1) - logs audit entry",
       "enforcement_point": "scripts/validate-generated-docs.cjs",
       "audit_log": ".logs/governance-doc-drift.log",
       "preventive_rationale": "Stops silent manual markdown edits; forces JSON-first corrections"
-    }
-    ,
+    },
     {
       "layer": 9,
       "name": "Agent Self-Governance Validation",
       "system": "System B (agent governance)",
       "trigger": "npm run build / CI precheck",
       "rule": "Detect generator scripts without manifest entries, orphan governance markdown, duplicate authorities",
-      "scope": ["scripts/generate-*", "docs/governance/*.md", "docs/governance/*AUTHORITY*.json"],
+      "scope": [
+        "scripts/generate-*",
+        "docs/governance/*.md",
+        "docs/governance/*AUTHORITY*.json"
+      ],
       "action": "FAIL - Build/CI stops on errors; warns on orphans",
       "bypassable": "Yes (env ALLOW_AGENT_GOVERNANCE_BYPASS=1) - logs .logs/agent-bypass.log",
       "enforcement_point": "scripts/validate-agent-behavior.cjs",
       "policy_ref": "docs/governance/AGENT_SELF_GOVERNANCE_POLICY.json",
       "preventive_rationale": "Prevents proliferation of ad-hoc governance artifacts and enforces manifest-centered generation",
-      "outputs": ["agent-bypass.log", "console error summary"]
+      "outputs": [
+        "agent-bypass.log",
+        "console error summary"
+      ]
     }
   ],
-
   "file_governance_matrix": {
     "root_level": {
       "authorized": {
@@ -227,8 +259,14 @@
     "generated_directory": {
       "pattern": ".generated/*",
       "rule": "100% auto-generated - Never manual",
-      "sources": ["*-project-plan.json", "*-specifications.json", "*-governance.json"],
-      "generators": ["generate-*.js scripts"],
+      "sources": [
+        "*-project-plan.json",
+        "*-specifications.json",
+        "*-governance.json"
+      ],
+      "generators": [
+        "generate-*.js scripts"
+      ],
       "enforcement": "Layers 2-7 (System B)"
     },
     "test_files": {
@@ -246,7 +284,6 @@
       "enforcement": "Layers 2-7 (System B)"
     }
   },
-
   "location_directories": {
     ".logs/": {
       "purpose": "All application and build logs",
@@ -271,7 +308,12 @@
     },
     "docs/": {
       "purpose": "All documentation by domain",
-      "subdirs": ["governance/", "telemetry/", "architecture/", "api/"],
+      "subdirs": [
+        "governance/",
+        "telemetry/",
+        "architecture/",
+        "api/"
+      ],
       "authorized": true,
       "auto_generated": false,
       "governed_by": "System A"
@@ -285,13 +327,16 @@
     },
     "packages/": {
       "purpose": "All monorepo packages",
-      "subdirs": ["[PACKAGE]/", "[PACKAGE]/.generated/", "[PACKAGE]/scripts/"],
+      "subdirs": [
+        "[PACKAGE]/",
+        "[PACKAGE]/.generated/",
+        "[PACKAGE]/scripts/"
+      ],
       "authorized": true,
       "auto_generated": false,
       "governed_by": "Both A and B (packages inherit unified governance)"
     }
   },
-
   "governance_authorities": {
     "repository_master": {
       "file": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
@@ -327,8 +372,7 @@
       ],
       "status": "DEPRECATED - Use UNIFIED_GOVERNANCE_AUTHORITY.json instead",
       "migration": "All references updated to point to unified authority"
-    }
-    ,
+    },
     "slo_traceability_plan": {
       "file": "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json",
       "markdown_ref": "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.md",
@@ -338,7 +382,6 @@
       "enforcement": "Validated via scripts/validate-generated-docs.cjs (hash match)"
     }
   },
-
   "migration_from_systems_a_and_b": {
     "why": "Prevent drift, establish single source of truth, improve clarity",
     "what_changed": {
@@ -368,7 +411,6 @@
       "result": "Cannot violate either system's rules"
     }
   },
-
   "implementation_roadmap_updated": {
     "phase_1": {
       "name": "Authority Establishment",
@@ -391,7 +433,6 @@
       "note": "All continue as planned, using unified authority as source"
     }
   },
-
   "drift_prevention": {
     "principle": "Never create two competing governance systems again",
     "prevention": {
@@ -403,7 +444,6 @@
     },
     "enforcement": "If agent finds two competing governance systems, escalate immediately"
   },
-
   "next_steps": [
     {
       "step": 1,
@@ -426,7 +466,6 @@
       "purpose": "Unblocked - can now use unified authority"
     }
   ],
-
   "success_criteria": {
     "unified_authority": "✅ Created (THIS FILE)",
     "drift_resolved": "✅ System A and B merged, no conflicts",
@@ -435,9 +474,7 @@
     "phase_2_unblocked": "✅ Can proceed with per-package authorities",
     "documentation_complete": "✅ Merge documented, migration path clear"
   },
-
-  "policy_statement_unified": "From this point forward, the renderx-plugins-demo repository operates under the UNIFIED governance framework combining root file placement (System A) and JSON-driven automation (System B). This file (UNIFIED_GOVERNANCE_AUTHORITY.json) is the authoritative master for all governance. No competing governance systems will be created. All packages and components inherit from this framework. All enforcement layers work together to prevent violations of both systems' rules."
-,
+  "policy_statement_unified": "From this point forward, the renderx-plugins-demo repository operates under the UNIFIED governance framework combining root file placement (System A) and JSON-driven automation (System B). This file (UNIFIED_GOVERNANCE_AUTHORITY.json) is the authoritative master for all governance. No competing governance systems will be created. All packages and components inherit from this framework. All enforcement layers work together to prevent violations of both systems' rules.",
   "domain_governance": {
     "purpose": "Establish scalable, lineage-aware domain authorities for processes, workflows, entities, policies, sessions, and orchestration contexts.",
     "schema_ref": "DOMAIN_AUTHORITY_SCHEMA.json",
@@ -450,9 +487,19 @@
       "Lineage integrity enforced via deterministic lineage_hash recomputation.",
       "Links to deprecated domains require explicit migration relation_type=extends."
     ],
-    "required_sections_in_markdown": ["Summary","Bounded Context","Lineage","Governance Overrides","Cross-Domain Links","Lifecycle","Metrics"],
+    "required_sections_in_markdown": [
+      "Summary",
+      "Bounded Context",
+      "Lineage",
+      "Governance Overrides",
+      "Cross-Domain Links",
+      "Lifecycle",
+      "Metrics"
+    ],
     "validation_pipeline": {
-      "scripts": ["scripts/validate-domain-authorities.js"],
+      "scripts": [
+        "scripts/validate-domain-authorities.js"
+      ],
       "ci_workflow": ".github/workflows/verify-domains.yml",
       "build_integration": "npm run validate:domains executed pre-build",
       "failure_conditions": [
@@ -462,7 +509,9 @@
         "Checksum mismatch",
         "Link to deprecated domain without migration relation"
       ],
-      "non_blocking": ["Missing integrity checksum (allowed until first generation)"]
+      "non_blocking": [
+        "Missing integrity checksum (allowed until first generation)"
+      ]
     },
     "inheritance_and_lineage": {
       "lineage_source": "root_context_ref + parent_context_refs + domain_id",
@@ -482,14 +531,26 @@
         "One-off experiments without governance impact",
         "Transient incident logs"
       ],
-      "escalate_instead": ["Overlapping domain detected","Boundary conflict","Ownership unclear"]
+      "escalate_instead": [
+        "Overlapping domain detected",
+        "Boundary conflict",
+        "Ownership unclear"
+      ]
     },
     "governance_alignment": {
       "json_first": true,
       "auto_generated_markdown_header": "<!-- AUTO-GENERATED DOMAIN DOCUMENT - DO NOT EDIT MANUALLY -->",
-      "enforcement_layers": [1,2,4,5,6],
+      "enforcement_layers": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
       "drift_prevention": "Manual docs/domains/*.md without JSON authority cause validation failure",
       "registry_required": true
     }
-  }
+  },
+  "id": "UNIFIED_GOVERNANCE_AUTHORITY",
+  "name": "unknown"
 }

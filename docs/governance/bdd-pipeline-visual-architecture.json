@@ -134,7 +134,10 @@
       },
       "generation_trigger": "npm run pre:manifests",
       "validation_trigger": "npm run verify:orchestration:governance",
-      "enforcement_layers": [8, 9]
+      "enforcement_layers": [
+        8,
+        9
+      ]
     }
   ],
   "keyTechnicalConcepts": [
@@ -166,5 +169,7 @@
       "concept": "9-Layer Enforcement Chain",
       "explanation": "From IDE (L1) through self-governance (L9), BDD and governance violations caught at progressively stricter validation levels."
     }
-  ]
+  ],
+  "id": "bdd-pipeline-visual-architecture",
+  "name": "unknown"
 }

@@ -392,5 +392,6 @@
     "All sequences have complete movement structure with beat definitions",
     "All BDD specs have Given-When-Then completeness",
     "All handler specs have business BDD + unit tests + implementation traces"
-  ]
+  ],
+  "id": "symphonia-auditing-system"
 }

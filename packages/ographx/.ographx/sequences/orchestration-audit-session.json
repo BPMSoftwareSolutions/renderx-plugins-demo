@@ -10,7 +10,13 @@
     "version": "1.0.0",
     "author": "Augment Agent",
     "created": "2025-11-24T14:30:00.000Z",
-    "tags": ["orchestration", "governance", "audit", "json-first", "documentation"],
+    "tags": [
+      "orchestration",
+      "governance",
+      "audit",
+      "json-first",
+      "documentation"
+    ],
     "sessionId": "orchestration-audit-system-2025-11-24"
   },
   "movements": [
@@ -18,258 +24,49 @@
       "id": 1,
       "name": "Architecture Design",
       "description": "Design JSON-first orchestration audit system",
-      "beats": [
-        {
-          "beat": 1,
-          "event": "analyze-requirements",
-          "title": "Analyze Orchestration Requirements",
-          "description": "Understand 16 orchestration domains and their relationships",
-          "dynamics": "mf",
-          "timing": "immediate"
-        },
-        {
-          "beat": 2,
-          "event": "define-schema",
-          "title": "Define orchestration-domains.json Schema",
-          "description": "Create unified schema for all domains with metadata",
-          "dynamics": "f",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 3,
-          "event": "map-domains",
-          "title": "Map All 16 Orchestration Domains",
-          "description": "Document each domain with movements, beats, relationships",
-          "dynamics": "f",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 2,
       "name": "JSON Source Creation",
       "description": "Create orchestration-domains.json as single source of truth",
-      "beats": [
-        {
-          "beat": 4,
-          "event": "create-json",
-          "title": "Create orchestration-domains.json",
-          "description": "Write comprehensive JSON registry with all 16 domains",
-          "dynamics": "ff",
-          "timing": "immediate"
-        },
-        {
-          "beat": 5,
-          "event": "define-interface",
-          "title": "Define Unified MusicalSequence Interface",
-          "description": "Reference packages/musical-conductor SequenceTypes.ts",
-          "dynamics": "f",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 6,
-          "event": "map-relationships",
-          "title": "Map Domain Relationships",
-          "description": "Document how domains connect and depend on each other",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 3,
       "name": "Documentation Generation",
       "description": "Create scripts to generate markdown from JSON",
-      "beats": [
-        {
-          "beat": 7,
-          "event": "create-gen-docs",
-          "title": "Create gen-orchestration-docs.js",
-          "description": "Script to generate markdown documentation from JSON",
-          "dynamics": "f",
-          "timing": "immediate"
-        },
-        {
-          "beat": 8,
-          "event": "add-ascii-sketches",
-          "title": "Add ASCII Sketches for All Domains",
-          "description": "Create visual representations of each domain's workflow",
-          "dynamics": "ff",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 9,
-          "event": "generate-docs",
-          "title": "Generate Documentation Files",
-          "description": "Run script to produce 3 markdown files with sketches",
-          "dynamics": "f",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 4,
       "name": "Diagram Generation",
       "description": "Create scripts to generate Mermaid diagrams",
-      "beats": [
-        {
-          "beat": 10,
-          "event": "create-gen-diagrams",
-          "title": "Create gen-orchestration-diagram.js",
-          "description": "Script to generate Mermaid diagrams from JSON",
-          "dynamics": "f",
-          "timing": "immediate"
-        },
-        {
-          "beat": 11,
-          "event": "generate-system-diagram",
-          "title": "Generate orchestration-system.mmd",
-          "description": "Create unified system architecture diagram",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 12,
-          "event": "generate-relationships",
-          "title": "Generate domain-relationships.mmd",
-          "description": "Create domain relationship visualization",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 5,
       "name": "Audit System",
       "description": "Create validation and audit scripts",
-      "beats": [
-        {
-          "beat": 13,
-          "event": "create-audit",
-          "title": "Create audit-orchestration.js",
-          "description": "Script to validate entire orchestration system",
-          "dynamics": "f",
-          "timing": "immediate"
-        },
-        {
-          "beat": 14,
-          "event": "validate-domains",
-          "title": "Validate All 16 Domains",
-          "description": "Check domain definitions and required fields",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 15,
-          "event": "validate-relationships",
-          "title": "Validate Domain Relationships",
-          "description": "Verify all referenced domains exist",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 16,
-          "event": "validate-files",
-          "title": "Validate Generated Files",
-          "description": "Check all documentation and diagrams exist",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 4
     },
     {
       "id": 6,
       "name": "Standards Alignment",
       "description": "Ensure compliance with governance standards",
-      "beats": [
-        {
-          "beat": 17,
-          "event": "align-schema",
-          "title": "Align with MusicalSequence Standard",
-          "description": "Verify all sequences use canonical interface",
-          "dynamics": "f",
-          "timing": "immediate"
-        },
-        {
-          "beat": 18,
-          "event": "enforce-json-first",
-          "title": "Enforce JSON-First Protocol",
-          "description": "Remove manually-created markdown files",
-          "dynamics": "ff",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 19,
-          "event": "prevent-drift",
-          "title": "Prevent Documentation Drift",
-          "description": "Mark all generated files with DO NOT EDIT headers",
-          "dynamics": "f",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 7,
       "name": "Verification",
       "description": "Verify all systems working correctly",
-      "beats": [
-        {
-          "beat": 20,
-          "event": "run-audit",
-          "title": "Run Orchestration Audit",
-          "description": "Execute audit-orchestration.js to validate system",
-          "dynamics": "f",
-          "timing": "immediate"
-        },
-        {
-          "beat": 21,
-          "event": "verify-docs",
-          "title": "Verify Generated Documentation",
-          "description": "Check all markdown files with ASCII sketches",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 22,
-          "event": "verify-diagrams",
-          "title": "Verify Generated Diagrams",
-          "description": "Check all Mermaid diagram files",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     },
     {
       "id": 8,
       "name": "Context Tree Creation",
       "description": "Create context tree for next agent",
-      "beats": [
-        {
-          "beat": 23,
-          "event": "create-context-tree",
-          "title": "Create Session Context Tree",
-          "description": "Generate .generated/context-tree-orchestration-audit-session.json",
-          "dynamics": "ff",
-          "timing": "immediate"
-        },
-        {
-          "beat": 24,
-          "event": "document-workflow",
-          "title": "Document Complete Workflow",
-          "description": "Create this orchestration-audit-session.json sequence",
-          "dynamics": "f",
-          "timing": "after-beat"
-        },
-        {
-          "beat": 25,
-          "event": "enable-handoff",
-          "title": "Enable Agent Handoff",
-          "description": "Provide complete context for next agent to continue work",
-          "dynamics": "mf",
-          "timing": "after-beat"
-        }
-      ]
+      "beats": 3
     }
   ]
 }
-

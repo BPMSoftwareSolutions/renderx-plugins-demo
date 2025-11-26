@@ -1203,22 +1203,22 @@
             "order": 205,
             "ciRequired": true
           },
-            "artifacts": {
-              "inputs": [
-                "packages/self-healing/.generated/telemetry-metrics.json",
-                "packages/self-healing/docs/service_level.objectives.json"
-              ],
-              "outputs": [
-                "packages/self-healing/.generated/slo-breaches.json"
-              ]
-            },
-            "governance": {
-              "enforcedBy": [
-                "evaluate:slos",
-                "npm run build"
-              ],
-              "category": "telemetry-slo"
-            }
+          "artifacts": {
+            "inputs": [
+              "packages/self-healing/.generated/telemetry-metrics.json",
+              "packages/self-healing/docs/service_level.objectives.json"
+            ],
+            "outputs": [
+              "packages/self-healing/.generated/slo-breaches.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "evaluate:slos",
+              "npm run build"
+            ],
+            "category": "telemetry-slo"
+          }
         },
         {
           "id": "slo-breach-fuser",
@@ -1995,5 +1995,7 @@
         }
       ]
     }
-  }
+  },
+  "id": "tools-registry",
+  "name": "unknown"
 }

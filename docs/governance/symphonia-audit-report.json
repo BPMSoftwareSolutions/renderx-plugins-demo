@@ -1,223 +1,12 @@
 {
-  "timestamp": "2025-11-26T15:40:36.009Z",
+  "timestamp": "2025-11-26T18:44:53.123Z",
   "version": "1.0.0",
   "dimensions": {
     "orchestration-domains": {
       "name": "Orchestration Domain Conformity",
       "artifactsScanned": 61,
-      "violations": [
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 0",
-          "message": "Phase has 4 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 1",
-          "message": "Phase has 4 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 2",
-          "message": "Phase has 6 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 3",
-          "message": "Phase has 7 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 4",
-          "message": "Phase has 6 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 5",
-          "message": "Phase has 4 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 6",
-          "message": "Phase has 4 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "cag-agent-workflow > Phase 7",
-          "message": "Phase has 6 items, but beats=41",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 0",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 1",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 2",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 3",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 4",
-          "message": "Phase has 4 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 5",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 6",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-session > Phase 7",
-          "message": "Phase has 3 items, but beats=25",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 0",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 1",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 2",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 3",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 4",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 5",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 6",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "orchestration-audit-system > Phase 7",
-          "message": "Phase has 3 items, but beats=24",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 0",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 1",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 2",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 3",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 4",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        },
-        {
-          "level": "MAJOR",
-          "rule": "domain-handler-beats-present",
-          "artifact": "musical-conductor-orchestration > Phase 5",
-          "message": "Phase has 5 items, but beats=30",
-          "remediation": "Align phase items to beat count"
-        }
-      ],
-      "score": 0
+      "violations": [],
+      "score": 100
     },
     "contracts": {
       "name": "Contract Schema Conformity",
@@ -227,7 +16,7 @@
     },
     "sequences": {
       "name": "Sequence Flow Conformity",
-      "artifactsScanned": 26,
+      "artifactsScanned": 27,
       "violations": [
         {
           "level": "MAJOR",
@@ -321,6 +110,27 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
+          "level": "CRITICAL",
+          "rule": "sequence-beats-positive",
+          "artifact": "symphonia-conformity-alignment-pipeline",
+          "message": "Invalid beat count",
+          "remediation": "Set beats to handler item count (current: undefined)"
+        },
+        {
+          "level": "MAJOR",
+          "rule": "sequence-tempo-valid",
+          "artifact": "symphonia-conformity-alignment-pipeline",
+          "message": "Invalid tempo: undefined",
+          "remediation": "Set tempo between 60-240 (standard: 120)"
+        },
+        {
+          "level": "CRITICAL",
+          "rule": "sequence-beats-positive",
+          "artifact": "symphony-report-pipeline",
+          "message": "Invalid beat count",
+          "remediation": "Set beats to handler item count (current: undefined)"
+        },
+        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "symphony-report-pipeline",
@@ -333,6 +143,13 @@
           "artifact": "self-healing-anomaly-detect-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
+        },
+        {
+          "level": "CRITICAL",
+          "rule": "sequence-beats-positive",
+          "artifact": "baseline.metrics.establish",
+          "message": "Invalid beat count",
+          "remediation": "Set beats to handler item count (current: 0)"
         },
         {
           "level": "MAJOR",
@@ -361,6 +178,13 @@
           "artifact": "self-healing-fix-generate-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
+        },
+        {
+          "level": "CRITICAL",
+          "rule": "sequence-beats-positive",
+          "artifact": "handler-implementation.workflow",
+          "message": "Invalid beat count",
+          "remediation": "Set beats to handler item count (current: 0)"
         },
         {
           "level": "MAJOR",
@@ -569,220 +393,39 @@
       "score": 0
     }
   },
-  "totalArtifacts": 366,
+  "totalArtifacts": 367,
   "violations": {
-    "CRITICAL": [],
+    "CRITICAL": [
+      {
+        "level": "CRITICAL",
+        "rule": "sequence-beats-positive",
+        "artifact": "symphonia-conformity-alignment-pipeline",
+        "message": "Invalid beat count",
+        "remediation": "Set beats to handler item count (current: undefined)"
+      },
+      {
+        "level": "CRITICAL",
+        "rule": "sequence-beats-positive",
+        "artifact": "symphony-report-pipeline",
+        "message": "Invalid beat count",
+        "remediation": "Set beats to handler item count (current: undefined)"
+      },
+      {
+        "level": "CRITICAL",
+        "rule": "sequence-beats-positive",
+        "artifact": "baseline.metrics.establish",
+        "message": "Invalid beat count",
+        "remediation": "Set beats to handler item count (current: 0)"
+      },
+      {
+        "level": "CRITICAL",
+        "rule": "sequence-beats-positive",
+        "artifact": "handler-implementation.workflow",
+        "message": "Invalid beat count",
+        "remediation": "Set beats to handler item count (current: 0)"
+      }
+    ],
     "MAJOR": [
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 0",
-        "message": "Phase has 4 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 1",
-        "message": "Phase has 4 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 2",
-        "message": "Phase has 6 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 3",
-        "message": "Phase has 7 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 4",
-        "message": "Phase has 6 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 5",
-        "message": "Phase has 4 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 6",
-        "message": "Phase has 4 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "cag-agent-workflow > Phase 7",
-        "message": "Phase has 6 items, but beats=41",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 0",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 1",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 2",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 3",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 4",
-        "message": "Phase has 4 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 5",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 6",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-session > Phase 7",
-        "message": "Phase has 3 items, but beats=25",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 0",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 1",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 2",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 3",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 4",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 5",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 6",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "orchestration-audit-system > Phase 7",
-        "message": "Phase has 3 items, but beats=24",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 0",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 1",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 2",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 3",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 4",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
-      {
-        "level": "MAJOR",
-        "rule": "domain-handler-beats-present",
-        "artifact": "musical-conductor-orchestration > Phase 5",
-        "message": "Phase has 5 items, but beats=30",
-        "remediation": "Align phase items to beat count"
-      },
       {
         "level": "MAJOR",
         "rule": "sequence-tempo-valid",
@@ -871,6 +514,13 @@
         "level": "MAJOR",
         "rule": "sequence-tempo-valid",
         "artifact": "control-panel-update-symphony",
+        "message": "Invalid tempo: undefined",
+        "remediation": "Set tempo between 60-240 (standard: 120)"
+      },
+      {
+        "level": "MAJOR",
+        "rule": "sequence-tempo-valid",
+        "artifact": "symphonia-conformity-alignment-pipeline",
         "message": "Invalid tempo: undefined",
         "remediation": "Set tempo between 60-240 (standard: 120)"
       },
@@ -1108,8 +758,9 @@
     ],
     "MINOR": []
   },
-  "conformityScore": 30,
+  "conformityScore": 50,
   "recommendations": [
+    "🚨 CRITICAL: Fix all CRITICAL violations before deployment",
     "⚠️  MAJOR: Address MAJOR violations in next sprint",
     "🔴 Poor conformity - immediate remediation required"
   ],
