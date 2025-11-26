@@ -34,7 +34,8 @@ describe('canvas-component rule-engine config handlers (public API)', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 
@@ -94,4 +95,5 @@ describe('canvas-component rule-engine config handlers (public API)', () => {
     }
   });
 });
+
 

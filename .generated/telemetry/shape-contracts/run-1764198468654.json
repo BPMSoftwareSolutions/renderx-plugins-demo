@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-11-26T23:07:48.650Z",
+  "feature": "shape-contracts",
+  "event": "shape-contracts:executed",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "d5396ea8-65a8-46f9-8676-d8611801ac7d",
+  "durationMs": 1,
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "ok": true
+    }
+  },
+  "shapeHash": "9b521e3f30d360f59a04e20e5a943849c1e4fb14754c35a0ebdc58a904f023c0",
+  "coverageId": "8e2ff56dab7226ff39857b3b"
+}

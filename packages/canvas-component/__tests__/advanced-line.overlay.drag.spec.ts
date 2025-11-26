@@ -37,7 +37,8 @@ describe("Advanced Line overlay drag â€” cumulative delta causes runaway (e
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 
@@ -123,5 +124,6 @@ describe("Advanced Line overlay drag â€” cumulative delta causes runaway (e
     clearFlagOverrides();
   });
 });
+
 
 

@@ -18,7 +18,8 @@ describe('control-panel handlers handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

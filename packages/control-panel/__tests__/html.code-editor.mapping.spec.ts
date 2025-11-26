@@ -13,7 +13,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "content",
       title: "Content",
-      icon: "🧩",
+      icon: "ðŸ§©",
       order: 1,
       collapsible: true,
       defaultExpanded: true,
@@ -21,7 +21,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "layout",
       title: "Layout",
-      icon: "📐",
+      icon: "ðŸ“",
       order: 2,
       collapsible: true,
       defaultExpanded: true,
@@ -29,7 +29,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "styling",
       title: "Styling",
-      icon: "🎨",
+      icon: "ðŸŽ¨",
       order: 3,
       collapsible: true,
       defaultExpanded: false,
@@ -52,7 +52,8 @@ describe("HTML component markup field", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

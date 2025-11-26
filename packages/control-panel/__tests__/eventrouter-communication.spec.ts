@@ -44,7 +44,8 @@ describe('Control Panel EventRouter Communication', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

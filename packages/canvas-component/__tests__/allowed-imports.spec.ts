@@ -17,7 +17,8 @@ describe("@renderx-plugins/canvas-component: allowed-imports rule", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 
@@ -54,5 +55,6 @@ describe("@renderx-plugins/canvas-component: allowed-imports rule", () => {
     expect(messages.some((m) => String(m.ruleId) === "allowed-imports/only-allowed")).toBe(true);
   }, 30000);
 });
+
 
 

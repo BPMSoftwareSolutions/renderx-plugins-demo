@@ -9,7 +9,7 @@ function loadJson<T = any>(p: string): T {
   return JSON.parse(txt) as T;
 }
 
-describe("SVG schema → code editor mapping", () => {
+describe("SVG schema â†’ code editor mapping", () => {
   let ctx: any;
   beforeEach(() => {
     ctx = {
@@ -22,7 +22,8 @@ describe("SVG schema → code editor mapping", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

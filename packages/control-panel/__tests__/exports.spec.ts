@@ -16,7 +16,8 @@ describe('@renderx-plugins/control-panel package exports', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

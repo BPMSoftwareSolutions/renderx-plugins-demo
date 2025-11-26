@@ -14,7 +14,8 @@ describe("Control Panel interaction routing", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

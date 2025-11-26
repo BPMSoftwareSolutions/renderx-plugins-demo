@@ -32,7 +32,8 @@ describe("Advanced Line handlers â€” moveLineManip", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

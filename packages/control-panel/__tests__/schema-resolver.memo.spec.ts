@@ -31,7 +31,8 @@ describe("SchemaResolverService memoization", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

@@ -52,7 +52,8 @@ describe("HTML component markup field fallback", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

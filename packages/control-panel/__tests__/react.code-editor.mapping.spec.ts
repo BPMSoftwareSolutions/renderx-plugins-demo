@@ -47,7 +47,8 @@ describe("React component code editor mapping", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 

@@ -33,7 +33,8 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+payload: {}
     };
   });
 
@@ -73,5 +74,6 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
     clearFlagOverrides();
   });
 });
+
 
 
