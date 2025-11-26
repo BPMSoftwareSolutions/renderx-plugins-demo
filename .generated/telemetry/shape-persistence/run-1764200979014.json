@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-11-26T23:49:39.010Z",
+  "feature": "shape-persistence",
+  "event": "shape-persistence:executed",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "5bcc560a-90d2-44cc-8dea-cb79417de829",
+  "durationMs": 1,
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "ok": true
+    }
+  },
+  "shapeHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+  "coverageId": "27b8cc2e382ed0526efbc489"
+}

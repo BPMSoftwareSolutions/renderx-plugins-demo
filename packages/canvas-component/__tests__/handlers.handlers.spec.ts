@@ -330,7 +330,8 @@ describe('canvas-component handlers handlers', () => {
     expect(ctx.payload.error).toBeUndefined();
   });
   it('openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)', async () => {
-    ctx.payload = {}, logger: { warn: vi.fn(), info:()=>{} } };
+    ctx.payload = {};
+    ctx.logger = { warn: vi.fn(), info:()=>{} };
     const realDoc = (globalThis as any).document;
     (globalThis as any).document = undefined;
     await openUiFile({}, ctx);
@@ -361,7 +362,8 @@ describe('canvas-component handlers handlers', () => {
     expect((svg as any).style.getPropertyValue('--cy')).not.toBe('');
   });
   it('updateAttribute - applies attribute via rule engine', () => {
-    ctx.payload = {}, logger: { warn:()=>{} } };
+    ctx.payload = {};
+    ctx.logger = { warn:()=>{} };
     const el = document.createElement('div'); el.id='rx-node-up'; document.body.appendChild(el);
     // Use attribute covered by rule engine (content -> textContent)
     el.classList.add('rx-paragraph');
@@ -370,7 +372,8 @@ describe('canvas-component handlers handlers', () => {
     expect(ctx.payload.updatedAttribute.value).toBe('Hello World');
   });
   it('updateAttribute - missing id does nothing', () => {
-    ctx.payload = {}, logger: { warn: vi.fn() } };
+    ctx.payload = {};
+    ctx.logger = { warn: vi.fn() };
     updateAttribute({ attribute: 'x', value: 1 }, ctx);
     expect(ctx.logger.warn).toHaveBeenCalled();
     expect(ctx.payload.updatedAttribute).toBeUndefined();
