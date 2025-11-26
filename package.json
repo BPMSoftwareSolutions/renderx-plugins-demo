@@ -160,7 +160,13 @@
     "fix:sequence:tempo": "node scripts/fix-sequence-tempo.cjs",
     "fix:handler:spec": "node scripts/fix-handler-spec.cjs",
     "fix:bdd:spec": "node scripts/fix-bdd-spec.cjs",
-    "fix:remaining:violations": "npm run fix:sequence:tempo && npm run fix:handler:spec && npm run fix:bdd:spec"
+    "fix:remaining:violations": "npm run fix:sequence:tempo && npm run fix:handler:spec && npm run fix:bdd:spec",
+    "pipeline:delivery:execute": "node scripts/execute-safe-pipeline.cjs",
+    "pipeline:delivery:exploration": "node scripts/execute-safe-pipeline.cjs exploration",
+    "pipeline:delivery:integration": "node scripts/execute-safe-pipeline.cjs integration",
+    "pipeline:delivery:deployment": "node scripts/execute-safe-pipeline.cjs deployment",
+    "pipeline:delivery:release": "node scripts/execute-safe-pipeline.cjs release",
+    "pipeline:delivery:report": "node scripts/generate-delivery-pipeline-report.cjs"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",
