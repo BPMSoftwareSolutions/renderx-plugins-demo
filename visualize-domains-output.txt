@@ -1,0 +1,208 @@
+﻿
+> renderx-plugins-demo@0.1.0 visualize:domains:all
+> node scripts/visualize-domains.js all
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                   ORCHESTRATION DOMAIN HIERARCHY SKETCH                    Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+Γö£ΓöÇΓùÅ graphing-orchestration
+    Γöé   Name: graphing-orchestration                            
+
+Γö£ΓöÇΓùÅ self_sequences
+    Γöé   Name: self_sequences                                    
+
+Γö£ΓöÇΓùÅ cag-agent-workflow
+    Γöé   Name: CAG Agent Workflow - 8 Phase Sequence             
+
+Γö£ΓöÇΓùÅ orchestration-audit-system
+    Γöé   Name: Orchestration Audit System Domain Sequence        
+   ΓööΓöÇΓùï orchestration-audit-session                       
+
+Γö£ΓöÇΓùÅ safe-continuous-delivery-pipeline
+    Γöé   Name: SAFe Continuous Delivery Pipeline                 
+   ΓööΓöÇΓùï renderx-web-orchestration                         
+
+Γö£ΓöÇΓùÅ build-pipeline-symphony
+    Γöé   Name: Build Pipeline Symphony                           
+
+ΓööΓöÇΓùÅ architecture-governance-enforcement-symphony
+    Γöé   Name: Architecture Governance Enforcement Symphony      
+   Γö£ΓöÇΓùï symphonia-conformity-alignment-pipeline           
+   Γö£ΓöÇΓùï symphonic-code-analysis-pipeline                  
+   ΓööΓöÇΓùï orchestration-registry-audit-pipeline             
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                          DOMAIN NETWORK TOPOLOGY                           Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  Network Nodes:
+  ΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù
+  Γòæ Total: 13 orchestrations       Γòæ
+  Γòæ Parents: 4 hubs                Γòæ
+  Γòæ Top-level: 7                   Γòæ
+  Γòæ Sub-domains: 6                 Γòæ
+  ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥
+
+  Connection Map:
+
+  ΓöîΓöÇ renderx-web-orchestration
+  Γöé  Γö£ΓöÇ 1 connections:
+  Γöé  ΓööΓöÇ musical-conductor-orchestration              
+
+  ΓöîΓöÇ orchestration-audit-system
+  Γöé  Γö£ΓöÇ 1 connections:
+  Γöé  ΓööΓöÇ orchestration-audit-session                  
+
+  ΓöîΓöÇ safe-continuous-delivery-pipeline
+  Γöé  Γö£ΓöÇ 1 connections:
+  Γöé  ΓööΓöÇ renderx-web-orchestration                    
+
+  ΓöîΓöÇ architecture-governance-enforcement-symphony
+  Γöé  Γö£ΓöÇ 3 connections:
+  Γöé  Γö£ΓöÇ symphonia-conformity-alignment-pipeline      
+  Γöé  Γö£ΓöÇ symphonic-code-analysis-pipeline             
+  Γöé  ΓööΓöÇ orchestration-registry-audit-pipeline        
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                         DOMAIN REGISTRY STATISTICS                         Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  Distribution by Status:
+  active          Γöé ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê Γöé  68 (100%)
+
+  Distribution by Category:
+  plugin          Γöé ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê Γöé  55 (100%)
+  orchestration   Γöé ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæΓûæ Γöé  13 (24%)
+
+  Overall:
+  Γö£ΓöÇ Total domains: 68
+  Γö£ΓöÇ Orchestrations: 13
+  Γö£ΓöÇ Plugins: 55
+  ΓööΓöÇ Other: 0
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                            DOMAINS BY CATEGORY                             Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+
+  ≡ƒöî PLUGIN (55)
+  ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  Γö£ΓöÇ [Γ£ô] canvas-component-copy-symphony               
+  Γö£ΓöÇ [Γ£ô] canvas-component-create-symphony             
+  Γö£ΓöÇ [Γ£ô] canvas-component-delete-symphony             
+  Γö£ΓöÇ [Γ£ô] canvas-component-delete-requested-symphony   
+  Γö£ΓöÇ [Γ£ô] canvas-component-deselect-all-symphony       
+  Γö£ΓöÇ [Γ£ô] canvas-component-deselect-symphony           
+  Γö£ΓöÇ [Γ£ô] canvas-component-deselect-requested-symphony 
+  Γö£ΓöÇ [Γ£ô] canvas-component-drag-end-symphony           
+  ΓööΓöÇ ... and 47 more
+
+  ≡ƒÄ╝ ORCHESTRATION (13)
+  ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  Γö£ΓöÇ [Γ£ô] graphing-orchestration                       
+  Γö£ΓöÇ [Γ£ô] self_sequences                               
+  Γö£ΓöÇ [Γ£ô] musical-conductor-orchestration              
+  Γö£ΓöÇ [Γ£ô] cag-agent-workflow                           
+  Γö£ΓöÇ [Γ£ô] orchestration-audit-session                  
+  Γö£ΓöÇ [Γ£ô] orchestration-audit-system                   
+  Γö£ΓöÇ [Γ£ô] safe-continuous-delivery-pipeline            
+  Γö£ΓöÇ [Γ£ô] renderx-web-orchestration                    
+  ΓööΓöÇ ... and 5 more
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                       PARENT-CHILD DEPENDENCY MATRIX                       Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  Legend: Γåô = Has children | ΓåÉ = Has parent | Γùå = Both
+
+  ID                                Γöé Children Γöé Parent Γöé Type
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  architecture-governance-enforc... Γöé Γû╢ 3      Γöé ΓöÇ      Γöé top
+  build-pipeline-symphony           Γöé ΓöÇ        Γöé ΓöÇ      Γöé top
+  cag-agent-workflow                Γöé ΓöÇ        Γöé ΓöÇ      Γöé top
+  graphing-orchestration            Γöé ΓöÇ        Γöé ΓöÇ      Γöé top
+  musical-conductor-orchestration   Γöé ΓöÇ        Γöé ΓùÇ      Γöé sub
+  orchestration-audit-session       Γöé ΓöÇ        Γöé ΓùÇ      Γöé sub
+  orchestration-audit-system        Γöé Γû╢ 1      Γöé ΓöÇ      Γöé top
+  orchestration-registry-audit-p... Γöé ΓöÇ        Γöé ΓùÇ      Γöé sub
+  renderx-web-orchestration         Γöé Γû╢ 51     Γöé ΓùÇ      Γöé sub
+  safe-continuous-delivery-pipeline Γöé Γû╢ 1      Γöé ΓöÇ      Γöé top
+  self_sequences                    Γöé ΓöÇ        Γöé ΓöÇ      Γöé top
+  symphonia-conformity-alignment... Γöé ΓöÇ        Γöé ΓùÇ      Γöé sub
+  symphonic-code-analysis-pipeline  Γöé ΓöÇ        Γöé ΓùÇ      Γöé sub
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                          ORCHESTRATION BLUEPRINT                           Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  ΓöÅΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöô
+  Γöâ  RENDERX-WEB ORCHESTRATION SYSTEM  Γöâ
+  ΓöùΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓö¢
+
+  Master Orchestration: renderx-web-orchestration
+  Status: active | Sequences: 20
+
+  ΓöîΓöÇ Sub-Orchestrations: 51 total
+  Γö£ΓöÇ CANVAS (30)
+    Γöé Γö£ΓöÇ canvas-component-copy-symphony          
+    Γöé Γö£ΓöÇ canvas-component-create-symphony        
+    Γöé Γö£ΓöÇ canvas-component-delete-symphony        
+    Γöé ΓööΓöÇ ... and 27 more
+  Γö£ΓöÇ CONTROL (13)
+    Γöé Γö£ΓöÇ control-panel-classes-add-symphony      
+    Γöé Γö£ΓöÇ control-panel-classes-remove-symphony   
+    Γöé Γö£ΓöÇ control-panel-css-create-symphony       
+    Γöé ΓööΓöÇ ... and 10 more
+  Γö£ΓöÇ HEADER (2)
+    Γöé Γö£ΓöÇ header-ui-theme-get-symphony            
+    Γöé ΓööΓöÇ header-ui-theme-toggle-symphony         
+  Γö£ΓöÇ LIBRARY (4)
+    Γöé Γö£ΓöÇ library-load-symphony                   
+    Γöé Γö£ΓöÇ library-component-container-drop-symp...
+    Γöé Γö£ΓöÇ library-component-drag-symphony         
+    Γöé ΓööΓöÇ ... and 1 more
+  Γö£ΓöÇ REAL (1)
+    Γöé ΓööΓöÇ real-estate-analyzer-search-symphony    
+  ΓööΓöÇ OTHER (1)
+     ΓööΓöÇ musical-conductor-orchestration         
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                     DOMAIN REGISTRY EXECUTIVE SUMMARY                      Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  ≡ƒôè QUICK FACTS:
+  Γö£ΓöÇ Total registered domains: 68
+  Γö£ΓöÇ Orchestration domains: 13
+  Γöé  Γö£ΓöÇ Top-level: 7
+  Γöé  ΓööΓöÇ Sub-domains: 6
+  Γö£ΓöÇ RenderX UI plugins: 50
+  ΓööΓöÇ Other categories: 5
+
+  ≡ƒÅù∩╕Å MAIN ORCHESTRATION HUBS:
+  Γö£ΓöÇ graphing-orchestration                   (0 children)
+  Γö£ΓöÇ self_sequences                           (0 children)
+  Γö£ΓöÇ cag-agent-workflow                       (0 children)
+  Γö£ΓöÇ orchestration-audit-system               (1 children)
+  ΓööΓöÇ safe-continuous-delivery-pipeline        (1 children)
+  ΓööΓöÇ ... and 2 more
+
+  ≡ƒÄ» KEY METRICS:
+  Γö£ΓöÇ Largest hub: 3 children
+  Γö£ΓöÇ Average children per hub: 0.9
+  Γö£ΓöÇ Total parent-child relationships: 6
+  ΓööΓöÇ Hierarchy depth: 3
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  ≡ƒôä All visualizations generated successfully!
+  ≡ƒÆí Use individual commands for focused views
+

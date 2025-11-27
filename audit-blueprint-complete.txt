@@ -1,0 +1,77 @@
+﻿
+> renderx-plugins-demo@0.1.0 visualize:domains:blueprint:complete
+> node scripts/visualize-domains.js blueprint --complete
+
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                     ORCHESTRATION BLUEPRINT (COMPLETE)                     Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+  ΓöÅΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöô
+  Γöâ  RENDERX-WEB ORCHESTRATION SYSTEM  Γöâ
+  ΓöùΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓö¢
+
+  Master Orchestration: renderx-web-orchestration
+  Status: active | Sequences: 20
+
+  ΓöîΓöÇ Sub-Orchestrations: 53 total
+  Γö£ΓöÇ CANVAS (30)
+    Γöé Γö£ΓöÇ canvas-component-copy-symphony
+    Γöé Γö£ΓöÇ canvas-component-create-symphony
+    Γöé Γö£ΓöÇ canvas-component-delete-requested-symphony
+    Γöé Γö£ΓöÇ canvas-component-delete-symphony
+    Γöé Γö£ΓöÇ canvas-component-deselect-all-symphony
+    Γöé Γö£ΓöÇ canvas-component-deselect-requested-symphony
+    Γöé Γö£ΓöÇ canvas-component-deselect-symphony
+    Γöé Γö£ΓöÇ canvas-component-drag-end-symphony
+    Γöé Γö£ΓöÇ canvas-component-drag-move-symphony
+    Γöé Γö£ΓöÇ canvas-component-drag-start-symphony
+    Γöé Γö£ΓöÇ canvas-component-export-gif-symphony
+    Γöé Γö£ΓöÇ canvas-component-export-mp4-symphony
+    Γöé Γö£ΓöÇ canvas-component-export-symphony
+    Γöé Γö£ΓöÇ canvas-component-import-symphony
+    Γöé Γö£ΓöÇ canvas-component-paste-symphony
+    Γöé Γö£ΓöÇ canvas-component-resize-end-symphony
+    Γöé Γö£ΓöÇ canvas-component-resize-move-symphony
+    Γöé Γö£ΓöÇ canvas-component-resize-start-symphony
+    Γöé Γö£ΓöÇ canvas-component-rules-config-symphony
+    Γöé Γö£ΓöÇ canvas-component-select-requested-symphony
+    Γöé Γö£ΓöÇ canvas-component-select-svg-node-symphony
+    Γöé Γö£ΓöÇ canvas-component-select-symphony
+    Γöé Γö£ΓöÇ canvas-component-update-svg-node-symphony
+    Γöé Γö£ΓöÇ canvas-component-update-symphony
+    Γöé Γö£ΓöÇ canvas-line-manip-end-symphony
+    Γöé Γö£ΓöÇ canvas-line-manip-move-symphony
+    Γöé Γö£ΓöÇ canvas-line-manip-start-symphony
+    Γöé Γö£ΓöÇ canvas-line-resize-end-symphony
+    Γöé Γö£ΓöÇ canvas-line-resize-move-symphony
+    Γöé ΓööΓöÇ canvas-line-resize-start-symphony
+  Γö£ΓöÇ CONTROL (13)
+    Γöé Γö£ΓöÇ control-panel-classes-add-symphony
+    Γöé Γö£ΓöÇ control-panel-classes-remove-symphony
+    Γöé Γö£ΓöÇ control-panel-css-create-symphony
+    Γöé Γö£ΓöÇ control-panel-css-delete-symphony
+    Γöé Γö£ΓöÇ control-panel-css-edit-symphony
+    Γöé Γö£ΓöÇ control-panel-selection-show-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-field-change-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-field-validate-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-init-batched-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-init-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-render-symphony
+    Γöé Γö£ΓöÇ control-panel-ui-section-toggle-symphony
+    Γöé ΓööΓöÇ control-panel-update-symphony
+  Γö£ΓöÇ HEADER (2)
+    Γöé Γö£ΓöÇ header-ui-theme-get-symphony
+    Γöé ΓööΓöÇ header-ui-theme-toggle-symphony
+  Γö£ΓöÇ LIBRARY (4)
+    Γöé Γö£ΓöÇ library-component-container-drop-symphony
+    Γöé Γö£ΓöÇ library-component-drag-symphony
+    Γöé Γö£ΓöÇ library-component-drop-symphony
+    Γöé ΓööΓöÇ library-load-symphony
+  Γö£ΓöÇ REAL (1)
+    Γöé ΓööΓöÇ real-estate-analyzer-search-symphony
+  ΓööΓöÇ OTHER (3)
+    Γöé Γö£ΓöÇ components-library-infrastructure
+    Γöé Γö£ΓöÇ digital-assets-infrastructure
+     ΓööΓöÇ musical-conductor-orchestration
+
