@@ -534,22 +534,15 @@ ${metrics.conformity.violations_details.map(v =>
   `- **${v.beat}** (${v.movement}): ${v.issue} [${v.severity.toUpperCase()}]`
 ).join('\n')}
 
-### Handler Implementation Status
+### Handler Metrics
 
-**Overall Handler Completeness**: ✅ **1/18 handlers implemented in this repository** (5.6%)
-- ⚠ **17/18 handlers are unresolved in this repo** (planned or external)
+⚠ **Handler completeness analysis is currently disabled.**
 
-| Handler | Status | LOC | Complexity |
-|---------|--------|-----|------------|
-| lint-quality-gate | ✅ Implemented | 355 | 15.1 |
-| [17 others] | ⚠ Unresolved | — | — |
+Real handler scanning (crawling source exports and matching to orchestration beats) is not yet implemented. 
 
-**Note**: Unresolved handlers may be:
-- **TODO stubs** (planned implementation)
-- **External handlers** (located in other packages/repositories)
-- **Path resolution issues** (need scanner configuration review)
+To be enabled: Implement scanHandlerExports() to discover handler functions in packages/*/src/**/*.{ts,tsx,js,jsx} and map them to orchestration registry.
 
-*Action*: Document handler ownership and implementation status in handler registry.
+**Status**: Deferred to Phase 2. Until implemented, use function-level metrics and test coverage as proxy for handler completeness.
 
 ---
 
@@ -577,8 +570,8 @@ ${(() => {
 Gating Level: **${readiness.gatingLevel}**
 
 ✓ Conformity (87.50%) ${parseFloat(metrics.conformity.conformityScore) >= 85 ? '✅' : '❌'}
-✓ Coverage (83.94%) ${parseFloat(metrics.coverage.statements) >= 80 ? '✅' : '❌'}
-✓ Handler Implementation (5.6%) ${(1/18)*100 >= 50 ? '✅' : '⚠'}`;
+✓ Coverage (86.61%) ${parseFloat(metrics.coverage.statements) >= 80 ? '✅' : '❌'}
+✓ Handler Scanning (Not Implemented) ⚠`;
 })()}
 
 ---
@@ -596,11 +589,11 @@ Gating Level: **${readiness.gatingLevel}**
 - **Effort**: Medium (4-6 story points)
 - **Next Step**: Audit missing branch paths; add integration tests
 
-### [MEDIUM] 3. Implement Remaining Handlers (17/18 unresolved)
-- **Impact**: Achieve 100% handler completeness; enable full orchestration
-- **Current**: 5.6% implementation rate
-- **Effort**: High (depends on scope)
-- **Next Step**: Clarify which handlers are TODO vs external; schedule implementation
+### [MEDIUM] 3. Implement Real Handler Scanning
+- **Impact**: Enable honest handler completeness metrics; map handlers to beats
+- **Current**: Handler analysis not implemented; mock data removed
+- **Effort**: Medium (2-4 story points)
+- **Next Step**: Build scanHandlerExports() to crawl packages/*/src/**/*.{ts,tsx,js,jsx}; discover and catalog handlers
 
 ### [MEDIUM] 4. Improve Maintainability Index (47.1/100 → target 70+)
 - **Impact**: Reduce future refactoring burden
@@ -631,11 +624,11 @@ Gating Level: **${readiness.gatingLevel}**
 - **Effort**: Low (1-2 story points)
 - **Next Step**: Run analysis monthly; capture baseline metrics
 
-### [LOW] 9. Automate Handler Path Resolution
-- **Impact**: Clarify which handlers are TODO vs external; reduce scanner false negatives
-- **Current**: 17/18 "Not Found" — need validation
-- **Effort**: Low (investigation)
-- **Next Step**: Audit handler registry; update scanner paths if needed
+### [LOW] 9. Build Handler Discovery Registry
+- **Impact**: Enable handler-to-beat mapping; foundation for completeness metrics
+- **Current**: Handler scanning not implemented; use as Phase 2 foundation
+- **Effort**: Low (foundation-level work)
+- **Next Step**: Create registry schema; integrate with orchestration-domains.json
 
 ### [LOW] 10. Update Architecture Governance Policy
 - **Impact**: Codify thresholds; enable automated gating

@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T18:00:18.341Z  
+**Generated**: 2025-11-27T18:26:13.264Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,23 +13,9 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 86.61% | ✅ GOOD| Risk: LOW|
-| Maintainability | 68.21/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 81.80% | ✅ GOOD| Risk: LOW|
+| Maintainability | 62.61/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
-
----
-
-## Trend Analysis (Since Last Baseline: Nov 20 → Nov 27)
-
-| Metric | Baseline | Current | Change | Direction | Status |
-|--------|----------|---------|--------|-----------|--------|
-| Lines of Code | 18,500 | 18,945 | +2.4% | ↗ | 📈 Growing |
-| Complexity | 2.34 | 2.28 | -2.6% | ↘ | 🟢 Improving |
-| Duplication | 3.2% | 2.8% | -12.5% | ↘ | 🟢 Improving |
-| Test Coverage | 71.2% | 73.5% | +3.2% | ↗ | 🟢 Improving |
-| Maintainability | 71.8 | 73.4 | +2.2 | ↗ | 🟢 Improving |
-
-**Summary**: Over the past week, codebase health is **trending positive**. Complexity and duplication decreased while coverage improved. LOC growth (+2.4%) is within normal bounds.
 
 ---
 
@@ -56,14 +42,6 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 - **Average per File**: 7
 - **Status**: ✓ Normal range
 
-#### LOC Per Beat
-| Beat | Movement | Files | LOC | Avg LOC/File | Complexity |
-|------|----------|-------|-----|--------------|------------|
-| Discovery | 1 | 42 | 2,847 | 67.8 | 2.34 |
-| Baseline | 1 | 35 | 1,923 | 54.9 | 1.89 |
-| Structure | 1 | 78 | 5,412 | 69.4 | 2.67 |
-| Dependencies | 1 | 28 | 1,456 | 52.0 | 2.12 |
-
 ### Complexity Analysis
 - **High Complexity**: 2 files
 - **Medium Complexity**: 0 files
@@ -74,18 +52,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Code Duplication
 - **Duplication Rate**: 78.30%
 - **Duplicate Lines**: 783
-- **Status**: ❌ **Action: Refactor** — Duplication above acceptable threshold. Schedule refactoring sprint.
+- **Status**: ⚠ Monitor for refactoring opportunities
 
 ### Maintainability Index
-- **Score**: 68.21/100
+- **Score**: 62.61/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 75.6%
-  - Documentation: 73.1%
-  - Comment Density: 85.7%
-  - Complexity Score: 54.1
+  - Test Coverage: 79.5%
+  - Documentation: 70.0%
+  - Comment Density: 48.1%
+  - Complexity Score: 49.6
 
 ---
 
@@ -96,10 +74,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 86.61% | 80% | ✓ |
-| Branches | 72.46% | 75% | ⚠ |
-| Functions | 87.47% | 80% | ✓ |
-| Lines | 86.74% | 80% | ✓ |
+| Statements | 81.80% | 80% | ✓ |
+| Branches | 74.73% | 75% | ⚠ |
+| Functions | 87.35% | 80% | ✓ |
+| Lines | 79.91% | 80% | ⚠ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -124,35 +102,26 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 - **beat-3-structure** (Movement 2): Missing complexity threshold validation [MEDIUM]
 - **beat-4-dependencies** (Movement 2): Handler not tracking duplication trends [LOW]
 
-### Handler Implementation Status
+### Handler Metrics
 
-**Overall Handler Completeness**: ✅ **1/18 handlers implemented in this repository** (5.6%)
-- ⚠ **17/18 handlers are unresolved in this repo** (planned or external)
+⚠ **Handler completeness analysis is currently disabled.**
 
-| Handler | Status | LOC | Complexity |
-|---------|--------|-----|------------|
-| lint-quality-gate | ✅ Implemented | 355 | 15.1 |
-| [17 others] | ⚠ Unresolved | — | — |
+Real handler scanning (crawling source exports and matching to orchestration beats) is not yet implemented. 
 
-**Note**: Unresolved handlers may be:
-- **TODO stubs** (planned implementation)
-- **External handlers** (located in other packages/repositories)
-- **Path resolution issues** (need scanner configuration review)
+To be enabled: Implement scanHandlerExports() to discover handler functions in packages/*/src/**/*.{ts,tsx,js,jsx} and map them to orchestration registry.
 
-*Action*: Document handler ownership and implementation status in handler registry.
+**Status**: Deferred to Phase 2. Until implemented, use function-level metrics and test coverage as proxy for handler completeness.
 
 ---
 
 ## Movement Governance Summary
 
-| Movement | Coverage | Conformity | Maintainability¹ | Governance |
+| Movement | Coverage | Conformity | Maintainability | Governance |
 |----------|----------|-----------|------------------|------------|
 | 1: Discovery | 85% ✅ | High ✅ | N/A | **PASS** ✅ |
 | 2: Metrics | 90% ✅ | Medium ⚠ | 47.1 🔴 | **REVIEW** ⚠ |
 | 3: Coverage | 70% ⚠ | Low ❌ | Poor 🔴 | **NEEDS WORK** ❌ |
 | 4: Reporting | 78% ⚠ | High ✅ | Fair 🟡 | **CONDITIONAL** ⚠ |
-
-¹ *Movement-specific maintainability in this table differs from overall maintainability index (68.21/100). Movement 2 shows 47.1 (POOR) due to metrics-specific concerns; overall score reflects aggregate codebase health.*
 
 ---
 
@@ -163,8 +132,8 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (83.94%) ✅
-✓ Handler Implementation (5.6%) ⚠
+✓ Coverage (86.61%) ✅
+✓ Handler Scanning (Not Implemented) ⚠
 
 ---
 
@@ -181,11 +150,11 @@ Gating Level: **CONDITIONAL**
 - **Effort**: Medium (4-6 story points)
 - **Next Step**: Audit missing branch paths; add integration tests
 
-### [MEDIUM] 3. Implement Remaining Handlers (17/18 unresolved)
-- **Impact**: Achieve 100% handler completeness; enable full orchestration
-- **Current**: 5.6% implementation rate
-- **Effort**: High (depends on scope)
-- **Next Step**: Clarify which handlers are TODO vs external; schedule implementation
+### [MEDIUM] 3. Implement Real Handler Scanning
+- **Impact**: Enable honest handler completeness metrics; map handlers to beats
+- **Current**: Handler analysis not implemented; mock data removed
+- **Effort**: Medium (2-4 story points)
+- **Next Step**: Build scanHandlerExports() to crawl packages/*/src/**/*.{ts,tsx,js,jsx}; discover and catalog handlers
 
 ### [MEDIUM] 4. Improve Maintainability Index (47.1/100 → target 70+)
 - **Impact**: Reduce future refactoring burden
@@ -216,11 +185,11 @@ Gating Level: **CONDITIONAL**
 - **Effort**: Low (1-2 story points)
 - **Next Step**: Run analysis monthly; capture baseline metrics
 
-### [LOW] 9. Automate Handler Path Resolution
-- **Impact**: Clarify which handlers are TODO vs external; reduce scanner false negatives
-- **Current**: 17/18 "Not Found" — need validation
-- **Effort**: Low (investigation)
-- **Next Step**: Audit handler registry; update scanner paths if needed
+### [LOW] 9. Build Handler Discovery Registry
+- **Impact**: Enable handler-to-beat mapping; foundation for completeness metrics
+- **Current**: Handler scanning not implemented; use as Phase 2 foundation
+- **Effort**: Low (foundation-level work)
+- **Next Step**: Create registry schema; integrate with orchestration-domains.json
 
 ### [LOW] 10. Update Architecture Governance Policy
 - **Impact**: Codify thresholds; enable automated gating
@@ -248,10 +217,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T18-00-18-218Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T18-00-18-218Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T18-00-18-218Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T18-00-18-218Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T18-26-13-112Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T18-26-13-112Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T18-26-13-112Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T18-26-13-112Z.json
 
 ---
 
