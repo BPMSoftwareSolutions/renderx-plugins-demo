@@ -1,0 +1,214 @@
+{
+  "id": "symphonic-code-analysis-demo",
+  "sequenceId": "symphonic-code-analysis-demo",
+  "name": "Symphonic Code Analysis Demo",
+  "packageName": "orchestration",
+  "title": "Symphonic Code Analysis Demo - Architecture Review & Stakeholder Approval",
+  "description": "Demo and review gate for symphonic code analysis results. Presents analysis findings, metrics trends, and architectural conformity to stakeholders for review and approval before publication.",
+  "purpose": "Enable architecture review teams to validate code analysis results, discuss findings, review recommendations, and approve metrics before they're used for governance enforcement.",
+  "trigger": "Code analysis pipeline completion, sprint review, or explicit stakeholder invocation",
+  "kind": "demo",
+  "status": "active",
+  "tempo": 120,
+  "key": "C Major",
+  "timeSignature": "4/4",
+  "category": "orchestration",
+  "beats": 4,
+  "governance": {
+    "policies": [
+      "All analysis results must be reviewed by at least one architect before approval",
+      "Trend analysis must show improvement or stability (no regression)",
+      "Critical findings must be addressed before approval",
+      "Demo must document stakeholder feedback and decisions",
+      "Approved metrics become the baseline for next cycle governance"
+    ],
+    "metrics": [
+      "Time to review (minutes)",
+      "Reviewer participation (count)",
+      "Critical findings addressed (%)",
+      "Approval rate (%)",
+      "Feedback items captured"
+    ]
+  },
+  "events": [
+    "demo:initiated",
+    "demo:analysis:presented",
+    "demo:trends:reviewed",
+    "demo:findings:discussed",
+    "demo:recommendations:evaluated",
+    "demo:approved",
+    "demo:rejected",
+    "demo:feedback:captured",
+    "demo:complete"
+  ],
+  "handlers": [
+    {
+      "id": "present-analysis-results",
+      "name": "Present Analysis Results",
+      "description": "Display code analysis metrics, coverage data, and complexity scoring from the symphonic code analysis pipeline",
+      "type": "presentation",
+      "framework": "Symphonic Code Analysis",
+      "activity": "Present (1)",
+      "relatedActivities": ["Metrics Dashboard", "Visualization", "Stakeholder Communication"]
+    },
+    {
+      "id": "review-metrics-trends",
+      "name": "Review Metrics Trends",
+      "description": "Analyze trend data over time, compare against baseline, identify improvements or regressions",
+      "type": "analysis",
+      "framework": "Symphonic Code Analysis",
+      "activity": "Review Trends (2)",
+      "relatedActivities": ["Trend Analysis", "Baseline Comparison", "Historical Data"]
+    },
+    {
+      "id": "discuss-findings",
+      "name": "Discuss Findings",
+      "description": "Facilitate stakeholder discussion of critical findings, root causes, and implications",
+      "type": "collaboration",
+      "framework": "Symphonic Code Analysis",
+      "activity": "Discuss (3)",
+      "relatedActivities": ["Stakeholder Collaboration", "Problem Analysis", "Decision Making"]
+    },
+    {
+      "id": "approve-metrics",
+      "name": "Approve Metrics & Recommendations",
+      "description": "Obtain stakeholder approval of analysis results and recommendations for next governance cycle",
+      "type": "verification",
+      "framework": "Symphonic Code Analysis",
+      "activity": "Approve (4)",
+      "relatedActivities": ["Formal Approval", "Sign-off", "Governance Enforcement"]
+    }
+  ],
+  "movements": [
+    {
+      "movement": 1,
+      "id": "present-findings",
+      "name": "Present Analysis Findings",
+      "description": "Present code metrics, coverage analysis, complexity scoring, and architectural conformity results",
+      "purpose": "Communicate code analysis findings to stakeholders in clear, actionable format",
+      "visibility": 0.85,
+      "consistency": 0.80,
+      "beats": 1,
+      "sequence": [
+        {
+          "beat": 1,
+          "id": "present",
+          "name": "Present Analysis Results",
+          "description": "Display metrics dashboard with LOC, complexity, duplication, coverage, and conformity data",
+          "key_activity": "Present (1)",
+          "handlers": ["present-analysis-results"],
+          "success_criteria": [
+            "All code metrics displayed clearly",
+            "Per-beat analysis visible",
+            "Coverage percentages shown",
+            "Complexity scores calculated",
+            "Architectural conformity status shown"
+          ],
+          "timing": "Per-demo session (minutes)"
+        }
+      ]
+    },
+    {
+      "movement": 2,
+      "id": "analyze-trends",
+      "name": "Analyze Trends & Baselines",
+      "description": "Review metric trends over time and compare current results against established baselines",
+      "purpose": "Identify improvements, regressions, and patterns in code quality evolution",
+      "visibility": 0.82,
+      "consistency": 0.78,
+      "beats": 1,
+      "sequence": [
+        {
+          "beat": 1,
+          "id": "review-trends",
+          "name": "Review Metrics Trends",
+          "description": "Analyze trend data comparing current vs. previous cycles and vs. baseline",
+          "key_activity": "Review Trends (2)",
+          "handlers": ["review-metrics-trends"],
+          "success_criteria": [
+            "Trend direction identified (up/down/stable)",
+            "Comparison to baseline calculated",
+            "Regression areas highlighted",
+            "Improvement areas recognized",
+            "Data quality validated"
+          ],
+          "timing": "Per-demo session (minutes)"
+        }
+      ]
+    },
+    {
+      "movement": 3,
+      "id": "discuss-implications",
+      "name": "Discuss Implications & Recommendations",
+      "description": "Facilitate stakeholder discussion of findings, root causes, and recommended actions",
+      "purpose": "Build shared understanding and alignment on code quality trends and remediation",
+      "visibility": 0.80,
+      "consistency": 0.75,
+      "beats": 1,
+      "sequence": [
+        {
+          "beat": 1,
+          "id": "discuss",
+          "name": "Discuss Findings",
+          "description": "Open discussion of critical findings, root causes, team impact, and next steps",
+          "key_activity": "Discuss (3)",
+          "handlers": ["discuss-findings"],
+          "success_criteria": [
+            "Critical findings discussed",
+            "Root causes identified",
+            "Team input captured",
+            "Remediation options explored",
+            "Decision documented"
+          ],
+          "timing": "Per-demo session (15-30 minutes)"
+        }
+      ]
+    },
+    {
+      "movement": 4,
+      "id": "approve-governance",
+      "name": "Approve & Enable Governance",
+      "description": "Obtain formal approval of metrics and enable them as governance baselines",
+      "purpose": "Establish metrics as official baselines for governance enforcement in next cycle",
+      "visibility": 0.85,
+      "consistency": 0.82,
+      "beats": 1,
+      "sequence": [
+        {
+          "beat": 1,
+          "id": "approve",
+          "name": "Approve Metrics & Recommendations",
+          "description": "Stakeholders formally approve analysis results as governance baseline",
+          "key_activity": "Approve (4)",
+          "handlers": ["approve-metrics"],
+          "success_criteria": [
+            "Metrics formally approved by stakeholders",
+            "Baseline updated with current results",
+            "Governance thresholds confirmed",
+            "Feedback documented for next cycle",
+            "Approval signed off by authority"
+          ],
+          "timing": "Per-demo session (minutes)"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "author": "Architecture Team",
+    "created": "2025-11-27T12:00:00.000Z",
+    "framework": "Symphonic Code Analysis Demo",
+    "reference": "Code Analysis Review & Approval Gate",
+    "tags": [
+      "code-analysis",
+      "demo",
+      "review",
+      "architecture",
+      "governance",
+      "stakeholder-approval"
+    ],
+    "governance_alignment": "Provides stakeholder review gate before governance enforcement",
+    "implementation_status": "ready-for-adoption",
+    "parent": "symphonic-code-analysis-pipeline"
+  }
+}

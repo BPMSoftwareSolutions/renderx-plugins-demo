@@ -2802,6 +2802,35 @@
       "parent": "architecture-governance-enforcement-symphony"
     },
     {
+      "id": "symphonic-code-analysis-demo",
+      "name": "Symphonic Code Analysis Demo",
+      "emoji": "📊✅",
+      "description": "Demo and review gate for symphonic code analysis results. Presents analysis findings, metrics trends, and architectural conformity to stakeholders for review and approval before publication.",
+      "category": "orchestration",
+      "purpose": "Enable architecture review teams to validate code analysis results, discuss findings, and approve metrics before governance enforcement",
+      "relatedDomains": [
+        "symphonic-code-analysis-pipeline",
+        "architecture-governance-enforcement-symphony"
+      ],
+      "status": "active",
+      "parent": "symphonic-code-analysis-pipeline",
+      "sequenceFile": "packages/orchestration/json-sequences/symphonic-code-analysis-demo.json",
+      "movements": 4,
+      "beats": 4,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "description_long": "Symphonic Code Analysis Demo is a critical review and approval gate following the Symphonic Code Analysis Pipeline. It enables architecture review teams to examine code metrics, discuss trends and findings with stakeholders, and formally approve results before they're used for governance enforcement.",
+      "sketch": {
+        "title": "Symphonic Code Analysis Demo",
+        "description": "Stakeholder review and approval gate for code analysis results",
+        "role": "Demo and review gate within code analysis workflow",
+        "triggers": ["Code analysis complete", "Architecture review scheduled", "Metrics baseline update"],
+        "outcomes": ["Metrics approved", "Metrics rejected", "Findings documented", "Recommendations captured"]
+      },
+      "npmScripts": ["demo:code:analysis:present", "demo:code:analysis:review", "demo:code:analysis:discuss", "demo:code:analysis:approve"]
+    },
+    {
       "id": "orchestration-registry-audit-pipeline",
       "name": "Orchestration Registry Audit Pipeline",
       "emoji": "🔍",
