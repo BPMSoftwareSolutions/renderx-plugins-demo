@@ -19,6 +19,7 @@ const { validateMetricSource, filterMockMetrics, createIntegrityCheckpoint } = r
 const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMarkdown } = require('./map-handlers-to-beats.cjs');
 const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
 const { generateRefactorSuggestions } = require('./generate-refactor-suggestions.cjs');
+const { trackHistoricalTrends } = require('./track-historical-trends.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -451,6 +452,29 @@ Verify generate-refactor-suggestions.cjs is accessible.`;
   }
 }
 
+/**
+ * Generate historical trend tracking markdown section
+ * Establishes baseline and tracks metrics over time for trend analysis
+ */
+async function generateTrendMetrics() {
+  try {
+    const result = await trackHistoricalTrends();
+    
+    if (!result.success) {
+      return `⚠ **Trend tracking error**: ${result.error}
+
+Retrying with manual baseline deferred to next run.`;
+    }
+    
+    return result.markdown;
+    
+  } catch (err) {
+    return `❌ **Trend tracking failed**: ${err.message}
+
+Verify track-historical-trends.cjs is accessible.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -598,6 +622,7 @@ async function generateMarkdownReport(metrics, artifacts) {
   const handlerMappingMetrics = await generateHandlerMappingMetrics();
   const coverageByHandlerMetrics = await generateCoverageByHandlerMetrics();
   const refactorMetrics = await generateRefactorMetrics();
+  const trendMetrics = await generateTrendMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -751,6 +776,10 @@ ${coverageByHandlerMetrics}
 ### Automated Refactor Suggestions
 
 ${refactorMetrics}
+
+### Historical Trend Analysis
+
+${trendMetrics}
 
 ---
 
