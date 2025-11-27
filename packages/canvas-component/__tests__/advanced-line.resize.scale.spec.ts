@@ -19,7 +19,7 @@ function makeCtx() {
   return { payload: {} } as any;
 }
 
-describe("Advanced Line — endpoints scale with resize", () => {
+describe("Advanced Line ï¿½ endpoints scale with resize", () => {
   let ctx: any;
   beforeEach(() => {
     ctx = {

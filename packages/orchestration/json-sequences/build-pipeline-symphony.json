@@ -1,0 +1,437 @@
+{
+  "id": "build-pipeline-symphony",
+  "sequenceId": "build-pipeline-symphony",
+  "name": "build pipeline symphony",
+  "packageName": "orchestration",
+  "title": "Build Pipeline Symphony",
+  "description": "Multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.",
+  "purpose": "Orchestrate builds as symphonic compositions with clear movements (phases), beats (operations), and telemetry tracking for governance and observability.",
+  "trigger": "On-demand via `npm run build` or CI/CD pipeline",
+  "kind": "orchestration",
+  "status": "active",
+  "governance": {
+    "policies": [
+      "All build phases must execute in strict order",
+      "Each beat must record telemetry (start, end, duration, status)",
+      "Failed beats must trigger rollback to previous stable state",
+      "Build artifacts must be validated before advancement to next movement",
+      "All build logs must be archived with correlation IDs",
+      "Build performance must be tracked against baselines",
+      "Concurrent package builds must not exceed system capacity"
+    ],
+    "metrics": [
+      "Total build duration",
+      "Per-movement duration",
+      "Per-beat duration",
+      "Success/failure rate",
+      "Artifact validation status",
+      "Cache hit/miss ratio",
+      "Package build parallelization efficiency",
+      "Overall conformity score impact"
+    ]
+  },
+  "events": [
+    "build:initiated",
+    "build:context:loaded",
+    "movement-1:validation:initiated",
+    "movement-1:domains:validated",
+    "movement-1:governance:validated",
+    "movement-1:agent:validated",
+    "movement-1:validation:complete",
+    "movement-2:preparation:initiated",
+    "movement-2:manifests:generated",
+    "movement-2:orchestration:prepared",
+    "movement-2:preparation:complete",
+    "movement-3:packages:initiated",
+    "movement-3:package:build:started",
+    "movement-3:package:build:completed",
+    "movement-3:packages:complete",
+    "movement-4:host:initiated",
+    "movement-4:host:build:started",
+    "movement-4:host:build:completed",
+    "movement-4:host:complete",
+    "movement-5:artifacts:initiated",
+    "movement-5:artifacts:processed",
+    "movement-5:artifacts:complete",
+    "movement-6:verification:initiated",
+    "movement-6:artifacts:verified",
+    "movement-6:conformity:verified",
+    "movement-6:verification:complete",
+    "build:success",
+    "build:failure",
+    "build:complete",
+    "build:report:generated"
+  ],
+  "movements": [
+    {
+      "name": "Validation & Verification",
+      "emoji": "✅",
+      "description": "Validate domain definitions, governance rules, and agent behavior before building",
+      "purpose": "Ensure build prerequisites are met and system is in valid state",
+      "beats": [
+        {
+          "number": 1,
+          "event": "build:context:loaded",
+          "handler": "loadBuildContext",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Load build configuration, environment variables, and previous state"
+        },
+        {
+          "number": 2,
+          "event": "movement-1:domains:validated",
+          "handler": "validateOrchestrationDomains",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate all orchestration domain definitions for structural integrity"
+        },
+        {
+          "number": 3,
+          "event": "movement-1:governance:validated",
+          "handler": "validateGovernanceRules",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate governance policies and compliance documentation"
+        },
+        {
+          "number": 4,
+          "event": "movement-1:agent:validated",
+          "handler": "validateAgentBehavior",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate system agent behavior and decision logic"
+        },
+        {
+          "number": 5,
+          "event": "movement-1:validation:complete",
+          "handler": "recordValidationResults",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Record validation results and prepare for next movement"
+        }
+      ]
+    },
+    {
+      "name": "Manifest Preparation",
+      "emoji": "📋",
+      "description": "Generate and prepare all manifests, catalogs, and orchestration artifacts",
+      "purpose": "Build unified view of system state and dependencies",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-2:manifests:generated",
+          "handler": "regenerateOrchestrationDomains",
+          "kind": "generation",
+          "timing": "immediate",
+          "description": "Regenerate orchestration domains from sequences and plugins (pre:manifests)"
+        },
+        {
+          "number": 2,
+          "event": "movement-2:manifests:generated",
+          "handler": "syncJsonSources",
+          "kind": "generation",
+          "timing": "immediate",
+          "description": "Synchronize JSON component sources from catalog"
+        },
+        {
+          "number": 3,
+          "event": "movement-2:manifests:generated",
+          "handler": "generateManifests",
+          "kind": "generation",
+          "timing": "immediate",
+          "description": "Generate all manifest files (components, sequences, topics, layout, interactions)"
+        },
+        {
+          "number": 4,
+          "event": "movement-2:orchestration:prepared",
+          "handler": "validateManifestIntegrity",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate all generated manifests for consistency and completeness"
+        },
+        {
+          "number": 5,
+          "event": "movement-2:preparation:complete",
+          "handler": "recordManifestState",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Record manifest generation state and metrics"
+        }
+      ]
+    },
+    {
+      "name": "Package Building",
+      "emoji": "📦",
+      "description": "Build all 13 plugin packages in optimized order",
+      "purpose": "Produce compiled, optimized package distributions",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-3:packages:initiated",
+          "handler": "initializePackageBuild",
+          "kind": "initialization",
+          "timing": "immediate",
+          "description": "Prepare package build environment and dependency order"
+        },
+        {
+          "number": 2,
+          "event": "movement-3:package:build:started",
+          "handler": "buildComponentsPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/components (base utilities)"
+        },
+        {
+          "number": 3,
+          "event": "movement-3:package:build:started",
+          "handler": "buildMusicalConductorPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/musical-conductor (orchestration core)"
+        },
+        {
+          "number": 4,
+          "event": "movement-3:package:build:started",
+          "handler": "buildHostSdkPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/host-sdk (SDK and interfaces)"
+        },
+        {
+          "number": 5,
+          "event": "movement-3:package:build:started",
+          "handler": "buildManifestToolsPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/manifest-tools (tooling)"
+        },
+        {
+          "number": 6,
+          "event": "movement-3:package:build:started",
+          "handler": "buildCanvasPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/canvas (rendering layer)"
+        },
+        {
+          "number": 7,
+          "event": "movement-3:package:build:started",
+          "handler": "buildCanvasComponentPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/canvas-component (interaction layer)"
+        },
+        {
+          "number": 8,
+          "event": "movement-3:package:build:started",
+          "handler": "buildControlPanelPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/control-panel (UI controls)"
+        },
+        {
+          "number": 9,
+          "event": "movement-3:package:build:started",
+          "handler": "buildHeaderPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/header (UI header)"
+        },
+        {
+          "number": 10,
+          "event": "movement-3:package:build:started",
+          "handler": "buildLibraryPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/library (component library)"
+        },
+        {
+          "number": 11,
+          "event": "movement-3:package:build:started",
+          "handler": "buildLibraryComponentPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/library-component (advanced library)"
+        },
+        {
+          "number": 12,
+          "event": "movement-3:package:build:started",
+          "handler": "buildRealEstateAnalyzerPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/real-estate-analyzer (analytics)"
+        },
+        {
+          "number": 13,
+          "event": "movement-3:package:build:started",
+          "handler": "buildSelfHealingPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/self-healing (observability)"
+        },
+        {
+          "number": 14,
+          "event": "movement-3:package:build:started",
+          "handler": "buildSloDashboardPackage",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Build @renderx-plugins/slo-dashboard (SLO monitoring)"
+        },
+        {
+          "number": 15,
+          "event": "movement-3:packages:complete",
+          "handler": "recordPackageBuildMetrics",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Record package build completion metrics and cache status"
+        }
+      ]
+    },
+    {
+      "name": "Host Application Building",
+      "emoji": "🏠",
+      "description": "Build main host application with Vite",
+      "purpose": "Produce bundled, optimized host application",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-4:host:initiated",
+          "handler": "prepareHostBuild",
+          "kind": "initialization",
+          "timing": "immediate",
+          "description": "Prepare host application build environment"
+        },
+        {
+          "number": 2,
+          "event": "movement-4:host:build:started",
+          "handler": "viteHostBuild",
+          "kind": "build",
+          "timing": "deferred",
+          "description": "Execute Vite host application build"
+        },
+        {
+          "number": 3,
+          "event": "movement-4:host:build:completed",
+          "handler": "validateHostArtifacts",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate host build artifacts (dist/ directory)"
+        },
+        {
+          "number": 4,
+          "event": "movement-4:host:complete",
+          "handler": "recordHostBuildMetrics",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Record host build metrics (bundle size, chunks, etc)"
+        }
+      ]
+    },
+    {
+      "name": "Artifact Management",
+      "emoji": "📦",
+      "description": "Process, verify, and catalog all build artifacts",
+      "purpose": "Ensure artifact integrity and auditability",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-5:artifacts:initiated",
+          "handler": "collectArtifacts",
+          "kind": "collection",
+          "timing": "immediate",
+          "description": "Collect all build artifacts from dist/ and package dirs"
+        },
+        {
+          "number": 2,
+          "event": "movement-5:artifacts:processed",
+          "handler": "computeArtifactHashes",
+          "kind": "verification",
+          "timing": "immediate",
+          "description": "Compute SHA-256 hashes for all artifacts"
+        },
+        {
+          "number": 3,
+          "event": "movement-5:artifacts:processed",
+          "handler": "validateArtifactSignatures",
+          "kind": "verification",
+          "timing": "immediate",
+          "description": "Validate artifact integrity signatures"
+        },
+        {
+          "number": 4,
+          "event": "movement-5:artifacts:processed",
+          "handler": "generateArtifactManifest",
+          "kind": "documentation",
+          "timing": "immediate",
+          "description": "Generate comprehensive artifact manifest with metadata"
+        },
+        {
+          "number": 5,
+          "event": "movement-5:artifacts:complete",
+          "handler": "recordArtifactMetrics",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Record artifact collection and verification metrics"
+        }
+      ]
+    },
+    {
+      "name": "Verification & Conformity",
+      "emoji": "🔍",
+      "description": "Run comprehensive verification and conformity checks on built artifacts",
+      "purpose": "Ensure build meets all quality and governance standards",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-6:verification:initiated",
+          "handler": "runLintChecks",
+          "kind": "verification",
+          "timing": "deferred",
+          "description": "Run ESLint across entire codebase"
+        },
+        {
+          "number": 2,
+          "event": "movement-6:artifacts:verified",
+          "handler": "enrichDomainAuthorities",
+          "kind": "enrichment",
+          "timing": "immediate",
+          "description": "Enrich domain definitions with build authority metadata"
+        },
+        {
+          "number": 3,
+          "event": "movement-6:artifacts:verified",
+          "handler": "generateGovernanceDocs",
+          "kind": "generation",
+          "timing": "immediate",
+          "description": "Generate governance documentation from build artifacts"
+        },
+        {
+          "number": 4,
+          "event": "movement-6:conformity:verified",
+          "handler": "validateConformityDimensions",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate all 5 Symphonia conformity dimensions"
+        },
+        {
+          "number": 5,
+          "event": "movement-6:verification:complete",
+          "handler": "generateBuildReport",
+          "kind": "observation",
+          "timing": "immediate",
+          "description": "Generate comprehensive build report with all metrics"
+        }
+      ]
+    }
+  ],
+  "tempo": 120,
+  "key": "C Major",
+  "timeSignature": "4/4",
+  "dynamics": {
+    "pp": "Quiet - Validation only, no artifacts",
+    "p": "Piano - Development build, basic validation",
+    "mf": "Mezzo-forte - Standard build with verification",
+    "f": "Forte - Full build with strict conformity",
+    "ff": "Fortissimo - CI build with artifact archival"
+  }
+}
