@@ -13,6 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const classifier = require('./symphonic-metrics-classifier.cjs');
+const { scanHandlerExports, formatHandlersMarkdown } = require('./scan-handlers.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -284,6 +285,46 @@ function validateHandlerConformity() {
   return conformity;
 }
 
+/**
+ * Generate handler metrics markdown section
+ * Uses real discovered handlers from scanHandlerExports
+ */
+async function generateHandlerMetrics() {
+  try {
+    const results = await scanHandlerExports();
+    
+    if (results.error) {
+      return `⚠ **Handler scan error**: ${results.error}
+
+Retrying with manual detection deferred to next run.`;
+    }
+    
+    if (results.discoveredCount === 0) {
+      return `⚠ **No handler exports discovered** in source scan.
+
+This may indicate:
+- Handlers not using 'handler' naming convention
+- All handlers are default exports (requires pattern enhancement)
+- Source structure differs from expected layout
+
+**Status**: Check if handlers use different naming patterns; update scanPatterns in scan-handlers.cjs`;
+    }
+    
+    return `✅ **${results.discoveredCount} handlers discovered**
+
+${formatHandlersMarkdown(results)}
+
+**Measurement**: Source='measured' (real discovered exports via pattern matching)
+**Coverage**: Handlers distributed across ${new Set(results.handlers.map(h => h.type)).size} types
+**Last Scan**: ${results.timestamp}`;
+    
+  } catch (err) {
+    return `❌ **Handler scan failed**: ${err.message}
+
+Verify scan-handlers.cjs is accessible and git repository is initialized.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -393,8 +434,11 @@ function generateJsonArtifacts(metrics) {
   return { analysisData, coverageSummary, trendData };
 }
 
-function generateMarkdownReport(metrics, artifacts) {
+async function generateMarkdownReport(metrics, artifacts) {
   log('Generating markdown report...', '📋');
+  
+  // Get handler metrics first (async operation)
+  const handlerMetrics = await generateHandlerMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -536,13 +580,7 @@ ${metrics.conformity.violations_details.map(v =>
 
 ### Handler Metrics
 
-⚠ **Handler completeness analysis is currently disabled.**
-
-Real handler scanning (crawling source exports and matching to orchestration beats) is not yet implemented. 
-
-To be enabled: Implement scanHandlerExports() to discover handler functions in packages/*/src/**/*.{ts,tsx,js,jsx} and map them to orchestration registry.
-
-**Status**: Deferred to Phase 2. Until implemented, use function-level metrics and test coverage as proxy for handler completeness.
+${handlerMetrics}
 
 ---
 
@@ -718,7 +756,7 @@ async function run() {
     // Generate artifacts
     log('Generating analysis artifacts...', '🎬');
     const artifacts = generateJsonArtifacts(metrics);
-    generateMarkdownReport(metrics, artifacts);
+    await generateMarkdownReport(metrics, artifacts);
 
     // Final summary
     header('ANALYSIS COMPLETE');

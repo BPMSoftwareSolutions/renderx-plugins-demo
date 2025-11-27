@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T18:26:13.264Z  
+**Generated**: 2025-11-27T19:34:12.905Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,8 +13,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 81.80% | ✅ GOOD| Risk: LOW|
-| Maintainability | 62.61/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 84.42% | ✅ GOOD| Risk: LOW|
+| Maintainability | 69.86/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -55,15 +55,15 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 - **Status**: ⚠ Monitor for refactoring opportunities
 
 ### Maintainability Index
-- **Score**: 62.61/100
+- **Score**: 69.86/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 79.5%
-  - Documentation: 70.0%
-  - Comment Density: 48.1%
-  - Complexity Score: 49.6
+  - Test Coverage: 71.7%
+  - Documentation: 86.7%
+  - Comment Density: 99.7%
+  - Complexity Score: 63.1
 
 ---
 
@@ -74,10 +74,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 81.80% | 80% | ✓ |
-| Branches | 74.73% | 75% | ⚠ |
-| Functions | 87.35% | 80% | ✓ |
-| Lines | 79.91% | 80% | ⚠ |
+| Statements | 84.42% | 80% | ✓ |
+| Branches | 79.92% | 75% | ✓ |
+| Functions | 81.65% | 80% | ✓ |
+| Lines | 74.55% | 80% | ⚠ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -104,13 +104,24 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ### Handler Metrics
 
-⚠ **Handler completeness analysis is currently disabled.**
+✅ **38 handlers discovered**
 
-Real handler scanning (crawling source exports and matching to orchestration beats) is not yet implemented. 
+✅ **38 handlers discovered**
 
-To be enabled: Implement scanHandlerExports() to discover handler functions in packages/*/src/**/*.{ts,tsx,js,jsx} and map them to orchestration registry.
+**By Type:**
+  * generic: 38
 
-**Status**: Deferred to Phase 2. Until implemented, use function-level metrics and test coverage as proxy for handler completeness.
+**Top Handlers:**
+  * handlers (generic) — packages/canvas-component/src/symphonies/copy/copy.stage-crew.ts
+  * handlers (generic) — packages/canvas-component/src/symphonies/create/create.stage-crew.ts
+  * handlers (generic) — packages/canvas-component/src/symphonies/delete/delete.stage-crew.ts
+  * handlers (generic) — packages/canvas-component/src/symphonies/deselect/deselect.stage-crew.ts
+  * handlers (generic) — packages/canvas-component/src/symphonies/drag/drag.stage-crew.ts
+  * ... and 33 more
+
+**Measurement**: Source='measured' (real discovered exports via pattern matching)
+**Coverage**: Handlers distributed across 1 types
+**Last Scan**: 2025-11-27T19:34:12.904Z
 
 ---
 
@@ -132,7 +143,7 @@ To be enabled: Implement scanHandlerExports() to discover handler functions in p
 Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (81.80%) ✅
+✓ Coverage (86.61%) ✅
 ✓ Handler Scanning (Not Implemented) ⚠
 
 ---
@@ -143,11 +154,6 @@ Gating Level: **CONDITIONAL**
 - **Impact**: Reduce maintainability debt; improve code clarity
 - **Effort**: Medium (3-5 story points)
 - **Next Step**: Identify top 5 duplicated blocks; create refactoring stories
-
-#### Most Duplicated Files (pending real scan)
-⚠ Duplicate block detection is not yet implemented.
-To be enabled: Implement duplicationScanner() using AST region hashing.
-Status: Deferred to Phase 2. Use this metric as Phase 2 foundation.
 
 ### [HIGH] 2. Increase Branch Coverage for Beat 3 (60%) and Beat 4 (48%)
 - **Impact**: Reduce test-related risk; improve governance conformity
@@ -161,11 +167,11 @@ Status: Deferred to Phase 2. Use this metric as Phase 2 foundation.
 - **Effort**: Medium (2-4 story points)
 - **Next Step**: Build scanHandlerExports() to crawl packages/*/src/**/*.{ts,tsx,js,jsx}; discover and catalog handlers
 
-### [MEDIUM] 4. Improve Movement 2 Maintainability Index (47.1 → target 70+)
-- **Impact**: Reduce future refactoring burden in metrics analysis
-- **Current**: Movement 2 graded POOR (47.1); global is 62.61 (FAIR). Focus on movement-specific improvement.
+### [MEDIUM] 4. Improve Maintainability Index (47.1/100 → target 70+)
+- **Impact**: Reduce future refactoring burden
+- **Current**: Graded 'POOR'; needs work on complexity, documentation, comments
 - **Effort**: Medium (ongoing)
-- **Next Step**: Add JSDoc comments to complex functions in metrics beat; break down high-complexity analysis flows
+- **Next Step**: Add JSDoc comments to complex functions; break down high-complexity beats
 
 ### [MEDIUM] 5. Resolve Movement 2 Conformity Violations (2/16 beats)
 - **Impact**: Achieve 100% conformity compliance
@@ -181,7 +187,7 @@ Status: Deferred to Phase 2. Use this metric as Phase 2 foundation.
 
 ### [LOW] 7. Add Test Coverage Documentation
 - **Impact**: Improve team understanding; reduce onboarding time
-- **Current**: 81.80% statements coverage but gaps in Movement 3-4 (55-68%)
+- **Current**: 83.94% coverage but gaps in Movement 3-4
 - **Effort**: Low (documentation)
 - **Next Step**: Add README in test directories; document coverage goals per beat
 
@@ -222,10 +228,10 @@ Status: Deferred to Phase 2. Use this metric as Phase 2 foundation.
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T18-26-13-112Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T18-26-13-112Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T18-26-13-112Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T18-26-13-112Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-34-12-619Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-34-12-619Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-34-12-619Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T19-34-12-619Z.json
 
 ---
 
