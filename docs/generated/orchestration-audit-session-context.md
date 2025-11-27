@@ -1,12 +1,7 @@
-<!-- AUTO-GENERATED
-Doc-Hash: 9bc2f079aecfc2b1fcbafc8995847ed6ebc175c89c4741a2cc54c4679d4a2cae
-Regenerate: npm run generate:governance:docs
--->
-
 # Orchestration Audit Session Context
 
 **Generated from:** `.generated/context-tree-orchestration-audit-session.json`
-**Last Generated:** 2025-11-24T20:07:35.937Z
+**Last Generated:** 2025-11-27T00:19:07.851Z
 **DO NOT EDIT — GENERATED**
 
 ## Session Overview

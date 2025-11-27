@@ -1,17 +1,17 @@
 # Orchestration Domains Structural Diff
 
-Generated At: 2025-11-24T20:07:01.792Z
+Generated At: 2025-11-27T00:18:48.935Z
 
 ## Summary
 
 | Metric | Value |
 |--------|-------|
-| Domains Before | 60 |
-| Domains After | 60 |
+| Domains Before | 61 |
+| Domains After | 61 |
 | Added | 0 |
 | Removed | 0 |
 | Changed | 0 |
-| Unchanged | 60 |
+| Unchanged | 61 |
 
 ## Governance Actions
 

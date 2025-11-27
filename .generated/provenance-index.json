@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-24T20:07:05.013Z",
+  "generatedAt": "2025-11-27T00:18:49.356Z",
   "entries": [
     {
       "doc": "orchestration-domains.md",
@@ -7,11 +7,11 @@
       "kind": "registry",
       "docExists": true,
       "sourceExists": true,
-      "docHash": "efdb3fac0ecd124e99e64c4c9c8b77126c32b57e5bbe8b96140871c7cf0ae327",
-      "sourceHash": "b3b699fe6395a2f8a4ed3d112073026efe8691ebe86b19d9390f35040e8f6404",
+      "docHash": "d9e48c6f64c3b32042747769e6e2204852917278755dc0aac27fd2b655b73937",
+      "sourceHash": "3738e53969b401282286b1e860a7e6b60e289dcd5f2500a8299af367941878c3",
       "staleness": false,
-      "docModified": "2025-11-24T20:07:02.432Z",
-      "sourceModified": "2025-11-24T20:07:01.073Z"
+      "docModified": "2025-11-27T00:18:49.009Z",
+      "sourceModified": "2025-11-27T00:18:48.866Z"
     },
     {
       "doc": "orchestration-audit-system-project-plan.md",
@@ -19,11 +19,11 @@
       "kind": "plan",
       "docExists": true,
       "sourceExists": true,
-      "docHash": "a678224c1177ab7e273ca22f5e29ca17650a204f155515d60f37ad003e96a28d",
-      "sourceHash": "30d3e68cf570509e0c1df67b7a257c3c1440c5c17c09277e15b5546c0159ca9a",
+      "docHash": "6812bfb7754326f83ddb9c069ccf05423b961cfa4b63858c733518001a68674e",
+      "sourceHash": "d850a1427955ea0a66149ab646211bc32b9f1f96e049ab96a33cc8b27a7c89c4",
       "staleness": false,
-      "docModified": "2025-11-24T20:07:03.126Z",
-      "sourceModified": "2025-11-24T19:49:27.106Z"
+      "docModified": "2025-11-27T00:18:49.140Z",
+      "sourceModified": "2025-11-25T01:54:54.071Z"
     },
     {
       "doc": "unified-musical-sequence-interface.md",
@@ -31,11 +31,11 @@
       "kind": "interface",
       "docExists": true,
       "sourceExists": true,
-      "docHash": "47b979b712ebb34d70602d5cc4c05f64c8c7d365fb46101e2a787305b34ed22f",
-      "sourceHash": "b3b699fe6395a2f8a4ed3d112073026efe8691ebe86b19d9390f35040e8f6404",
+      "docHash": "ff5296f5e1e47926e69bdb89a8ca561511f95e86e6534b43b67d4863b06399d1",
+      "sourceHash": "3738e53969b401282286b1e860a7e6b60e289dcd5f2500a8299af367941878c3",
       "staleness": false,
-      "docModified": "2025-11-24T20:07:02.434Z",
-      "sourceModified": "2025-11-24T20:07:01.073Z"
+      "docModified": "2025-11-27T00:18:49.012Z",
+      "sourceModified": "2025-11-27T00:18:48.866Z"
     },
     {
       "doc": "orchestration-execution-flow.md",
@@ -43,11 +43,11 @@
       "kind": "execution-flow",
       "docExists": true,
       "sourceExists": true,
-      "docHash": "5a094e1a0634c253988e1cf4d479ef565a7b15630135282054d30e70fadff788",
-      "sourceHash": "b3b699fe6395a2f8a4ed3d112073026efe8691ebe86b19d9390f35040e8f6404",
+      "docHash": "a2ad310a76cdcc6926eab65ce8b18d12d6b85296a02b8f4f40d70e1aa368a7ab",
+      "sourceHash": "3738e53969b401282286b1e860a7e6b60e289dcd5f2500a8299af367941878c3",
       "staleness": false,
-      "docModified": "2025-11-24T20:07:02.433Z",
-      "sourceModified": "2025-11-24T20:07:01.073Z"
+      "docModified": "2025-11-27T00:18:49.010Z",
+      "sourceModified": "2025-11-27T00:18:48.866Z"
     }
   ]
 }

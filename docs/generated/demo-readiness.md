@@ -1,11 +1,6 @@
-<!-- AUTO-GENERATED
-Doc-Hash: 0552d1188a259b804a76f51c20fdf73fcea576830f801c1ce80fd0bc05d9bc49
-Regenerate: npm run generate:governance:docs
--->
-
 # Demo Readiness
 
-> Generated 2025-11-24T20:07:13.306Z
+> Generated 2025-11-27T00:18:50.038Z
 
 | Item | Status |
 |------|--------|

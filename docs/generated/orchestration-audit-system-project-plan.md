@@ -1,12 +1,7 @@
-<!-- AUTO-GENERATED
-Doc-Hash: a678224c1177ab7e273ca22f5e29ca17650a204f155515d60f37ad003e96a28d
-Regenerate: npm run generate:governance:docs
--->
-
 # Orchestration Audit System Project Plan
 
 > DO NOT EDIT. Generated from JSON: orchestration-audit-system-project-plan.json
-> Generated At: 2025-11-24T20:07:03.124Z
+> Generated At: 2025-11-27T00:18:49.138Z
 > JSON Version: 1.3.0
 
 ## Vision

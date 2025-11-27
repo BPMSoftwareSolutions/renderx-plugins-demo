@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-25T21:26:46.605Z"
+    "generated": "2025-11-27T00:18:48.864Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -624,8 +624,8 @@
       "purpose": "Feature implementation",
       "relatedDomains": [],
       "status": "active",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -1402,8 +1402,8 @@
       "purpose": "Feature implementation",
       "relatedDomains": [],
       "status": "active",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -1728,8 +1728,8 @@
       "purpose": "Feature implementation",
       "relatedDomains": [],
       "status": "active",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -1826,8 +1826,8 @@
       "purpose": "Feature implementation",
       "relatedDomains": [],
       "status": "active",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -1994,8 +1994,8 @@
       "purpose": "Feature implementation",
       "relatedDomains": [],
       "status": "active",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -2050,116 +2050,6 @@
       }
     },
     {
-      "id": "cag-agent-workflow",
-      "name": "CAG Agent Workflow - 8 Phase Sequence",
-      "emoji": "🎼",
-      "description": "Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/ographx/.ographx/sequences/cag-agent-workflow.json",
-      "movements": 8,
-      "beats": 41,
-      "tempo": 100,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "CAG Agent Workflow - 8 Phase Sequence",
-        "sequence": {
-          "id": "cag-agent-workflow",
-          "name": "CAG Agent Workflow - 8 Phase Sequence",
-          "tempo": 100,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Phase 1: Context Loading",
-            "items": [
-              "Extract rules, evolution phases, governance contracts",
-              "Extract artifact registry and canonical locations",
-              "Extract root goal, principles, boundaries",
-              "Create context envelope, session ID, timestamp"
-            ]
-          },
-          {
-            "name": "Movement 2: Phase 2: Context Verification",
-            "items": [
-              "Check goal matches plan, no contradictions, goal achievable",
-              "Check rules parseable, no conflicts, all phases covered",
-              "Check artifacts reachable, no circular deps, canonical locations valid",
-              "Compute (verified_items / total_items) * 100, threshold ≥ 80%"
-            ]
-          },
-          {
-            "name": "Movement 3: Phase 3: Workload Analysis",
-            "items": [
-              "Extract feature, scope, constraints from user request",
-              "Determine type (feature/fix/refactor/test/doc), scope, complexity",
-              "Check sprint/phase, in-scope for phase, aligns with plan",
-              "List files to modify, dependencies, tests to update",
-              "Extract feature, layer, phase",
-              "Define in-scope, out-of-scope, constraints"
-            ]
-          },
-          {
-            "name": "Movement 4: Phase 4: Context Tree Mapping",
-            "items": [
-              "For each affected file: check exists, in repository, path canonical",
-              "Determine type, purpose, role for each file",
-              "Extract rules, contracts, phase, telemetry requirements",
-              "Extract imports, references, dependents",
-              "Map root context, sub-context, boundaries, previous context",
-              "Output .generated/context-tree-{filename}.json for each file",
-              "Combine all context trees, detect cross-file deps, verify no violations"
-            ]
-          },
-          {
-            "name": "Movement 5: Phase 5: Action Planning",
-            "items": [
-              "Load BDD specs, telemetry shapes, TDD tests, integration tests, context remounting",
-              "Combine governance core + context providers, assemble context envelope",
-              "Output .generated/cag-context.json with all context layers",
-              "Query docs matching workload, filter by role, load context blocks",
-              "Identify changes needed, sequence actions, verify boundaries, estimate impact",
-              "Check all in-scope, respects governance, aligns with goal, telemetry identified"
-            ]
-          },
-          {
-            "name": "Movement 6: Phase 6: Action Execution",
-            "items": [
-              "Verify context coherent, boundaries unchanged, no conflicts",
-              "Modify code, tests, specs, configs; generate new artifacts",
-              "Verify syntactically valid, respects governance, no violations, dependencies updated",
-              "Log what changed, why, context used, timestamp, session ID"
-            ]
-          },
-          {
-            "name": "Movement 7: Phase 7: Telemetry Emission",
-            "items": [
-              "Collect what, why, how, when, who, context",
-              "Include root goal, feature, phase, changes, tests, verification",
-              "Write .generated/telemetry/{timestamp}.json with structured data",
-              "Check required fields present, matches plan, machine readable"
-            ]
-          },
-          {
-            "name": "Movement 8: Phase 8: Feedback Loop",
-            "items": [
-              "Load cag-context.json and telemetry",
-              "Analyze success, alignment, governance compliance, telemetry",
-              "Record previous action, coherence, telemetry, lessons learned",
-              "Output .generated/cag-context-next.json with all updates",
-              "Check if JSON changed, regenerate docs if needed, verify up-to-date",
-              "Output .generated/cag-feedback.json with observations, updates, next steps"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "graphing-orchestration",
       "name": "graphing-orchestration",
       "emoji": "🎼",
@@ -2169,8 +2059,8 @@
       "relatedDomains": [],
       "status": "active",
       "sequenceFile": "packages/ographx/.ographx/sequences/graphing-orchestration.json",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -2188,193 +2078,6 @@
       }
     },
     {
-      "id": "orchestration-audit-session",
-      "name": "Orchestration Audit System Implementation Session",
-      "emoji": "🎼",
-      "description": "Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/ographx/.ographx/sequences/orchestration-audit-session.json",
-      "movements": 8,
-      "beats": 25,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Orchestration Audit System Implementation Session",
-        "sequence": {
-          "id": "orchestration-audit-session",
-          "name": "Orchestration Audit System Implementation Session",
-          "tempo": 120,
-          "key": "C",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Architecture Design",
-            "items": [
-              "Understand 16 orchestration domains and their relationships",
-              "Create unified schema for all domains with metadata",
-              "Document each domain with movements, beats, relationships"
-            ]
-          },
-          {
-            "name": "Movement 2: JSON Source Creation",
-            "items": [
-              "Write comprehensive JSON registry with all 16 domains",
-              "Reference packages/musical-conductor SequenceTypes.ts",
-              "Document how domains connect and depend on each other"
-            ]
-          },
-          {
-            "name": "Movement 3: Documentation Generation",
-            "items": [
-              "Script to generate markdown documentation from JSON",
-              "Create visual representations of each domain's workflow",
-              "Run script to produce 3 markdown files with sketches"
-            ]
-          },
-          {
-            "name": "Movement 4: Diagram Generation",
-            "items": [
-              "Script to generate Mermaid diagrams from JSON",
-              "Create unified system architecture diagram",
-              "Create domain relationship visualization"
-            ]
-          },
-          {
-            "name": "Movement 5: Audit System",
-            "items": [
-              "Script to validate entire orchestration system",
-              "Check domain definitions and required fields",
-              "Verify all referenced domains exist",
-              "Check all documentation and diagrams exist"
-            ]
-          },
-          {
-            "name": "Movement 6: Standards Alignment",
-            "items": [
-              "Verify all sequences use canonical interface",
-              "Remove manually-created markdown files",
-              "Mark all generated files with DO NOT EDIT headers"
-            ]
-          },
-          {
-            "name": "Movement 7: Verification",
-            "items": [
-              "Execute audit-orchestration.js to validate system",
-              "Check all markdown files with ASCII sketches",
-              "Check all Mermaid diagram files"
-            ]
-          },
-          {
-            "name": "Movement 8: Context Tree Creation",
-            "items": [
-              "Generate .generated/context-tree-orchestration-audit-session.json",
-              "Create this orchestration-audit-session.json sequence",
-              "Provide complete context for next agent to continue work"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "orchestration-audit-system",
-      "name": "Orchestration Audit System Domain Sequence",
-      "emoji": "🎼",
-      "description": "System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/ographx/.ographx/sequences/orchestration-audit-system.json",
-      "movements": 8,
-      "beats": 24,
-      "tempo": 108,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Orchestration Audit System Domain Sequence",
-        "sequence": {
-          "id": "orchestration-audit-system",
-          "name": "Orchestration Audit System Domain Sequence",
-          "tempo": 108,
-          "key": "G",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Phase 1: Bootstrap JSON Authority",
-            "items": [
-              "List registry, docs, diagrams, audit scripts",
-              "Mark JSON as canonical, docs as reflection",
-              "Capture initial orchestration-domains.json state"
-            ]
-          },
-          {
-            "name": "Movement 2: Phase 2: Registry Auto-Generation",
-            "items": [
-              "Wire catalog-sequences.json as input",
-              "Merge system-level sequence files",
-              "Run generator script for orchestration-domains.json"
-            ]
-          },
-          {
-            "name": "Movement 3: Phase 3: MusicalSequence Enrichment",
-            "items": [
-              "Inject tempo, key, timeSignature, category",
-              "Derive human-readable beat names from events",
-              "Ensure movements + beats present for each sequence"
-            ]
-          },
-          {
-            "name": "Movement 4: Phase 4: Documentation Reflection",
-            "items": [
-              "Align width, show sequence metadata header",
-              "Produce domains & execution flow docs",
-              "Produce Mermaid system + relationships diagrams"
-            ]
-          },
-          {
-            "name": "Movement 5: Phase 5: Audit Validation",
-            "items": [
-              "Execute audit-orchestration.js validator",
-              "Check MusicalSequence fields present",
-              "Ensure docs reflect registry state"
-            ]
-          },
-          {
-            "name": "Movement 6: Phase 6: Integrity Governance",
-            "items": [
-              "Add hash metadata to JSON artifacts",
-              "Provide context_integrity.py operations",
-              "Detect hash mismatch (expected pre-canonical)"
-            ]
-          },
-          {
-            "name": "Movement 7: Phase 7: Context Session Documentation",
-            "items": [
-              "Add gen-context-session-docs script",
-              "Generate orchestration-audit-session-context.md",
-              "Integrate generation into pre:manifests"
-            ]
-          },
-          {
-            "name": "Movement 8: Phase 8: Canonical Hash Refinement",
-            "items": [
-              "Specify hash field omission rules",
-              "Compute hash ignoring integrity block",
-              "Run integrity audit expecting stable lock"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "self_sequences",
       "name": "self_sequences",
       "emoji": "🎼",
@@ -2384,8 +2087,8 @@
       "relatedDomains": [],
       "status": "active",
       "sequenceFile": "packages/ographx/.ographx/sequences/self_sequences.json",
-      "movements": 1,
-      "beats": 5,
+      "movements": 0,
+      "beats": 0,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -2487,6 +2190,189 @@
               "Release orchestration resources",
               "Publish integrity hash"
             ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cag-agent-workflow",
+      "name": "CAG Agent Workflow - 8 Phase Sequence",
+      "emoji": "🎼",
+      "description": "Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages\\ographx\\.ographx\\sequences\\cag-agent-workflow.json",
+      "movements": 8,
+      "beats": 0,
+      "tempo": 100,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "CAG Agent Workflow - 8 Phase Sequence",
+        "sequence": {
+          "id": "cag-agent-workflow",
+          "name": "CAG Agent Workflow - 8 Phase Sequence",
+          "tempo": 100,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Phase 1: Context Loading",
+            "items": 4
+          },
+          {
+            "name": "Movement 2: Phase 2: Context Verification",
+            "items": 4
+          },
+          {
+            "name": "Movement 3: Phase 3: Workload Analysis",
+            "items": 6
+          },
+          {
+            "name": "Movement 4: Phase 4: Context Tree Mapping",
+            "items": 7
+          },
+          {
+            "name": "Movement 5: Phase 5: Action Planning",
+            "items": 6
+          },
+          {
+            "name": "Movement 6: Phase 6: Action Execution",
+            "items": 4
+          },
+          {
+            "name": "Movement 7: Phase 7: Telemetry Emission",
+            "items": 4
+          },
+          {
+            "name": "Movement 8: Phase 8: Feedback Loop",
+            "items": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "orchestration-audit-session",
+      "name": "Orchestration Audit System Implementation Session",
+      "emoji": "🎼",
+      "description": "Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages\\ographx\\.ographx\\sequences\\orchestration-audit-session.json",
+      "movements": 8,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Orchestration Audit System Implementation Session",
+        "sequence": {
+          "id": "orchestration-audit-session",
+          "name": "Orchestration Audit System Implementation Session",
+          "tempo": 120,
+          "key": "C",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Architecture Design",
+            "items": 3
+          },
+          {
+            "name": "Movement 2: JSON Source Creation",
+            "items": 3
+          },
+          {
+            "name": "Movement 3: Documentation Generation",
+            "items": 3
+          },
+          {
+            "name": "Movement 4: Diagram Generation",
+            "items": 3
+          },
+          {
+            "name": "Movement 5: Audit System",
+            "items": 4
+          },
+          {
+            "name": "Movement 6: Standards Alignment",
+            "items": 3
+          },
+          {
+            "name": "Movement 7: Verification",
+            "items": 3
+          },
+          {
+            "name": "Movement 8: Context Tree Creation",
+            "items": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "orchestration-audit-system",
+      "name": "Orchestration Audit System Domain Sequence",
+      "emoji": "🎼",
+      "description": "System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages\\ographx\\.ographx\\sequences\\orchestration-audit-system.json",
+      "movements": 8,
+      "beats": 0,
+      "tempo": 108,
+      "key": "G",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Orchestration Audit System Domain Sequence",
+        "sequence": {
+          "id": "orchestration-audit-system",
+          "name": "Orchestration Audit System Domain Sequence",
+          "tempo": 108,
+          "key": "G",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Phase 1: Bootstrap JSON Authority",
+            "items": 3
+          },
+          {
+            "name": "Movement 2: Phase 2: Registry Auto-Generation",
+            "items": 3
+          },
+          {
+            "name": "Movement 3: Phase 3: MusicalSequence Enrichment",
+            "items": 3
+          },
+          {
+            "name": "Movement 4: Phase 4: Documentation Reflection",
+            "items": 3
+          },
+          {
+            "name": "Movement 5: Phase 5: Audit Validation",
+            "items": 3
+          },
+          {
+            "name": "Movement 6: Phase 6: Integrity Governance",
+            "items": 3
+          },
+          {
+            "name": "Movement 7: Phase 7: Context Session Documentation",
+            "items": 3
+          },
+          {
+            "name": "Movement 8: Phase 8: Canonical Hash Refinement",
+            "items": 3
           }
         ]
       }

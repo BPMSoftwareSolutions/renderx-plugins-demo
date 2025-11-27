@@ -1,19 +1,19 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: .generated/archived-documents-index.json -->
-<!-- Generated: 2025-11-24T20:07:25.073Z -->
+<!-- Generated: 2025-11-27T00:18:56.841Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run archive:documents -->
 
 # Document Archive Index
 
 **Status**: All orphaned/unclassified documents archived  
-**Archived At**: 2025-11-24T20:07:21.836Z  
-**Total Documents**: 1721
+**Archived At**: 2025-11-27T00:18:52.904Z  
+**Total Documents**: 1796
 
 ---
 
 ## Overview
 
-This archive contains 1721 documents that were not part of the active documentation governance system. These documents are:
+This archive contains 1796 documents that were not part of the active documentation governance system. These documents are:
 
 - ✅ Fully searchable via index
 - ✅ Preserved with original metadata
@@ -22,7 +22,7 @@ This archive contains 1721 documents that were not part of the active documentat
 
 ## Categories
 
-### uncategorized (887 documents)
+### uncategorized (912 documents)
 
 - **🎯 START HERE - Architecture Enforcement Complete** (`00_START_HERE.md`)  
   Original: `.archived\uncategorized\00_START_HERE.md`  
@@ -64,9 +64,17 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `packages\musical-conductor\tools\docs\wiki\adr\0004-client-orchestration-via-play.md`  
   Keywords: adr-0004 — clients orchestrate via play(); startsequence hidden, context, decision, consequences, alternatives
 
-... and 877 more in uncategorized
+... and 902 more in uncategorized
 
-### reports (261 documents)
+### reports (286 documents)
+
+- **Actions 1-4 Completion Summary** (`ACTIONS_1-4_COMPLETION_REPORT.md`)  
+  Original: `.archived\reports\ACTIONS_1-4_COMPLETION_REPORT.md`  
+  Keywords: actions 1-4 completion summary, executive summary, actions completed, ✅ action 1: auto-fix widespread unused variable issues, fixed 278 unused variables across 198 files
+
+- **Actions 1-4 Completion Summary** (`ACTIONS_1-4_COMPLETION_REPORT.md`)  
+  Original: `docs\ACTIONS_1-4_COMPLETION_REPORT.md`  
+  Keywords: actions 1-4 completion summary, executive summary, actions completed, ✅ action 1: auto-fix widespread unused variable issues, fixed 278 unused variables across 198 files
 
 - **Analysis Data Explained** (`ANALYSIS_DATA_EXPLAINED.md`)  
   Original: `.archived\reports\ANALYSIS_DATA_EXPLAINED.md`  
@@ -77,11 +85,11 @@ This archive contains 1721 documents that were not part of the active documentat
   Keywords: analysis data explained, quick answer: what is `line_range`?, complete example, analysis output, what each field means
 
 - **Analysis Validation Report** (`ANALYSIS_VALIDATION_REPORT.md`)  
-  Original: `.archived\reports\ANALYSIS_VALIDATION_REPORT.md`  
+  Original: `.archived\ANALYSIS_VALIDATION_REPORT.md`  
   Keywords: analysis validation report, ✅ report is now valid, initial report (invalid), updated report (valid), 🔍 what was wrong
 
 - **Analysis Validation Report** (`ANALYSIS_VALIDATION_REPORT.md`)  
-  Original: `ANALYSIS_VALIDATION_REPORT.md`  
+  Original: `.archived\reports\ANALYSIS_VALIDATION_REPORT.md`  
   Keywords: analysis validation report, ✅ report is now valid, initial report (invalid), updated report (valid), 🔍 what was wrong
 
 - **Architecture Analyzer Status Report** (`ANALYZER_STATUS_REPORT.md`)  
@@ -100,17 +108,9 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `.generated\ARCHITECTURAL_ANALYSIS_ORCHESTRATION_DOMAINS.md`  
   Keywords: 🏗️ architectural analysis: orchestration domains registry, 🚨 the problem: manual data duplication, ✅ senior architect solution: automatic generation, 🎯 implementation strategy, phase 1: sequence file audit
 
-- **Audit Update Completion Report** (`AUDIT_COMPLETION_REPORT.md`)  
-  Original: `.archived\reports\AUDIT_COMPLETION_REPORT.md`  
-  Keywords: audit update completion report, objective, status: ✅ complete, changes made, 1. updated script
+... and 276 more in reports
 
-- **Audit Update Completion Report** (`AUDIT_COMPLETION_REPORT.md`)  
-  Original: `AUDIT_COMPLETION_REPORT.md`  
-  Keywords: audit update completion report, objective, status: ✅ complete, changes made, 1. updated script
-
-... and 251 more in reports
-
-### architecture (173 documents)
+### architecture (175 documents)
 
 - **ADR-0020: Plugin Architecture Validation and Completeness** (`0020-plugin-architecture-validation.md`)  
   Original: `.archived\architecture\0020-plugin-architecture-validation.md`  
@@ -152,9 +152,9 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `.archived\architecture\AI_ARCHITECTURE_DIAGRAMS.md`  
   Keywords: ai chatbot architecture - visual overview, system architecture diagram, data flow diagram, component validation pipeline (security), openai prompt structure
 
-... and 163 more in architecture
+... and 165 more in architecture
 
-### tutorials (105 documents)
+### tutorials (109 documents)
 
 - **🤖 AI Agent Onboarding Guide - MusicalConductor CLI** (`AGENT_ONBOARDING_GUIDE.md`)  
   Original: `.archived\tutorials\AGENT_ONBOARDING_GUIDE.md`  
@@ -196,9 +196,9 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `packages\self-healing\.generated\BUSINESS_BDD_HANDLERS_GUIDE.md`  
   Keywords: business bdd test files for all 67 handlers, 📍 location, ✅ complete coverage, 📋 test files by sequence, telemetry parsing (7 handlers)
 
-... and 95 more in tutorials
+... and 99 more in tutorials
 
-### testing (81 documents)
+### testing (82 documents)
 
 - **ADR-0013 — Test-friendly import.meta handling for Jest/ts-jest and ESM interop** (`0013-test-friendly-import-meta-in-jest.md`)  
   Original: `.archived\testing\0013-test-friendly-import-meta-in-jest.md`  
@@ -240,9 +240,9 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `docs\testing\authoring-plugins.md`  
   Keywords: authoring plugin-served tests (driver + manifest), quick checklist, minimal file layout (plugin repo), test manifest (normalized json), driver protocol (postmessage)
 
-... and 71 more in testing
+... and 72 more in testing
 
-### issue tracking (75 documents)
+### issue tracking (77 documents)
 
 - **ADR 0009: Fix Canvas Component Create React Rendering Delay + Resize Handler Export** (`0009-fix-canvas-create-react-rendering-delay.md`)  
   Original: `.archived\issue-tracking\0009-fix-canvas-create-react-rendering-delay.md`  
@@ -260,6 +260,14 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `packages\canvas\AI_CHATBOT_FEATURE_ISSUE.md`  
   Keywords: feature request: ai-powered component generator chatbot, 🎯 overview, 💡 problem statement, 🚀 proposed solution, 🏗️ technical architecture
 
+- **CI Fix: Unsupported `workspace:*` Protocol** (`CI_WORKSPACE_PROTOCOL_FIX.md`)  
+  Original: `.archived\issue-tracking\CI_WORKSPACE_PROTOCOL_FIX.md`  
+  Keywords: ci fix: unsupported `workspace:*` protocol, problem, root cause, solution, files changed
+
+- **CI Fix: Unsupported `workspace:*` Protocol** (`CI_WORKSPACE_PROTOCOL_FIX.md`)  
+  Original: `docs\fixes\CI_WORKSPACE_PROTOCOL_FIX.md`  
+  Keywords: ci fix: unsupported `workspace:*` protocol, problem, root cause, solution, files changed
+
 - **CLI → Browser Connection Fix** (`CLI_BROWSER_CONNECTION_FIX.md`)  
   Original: `.archived\issue-tracking\CLI_BROWSER_CONNECTION_FIX.md`  
   Keywords: cli → browser connection fix, problem, solution, 1. websocket server (vite plugin), 2. browser client (cli bridge)
@@ -276,15 +284,51 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `packages\musical-conductor\tools\cli\CLI_BUG_DETECTIVE_COMPLETE.md`  
   Keywords: 🎉 cli bug detective - complete implementation, project summary, what was built, phase 1: sequence replay & performance analysis ✅, phase 2: mock options for incremental unmocking ✅
 
-- **Container Child Interaction Issues** (`CONTAINER_CHILD_INTERACTION_ISSUE.md`)  
-  Original: `.archived\issue-tracking\CONTAINER_CHILD_INTERACTION_ISSUE.md`  
-  Keywords: container child interaction issues, summary, root cause, evidence: failing tests, test results
+... and 67 more in issue-tracking
 
-- **Container Child Interaction Issues** (`CONTAINER_CHILD_INTERACTION_ISSUE.md`)  
-  Original: `docs\CONTAINER_CHILD_INTERACTION_ISSUE.md`  
-  Keywords: container child interaction issues, summary, root cause, evidence: failing tests, test results
+### dashboards (52 documents)
 
-... and 65 more in issue-tracking
+- **Baseline Establishment Demo Run (2025-11-23)** (`BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`)  
+  Original: `.archived\BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`  
+  Keywords: baseline establishment demo run (2025-11-23), sequence executed, baseline completion event, anomaly detection summary (post-baseline), baseline file excerpt
+
+- **Baseline Establishment Demo Run (2025-11-23)** (`BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`)  
+  Original: `.archived\dashboards\BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`  
+  Keywords: baseline establishment demo run (2025-11-23), sequence executed, baseline completion event, anomaly detection summary (post-baseline), baseline file excerpt
+
+- **🎯 Complete System Demonstration: Telemetry Governance with Full Source Traceability** (`COMPLETE_SYSTEM_DEMONSTRATION.md`)  
+  Original: `.archived\COMPLETE_SYSTEM_DEMONSTRATION.md`  
+  Keywords: 🎯 complete system demonstration: telemetry governance with full source traceability, executive summary, what this system does, 1. **automatic anomaly detection** 📊, 2. **complete source lineage** 🔗
+
+- **🎯 Complete System Demonstration: Telemetry Governance with Full Source Traceability** (`COMPLETE_SYSTEM_DEMONSTRATION.md`)  
+  Original: `.archived\dashboards\COMPLETE_SYSTEM_DEMONSTRATION.md`  
+  Keywords: 🎯 complete system demonstration: telemetry governance with full source traceability, executive summary, what this system does, 1. **automatic anomaly detection** 📊, 2. **complete source lineage** 🔗
+
+- **🎉 DASHBOARD RECOVERY COMPLETE - 100% COMPLIANT** (`DASHBOARD_RECOVERY_COMPLETE.md`)  
+  Original: `.archived\dashboards\DASHBOARD_RECOVERY_COMPLETE.md`  
+  Keywords: 🎉 dashboard recovery complete - 100% compliant, what was done, before recovery, after recovery, recovery process
+
+- **🎉 DASHBOARD RECOVERY COMPLETE - 100% COMPLIANT** (`DASHBOARD_RECOVERY_COMPLETE.md`)  
+  Original: `.archived\DASHBOARD_RECOVERY_COMPLETE.md`  
+  Keywords: 🎉 dashboard recovery complete - 100% compliant, what was done, before recovery, after recovery, recovery process
+
+- **📍 Strategic Decision Map: Dashboard Architecture** (`DASHBOARD_STRATEGIC_DECISION_MAP.md`)  
+  Original: `.archived\dashboards\DASHBOARD_STRATEGIC_DECISION_MAP.md`  
+  Keywords: 📍 strategic decision map: dashboard architecture, 🎯 the decision, **question:** where should we build the dashboard?, **options considered:**, **selected: option a (generic package)**
+
+- **📍 Strategic Decision Map: Dashboard Architecture** (`DASHBOARD_STRATEGIC_DECISION_MAP.md`)  
+  Original: `.archived\DASHBOARD_STRATEGIC_DECISION_MAP.md`  
+  Keywords: 📍 strategic decision map: dashboard architecture, 🎯 the decision, **question:** where should we build the dashboard?, **options considered:**, **selected: option a (generic package)**
+
+- **🎯 Dashboard Strategic Location & Integration Plan** (`DASHBOARD_STRATEGIC_LOCATION.md`)  
+  Original: `.archived\dashboards\DASHBOARD_STRATEGIC_LOCATION.md`  
+  Keywords: 🎯 dashboard strategic location & integration plan, 📍 where the dashboard sits in the architecture, 🏗️ dashboard package structure, 📊 data flow: how dashboard integrates with self-healing, 🎯 key design principles for dashboard
+
+- **🎯 Dashboard Strategic Location & Integration Plan** (`DASHBOARD_STRATEGIC_LOCATION.md`)  
+  Original: `.archived\DASHBOARD_STRATEGIC_LOCATION.md`  
+  Keywords: 🎯 dashboard strategic location & integration plan, 📍 where the dashboard sits in the architecture, 🏗️ dashboard package structure, 📊 data flow: how dashboard integrates with self-healing, 🎯 key design principles for dashboard
+
+... and 42 more in dashboards
 
 ### setup guides (43 documents)
 
@@ -325,71 +369,27 @@ This archive contains 1721 documents that were not part of the active documentat
   Keywords: 🎼 orchestration audit system - session context, 📋 what was built, 🎯 key artifacts, single source of truth, generation scripts (es modules)
 
 - **Production Diagnostics System Summary** (`PRODUCTION_DIAGNOSTICS_README.md`)  
-  Original: `.archived\setup-guides\PRODUCTION_DIAGNOSTICS_README.md`  
+  Original: `.archived\PRODUCTION_DIAGNOSTICS_README.md`  
   Keywords: production diagnostics system summary, what's new: production diagnostics for renderx-web, new artifacts created, three production documents, one production script
 
 ... and 33 more in setup-guides
 
-### dashboards (38 documents)
+### api reference (34 documents)
 
-- **Baseline Establishment Demo Run (2025-11-23)** (`BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`)  
-  Original: `.archived\dashboards\BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`  
-  Keywords: baseline establishment demo run (2025-11-23), sequence executed, baseline completion event, anomaly detection summary (post-baseline), baseline file excerpt
-
-- **Baseline Establishment Demo Run (2025-11-23)** (`BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`)  
-  Original: `BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md`  
-  Keywords: baseline establishment demo run (2025-11-23), sequence executed, baseline completion event, anomaly detection summary (post-baseline), baseline file excerpt
-
-- **🎯 Complete System Demonstration: Telemetry Governance with Full Source Traceability** (`COMPLETE_SYSTEM_DEMONSTRATION.md`)  
-  Original: `.archived\dashboards\COMPLETE_SYSTEM_DEMONSTRATION.md`  
-  Keywords: 🎯 complete system demonstration: telemetry governance with full source traceability, executive summary, what this system does, 1. **automatic anomaly detection** 📊, 2. **complete source lineage** 🔗
-
-- **🎯 Complete System Demonstration: Telemetry Governance with Full Source Traceability** (`COMPLETE_SYSTEM_DEMONSTRATION.md`)  
-  Original: `COMPLETE_SYSTEM_DEMONSTRATION.md`  
-  Keywords: 🎯 complete system demonstration: telemetry governance with full source traceability, executive summary, what this system does, 1. **automatic anomaly detection** 📊, 2. **complete source lineage** 🔗
-
-- **🎉 DASHBOARD RECOVERY COMPLETE - 100% COMPLIANT** (`DASHBOARD_RECOVERY_COMPLETE.md`)  
-  Original: `.archived\dashboards\DASHBOARD_RECOVERY_COMPLETE.md`  
-  Keywords: 🎉 dashboard recovery complete - 100% compliant, what was done, before recovery, after recovery, recovery process
-
-- **🎉 DASHBOARD RECOVERY COMPLETE - 100% COMPLIANT** (`DASHBOARD_RECOVERY_COMPLETE.md`)  
-  Original: `DASHBOARD_RECOVERY_COMPLETE.md`  
-  Keywords: 🎉 dashboard recovery complete - 100% compliant, what was done, before recovery, after recovery, recovery process
-
-- **📍 Strategic Decision Map: Dashboard Architecture** (`DASHBOARD_STRATEGIC_DECISION_MAP.md`)  
-  Original: `.archived\dashboards\DASHBOARD_STRATEGIC_DECISION_MAP.md`  
-  Keywords: 📍 strategic decision map: dashboard architecture, 🎯 the decision, **question:** where should we build the dashboard?, **options considered:**, **selected: option a (generic package)**
-
-- **📍 Strategic Decision Map: Dashboard Architecture** (`DASHBOARD_STRATEGIC_DECISION_MAP.md`)  
-  Original: `DASHBOARD_STRATEGIC_DECISION_MAP.md`  
-  Keywords: 📍 strategic decision map: dashboard architecture, 🎯 the decision, **question:** where should we build the dashboard?, **options considered:**, **selected: option a (generic package)**
-
-- **🎯 Dashboard Strategic Location & Integration Plan** (`DASHBOARD_STRATEGIC_LOCATION.md`)  
-  Original: `.archived\dashboards\DASHBOARD_STRATEGIC_LOCATION.md`  
-  Keywords: 🎯 dashboard strategic location & integration plan, 📍 where the dashboard sits in the architecture, 🏗️ dashboard package structure, 📊 data flow: how dashboard integrates with self-healing, 🎯 key design principles for dashboard
-
-- **🎯 Dashboard Strategic Location & Integration Plan** (`DASHBOARD_STRATEGIC_LOCATION.md`)  
-  Original: `DASHBOARD_STRATEGIC_LOCATION.md`  
-  Keywords: 🎯 dashboard strategic location & integration plan, 📍 where the dashboard sits in the architecture, 🏗️ dashboard package structure, 📊 data flow: how dashboard integrates with self-healing, 🎯 key design principles for dashboard
-
-... and 28 more in dashboards
-
-### api reference (32 documents)
+- **7-LAYER DELIVERY PIPELINE - COMPLETE REFERENCE** (`7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`)  
+  Original: `.archived\7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`  
+  Keywords: 7-layer delivery pipeline - complete reference, overview, layer details, layer 1: business bdd specifications, layer 2: business bdd tests
 
 - **7-LAYER DELIVERY PIPELINE - COMPLETE REFERENCE** (`7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`)  
   Original: `.archived\api-reference\7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`  
   Keywords: 7-layer delivery pipeline - complete reference, overview, layer details, layer 1: business bdd specifications, layer 2: business bdd tests
 
-- **7-LAYER DELIVERY PIPELINE - COMPLETE REFERENCE** (`7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`)  
-  Original: `7_LAYER_PIPELINE_COMPLETE_REFERENCE.md`  
-  Keywords: 7-layer delivery pipeline - complete reference, overview, layer details, layer 1: business bdd specifications, layer 2: business bdd tests
-
 - **7-LAYER PIPELINE - VISUAL GUIDE & QUICK REFERENCE** (`7_LAYER_QUICK_REFERENCE.md`)  
-  Original: `.archived\api-reference\7_LAYER_QUICK_REFERENCE.md`  
+  Original: `.archived\7_LAYER_QUICK_REFERENCE.md`  
   Keywords: 7-layer pipeline - visual guide & quick reference, the 7 layers at a glance, compliance matrix, command reference, recover feature (all 7 layers)
 
 - **7-LAYER PIPELINE - VISUAL GUIDE & QUICK REFERENCE** (`7_LAYER_QUICK_REFERENCE.md`)  
-  Original: `7_LAYER_QUICK_REFERENCE.md`  
+  Original: `.archived\api-reference\7_LAYER_QUICK_REFERENCE.md`  
   Keywords: 7-layer pipeline - visual guide & quick reference, the 7 layers at a glance, compliance matrix, command reference, recover feature (all 7 layers)
 
 - **AI Component Generator - Quick Reference** (`AI_FEATURE_QUICK_REFERENCE.md`)  
@@ -405,7 +405,7 @@ This archive contains 1721 documents that were not part of the active documentat
   Keywords: 🔗 bdd specification files - quick reference, self-healing system (complete pattern) ✅, master specification file, generated business bdd test files, documentation files (in `.generated/` directory)
 
 - **🔗 BDD Specification Files - Quick Reference** (`BDD_SPECS_QUICK_REFERENCE.md`)  
-  Original: `BDD_SPECS_QUICK_REFERENCE.md`  
+  Original: `.archived\BDD_SPECS_QUICK_REFERENCE.md`  
   Keywords: 🔗 bdd specification files - quick reference, self-healing system (complete pattern) ✅, master specification file, generated business bdd test files, documentation files (in `.generated/` directory)
 
 - **Conductor API (Client Surface)** (`conductor-api.md`)  
@@ -416,7 +416,51 @@ This archive contains 1721 documents that were not part of the active documentat
   Original: `packages\musical-conductor\tools\docs\wiki\api\conductor-api.md`  
   Keywords: conductor api (client surface), client api (conductorclient), examples, initialize and call a sequence, subscribe to a domain event (optional)
 
-... and 22 more in api-reference
+... and 24 more in api-reference
+
+### specifications (13 documents)
+
+- **ADR-0021 — Centralized Feature & Perf Flags Registry** (`ADR-0021 — Centralized Feature and Perf Flags Registry.md`)  
+  Original: `docs\adr\ADR-0021 — Centralized Feature and Perf Flags Registry.md`  
+  Keywords: adr-0021 — centralized feature & perf flags registry, context, decision, consequences, implementation notes
+
+- **AI Chatbot Feature Documentation Index** (`AI_FEATURE_DOCS_INDEX.md`)  
+  Original: `packages\canvas\AI_FEATURE_DOCS_INDEX.md`  
+  Keywords: ai chatbot feature documentation index, 📄 documents, 1. **ai_chatbot_feature_issue.md** (main document), 2. **ai_chatbot_research_summary.md** (executive summary), 3. **github_issue_template.md** (ready-to-post issue)
+
+- **AI Component Generator - Technical Implementation Summary** (`AI_FEATURE_TECHNICAL_SUMMARY.md`)  
+  Original: `packages\library\docs\AI_FEATURE_TECHNICAL_SUMMARY.md`  
+  Keywords: ai component generator - technical implementation summary, overview, current state analysis, what we have ✅, what we need to build 🔨
+
+- **BDD Telemetry Governance** (`BDD_TELEMETRY_GOVERNANCE.md`)  
+  Original: `.archived\BDD_TELEMETRY_GOVERNANCE.md`  
+  Keywords: bdd telemetry governance, required signal fields, why, usage, governance enforcement (initial)
+
+- **Business BDD Handler Tests - Location & Structure** (`BUSINESS_BDD_HANDLERS_LOCATION.md`)  
+  Original: `packages\self-healing\.generated\BUSINESS_BDD_HANDLERS_LOCATION.md`  
+  Keywords: business bdd handler tests - location & structure, 📍 exact location, 📋 complete file list (67 files), telemetry parsing sequence (7 handlers), anomaly detection sequence (9 handlers)
+
+- **Complete BDD Testing Framework - Final Summary** (`COMPLETE_BDD_FRAMEWORK_SUMMARY.md`)  
+  Original: `packages\self-healing\.generated\COMPLETE_BDD_FRAMEWORK_SUMMARY.md`  
+  Keywords: complete bdd testing framework - final summary, 🎉 mission accomplished: 100% coverage for all 67 handlers, 📊 final statistics, test files created, test scenarios
+
+- **Comprehensive BDD Coverage - All 67 Handlers** (`COMPREHENSIVE_BDD_COVERAGE.md`)  
+  Original: `packages\self-healing\.generated\COMPREHENSIVE_BDD_COVERAGE.md`  
+  Keywords: comprehensive bdd coverage - all 67 handlers, ✅ complete coverage achieved, 📊 coverage summary, 📁 generated files, comprehensive business bdd specifications
+
+- **Enhanced UI Component & Style Scanner - What's New** (`ENHANCED_SCANNER_FEATURES.md`)  
+  Original: `docs\ENHANCED_SCANNER_FEATURES.md`  
+  Keywords: enhanced ui component & style scanner - what's new, 🎨 enhanced style details report, 📊 report size comparison, ✨ new features added, 1. 📋 detailed style cards
+
+- **✅ FINAL SUMMARY - TECHNICAL BDD REMOVED, 7-LAYER PIPELINE IMPLEMENTED** (`FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md`)  
+  Original: `.archived\FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md`  
+  Keywords: ✅ final summary - technical bdd removed, 7-layer pipeline implemented, what you requested, what was done ✅, 1. technical bdd removed, 2. 7-layer pipeline finalized
+
+- **GIF Export (Playwright + FFmpeg via Python)** (`gif-export.md`)  
+  Original: `docs\features\gif-export.md`  
+  Keywords: gif export (playwright + ffmpeg via python), overview, prerequisites (local dev), start the local export server, request shape (post /api/export/gif)
+
+... and 3 more in specifications
 
 ### deployment (13 documents)
 
@@ -450,61 +494,17 @@ This archive contains 1721 documents that were not part of the active documentat
 
 - **2025-11-24T17:26:54.672Z** (`orchestration-evolution-changelog.md`)  
   Original: `.archived\deployment\orchestration-evolution-changelog.md`  
-  Keywords: 2025-11-24t17:26:54.672z, orchestration, component
+  Keywords: 2025-11-24t17:26:54.672z, 2025-11-25t21:26:46.693z, 2025-11-27t00:11:30.159z, orchestration, component
 
 - **2025-11-24T17:26:54.672Z** (`orchestration-evolution-changelog.md`)  
   Original: `.generated\orchestration-evolution-changelog.md`  
-  Keywords: 2025-11-24t17:26:54.672z, orchestration, component
+  Keywords: 2025-11-24t17:26:54.672z, 2025-11-25t21:26:46.693z, 2025-11-27t00:11:30.159z, orchestration, component
 
 - **Orchestration Release Notes** (`orchestration-release-notes.md`)  
   Original: `.archived\deployment\orchestration-release-notes.md`  
   Keywords: orchestration release notes, release 2025-11-24t18:11:13.628z, summary, details, integrity
 
 ... and 3 more in deployment
-
-### specifications (13 documents)
-
-- **ADR-0021 — Centralized Feature & Perf Flags Registry** (`ADR-0021 — Centralized Feature and Perf Flags Registry.md`)  
-  Original: `docs\adr\ADR-0021 — Centralized Feature and Perf Flags Registry.md`  
-  Keywords: adr-0021 — centralized feature & perf flags registry, context, decision, consequences, implementation notes
-
-- **AI Chatbot Feature Documentation Index** (`AI_FEATURE_DOCS_INDEX.md`)  
-  Original: `packages\canvas\AI_FEATURE_DOCS_INDEX.md`  
-  Keywords: ai chatbot feature documentation index, 📄 documents, 1. **ai_chatbot_feature_issue.md** (main document), 2. **ai_chatbot_research_summary.md** (executive summary), 3. **github_issue_template.md** (ready-to-post issue)
-
-- **AI Component Generator - Technical Implementation Summary** (`AI_FEATURE_TECHNICAL_SUMMARY.md`)  
-  Original: `packages\library\docs\AI_FEATURE_TECHNICAL_SUMMARY.md`  
-  Keywords: ai component generator - technical implementation summary, overview, current state analysis, what we have ✅, what we need to build 🔨
-
-- **BDD Telemetry Governance** (`BDD_TELEMETRY_GOVERNANCE.md`)  
-  Original: `BDD_TELEMETRY_GOVERNANCE.md`  
-  Keywords: bdd telemetry governance, required signal fields, why, usage, governance enforcement (initial)
-
-- **Business BDD Handler Tests - Location & Structure** (`BUSINESS_BDD_HANDLERS_LOCATION.md`)  
-  Original: `packages\self-healing\.generated\BUSINESS_BDD_HANDLERS_LOCATION.md`  
-  Keywords: business bdd handler tests - location & structure, 📍 exact location, 📋 complete file list (67 files), telemetry parsing sequence (7 handlers), anomaly detection sequence (9 handlers)
-
-- **Complete BDD Testing Framework - Final Summary** (`COMPLETE_BDD_FRAMEWORK_SUMMARY.md`)  
-  Original: `packages\self-healing\.generated\COMPLETE_BDD_FRAMEWORK_SUMMARY.md`  
-  Keywords: complete bdd testing framework - final summary, 🎉 mission accomplished: 100% coverage for all 67 handlers, 📊 final statistics, test files created, test scenarios
-
-- **Comprehensive BDD Coverage - All 67 Handlers** (`COMPREHENSIVE_BDD_COVERAGE.md`)  
-  Original: `packages\self-healing\.generated\COMPREHENSIVE_BDD_COVERAGE.md`  
-  Keywords: comprehensive bdd coverage - all 67 handlers, ✅ complete coverage achieved, 📊 coverage summary, 📁 generated files, comprehensive business bdd specifications
-
-- **Enhanced UI Component & Style Scanner - What's New** (`ENHANCED_SCANNER_FEATURES.md`)  
-  Original: `docs\ENHANCED_SCANNER_FEATURES.md`  
-  Keywords: enhanced ui component & style scanner - what's new, 🎨 enhanced style details report, 📊 report size comparison, ✨ new features added, 1. 📋 detailed style cards
-
-- **✅ FINAL SUMMARY - TECHNICAL BDD REMOVED, 7-LAYER PIPELINE IMPLEMENTED** (`FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md`)  
-  Original: `FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md`  
-  Keywords: ✅ final summary - technical bdd removed, 7-layer pipeline implemented, what you requested, what was done ✅, 1. technical bdd removed, 2. 7-layer pipeline finalized
-
-- **GIF Export (Playwright + FFmpeg via Python)** (`gif-export.md`)  
-  Original: `docs\features\gif-export.md`  
-  Keywords: gif export (playwright + ffmpeg via python), overview, prerequisites (local dev), start the local export server, request shape (post /api/export/gif)
-
-... and 3 more in specifications
 
 ---
 
@@ -585,6 +585,6 @@ console.log(results);
 
 ---
 
-**Archive created: 2025-11-24T20:07:21.836Z**
+**Archive created: 2025-11-27T00:18:52.904Z**
 
 <!-- DO NOT EDIT - Regenerate with: npm run archive:documents -->

@@ -16,6 +16,7 @@ Allowed top-level directories: packages, scripts, .generated, config, catalog, d
 - docs
 - eslint-rules
 - examples
+- governance
 - json-components
 - json-sequences
 - k8s
@@ -35,11 +36,11 @@ Allowed top-level directories: packages, scripts, .generated, config, catalog, d
 ## Role Coverage
 
 - telemetry-core: 12 files
-- governance-script: 7 files
+- governance-script: 9 files
 - test-spec: 96 files
-- generated-artifact: 47 files
+- generated-artifact: 306 files
 
 ## Summary
 
-UnexpectedCount: 18  EmptyCount: 2
+UnexpectedCount: 19  EmptyCount: 2
 

@@ -1,8 +1,3 @@
-<!-- AUTO-GENERATED
-Doc-Hash: d0613ac50e070731f046893a59dd443a5914b0ce8a3f0fbc8c3d5a495efe0b3c
-Regenerate: npm run generate:governance:docs
--->
-
 # Telemetry Matrix
 
 > DO NOT EDIT. Generated from orchestration-audit-system-project-plan.json

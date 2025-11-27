@@ -110,3 +110,40 @@ Readiness Score: 85.7%
 Readiness Score: 85.7%
 
 *Automated entry. Do not edit.*
+
+## Release 2025-11-27T00:11:32.083Z
+
+### Summary
+- Structural Diff: CHANGE (added=0, removed=0, changed=3)
+- Compliance Status: PASS
+- Plan Version: 1.3.0
+- Canonical Stability: pending
+
+### Details
+**Added Domains:** None
+
+### Integrity
+- Canonical Hash Report Present: true
+- Sprint Integrity Hashes:
+  - Sprint 0: 0b6d42345c2298ce8d004b44fd381c43a3e4b4cd884a4e54348a93c288fac667
+  - Sprint 1: 3d773c0231cf68bac40a0b62e343debf83b1a0483911340babc50a1472d4bf0c
+
+### Telemetry
+- Telemetry Baselines:
+  - Sprint 0 (DEFINED): 490d6362403feb3420c3629ed59e3a23d15fc1c6ad8bbd94e7efa9515a9ecd21
+  - Sprint 1 (DEFINED): 3321491f26f683db9c92ff3ed938bb1b5b1fb216a5ab262cb64165386c6f5a22
+  - Sprint 2 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 3 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 4 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 5 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 6 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 7 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+  - Sprint 8 (PENDING): e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec
+
+### Provenance
+- Index Present: true
+
+### Demo Readiness (Snapshot)
+Readiness Score: 85.7%
+
+*Automated entry. Do not edit.*

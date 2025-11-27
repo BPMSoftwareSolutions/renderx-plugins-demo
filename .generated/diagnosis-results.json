@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T23:50:22.281Z",
+  "timestamp": "2025-11-26T23:50:37.258Z",
   "slice": {
     "performanceIssues": [
       {
@@ -11,7 +11,7 @@
     "behavioralIssues": [],
     "coverageIssues": [],
     "errorIssues": [],
-    "generatedAt": "2025-11-26T23:50:22.280Z",
-    "sequenceId": "diag-seq-1"
+    "generatedAt": "2025-11-26T23:50:37.256Z",
+    "sequenceId": "diag-seq-2"
   }
 }
