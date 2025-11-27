@@ -132,7 +132,7 @@ To be enabled: Implement scanHandlerExports() to discover handler functions in p
 Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (86.61%) ✅
+✓ Coverage (81.80%) ✅
 ✓ Handler Scanning (Not Implemented) ⚠
 
 ---
@@ -143,6 +143,11 @@ Gating Level: **CONDITIONAL**
 - **Impact**: Reduce maintainability debt; improve code clarity
 - **Effort**: Medium (3-5 story points)
 - **Next Step**: Identify top 5 duplicated blocks; create refactoring stories
+
+#### Most Duplicated Files (pending real scan)
+⚠ Duplicate block detection is not yet implemented.
+To be enabled: Implement duplicationScanner() using AST region hashing.
+Status: Deferred to Phase 2. Use this metric as Phase 2 foundation.
 
 ### [HIGH] 2. Increase Branch Coverage for Beat 3 (60%) and Beat 4 (48%)
 - **Impact**: Reduce test-related risk; improve governance conformity
@@ -156,11 +161,11 @@ Gating Level: **CONDITIONAL**
 - **Effort**: Medium (2-4 story points)
 - **Next Step**: Build scanHandlerExports() to crawl packages/*/src/**/*.{ts,tsx,js,jsx}; discover and catalog handlers
 
-### [MEDIUM] 4. Improve Maintainability Index (47.1/100 → target 70+)
-- **Impact**: Reduce future refactoring burden
-- **Current**: Graded 'POOR'; needs work on complexity, documentation, comments
+### [MEDIUM] 4. Improve Movement 2 Maintainability Index (47.1 → target 70+)
+- **Impact**: Reduce future refactoring burden in metrics analysis
+- **Current**: Movement 2 graded POOR (47.1); global is 62.61 (FAIR). Focus on movement-specific improvement.
 - **Effort**: Medium (ongoing)
-- **Next Step**: Add JSDoc comments to complex functions; break down high-complexity beats
+- **Next Step**: Add JSDoc comments to complex functions in metrics beat; break down high-complexity analysis flows
 
 ### [MEDIUM] 5. Resolve Movement 2 Conformity Violations (2/16 beats)
 - **Impact**: Achieve 100% conformity compliance
@@ -176,7 +181,7 @@ Gating Level: **CONDITIONAL**
 
 ### [LOW] 7. Add Test Coverage Documentation
 - **Impact**: Improve team understanding; reduce onboarding time
-- **Current**: 83.94% coverage but gaps in Movement 3-4
+- **Current**: 81.80% statements coverage but gaps in Movement 3-4 (55-68%)
 - **Effort**: Low (documentation)
 - **Next Step**: Add README in test directories; document coverage goals per beat
 
