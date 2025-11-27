@@ -388,6 +388,361 @@
           ]
         }
       ]
+    },
+    {
+      "movement": 4,
+      "name": "Process Symphonic Compliance Remediation",
+      "description": "Detect and convert 207+ non-symphonic processes into fully symphonic orchestration sequences with complete movement/beat structure, domain alignment, and governance compliance",
+      "kind": "remediation",
+      "violationCategories": [
+        "PROCESS_SYMPHONIC_VIOLATION"
+      ],
+      "processConversionStrategy": {
+        "targetMetrics": {
+          "processesIdentified": 207,
+          "conversionSuccessRate": 0.98,
+          "fullySymphonic": true,
+          "governanceCompliant": true
+        },
+        "conversionPhases": [
+          "Discovery & Analysis",
+          "Symphonic Structure Generation",
+          "Domain Alignment",
+          "Governance Integration",
+          "Validation & Remediation"
+        ]
+      },
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Create Process Analysis Snapshot",
+          "description": "Capture current state of all processes before symphonic conversion begins",
+          "event": "phase-4:process:snapshot:created",
+          "handler": "createProcessConversionSnapshot",
+          "kind": "safety",
+          "timing": "< 1s",
+          "critical": true,
+          "snapshotIncludes": [
+            "All process definitions",
+            "Legacy process structures",
+            "Existing process metadata",
+            "Process dependencies",
+            "Current process compliance scores"
+          ]
+        },
+        {
+          "beat": 2,
+          "title": "Discover Non-Symphonic Processes",
+          "description": "Scan entire codebase and identify all processes that lack symphonic structure (no movements, beats, events)",
+          "event": "phase-4:discovery:initiated",
+          "handler": "discoverNonSymphonicProcesses",
+          "kind": "discovery",
+          "timing": "< 5s",
+          "input": {
+            "patterns": [
+              "packages/*/processes/**/*.json",
+              "packages/*/workflows/**/*.json",
+              "packages/orchestration/processes/**/*.json",
+              "docs/procedures/**/*.md",
+              "src/**/*process*.json",
+              "src/**/*workflow*.json"
+            ]
+          },
+          "discoveryMetrics": {
+            "targetCount": 207,
+            "analysisDepth": "comprehensive",
+            "includeDependencies": true,
+            "trackOrigins": true
+          }
+        },
+        {
+          "beat": 3,
+          "title": "Analyze Process Conformity Gap",
+          "description": "Evaluate each process against symphonic conformity standards and identify required transformations",
+          "event": "phase-4:conformity:analyzed",
+          "handler": "analyzeProcessConformityGap",
+          "kind": "analysis",
+          "timing": "< 10s",
+          "analysisCategories": [
+            "Missing movement structure",
+            "No beat definitions",
+            "Absent event taxonomy",
+            "Lacking domain alignment",
+            "No governance policies",
+            "Missing handler implementations",
+            "No BDD specifications",
+            "Lacking telemetry instrumentation",
+            "No rollback capabilities",
+            "Missing metadata",
+            "Incomplete documentation",
+            "No version tracking",
+            "Missing compliance markers",
+            "Lacking state management",
+            "No audit trail"
+          ],
+          "generatedReport": "process-conformity-gap-analysis.json"
+        },
+        {
+          "beat": 4,
+          "title": "Generate Symphonic Process Blueprints",
+          "description": "Create symphonic sequence blueprints for each identified process with auto-generated movement/beat structures",
+          "event": "phase-4:blueprints:generated",
+          "handler": "generateSymphonicBlueprints",
+          "kind": "transformation",
+          "timing": "< 15s",
+          "generationStrategy": {
+            "analysisSource": "process-conformity-gap-analysis.json",
+            "blueprintTemplate": "symphonic-process-template.json",
+            "movementGeneration": "auto",
+            "beatCount": "calculated",
+            "eventTaxonomy": "governance-aligned",
+            "domainMapping": "intelligent"
+          },
+          "blueprintIncludes": [
+            "Movement definitions with logical phases",
+            "Beat structure with calculated counts",
+            "Event taxonomy aligned with governance",
+            "Domain mappings and relationships",
+            "Handler stubs for each beat",
+            "BDD specification templates",
+            "Governance policy assignments",
+            "Telemetry instrumentation hooks",
+            "Rollback capability markers",
+            "Audit trail configuration"
+          ]
+        },
+        {
+          "beat": 5,
+          "title": "Align Processes with Domains",
+          "description": "Map each process to appropriate domains and establish proper domain-process relationships",
+          "event": "phase-4:domain:alignment:complete",
+          "handler": "alignProcessesWithDomains",
+          "kind": "remediation",
+          "timing": "< 8s",
+          "domainAlignmentStrategy": {
+            "analysisMethod": "semantic-mapping",
+            "relationshipTypes": [
+              "owns",
+              "implements",
+              "depends-on",
+              "serves",
+              "orchestrates"
+            ],
+            "updateArtifacts": [
+              "Domain registry entries",
+              "Process blueprints",
+              "Orchestration manifests",
+              "Dependency graphs"
+            ]
+          }
+        },
+        {
+          "beat": 6,
+          "title": "Integrate Governance Policies",
+          "description": "Apply governance policies to symphonic processes and establish compliance checkpoints",
+          "event": "phase-4:governance:integrated",
+          "handler": "integrateGovernancePolicies",
+          "kind": "governance",
+          "timing": "< 6s",
+          "policyIntegration": {
+            "policiesApplied": [
+              "Atomic transaction policies",
+              "Rollback capability requirements",
+              "Snapshot before modification policies",
+              "Event emission policies",
+              "Audit trail policies",
+              "Compliance scoring policies",
+              "Telemetry instrumentation policies"
+            ],
+            "complianceCheckpoints": [
+              "Process definition validation",
+              "Movement structure validation",
+              "Beat count verification",
+              "Event taxonomy compliance",
+              "Domain relationship validation",
+              "Handler implementation status",
+              "Governance policy compliance"
+            ]
+          }
+        },
+        {
+          "beat": 7,
+          "title": "Generate Handler Implementations",
+          "description": "Create handler stubs and implementation templates for all process beats",
+          "event": "phase-4:handlers:generated",
+          "handler": "generateProcessHandlers",
+          "kind": "code-generation",
+          "timing": "< 10s",
+          "handlerGeneration": {
+            "outputLocation": "packages/orchestration/handlers/converted-processes/",
+            "includeTemplates": [
+              "Handler class stub",
+              "Method signatures for each beat",
+              "Error handling patterns",
+              "Telemetry instrumentation",
+              "Rollback capability",
+              "Event emission"
+            ],
+            "generationFormat": "TypeScript/JavaScript"
+          }
+        },
+        {
+          "beat": 8,
+          "title": "Create BDD Specifications",
+          "description": "Generate Gherkin feature files and step definitions for symphonic process BDD validation",
+          "event": "phase-4:bdd:generated",
+          "handler": "generateProcessBddSpecs",
+          "kind": "code-generation",
+          "timing": "< 8s",
+          "bddGeneration": {
+            "outputLocation": "packages/orchestration/specs/converted-processes/",
+            "specTemplate": "process-bdd-template.feature",
+            "includeScenarios": [
+              "Happy path execution",
+              "Error scenarios",
+              "Rollback scenarios",
+              "Governance compliance",
+              "Domain alignment verification",
+              "Telemetry accuracy",
+              "Performance benchmarks"
+            ]
+          }
+        },
+        {
+          "beat": 9,
+          "title": "Apply Process Transformations",
+          "description": "Execute symphonic conversion by applying all generated blueprints and implementations",
+          "event": "phase-4:transformations:applied",
+          "handler": "applyProcessTransformations",
+          "kind": "remediation",
+          "timing": "< 20s",
+          "automationRate": 0.98,
+          "rollbackCapable": true,
+          "transformationActions": [
+            "Replace legacy process definitions with symphonic sequences",
+            "Register new processes in orchestration manifests",
+            "Update domain registry entries",
+            "Create handler implementations",
+            "Generate BDD specifications",
+            "Apply governance policies",
+            "Configure telemetry",
+            "Setup audit trails"
+          ]
+        },
+        {
+          "beat": 10,
+          "title": "Validate Process Symphonic Compliance",
+          "description": "Verify that all converted processes meet symphonic conformity standards",
+          "event": "phase-4:validation:complete",
+          "handler": "validateProcessSymphonicCompliance",
+          "kind": "validation",
+          "timing": "< 5s",
+          "complianceChecks": [
+            "All processes have symphonic structure",
+            "Movement definitions are complete",
+            "Beat counts are calculated correctly",
+            "Event taxonomy is consistent",
+            "Domain alignments are valid",
+            "Governance policies are applied",
+            "Handler implementations exist",
+            "BDD specifications are complete",
+            "Telemetry is instrumented",
+            "Audit trails are configured",
+            "No conformity violations remain"
+          ],
+          "failureThreshold": 0.02,
+          "criticalChecks": [
+            "All 207 processes converted",
+            "Zero CRITICAL violations",
+            "100% domain alignment",
+            "100% governance compliance"
+          ]
+        },
+        {
+          "beat": 11,
+          "title": "Register Converted Processes",
+          "description": "Register all symphonic processes in the orchestration manifest and domain registry",
+          "event": "phase-4:registration:complete",
+          "handler": "registerConvertedProcesses",
+          "kind": "registration",
+          "timing": "< 3s",
+          "registrationSteps": [
+            "Add process entries to orchestration manifest",
+            "Register in domain registry",
+            "Create process index",
+            "Generate cross-references",
+            "Update dependency graphs",
+            "Create traceability records"
+          ]
+        },
+        {
+          "beat": 12,
+          "title": "Generate Process Conversion Report",
+          "description": "Create comprehensive report of all 207 process conversions with transformation details and validation results",
+          "event": "phase-4:conversion:complete",
+          "handler": "generateProcessConversionReport",
+          "kind": "reporting",
+          "timing": "< 2s",
+          "reportIncludes": [
+            "Total processes discovered: 207",
+            "Total processes converted",
+            "Conversion success rate",
+            "By-category conversion summary",
+            "Domain alignment results",
+            "Governance compliance status",
+            "Handler implementation status",
+            "BDD specification coverage",
+            "Before/after process comparison",
+            "Transformation metrics",
+            "Compliance score improvements",
+            "Risk assessment of conversions",
+            "Detailed conversion logs",
+            "Recommendations for manual review"
+          ],
+          "reportFormats": [
+            "JSON",
+            "Markdown",
+            "HTML dashboard"
+          ]
+        },
+        {
+          "beat": 13,
+          "title": "Execute Compliance Validation Suite",
+          "description": "Run comprehensive test suite to validate all converted processes",
+          "event": "phase-4:test:suite:executed",
+          "handler": "executeProcessValidationSuite",
+          "kind": "validation",
+          "timing": "< 30s",
+          "testCategories": [
+            "Unit tests for process handlers",
+            "Integration tests for process chains",
+            "BDD scenario validation",
+            "Governance policy compliance tests",
+            "Domain alignment tests",
+            "Performance baseline tests",
+            "Telemetry accuracy tests"
+          ]
+        },
+        {
+          "beat": 14,
+          "title": "Commit Symphonic Conversion",
+          "description": "Safely commit all converted processes to Git with phase metadata and conversion tracking",
+          "event": "phase-4:git:committed",
+          "handler": "commitProcessConversion",
+          "kind": "version-control",
+          "timing": "< 2s",
+          "commitIncludes": [
+            "All converted process definitions",
+            "Generated handler implementations",
+            "Created BDD specifications",
+            "Updated orchestration manifests",
+            "Conversion reports",
+            "Compliance validation results"
+          ],
+          "commitMessage": "Process Symphonic Compliance Remediation: Convert 207 legacy processes to symphonic sequences",
+          "tagging": "process-remediation-complete"
+        }
+      ]
     }
   ],
   "handlers": {
@@ -495,6 +850,91 @@
       "method": "generateReport",
       "timeout": 500,
       "retries": 1
+    },
+    "createProcessConversionSnapshot": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "createProcessSnapshot",
+      "timeout": 1000,
+      "retries": 1
+    },
+    "discoverNonSymphonicProcesses": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "discoverNonSymphonicProcesses",
+      "timeout": 5000,
+      "retries": 2
+    },
+    "analyzeProcessConformityGap": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "analyzeProcessConformityGap",
+      "timeout": 10000,
+      "retries": 1
+    },
+    "generateSymphonicBlueprints": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "generateSymphonicBlueprints",
+      "timeout": 15000,
+      "retries": 1
+    },
+    "alignProcessesWithDomains": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "alignProcessesWithDomains",
+      "timeout": 8000,
+      "retries": 1
+    },
+    "integrateGovernancePolicies": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "integrateGovernancePolicies",
+      "timeout": 6000,
+      "retries": 1
+    },
+    "generateProcessHandlers": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "generateProcessHandlers",
+      "timeout": 10000,
+      "retries": 1
+    },
+    "generateProcessBddSpecs": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "generateProcessBddSpecs",
+      "timeout": 8000,
+      "retries": 1
+    },
+    "applyProcessTransformations": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "applyProcessTransformations",
+      "timeout": 20000,
+      "retries": 0,
+      "rollbackCapable": true
+    },
+    "validateProcessSymphonicCompliance": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "validateProcessSymphonicCompliance",
+      "timeout": 5000,
+      "retries": 2
+    },
+    "registerConvertedProcesses": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "registerConvertedProcesses",
+      "timeout": 3000,
+      "retries": 1
+    },
+    "generateProcessConversionReport": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "generateProcessConversionReport",
+      "timeout": 2000,
+      "retries": 1
+    },
+    "executeProcessValidationSuite": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "executeProcessValidationSuite",
+      "timeout": 30000,
+      "retries": 1
+    },
+    "commitProcessConversion": {
+      "script": "scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "method": "commitProcessConversion",
+      "timeout": 2000,
+      "retries": 1
     }
   },
   "rollbackStrategy": {
@@ -531,6 +971,19 @@
         "bdd_spec_alignment_score >= 0.95",
         "missing_handler_methods == 0"
       ]
+    },
+    "phase4": {
+      "description": "All 207 legacy processes converted to symphonic sequences with full compliance",
+      "metrics": [
+        "processes_discovered >= 207",
+        "processes_converted >= 207",
+        "process_conversion_success_rate >= 0.98",
+        "process_symphonic_compliance_score >= 0.99",
+        "domain_alignment_for_processes == 1.0",
+        "governance_compliance_for_processes == 1.0",
+        "critical_violations_remaining == 0",
+        "all_processes_registered == true"
+      ]
     }
   },
   "metadata": {
@@ -546,5 +999,5 @@
     "documentation": "All documentation for this pipeline is auto-generated from this JSON authority file"
   },
   "tempo": 120,
-  "beats": 3
+  "beats": 4
 }
