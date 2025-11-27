@@ -14,6 +14,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const classifier = require('./symphonic-metrics-classifier.cjs');
 const { scanHandlerExports, formatHandlersMarkdown } = require('./scan-handlers.cjs');
+const { scanCodeDuplication, formatDuplicationMarkdown } = require('./scan-duplication.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -325,6 +326,32 @@ Verify scan-handlers.cjs is accessible and git repository is initialized.`;
   }
 }
 
+/**
+ * Generate duplication metrics markdown section
+ * Uses real discovered duplicates from scanCodeDuplication
+ */
+async function generateDuplicationMetrics() {
+  try {
+    const results = await scanCodeDuplication();
+    
+    if (results.error) {
+      return `⚠ **Duplication scan error**: ${results.error}
+
+Retrying with manual detection deferred to next run.`;
+    }
+    
+    return `${formatDuplicationMarkdown(results)}
+
+**Measurement**: Source='measured' (AST region hashing across ${results.filesScanned} files)
+**Last Scan**: ${results.timestamp}`;
+    
+  } catch (err) {
+    return `❌ **Duplication scan failed**: ${err.message}
+
+Verify scan-duplication.cjs is accessible and git repository is initialized.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -439,6 +466,7 @@ async function generateMarkdownReport(metrics, artifacts) {
   
   // Get handler metrics first (async operation)
   const handlerMetrics = await generateHandlerMetrics();
+  const duplicationMetrics = await generateDuplicationMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -516,9 +544,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 - **Status**: ✓ Within acceptable limits
 
 ### Code Duplication
-- **Duplication Rate**: ${metrics.duplication.duplicationPercent}%
-- **Duplicate Lines**: ${metrics.duplication.duplicateLines}
-- **Status**: ⚠ Monitor for refactoring opportunities
+
+${duplicationMetrics}
 
 ### Maintainability Index
 - **Score**: ${metrics.maintainability.maintainability}/100

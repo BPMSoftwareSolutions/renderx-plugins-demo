@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T19:34:12.905Z  
+**Generated**: 2025-11-27T19:36:02.142Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,8 +13,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 84.42% | ✅ GOOD| Risk: LOW|
-| Maintainability | 69.86/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 79.73% | ⚠️  FAIR| Risk: MEDIUM|
+| Maintainability | 61.07/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -50,20 +50,36 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 - **Status**: ✓ Within acceptable limits
 
 ### Code Duplication
-- **Duplication Rate**: 78.30%
-- **Duplicate Lines**: 783
-- **Status**: ⚠ Monitor for refactoring opportunities
+
+⚠ **561 duplicated code blocks detected**
+
+**Top Duplications:**
+  1. **12 files** | 15 occurrences | 5 lines | CanvasHeader.tsx:178-182, CanvasPage.tsx:26-30, ControlPanel.tsx:62-66
+  2. **9 files** | 9 occurrences | 5 lines | ColorInput.tsx:80-84, NumberInput.tsx:78-82, SelectInput.tsx:60-64
+  3. **5 files** | 8 occurrences | 5 lines | create.react.stage-crew.ts:136-140, create.react.stage-crew.ts:175-179, create.react.stage-crew.ts:237-241
+  4. **4 files** | 8 occurrences | 5 lines | export.mp4.stage-crew.ts:247-251, export.mp4.stage-crew.ts:278-282, CanvasDrop.ts:186-190
+  5. **8 files** | 8 occurrences | 5 lines | CanvasHeader.tsx:179-183, CanvasPage.tsx:27-31, HeaderControls.tsx:12-16
+
+**Metrics:**
+- Duplicate Regions: 561
+- Estimated Duplicate Lines: 4085
+- Duplication Rate: ~145.63%
+
+**Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
+
+**Measurement**: Source='measured' (AST region hashing across 233 files)
+**Last Scan**: 2025-11-27T19:36:02.141Z
 
 ### Maintainability Index
-- **Score**: 69.86/100
+- **Score**: 61.07/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 71.7%
-  - Documentation: 86.7%
-  - Comment Density: 99.7%
-  - Complexity Score: 63.1
+  - Test Coverage: 68.0%
+  - Documentation: 83.8%
+  - Comment Density: 41.4%
+  - Complexity Score: 47.8
 
 ---
 
@@ -74,10 +90,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 84.42% | 80% | ✓ |
-| Branches | 79.92% | 75% | ✓ |
-| Functions | 81.65% | 80% | ✓ |
-| Lines | 74.55% | 80% | ⚠ |
+| Statements | 79.73% | 80% | ⚠ |
+| Branches | 73.02% | 75% | ⚠ |
+| Functions | 88.70% | 80% | ✓ |
+| Lines | 76.43% | 80% | ⚠ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -121,7 +137,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-27T19:34:12.904Z
+**Last Scan**: 2025-11-27T19:36:01.934Z
 
 ---
 
@@ -138,12 +154,12 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
+**Ready for CI Gating**: ❌ **NOT READY**
 
-Gating Level: **CONDITIONAL**
+Gating Level: **FAIL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (86.61%) ✅
+✓ Coverage (86.61%) ❌
 ✓ Handler Scanning (Not Implemented) ⚠
 
 ---
@@ -228,10 +244,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-34-12-619Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-34-12-619Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-34-12-619Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T19-34-12-619Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-36-01-680Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-36-01-680Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-36-01-680Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T19-36-01-680Z.json
 
 ---
 
