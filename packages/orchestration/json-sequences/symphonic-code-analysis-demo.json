@@ -13,14 +13,15 @@
   "key": "C Major",
   "timeSignature": "4/4",
   "category": "orchestration",
-  "beats": 4,
+  "beats": 5,
   "governance": {
     "policies": [
       "All analysis results must be reviewed by at least one architect before approval",
       "Trend analysis must show improvement or stability (no regression)",
       "Critical findings must be addressed before approval",
       "Demo must document stakeholder feedback and decisions",
-      "Approved metrics become the baseline for next cycle governance"
+      "Approved metrics become the baseline for next cycle governance",
+      "Demo artifacts must be generated and archived for audit trail"
     ],
     "metrics": [
       "Time to review (minutes)",
@@ -39,6 +40,7 @@
     "demo:approved",
     "demo:rejected",
     "demo:feedback:captured",
+    "demo:artifacts:generated",
     "demo:complete"
   ],
   "handlers": [
@@ -77,6 +79,15 @@
       "framework": "Symphonic Code Analysis",
       "activity": "Approve (4)",
       "relatedActivities": ["Formal Approval", "Sign-off", "Governance Enforcement"]
+    },
+    {
+      "id": "generate-demo-artifacts",
+      "name": "Generate Demo Artifacts",
+      "description": "Create JSON and markdown artifacts documenting demo results, stakeholder decisions, and approval status for audit trail",
+      "type": "reporting",
+      "framework": "Symphonic Code Analysis",
+      "activity": "Document (5)",
+      "relatedActivities": ["Artifact Generation", "Audit Trail", "Documentation"]
     }
   ],
   "movements": [
@@ -191,6 +202,57 @@
           "timing": "Per-demo session (minutes)"
         }
       ]
+    },
+    {
+      "movement": 5,
+      "id": "archive-demo-results",
+      "name": "Archive & Document Demo Results",
+      "description": "Generate and archive demo artifacts including approval decisions, stakeholder feedback, and updated baselines",
+      "purpose": "Create immutable audit trail of demo session outcomes and stakeholder approvals",
+      "visibility": 0.90,
+      "consistency": 0.88,
+      "beats": 1,
+      "sequence": [
+        {
+          "beat": 1,
+          "id": "generate-artifacts",
+          "name": "Generate Demo Artifacts",
+          "description": "Create JSON summary of demo results, markdown report with feedback, and approval documentation",
+          "key_activity": "Document (5)",
+          "handlers": ["generate-demo-artifacts"],
+          "success_criteria": [
+            "Demo summary JSON created with results",
+            "Feedback summary markdown generated",
+            "Stakeholder approval documentation recorded",
+            "Baseline update manifest created",
+            "Artifacts stored in immutable archive"
+          ],
+          "timing": "Per-demo session (5-10 minutes)"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "type": "JSON",
+      "name": "demo-{codebase}-results-{timestamp}.json",
+      "path": ".generated/demo-results/",
+      "description": "Complete demo session results including approval decisions and baseline updates",
+      "purpose": "Immutable record of demo outcomes and stakeholder decisions"
+    },
+    {
+      "type": "Markdown",
+      "name": "demo-{codebase}-feedback-summary.md",
+      "path": "docs/generated/symphonic-code-analysis-demo/",
+      "description": "Human-readable summary of demo feedback, recommendations, and next steps",
+      "purpose": "Communication document for stakeholders and follow-up actions"
+    },
+    {
+      "type": "JSON",
+      "name": "demo-{codebase}-approval-{timestamp}.json",
+      "path": ".generated/demo-results/",
+      "description": "Formal approval record with stakeholder signatures and baseline confirmation",
+      "purpose": "Audit trail for governance compliance and change tracking"
     }
   ],
   "metadata": {
