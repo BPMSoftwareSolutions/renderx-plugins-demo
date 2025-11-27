@@ -1,0 +1,401 @@
+{
+  "id": "architecture-governance-enforcement-symphony",
+  "sequenceId": "architecture-governance-enforcement-symphony",
+  "name": "Architecture Governance Enforcement Symphony",
+  "packageName": "orchestration",
+  "title": "Symphonia Architecture Governance Enforcement",
+  "description": "Multi-movement orchestration that enforces JSON as single source of truth through systematic validation, implementation verification, and auditability across the entire Symphonia system.",
+  "purpose": "Ensure that JSON definitions drive all changes: code must conform, tests must validate, and markdown must be derived. Every change flows through explicit governance beats with full traceability.",
+  "trigger": "On every commit via pre-commit hook; on every PR via CI/CD; on-demand via `npm run governance:enforce`",
+  "kind": "orchestration",
+  "version": "1.0.0",
+  "status": "active",
+  "governance": {
+    "policies": [
+      "JSON is always the source of truth",
+      "Code changes must be preceded by JSON changes",
+      "Tests must verify JSON → Code mapping",
+      "Markdown must be consistent with JSON",
+      "All handlers must be referenced by beats",
+      "All beats must have corresponding tests",
+      "No orphaned code (handlers without beats)",
+      "All conflicts resolved in favor of JSON"
+    ],
+    "metrics": [
+      "JSON schema validation pass/fail",
+      "Handler coverage (beats with handlers / total beats)",
+      "Test coverage (beats with tests / total beats)",
+      "Markdown consistency score",
+      "Handler orphan detection",
+      "Conformity score (JSON → Code → Tests → Markdown)",
+      "Governance rule violations count",
+      "Auditability chain completeness"
+    ]
+  },
+  "events": [
+    "governance:initiated",
+    "movement-1:json-validation:started",
+    "movement-1:json-validation:complete",
+    "movement-2:handler-mapping:started",
+    "movement-2:handler-mapping:complete",
+    "movement-3:test-coverage:started",
+    "movement-3:test-coverage:complete",
+    "movement-4:markdown-consistency:started",
+    "movement-4:markdown-consistency:complete",
+    "movement-5:auditability:started",
+    "movement-5:auditability:complete",
+    "movement-6:conformity:started",
+    "movement-6:conformity:complete",
+    "governance:success",
+    "governance:failure",
+    "governance:complete",
+    "governance:report:generated"
+  ],
+  "movements": [
+    {
+      "name": "JSON Schema Validation",
+      "emoji": "📋",
+      "description": "Validate all JSON files against schema; ensure structure is correct and complete",
+      "purpose": "Establish JSON as authoritative by verifying it conforms to schema",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-1:json-validation:started",
+          "handler": "validateJSONSchemaStructure",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Load all symphony JSON files and validate against schema",
+          "reference": "orchestration-domains.json, all json-sequences/*.json"
+        },
+        {
+          "number": 2,
+          "event": "movement-1:orchestration-domains:validated",
+          "handler": "validateOrchestrationDomainsRegistry",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate orchestration-domains.json has all required fields and correct structure"
+        },
+        {
+          "number": 3,
+          "event": "movement-1:symphony-files:validated",
+          "handler": "validateSymphonyFiles",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)"
+        },
+        {
+          "number": 4,
+          "event": "movement-1:schema-section:validated",
+          "handler": "validateSchemaSection",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Validate schema section exists and defines movement/beat/event requirements"
+        },
+        {
+          "number": 5,
+          "event": "movement-1:json-validation:complete",
+          "handler": "reportJSONValidation",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Report validation results; fail if schema invalid"
+        }
+      ]
+    },
+    {
+      "name": "Handler-to-Beat Mapping Verification",
+      "emoji": "🔗",
+      "description": "Verify every beat references a handler that exists in code; verify no orphaned handlers",
+      "purpose": "Ensure code implementations match JSON specifications exactly",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-2:handler-mapping:started",
+          "handler": "startHandlerMappingVerification",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Begin handler-to-beat mapping verification process"
+        },
+        {
+          "number": 2,
+          "event": "movement-2:handlers:loaded",
+          "handler": "loadHandlerImplementations",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Load all handler implementations from scripts/build-symphony-handlers.js"
+        },
+        {
+          "number": 3,
+          "event": "movement-2:beats-indexed",
+          "handler": "indexBeatsFromJSON",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Index all beats and their handler references from symphony JSON files"
+        },
+        {
+          "number": 4,
+          "event": "movement-2:mapping-verified",
+          "handler": "verifyBeatHandlerMapping",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Verify every beat has corresponding handler; collect mapping violations"
+        },
+        {
+          "number": 5,
+          "event": "movement-2:orphans-detected",
+          "handler": "detectOrphanHandlers",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Find handlers in code that are not referenced by any beat"
+        },
+        {
+          "number": 6,
+          "event": "movement-2:handler-mapping:complete",
+          "handler": "reportHandlerMapping",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Report handler mapping status; fail if violations found"
+        }
+      ]
+    },
+    {
+      "name": "Test Coverage Verification",
+      "emoji": "✅",
+      "description": "Verify every beat in JSON has corresponding test; verify tests reference JSON",
+      "purpose": "Ensure tests are executable specifications derived from JSON",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-3:test-coverage:started",
+          "handler": "startTestCoverageVerification",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Begin test coverage verification process"
+        },
+        {
+          "number": 2,
+          "event": "movement-3:beats-catalogued",
+          "handler": "catalogBeatsFromJSON",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Create exhaustive catalog of all beats and events in symphony JSON"
+        },
+        {
+          "number": 3,
+          "event": "movement-3:tests-indexed",
+          "handler": "indexTestFiles",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Index all test files and their test descriptions (from .spec.ts)"
+        },
+        {
+          "number": 4,
+          "event": "movement-3:coverage-analyzed",
+          "handler": "analyzeTestCoverage",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Analyze coverage: which beats have tests, which don't"
+        },
+        {
+          "number": 5,
+          "event": "movement-3:uncovered-beats-identified",
+          "handler": "identifyUncoveredBeats",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Identify beats lacking test coverage; collect list"
+        },
+        {
+          "number": 6,
+          "event": "movement-3:test-coverage:complete",
+          "handler": "reportTestCoverage",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Report test coverage percentage and violations"
+        }
+      ]
+    },
+    {
+      "name": "Markdown Consistency Verification",
+      "emoji": "📝",
+      "description": "Verify markdown documentation is consistent with JSON definitions",
+      "purpose": "Ensure markdown is derived from JSON, never contradicts JSON",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-4:markdown-consistency:started",
+          "handler": "startMarkdownConsistencyCheck",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Begin markdown consistency verification process"
+        },
+        {
+          "number": 2,
+          "event": "movement-4:facts-extracted",
+          "handler": "extractFactsFromJSON",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Extract key facts from JSON: movement count, beat count, event count, handler names"
+        },
+        {
+          "number": 3,
+          "event": "movement-4:markdown-files:identified",
+          "handler": "identifyMarkdownFiles",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Find all markdown files that reference symphonia"
+        },
+        {
+          "number": 4,
+          "event": "movement-4:facts-verified",
+          "handler": "verifyFactsInMarkdown",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Check if JSON facts are mentioned in markdown correctly"
+        },
+        {
+          "number": 5,
+          "event": "movement-4:contradictions-detected",
+          "handler": "detectMarkdownContradictions",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Find statements in markdown that contradict JSON"
+        },
+        {
+          "number": 6,
+          "event": "movement-4:markdown-consistency:complete",
+          "handler": "reportMarkdownConsistency",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Report markdown consistency score and contradictions"
+        }
+      ]
+    },
+    {
+      "name": "Auditability Chain Verification",
+      "emoji": "🔍",
+      "description": "Verify complete traceability: JSON → Code → Tests → Markdown",
+      "purpose": "Ensure every change is traceable and auditable through all tiers",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-5:auditability:started",
+          "handler": "startAuditabilityVerification",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Begin auditability chain verification process"
+        },
+        {
+          "number": 2,
+          "event": "movement-5:json-definitions:loaded",
+          "handler": "loadJSONDefinitions",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Load all JSON definitions as the starting point"
+        },
+        {
+          "number": 3,
+          "event": "movement-5:code-mappings:created",
+          "handler": "createCodeMappings",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Create mapping: JSON beat → Code handler"
+        },
+        {
+          "number": 4,
+          "event": "movement-5:test-mappings:created",
+          "handler": "createTestMappings",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Create mapping: JSON beat → Test coverage"
+        },
+        {
+          "number": 5,
+          "event": "movement-5:markdown-mappings:created",
+          "handler": "createMarkdownMappings",
+          "kind": "data-gathering",
+          "timing": "immediate",
+          "description": "Create mapping: JSON fact → Markdown mention"
+        },
+        {
+          "number": 6,
+          "event": "movement-5:chain-completeness:verified",
+          "handler": "verifyChainCompleteness",
+          "kind": "validation",
+          "timing": "immediate",
+          "description": "Verify complete traceability for all definitions"
+        },
+        {
+          "number": 7,
+          "event": "movement-5:auditability:complete",
+          "handler": "reportAuditability",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Report auditability score: % of JSON with complete chain"
+        }
+      ]
+    },
+    {
+      "name": "Overall Governance Conformity",
+      "emoji": "👑",
+      "description": "Synthesize all results; compute overall conformity score; generate governance report",
+      "purpose": "Provide comprehensive governance status and determine if changes are allowed",
+      "beats": [
+        {
+          "number": 1,
+          "event": "movement-6:conformity:started",
+          "handler": "startConformityAnalysis",
+          "kind": "synthesis",
+          "timing": "immediate",
+          "description": "Begin overall conformity analysis"
+        },
+        {
+          "number": 2,
+          "event": "movement-6:results:aggregated",
+          "handler": "aggregateGovernanceResults",
+          "kind": "synthesis",
+          "timing": "immediate",
+          "description": "Aggregate results from all 5 movements"
+        },
+        {
+          "number": 3,
+          "event": "movement-6:conformity-score:calculated",
+          "handler": "calculateConformityScore",
+          "kind": "synthesis",
+          "timing": "immediate",
+          "description": "Calculate overall conformity score (0-100%)"
+        },
+        {
+          "number": 4,
+          "event": "movement-6:violations:summarized",
+          "handler": "summarizeViolations",
+          "kind": "synthesis",
+          "timing": "immediate",
+          "description": "Summarize all governance violations found"
+        },
+        {
+          "number": 5,
+          "event": "movement-6:decision:made",
+          "handler": "makeGovernanceDecision",
+          "kind": "synthesis",
+          "timing": "immediate",
+          "description": "Decide: PASS (allow changes) or FAIL (reject changes)"
+        },
+        {
+          "number": 6,
+          "event": "movement-6:report:generated",
+          "handler": "generateGovernanceReport",
+          "kind": "reporting",
+          "timing": "immediate",
+          "description": "Generate comprehensive governance report with recommendations"
+        },
+        {
+          "number": 7,
+          "event": "governance:complete",
+          "handler": "concludeGovernanceEnforcement",
+          "kind": "conclusion",
+          "timing": "immediate",
+          "description": "Conclude governance enforcement; exit with appropriate status code"
+        }
+      ]
+    }
+  ]
+}

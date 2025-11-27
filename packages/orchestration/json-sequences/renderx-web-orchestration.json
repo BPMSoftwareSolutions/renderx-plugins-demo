@@ -1,0 +1,134 @@
+{
+  "id": "renderx-web-orchestration",
+  "sequenceId": "renderx-web-orchestration",
+  "name": "RenderX Web Orchestration",
+  "packageName": "orchestration",
+  "title": "RenderX Web - Master Orchestration Pipeline",
+  "description": "Six-movement orchestration managing the complete RenderX Web lifecycle: initialization, building, testing, validation, delivery, and monitoring. Coordinates build system, test execution (E2E Cypress), compliance validation, deployment pipeline, telemetry instrumentation, and recovery operations.",
+  "purpose": "Provide centralized orchestration and governance for RenderX Web application ensuring coordinated build, test, validation, deployment, and operational monitoring across all integration points.",
+  "trigger": "CI/CD pipeline initiation, code commit, or explicit deployment request",
+  "kind": "web-application",
+  "status": "active",
+  "tempo": 120,
+  "key": "C Major",
+  "timeSignature": "4/4",
+  "category": "orchestration",
+  "beats": 30,
+  "governance": {
+    "policies": [
+      "Build system must pass pre-build-pipeline-check-symphony validation",
+      "E2E Cypress tests must maintain ≥ 85% pass rate",
+      "Compliance validation must complete with 0 critical violations",
+      "Delivery pipeline must orchestrate through pipeline-delivery-execute-symphony",
+      "Telemetry instrumentation must be collected via generate-telemetry-instrumentation-symphony",
+      "Recovery procedures must be available through pipeline-recovery-symphony",
+      "All operations subject to 37-beat enforcement pipeline",
+      "Governance conformity score must be ≥ 0.9 (90%)"
+    ],
+    "metrics": [
+      "Build success rate (%)",
+      "Test pass rate (%)",
+      "Compliance violation count",
+      "Deployment frequency (times per day)",
+      "Mean time to deploy (minutes)",
+      "Uptime percentage (%)",
+      "Error rate from telemetry (%)",
+      "Recovery time when failures occur (minutes)",
+      "Governance conformity score (0-1)"
+    ]
+  },
+  "movements": [
+    {
+      "number": 1,
+      "name": "Initialization",
+      "description": "Initialize RenderX Web build environment and dependencies",
+      "status": "active"
+    },
+    {
+      "number": 2,
+      "name": "Build",
+      "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
+      "orchestration": "pre-build-pipeline-check-symphony",
+      "status": "active"
+    },
+    {
+      "number": 3,
+      "name": "Test & Validation",
+      "description": "Execute E2E Cypress tests and compliance validation (7-layer framework)",
+      "orchestration": [
+        "e2e-cypress-symphony",
+        "check-pipeline-compliance-7layer-symphony"
+      ],
+      "status": "active"
+    },
+    {
+      "number": 4,
+      "name": "Delivery",
+      "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
+      "orchestration": "pipeline-delivery-execute-symphony",
+      "status": "active"
+    },
+    {
+      "number": 5,
+      "name": "Telemetry & Monitoring",
+      "description": "Collect and instrument telemetry for observability and SLO tracking",
+      "orchestration": "generate-telemetry-instrumentation-symphony",
+      "status": "active"
+    },
+    {
+      "number": 6,
+      "name": "Recovery & Resilience",
+      "description": "Enable recovery procedures and resilience mechanisms",
+      "orchestration": "pipeline-recovery-symphony",
+      "status": "available"
+    }
+  ],
+  "events": [
+    "renderx-web:pipeline:initiated",
+    "renderx-web:initialization:started",
+    "renderx-web:initialization:complete",
+    "renderx-web:build:started",
+    "renderx-web:build:pre-check:validating",
+    "renderx-web:build:pre-check:complete",
+    "renderx-web:build:complete",
+    "renderx-web:test:started",
+    "renderx-web:test:cypress:running",
+    "renderx-web:test:cypress:complete",
+    "renderx-web:compliance:validating",
+    "renderx-web:compliance:7layer:checking",
+    "renderx-web:compliance:complete",
+    "renderx-web:delivery:started",
+    "renderx-web:delivery:orchestrating",
+    "renderx-web:delivery:complete",
+    "renderx-web:telemetry:collecting",
+    "renderx-web:telemetry:instrumented",
+    "renderx-web:recovery:enabled",
+    "renderx-web:pipeline:complete",
+    "renderx-web:pipeline:failed"
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-11-27",
+    "author": "Orchestration Framework",
+    "lastModified": "2025-11-27",
+    "production": true,
+    "integrationPoints": [
+      "Build System: pre-build-pipeline-check-symphony.json",
+      "Test Execution: e2e-cypress-symphony.json",
+      "Validation: check-pipeline-compliance-7layer-symphony.json",
+      "Delivery: pipeline-delivery-execute-symphony.json",
+      "Telemetry: generate-telemetry-instrumentation-symphony.json",
+      "Recovery: pipeline-recovery-symphony.json"
+    ],
+    "governance": "Subject to 37-beat enforcement pipeline",
+    "conformityScore": 0.95,
+    "tags": [
+      "web-application",
+      "production",
+      "critical-path",
+      "orchestration",
+      "renderx",
+      "continuous-delivery"
+    ]
+  }
+}
