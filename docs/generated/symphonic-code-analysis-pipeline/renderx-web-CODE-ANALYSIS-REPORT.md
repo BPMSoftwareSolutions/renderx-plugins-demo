@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T19:37:50.272Z  
+**Generated**: 2025-11-27T19:50:20.818Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,8 +13,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 86.21% | ✅ GOOD| Risk: LOW|
-| Maintainability | 67.27/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 73.40% | ⚠️  FAIR| Risk: MEDIUM|
+| Maintainability | 70.81/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -68,18 +68,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-27T19:37:50.271Z
+**Last Scan**: 2025-11-27T19:50:20.743Z
 
 ### Maintainability Index
-- **Score**: 67.27/100
+- **Score**: 70.81/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 66.5%
-  - Documentation: 92.7%
-  - Comment Density: 93.3%
-  - Complexity Score: 66.3
+  - Test Coverage: 69.5%
+  - Documentation: 76.2%
+  - Comment Density: 96.3%
+  - Complexity Score: 48.5
 
 ---
 
@@ -90,10 +90,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 86.21% | 80% | ✓ |
-| Branches | 69.16% | 75% | ⚠ |
-| Functions | 78.76% | 80% | ⚠ |
-| Lines | 75.83% | 80% | ⚠ |
+| Statements | 73.40% | 80% | ⚠ |
+| Branches | 75.45% | 75% | ✓ |
+| Functions | 77.56% | 80% | ⚠ |
+| Lines | 77.41% | 80% | ⚠ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -137,7 +137,49 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-27T19:37:50.059Z
+**Last Scan**: 2025-11-27T19:50:20.496Z
+
+### Handler-to-Beat Mapping & Health Score
+
+### Symphonic Health Score
+
+**Overall**: 🟠 **54.00/100** (POOR)
+
+**Component Scores:**
+| Component | Score | Target | Status |
+|-----------|-------|--------|--------|
+| Handler Coverage | 100.00% | 90%+ | ✓ |
+| Beat Coverage | 15.00% | 100% | ⚠ |
+| Mapping Confidence | 47.50% | 80%+ | ⚠ |
+| Distribution | 0.00% | 80%+ | ⚠ |
+
+**Metrics:**
+- Mapped Handlers: 38/38
+- Orphaned Handlers: 0
+- Beats with Handlers: 3
+- Beats Without Handlers: 17
+
+**Orphaned Handlers:**
+**Orphaned Handlers**: None ✓
+
+**Beats Without Handlers (17):**
+- beat-1-discovery (Movement 1)
+- beat-1a-discovery-core (Movement 1)
+- beat-1b-discovery-extended (Movement 1)
+- beat-1c-discovery-analysis (Movement 1)
+- beat-1d-discovery-telemetry (Movement 1)
+- ... and 12 more
+
+**Mapping Strategy:**
+- Symphony keywords (e.g., export → beat-3-structure)
+- Stage-crew patterns (UI interaction → beat-3)
+- Type-based defaults (initialization → beat-1, transformation → beat-3)
+- Default fallback (beat-2-baseline)
+
+**Next Steps to Improve:**
+1. Add explicit handler-to-beat mappings in orchestration-domains.json
+2. Enhance handler type detection (currently 100% generic)
+3. Distribute handlers evenly across beats for 80%+ distribution score
 
 ---
 
@@ -154,12 +196,12 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
+**Ready for CI Gating**: ❌ **NOT READY**
 
-Gating Level: **CONDITIONAL**
+Gating Level: **FAIL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (86.61%) ✅
+✓ Coverage (86.61%) ❌
 ✓ Handler Scanning (Not Implemented) ⚠
 
 ---
@@ -244,10 +286,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-37-49-830Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-37-49-830Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-37-49-830Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T19-37-49-830Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-50-20-141Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-50-20-141Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-50-20-141Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T19-50-20-141Z.json
 
 ---
 

@@ -16,6 +16,7 @@ const classifier = require('./symphonic-metrics-classifier.cjs');
 const { scanHandlerExports, formatHandlersMarkdown } = require('./scan-handlers.cjs');
 const { scanCodeDuplication, formatDuplicationMarkdown } = require('./scan-duplication.cjs');
 const { validateMetricSource, filterMockMetrics, createIntegrityCheckpoint } = require('./source-metadata-guardrail.cjs');
+const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMarkdown } = require('./map-handlers-to-beats.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -353,6 +354,55 @@ Verify scan-duplication.cjs is accessible and git repository is initialized.`;
   }
 }
 
+/**
+ * Generate handler-to-beat mapping metrics markdown section
+ * Uses real discovered handlers mapped to orchestration beats
+ */
+async function generateHandlerMappingMetrics() {
+  try {
+    const handlerResults = await scanHandlerExports();
+    
+    if (!handlerResults.handlers || handlerResults.handlers.length === 0) {
+      return `⚠ **No handlers to map** - Handler discovery must complete first.`;
+    }
+    
+    const mappingResults = mapHandlersToBeat(handlerResults.handlers);
+    const healthScore = calculateSympahonicHealthScore(mappingResults);
+    
+    const orphansList = mappingResults.orphaned.length > 0
+      ? `**Orphaned Handlers (${mappingResults.orphaned.length}):**\n${mappingResults.orphaned.slice(0, 5).map(h => `- ${h.name} (${h.file})`).join('\n')}${mappingResults.orphaned.length > 5 ? `\n- ... and ${mappingResults.orphaned.length - 5} more` : ''}`
+      : '**Orphaned Handlers**: None ✓';
+    
+    const beatsWithout = mappingResults.beatsWithoutHandlers.slice(0, 5)
+      .map(b => `- ${b.beat} (${b.movement})`)
+      .join('\n');
+    
+    return `${formatHealthScoreMarkdown(healthScore)}
+
+**Orphaned Handlers:**
+${orphansList}
+
+**Beats Without Handlers (${mappingResults.beatsWithoutHandlers.length}):**
+${beatsWithout}${mappingResults.beatsWithoutHandlers.length > 5 ? `\n- ... and ${mappingResults.beatsWithoutHandlers.length - 5} more` : ''}
+
+**Mapping Strategy:**
+- Symphony keywords (e.g., export → beat-3-structure)
+- Stage-crew patterns (UI interaction → beat-3)
+- Type-based defaults (initialization → beat-1, transformation → beat-3)
+- Default fallback (beat-2-baseline)
+
+**Next Steps to Improve:**
+1. Add explicit handler-to-beat mappings in orchestration-domains.json
+2. Enhance handler type detection (currently 100% generic)
+3. Distribute handlers evenly across beats for 80%+ distribution score`;
+    
+  } catch (err) {
+    return `❌ **Handler mapping failed**: ${err.message}
+
+Verify map-handlers-to-beats.cjs is accessible.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -497,6 +547,7 @@ async function generateMarkdownReport(metrics, artifacts) {
   // Get handler metrics first (async operation)
   const handlerMetrics = await generateHandlerMetrics();
   const duplicationMetrics = await generateDuplicationMetrics();
+  const handlerMappingMetrics = await generateHandlerMappingMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -638,6 +689,10 @@ ${metrics.conformity.violations_details.map(v =>
 ### Handler Metrics
 
 ${handlerMetrics}
+
+### Handler-to-Beat Mapping & Health Score
+
+${handlerMappingMetrics}
 
 ---
 
