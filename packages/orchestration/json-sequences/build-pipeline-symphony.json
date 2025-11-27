@@ -433,5 +433,64 @@
     "mf": "Mezzo-forte - Standard build with verification",
     "f": "Forte - Full build with strict conformity",
     "ff": "Fortissimo - CI build with artifact archival"
+  },
+  "shapeEvolution": {
+    "enabled": true,
+    "description": "Each beat emits telemetry signatures for SLI observation, SLO comparison, and SLA breach detection",
+    "telemetryStorage": ".generated/telemetry/build-{timestamp}/",
+    "shapeRegistry": "shape-evolutions.json",
+    "sliMetrics": [
+      "duration_ms",
+      "status",
+      "artifacts_count",
+      "errors_count",
+      "memory_delta_mb",
+      "cache_state"
+    ],
+    "beatSloBaselines": {
+      "validation": {
+        "duration_ms": 5000,
+        "error_count": 0,
+        "cache_hit_rate": null
+      },
+      "generation": {
+        "duration_ms": 15000,
+        "error_count": 0,
+        "cache_hit_rate": 0.8
+      },
+      "build": {
+        "duration_ms": 120000,
+        "error_count": 0,
+        "cache_hit_rate": 0.9
+      },
+      "verification": {
+        "duration_ms": 10000,
+        "error_count": 0,
+        "cache_hit_rate": 0.85
+      },
+      "observation": {
+        "duration_ms": 5000,
+        "error_count": 0,
+        "cache_hit_rate": null
+      }
+    },
+    "slaBreachThresholds": {
+      "warning": 0.7,
+      "breach": 0.9,
+      "critical": 1.1
+    }
+  },
+  "telemetryEvents": {
+    "enabled": true,
+    "eventTypes": [
+      "beat:started",
+      "beat:sli:collected",
+      "beat:shape:computed",
+      "beat:sla:evaluated",
+      "beat:completed",
+      "movement:sli:aggregated",
+      "build:slo:report:generated",
+      "build:sla:breaches:detected"
+    ]
   }
 }
