@@ -140,8 +140,16 @@ const commands = {
       }
     }
     
+    // Show generated docs and artifacts paths
+    if (domain.docsPath || domain.artifactPath) {
+      console.log(`📁 Generated Artifacts:`);
+      if (domain.docsPath) console.log(`   📄 Docs: ${domain.docsPath}`);
+      if (domain.artifactPath) console.log(`   📦 Artifacts: ${domain.artifactPath}`);
+      console.log();
+    }
+    
     Object.entries(domain).forEach(([key, value]) => {
-      if (key === 'parent' || key === 'npmScripts' || key === 'category') return; // Already shown above
+      if (key === 'parent' || key === 'npmScripts' || key === 'category' || key === 'docsPath' || key === 'artifactPath') return; // Already shown above
       if (key === 'movements' && Array.isArray(value)) {
         console.log(`${key}: ${value.length} items`);
       } else if (typeof value === 'object') {

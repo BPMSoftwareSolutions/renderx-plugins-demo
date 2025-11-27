@@ -2634,7 +2634,10 @@
           }
         ]
       },
-      "npmScripts": "build:symphony, build:symphony:telemetry, build:symphony:telemetry:p, build:symphony:telemetry:f, build:symphony:telemetry:ff"
+      "npmScripts": "build:symphony, build:symphony:telemetry, build:symphony:telemetry:p, build:symphony:telemetry:f, build:symphony:telemetry:ff",
+      "docsPath": "docs/generated/build-pipeline-symphony/",
+      "artifactPath": ".generated/build/",
+      "parent": "safe-continuous-delivery-pipeline"
     },
     {
       "id": "symphonia-conformity-alignment-pipeline",
@@ -2682,6 +2685,8 @@
         ]
       },
       "npmScripts": "pipeline:conformity:execute, pipeline:conformity:phase-1, pipeline:conformity:phase-2, pipeline:conformity:phase-3, pipeline:conformity:phase-4, pipeline:conformity:dry-run, fix:conformity:phase-1, fix:conformity:phase-1b, fix:conformity:phase-2, fix:conformity:phase-3, fix:conformity:phase-4, fix:conformity:all, audit:symphonia:conformity",
+      "docsPath": "docs/generated/symphonia-conformity-alignment-pipeline/",
+      "artifactPath": ".generated/conformity/",
       "parent": "architecture-governance-enforcement-symphony"
     },
     {
@@ -2745,7 +2750,9 @@
           }
         ]
       },
-      "npmScripts": "governance:enforce, governance:enforce:strict, governance:enforce:report"
+      "npmScripts": "governance:enforce, governance:enforce:strict, governance:enforce:report",
+      "docsPath": "docs/generated/architecture-governance-enforcement-symphony/",
+      "artifactPath": ".generated/governance/"
     },
     {
       "id": "symphonic-code-analysis-pipeline",
@@ -2799,6 +2806,8 @@
         ]
       },
       "npmScripts": "analyze:symphonic:code, analyze:symphonic:code:baseline, analyze:symphonic:code:trends, analyze:symphonic:code:domain, gen:symphonic:code:docs",
+      "docsPath": "docs/generated/symphonic-code-analysis-pipeline/",
+      "artifactPath": ".generated/analysis/",
       "parent": "architecture-governance-enforcement-symphony"
     },
     {
@@ -2850,6 +2859,8 @@
       "key": "C Major",
       "timeSignature": "4/4",
       "npmScripts": "audit:registry",
+      "docsPath": "docs/generated/orchestration-registry-audit-pipeline/",
+      "artifactPath": ".generated/audit/",
       "sketch": {
         "title": "Orchestration Registry Audit Pipeline",
         "phases": [
