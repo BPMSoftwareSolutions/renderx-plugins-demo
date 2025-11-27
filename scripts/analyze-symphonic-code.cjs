@@ -20,6 +20,14 @@ const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMark
 const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
 const { generateRefactorSuggestions } = require('./generate-refactor-suggestions.cjs');
 const { trackHistoricalTrends } = require('./track-historical-trends.cjs');
+const { 
+  createMetricsEnvelope, 
+  classifyCoverage, 
+  COVERAGE_SCOPES,
+  MAINTAINABILITY_SCOPES,
+  generateCIReadinessWithFlags,
+  generateTop10FromFlags
+} = require('./symphonic-metrics-envelope.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -613,16 +621,41 @@ function generateJsonArtifacts(metrics) {
   return { analysisData, coverageSummary, trendData };
 }
 
-async function generateMarkdownReport(metrics, artifacts) {
+async function generateMarkdownReport(metrics, metricsEnvelope, artifacts) {
   log('Generating markdown report...', '📋');
   
-  // Get handler metrics first (async operation)
-  const handlerMetrics = await generateHandlerMetrics();
-  const duplicationMetrics = await generateDuplicationMetrics();
-  const handlerMappingMetrics = await generateHandlerMappingMetrics();
-  const coverageByHandlerMetrics = await generateCoverageByHandlerMetrics();
-  const refactorMetrics = await generateRefactorMetrics();
-  const trendMetrics = await generateTrendMetrics();
+  // Get handler metrics first (async operation) with error handling
+  log('Generating handler metrics...', '📊');
+  const handlerMetrics = await generateHandlerMetrics().catch(err => 
+    `⚠ Handler metrics generation failed: ${err.message}`
+  );
+  
+  log('Generating duplication metrics...', '📊');
+  const duplicationMetrics = await generateDuplicationMetrics().catch(err => 
+    `⚠ Duplication metrics generation failed: ${err.message}`
+  );
+  
+  log('Generating handler mapping metrics...', '📊');
+  const handlerMappingMetrics = await generateHandlerMappingMetrics().catch(err => 
+    `⚠ Handler mapping generation failed: ${err.message}`
+  );
+  
+  log('Generating coverage by handler metrics...', '📊');
+  const coverageByHandlerMetrics = await generateCoverageByHandlerMetrics().catch(err => 
+    `⚠ Coverage by handler generation failed: ${err.message}`
+  );
+  
+  log('Generating refactor metrics...', '📊');
+  const refactorMetrics = await generateRefactorMetrics().catch(err => 
+    `⚠ Refactor suggestions generation failed: ${err.message}`
+  );
+  
+  log('Generating trend metrics...', '📊');
+  const trendMetrics = await generateTrendMetrics().catch(err => 
+    `⚠ Trend metrics generation failed: ${err.message}`
+  );
+  
+  log('Building markdown report...', '📝');
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -725,17 +758,19 @@ ${duplicationMetrics}
 
 ---
 
-## Movement 3: Test Coverage Analysis
+## Movement 3: Test Coverage Analysis (Orchestration Suite)
 
 **Purpose**: Measure statement, branch, function, and line coverage
 
+**Scope**: Full \`renderx-web-orchestration\` suite - all source files analyzed
+
 ### Coverage Metrics
-| Type | Coverage | Target | Status |
-|------|----------|--------|--------|
-| Statements | ${metrics.coverage.statements}% | 80% | ${parseFloat(metrics.coverage.statements) >= 80 ? '✓' : '⚠'} |
-| Branches | ${metrics.coverage.branches}% | 75% | ${parseFloat(metrics.coverage.branches) >= 75 ? '✓' : '⚠'} |
-| Functions | ${metrics.coverage.functions}% | 80% | ${parseFloat(metrics.coverage.functions) >= 80 ? '✓' : '⚠'} |
-| Lines | ${metrics.coverage.lines}% | 80% | ${parseFloat(metrics.coverage.lines) >= 80 ? '✓' : '⚠'} |
+| Type | Coverage | Target | Gap | Status |
+|------|----------|--------|-----|--------|
+| Statements | ${metrics.coverage.statements}% | 80% | ${(parseFloat(metrics.coverage.statements) - 80).toFixed(1)}% | ${classifyCoverage(metrics.coverage.statements, 'statements').emoji} ${classifyCoverage(metrics.coverage.statements, 'statements').statusShort} |
+| Branches | ${metrics.coverage.branches}% | 75% | ${(parseFloat(metrics.coverage.branches) - 75).toFixed(1)}% | ${classifyCoverage(metrics.coverage.branches, 'branches').emoji} ${classifyCoverage(metrics.coverage.branches, 'branches').statusShort} |
+| Functions | ${metrics.coverage.functions}% | 80% | ${(parseFloat(metrics.coverage.functions) - 80).toFixed(1)}% | ${classifyCoverage(metrics.coverage.functions, 'functions').emoji} ${classifyCoverage(metrics.coverage.functions, 'functions').statusShort} |
+| Lines | ${metrics.coverage.lines}% | 80% | ${(parseFloat(metrics.coverage.lines) - 80).toFixed(1)}% | ${classifyCoverage(metrics.coverage.lines, 'lines').emoji} ${classifyCoverage(metrics.coverage.lines, 'lines').statusShort} |
 
 ### Beat-by-Beat Coverage
 \`\`\`
@@ -769,7 +804,7 @@ ${handlerMetrics}
 
 ${handlerMappingMetrics}
 
-### Coverage by Handler Analysis
+### Coverage by Handler Analysis (Handler-Scoped Analysis)
 
 ${coverageByHandlerMetrics}
 
@@ -799,79 +834,34 @@ ${trendMetrics}
 ${(() => {
   const readiness = classifier.assessCIReadiness(
     metrics.conformity.conformityScore,
-    metrics.coverage.statements,
+    metricsEnvelope.coverage[COVERAGE_SCOPES.ORCHESTRATION].statements,
     (1 / 18) * 100
   );
+  const handlerFlag = metricsEnvelope.metadata.implementationFlags.handlerScanningImplemented;
+  const handlerStatus = handlerFlag 
+    ? `✓ Handler Scanning (${metricsEnvelope.handlers.discovered} handlers discovered) ✅`
+    : `⚠ Handler Scanning (Not Implemented) ⚠`;
+  
   return `**Ready for CI Gating**: ${readiness.emoji} **${readiness.status}**
 
 Gating Level: **${readiness.gatingLevel}**
 
-✓ Conformity (87.50%) ${parseFloat(metrics.conformity.conformityScore) >= 85 ? '✅' : '❌'}
-✓ Coverage (86.61%) ${parseFloat(metrics.coverage.statements) >= 80 ? '✅' : '❌'}
-✓ Handler Scanning (Not Implemented) ⚠`;
+✓ Conformity (${metrics.conformity.conformityScore}%) ${parseFloat(metrics.conformity.conformityScore) >= 85 ? '✅' : '❌'}
+✓ Coverage - Orchestration Suite (${metricsEnvelope.coverage[COVERAGE_SCOPES.ORCHESTRATION].statements}%) ${parseFloat(metricsEnvelope.coverage[COVERAGE_SCOPES.ORCHESTRATION].statements) >= 80 ? '✅' : '❌'}
+${handlerStatus}`;
 })()}
 
 ---
 
 ## Top 10 Actionable Improvements (Priority Order)
 
-### [HIGH] 1. Refactor Duplication (78.30% detected)
-- **Impact**: Reduce maintainability debt; improve code clarity
-- **Effort**: Medium (3-5 story points)
-- **Next Step**: Identify top 5 duplicated blocks; create refactoring stories
-
-### [HIGH] 2. Increase Branch Coverage for Beat 3 (60%) and Beat 4 (48%)
-- **Impact**: Reduce test-related risk; improve governance conformity
-- **Current**: Below 75% target
-- **Effort**: Medium (4-6 story points)
-- **Next Step**: Audit missing branch paths; add integration tests
-
-### [MEDIUM] 3. Implement Real Handler Scanning
-- **Impact**: Enable honest handler completeness metrics; map handlers to beats
-- **Current**: Handler analysis not implemented; mock data removed
-- **Effort**: Medium (2-4 story points)
-- **Next Step**: Build scanHandlerExports() to crawl packages/*/src/**/*.{ts,tsx,js,jsx}; discover and catalog handlers
-
-### [MEDIUM] 4. Improve Maintainability Index (47.1/100 → target 70+)
-- **Impact**: Reduce future refactoring burden
-- **Current**: Graded 'POOR'; needs work on complexity, documentation, comments
-- **Effort**: Medium (ongoing)
-- **Next Step**: Add JSDoc comments to complex functions; break down high-complexity beats
-
-### [MEDIUM] 5. Resolve Movement 2 Conformity Violations (2/16 beats)
-- **Impact**: Achieve 100% conformity compliance
-- **Issue**: beat-3-structure (complexity validation), beat-4-dependencies (duplication tracking)
-- **Effort**: Low (1-2 story points)
-- **Next Step**: Add missing handler beat mappings; update schema validation
-
-### [MEDIUM] 6. Standardize Handler Type Distribution
-- **Impact**: Improve orchestration balance; prevent overconcentration
-- **Current**: Only lint-quality-gate implemented (integration type)
-- **Effort**: Low (planning only)
-- **Next Step**: Document handler specialization strategy (integration, exploration, deployment, etc.)
-
-### [LOW] 7. Add Test Coverage Documentation
-- **Impact**: Improve team understanding; reduce onboarding time
-- **Current**: 83.94% coverage but gaps in Movement 3-4
-- **Effort**: Low (documentation)
-- **Next Step**: Add README in test directories; document coverage goals per beat
-
-### [LOW] 8. Create Baseline Trend Analysis Script
-- **Impact**: Track conformity over time; detect regressions early
-- **Effort**: Low (1-2 story points)
-- **Next Step**: Run analysis monthly; capture baseline metrics
-
-### [LOW] 9. Build Handler Discovery Registry
-- **Impact**: Enable handler-to-beat mapping; foundation for completeness metrics
-- **Current**: Handler scanning not implemented; use as Phase 2 foundation
-- **Effort**: Low (foundation-level work)
-- **Next Step**: Create registry schema; integrate with orchestration-domains.json
-
-### [LOW] 10. Update Architecture Governance Policy
-- **Impact**: Codify thresholds; enable automated gating
-- **Current**: Manual conformity checks only
-- **Effort**: Low (1-2 story points)
-- **Next Step**: Add movement-level pass/fail rules to orchestration schema
+${(() => {
+  const actions = generateTop10FromFlags(metricsEnvelope);
+  return actions.map((action, idx) => {
+    const priority = idx < 3 ? '[HIGH]' : idx < 6 ? '[MEDIUM]' : '[LOW]';
+    return `### ${priority} ${idx + 1}. ${action}`;
+  }).join('\n\n');
+})()}
 
 ---
 
@@ -939,9 +929,10 @@ async function run() {
     header('MOVEMENT 4: Architecture Conformity & Reporting');
     const conformity = validateHandlerConformity();
 
-    // Collect metrics
-    const metrics = {
+    // Collect metrics - ENHANCED WITH ENVELOPE
+    const baseMetrics = {
       discoveredFiles: sourceFiles.length,
+      discoveredCount: 0,  // Will be populated by envelope
       beatMapping,
       loc,
       complexity,
@@ -951,11 +942,14 @@ async function run() {
       beatCoverage,
       conformity
     };
+    
+    // Create metrics envelope with scopes and flags
+    const metricsEnvelope = createMetricsEnvelope(baseMetrics);
 
     // Generate artifacts
     log('Generating analysis artifacts...', '🎬');
-    const artifacts = generateJsonArtifacts(metrics);
-    await generateMarkdownReport(metrics, artifacts);
+    const artifacts = generateJsonArtifacts(baseMetrics);
+    await generateMarkdownReport(baseMetrics, metricsEnvelope, artifacts);
 
     // Final summary
     header('ANALYSIS COMPLETE');
