@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T19:54:24.253Z  
+**Generated**: 2025-11-27T19:56:51.700Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,8 +13,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 72.22% | ⚠️  FAIR| Risk: MEDIUM|
-| Maintainability | 55.31/100 | 🔴 POOR| Grade: C|
+| Test Coverage | 73.47% | ⚠️  FAIR| Risk: MEDIUM|
+| Maintainability | 68.06/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -68,18 +68,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-27T19:54:23.978Z
+**Last Scan**: 2025-11-27T19:56:51.233Z
 
 ### Maintainability Index
-- **Score**: 55.31/100
-- **Classification**: 🔴 **POOR** (C)
-- **Threshold**: <60
-- **Guidance**: Critical refactoring needed. High priority for next cycle.
+- **Score**: 68.06/100
+- **Classification**: 🟡 **FAIR** (B)
+- **Threshold**: 60-80
+- **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 67.2%
-  - Documentation: 81.9%
-  - Comment Density: 49.5%
-  - Complexity Score: 70.5
+  - Test Coverage: 77.5%
+  - Documentation: 72.3%
+  - Comment Density: 82.3%
+  - Complexity Score: 53.7
 
 ---
 
@@ -90,10 +90,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 72.22% | 80% | ⚠ |
-| Branches | 74.53% | 75% | ⚠ |
-| Functions | 87.01% | 80% | ✓ |
-| Lines | 82.59% | 80% | ✓ |
+| Statements | 73.47% | 80% | ⚠ |
+| Branches | 74.83% | 75% | ⚠ |
+| Functions | 79.90% | 80% | ⚠ |
+| Lines | 80.77% | 80% | ✓ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -137,7 +137,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-27T19:54:23.783Z
+**Last Scan**: 2025-11-27T19:56:51.043Z
 
 ### Handler-to-Beat Mapping & Health Score
 
@@ -186,45 +186,185 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 ## Coverage by Handler Analysis
 
 ### Overall Test Coverage
-**Global Coverage**: 82.45% statements
+**Global Coverage**: 79.86% statements
 
 | Metric | Coverage | Status |
 |--------|----------|--------|
-| Statements | 82.45% | 🟢 |
-| Branches | 79.07% | 🟡 |
-| Functions | 78.11% | 🟡 |
-| Lines | 87.21% | 🟢 |
+| Statements | 79.86% | 🟡 |
+| Branches | 69.15% | 🟡 |
+| Functions | 78.22% | 🟡 |
+| Lines | 75.43% | 🟡 |
 
 ### Handler Coverage Summary
 | Category | Count | % | Status |
 |----------|-------|---|--------|
-| Well-Covered (80%+) | 25 | 65.8% | ✅ |
-| Partially-Covered (50-79%) | 13 | 34.2% | ⚠️ |
+| Well-Covered (80%+) | 17 | 44.7% | ✅ |
+| Partially-Covered (50-79%) | 21 | 55.3% | ⚠️ |
 | Poorly-Covered (1-49%) | 0 | 0.0% | ⚠️ |
 | Uncovered (0%) | 0 | 0.0% | ❌ |
 
-**Average Handler Coverage**: 81.71%
+**Average Handler Coverage**: 79.9%
 
 ### Coverage Heatmap by Beat
 
 | Beat | Avg Coverage | Handlers | Status |
 |------|--------------|----------|--------|
-| unassigned | 81.71% | 38 | ✅ |
+| unassigned | 79.9% | 38 | ⚠️ |
 
 ### ✅ Well-Tested Handlers (Coverage >= 80%)
 | Handler | Coverage | Beat |
 |---------|----------|------|
-| handlers | 87.26% | unassigned |
-| handlers | 87.02% | unassigned |
-| handlers | 86.93% | unassigned |
-| handlers | 85.72% | unassigned |
-| handlers | 85.45% | unassigned |
-| handlers | 85.22% | unassigned |
-| handlers | 85.22% | unassigned |
-| handlers | 84.83% | unassigned |
+| handlers | 84.59% | unassigned |
+| handlers | 84.44% | unassigned |
+| handlers | 84.14% | unassigned |
+| handlers | 83.81% | unassigned |
+| handlers | 83.47% | unassigned |
+| handlers | 83.44% | unassigned |
+| handlers | 83.29% | unassigned |
+| handlers | 83.27% | unassigned |
 
 **Measurement**: Source='measured' (test coverage analysis with handler-beat correlation)
-**Timestamp**: 2025-11-27T19:54:24.253Z
+**Timestamp**: 2025-11-27T19:56:51.456Z
+
+
+### Automated Refactor Suggestions
+
+## Automated Refactor Suggestions
+
+### Executive Summary
+
+Analysis identified **11 refactoring opportunities** across the codebase:
+
+| Category | Count | Impact | Effort |
+|----------|-------|--------|--------|
+| Code Consolidation | 5 | High | Low-Medium |
+| Handler Clustering | 3 | Medium | Medium |
+| Maintainability | 3 | High | Low-Medium |
+
+### Priority Ranking
+
+#### 🔴 Critical Path (P0-P1): 3 items
+
+**1. [P1] Refactor handler clustering in "library-component"**
+- Type: refactoring
+- Effort: Low | Benefit: Medium | Risk: Medium
+- Recommendation: Split into 2-3 focused modules or consolidate into handler factory
+- Impact: +6 points | -3 (reduce module complexity) | Improved (easier to isolate functionality)
+
+**2. [P1] Reduce cyclomatic complexity**
+- Type: improvement
+- Effort: Medium | Benefit: High | Risk: Low
+- Recommendation: Extract nested logic into separate functions; apply early returns pattern
+- Impact: +20 points | -30% (split functions) | Significantly improved
+
+**3. [P1] Increase branch test coverage**
+- Type: improvement
+- Effort: Medium | Benefit: High | Risk: Very Low
+- Recommendation: Target beat-3 (structure) and beat-4 (dependencies) for coverage improvements
+- Impact: +10 points | No change | Improved (+6% branch coverage target)
+
+#### 🟡 Next Batch (P2): 3 items
+
+**[P2] Refactor handler clustering in "canvas-component"**
+- Package contains 28 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**[P2] Refactor handler clustering in "control-panel"**
+- Package contains 5 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**[P2] Improve code documentation**
+- Current documentation score is below target. Add JSDoc comments and README documentation.
+
+#### 🟢 Backlog (P3): 5 items
+Additional opportunities for future iterations.
+
+### Detailed Refactoring Plan
+
+#### Suggestion 1: Refactor handler clustering in "library-component"
+**ID**: CLUSTER-03 | **Priority**: P1
+
+Package contains 3 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
+**Impact**: +6 points | -3 (reduce module complexity) | Improved (easier to isolate functionality)
+
+**PR Template** (use `npm run generate:pr -- CLUSTER-03` to generate):
+```markdown
+# Refactor handler clustering in "library-component"
+Package contains 3 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
+```
+
+#### Suggestion 2: Reduce cyclomatic complexity
+**ID**: MAINT-02 | **Priority**: P1
+
+Some files have high cyclomatic complexity (avg 1.13, high outliers at 2-3+). Break into smaller functions.
+
+**Recommendation**: Extract nested logic into separate functions; apply early returns pattern
+**Impact**: +20 points | -30% (split functions) | Significantly improved
+
+**PR Template** (use `npm run generate:pr -- MAINT-02` to generate):
+```markdown
+# Reduce cyclomatic complexity
+Some files have high cyclomatic complexity (avg 1.13, high outliers at 2-3+). Break into smaller functions.
+
+**Recommendation**: Extract nested logic into separate functions; apply early returns pattern
+```
+
+#### Suggestion 3: Increase branch test coverage
+**ID**: MAINT-03 | **Priority**: P1
+
+Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
+
+**Recommendation**: Target beat-3 (structure) and beat-4 (dependencies) for coverage improvements
+**Impact**: +10 points | No change | Improved (+6% branch coverage target)
+
+**PR Template** (use `npm run generate:pr -- MAINT-03` to generate):
+```markdown
+# Increase branch test coverage
+Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
+
+**Recommendation**: Target beat-3 (structure) and beat-4 (dependencies) for coverage improvements
+```
+
+### Coverage Gap Analysis
+
+**Improvement Targets**:
+- Beat 3 (Structure): Target 75%+ statements (currently 68%)
+- Beat 4 (Dependencies): Target 70%+ statements (currently 55%)
+- Branch coverage: Target 85%+ (currently 79.07%)
+
+**Quick Wins**:
+- Add 5-10 integration tests for Beat 4 modules → +8% coverage
+- Extract 3 utility functions from handlers → +5% maintainability
+- Document 10 high-complexity functions → +10 maintainability points
+
+### Implementation Roadmap
+
+**Sprint 1** (Weeks 1-2): High-priority consolidations
+- 0 consolidations reducing 200+ lines
+
+**Sprint 2** (Weeks 3-4): Handler refactoring & coverage
+- Clustering improvements
+- Target +6% branch coverage
+
+**Sprint 3** (Weeks 5-6): Documentation & polish
+- Maintainability improvements
+- Finish reaching 85%+ coverage targets
+
+### Risk Assessment
+
+**Overall Risk**: Low (most suggestions are refactoring with no behavior change)
+
+**Mitigation Strategies**:
+- Run full test suite after each consolidation
+- Use git bisect to identify regressions
+- PR review by 2+ architects
+- Stage in dev environment 1 week before production
+
+**Measurement**:
+- Source: 'computed' (suggestions derived from measured duplication & clustering data)
+- Timestamp: 2025-11-27T19:56:51.699Z
 
 
 ---
@@ -332,10 +472,10 @@ Gating Level: **FAIL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-54-23-549Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-54-23-549Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-54-23-549Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T19-54-23-549Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-56-50-807Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-56-50-807Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-56-50-807Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T19-56-50-807Z.json
 
 ---
 

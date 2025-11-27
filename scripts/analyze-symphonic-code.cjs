@@ -18,6 +18,7 @@ const { scanCodeDuplication, formatDuplicationMarkdown } = require('./scan-dupli
 const { validateMetricSource, filterMockMetrics, createIntegrityCheckpoint } = require('./source-metadata-guardrail.cjs');
 const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMarkdown } = require('./map-handlers-to-beats.cjs');
 const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
+const { generateRefactorSuggestions } = require('./generate-refactor-suggestions.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -427,6 +428,29 @@ Verify analyze-coverage-by-handler.cjs is accessible.`;
   }
 }
 
+/**
+ * Generate automated refactor suggestions markdown section
+ * Uses duplication analysis and handler clustering to recommend improvements
+ */
+async function generateRefactorMetrics() {
+  try {
+    const result = await generateRefactorSuggestions();
+    
+    if (!result.success) {
+      return `⚠ **Refactor analysis error**: ${result.error}
+
+Retrying with manual analysis deferred to next run.`;
+    }
+    
+    return result.markdown;
+    
+  } catch (err) {
+    return `❌ **Refactor analysis failed**: ${err.message}
+
+Verify generate-refactor-suggestions.cjs is accessible.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -573,6 +597,7 @@ async function generateMarkdownReport(metrics, artifacts) {
   const duplicationMetrics = await generateDuplicationMetrics();
   const handlerMappingMetrics = await generateHandlerMappingMetrics();
   const coverageByHandlerMetrics = await generateCoverageByHandlerMetrics();
+  const refactorMetrics = await generateRefactorMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -722,6 +747,10 @@ ${handlerMappingMetrics}
 ### Coverage by Handler Analysis
 
 ${coverageByHandlerMetrics}
+
+### Automated Refactor Suggestions
+
+${refactorMetrics}
 
 ---
 
