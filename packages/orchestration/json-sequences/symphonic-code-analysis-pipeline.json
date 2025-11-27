@@ -1,0 +1,437 @@
+{
+  "id": "symphonic-code-analysis-pipeline",
+  "sequenceId": "symphonic-code-analysis-pipeline",
+  "name": "Symphonic Code Analysis Pipeline",
+  "packageName": "orchestration",
+  "title": "Symphonic Code Analysis Pipeline - Orchestration Code Metrics & Coverage",
+  "description": "Multi-movement orchestration for comprehensive code analysis of symphonic orchestration codebases, measuring code metrics per beat, test coverage, complexity, and architectural conformity.",
+  "purpose": "Analyze and visualize symphonic orchestration code quality, providing per-beat metrics, coverage analysis, complexity scoring, and architecture conformity validation.",
+  "trigger": "On-demand via `npm run analyze:symphonic:code` or CI/CD pipeline",
+  "kind": "analysis",
+  "status": "active",
+  "tempo": 120,
+  "key": "C Major",
+  "timeSignature": "4/4",
+  "category": "orchestration",
+  "movements": 4,
+  "beats": 16,
+  "governance": {
+    "policies": [
+      "All code analysis must be correlatable to orchestration beats",
+      "Metrics collected per beat and per movement",
+      "Coverage thresholds must meet governance standards (≥85% required)",
+      "Complexity scoring aligned with orchestration conformity",
+      "Analysis results must be stored as immutable JSON artifacts",
+      "All generated reports auto-generated from analysis JSON",
+      "Trend analysis must track metrics across builds"
+    ],
+    "metrics": [
+      "Lines of code per beat",
+      "Lines of code per movement",
+      "Test coverage percentage (statement, branch, function, line)",
+      "Cyclomatic complexity per beat",
+      "Code duplication percentage",
+      "Handler implementation completeness",
+      "Test assertion count per beat",
+      "Architecture conformity score",
+      "Dependency coupling metrics",
+      "Debt score (technical debt estimate)",
+      "Maintainability index per module"
+    ]
+  },
+  "events": [
+    "analysis:initiated",
+    "movement-1:discovery:started",
+    "movement-1:beat:files:collected",
+    "movement-1:beat:handlers:identified",
+    "movement-1:discovery:complete",
+    "movement-2:metrics:started",
+    "movement-2:loc:calculated",
+    "movement-2:complexity:analyzed",
+    "movement-2:duplication:detected",
+    "movement-2:metrics:complete",
+    "movement-3:coverage:started",
+    "movement-3:statement:coverage:calculated",
+    "movement-3:branch:coverage:calculated",
+    "movement-3:coverage:complete",
+    "movement-4:conformity:started",
+    "movement-4:architecture:validated",
+    "movement-4:trend:analyzed",
+    "movement-4:report:generated",
+    "analysis:complete"
+  ],
+  "movements": [
+    {
+      "number": 1,
+      "name": "Code Discovery & Beat Mapping",
+      "description": "Discover all source files, map them to orchestration beats, and collect baseline metrics",
+      "purpose": "Establish beat-to-code correlation and prepare for analysis",
+      "beats": 4
+    },
+    {
+      "number": 2,
+      "name": "Code Metrics Analysis",
+      "description": "Calculate LOC, complexity, duplication, and maintainability metrics per beat and movement",
+      "purpose": "Quantify code quality dimensions aligned with orchestration structure",
+      "beats": 4
+    },
+    {
+      "number": 3,
+      "name": "Test Coverage Analysis",
+      "description": "Measure statement, branch, function, and line coverage with mapping to beats",
+      "purpose": "Ensure test coverage correlates to beat implementation completeness",
+      "beats": 4
+    },
+    {
+      "number": 4,
+      "name": "Architecture Conformity & Reporting",
+      "description": "Validate handler-to-beat mapping, calculate conformity score, generate reports and trends",
+      "purpose": "Synthesize analysis into actionable insights and governance metrics",
+      "beats": 4
+    }
+  ],
+  "beatDetails": [
+    {
+      "movement": 1,
+      "number": 1,
+      "name": "Scan Orchestration Files",
+      "description": "Scan JSON sequences and identify beat definitions, handlers, and event mappings",
+      "kind": "discovery",
+      "timing": "< 2s"
+    },
+    {
+      "movement": 1,
+      "number": 2,
+      "name": "Discover Source Code",
+      "description": "Discover all TypeScript/JavaScript implementation files matching beat handlers",
+      "kind": "discovery",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 1,
+      "number": 3,
+      "name": "Map Beats to Code",
+      "description": "Create beat-to-handler-to-source-file mapping for correlation",
+      "kind": "mapping",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 1,
+      "number": 4,
+      "name": "Collect Baseline",
+      "description": "Establish baseline metrics for comparison and trend analysis",
+      "kind": "collection",
+      "timing": "immediate"
+    },
+    {
+      "movement": 2,
+      "number": 1,
+      "name": "Count Lines of Code",
+      "description": "Calculate LOC per beat, per movement, and per orchestration domain",
+      "kind": "metrics",
+      "timing": "< 2s"
+    },
+    {
+      "movement": 2,
+      "number": 2,
+      "name": "Analyze Complexity",
+      "description": "Calculate cyclomatic complexity, cognitive complexity per beat handler",
+      "kind": "metrics",
+      "timing": "< 3s"
+    },
+    {
+      "movement": 2,
+      "number": 3,
+      "name": "Detect Duplication",
+      "description": "Identify code duplication patterns and calculate duplication percentage",
+      "kind": "metrics",
+      "timing": "< 2s"
+    },
+    {
+      "movement": 2,
+      "number": 4,
+      "name": "Calculate Maintainability",
+      "description": "Compute maintainability index and technical debt score per module",
+      "kind": "metrics",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 3,
+      "number": 1,
+      "name": "Measure Statement Coverage",
+      "description": "Identify test files and calculate statement coverage with beat correlation",
+      "kind": "coverage",
+      "timing": "< 3s"
+    },
+    {
+      "movement": 3,
+      "number": 2,
+      "name": "Measure Branch Coverage",
+      "description": "Calculate branch coverage (if/else, switch paths) per beat",
+      "kind": "coverage",
+      "timing": "< 3s"
+    },
+    {
+      "movement": 3,
+      "number": 3,
+      "name": "Measure Function Coverage",
+      "description": "Calculate function call coverage and handler execution coverage",
+      "kind": "coverage",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 3,
+      "number": 4,
+      "name": "Calculate Gap Analysis",
+      "description": "Identify uncovered code and test gaps aligned with beats",
+      "kind": "analysis",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 4,
+      "number": 1,
+      "name": "Validate Handler Mapping",
+      "description": "Verify all beats have handlers and handlers have corresponding implementation",
+      "kind": "validation",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 4,
+      "number": 2,
+      "name": "Calculate Conformity Score",
+      "description": "Synthesize all metrics into orchestration conformity score (0-1)",
+      "kind": "synthesis",
+      "timing": "immediate"
+    },
+    {
+      "movement": 4,
+      "number": 3,
+      "name": "Analyze Trends",
+      "description": "Compare current metrics to historical baseline and identify trends",
+      "kind": "analysis",
+      "timing": "< 1s"
+    },
+    {
+      "movement": 4,
+      "number": 4,
+      "name": "Generate Reports",
+      "description": "Generate JSON analysis artifacts, markdown reports, and visualization data",
+      "kind": "reporting",
+      "timing": "< 2s"
+    }
+  ],
+  "analysisMetrics": {
+    "codeMetrics": {
+      "linesOfCode": {
+        "description": "Total lines of code per beat, movement, and domain",
+        "aggregation": "sum",
+        "benchmark": "varies by beat complexity",
+        "visualization": "bar chart per movement"
+      },
+      "complexity": {
+        "description": "Cyclomatic complexity score per beat handler",
+        "aggregation": "average per movement",
+        "benchmark": "≤ 10 (good), ≤ 15 (acceptable), > 15 (refactor)",
+        "visualization": "scatter plot with trend"
+      },
+      "duplication": {
+        "description": "Percentage of duplicated code blocks",
+        "aggregation": "global percentage",
+        "benchmark": "≤ 5%",
+        "visualization": "percentage gauge"
+      },
+      "maintainability": {
+        "description": "Maintainability Index (0-100) per module",
+        "aggregation": "average",
+        "benchmark": "≥ 80 (good), 60-80 (fair), < 60 (poor)",
+        "visualization": "heatmap per beat"
+      }
+    },
+    "testCoverage": {
+      "statementCoverage": {
+        "description": "Percentage of statements executed by tests",
+        "benchmark": "≥ 85%",
+        "perBeat": true,
+        "visualization": "progress bar"
+      },
+      "branchCoverage": {
+        "description": "Percentage of code branches (if/else) covered",
+        "benchmark": "≥ 80%",
+        "perBeat": true,
+        "visualization": "progress bar"
+      },
+      "functionCoverage": {
+        "description": "Percentage of functions called by tests",
+        "benchmark": "≥ 90%",
+        "perBeat": true,
+        "visualization": "progress bar"
+      },
+      "lineCoverage": {
+        "description": "Percentage of lines executed by tests",
+        "benchmark": "≥ 85%",
+        "perBeat": true,
+        "visualization": "progress bar"
+      }
+    },
+    "conformityMetrics": {
+      "handlerCompleteness": {
+        "description": "Percentage of beats with implemented handlers",
+        "benchmark": "= 100%",
+        "impact": "CRITICAL"
+      },
+      "testCoverageConformity": {
+        "description": "Average coverage across all beats vs governance threshold",
+        "benchmark": "≥ 85%",
+        "impact": "HIGH"
+      },
+      "architectureConformity": {
+        "description": "Conformity score based on all metrics (0-1)",
+        "benchmark": "≥ 0.85",
+        "impact": "CRITICAL"
+      }
+    }
+  },
+  "reportingArtifacts": [
+    {
+      "type": "JSON",
+      "name": "{codebase}-code-analysis-{timestamp}.json",
+      "path": ".generated/analysis/",
+      "description": "Raw analysis data with all metrics per beat",
+      "purpose": "Machine-readable, immutable analysis snapshot"
+    },
+    {
+      "type": "Markdown",
+      "name": "{codebase}-CODE-ANALYSIS-REPORT.md",
+      "path": "docs/generated/{domain-id}/",
+      "description": "Human-readable analysis report with visualizations",
+      "purpose": "Executive summary of code quality and metrics",
+      "generated": true
+    },
+    {
+      "type": "JSON",
+      "name": "{codebase}-coverage-summary.json",
+      "path": ".generated/analysis/",
+      "description": "Coverage percentages aggregated by beat/movement",
+      "purpose": "Coverage trends and governance tracking"
+    },
+    {
+      "type": "CSV",
+      "name": "{codebase}-per-beat-metrics.csv",
+      "path": ".generated/analysis/",
+      "description": "Tabular metrics per beat for spreadsheet analysis",
+      "purpose": "Data export for external tools"
+    },
+    {
+      "type": "JSON",
+      "name": "{codebase}-trends.json",
+      "path": ".generated/analysis/",
+      "description": "Historical trends and comparison to baseline",
+      "purpose": "Track metric evolution across builds"
+    }
+  ],
+  "implementation": {
+    "bindings": [
+      {
+        "beat": 1,
+        "handler": "discoverOrchestrationSequences",
+        "script": "scripts/analyze-symphonic-discover.js"
+      },
+      {
+        "beat": 2,
+        "handler": "discoverSourceCode",
+        "script": "scripts/analyze-symphonic-discover.js"
+      },
+      {
+        "beat": 3,
+        "handler": "mapBeatsToCode",
+        "script": "scripts/analyze-symphonic-map-beats.js"
+      },
+      {
+        "beat": 4,
+        "handler": "collectBaseline",
+        "script": "scripts/analyze-symphonic-baseline.js"
+      },
+      {
+        "beat": 5,
+        "handler": "calculateLinesOfCode",
+        "script": "scripts/analyze-symphonic-metrics-loc.js"
+      },
+      {
+        "beat": 6,
+        "handler": "analyzeComplexity",
+        "script": "scripts/analyze-symphonic-metrics-complexity.js"
+      },
+      {
+        "beat": 7,
+        "handler": "detectDuplication",
+        "script": "scripts/analyze-symphonic-metrics-duplication.js"
+      },
+      {
+        "beat": 8,
+        "handler": "calculateMaintainability",
+        "script": "scripts/analyze-symphonic-metrics-maintainability.js"
+      },
+      {
+        "beat": 9,
+        "handler": "measureStatementCoverage",
+        "script": "scripts/analyze-symphonic-coverage-statement.js"
+      },
+      {
+        "beat": 10,
+        "handler": "measureBranchCoverage",
+        "script": "scripts/analyze-symphonic-coverage-branch.js"
+      },
+      {
+        "beat": 11,
+        "handler": "measureFunctionCoverage",
+        "script": "scripts/analyze-symphonic-coverage-function.js"
+      },
+      {
+        "beat": 12,
+        "handler": "calculateGapAnalysis",
+        "script": "scripts/analyze-symphonic-coverage-gaps.js"
+      },
+      {
+        "beat": 13,
+        "handler": "validateHandlerMapping",
+        "script": "scripts/analyze-symphonic-validate-mapping.js"
+      },
+      {
+        "beat": 14,
+        "handler": "calculateConformityScore",
+        "script": "scripts/analyze-symphonic-conformity.js"
+      },
+      {
+        "beat": 15,
+        "handler": "analyzeTrends",
+        "script": "scripts/analyze-symphonic-trends.js"
+      },
+      {
+        "beat": 16,
+        "handler": "generateReports",
+        "script": "scripts/analyze-symphonic-reports.js"
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-11-27",
+    "author": "Orchestration Governance System",
+    "lastModified": "2025-11-27",
+    "status": "active",
+    "tags": [
+      "analysis",
+      "orchestration",
+      "code-quality",
+      "metrics",
+      "coverage",
+      "conformity"
+    ],
+    "documentation": "Auto-generated from this JSON authority file by scripts/gen-symphonic-code-analysis-docs.js",
+    "relatedDomains": [
+      "build-pipeline-symphony",
+      "architecture-governance-enforcement-symphony",
+      "symphonia-conformity-alignment-pipeline"
+    ]
+  }
+}
