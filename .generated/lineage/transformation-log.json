@@ -1,9 +1,0 @@
-[
-  {
-    "transformationId": "tf-001-event-aggregation",
-    "status": "success",
-    "inputChecksum": "sha256:0e792abc77af13cd...",
-    "outputChecksum": "sha256:0e792abc77af13cd...",
-    "executionTimeMs": 157.6111378211743
-  }
-]
