@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T19:36:02.142Z  
+**Generated**: 2025-11-27T19:37:50.272Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,8 +13,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 79.73% | ⚠️  FAIR| Risk: MEDIUM|
-| Maintainability | 61.07/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 86.21% | ✅ GOOD| Risk: LOW|
+| Maintainability | 67.27/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -68,18 +68,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-27T19:36:02.141Z
+**Last Scan**: 2025-11-27T19:37:50.271Z
 
 ### Maintainability Index
-- **Score**: 61.07/100
+- **Score**: 67.27/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 68.0%
-  - Documentation: 83.8%
-  - Comment Density: 41.4%
-  - Complexity Score: 47.8
+  - Test Coverage: 66.5%
+  - Documentation: 92.7%
+  - Comment Density: 93.3%
+  - Complexity Score: 66.3
 
 ---
 
@@ -90,10 +90,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 79.73% | 80% | ⚠ |
-| Branches | 73.02% | 75% | ⚠ |
-| Functions | 88.70% | 80% | ✓ |
-| Lines | 76.43% | 80% | ⚠ |
+| Statements | 86.21% | 80% | ✓ |
+| Branches | 69.16% | 75% | ⚠ |
+| Functions | 78.76% | 80% | ⚠ |
+| Lines | 75.83% | 80% | ⚠ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -137,7 +137,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-27T19:36:01.934Z
+**Last Scan**: 2025-11-27T19:37:50.059Z
 
 ---
 
@@ -154,12 +154,12 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ❌ **NOT READY**
+**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
 
-Gating Level: **FAIL**
+Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (86.61%) ❌
+✓ Coverage (86.61%) ✅
 ✓ Handler Scanning (Not Implemented) ⚠
 
 ---
@@ -244,10 +244,10 @@ Gating Level: **FAIL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-36-01-680Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-36-01-680Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-36-01-680Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T19-36-01-680Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T19-37-49-830Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T19-37-49-830Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T19-37-49-830Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T19-37-49-830Z.json
 
 ---
 

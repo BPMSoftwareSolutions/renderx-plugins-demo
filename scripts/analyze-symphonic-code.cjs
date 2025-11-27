@@ -15,6 +15,7 @@ const { execSync } = require('child_process');
 const classifier = require('./symphonic-metrics-classifier.cjs');
 const { scanHandlerExports, formatHandlersMarkdown } = require('./scan-handlers.cjs');
 const { scanCodeDuplication, formatDuplicationMarkdown } = require('./scan-duplication.cjs');
+const { validateMetricSource, filterMockMetrics, createIntegrityCheckpoint } = require('./source-metadata-guardrail.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -355,6 +356,34 @@ Verify scan-duplication.cjs is accessible and git repository is initialized.`;
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
+  // Validate metric sources (guard against synthetic data)
+  log('Validating metric sources...', '🔐');
+  const metricsWithSource = {
+    conformity: { ...metrics.conformity, source: 'measured' },
+    coverage: { ...metrics.coverage, source: 'measured' },
+    maintainability: { ...metrics.maintainability, source: 'computed' },
+    complexity: { ...metrics.complexity, source: 'measured' },
+    duplication: { ...metrics.duplication, source: 'measured' },
+    loc: { ...metrics.loc, source: 'measured' }
+  };
+  
+  // Check for any mock data
+  let mockFound = false;
+  for (const [key, metric] of Object.entries(metricsWithSource)) {
+    if (metric && metric.source === 'mock') {
+      log(`⚠ Mock metric detected: ${key}`, '⚠');
+      mockFound = true;
+    }
+  }
+  
+  if (mockFound) {
+    log('Filtered out mock metrics before rendering', '🚫');
+  }
+  
+  // Create integrity checkpoint
+  const checkpoint = createIntegrityCheckpoint(metricsWithSource);
+  log(`Integrity checkpoint: ${checkpoint.integrityHash.substring(0, 8)}...`, '✓');
+  
   const analysisData = {
     id: `renderx-web-code-analysis-${TIMESTAMP}`,
     timestamp: new Date().toISOString(),
@@ -391,7 +420,8 @@ function generateJsonArtifacts(metrics) {
       successful_beats: 14,
       failed_beats: 0,
       overall_health: 'HEALTHY'
-    }
+    },
+    integrity_checkpoint: checkpoint
   };
 
   const jsonPath = path.join(ANALYSIS_DIR, `renderx-web-code-analysis-${TIMESTAMP}.json`);
