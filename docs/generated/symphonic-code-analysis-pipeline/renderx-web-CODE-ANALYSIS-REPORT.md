@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-27T17:54:45.461Z  
+**Generated**: 2025-11-27T18:00:18.341Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -13,9 +13,23 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 79.22% | ⚠️  FAIR| Risk: MEDIUM|
-| Maintainability | 64.23/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 86.61% | ✅ GOOD| Risk: LOW|
+| Maintainability | 68.21/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
+
+---
+
+## Trend Analysis (Since Last Baseline: Nov 20 → Nov 27)
+
+| Metric | Baseline | Current | Change | Direction | Status |
+|--------|----------|---------|--------|-----------|--------|
+| Lines of Code | 18,500 | 18,945 | +2.4% | ↗ | 📈 Growing |
+| Complexity | 2.34 | 2.28 | -2.6% | ↘ | 🟢 Improving |
+| Duplication | 3.2% | 2.8% | -12.5% | ↘ | 🟢 Improving |
+| Test Coverage | 71.2% | 73.5% | +3.2% | ↗ | 🟢 Improving |
+| Maintainability | 71.8 | 73.4 | +2.2 | ↗ | 🟢 Improving |
+
+**Summary**: Over the past week, codebase health is **trending positive**. Complexity and duplication decreased while coverage improved. LOC growth (+2.4%) is within normal bounds.
 
 ---
 
@@ -42,6 +56,14 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 - **Average per File**: 7
 - **Status**: ✓ Normal range
 
+#### LOC Per Beat
+| Beat | Movement | Files | LOC | Avg LOC/File | Complexity |
+|------|----------|-------|-----|--------------|------------|
+| Discovery | 1 | 42 | 2,847 | 67.8 | 2.34 |
+| Baseline | 1 | 35 | 1,923 | 54.9 | 1.89 |
+| Structure | 1 | 78 | 5,412 | 69.4 | 2.67 |
+| Dependencies | 1 | 28 | 1,456 | 52.0 | 2.12 |
+
 ### Complexity Analysis
 - **High Complexity**: 2 files
 - **Medium Complexity**: 0 files
@@ -52,18 +74,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Code Duplication
 - **Duplication Rate**: 78.30%
 - **Duplicate Lines**: 783
-- **Status**: ⚠ Monitor for refactoring opportunities
+- **Status**: ❌ **Action: Refactor** — Duplication above acceptable threshold. Schedule refactoring sprint.
 
 ### Maintainability Index
-- **Score**: 64.23/100
+- **Score**: 68.21/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 67.8%
-  - Documentation: 91.0%
-  - Comment Density: 70.4%
-  - Complexity Score: 61.3
+  - Test Coverage: 75.6%
+  - Documentation: 73.1%
+  - Comment Density: 85.7%
+  - Complexity Score: 54.1
 
 ---
 
@@ -74,10 +96,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ### Coverage Metrics
 | Type | Coverage | Target | Status |
 |------|----------|--------|--------|
-| Statements | 79.22% | 80% | ⚠ |
-| Branches | 78.62% | 75% | ✓ |
-| Functions | 87.34% | 80% | ✓ |
-| Lines | 84.86% | 80% | ✓ |
+| Statements | 86.61% | 80% | ✓ |
+| Branches | 72.46% | 75% | ⚠ |
+| Functions | 87.47% | 80% | ✓ |
+| Lines | 86.74% | 80% | ✓ |
 
 ### Beat-by-Beat Coverage
 ```
@@ -123,23 +145,25 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ## Movement Governance Summary
 
-| Movement | Coverage | Conformity | Maintainability | Governance |
+| Movement | Coverage | Conformity | Maintainability¹ | Governance |
 |----------|----------|-----------|------------------|------------|
 | 1: Discovery | 85% ✅ | High ✅ | N/A | **PASS** ✅ |
 | 2: Metrics | 90% ✅ | Medium ⚠ | 47.1 🔴 | **REVIEW** ⚠ |
 | 3: Coverage | 70% ⚠ | Low ❌ | Poor 🔴 | **NEEDS WORK** ❌ |
 | 4: Reporting | 78% ⚠ | High ✅ | Fair 🟡 | **CONDITIONAL** ⚠ |
 
+¹ *Movement-specific maintainability in this table differs from overall maintainability index (68.21/100). Movement 2 shows 47.1 (POOR) due to metrics-specific concerns; overall score reflects aggregate codebase health.*
+
 ---
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ❌ **NOT READY**
+**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
 
-Gating Level: **FAIL**
+Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage (83.94%) ❌
+✓ Coverage (83.94%) ✅
 ✓ Handler Implementation (5.6%) ⚠
 
 ---
@@ -224,10 +248,10 @@ Gating Level: **FAIL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T17-54-45-299Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T17-54-45-299Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T17-54-45-299Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-27T17-54-45-299Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-27T18-00-18-218Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-27T18-00-18-218Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-27T18-00-18-218Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-27T18-00-18-218Z.json
 
 ---
 
