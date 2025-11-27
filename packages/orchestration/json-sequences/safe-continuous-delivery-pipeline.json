@@ -13,7 +13,7 @@
   "key": "C Major",
   "timeSignature": "4/4",
   "category": "orchestration",
-  "beats": 17,
+  "beats": 18,
   "governance": {
     "policies": [
       "All pipeline stages must maintain visibility score ≥ 0.7 (70%)",
@@ -47,6 +47,9 @@
     "integration:build:started",
     "integration:test:started",
     "integration:stage:started",
+    "integration:product-owner-signoff:started",
+    "integration:product-owner-signoff:approved",
+    "integration:product-owner-signoff:rejected",
     "integration:complete",
     "deployment:deploy:started",
     "deployment:verify:started",
@@ -207,6 +210,15 @@
       "relatedActivities": ["Lean Startup Thinking", "Value Stream Mapping", "Relentless Improvement"]
     },
     {
+      "id": "product-owner-signoff-demo",
+      "name": "Product Owner Sign-off Demo",
+      "description": "Conduct guided demo for product owner validation and feature sign-off before production deployment",
+      "type": "integration",
+      "framework": "SAFe Continuous Integration",
+      "activity": "Demo & Signoff (5)",
+      "relatedActivities": ["Stakeholder Demo", "Product Owner Acceptance", "Feature Validation", "Demo Environment", "Signoff Gate"]
+    },
+    {
       "id": "lint-quality-gate",
       "name": "Enforce Lint Quality Gate",
       "description": "Detect, categorize, and remediate linting issues; enforce quality standards and prevent regressions",
@@ -291,11 +303,11 @@
       "movement": 2,
       "id": "continuous-integration",
       "name": "Continuous Integration",
-      "description": "Development, build automation, end-to-end testing, and staging validation",
-      "purpose": "Ensure every code commit integrates cleanly and passes comprehensive automated tests before production consideration",
+      "description": "Development, build automation, end-to-end testing, staging validation, and product owner sign-off",
+      "purpose": "Ensure every code commit integrates cleanly, passes comprehensive automated tests, receives product owner approval, and is ready for production deployment",
       "visibility": 0.90,
       "consistency": 0.88,
-      "beats": 5,
+      "beats": 6,
       "sequence": [
         {
           "beat": 1,
@@ -359,6 +371,23 @@
         },
         {
           "beat": 5,
+          "id": "product-owner-signoff",
+          "name": "Product Owner Sign-off Demo",
+          "description": "Conduct guided demo for product owner validation, feature acceptance, and business sign-off before production deployment",
+          "key_activity": "Demo & Signoff (5)",
+          "handlers": ["product-owner-signoff-demo"],
+          "success_criteria": [
+            "Demo environment prepared with staging code",
+            "Product owner guided through feature workflows",
+            "Feature acceptance criteria verified",
+            "Business value demonstrated",
+            "Formal sign-off obtained for production deployment",
+            "Demo feedback documented for future iterations"
+          ],
+          "timing": "Per-feature or per-sprint"
+        },
+        {
+          "beat": 6,
           "id": "quality-gate",
           "name": "Enforce Quality Gate",
           "description": "Run lint quality gate, detect code quality issues, auto-fix where possible, prevent regressions",

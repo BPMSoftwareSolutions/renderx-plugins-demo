@@ -2448,7 +2448,7 @@
       "status": "active",
       "sequenceFile": "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json",
       "movements": 4,
-      "beats": 17,
+      "beats": 18,
       "tempo": 120,
       "key": "C Major",
       "timeSignature": "4/4",
@@ -2470,8 +2470,8 @@
           },
           {
             "name": "Movement 2: Continuous Integration",
-            "description": "Development, build automation, testing, and staging validation",
-            "items": 5
+            "description": "Development, build automation, testing, staging validation, and product owner sign-off",
+            "items": 6
           },
           {
             "name": "Movement 3: Continuous Deployment",
@@ -2486,6 +2486,32 @@
         ]
       },
       "npmScripts": "pipeline:delivery:execute, pipeline:delivery:exploration, pipeline:delivery:integration, pipeline:delivery:deployment, pipeline:delivery:release, pipeline:delivery:report"
+    },
+    {
+      "id": "product-owner-signoff-demo",
+      "name": "Product Owner Sign-off Demo",
+      "emoji": "✅",
+      "description": "Gating orchestration for product owner validation and feature sign-off. Conducts guided demos in staging environment before production deployment.",
+      "category": "orchestration",
+      "purpose": "Verification and stakeholder sign-off gate",
+      "relatedDomains": [],
+      "status": "active",
+      "parent": "safe-continuous-delivery-pipeline",
+      "sequenceFile": null,
+      "movements": null,
+      "beats": null,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "description_long": "Product owner sign-off demo is a critical gating mechanism in the SAFe Continuous Integration movement (beat 5). It ensures that features have been validated by product owners and receive formal approval before production deployment. This orchestration conducts guided demos, verifies feature acceptance criteria, demonstrates business value, and obtains sign-off.",
+      "sketch": {
+        "title": "Product Owner Sign-off Demo",
+        "description": "Gating orchestration for product owner validation before production",
+        "role": "Demo and approval gate within Continuous Integration",
+        "triggers": ["Staging environment ready", "Feature complete", "All acceptance criteria met"],
+        "outcomes": ["Sign-off approved", "Sign-off rejected", "Feedback captured"]
+      },
+      "npmScripts": ["demo:feature:stage", "demo:feature:validate", "demo:feature:signoff"]
     },
     {
       "id": "renderx-web-orchestration",
