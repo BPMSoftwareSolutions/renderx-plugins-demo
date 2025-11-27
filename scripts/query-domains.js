@@ -54,8 +54,19 @@ const commands = {
       const status = d.status || 'active';
       const icon = status === 'active' ? '✅' : '⏳';
       const hierarchy = d.parent ? ` ↳ [parent: ${d.parent}]` : '';
-      console.log(`${icon} ${d.id}${hierarchy}`);
+      const catIcon = d.category === 'orchestration' ? '🎭' : '🔌';
+      console.log(`${icon} ${catIcon} ${d.id}${hierarchy}`);
       if (d.description) console.log(`   ${d.description}`);
+      
+      // Show tools/scripts
+      if (d.npmScripts) {
+        const scripts = typeof d.npmScripts === 'string' 
+          ? d.npmScripts.split(',').map(s => s.trim())
+          : Array.isArray(d.npmScripts) ? d.npmScripts : [d.npmScripts];
+        if (scripts.length > 0) {
+          console.log(`   🔧 Tools: ${scripts.join(', ')}`);
+        }
+      }
     });
   },
 
@@ -70,10 +81,21 @@ const commands = {
     
     console.log(`\n🔍 Search results for "${query}" (${results.length} found)\n`);
     results.forEach(d => {
-      console.log(`✓ ${d.id}`);
+      const catIcon = d.category === 'orchestration' ? '🎭' : '🔌';
+      console.log(`✓ ${catIcon} ${d.id}`);
       if (d.name) console.log(`  Name: ${d.name}`);
       if (d.description) console.log(`  ${d.description}`);
       if (d.category) console.log(`  Category: ${d.category}`);
+      
+      // Show tools/scripts
+      if (d.npmScripts) {
+        const scripts = typeof d.npmScripts === 'string' 
+          ? d.npmScripts.split(',').map(s => s.trim())
+          : Array.isArray(d.npmScripts) ? d.npmScripts : [d.npmScripts];
+        if (scripts.length > 0) {
+          console.log(`  🔧 Tools: ${scripts.join(', ')}`);
+        }
+      }
     });
   },
 
@@ -89,7 +111,12 @@ const commands = {
     }
     console.log(`\n📌 Domain: ${domain.id}\n`);
     
-    // Show hierarchy info
+    // Show category and hierarchy info
+    if (domain.category) {
+      const catIcon = domain.category === 'orchestration' ? '🎭' : '🔌';
+      console.log(`${catIcon} Category: ${domain.category}`);
+    }
+    
     if (domain.parent) {
       const parentDomain = registry.domains.find(d => d.id === domain.parent);
       console.log(`📍 Hierarchy:`);
@@ -101,8 +128,20 @@ const commands = {
     }
     if (domain.parent || children.length > 0) console.log();
     
+    // Show tools/scripts prominently
+    if (domain.npmScripts) {
+      const scripts = typeof domain.npmScripts === 'string' 
+        ? domain.npmScripts.split(',').map(s => s.trim())
+        : Array.isArray(domain.npmScripts) ? domain.npmScripts : [domain.npmScripts];
+      if (scripts.length > 0) {
+        console.log(`🔧 Tools (${scripts.length}):`);
+        scripts.forEach(script => console.log(`   • npm run ${script}`));
+        console.log();
+      }
+    }
+    
     Object.entries(domain).forEach(([key, value]) => {
-      if (key === 'parent') return; // Already shown above
+      if (key === 'parent' || key === 'npmScripts' || key === 'category') return; // Already shown above
       if (key === 'movements' && Array.isArray(value)) {
         console.log(`${key}: ${value.length} items`);
       } else if (typeof value === 'object') {
@@ -133,9 +172,15 @@ const commands = {
       console.log(`${icon} ${status} ${d.id}`);
       if (d.description) console.log(`   ${d.description}`);
       if (d.movements) console.log(`   Movements: ${d.movements}`);
+      
+      // Show tools/scripts
       if (d.npmScripts) {
-        const count = Array.isArray(d.npmScripts) ? d.npmScripts.length : 1;
-        console.log(`   Scripts: ${count}`);
+        const scripts = typeof d.npmScripts === 'string' 
+          ? d.npmScripts.split(',').map(s => s.trim())
+          : Array.isArray(d.npmScripts) ? d.npmScripts : [d.npmScripts];
+        if (scripts.length > 0) {
+          console.log(`   🔧 Tools: ${scripts.join(', ')}`);
+        }
       }
     });
   },
