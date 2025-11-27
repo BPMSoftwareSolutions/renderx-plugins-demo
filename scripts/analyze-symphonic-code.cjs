@@ -17,6 +17,7 @@ const { scanHandlerExports, formatHandlersMarkdown } = require('./scan-handlers.
 const { scanCodeDuplication, formatDuplicationMarkdown } = require('./scan-duplication.cjs');
 const { validateMetricSource, filterMockMetrics, createIntegrityCheckpoint } = require('./source-metadata-guardrail.cjs');
 const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMarkdown } = require('./map-handlers-to-beats.cjs');
+const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -403,6 +404,29 @@ Verify map-handlers-to-beats.cjs is accessible.`;
   }
 }
 
+/**
+ * Generate coverage by handler metrics markdown section
+ * Uses real test coverage analysis correlated with handler discoveries
+ */
+async function generateCoverageByHandlerMetrics() {
+  try {
+    const result = await analyzeCoverageByHandler();
+    
+    if (!result.success) {
+      return `⚠ **Coverage analysis error**: ${result.error}
+
+Retrying with manual detection deferred to next run.`;
+    }
+    
+    return result.markdown;
+    
+  } catch (err) {
+    return `❌ **Coverage analysis failed**: ${err.message}
+
+Verify analyze-coverage-by-handler.cjs is accessible.`;
+  }
+}
+
 function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
@@ -548,6 +572,7 @@ async function generateMarkdownReport(metrics, artifacts) {
   const handlerMetrics = await generateHandlerMetrics();
   const duplicationMetrics = await generateDuplicationMetrics();
   const handlerMappingMetrics = await generateHandlerMappingMetrics();
+  const coverageByHandlerMetrics = await generateCoverageByHandlerMetrics();
   
   const report = `# RenderX-Web Code Analysis Report
 
@@ -693,6 +718,10 @@ ${handlerMetrics}
 ### Handler-to-Beat Mapping & Health Score
 
 ${handlerMappingMetrics}
+
+### Coverage by Handler Analysis
+
+${coverageByHandlerMetrics}
 
 ---
 
