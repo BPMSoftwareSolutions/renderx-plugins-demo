@@ -90,8 +90,8 @@ export function wrapBeatWithTelemetry(handler, handlerName, movementNum, beatNum
   return beatTelemetryCollector(
     handler,
     {
-      number: beatNum,
-      name: beatName,
+      beat: beatNum,
+      beatName: beatName,
       handler: handlerName,
       movement: movementNum,
       timestamp: new Date().toISOString()

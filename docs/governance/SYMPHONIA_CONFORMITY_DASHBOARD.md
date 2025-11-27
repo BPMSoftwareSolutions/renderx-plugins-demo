@@ -1,13 +1,13 @@
 # Symphonia Conformity Dashboard
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T18:51:24.880Z -->
+<!-- Generated: 2025-11-27T02:51:57.168Z -->
 
 ## 🎼 Overall Conformity Score
 
-**70/100**
+**62/100**
 
-⚠️  GOOD
+🔴 POOR
 
 ---
 
@@ -15,20 +15,31 @@
 
 | Dimension | Score | Artifacts | Violations |
 |-----------|-------|-----------|------------|
-| Orchestration Domain Conformity | 100/100 | 61 | 0 |
+| Orchestration Domain Conformity | 80/100 | 61 | 2 |
 | Contract Schema Conformity | 100/100 | 8 | 0 |
-| Sequence Flow Conformity | 100/100 | 27 | 0 |
-| BDD Specification Conformity | 50/100 | 8 | 5 |
-| Handler Specification Conformity | 0/100 | 263 | 15 |
+| Sequence Flow Conformity | 90/100 | 29 | 1 |
+| BDD Specification Conformity | 40/100 | 9 | 6 |
+| Handler Specification Conformity | 0/100 | 264 | 17 |
 
 
-## 🚨 Critical Violations (0)
-
-✅ No critical violations
+## 🚨 Critical Violations (2)
 
 
-## ⚠️  Major Violations (20)
+### build-pipeline-symphony
+- **Rule**: sequence-beats-positive
+- **Issue**: Invalid beat count
+- **Remediation**: Set beats to handler item count (current: undefined)
 
+### build-pipeline-symphony.feature
+- **Rule**: scenarios-complete
+- **Issue**: 5 scenarios missing Given-When-Then
+- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
+
+
+## ⚠️  Major Violations (24)
+
+- **orchestration-audit-session**: Invalid key: C
+- **orchestration-audit-system**: Invalid key: G
 - **cag-agent-workflow.feature**: Only 1 scenarios (need >= 2)
 - **graphing-orchestration.feature**: Only 1 scenarios (need >= 2)
 - **orchestration-audit-session.feature**: Only 1 scenarios (need >= 2)
@@ -37,18 +48,17 @@
 - **CanvasDrop.container-route.spec.ts**: Missing test cases
 - **drop.spec.ts**: Missing test cases
 - **select.overlay.helpers.spec.ts**: Missing proper context setup
-- **select.overlay.helpers.spec.ts**: Missing test cases
-- **select.overlay.helpers.spec.ts**: Missing error handling test
 
-... and 10 more
+... and 14 more
 
 
 ## 📋 Recommendations
 
+- 🚨 CRITICAL: Fix all CRITICAL violations before deployment
 - ⚠️  MAJOR: Address MAJOR violations in next sprint
-- ⚠️  Good conformity - focus on CRITICAL and MAJOR issues
+- 🔴 Poor conformity - immediate remediation required
 
 ---
 
-Generated: 2025-11-26T18:51:24.880Z
-Total Artifacts Scanned: 367
+Generated: 2025-11-27T02:51:57.168Z
+Total Artifacts Scanned: 371

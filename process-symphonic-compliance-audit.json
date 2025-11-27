@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2025-11-27T01:24:49.132Z",
+  "generatedAt": "2025-11-27T02:37:06.540Z",
   "summary": {
-    "totalProcesses": 448,
+    "totalProcesses": 463,
     "symphonic": 0,
-    "partialSymphonic": 13,
-    "nonSymphonic": 228,
-    "shouldBeSymphonic": 207,
+    "partialSymphonic": 26,
+    "nonSymphonic": 229,
+    "shouldBeSymphonic": 208,
     "complianceScore": 0
   },
   "processes": [
@@ -230,6 +230,17 @@
       "complianceLevel": "non-symphonic"
     },
     {
+      "name": "beat-telemetry-collector.cjs",
+      "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\beat-telemetry-collector.cjs",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "complex",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
       "name": "build-artifacts.js",
       "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\build-artifacts.js",
       "category": "build",
@@ -261,6 +272,28 @@
       "complexity": "very-complex",
       "shouldBeSymphonic": true,
       "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build-symphony-telemetry-integration.js",
+      "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\build-symphony-telemetry-integration.js",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "complex",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build-telemetry-console-formatter.cjs",
+      "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\build-telemetry-console-formatter.cjs",
+      "category": "build",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "complex",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
     },
     {
       "name": "cag-context-engine.js",
@@ -1031,6 +1064,17 @@
       "complexity": "complex",
       "shouldBeSymphonic": false,
       "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "fix-phase-4-process-symphonic-remediation.cjs",
+      "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\fix-phase-4-process-symphonic-remediation.cjs",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "very-complex",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
     },
     {
       "name": "fix-self-healing-tempo.cjs",
@@ -2221,12 +2265,23 @@
       "complianceLevel": "non-symphonic"
     },
     {
+      "name": "orchestrate-build-symphony-with-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony-with-telemetry.js",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "complex",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
       "name": "orchestrate-build-symphony.js",
       "path": "C:\\source\\repos\\bpm\\Internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
-      "inNpmScript": false,
+      "inNpmScript": true,
       "complexity": "complex",
       "shouldBeSymphonic": true,
       "complianceLevel": "partial-symphonic"
@@ -4437,6 +4492,71 @@
       "complianceLevel": "should-be-symphonic"
     },
     {
+      "name": "build:symphony",
+      "path": "package.json:scripts.build:symphony",
+      "type": "npm-script",
+      "command": "node scripts/orchestrate-build-symphony.js",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build:symphony:telemetry",
+      "path": "package.json:scripts.build:symphony:telemetry",
+      "type": "npm-script",
+      "command": "node scripts/orchestrate-build-symphony-with-telemetry.js",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build:symphony:telemetry:p",
+      "path": "package.json:scripts.build:symphony:telemetry:p",
+      "type": "npm-script",
+      "command": "node scripts/orchestrate-build-symphony-with-telemetry.js --dynamic=p",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build:symphony:telemetry:f",
+      "path": "package.json:scripts.build:symphony:telemetry:f",
+      "type": "npm-script",
+      "command": "node scripts/orchestrate-build-symphony-with-telemetry.js --dynamic=f",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "build:symphony:telemetry:ff",
+      "path": "package.json:scripts.build:symphony:telemetry:ff",
+      "type": "npm-script",
+      "command": "node scripts/orchestrate-build-symphony-with-telemetry.js --dynamic=ff",
+      "category": "orchestration",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
       "name": "fuse:slo:breaches",
       "path": "package.json:scripts.fuse:slo:breaches",
       "type": "npm-script",
@@ -5009,6 +5129,19 @@
       "complianceLevel": "should-be-symphonic"
     },
     {
+      "name": "pipeline:conformity:phase-4",
+      "path": "package.json:scripts.pipeline:conformity:phase-4",
+      "type": "npm-script",
+      "command": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json --phase=4",
+      "category": "orchestration",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
       "name": "pipeline:conformity:dry-run",
       "path": "package.json:scripts.pipeline:conformity:dry-run",
       "type": "npm-script",
@@ -5087,10 +5220,62 @@
       "complianceLevel": "non-symphonic"
     },
     {
+      "name": "fix:conformity:phase-4",
+      "path": "package.json:scripts.fix:conformity:phase-4",
+      "type": "npm-script",
+      "command": "node scripts/fix-phase-4-process-symphonic-remediation.cjs",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "fix:conformity:phase-4:discover",
+      "path": "package.json:scripts.fix:conformity:phase-4:discover",
+      "type": "npm-script",
+      "command": "node scripts/fix-phase-4-process-symphonic-remediation.cjs discover",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "fix:conformity:phase-4:analyze",
+      "path": "package.json:scripts.fix:conformity:phase-4:analyze",
+      "type": "npm-script",
+      "command": "node scripts/fix-phase-4-process-symphonic-remediation.cjs analyze",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "fix:conformity:phase-4:convert",
+      "path": "package.json:scripts.fix:conformity:phase-4:convert",
+      "type": "npm-script",
+      "command": "node scripts/fix-phase-4-process-symphonic-remediation.cjs convert",
+      "category": "utility",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "partial-symphonic"
+    },
+    {
       "name": "fix:conformity:all",
       "path": "package.json:scripts.fix:conformity:all",
       "type": "npm-script",
-      "command": "npm run fix:conformity:phase-1 && npm run fix:conformity:phase-1b && npm run fix:conformity:phase-2 && npm run fix:conformity:phase-3",
+      "command": "npm run fix:conformity:phase-1 && npm run fix:conformity:phase-1b && npm run fix:conformity:phase-2 && npm run fix:conformity:phase-3 && npm run fix:conformity:phase-4",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -6473,6 +6658,12 @@
     },
     {
       "process": "pipeline:conformity:phase-3",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "orchestration",
+      "severity": "high"
+    },
+    {
+      "process": "pipeline:conformity:phase-4",
       "reason": "Process type requires symphonic structure but none found",
       "category": "orchestration",
       "severity": "high"
@@ -11492,6 +11683,31 @@
         "id": "pipeline:conformity:phase-3",
         "sequenceId": "pipeline:conformity:phase-3",
         "name": "pipeline:conformity:phase-3 Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "pipeline:conformity:phase-4",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/pipeline:conformity:phase-4-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "pipeline:conformity:phase-4",
+        "sequenceId": "pipeline:conformity:phase-4",
+        "name": "pipeline:conformity:phase-4 Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],

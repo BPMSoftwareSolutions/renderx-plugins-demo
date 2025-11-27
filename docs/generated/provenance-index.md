@@ -4,7 +4,7 @@
 
 | Doc | Source | Kind | Stale | Doc Hash | Source Hash |
 |-----|--------|------|-------|----------|-------------|
-| orchestration-domains.md | orchestration-domains.json | registry | NO | 571665914a58 | 1af0944520f9 |
-| orchestration-audit-system-project-plan.md | orchestration-audit-system-project-plan.json | plan | NO | 53a6dce62153 | 4a4f7e1b229e |
-| unified-musical-sequence-interface.md | orchestration-domains.json | interface | NO | 29be0e9171b9 | 1af0944520f9 |
-| orchestration-execution-flow.md | orchestration-domains.json | execution-flow | NO | 8ef30d15a950 | 1af0944520f9 |
+| orchestration-domains.md | orchestration-domains.json | registry | NO | 221e11c6a1f1 | 276437070a1d |
+| orchestration-audit-system-project-plan.md | orchestration-audit-system-project-plan.json | plan | NO | 980363396005 | 4a4f7e1b229e |
+| unified-musical-sequence-interface.md | orchestration-domains.json | interface | NO | a00c9939ebec | 276437070a1d |
+| orchestration-execution-flow.md | orchestration-domains.json | execution-flow | NO | a735d63de65b | 276437070a1d |

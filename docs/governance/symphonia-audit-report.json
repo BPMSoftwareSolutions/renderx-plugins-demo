@@ -1,12 +1,27 @@
 {
-  "timestamp": "2025-11-26T18:51:24.880Z",
+  "timestamp": "2025-11-27T02:51:57.168Z",
   "version": "1.0.0",
   "dimensions": {
     "orchestration-domains": {
       "name": "Orchestration Domain Conformity",
       "artifactsScanned": 61,
-      "violations": [],
-      "score": 100
+      "violations": [
+        {
+          "level": "MAJOR",
+          "rule": "domain-key-signature",
+          "artifact": "orchestration-audit-session",
+          "message": "Invalid key: C",
+          "remediation": "Use valid key, e.g., 'C Major' (current: 'C')"
+        },
+        {
+          "level": "MAJOR",
+          "rule": "domain-key-signature",
+          "artifact": "orchestration-audit-system",
+          "message": "Invalid key: G",
+          "remediation": "Use valid key, e.g., 'C Major' (current: 'G')"
+        }
+      ],
+      "score": 80
     },
     "contracts": {
       "name": "Contract Schema Conformity",
@@ -16,13 +31,21 @@
     },
     "sequences": {
       "name": "Sequence Flow Conformity",
-      "artifactsScanned": 27,
-      "violations": [],
-      "score": 100
+      "artifactsScanned": 29,
+      "violations": [
+        {
+          "level": "CRITICAL",
+          "rule": "sequence-beats-positive",
+          "artifact": "build-pipeline-symphony",
+          "message": "Invalid beat count",
+          "remediation": "Set beats to handler item count (current: undefined)"
+        }
+      ],
+      "score": 90
     },
     "bdd-specs": {
       "name": "BDD Specification Conformity",
-      "artifactsScanned": 8,
+      "artifactsScanned": 9,
       "violations": [
         {
           "level": "MAJOR",
@@ -30,6 +53,13 @@
           "artifact": "cag-agent-workflow.feature",
           "message": "Only 1 scenarios (need >= 2)",
           "remediation": "Add scenario for alternative path or edge case"
+        },
+        {
+          "level": "CRITICAL",
+          "rule": "scenarios-complete",
+          "artifact": "build-pipeline-symphony.feature",
+          "message": "5 scenarios missing Given-When-Then",
+          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
         },
         {
           "level": "MAJOR",
@@ -60,11 +90,11 @@
           "remediation": "Add scenario for alternative path or edge case"
         }
       ],
-      "score": 50
+      "score": 40
     },
     "handler-specs": {
       "name": "Handler Specification Conformity",
-      "artifactsScanned": 263,
+      "artifactsScanned": 264,
       "violations": [
         {
           "level": "MAJOR",
@@ -170,15 +200,58 @@
           "artifact": "runtime.register.spec.ts",
           "message": "Missing proper context setup",
           "remediation": "Add beforeEach hook with handler, mocks, input, output, error initialization"
+        },
+        {
+          "level": "MAJOR",
+          "rule": "handler-context-setup",
+          "artifact": "merge.spec.ts",
+          "message": "Missing proper context setup",
+          "remediation": "Add beforeEach hook with handler, mocks, input, output, error initialization"
+        },
+        {
+          "level": "MAJOR",
+          "rule": "handler-happy-path-test",
+          "artifact": "merge.spec.ts",
+          "message": "Missing test cases",
+          "remediation": "Add at least one happy path test with it() and expect()"
         }
       ],
       "score": 0
     }
   },
-  "totalArtifacts": 367,
+  "totalArtifacts": 371,
   "violations": {
-    "CRITICAL": [],
+    "CRITICAL": [
+      {
+        "level": "CRITICAL",
+        "rule": "sequence-beats-positive",
+        "artifact": "build-pipeline-symphony",
+        "message": "Invalid beat count",
+        "remediation": "Set beats to handler item count (current: undefined)"
+      },
+      {
+        "level": "CRITICAL",
+        "rule": "scenarios-complete",
+        "artifact": "build-pipeline-symphony.feature",
+        "message": "5 scenarios missing Given-When-Then",
+        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
+      }
+    ],
     "MAJOR": [
+      {
+        "level": "MAJOR",
+        "rule": "domain-key-signature",
+        "artifact": "orchestration-audit-session",
+        "message": "Invalid key: C",
+        "remediation": "Use valid key, e.g., 'C Major' (current: 'C')"
+      },
+      {
+        "level": "MAJOR",
+        "rule": "domain-key-signature",
+        "artifact": "orchestration-audit-system",
+        "message": "Invalid key: G",
+        "remediation": "Use valid key, e.g., 'C Major' (current: 'G')"
+      },
       {
         "level": "MAJOR",
         "rule": "scenario-count-minimum",
@@ -318,14 +391,29 @@
         "artifact": "runtime.register.spec.ts",
         "message": "Missing proper context setup",
         "remediation": "Add beforeEach hook with handler, mocks, input, output, error initialization"
+      },
+      {
+        "level": "MAJOR",
+        "rule": "handler-context-setup",
+        "artifact": "merge.spec.ts",
+        "message": "Missing proper context setup",
+        "remediation": "Add beforeEach hook with handler, mocks, input, output, error initialization"
+      },
+      {
+        "level": "MAJOR",
+        "rule": "handler-happy-path-test",
+        "artifact": "merge.spec.ts",
+        "message": "Missing test cases",
+        "remediation": "Add at least one happy path test with it() and expect()"
       }
     ],
     "MINOR": []
   },
-  "conformityScore": 70,
+  "conformityScore": 62,
   "recommendations": [
+    "🚨 CRITICAL: Fix all CRITICAL violations before deployment",
     "⚠️  MAJOR: Address MAJOR violations in next sprint",
-    "⚠️  Good conformity - focus on CRITICAL and MAJOR issues"
+    "🔴 Poor conformity - immediate remediation required"
   ],
   "scanDetails": {}
 }
