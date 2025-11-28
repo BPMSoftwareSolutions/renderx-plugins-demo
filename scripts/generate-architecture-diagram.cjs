@@ -3,18 +3,84 @@
 /**
  * Generate Advanced Architecture Diagram
  * Shows the complete symphonic code analysis structure with metrics
+ * DATA-DRIVEN: Generates diagram from actual analysis metrics
  */
 
-const diagram = `
+/**
+ * Generate a generic summary when detailed handler data isn't available
+ */
+function generateGenericSummary(metrics) {
+  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = metrics;
+  const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  
+  // Safe numeric conversions (coverage might be string from metrics)
+  const safeAvgLoc = Number(avgLocPerHandler) || 0;
+  const safeCoverage = Number(overallCoverage) || 0;
+  
+  return `        ╔═════════════════════════════════════╗
+        ║ ${domainName.toUpperCase()} STRUCTURE    ${' '.repeat(Math.max(0, 30 - domainName.length))}║
+        ║ (Analyzed: ${totalHandlers} handlers)   ${' '.repeat(Math.max(0, 20 - String(totalHandlers).length))}║
+        ╠═════════════════════════════════════╣
+        ║                                     ║
+        ║  Analysis Summary:                  ║
+        ║  • Total Handlers: ${String(totalHandlers).padEnd(17)}║
+        ║  • Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(15)}║
+        ║  • Overall Coverage: ${safeCoverage.toFixed(1)}%${' '.repeat(Math.max(0, 13 - safeCoverage.toFixed(1).length))}║
+        ║                                     ║
+        ║  [Detailed handler portfolio        ║
+        ║   available in full report]         ║
+        ║                                     ║
+        ╚═════════════════════════════════════╝`;
+}
+
+/**
+ * Generate detailed handler summary (placeholder for future enhancement)
+ */
+function generateHandlerSummary(handlerSummary) {
+  // Future: Parse actual handler data to generate detailed symphony sections
+  return generateGenericSummary(handlerSummary);
+}
+
+function generateDiagram(metrics = {}) {
+  const {
+    totalFiles = 0,
+    totalLoc = 0,
+    totalHandlers = 0,
+    avgLocPerHandler = 0,
+    overallCoverage = 0,
+    domainId = 'unknown-domain',
+    handlerSummary = null,
+    duplicateBlocks = 0,
+    duplicationPercent = 0,
+    godHandlers = []
+  } = metrics;
+  
+  // Safe numeric conversions
+  const safeAvgLoc = Number(avgLocPerHandler) || 0;
+  const safeCoverage = Number(overallCoverage) || 0;
+  const safeDuplication = Number(duplicationPercent) || 0;
+
+  const domainTitle = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').toUpperCase();
+  
+  // Check if handlerSummary is meaningful (not null, not empty array)
+  const hasHandlerSummary = handlerSummary && Array.isArray(handlerSummary) && handlerSummary.length > 0;
+  const symphonySection = hasHandlerSummary ? generateHandlerSummary(handlerSummary) : generateGenericSummary({
+    totalHandlers,
+    avgLocPerHandler: safeAvgLoc,
+    overallCoverage: safeCoverage,
+    domainId
+  });
+  
+  return `
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                    RENDERX SYMPHONIC CODE ANALYSIS ARCHITECTURE                                                 ║
+║                    SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.padEnd(50)}║
 ║                    Enhanced Handler Portfolio & Orchestration Framework                                          ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │  📊 CODEBASE METRICS FOUNDATION                                                                                 │
 │  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: 769 │ Total LOC: 5,045 │ Handlers: 147 │ Avg LOC/Handler: 29.33 │ Coverage: 79.34% │           │
+│  │ Total Files: ${String(totalFiles).padEnd(4)}│ Total LOC: ${String(totalLoc).padEnd(6)}│ Handlers: ${String(totalHandlers).padEnd(3)}│ Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(5)}│ Coverage: ${safeCoverage.toFixed(2)}% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -46,7 +112,7 @@ const diagram = `
       └─┴─┘                  └─┴─┘                  └─┴─┘
         │                      │                      │
         │ DISCOVER             │ MEASURE              │ MEASURE
-        │ 769 files            │ LOC metrics           │ coverage
+        │ ${String(totalFiles).padEnd(4)} files           │ LOC metrics           │ coverage
         │                      │                      │
         └──────────┬───────────┴──────────┬───────────┘
                    │                      │
@@ -54,100 +120,16 @@ const diagram = `
         ╔══════════════════╗  ╔══════════════════╗
         │  DATA BATON 🎭   │  │  DATA BATON 🎭   │
         ├──────────────────┤  ├──────────────────┤
-        │ • Files: 769     │  │ • Handlers: 147  │
-        │ • LOC: 5,045     │  │ • Avg LOC: 29.33 │
-        │ • Beats: 4/4 ✓   │  │ • Coverage: 79.3%│
+        │ • Files: ${String(totalFiles).padEnd(4)}    │  │ • Handlers: ${String(totalHandlers).padEnd(3)} │
+        │ • LOC: ${String(totalLoc).padEnd(6)}    │  │ • Avg LOC: ${safeAvgLoc.toFixed(2).padEnd(5)}│
+        │ • Beats: 4/4 ✓   │  │ • Coverage: ${safeCoverage.toFixed(1)}%│
         │ • Status: READY  │  │ • Status: READY  │
         └────────┬─────────┘  └────────┬─────────┘
                  │                     │
                  └──────────┬──────────┘
                             │
                             ▼
-        ╔═════════════════════════════════════╗
-        ║ SYMPHONY ORCHESTRATION STRUCTURE    ║
-        ║ (25 Symphonies × 6 avg handlers)   ║
-        ╠═════════════════════════════════════╣
-        ║                                     ║
-        ║  CANVAS COMPONENT SYMPHONIES        ║
-        ║  ├─ Copy Symphony                   ║
-        ║  │  └─[H1] serializeComponent (24) ║
-        ║  │  └─[H2] copyToClipboard (18)    ║
-        ║  │  └─[H3] notifyCopyComplete (12) ║
-        ║  │  └─ AVG: 18 LOC | COV: 81%      ║
-        ║  │                                  ║
-        ║  ├─ Create Symphony                 ║
-        ║  │  └─[H4] resolveTemplate (35)    ║
-        ║  │  └─[H5] registerInstance (28)   ║
-        ║  │  └─[H6] createNode (156) ⚠️     ║
-        ║  │  └─[H7] renderReact (42)        ║
-        ║  │  └─[H8] notifyUi (15)           ║
-        ║  │  └─[H9] enhanceLine (18)        ║
-        ║  │  └─ AVG: 49 LOC | COV: 77%      ║
-        ║  │  └─ RISK: HIGH (God Handler)    ║
-        ║  │                                  ║
-        ║  ├─ Drag Symphony                   ║
-        ║  │  └─[H10] startDrag (31)         ║
-        ║  │  └─[H11] updatePosition (28)    ║
-        ║  │  └─[H12] endDrag (22)           ║
-        ║  │  └─[H13] forwardToCtl (14)      ║
-        ║  │  └─ AVG: 24 LOC | COV: 82%      ║
-        ║  │                                  ║
-        ║  ├─ Resize Symphony                 ║
-        ║  │  └─[H14] startResize (38)       ║
-        ║  │  └─[H15] updateSize (32)        ║
-        ║  │  └─[H16] endResize (26)         ║
-        ║  │  └─ AVG: 32 LOC | COV: 79%      ║
-        ║  │                                  ║
-        ║  ├─ Select Symphony                 ║
-        ║  │  └─[H17] routeSelection (45)    ║
-        ║  │  └─[H18] showOverlay (28)       ║
-        ║  │  └─[H19] hideOverlay (18)       ║
-        ║  │  └─[H20] notifyUi (16)          ║
-        ║  │  └─[H21] publishSelected (12)   ║
-        ║  │  └─ AVG: 24 LOC | COV: 80%      ║
-        ║  │                                  ║
-        ║  ├─ Deselect Symphony               ║
-        ║  │  └─[H22] routeDeselect (38)     ║
-        ║  │  └─[H23] clearOverlay (22)      ║
-        ║  │  └─[H24] notifyDeselect (14)    ║
-        ║  │  └─ AVG: 25 LOC | COV: 81%      ║
-        ║  │                                  ║
-        ║  ├─ Delete Symphony                 ║
-        ║  │  └─[H25] deleteComponent (35)   ║
-        ║  │  └─[H26] publishDeleted (16)    ║
-        ║  │  └─[H27] routeDelete (22)       ║
-        ║  │  └─ AVG: 24 LOC | COV: 78%      ║
-        ║  │                                  ║
-        ║  ├─ Paste Symphony                  ║
-        ║  │  └─[H28] readClipboard (32)     ║
-        ║  │  └─[H29] deserialize (45)       ║
-        ║  │  └─[H30] calcPastePos (28)      ║
-        ║  │  └─[H31] createPasted (38)      ║
-        ║  │  └─[H32] notifyComplete (14)    ║
-        ║  │  └─ AVG: 31 LOC | COV: 76%      ║
-        ║  │                                  ║
-        ║  ├─ Export Symphonies (GIF/MP4)     ║
-        ║  │  └─[H33] exportSvgToGif (68)    ║
-        ║  │  └─[H34] exportSvgToMp4 (72)    ║
-        ║  │  └─ AVG: 70 LOC | COV: 73%      ║
-        ║  │  └─ RISK: MEDIUM (Size)         ║
-        ║  │                                  ║
-        ║  ├─ Import Symphony                 ║
-        ║  │  └─[H35] loadSchemas (42)       ║
-        ║  │  └─[H36] parseImport (38)       ║
-        ║  │  └─ AVG: 40 LOC | COV: 75%      ║
-        ║  │                                  ║
-        ║  ├─ Line Manipulation Symphonies    ║
-        ║  │  ├─ Start                        ║
-        ║  │  │  └─[H37] startLineManip (25) ║
-        ║  │  │  └─ COV: 82%                 ║
-        ║  │  ├─ Move                         ║
-        ║  │  │  └─[H38] moveLineManip (32)  ║
-        ║  │  │  └─ COV: 79%                 ║
-        ║  │  └─ End                          ║
-        ║  │     └─[H39] endLineManip (18)   ║
-        ║  │     └─ COV: 84%                 ║
-        ║  │  └─ AVG: 25 LOC | COV: 82%      ║
+${symphonySection}
         ║  │                                  ║
         ║  └─ ... (+ 15 more symphonies)      ║
         ║     with 100+ additional handlers   ║
@@ -156,97 +138,16 @@ const diagram = `
                         │
                         ▼
         ╔═══════════════════════════════════════════════════════╗
-        ║   HANDLER PORTFOLIO METRICS & DISTRIBUTION           ║
+        ║   QUALITY & COVERAGE METRICS                         ║
         ╠═══════════════════════════════════════════════════════╣
         ║                                                       ║
-        ║  Handler Size Distribution:                          ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ Tiny (<10 LOC):        ████░░░░░░  15 (10%)   │  ║
-        ║  │ Small (10-24 LOC):     ██████░░░░  28 (19%)   │  ║
-        ║  │ Medium (25-49 LOC):    ████████░░  42 (29%)   │  ║
-        ║  │ Large (50-99 LOC):     ██████░░░░  38 (26%)   │  ║
-        ║  │ X-Large (100+ LOC):    ███░░░░░░░  24 (16%)   │  ║
-        ║  └────────────────────────────────────────────────┘  ║
+        ║  Handlers Analyzed: ${String(totalHandlers).padEnd(33)}║
+        ║  Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(35)}║
+        ║  Test Coverage: ${safeCoverage.toFixed(1)}%${' '.repeat(Math.max(0, 38 - safeCoverage.toFixed(1).length))}║
+        ║  Duplication: ${safeDuplication.toFixed(1)}%${' '.repeat(Math.max(0, 42 - safeDuplication.toFixed(1).length))}║
+        ║  ${godHandlers.length > 0 ? `⚠️  God Handlers: ${godHandlers.length}` : `✓  No God Handlers`}${' '.repeat(Math.max(0, 45 - (godHandlers.length > 0 ? `God Handlers: ${godHandlers.length}` : `No God Handlers`).length))}║
         ║                                                       ║
-        ║  Coverage Distribution:                              ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ Well-Covered (80%+):   ████████░░  64 (44%)   │  ║
-        ║  │ Partially-Covered:     ███████░░░  83 (56%)   │  ║
-        ║  │ Poorly-Covered:        ░░░░░░░░░░   0 (0%)    │  ║
-        ║  │ Uncovered:             ░░░░░░░░░░   0 (0%)    │  ║
-        ║  └────────────────────────────────────────────────┘  ║
-        ║                                                       ║
-        ║  Risk Assessment Matrix:                             ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ CRITICAL RISK (>100 LOC + <70% coverage):     │  ║
-        ║  │  • createNode (156 LOC, 68% coverage)         │  ║
-        ║  │  • exportSvgToMp4 (72 LOC, 73% coverage)      │  ║
-        ║  │                                                │  ║
-        ║  │ HIGH RISK (50-99 LOC + <75% coverage):        │  ║
-        ║  │  • startResize (38 LOC, 79% coverage) ✓       │  ║
-        ║  │  • loadSchemas (42 LOC, 75% coverage) ✓       │  ║
-        ║  │                                                │  ║
-        ║  │ MEDIUM RISK (<50 LOC + >80% coverage):        │  ║
-        ║  │  • serializeComponent (24 LOC, 81%)           │  ║
-        ║  │  • startDrag (31 LOC, 82%)                    │  ║
-        ║  │  • [42 more handlers in good state]           │  ║
-        ║  └────────────────────────────────────────────────┘  ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
-                        │
-                        ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║   ORCHESTRATION HEALTH SCORE & CI/CD READINESS       ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Global Metrics:                                     ║
-        ║  • Statements Coverage: 79.29% [🟡 YELLOW]           ║
-        ║  • Branch Coverage:     70.31% [🔴 RED]              ║
-        ║  • Function Coverage:   85.67% [🟢 GREEN]            ║
-        ║  • Line Coverage:       75.49% [🟡 YELLOW]           ║
-        ║                                                       ║
-        ║  Orchestration Health: FAIR (Conditional) ⚠️          ║
-        ║  └─ Conformity Score: 87.50%                         ║
-        ║  └─ Handler Mapping: 100% (147/147)                  ║
-        ║  └─ CI/CD Readiness: REQUIRES GATING                 ║
-        ║                                                       ║
-        ║  Maintenance Indicators:                             ║
-        ║  • Code Duplication: 78.30% [⚠️ VERY HIGH]           ║
-        ║  • Maintainability Index: 69/100 [🟡 FAIR (B)]       ║
-        ║  • Technical Debt: MEDIUM                            ║
-        ║  • God Handlers: 2 DETECTED                          ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
-                        │
-                        ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║        REFACTORING & IMPROVEMENT ROADMAP             ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Priority 1 - CRITICAL (Immediate):                  ║
-        ║  ├─ Split createNode (156 LOC) into:                 ║
-        ║  │  ├─ templateResolution (45 LOC)                   ║
-        ║  │  ├─ nodeGeneration (65 LOC)                       ║
-        ║  │  ├─ styleApplication (28 LOC)                     ║
-        ║  │  └─ interactionSetup (18 LOC)                     ║
-        ║  │                                                   ║
-        ║  ├─ Improve branch coverage (→ 75%):                 ║
-        ║  │  └─ Target: Medium handlers (25-49 LOC)           ║
-        ║  │  └─ Add: Edge case tests                          ║
-        ║  │                                                   ║
-        ║  └─ Reduce duplication (561 blocks):                 ║
-        ║     └─ Extract: Common patterns                      ║
-        ║     └─ Consolidate: Utility handlers                 ║
-        ║                                                       ║
-        ║  Priority 2 - HIGH (Next Sprint):                    ║
-        ║  ├─ Handler clustering review                        ║
-        ║  ├─ Consolidate tiny handlers (<10 LOC)              ║
-        ║  └─ Optimize dependency injection                    ║
-        ║                                                       ║
-        ║  Priority 3 - MEDIUM (Backlog):                      ║
-        ║  ├─ Performance optimization                         ║
-        ║  ├─ Documentation enhancement                        ║
-        ║  └─ Type safety improvements                         ║
+        ║  [Full metrics available in detailed report]          ║
         ║                                                       ║
         ╚═══════════════════════════════════════════════════════╝
 
@@ -257,7 +158,7 @@ const diagram = `
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ SYMPHONIC ARCHITECTURE TERMS:                                                                                 │
 ├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ • Symphony:          Logical grouping of related handler functions (e.g., Copy, Create, Drag)                 │
+│ • Symphony:          Logical grouping of related handler functions                                            │
 │ • Sequence:          Execution order of handlers within a symphony (choreographed flow)                        │
 │ • Handler:           Individual function that performs a specific orchestration task                          │
 │ • Beat:              Execution unit within a Movement (4 movements × 4 beats = 16 beats total)               │
@@ -269,10 +170,8 @@ const diagram = `
 ├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │ • LOC:               Lines of Code (measured, not synthetic)                                                   │
 │ • Coverage:          Percentage of code covered by tests (target: 80%+)                                       │
-│ • Avg LOC/Handler:   Average lines of code per handler function (29.33 current)                              │
+│ • Duplication:       Percentage of duplicate code blocks identified                                           │
 │ • God Handler:       Handler with 100+ LOC and <70% coverage (refactoring candidate)                         │
-│ • Risk Score:        (1 - coverage%) × (LOC / maxLOC) - identifies refactoring priorities                    │
-│ • Health Score:      Multi-factor index of code quality and test coverage                                     │
 │                                                                                                                 │
 │ COVERAGE SYMBOLS:                                                                                             │
 ├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
@@ -281,39 +180,35 @@ const diagram = `
 │ 🔴 RED (<50%):       Poor coverage, high risk                                                                 │
 │ ⚠️  WARNING:          High complexity or high-risk area                                                         │
 │ ✓ CHECK:             Meets requirements/passing                                                               │
-│ ❌ FAIL:              Below threshold/needs work                                                               │
-│                                                                                                                 │
-│ HANDLER SIZES:                                                                                                │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ 🔹 Tiny:             < 10 LOC        (15 handlers, 10%) - Candidate for consolidation                        │
-│ 🔸 Small:            10-24 LOC       (28 handlers, 19%) - Well-scoped, maintainable                          │
-│ 🔶 Medium:           25-49 LOC       (42 handlers, 29%) - Optimal size range                                │
-│ 🟠 Large:            50-99 LOC       (38 handlers, 26%) - Consider refactoring                               │
-│ 🔴 X-Large:          100+ LOC        (24 handlers, 16%) - Priority refactoring targets                       │
 │                                                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
 ANALYSIS EXECUTION SUMMARY:
-  ✅ Discovered: 769 source files across canvas-component symphony
-  ✅ Analyzed: 147 handler functions with measured LOC (1,320 total lines)
-  ✅ Mapped: 100% of handlers to orchestration beats
-  ✅ Measured: Test coverage for all handlers (avg 79.34%)
-  ✅ Identified: 2 God handlers requiring immediate refactoring
-  ✅ Generated: 11 automated refactoring suggestions
-  ✅ Health Score: FAIR (Conditional) with CI/CD gating requirements
+  ✅ Discovered: ${totalFiles} source files in ${domainId}
+  ✅ Analyzed: ${totalHandlers} handler functions with measured LOC (${totalLoc} total lines)
+  ✅ Mapped: Files to orchestration beats
+  ✅ Measured: Test coverage (avg ${safeCoverage.toFixed(1)}%)
+  ${godHandlers.length > 0 ? `✅ Identified: ${godHandlers.length} God handlers requiring refactoring` : `✅ No God handlers detected`}
+  ✅ Generated: Comprehensive metrics and analysis artifacts
 
 NEXT ACTIONS:
-  → Implement God handler refactoring (createNode split)
-  → Increase branch coverage from 70.31% to 75%+
-  → Reduce code duplication from 78.30% to <50%
-  → Review and consolidate tiny handlers
-  → Schedule technical debt sprint
+  → Review detailed metrics in full report
+  ${safeDuplication > 50 ? `→ Reduce code duplication from ${safeDuplication.toFixed(1)}% to <50%` : `→ Maintain low duplication levels`}
+  ${safeCoverage < 80 ? `→ Improve test coverage to 80%+ (currently ${safeCoverage.toFixed(1)}%)` : `→ Maintain excellent test coverage`}
+  ${godHandlers.length > 0 ? `→ Refactor ${godHandlers.length} God handler${godHandlers.length > 1 ? 's' : ''}` : ''}
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 `;
 
-console.log(diagram);
+}
 
-module.exports = { diagram };
+// Legacy export for backward compatibility (returns static diagram if no metrics)
+const diagram = generateDiagram();
+
+if (require.main === module) {
+  console.log(diagram);
+}
+
+module.exports = { diagram, generateDiagram };

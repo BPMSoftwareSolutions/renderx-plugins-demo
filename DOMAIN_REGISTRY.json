@@ -1651,6 +1651,12 @@
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
         }
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "analysisOutputPath": ".generated/analysis/build-pipeline-symphony/",
+        "reportOutputPath": "docs/generated/build-pipeline-symphony/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "symphonia-conformity-alignment-pipeline": {

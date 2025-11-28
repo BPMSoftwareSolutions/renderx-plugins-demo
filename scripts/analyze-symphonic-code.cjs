@@ -37,6 +37,7 @@ const {
 } = require('./analyze-handler-scopes-for-pipeline.cjs');
 
 // Support environment variables for domain-based analysis orchestration
+const DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
 const ANALYSIS_OUTPUT_PATH = process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
 const REPORT_OUTPUT_PATH = process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
 const AUTO_GENERATE_REPORT = process.env.AUTO_GENERATE_REPORT === 'true';
@@ -56,7 +57,7 @@ const log = (msg, icon = '  ') => console.log(`${icon} ${msg}`);
 const header = (title) => console.log(`\n╔═══════════════════════════════════════════════════════════════╗\n║ ${title.padEnd(61)} ║\n╚═══════════════════════════════════════════════════════════════╝\n`);
 
 // Import architecture diagram
-const { diagram: architectureDiagram } = require('./generate-architecture-diagram.cjs');
+const { generateDiagram } = require('./generate-architecture-diagram.cjs');
 
 // ============================================================================
 // MOVEMENT 1: CODE DISCOVERY & BEAT MAPPING
@@ -65,14 +66,20 @@ const { diagram: architectureDiagram } = require('./generate-architecture-diagra
 function discoverSourceFiles() {
   log('Discovering source files...', '🔍');
   
+  const sourcePath = process.env.ANALYSIS_SOURCE_PATH || 'packages/';
   const sourcePatterns = [
-    'packages/**/*.ts',
-    'packages/**/*.js',
-    'packages/**/*.jsx',
-    'packages/**/*.tsx',
-    '!packages/**/node_modules/**',
-    '!packages/**/*.d.ts',
-    '!**/.generated/**'
+    `${sourcePath}**/*.ts`,
+    `${sourcePath}**/*.js`,
+    `${sourcePath}**/*.jsx`,
+    `${sourcePath}**/*.tsx`,
+    `${sourcePath}**/*.cjs`,
+    `${sourcePath}**/*.mjs`,
+    `!${sourcePath}**/node_modules/**`,
+    `!${sourcePath}**/*.d.ts`,
+    `!**/.generated/**`,
+    `!${sourcePath}**/__tests__/**`,
+    `!${sourcePath}**/*.spec.*`,
+    `!${sourcePath}**/*.test.*`
   ];
 
   const files = execSync(`git ls-files ${sourcePatterns.join(' ')}`, {
@@ -566,9 +573,9 @@ async function generateJsonArtifacts(metrics) {
   log(`Integrity checkpoint: ${checkpoint.integrityHash.substring(0, 8)}...`, '✓');
   
   const analysisData = {
-    id: `renderx-web-code-analysis-${TIMESTAMP}`,
+    id: `${DOMAIN_ID}-code-analysis-${TIMESTAMP}`,
     timestamp: new Date().toISOString(),
-    codebase: 'renderx-web-orchestration',
+    codebase: DOMAIN_ID,
     movements: {
       movement_1_discovery: {
         name: 'Code Discovery & Beat Mapping',
@@ -608,7 +615,7 @@ async function generateJsonArtifacts(metrics) {
     integrity_checkpoint: checkpoint
   };
 
-  const jsonPath = path.join(ANALYSIS_DIR, `renderx-web-code-analysis-${TIMESTAMP}.json`);
+  const jsonPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json`);
   fs.writeFileSync(jsonPath, JSON.stringify(analysisData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), jsonPath)}`, '✓');
 
@@ -618,7 +625,7 @@ async function generateJsonArtifacts(metrics) {
   const domainMetrics = {
     timestamp: new Date().toISOString(),
     source: 'domain-analysis',
-    codebase: process.env.ANALYSIS_DOMAIN_ID || 'renderx-web',
+    codebase: DOMAIN_ID,
     analysisSourcePath: process.env.ANALYSIS_SOURCE_PATH || 'packages/',
     metrics: {
       loc: metrics.loc?.totalLoc || 0,
@@ -635,14 +642,14 @@ async function generateJsonArtifacts(metrics) {
     },
     integrity: checkpoint
   };
-  const domainMetricsPath = path.join(ANALYSIS_DIR, `renderx-web-domain-metrics-${TIMESTAMP}.json`);
+  const domainMetricsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-domain-metrics-${TIMESTAMP}.json`);
   fs.writeFileSync(domainMetricsPath, JSON.stringify(domainMetrics, null, 2));
   log(`Saved domain metrics: ${path.relative(process.cwd(), domainMetricsPath)}`, '✓');
 
   // Coverage Summary
   const coverageSummary = {
     timestamp: new Date().toISOString(),
-    codebase: 'renderx-web',
+    codebase: DOMAIN_ID,
     aggregated_by_movement: {
       'Movement 1: Discovery': { average_coverage: 84.75 },
       'Movement 2: Metrics': { average_coverage: 73.33 },
@@ -652,7 +659,7 @@ async function generateJsonArtifacts(metrics) {
     overall_coverage: metrics.coverage
   };
 
-  const coveragePath = path.join(ANALYSIS_DIR, `renderx-web-coverage-summary-${TIMESTAMP}.json`);
+  const coveragePath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json`);
   fs.writeFileSync(coveragePath, JSON.stringify(coverageSummary, null, 2));
   log(`Saved: ${path.relative(process.cwd(), coveragePath)}`, '✓');
 
@@ -677,13 +684,13 @@ async function generateJsonArtifacts(metrics) {
     'beat-4-conformity,Movement 4,20,1356,1.34,68%,WARN'
   ];
 
-  const csvPath = path.join(ANALYSIS_DIR, `renderx-web-per-beat-metrics-${TIMESTAMP}.csv`);
+  const csvPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv`);
   fs.writeFileSync(csvPath, csvHeader + csvRows.join('\n'));
   log(`Saved: ${path.relative(process.cwd(), csvPath)}`, '✓');
 
   // Trends data
   const trendData = {
-    codebase: 'renderx-web',
+    codebase: DOMAIN_ID,
     baseline_timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
     current_timestamp: new Date().toISOString(),
     trends: {
@@ -695,7 +702,7 @@ async function generateJsonArtifacts(metrics) {
     }
   };
 
-  const trendsPath = path.join(ANALYSIS_DIR, `renderx-web-trends-${TIMESTAMP}.json`);
+  const trendsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-trends-${TIMESTAMP}.json`);
   fs.writeFileSync(trendsPath, JSON.stringify(trendData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), trendsPath)}`, '✓');
 
@@ -769,10 +776,12 @@ async function generateMarkdownReport(metrics, metricsEnvelope, artifacts) {
   
   log('Building markdown report...', '📝');
   
-  const report = `# RenderX-Web Code Analysis Report
+  const domainNameFormatted = DOMAIN_ID.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  
+  const report = `# ${domainNameFormatted} Code Analysis Report
 
 **Generated**: ${new Date().toISOString()}  
-**Codebase**: renderx-web-orchestration  
+**Codebase**: ${DOMAIN_ID}  
 **Pipeline**: symphonic-code-analysis-pipeline
 
 ## Executive Summary
@@ -816,7 +825,18 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 
 ---
 
-${architectureDiagram}
+${generateDiagram({
+  totalFiles: metrics.discoveredFiles || 0,
+  totalLoc: metrics.loc?.totalLoc || 0,
+  totalHandlers: metrics.discoveredCount || 0,
+  avgLocPerHandler: (metrics.discoveredCount > 0 && metrics.loc?.totalLoc) ? (metrics.loc.totalLoc / metrics.discoveredCount) : 0,
+  overallCoverage: metrics.coverage?.statements || 0,
+  domainId: DOMAIN_ID,
+  handlerSummary: [], // TODO: Extract from handler metrics
+  duplicateBlocks: metrics.duplication?.duplicateBlocks || 0,
+  duplicationPercent: metrics.duplication?.duplicationPercent || 0,
+  godHandlers: metrics.refactoring?.godHandlers || []
+})}
 
 ---
 
@@ -880,7 +900,7 @@ ${duplicationMetrics}
 
 **Purpose**: Measure statement, branch, function, and line coverage
 
-**Scope**: Full \`renderx-web-orchestration\` suite - all source files analyzed
+**Scope**: Full \`${DOMAIN_ID}\` domain - all source files in \`${process.env.ANALYSIS_SOURCE_PATH || 'packages/'}\` analyzed
 
 ### Coverage Metrics
 | Type | Coverage | Target | Gap | Status |
@@ -1031,10 +1051,10 @@ ${(() => {
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-${TIMESTAMP}.json
-- **Coverage Summary**: renderx-web-coverage-summary-${TIMESTAMP}.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-${TIMESTAMP}.csv
-- **Trend Analysis**: renderx-web-trends-${TIMESTAMP}.json
+- **JSON Analysis**: ${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json
+- **Coverage Summary**: ${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json
+- **Per-Beat Metrics**: ${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv
+- **Trend Analysis**: ${DOMAIN_ID}-trends-${TIMESTAMP}.json
 
 ---
 
@@ -1043,13 +1063,13 @@ ${(() => {
 
   // ALWAYS save rich markdown artifact for orchestrator consumption
   // This contains ASCII diagrams, detailed handler portfolios, and comprehensive insights
-  const richMarkdownPath = path.join(ANALYSIS_DIR, `renderx-web-rich-markdown-${TIMESTAMP}.md`);
+  const richMarkdownPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-rich-markdown-${TIMESTAMP}.md`);
   fs.writeFileSync(richMarkdownPath, report);
   log(`Saved rich markdown artifact: ${path.relative(process.cwd(), richMarkdownPath)}`, '✓');
   
   // Respect AUTO_GENERATE_REPORT flag to avoid inner subject report when orchestrated
   if (AUTO_GENERATE_REPORT) {
-    const reportPath = path.join(DOCS_DIR, `renderx-web-CODE-ANALYSIS-REPORT.md`);
+    const reportPath = path.join(DOCS_DIR, `${DOMAIN_ID}-CODE-ANALYSIS-REPORT.md`);
     fs.writeFileSync(reportPath, report);
     log(`Saved: ${path.relative(process.cwd(), reportPath)}`, '✓');
   } else {
@@ -1064,7 +1084,7 @@ ${(() => {
 // ============================================================================
 
 async function run() {
-  header('SYMPHONIC CODE ANALYSIS PIPELINE - RENDERX-WEB');
+  header(`SYMPHONIC CODE ANALYSIS PIPELINE - ${DOMAIN_ID.toUpperCase()}`);
 
   try {
     // MOVEMENT 1: DISCOVERY
