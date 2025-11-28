@@ -12,6 +12,10 @@ const exampleSequencePath = path.join(
   __dirname,
   '../docs/samples/example-data-driven-sequence.json',
 );
+const fractalSequencePath = path.join(
+  __dirname,
+  '../packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json',
+);
 
 function loadSchema(): any {
   const raw = fs.readFileSync(schemaPath, 'utf-8');
@@ -20,6 +24,11 @@ function loadSchema(): any {
 
 function loadExampleSequence(): any {
   const raw = fs.readFileSync(exampleSequencePath, 'utf-8');
+  return JSON.parse(raw);
+}
+
+function loadFractalSequence(): any {
+  const raw = fs.readFileSync(fractalSequencePath, 'utf-8');
   return JSON.parse(raw);
 }
 
@@ -116,6 +125,24 @@ describe('Canonical MusicalSequence JSON Schema', () => {
         expect(typeof beat[prop as keyof typeof beat]).toBe(expectedType);
       }
     });
+  });
+
+  it('accepts the fractal orchestration domain MusicalSequence core shape', () => {
+    const seq = loadFractalSequence();
+
+    expect(typeof seq.id).toBe('string');
+    expect(typeof seq.name).toBe('string');
+    expect(Array.isArray(seq.movements)).toBe(true);
+    expect(seq.movements.length).toBeGreaterThan(0);
+
+    const movement = seq.movements[0];
+    expect(typeof movement.name).toBe('string');
+    expect(Array.isArray(movement.beats)).toBe(true);
+    expect(movement.beats.length).toBeGreaterThan(0);
+
+    const beat = movement.beats[0];
+    expect(typeof beat.event).toBe('string');
+    expect(typeof beat.beat).toBe('number');
   });
 });
 

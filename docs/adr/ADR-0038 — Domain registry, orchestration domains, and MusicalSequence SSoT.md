@@ -101,6 +101,11 @@ Issue #414 defines the target state:
   - The invariants in #414 are enforced for a spike subset of domains and sequences first, via tests, without requiring immediate population of `DOMAIN_REGISTRY.json` with all ~60 orchestration domains.
   - As more orchestration domains are registered in `DOMAIN_REGISTRY.json` and realized as JSON sequences, the same patterns and tests can be extended to cover them.
 
+- **Fractal orchestration domains as systems of systems**
+  - When a registry entry gains an `orchestration` block and a corresponding MusicalSequence definition, the domain is promoted from a static concept to a governed system with movements, beats, and handlers.
+  - That system in turn is projected back into `DOMAIN_REGISTRY.json` and `orchestration-domains.json` as a domain that can participate inside higher-order orchestrations, enabling the recursive "domain → system → domain" pattern across scales.
+  - The example sequence `packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json` captures this pattern explicitly as a didactic MusicalSequence for architecture discussions and governance experiments.
+
 ## Implementation Notes
 
 - Canonical MusicalSequence schema: `docs/schemas/musical-sequence.schema.json`.
