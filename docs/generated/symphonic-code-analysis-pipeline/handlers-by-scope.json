@@ -1,0 +1,1990 @@
+{
+  "timestamp": "2025-11-28T04:57:44.074Z",
+  "stats": {
+    "total": 195,
+    "byScope": {
+      "orchestration": {
+        "count": 92,
+        "percentage": "47.2",
+        "sequences": 3,
+        "stages": [
+          "discovery",
+          "metrics",
+          "coverage",
+          "conformity"
+        ]
+      },
+      "plugin": {
+        "count": 103,
+        "percentage": "52.8",
+        "sequences": 48,
+        "stages": []
+      },
+      "unknown": {
+        "count": 0,
+        "percentage": "0.0",
+        "sequences": 0,
+        "stages": []
+      }
+    },
+    "bySequence": {},
+    "byStage": {}
+  },
+  "handlers": {
+    "orchestration": [
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Scan Orchestration Files",
+        "handlerName": "analysis.discovery.scanOrchestrationFiles",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Discover Source Code",
+        "handlerName": "analysis.discovery.discoverSourceCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Map Beats to Code",
+        "handlerName": "analysis.discovery.mapBeatsToCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Collect Baseline",
+        "handlerName": "analysis.discovery.collectBaseline",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Count Lines of Code",
+        "handlerName": "analysis.metrics.countLinesOfCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Analyze Complexity",
+        "handlerName": "analysis.metrics.analyzeComplexity",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Detect Duplication",
+        "handlerName": "analysis.metrics.detectDuplication",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Calculate Maintainability",
+        "handlerName": "analysis.metrics.calculateMaintainability",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Measure Statement Coverage",
+        "handlerName": "analysis.coverage.measureStatementCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Measure Branch Coverage",
+        "handlerName": "analysis.coverage.measureBranchCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Measure Function Coverage",
+        "handlerName": "analysis.coverage.measureFunctionCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Calculate Gap Analysis",
+        "handlerName": "analysis.coverage.calculateGapAnalysis",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Validate Handler Mapping",
+        "handlerName": "analysis.conformity.validateHandlerMapping",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Calculate Conformity Score",
+        "handlerName": "analysis.conformity.calculateConformityScore",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Analyze Trends",
+        "handlerName": "analysis.conformity.analyzeTrends",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "symphonic-code-analysis-pipeline",
+        "sequenceCategory": "orchestration",
+        "beatName": "Generate Reports",
+        "handlerName": "analysis.conformity.generateReports",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Validation & Verification",
+        "beatName": "beat-0",
+        "handlerName": "loadBuildContext",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Validation & Verification",
+        "beatName": "beat-1",
+        "handlerName": "validateOrchestrationDomains",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Validation & Verification",
+        "beatName": "beat-2",
+        "handlerName": "validateGovernanceRules",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Validation & Verification",
+        "beatName": "beat-3",
+        "handlerName": "validateAgentBehavior",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Validation & Verification",
+        "beatName": "beat-4",
+        "handlerName": "recordValidationResults",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manifest Preparation",
+        "beatName": "beat-0",
+        "handlerName": "regenerateOrchestrationDomains",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manifest Preparation",
+        "beatName": "beat-1",
+        "handlerName": "syncJsonSources",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manifest Preparation",
+        "beatName": "beat-2",
+        "handlerName": "generateManifests",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manifest Preparation",
+        "beatName": "beat-3",
+        "handlerName": "validateManifestIntegrity",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manifest Preparation",
+        "beatName": "beat-4",
+        "handlerName": "recordManifestState",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-0",
+        "handlerName": "initializePackageBuild",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-1",
+        "handlerName": "buildComponentsPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-2",
+        "handlerName": "buildMusicalConductorPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-3",
+        "handlerName": "buildHostSdkPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-4",
+        "handlerName": "buildManifestToolsPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-5",
+        "handlerName": "buildCanvasPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-6",
+        "handlerName": "buildCanvasComponentPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-7",
+        "handlerName": "buildControlPanelPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-8",
+        "handlerName": "buildHeaderPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-9",
+        "handlerName": "buildLibraryPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-10",
+        "handlerName": "buildLibraryComponentPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-11",
+        "handlerName": "buildRealEstateAnalyzerPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-12",
+        "handlerName": "buildSelfHealingPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-13",
+        "handlerName": "buildSloDashboardPackage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Package Building",
+        "beatName": "beat-14",
+        "handlerName": "recordPackageBuildMetrics",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Host Application Building",
+        "beatName": "beat-0",
+        "handlerName": "prepareHostBuild",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Host Application Building",
+        "beatName": "beat-1",
+        "handlerName": "viteHostBuild",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Host Application Building",
+        "beatName": "beat-2",
+        "handlerName": "validateHostArtifacts",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Host Application Building",
+        "beatName": "beat-3",
+        "handlerName": "recordHostBuildMetrics",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Artifact Management",
+        "beatName": "beat-0",
+        "handlerName": "collectArtifacts",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Artifact Management",
+        "beatName": "beat-1",
+        "handlerName": "computeArtifactHashes",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Artifact Management",
+        "beatName": "beat-2",
+        "handlerName": "validateArtifactSignatures",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Artifact Management",
+        "beatName": "beat-3",
+        "handlerName": "generateArtifactManifest",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Artifact Management",
+        "beatName": "beat-4",
+        "handlerName": "recordArtifactMetrics",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Verification & Conformity",
+        "beatName": "beat-0",
+        "handlerName": "runLintChecks",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Verification & Conformity",
+        "beatName": "beat-1",
+        "handlerName": "enrichDomainAuthorities",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Verification & Conformity",
+        "beatName": "beat-2",
+        "handlerName": "generateGovernanceDocs",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Verification & Conformity",
+        "beatName": "beat-3",
+        "handlerName": "validateConformityDimensions",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "build-pipeline-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Verification & Conformity",
+        "beatName": "beat-4",
+        "handlerName": "generateBuildReport",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "JSON Schema Validation",
+        "beatName": "beat-0",
+        "handlerName": "validateJSONSchemaStructure",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "JSON Schema Validation",
+        "beatName": "beat-1",
+        "handlerName": "validateOrchestrationDomainsRegistry",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "JSON Schema Validation",
+        "beatName": "beat-2",
+        "handlerName": "validateSymphonyFiles",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "JSON Schema Validation",
+        "beatName": "beat-3",
+        "handlerName": "validateSchemaSection",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "JSON Schema Validation",
+        "beatName": "beat-4",
+        "handlerName": "reportJSONValidation",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-0",
+        "handlerName": "startHandlerMappingVerification",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-1",
+        "handlerName": "loadHandlerImplementations",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-2",
+        "handlerName": "indexBeatsFromJSON",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-3",
+        "handlerName": "verifyBeatHandlerMapping",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-4",
+        "handlerName": "detectOrphanHandlers",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Handler-to-Beat Mapping Verification",
+        "beatName": "beat-5",
+        "handlerName": "reportHandlerMapping",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-0",
+        "handlerName": "startTestCoverageVerification",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-1",
+        "handlerName": "catalogBeatsFromJSON",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-2",
+        "handlerName": "indexTestFiles",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-3",
+        "handlerName": "analyzeTestCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-4",
+        "handlerName": "identifyUncoveredBeats",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Test Coverage Verification",
+        "beatName": "beat-5",
+        "handlerName": "reportTestCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-0",
+        "handlerName": "startMarkdownConsistencyCheck",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-1",
+        "handlerName": "extractFactsFromJSON",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-2",
+        "handlerName": "identifyMarkdownFiles",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-3",
+        "handlerName": "verifyFactsInMarkdown",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-4",
+        "handlerName": "detectMarkdownContradictions",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Markdown Consistency Verification",
+        "beatName": "beat-5",
+        "handlerName": "reportMarkdownConsistency",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-0",
+        "handlerName": "startAuditabilityVerification",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-1",
+        "handlerName": "loadJSONDefinitions",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-2",
+        "handlerName": "createCodeMappings",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-3",
+        "handlerName": "createTestMappings",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-4",
+        "handlerName": "createMarkdownMappings",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-5",
+        "handlerName": "verifyChainCompleteness",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Auditability Chain Verification",
+        "beatName": "beat-6",
+        "handlerName": "reportAuditability",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-0",
+        "handlerName": "startConformityAnalysis",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-1",
+        "handlerName": "aggregateGovernanceResults",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-2",
+        "handlerName": "calculateConformityScore",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-3",
+        "handlerName": "summarizeViolations",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-4",
+        "handlerName": "makeGovernanceDecision",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-5",
+        "handlerName": "generateGovernanceReport",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "architecture-governance-enforcement-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Overall Governance Conformity",
+        "beatName": "beat-6",
+        "handlerName": "concludeGovernanceEnforcement",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "source": "sequence-definition"
+      }
+    ],
+    "plugin": [
+      {
+        "sequenceId": "library-component-drop-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drop",
+        "beatName": "Publish Create Requested",
+        "handlerName": "publishCreateRequested",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "library-component-drag-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drag",
+        "beatName": "Start Drag",
+        "handlerName": "onDragStart",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "library-component-container-drop-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drop",
+        "beatName": "Publish Create Requested (Container)",
+        "handlerName": "publishCreateRequested",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "library-load-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Load",
+        "beatName": "Load Components",
+        "handlerName": "loadComponents",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "library-load-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Load",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "header-ui-theme-toggle-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Toggle Theme",
+        "beatName": "Toggle Theme",
+        "handlerName": "toggleTheme",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "header-ui-theme-get-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Get Current Theme",
+        "beatName": "Get Current Theme",
+        "handlerName": "getCurrentTheme",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "header-ui-theme-get-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Get Current Theme",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-update-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update",
+        "beatName": "Update From Element",
+        "handlerName": "updateFromElement",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-update-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-section-toggle-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Section Toggle",
+        "beatName": "Toggle Section",
+        "handlerName": "toggleSection",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-render-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Render",
+        "beatName": "Generate Fields",
+        "handlerName": "generateFields",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-render-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Render",
+        "beatName": "Generate Sections",
+        "handlerName": "generateSections",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-render-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Render",
+        "beatName": "Render View",
+        "handlerName": "renderView",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Config",
+        "handlerName": "initConfig",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Resolver",
+        "handlerName": "initResolver",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Load Schemas",
+        "handlerName": "loadSchemas",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Register Observers",
+        "handlerName": "registerObservers",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Notify Ready",
+        "handlerName": "notifyReady",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Movement",
+        "handlerName": "initMovement",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Config",
+        "handlerName": "initConfig",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Resolver",
+        "handlerName": "initResolver",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Load Schemas",
+        "handlerName": "loadSchemas",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Register Observers",
+        "handlerName": "registerObservers",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Notify Ready",
+        "handlerName": "notifyReady",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-init-batched-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Init",
+        "beatName": "Init Movement",
+        "handlerName": "initMovement",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-validate-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Validate",
+        "beatName": "Validate Field",
+        "handlerName": "validateField",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-validate-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Validate",
+        "beatName": "Merge Errors",
+        "handlerName": "mergeErrors",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-validate-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Validate",
+        "beatName": "Update View",
+        "handlerName": "updateView",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-change-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Change",
+        "beatName": "Prepare Field",
+        "handlerName": "prepareField",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-change-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Change",
+        "beatName": "Dispatch Field",
+        "handlerName": "dispatchField",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-change-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Change",
+        "beatName": "Set Dirty",
+        "handlerName": "setDirty",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-ui-field-change-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Field Change",
+        "beatName": "Await Refresh",
+        "handlerName": "awaitRefresh",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-selection-show-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Selection",
+        "beatName": "Derive Selection Model",
+        "handlerName": "deriveSelectionModel",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-selection-show-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Selection",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-edit-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update CSS Class",
+        "beatName": "Update CSS Class",
+        "handlerName": "updateCssClass",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-edit-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update CSS Class",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-delete-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Delete CSS Class",
+        "beatName": "Delete CSS Class",
+        "handlerName": "deleteCssClass",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-delete-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Delete CSS Class",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create CSS Class",
+        "beatName": "Create CSS Class",
+        "handlerName": "createCssClass",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-css-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create CSS Class",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-classes-remove-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Remove Class",
+        "beatName": "Remove CSS Class",
+        "handlerName": "removeClass",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-classes-remove-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Remove Class",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-classes-add-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Add Class",
+        "beatName": "Add CSS Class",
+        "handlerName": "addClass",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "control-panel-classes-add-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Add Class",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-update-svg-node-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update SVG Node Attribute",
+        "beatName": "Update SVG Node Attribute",
+        "handlerName": "updateSvgNodeAttribute",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-update-svg-node-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update SVG Node Attribute",
+        "beatName": "Refresh Control Panel",
+        "handlerName": "refreshControlPanel",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-update-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update",
+        "beatName": "Update Attribute",
+        "handlerName": "updateAttribute",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-update-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Update",
+        "beatName": "Refresh Control Panel",
+        "handlerName": "refreshControlPanel",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-select-svg-node-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Select SVG Node",
+        "beatName": "Show Sub-node Selection",
+        "handlerName": "showSvgNodeOverlay",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-select-requested-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Route Selection",
+        "beatName": "Route Selection Request",
+        "handlerName": "routeSelectionRequest",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-select-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Select",
+        "beatName": "Show Selection",
+        "handlerName": "showSelectionOverlay",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-select-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Select",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-select-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Select",
+        "beatName": "Publish Selection Changed",
+        "handlerName": "publishSelectionChanged",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-resize-start-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Start",
+        "beatName": "Resize Start",
+        "handlerName": "startResize",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-resize-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Move",
+        "beatName": "Resize Move",
+        "handlerName": "updateSize",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-resize-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Move",
+        "beatName": "Forward to Control Panel",
+        "handlerName": "forwardToControlPanel",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-resize-start-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Line Start",
+        "beatName": "Line Resize Start",
+        "handlerName": "startLineResize",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-resize-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Line Move",
+        "beatName": "Line Resize Move",
+        "handlerName": "updateLine",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-resize-end-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize Line End",
+        "beatName": "Line Resize End",
+        "handlerName": "endLineResize",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-resize-end-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Resize End",
+        "beatName": "Resize End",
+        "handlerName": "endResize",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-paste-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Paste from Clipboard",
+        "beatName": "Read from Clipboard",
+        "handlerName": "readFromClipboard",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-paste-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Paste from Clipboard",
+        "beatName": "Deserialize Component Data",
+        "handlerName": "deserializeComponentData",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-paste-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Paste from Clipboard",
+        "beatName": "Calculate Paste Position",
+        "handlerName": "calculatePastePosition",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-paste-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Paste from Clipboard",
+        "beatName": "Create Pasted Component",
+        "handlerName": "createPastedComponent",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-paste-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Paste from Clipboard",
+        "beatName": "Notify Paste Complete",
+        "handlerName": "notifyPasteComplete",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-manip-start-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manip Line Start",
+        "beatName": "Line Manip Start",
+        "handlerName": "startLineManip",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-manip-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manip Line Move",
+        "beatName": "Line Manip Move",
+        "handlerName": "moveLineManip",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-line-manip-end-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Manip Line End",
+        "beatName": "Line Manip End",
+        "handlerName": "endLineManip",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-import-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Import",
+        "beatName": "Open UI File",
+        "handlerName": "openUiFile",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-import-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Import",
+        "beatName": "Parse UI File",
+        "handlerName": "parseUiFile",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-import-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Import",
+        "beatName": "Inject CSS Classes",
+        "handlerName": "injectCssClasses",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-import-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Import",
+        "beatName": "Create Components Sequentially",
+        "handlerName": "createComponentsSequentially",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-import-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Import",
+        "beatName": "Apply Hierarchy & Order",
+        "handlerName": "applyHierarchyAndOrder",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Query All Components",
+        "handlerName": "queryAllComponents",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Discover Components from DOM",
+        "handlerName": "discoverComponentsFromDom",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Collect CSS Classes",
+        "handlerName": "collectCssClasses",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Collect Layout Data",
+        "handlerName": "collectLayoutData",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Build UI File Content",
+        "handlerName": "buildUiFileContent",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export",
+        "beatName": "Download UI File",
+        "handlerName": "downloadUiFile",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-mp4-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export MP4",
+        "beatName": "Rasterize SVG and Encode MP4",
+        "handlerName": "exportSvgToMp4",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-export-gif-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Export GIF",
+        "beatName": "Rasterize SVG and Encode GIF",
+        "handlerName": "exportSvgToGif",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-drag-start-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drag Start",
+        "beatName": "Drag Start",
+        "handlerName": "startDrag",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-drag-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drag Move",
+        "beatName": "Update Position",
+        "handlerName": "updatePosition",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-drag-move-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drag Move",
+        "beatName": "Forward to Control Panel",
+        "handlerName": "forwardToControlPanel",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-drag-end-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Drag End",
+        "beatName": "Drag End",
+        "handlerName": "endDrag",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-deselect-requested-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Route Deselection",
+        "beatName": "Route Deselection Request",
+        "handlerName": "routeDeselectionRequest",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-deselect-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Deselect",
+        "beatName": "Hide Overlays for ID",
+        "handlerName": "deselectComponent",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-deselect-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Deselect",
+        "beatName": "Publish Deselection Changed",
+        "handlerName": "publishDeselectionChanged",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-deselect-all-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Deselect All",
+        "beatName": "Hide All Overlays",
+        "handlerName": "hideAllOverlays",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-deselect-all-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Deselect All",
+        "beatName": "Publish Selections Cleared",
+        "handlerName": "publishSelectionsCleared",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-delete-requested-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Route Delete",
+        "beatName": "Route Delete Request",
+        "handlerName": "routeDeleteRequest",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-delete-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Delete",
+        "beatName": "Delete Component",
+        "handlerName": "deleteComponent",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-delete-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Delete",
+        "beatName": "Publish Deleted",
+        "handlerName": "publishDeleted",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Resolve Template",
+        "handlerName": "resolveTemplate",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Register Instance",
+        "handlerName": "registerInstance",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Create Node",
+        "handlerName": "createNode",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Render React Component",
+        "handlerName": "renderReact",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Notify UI",
+        "handlerName": "notifyUi",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-create-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Create",
+        "beatName": "Enhance Line (Advanced)",
+        "handlerName": "enhanceLine",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-copy-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Copy to Clipboard",
+        "beatName": "Serialize Component Data",
+        "handlerName": "serializeSelectedComponent",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-copy-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Copy to Clipboard",
+        "beatName": "Copy to Clipboard",
+        "handlerName": "copyToClipboard",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      },
+      {
+        "sequenceId": "canvas-component-copy-symphony",
+        "sequenceCategory": "plugin",
+        "movementName": "Copy to Clipboard",
+        "beatName": "Notify Copy Complete",
+        "handlerName": "notifyCopyComplete",
+        "scope": "plugin",
+        "kind": "plugin",
+        "source": "sequence-definition"
+      }
+    ],
+    "unknown": []
+  }
+}

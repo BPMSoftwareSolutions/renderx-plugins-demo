@@ -28,6 +28,12 @@ const {
   generateCIReadinessWithFlags,
   generateTop10FromFlags
 } = require('./symphonic-metrics-envelope.cjs');
+const {
+  extractHandlerScopeFromSequences,
+  groupByScope,
+  calculateStats,
+  generateMarkdownReport: generateHandlerScopeReport
+} = require('./analyze-handler-scopes-for-pipeline.cjs');
 
 const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
 const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
@@ -343,6 +349,36 @@ Verify scan-handlers.cjs is accessible and git repository is initialized.`;
 }
 
 /**
+ * Generate handler scope metrics (orchestration vs plugin)
+ * Reads handler scope/kind from sequence JSON definitions
+ */
+async function generateHandlerScopeMetrics() {
+  try {
+    const handlers = extractHandlerScopeFromSequences();
+    
+    if (handlers.length === 0) {
+      return `ℹ **Handler scope metadata not yet populated** in sequence files.
+
+To enable scope-aware metrics:
+1. Update sequence JSON files with handler.scope field (plugin|orchestration|infra)
+2. Re-run pipeline to generate scope-separated metrics
+
+See HANDLER_SCOPE_KIND_QUICK_REF.md for implementation guide.`;
+    }
+    
+    const grouped = groupByScope(handlers);
+    const stats = calculateStats(grouped);
+    
+    return generateHandlerScopeReport(grouped, stats);
+    
+  } catch (err) {
+    return `⚠ **Handler scope analysis unavailable**: ${err.message}
+
+This is non-blocking; core metrics will still be generated.`;
+  }
+}
+
+/**
  * Generate duplication metrics markdown section
  * Uses real discovered duplicates from scanCodeDuplication
  */
@@ -633,6 +669,11 @@ async function generateMarkdownReport(metrics, metricsEnvelope, artifacts) {
     `⚠ Handler metrics generation failed: ${err.message}`
   );
   
+  log('Generating handler scope metrics...', '📊');
+  const handlerScopeMetrics = await generateHandlerScopeMetrics().catch(err => 
+    `ℹ Handler scope metrics not available: ${err.message}`
+  );
+  
   log('Generating duplication metrics...', '📊');
   const duplicationMetrics = await generateDuplicationMetrics().catch(err => 
     `⚠ Duplication metrics generation failed: ${err.message}`
@@ -808,6 +849,12 @@ ${metrics.conformity.violations_details.map(v =>
 ### Handler Metrics
 
 ${handlerMetrics}
+
+### Handler Scope Analysis
+
+**Scope Definition**: The handler scope/kind layer distinguishes orchestration handlers (system-level logic) from plugin handlers (feature-level logic).
+
+${handlerScopeMetrics}
 
 ### Handler-to-Beat Mapping & Health Score
 
