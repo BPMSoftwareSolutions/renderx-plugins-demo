@@ -26,6 +26,7 @@
  * @typedef {Object} CleanSymphonyHandler
  * @property {string} symphonyName - Name of the symphony
  * @property {string} domainId - Domain identifier
+ * @property {string} packageName - Package name (e.g., renderx-orchestration)
  * @property {number} symphonyCount - Number of symphonies
  * @property {number} movementCount - Number of movements
  * @property {number} beatCount - Number of beats
@@ -422,6 +423,7 @@ function renderCleanSymphonyHandler(data) {
   const {
     symphonyName,
     domainId,
+    packageName,
     symphonyCount,
     movementCount,
     beatCount,
@@ -442,6 +444,7 @@ function renderCleanSymphonyHandler(data) {
   output += '╔' + '═'.repeat(boxWidth) + '╗\n';
   output += `║ ${padString(`HANDLER SYMPHONY: ${symphonyName.toUpperCase()}`, boxWidth)}║\n`;
   output += `║ ${padString(`Domain : ${domainId}`, boxWidth)}║\n`;
+  output += `║ ${padString(`Package: ${packageName}`, boxWidth)}║\n`;
   output += `║ ${padString(`Scope : ${symphonyCount} Symphony · ${movementCount} Movements · ${beatCount} Beats · ${handlerCount} Handlers`, boxWidth)}║\n`;
   output += `║ ${padString(`Health: ${totalLoc} LOC · Avg Cov ${avgCoverage}% · Size Band: ${sizeBand} · Risk: ${riskLevel}`, boxWidth)}║\n`;
 

@@ -114,6 +114,20 @@ function generateHandlerSummary(handlerData) {
   let symphonyContent = '';
   
   Object.entries(symphonyGroups).sort((a, b) => b[1].length - a[1].length).forEach(([symphonyName, symphonyHandlers]) => {
+    // Extract package name from handler file paths
+    // Example: packages/renderx-orchestration/src/symphonies/create/...
+    let packageName = 'Unknown Package';
+    if (symphonyHandlers.length > 0) {
+      const firstHandlerPath = symphonyHandlers[0].file;
+      const pathParts = firstHandlerPath.split('/');
+      const packagesIndex = pathParts.indexOf('packages');
+      if (packagesIndex >= 0 && packagesIndex + 1 < pathParts.length) {
+        packageName = pathParts[packagesIndex + 1];
+      } else if (pathParts[0] === 'scripts') {
+        packageName = 'build-scripts';
+      }
+    }
+    
     // Calculate metrics for this symphony
     const symphonyLoc = Math.round(estimatedLocPerHandler * symphonyHandlers.length);
     const symphonyCoverage = Math.round(overallCoverage);
@@ -218,6 +232,7 @@ function generateHandlerSummary(handlerData) {
     symphonyContent += '\n' + renderCleanSymphonyHandler({
       symphonyName: symphonyName.replace(' Symphony', ''),
       domainId,
+      packageName,
       symphonyCount: 1,
       movementCount,
       beatCount,
