@@ -62,20 +62,22 @@ function transformAnalysisForReport(analysis) {
     subject: analysis.codebase,
     codebase: analysis.codebase,
     
-    // Metrics from Movement 2
+    // Metrics from Movement 2 - normalized to report schema
     metrics: m2.metrics ? {
-      loc: toNum(m2.metrics.loc),
-      complexity: toNum(m2.metrics.complexity),
+      totalLoc: toNum(m2.metrics.loc),
+      totalComplexity: toNum(m2.metrics.complexity),
       avgComplexity: toNum(m2.metrics.avgComplexity),
-      functions: toNum(m2.metrics.functions),
+      totalFunctions: toNum(m2.metrics.functions),
       avgLocPerFunction: toNum(m2.metrics.avgLocPerFunction),
+      duplication: toNum(m2.metrics.duplication),
       maintainability: toNum(m2.metrics.maintainability, 100)
     } : {
-      loc: 0,
-      complexity: 0,
+      totalLoc: 0,
+      totalComplexity: 0,
       avgComplexity: 0,
-      functions: 0,
+      totalFunctions: 0,
       avgLocPerFunction: 0,
+      duplication: 0,
       maintainability: 100
     },
     
@@ -254,7 +256,114 @@ async function run() {
     // Step 8: Transform analysis JSON to report-compatible format
     log('Transforming analysis format for report generation...', '🔄');
     const analysisData = JSON.parse(fs.readFileSync(latestAnalysisFile, 'utf8'));
-    const transformedAnalysis = transformAnalysisForReport(analysisData);
+    // Try to enrich with sibling artifacts (coverage summary, trends)
+    let coverageSummary = null;
+    let trendsSummary = null;
+    try {
+      const covFiles = fs.readdirSync(analysisOutputDir)
+        .filter(f => f.includes('coverage-summary') && f.endsWith('.json'))
+        .sort()
+        .reverse();
+      if (covFiles.length > 0) {
+        coverageSummary = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, covFiles[0]), 'utf8'));
+      }
+      const trendFiles = fs.readdirSync(analysisOutputDir)
+        .filter(f => f.includes('trends') && f.endsWith('.json'))
+        .sort()
+        .reverse();
+      if (trendFiles.length > 0) {
+        trendsSummary = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, trendFiles[0]), 'utf8'));
+      }
+    } catch {}
+
+    let transformedAnalysis = transformAnalysisForReport(analysisData);
+    // Supplement coverage if missing
+    if (coverageSummary && (!transformedAnalysis.coverage || (
+      transformedAnalysis.coverage.statements === 0 &&
+      transformedAnalysis.coverage.branches === 0 &&
+      transformedAnalysis.coverage.functions === 0 &&
+      transformedAnalysis.coverage.lines === 0
+    ))) {
+      const oc = coverageSummary.overall_coverage || {};
+      const toNum = v => (typeof v === 'string' ? parseFloat(v) : (v || 0));
+      transformedAnalysis.coverage = {
+        statements: toNum(oc.statements),
+        branches: toNum(oc.branches),
+        functions: toNum(oc.functions),
+        lines: toNum(oc.lines)
+      };
+    }
+    // Supplement metrics if missing
+    if (trendsSummary && (!transformedAnalysis.metrics || (
+      (transformedAnalysis.metrics.totalLoc || 0) === 0 &&
+      (transformedAnalysis.metrics.totalFunctions || 0) === 0 &&
+      (transformedAnalysis.metrics.totalComplexity || 0) === 0
+    ))) {
+      const t = trendsSummary.trends || {};
+      transformedAnalysis.metrics = {
+        totalLoc: Number(t.loc?.current || 0),
+        totalComplexity: Number(t.complexity?.current || 0),
+        avgComplexity: Number(t.complexity?.current || 0),
+        totalFunctions: 0,
+        avgLocPerFunction: 0,
+        duplication: Number(t.duplication?.current || 0),
+        maintainability: Number(t.maintainability?.current || 0)
+      };
+    }
+    // Build perModuleMetrics from per-beat CSV; also compute aggregates
+    if (true) {
+      try {
+        const beatCsvFiles = fs.readdirSync(analysisOutputDir)
+          .filter(f => f.includes('per-beat-metrics') && f.endsWith('.csv'))
+          .sort()
+          .reverse();
+        if (beatCsvFiles.length > 0) {
+          const csvPath = path.join(analysisOutputDir, beatCsvFiles[0]);
+          const csvText = fs.readFileSync(csvPath, 'utf8');
+          const lines = csvText.trim().split(/\r?\n/);
+          const header = lines.shift();
+          const idx = { Beat: 0, Movement: 1, Files: 2, LOC: 3, Complexity: 4, Coverage: 5, Status: 6 };
+          const rows = lines.map(line => line.split(','));
+          const perModule = rows.map(cols => ({
+            name: `${cols[idx.Beat]} (${cols[idx.Movement]})`,
+            loc: Number(cols[idx.LOC].replace(/[^0-9.]/g, '')) || 0,
+            functions: Number(cols[idx.Files].replace(/[^0-9.]/g, '')) || 0,
+            complexity: Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0,
+            comments: 0
+          }));
+          // sort by LOC desc and take top 10
+          perModule.sort((a,b) => b.loc - a.loc);
+          transformedAnalysis.perModuleMetrics = perModule.slice(0, 10);
+
+          // Aggregates for validation and metrics backfill
+          const totalLocCsv = perModule.reduce((sum, m) => sum + m.loc, 0);
+          const totalFunctionsCsv = rows.reduce((sum, cols) => sum + (Number(cols[idx.Files].replace(/[^0-9.]/g, '')) || 0), 0);
+          const avgComplexityCsv = rows.length
+            ? rows.reduce((sum, cols) => sum + (Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0), 0) / rows.length
+            : 0;
+
+          transformedAnalysis.validation = transformedAnalysis.validation || {};
+          transformedAnalysis.validation.moduleTable = {
+            rows: rows.length,
+            totalLocFromCsv: totalLocCsv,
+            totalFunctionsApprox: totalFunctionsCsv,
+            avgComplexityFromCsv: Number(avgComplexityCsv.toFixed(2))
+          };
+
+          // Backfill metrics if missing or zero
+          transformedAnalysis.metrics = transformedAnalysis.metrics || {};
+          if (!transformedAnalysis.metrics.totalLoc || transformedAnalysis.metrics.totalLoc === 0) {
+            transformedAnalysis.metrics.totalLoc = totalLocCsv;
+          }
+          if (!transformedAnalysis.metrics.totalFunctions || transformedAnalysis.metrics.totalFunctions === 0) {
+            transformedAnalysis.metrics.totalFunctions = totalFunctionsCsv;
+          }
+          if (!transformedAnalysis.metrics.avgComplexity || transformedAnalysis.metrics.avgComplexity === 0) {
+            transformedAnalysis.metrics.avgComplexity = Number(avgComplexityCsv.toFixed(2));
+          }
+        }
+      } catch {}
+    }
     
     // Save transformed analysis temporarily
     const transformedPath = path.join(analysisOutputDir, 'transformed-for-report.json');

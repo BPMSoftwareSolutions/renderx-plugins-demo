@@ -175,18 +175,39 @@ function buildContext(analysis, authority) {
     totalComplexity: 0,
     duplication: 0
   };
-  const coverage = analysis.coverage || {
+  // Coerce metrics to numbers if present as strings
+  metrics.totalLoc = Number(metrics.totalLoc || 0);
+  metrics.totalFunctions = Number(metrics.totalFunctions || 0);
+  metrics.totalComplexity = Number(metrics.totalComplexity || 0);
+  metrics.duplication = Number(metrics.duplication || 0);
+
+  const coverageRaw = analysis.coverage || {
     statements: 0,
     branches: 0,
     functions: 0,
     lines: 0
   };
-  const conformity = analysis.conformity || {
+  // Ensure coverage values are numbers
+  const coverage = {
+    statements: Number(coverageRaw.statements || 0),
+    branches: Number(coverageRaw.branches || 0),
+    functions: Number(coverageRaw.functions || 0),
+    lines: Number(coverageRaw.lines || 0)
+  };
+  const conformityRaw = analysis.conformity || {
     conformityScore: 0,
     conformingBeats: 0,
     totalBeats: 4,
     violations: 0,
     fractalReference: false
+  };
+  // Ensure conformity values are numbers
+  const conformity = {
+    conformityScore: Number(conformityRaw.conformityScore || 0),
+    conformingBeats: Number(conformityRaw.conformingBeats || 0),
+    totalBeats: Number(conformityRaw.totalBeats || 4),
+    violations: Number(conformityRaw.violations || 0),
+    fractalReference: Boolean(conformityRaw.fractalReference)
   };
   
   // Maintainability calculation
@@ -196,7 +217,7 @@ function buildContext(analysis, authority) {
   const locStatus = getMetricStatus(authority, 'duplication', metrics.totalLoc > 5000 ? 100 : 0);
   const functionsStatus = getMetricStatus(authority, 'complexity', metrics.totalFunctions);
   const complexityStatus = getMetricStatus(authority, 'complexity', metrics.totalComplexity);
-  const avgComplexity = metrics.avgComplexity || (metrics.totalComplexity / 10) || 0;
+  const avgComplexity = Number(metrics.avgComplexity || (metrics.totalComplexity / 10) || 0);
   const avgComplexityStatus = getMetricStatus(authority, 'complexity', avgComplexity);
   const maintainabilityStatus = getMetricStatus(authority, 'maintainability', maintainability);
   const duplicationStatus = getMetricStatus(authority, 'duplication', metrics.duplication);
