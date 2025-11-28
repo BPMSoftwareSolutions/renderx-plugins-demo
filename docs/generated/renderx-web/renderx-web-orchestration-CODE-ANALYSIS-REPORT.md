@@ -1,22 +1,50 @@
-# 🎼 Symphonic Code Analysis Report
+# Renderx Web Orchestration Code Analysis Report
 
-**Analysis Date**: 2025-11-28T16:15:42.424Z
-**Analysis ID**: 2025-11-28T16:15:40.788Z
-**Subject**: renderx-web-orchestration
-**Status**: ✅ **COMPLETE - ALL 4 MOVEMENTS × 16 BEATS EXECUTED**
+**Generated**: 2025-11-28T18:19:40.084Z  
+**Codebase**: renderx-web-orchestration  
+**Pipeline**: symphonic-code-analysis-pipeline
+
+## Executive Summary
+
+This comprehensive analysis spans 4 movements with 16 beat stages, providing deep insights into code quality, test coverage, and architectural conformity.
+
+### Overall Health: FAIR (Conditional) ⚠
+
+**Note**: 'FAIR' reflects current architecture and test posture. CI/CD gating is stricter and requires higher thresholds for automated deployment gates.
+
+| Metric | Value | Status | Classification |
+|--------|-------|--------|-----------------|
+| Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
+| Test Coverage | 84.59% | ✅ GOOD| Risk: LOW|
+| Maintainability | 48.44/100 | 🔴 POOR| Grade: C|
+| Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
+
+---
 
 
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                    RENDERX SYMPHONIC CODE ANALYSIS ARCHITECTURE                                                 ║
+║                    SYMPHONIC CODE ANALYSIS ARCHITECTURE - RENDERX WEB ORCHESTRATION                         ║
 ║                    Enhanced Handler Portfolio & Orchestration Framework                                          ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │  📊 CODEBASE METRICS FOUNDATION                                                                                 │
 │  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: 769 │ Total LOC: 5,045 │ Handlers: 147 │ Avg LOC/Handler: 29.33 │ Coverage: 79.34% │           │
+│  │ Total Files: 777 │ Total LOC: 5045  │ Handlers: 283│ Avg LOC/Handler: 17.83│ Coverage: 84.59% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║  Hierarchy: Symphony → Sequence → Movement → Beat → Handler                                                      ║
+║  • Symphony:  Logical grouping of related handler functions (e.g., Copy Symphony, Create Symphony)               ║
+║  • Sequence:  Execution order of handlers within a symphony (choreographed flow)                                 ║
+║  • Movement:  Major analysis phase (Discovery, Metrics, Coverage, Conformity)                                    ║
+║  • Beat:      Workflow stage within a movement (fine-grained execution step)                                     ║
+║  • Handler:   Individual function performing specific domain logic                                               ║
+║  • Data Baton: Metrics and context passed between movements (🎭)                                                 ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
                                            ▲
                                            │
@@ -46,7 +74,7 @@
       └─┴─┘                  └─┴─┘                  └─┴─┘
         │                      │                      │
         │ DISCOVER             │ MEASURE              │ MEASURE
-        │ 769 files            │ LOC metrics           │ coverage
+        │ 777  files           │ LOC metrics           │ coverage
         │                      │                      │
         └──────────┬───────────┴──────────┬───────────┘
                    │                      │
@@ -54,9 +82,9 @@
         ╔══════════════════╗  ╔══════════════════╗
         │  DATA BATON 🎭   │  │  DATA BATON 🎭   │
         ├──────────────────┤  ├──────────────────┤
-        │ • Files: 769     │  │ • Handlers: 147  │
-        │ • LOC: 5,045     │  │ • Avg LOC: 29.33 │
-        │ • Beats: 4/4 ✓   │  │ • Coverage: 79.3%│
+        │ • Files: 777     │  │ • Handlers: 283 │
+        │ • LOC: 5045      │  │ • Avg LOC: 17.83│
+        │ • Beats: 4/4 ✓   │  │ • Coverage: 84.6%│
         │ • Status: READY  │  │ • Status: READY  │
         └────────┬─────────┘  └────────┬─────────┘
                  │                     │
@@ -64,90 +92,312 @@
                             │
                             ▼
         ╔═════════════════════════════════════╗
-        ║ SYMPHONY ORCHESTRATION STRUCTURE    ║
-        ║ (25 Symphonies × 6 avg handlers)   ║
+        ║ HANDLER PORTFOLIO BY SYMPHONY       ║
+        ║ (16 Symphonies: 106 symphony + 177 infrastructure)║
         ╠═════════════════════════════════════╣
         ║                                     ║
-        ║  CANVAS COMPONENT SYMPHONIES        ║
-        ║  ├─ Copy Symphony                   ║
-        ║  │  └─[H1] serializeComponent (24) ║
-        ║  │  └─[H2] copyToClipboard (18)    ║
-        ║  │  └─[H3] notifyCopyComplete (12) ║
-        ║  │  └─ AVG: 18 LOC | COV: 81%      ║
-        ║  │                                  ║
-        ║  ├─ Create Symphony                 ║
-        ║  │  └─[H4] resolveTemplate (35)    ║
-        ║  │  └─[H5] registerInstance (28)   ║
-        ║  │  └─[H6] createNode (156) ⚠️     ║
-        ║  │  └─[H7] renderReact (42)        ║
-        ║  │  └─[H8] notifyUi (15)           ║
-        ║  │  └─[H9] enhanceLine (18)        ║
-        ║  │  └─ AVG: 49 LOC | COV: 77%      ║
-        ║  │  └─ RISK: HIGH (God Handler)    ║
-        ║  │                                  ║
-        ║  ├─ Drag Symphony                   ║
-        ║  │  └─[H10] startDrag (31)         ║
-        ║  │  └─[H11] updatePosition (28)    ║
-        ║  │  └─[H12] endDrag (22)           ║
-        ║  │  └─[H13] forwardToCtl (14)      ║
-        ║  │  └─ AVG: 24 LOC | COV: 82%      ║
-        ║  │                                  ║
-        ║  ├─ Resize Symphony                 ║
-        ║  │  └─[H14] startResize (38)       ║
-        ║  │  └─[H15] updateSize (32)        ║
-        ║  │  └─[H16] endResize (26)         ║
-        ║  │  └─ AVG: 32 LOC | COV: 79%      ║
-        ║  │                                  ║
-        ║  ├─ Select Symphony                 ║
-        ║  │  └─[H17] routeSelection (45)    ║
-        ║  │  └─[H18] showOverlay (28)       ║
-        ║  │  └─[H19] hideOverlay (18)       ║
-        ║  │  └─[H20] notifyUi (16)          ║
-        ║  │  └─[H21] publishSelected (12)   ║
-        ║  │  └─ AVG: 24 LOC | COV: 80%      ║
-        ║  │                                  ║
-        ║  ├─ Deselect Symphony               ║
-        ║  │  └─[H22] routeDeselect (38)     ║
-        ║  │  └─[H23] clearOverlay (22)      ║
-        ║  │  └─[H24] notifyDeselect (14)    ║
-        ║  │  └─ AVG: 25 LOC | COV: 81%      ║
-        ║  │                                  ║
-        ║  ├─ Delete Symphony                 ║
-        ║  │  └─[H25] deleteComponent (35)   ║
-        ║  │  └─[H26] publishDeleted (16)    ║
-        ║  │  └─[H27] routeDelete (22)       ║
-        ║  │  └─ AVG: 24 LOC | COV: 78%      ║
-        ║  │                                  ║
-        ║  ├─ Paste Symphony                  ║
-        ║  │  └─[H28] readClipboard (32)     ║
-        ║  │  └─[H29] deserialize (45)       ║
-        ║  │  └─[H30] calcPastePos (28)      ║
-        ║  │  └─[H31] createPasted (38)      ║
-        ║  │  └─[H32] notifyComplete (14)    ║
-        ║  │  └─ AVG: 31 LOC | COV: 76%      ║
-        ║  │                                  ║
-        ║  ├─ Export Symphonies (GIF/MP4)     ║
-        ║  │  └─[H33] exportSvgToGif (68)    ║
-        ║  │  └─[H34] exportSvgToMp4 (72)    ║
-        ║  │  └─ AVG: 70 LOC | COV: 73%      ║
-        ║  │  └─ RISK: MEDIUM (Size)         ║
-        ║  │                                  ║
-        ║  ├─ Import Symphony                 ║
-        ║  │  └─[H35] loadSchemas (42)       ║
-        ║  │  └─[H36] parseImport (38)       ║
-        ║  │  └─ AVG: 40 LOC | COV: 75%      ║
-        ║  │                                  ║
-        ║  ├─ Line Manipulation Symphonies    ║
-        ║  │  ├─ Start                        ║
-        ║  │  │  └─[H37] startLineManip (25) ║
-        ║  │  │  └─ COV: 82%                 ║
-        ║  │  ├─ Move                         ║
-        ║  │  │  └─[H38] moveLineManip (32)  ║
-        ║  │  │  └─ COV: 79%                 ║
-        ║  │  └─ End                          ║
-        ║  │     └─[H39] endLineManip (18)   ║
-        ║  │     └─ COV: 84%                 ║
-        ║  │  └─ AVG: 25 LOC | COV: 82%      ║
+        ║  RENDERX WEB ORCHESTRATION HANDLERS:║
+        ║  ├─ Create Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H1] resolveTemplate (16)║
+        ║  │     Beat 1.2 → [H2] injectCssFallback (18)║
+        ║  │     Beat 1.3 → [H3] injectRawCss (15)║
+        ║  │     Beat 1.4 → [H4] appendTo (14)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H5] applyClasses (21)║
+        ║  │     Beat 2.2 → [H6] applyInlineStyle (15)║
+        ║  │     Beat 2.3 → [H7] createElementWithId (15)║
+        ║  │     Beat 2.4 → [H8] getCanvasOrThrow (15)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 3.1 → [H9] attachStandardImportInteractions (16)║
+        ║  │     Beat 3.2 → [H10] createFromImportRecord (18)║
+        ║  │     Beat 3.3 → [H11] toCreatePayloadFromData (21)║
+        ║  │     Beat 3.4 → [H12] transformClipboardToCreatePayload (16)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 4.1 → [H13] transformImportToCreatePayload (15)║
+        ║  │     Beat 4.2 → [H14] attachDrag (19)║
+        ║  │     Beat 4.3 → [H15] attachSelection (19)║
+        ║  │     Beat 4.4 → [H16] attachSvgNodeClick (21)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 1.1 → [H17] registerInstance (19)║
+        ║  │     Beat 1.2 → [H18] notifyUi (16)║
+        ║  │     Beat 1.3 → [H19] cleanupReactRoot (21)║
+        ║  │     Beat 1.4 → [H20] exposeEventRouterToReact (19)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H21] renderReact (16)║
+        ║  │     Beat 2.2 → [H22] computeCssVarBlock (18)║
+        ║  │     Beat 2.3 → [H23] computeInlineStyle (20)║
+        ║  │     Beat 2.4 → [H24] computeInstanceClass (17)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 3.1 → [H25] validateReactCode (17)║
+        ║  │     Beat 3.2 → [H26] validateReactCodeOrThrow (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 26 | Movements: 4 | Beats: 28   ║
+        ║  │                                   ║
+        ║  ├─ Ui Symphony                         ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H27] awaitRefresh (20)║
+        ║  │     Beat 1.2 → [H28] dispatchField (20)║
+        ║  │     Beat 1.3 → [H29] generateFields (18)║
+        ║  │     Beat 1.4 → [H30] generateSections (15)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H31] initConfig (17)║
+        ║  │     Beat 2.2 → [H32] initMovement (14)║
+        ║  │     Beat 2.3 → [H33] initResolver (16)║
+        ║  │     Beat 2.4 → [H34] loadSchemas (18)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 3.1 → [H35] mergeErrors (20)║
+        ║  │     Beat 3.2 → [H36] notifyReady (20)║
+        ║  │     Beat 3.3 → [H37] prepareField (15)║
+        ║  │     Beat 3.4 → [H38] registerObservers (15)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 4.1 → [H39] renderView (20)║
+        ║  │     Beat 4.2 → [H40] setDirty (18)║
+        ║  │     Beat 4.3 → [H41] toggleSection (17)║
+        ║  │     Beat 4.4 → [H42] updateView (16)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 1.1 → [H43] validateField (17)║
+        ║  │     Beat 1.2 → [H44] getCurrentTheme (18)║
+        ║  │     Beat 1.3 → [H45] toggleTheme (15)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 19 | Movements: 4 | Beats: 20   ║
+        ║  │                                   ║
+        ║  ├─ Select Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H46] ensureOverlayCss (21)║
+        ║  │     Beat 1.2 → [H47] applyOverlayRectForEl (16)║
+        ║  │     Beat 1.3 → [H48] ensureOverlay (17)║
+        ║  │     Beat 1.4 → [H49] getCanvasOrThrow (21)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H50] getCanvasRect (17)║
+        ║  │     Beat 2.2 → [H51] createOverlayStructure (19)║
+        ║  │     Beat 2.3 → [H52] resolveEndpoints (18)║
+        ║  │     Beat 2.4 → [H53] attachAdvancedLineManipHandlers (16)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 3.1 → [H54] ensureAdvancedLineOverlayFor (15)║
+        ║  │     Beat 3.2 → [H55] attachLineResizeHandlers (17)║
+        ║  │     Beat 3.3 → [H56] ensureLineOverlayFor (18)║
+        ║  │     Beat 3.4 → [H57] attachResizeHandlers (20)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 12 | Movements: 4 | Beats: 12   ║
+        ║  │                                   ║
+        ║  ├─ Export Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H58] collectCssClasses (19)║
+        ║  │     Beat 1.2 → [H59] discoverComponentsFromDom (21)║
+        ║  │     Beat 1.3 → [H60] downloadUiFile (21)║
+        ║  │     Beat 1.4 → [H61] exportSvgToGif (16)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H62] queryAllComponents (21)║
+        ║  │     Beat 2.2 → [H63] createMP4Encoder (17)║
+        ║  │     Beat 2.3 → [H64] exportSvgToMp4 (19)║
+        ║  │     Beat 2.4 → [H65] buildUiFileContent (21)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 3.1 → [H66] collectLayoutData (16)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 9 | Movements: 4 | Beats: 12    ║
+        ║  │                                   ║
+        ║  ├─ Css Management Symphony             ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H67] applyCssClassToElement (20)║
+        ║  │     Beat 1.2 → [H68] createCssClass (16)║
+        ║  │     Beat 1.3 → [H69] deleteCssClass (20)║
+        ║  │     Beat 1.4 → [H70] getCssClass (21)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H71] listCssClasses (19)║
+        ║  │     Beat 2.2 → [H72] removeCssClassFromElement (21)║
+        ║  │     Beat 2.3 → [H73] updateCssClass (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 7 | Movements: 4 | Beats: 8    ║
+        ║  │                                   ║
+        ║  ├─ Drag Symphony                       ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H74] applyTemplateStyles (16)║
+        ║  │     Beat 1.2 → [H75] computeCursorOffsets (20)║
+        ║  │     Beat 1.3 → [H76] computeGhostSize (19)║
+        ║  │     Beat 1.4 → [H77] createGhostContainer (17)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H78] ensurePayload (17)║
+        ║  │     Beat 2.2 → [H79] installDragImage (18)║
+        ║  │     Beat 2.3 → [H80] renderTemplatePreview (19)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 7 | Movements: 4 | Beats: 8    ║
+        ║  │                                   ║
+        ║  ├─ Import Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H81] injectCssClasses (15)║
+        ║  │     Beat 1.2 → [H82] openUiFile (16)║
+        ║  │     Beat 1.3 → [H83] registerInstances (20)║
+        ║  │     Beat 1.4 → [H84] applyHierarchyAndOrder (18)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H85] createComponentsSequentially (21)║
+        ║  │     Beat 2.2 → [H86] parseUiFile (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 6 | Movements: 4 | Beats: 8    ║
+        ║  │                                   ║
+        ║  ├─ Update Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H87] refreshControlPanel (21)║
+        ║  │     Beat 1.2 → [H88] updateAttribute (16)║
+        ║  │     Beat 1.3 → [H89] refreshControlPanel (15)║
+        ║  │     Beat 1.4 → [H90] updateSvgNodeAttribute (18)║
+        ║  │              🎭 Data Baton → (metrics passed)║
+        ║  │     Beat 2.1 → [H91] updateFromElement (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 5 | Movements: 4 | Beats: 8    ║
+        ║  │                                   ║
+        ║  ├─ Line Advanced Symphony              ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H92] line-advancedHandler (19)║
+        ║  │     Beat 1.2 → [H93] endLineManip (20)║
+        ║  │     Beat 1.3 → [H94] moveLineManip (15)║
+        ║  │     Beat 1.4 → [H95] startLineManip (21)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 4 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Clipboard Symphony                  ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H96] getClipboardText (20)║
+        ║  │     Beat 1.2 → [H97] setClipboardText (19)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Augment Symphony                    ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H98] enhanceLine (21)║
+        ║  │     Beat 1.2 → [H99] recomputeLineSvg (18)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Resize Line Symphony                ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H100] resize-lineHandler (21)║
+        ║  │     Beat 1.2 → [H101] resize-lineHandler (15)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Classes Symphony                    ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H102] addClass (17)║
+        ║  │     Beat 1.2 → [H103] removeClass (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Resize Symphony                     ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H104] resizeHandler (19)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Selection Symphony                  ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H105] deriveSelectionModel (14)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ║  ├─ Drop Symphony                       ║
+        ║  │  ┌─────────────────────────────┐  ║
+        ║  │  │ SEQUENCE: Handler Pipeline │  ║
+        ║  │  └─────────────────────────────┘  ║
+        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
+        ║  │     Discovery    Metrics      Coverage     Conformity║
+        ║  │          ↓           ↓            ↓            ↓    ║
+        ║  │     Beat 1.1 → [H106] drop.symphony.tsHandler (17)║
+        ║  │  ─────────────────────────────    ║
+        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
+        ║  │                                   ║
+        ╚═════════════════════════════════════╝
         ║  │                                  ║
         ║  └─ ... (+ 15 more symphonies)      ║
         ║     with 100+ additional handlers   ║
@@ -156,101 +406,69 @@
                         │
                         ▼
         ╔═══════════════════════════════════════════════════════╗
-        ║   HANDLER PORTFOLIO METRICS & DISTRIBUTION           ║
+        ║   QUALITY & COVERAGE METRICS                         ║
         ╠═══════════════════════════════════════════════════════╣
         ║                                                       ║
-        ║  Handler Size Distribution:                          ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ Tiny (<10 LOC):        ████░░░░░░  15 (10%)   │  ║
-        ║  │ Small (10-24 LOC):     ██████░░░░  28 (19%)   │  ║
-        ║  │ Medium (25-49 LOC):    ████████░░  42 (29%)   │  ║
-        ║  │ Large (50-99 LOC):     ██████░░░░  38 (26%)   │  ║
-        ║  │ X-Large (100+ LOC):    ███░░░░░░░  24 (16%)   │  ║
-        ║  └────────────────────────────────────────────────┘  ║
+        ║  Handlers Analyzed: 283                              ║
+        ║  Avg LOC/Handler: 17.83                              ║
+        ║  Test Coverage: 84.6%                                  ║
+        ║  Duplication: 78.3%                                      ║
+        ║  ✓  No God Handlers                              ║
         ║                                                       ║
-        ║  Coverage Distribution:                              ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ Well-Covered (80%+):   ████████░░  64 (44%)   │  ║
-        ║  │ Partially-Covered:     ███████░░░  83 (56%)   │  ║
-        ║  │ Poorly-Covered:        ░░░░░░░░░░   0 (0%)    │  ║
-        ║  │ Uncovered:             ░░░░░░░░░░   0 (0%)    │  ║
-        ║  └────────────────────────────────────────────────┘  ║
-        ║                                                       ║
-        ║  Risk Assessment Matrix:                             ║
-        ║  ┌────────────────────────────────────────────────┐  ║
-        ║  │ CRITICAL RISK (>100 LOC + <70% coverage):     │  ║
-        ║  │  • createNode (156 LOC, 68% coverage)         │  ║
-        ║  │  • exportSvgToMp4 (72 LOC, 73% coverage)      │  ║
-        ║  │                                                │  ║
-        ║  │ HIGH RISK (50-99 LOC + <75% coverage):        │  ║
-        ║  │  • startResize (38 LOC, 79% coverage) ✓       │  ║
-        ║  │  • loadSchemas (42 LOC, 75% coverage) ✓       │  ║
-        ║  │                                                │  ║
-        ║  │ MEDIUM RISK (<50 LOC + >80% coverage):        │  ║
-        ║  │  • serializeComponent (24 LOC, 81%)           │  ║
-        ║  │  • startDrag (31 LOC, 82%)                    │  ║
-        ║  │  • [42 more handlers in good state]           │  ║
-        ║  └────────────────────────────────────────────────┘  ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
-                        │
-                        ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║   ORCHESTRATION HEALTH SCORE & CI/CD READINESS       ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Global Metrics:                                     ║
-        ║  • Statements Coverage: 79.29% [🟡 YELLOW]           ║
-        ║  • Branch Coverage:     70.31% [🔴 RED]              ║
-        ║  • Function Coverage:   85.67% [🟢 GREEN]            ║
-        ║  • Line Coverage:       75.49% [🟡 YELLOW]           ║
-        ║                                                       ║
-        ║  Orchestration Health: FAIR (Conditional) ⚠️          ║
-        ║  └─ Conformity Score: 87.50%                         ║
-        ║  └─ Handler Mapping: 100% (147/147)                  ║
-        ║  └─ CI/CD Readiness: REQUIRES GATING                 ║
-        ║                                                       ║
-        ║  Maintenance Indicators:                             ║
-        ║  • Code Duplication: 78.30% [⚠️ VERY HIGH]           ║
-        ║  • Maintainability Index: 69/100 [🟡 FAIR (B)]       ║
-        ║  • Technical Debt: MEDIUM                            ║
-        ║  • God Handlers: 2 DETECTED                          ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
-                        │
-                        ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║        REFACTORING & IMPROVEMENT ROADMAP             ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Priority 1 - CRITICAL (Immediate):                  ║
-        ║  ├─ Split createNode (156 LOC) into:                 ║
-        ║  │  ├─ templateResolution (45 LOC)                   ║
-        ║  │  ├─ nodeGeneration (65 LOC)                       ║
-        ║  │  ├─ styleApplication (28 LOC)                     ║
-        ║  │  └─ interactionSetup (18 LOC)                     ║
-        ║  │                                                   ║
-        ║  ├─ Improve branch coverage (→ 75%):                 ║
-        ║  │  └─ Target: Medium handlers (25-49 LOC)           ║
-        ║  │  └─ Add: Edge case tests                          ║
-        ║  │                                                   ║
-        ║  └─ Reduce duplication (561 blocks):                 ║
-        ║     └─ Extract: Common patterns                      ║
-        ║     └─ Consolidate: Utility handlers                 ║
-        ║                                                       ║
-        ║  Priority 2 - HIGH (Next Sprint):                    ║
-        ║  ├─ Handler clustering review                        ║
-        ║  ├─ Consolidate tiny handlers (<10 LOC)              ║
-        ║  └─ Optimize dependency injection                    ║
-        ║                                                       ║
-        ║  Priority 3 - MEDIUM (Backlog):                      ║
-        ║  ├─ Performance optimization                         ║
-        ║  ├─ Documentation enhancement                        ║
-        ║  └─ Type safety improvements                         ║
+        ║  [Full metrics available in detailed report]          ║
         ║                                                       ║
         ╚═══════════════════════════════════════════════════════╝
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+                           🎼 LEGEND & DOMAIN TERMINOLOGY 🎼
+
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ SYMPHONIC ARCHITECTURE TERMS:                                                                                 │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ • Symphony:          Logical grouping of related handler functions                                            │
+│ • Sequence:          Execution order of handlers within a symphony (choreographed flow)                        │
+│ • Handler:           Individual function that performs a specific orchestration task                          │
+│ • Beat:              Execution unit within a Movement (4 movements × 4 beats = 16 beats total)               │
+│ • Movement:          Major phase in analysis (Discovery, Metrics, Coverage, Conformity)                       │
+│ • Data Baton 🎭:     Metadata container passed between beats (files, handlers, metrics)                       │
+│ • Orchestration:     Complete system of symphonies, sequences, and handlers working together                  │
+│                                                                                                                 │
+│ CODE ANALYSIS METRICS:                                                                                        │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ • LOC:               Lines of Code (measured, not synthetic)                                                   │
+│ • Coverage:          Percentage of code covered by tests (target: 80%+)                                       │
+│ • Duplication:       Percentage of duplicate code blocks identified                                           │
+│ • God Handler:       Handler with 100+ LOC and <70% coverage (refactoring candidate)                         │
+│                                                                                                                 │
+│ COVERAGE SYMBOLS:                                                                                             │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 🟢 GREEN (80%+):     Well-covered, production-ready                                                           │
+│ 🟡 YELLOW (50-79%):  Acceptable but needs improvement                                                         │
+│ 🔴 RED (<50%):       Poor coverage, high risk                                                                 │
+│ ⚠️  WARNING:          High complexity or high-risk area                                                         │
+│ ✓ CHECK:             Meets requirements/passing                                                               │
+│                                                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+ANALYSIS EXECUTION SUMMARY:
+  ✅ Discovered: 777 source files in renderx-web-orchestration
+  ✅ Analyzed: 283 handler functions with measured LOC (5045 total lines)
+  ✅ Mapped: Files to orchestration beats
+  ✅ Measured: Test coverage (avg 84.6%)
+  ✅ No God handlers detected
+  ✅ Generated: Comprehensive metrics and analysis artifacts
+
+NEXT ACTIONS:
+  → Review detailed metrics in full report
+  → Reduce code duplication from 78.3% to <50%
+  → Maintain excellent test coverage
+  
+
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
 
 ---
 
@@ -258,13 +476,13 @@
 
 **Purpose**: Discover all source files and map them to orchestration beats
 
-- **Files Discovered**: 769
+- **Files Discovered**: 777
 - **Beats Completed**: 4/4 ✓
 - **Beat Mappings**:
   - Beat 1 (Discovery): 0 files
   - Beat 2 (Baseline): 367 files
   - Beat 3 (Structure): 283 files
-  - Beat 4 (Dependencies): 119 files
+  - Beat 4 (Dependencies): 127 files
 
 ---
 
@@ -274,7 +492,7 @@
 
 ### Lines of Code (LOC)
 - **Total**: 5,045
-- **Average per File**: 7
+- **Average per File**: 6
 - **Status**: ✓ Normal range
 
 ### Complexity Analysis
@@ -303,18 +521,18 @@
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-28T16:15:41.437Z
+**Last Scan**: 2025-11-28T18:19:39.051Z
 
 ### Maintainability Index
-- **Score**: 65.07/100
-- **Classification**: 🟡 **FAIR** (B)
-- **Threshold**: 60-80
-- **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
+- **Score**: 48.44/100
+- **Classification**: 🔴 **POOR** (C)
+- **Threshold**: <60
+- **Guidance**: Critical refactoring needed. High priority for next cycle.
 - **Contributing Factors**:
-  - Test Coverage: 79.7%
-  - Documentation: 90.9%
-  - Comment Density: 42.8%
-  - Complexity Score: 51.9
+  - Test Coverage: 74.5%
+  - Documentation: 81.7%
+  - Comment Density: 1.1%
+  - Complexity Score: 68.2
 
 ---
 
@@ -322,15 +540,15 @@
 
 **Purpose**: Measure statement, branch, function, and line coverage
 
-**Scope**: Full `renderx-web-orchestration` suite - all source files analyzed
+**Scope**: Full `renderx-web-orchestration` domain - all source files in `packages/` analyzed
 
 ### Coverage Metrics
 | Type | Coverage | Target | Gap | Status |
 |------|----------|--------|-----|--------|
-| Statements | 84.16% | 80% | 4.2% | ✅ On-target |
-| Branches | 82.88% | 75% | 7.9% | 🟢 Close |
-| Functions | 88.78% | 80% | 8.8% | 🟢 Close |
-| Lines | 84.16% | 80% | 4.2% | 🟢 Close |
+| Statements | 84.59% | 80% | 4.6% | ✅ On-target |
+| Branches | 77.54% | 75% | 2.5% | 🟡 Needs Improvement |
+| Functions | 89.84% | 80% | 9.8% | 🟢 Close |
+| Lines | 77.72% | 80% | -2.3% | 🟡 Needs Improvement |
 
 ### Beat-by-Beat Coverage
 ```
@@ -365,24 +583,33 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 ### Handler Metrics
 
-✅ **38 handlers discovered**
+✅ **283 handlers discovered**
 
-✅ **38 handlers discovered**
+✅ **283 handlers discovered**
 
 **By Type:**
-  * generic: 38
+  * generic: 207
+  * input: 18
+  * initialization: 16
+  * event: 15
+  * validation: 7
+  * output: 7
+  * ui-interaction: 4
+  * error-handling: 4
+  * execution: 4
+  * transformation: 1
 
 **Top Handlers:**
-  * handlers (generic) — packages/canvas-component/src/symphonies/copy/copy.stage-crew.ts
-  * handlers (generic) — packages/canvas-component/src/symphonies/create/create.stage-crew.ts
-  * handlers (generic) — packages/canvas-component/src/symphonies/delete/delete.stage-crew.ts
-  * handlers (generic) — packages/canvas-component/src/symphonies/deselect/deselect.stage-crew.ts
-  * handlers (generic) — packages/canvas-component/src/symphonies/drag/drag.stage-crew.ts
-  * ... and 33 more
+  * getClipboardText (generic) — packages/canvas-component/src/symphonies/_clipboard.ts
+  * setClipboardText (generic) — packages/canvas-component/src/symphonies/_clipboard.ts
+  * enhanceLine (generic) — packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts
+  * recomputeLineSvg (generic) — packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts
+  * resolveTemplate (generic) — packages/canvas-component/src/symphonies/create/create.arrangement.ts
+  * ... and 278 more
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
-**Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-28T16:15:41.206Z
+**Coverage**: Handlers distributed across 10 types
+**Last Scan**: 2025-11-28T18:19:38.823Z
 
 ### Handler Scope Analysis
 
@@ -390,7 +617,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 # Handler Scope Analysis Report
 
-**Generated**: 2025-11-28T16:15:41.238Z
+**Generated**: 2025-11-28T18:19:38.847Z
 
 ## Overview
 
@@ -523,32 +750,32 @@ With handler scope/kind now defined, the pipeline can now:
 
 ### Symphonic Health Score
 
-**Overall**: 🟠 **54.00/100** (POOR)
+**Overall**: 🟡 **62.46/100** (FAIR)
 
 **Component Scores:**
 | Component | Score | Target | Status |
 |-----------|-------|--------|--------|
 | Handler Coverage | 100.00% | 90%+ | ✓ |
-| Beat Coverage | 15.00% | 100% | ⚠ |
-| Mapping Confidence | 47.50% | 80%+ | ⚠ |
+| Beat Coverage | 40.00% | 100% | ⚠ |
+| Mapping Confidence | 52.31% | 80%+ | ⚠ |
 | Distribution | 0.00% | 80%+ | ⚠ |
 
 **Metrics:**
-- Mapped Handlers: 38/38
+- Mapped Handlers: 283/283
 - Orphaned Handlers: 0
-- Beats with Handlers: 3
-- Beats Without Handlers: 17
+- Beats with Handlers: 8
+- Beats Without Handlers: 12
 
 **Orphaned Handlers:**
 **Orphaned Handlers**: None ✓
 
-**Beats Without Handlers (17):**
-- beat-1-discovery (Movement 1)
+**Beats Without Handlers (12):**
 - beat-1a-discovery-core (Movement 1)
 - beat-1b-discovery-extended (Movement 1)
 - beat-1c-discovery-analysis (Movement 1)
-- beat-1d-discovery-telemetry (Movement 1)
-- ... and 12 more
+- beat-2b-baseline-analysis (Movement 2)
+- beat-2d-baseline-reporting (Movement 2)
+- ... and 7 more
 
 **Mapping Strategy:**
 - Symphony keywords (e.g., export → beat-3-structure)
@@ -565,31 +792,31 @@ With handler scope/kind now defined, the pipeline can now:
 
 **Note**: Handler coverage is computed only for handler modules; global orchestration coverage is shown in Movement 3 above. These are different scopes and may show different percentages.
 
-**Mapping Status**: 38/38 handlers have explicit beat mappings. Coverage heatmap reflects current measurement scope.
+**Mapping Status**: 283/283 handlers have explicit beat mappings. Coverage heatmap reflects current measurement scope.
 
 **Heatmap Terminology**: "Unassigned" in the Coverage Heatmap table refers to handlers without coverage measurement data correlated to specific beats in the current analysis scope, not to unmapped handlers. All 38 handlers have explicit beat assignments in the orchestration-domains.json mapping.
 
 ## Coverage by Handler Analysis
 
 ### Overall Test Coverage
-**Global Coverage**: 77.77% statements
+**Global Coverage**: 79.58% statements
 
 | Metric | Coverage | Status |
 |--------|----------|--------|
-| Statements | 77.77% | 🟡 |
-| Branches | 66.45% | 🟡 |
-| Functions | 76.1% | 🟡 |
-| Lines | 79.53% | 🟡 |
+| Statements | 79.58% | 🟡 |
+| Branches | 66.34% | 🟡 |
+| Functions | 84.7% | 🟢 |
+| Lines | 78.29% | 🟡 |
 
 ### Handler Coverage Summary
 | Category | Count | % | Status |
 |----------|-------|---|--------|
-| Well-Covered (80%+) | 41 | 27.9% | ✅ |
-| Partially-Covered (50-79%) | 106 | 72.1% | ⚠️ |
+| Well-Covered (80%+) | 65 | 44.2% | ✅ |
+| Partially-Covered (50-79%) | 82 | 55.8% | ⚠️ |
 | Poorly-Covered (1-49%) | 0 | 0.0% | ⚠️ |
 | Uncovered (0%) | 0 | 0.0% | ❌ |
 
-**Average Handler Coverage**: 77.57%
+**Average Handler Coverage**: 79.4%
 
 **Handlers**: 147 | **Average LOC per Handler**: 29.33 | **Total LOC**: 1320
 
@@ -597,22 +824,22 @@ With handler scope/kind now defined, the pipeline can now:
 
 | Beat | Avg Coverage | Handlers | Status |
 |------|--------------|----------|--------|
-| unassigned | 77.57% | 147 | ⚠️ |
+| unassigned | 79.4% | 147 | ⚠️ |
 
 ### ✅ Well-Tested Handlers (Coverage >= 80%)
 | Handler | Coverage | Beat |
 |---------|----------|------|
-| offsetX | 82.57% | unassigned |
-| ctx | 82.56% | unassigned |
-| showSelectionOverlay | 82.54% | unassigned |
-| updateSvgNodeAttribute | 82.43% | unassigned |
-| endLineResize | 82.42% | unassigned |
-| exportSvgToGif | 82.39% | unassigned |
-| success | 82.37% | unassigned |
-| endLineManip | 82.34% | unassigned |
+| addClass | 84.44% | unassigned |
+| generateSections | 84.43% | unassigned |
+| endResize | 84.35% | unassigned |
+| items | 84.23% | unassigned |
+| component | 84.21% | unassigned |
+| offsetY | 84.19% | unassigned |
+| ctx | 84.02% | unassigned |
+| notifyUi | 83.96% | unassigned |
 
 **Measurement**: Source='measured' (test coverage analysis with handler-beat correlation)
-**Timestamp**: 2025-11-28T16:15:41.811Z
+**Timestamp**: 2025-11-28T18:19:39.466Z
 
 
 ### Automated Refactor Suggestions
@@ -621,69 +848,53 @@ With handler scope/kind now defined, the pipeline can now:
 
 ### Executive Summary
 
-Analysis identified **11 refactoring opportunities** across the codebase:
+Analysis identified **16 refactoring opportunities** across the codebase:
 
 | Category | Count | Impact | Effort |
 |----------|-------|--------|--------|
 | Code Consolidation | 5 | High | Low-Medium |
-| Handler Clustering | 3 | Medium | Medium |
+| Handler Clustering | 8 | Medium | Medium |
 | Maintainability | 3 | High | Low-Medium |
 
 ### Priority Ranking
 
-#### 🔴 Critical Path (P0-P1): 3 items
+#### 🔴 Critical Path (P0-P1): 2 items
 
-**1. [P1] Refactor handler clustering in "library-component"**
-- Type: refactoring
-- Effort: Low | Benefit: Medium | Risk: Medium
-- Recommendation: Split into 2-3 focused modules or consolidate into handler factory
-- Impact: +6 points | -3 (reduce module complexity) | Improved (easier to isolate functionality)
-
-**2. [P1] Reduce cyclomatic complexity**
+**1. [P1] Reduce cyclomatic complexity**
 - Type: improvement
 - Effort: Medium | Benefit: High | Risk: Low
 - Recommendation: Extract nested logic into separate functions; apply early returns pattern
 - Impact: +20 points | -30% (split functions) | Significantly improved
 
-**3. [P1] Increase branch test coverage**
+**2. [P1] Increase branch test coverage**
 - Type: improvement
 - Effort: Medium | Benefit: High | Risk: Very Low
 - Recommendation: Target beat-3 (structure) and beat-4 (dependencies) for coverage improvements
 - Impact: +10 points | No change | Improved (+6% branch coverage target)
 
-#### 🟡 Next Batch (P2): 3 items
+#### 🟡 Next Batch (P2): 9 items
 
 **[P2] Refactor handler clustering in "canvas-component"**
-- Package contains 28 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+- Package contains 87 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**[P2] Refactor handler clustering in "self-healing"**
+- Package contains 62 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
 
 **[P2] Refactor handler clustering in "control-panel"**
-- Package contains 5 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+- Package contains 52 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
 
-**[P2] Improve code documentation**
-- Current documentation score is below target. Add JSDoc comments and README documentation.
+**[P2] Refactor handler clustering in "library"**
+- Package contains 37 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**[P2] Refactor handler clustering in "slo-dashboard"**
+- Package contains 19 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
 
 #### 🟢 Backlog (P3): 5 items
 Additional opportunities for future iterations.
 
 ### Detailed Refactoring Plan
 
-#### Suggestion 1: Refactor handler clustering in "library-component"
-**ID**: CLUSTER-03 | **Priority**: P1
-
-Package contains 3 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
-
-**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
-**Impact**: +6 points | -3 (reduce module complexity) | Improved (easier to isolate functionality)
-
-**PR Template** (use `npm run generate:pr -- CLUSTER-03` to generate):
-```markdown
-# Refactor handler clustering in "library-component"
-Package contains 3 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
-
-**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
-```
-
-#### Suggestion 2: Reduce cyclomatic complexity
+#### Suggestion 1: Reduce cyclomatic complexity
 **ID**: MAINT-02 | **Priority**: P1
 
 Some files have high cyclomatic complexity (avg 1.13, high outliers at 2-3+). Break into smaller functions.
@@ -699,7 +910,7 @@ Some files have high cyclomatic complexity (avg 1.13, high outliers at 2-3+). Br
 **Recommendation**: Extract nested logic into separate functions; apply early returns pattern
 ```
 
-#### Suggestion 3: Increase branch test coverage
+#### Suggestion 2: Increase branch test coverage
 **ID**: MAINT-03 | **Priority**: P1
 
 Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
@@ -713,6 +924,22 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 **Recommendation**: Target beat-3 (structure) and beat-4 (dependencies) for coverage improvements
+```
+
+#### Suggestion 3: Refactor handler clustering in "canvas-component"
+**ID**: CLUSTER-01 | **Priority**: P2
+
+Package contains 87 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
+**Impact**: +90 points | -8 (reduce module complexity) | Improved (easier to isolate functionality)
+
+**PR Template** (use `npm run generate:pr -- CLUSTER-01` to generate):
+```markdown
+# Refactor handler clustering in "canvas-component"
+Package contains 87 handlers clustered together. Consider extracting into specialized sub-modules or consolidating related handlers.
+
+**Recommendation**: Split into 2-3 focused modules or consolidate into handler factory
 ```
 
 ### Coverage Gap Analysis
@@ -752,7 +979,7 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 **Measurement**:
 - Source: 'computed' (suggestions derived from measured duplication & clustering data)
-- Timestamp: 2025-11-28T16:15:42.081Z
+- Timestamp: 2025-11-28T18:19:39.781Z
 
 
 ### Historical Trend Analysis
@@ -762,32 +989,32 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 ## Historical Trend Analysis
 
 **Analysis Period**: Last 30 snapshots
-**Current Baseline**: 2025-11-28T16:15:42.327Z
+**Current Baseline**: 2025-11-28T18:19:40.078Z
 
 ### Overall Trend Summary
 
 | Metric | Current | Previous | Change | Trend | Direction |
 |--------|---------|----------|--------|-------|-----------|
-| Handler Count | 38 | 38 | - | New | - |
+| Handler Count | 283 | 283 | - | New | - |
 | Duplication (blocks) | 561 | 561 | - | Monitoring | - |
-| Coverage (avg) | 79.73% | 42.87% | - | Monitoring | - |
-| Maintainability | 84.02/100 | - | - | Baseline | - |
+| Coverage (avg) | 81.27% | 37.93% | - | Monitoring | - |
+| Maintainability | 82.09/100 | - | - | Baseline | - |
 | Conformity | 87.50% | - | - | Baseline | - |
 
 ### Handler Metrics
 
-**Current State**: 38 handlers discovered
+**Current State**: 283 handlers discovered
 
 **Handler Tracking:**
-- Starting baseline: 38 handlers
-- Types detected: 1
-- Target for next sprint: 46 (20% growth for enhanced coverage)
+- Starting baseline: 283 handlers
+- Types detected: 10
+- Target for next sprint: 340 (20% growth for enhanced coverage)
 - Health score: 54/100 (POOR - focus on distribution)
 
 **Expected Evolution**:
-- Week 4: 40 handlers (Type-specific handlers added)
-- Week 8: 44 handlers (Enhanced testing harness)
-- Week 12: 50 handlers (Full handler decomposition)
+- Week 4: 298 handlers (Type-specific handlers added)
+- Week 8: 326 handlers (Enhanced testing harness)
+- Week 12: 368 handlers (Full handler decomposition)
 
 ### Duplication Metrics
 
@@ -808,10 +1035,10 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 **Current Coverage Baselines**:
 | Metric | Current | Target | Gap | Status |
 |--------|---------|--------|-----|--------|
-| Statements | 86.62% | 85% | -1.62% | 🟡 Close |
-| Branches | 72.84% | 85% | 12.16% | 🟡 Close |
-| Functions | 82.06% | 90% | 7.94% | 🟡 Close |
-| Lines | 76.05% | 85% | 8.95% | ✅ On-target |
+| Statements | 82.41% | 85% | 2.59% | 🟡 Close |
+| Branches | 80.13% | 85% | 4.87% | 🟡 Close |
+| Functions | 77.58% | 90% | 12.42% | 🟡 Close |
+| Lines | 81.83% | 85% | 3.17% | ✅ On-target |
 
 **Coverage Improvement Roadmap**:
 - **Week 2**: Add 5-8 integration tests → +3% statements
@@ -821,7 +1048,7 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 ### Maintainability Trends
 
-**Current Maintainability Index**: 84.02/100
+**Current Maintainability Index**: 82.09/100
 
 **Component Health**:
 - Complexity (average): 1.13
@@ -850,24 +1077,24 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 ### Period-over-Period Comparison
 
 **Baseline (Today)**:
-- Handlers: 38
+- Handlers: 283
 - Duplication: 145.63%
-- Coverage: 79.73%
-- Maintainability: 84.02/100
+- Coverage: 81.27%
+- Maintainability: 82.09/100
 - Conformity: 87.50%
 
 **Projected (Week 4)**:
-- Handlers: +5% → 40
+- Handlers: +5% → 298
 - Duplication: -15% → 130.63%
-- Coverage: +3-5% → 83.73%
-- Maintainability: +5 → 89.02/100
+- Coverage: +3-5% → 85.27%
+- Maintainability: +5 → 87.09/100
 - Conformity: +2% → 89.50%
 
 **Projected (Week 8 - Full Sprint)**:
-- Handlers: +15% → 44
+- Handlers: +15% → 326
 - Duplication: -30% → 115.63%
-- Coverage: +8-10% → 88.73%
-- Maintainability: +15 → 99.02/100
+- Coverage: +8-10% → 90.27%
+- Maintainability: +15 → 97.09/100
 - Conformity: +5% → 92.50%
 
 ### Data Quality & Confidence
@@ -883,7 +1110,7 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 **Retention**: Last 30 snapshots retained in `.generated/history/symphonic-metrics/`
 
-**Timestamp**: 2025-11-28T16:15:42.333Z
+**Timestamp**: 2025-11-28T18:19:40.084Z
 **Source**: 'measured + computed' (baseline establishment)
 
 ---
@@ -898,219 +1125,78 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 
 
+---
 
+## Movement Governance Summary
 
-═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+| Movement | Coverage | Conformity | Maintainability | Governance |
+|----------|----------|-----------|------------------|------------|
+| 1: Discovery | 85% ✅ | High ✅ | N/A | **PASS** ✅ |
+| 2: Metrics | 90% ✅ | Medium ⚠ | 47.1 🔴 | **REVIEW** ⚠ |
+| 3: Coverage | 70% ⚠ | Low ❌ | Poor 🔴 | **NEEDS WORK** ❌ |
+| 4: Reporting | 78% ⚠ | High ✅ | Fair 🟡 | **CONDITIONAL** ⚠ |
 
-                           🎼 LEGEND & DOMAIN TERMINOLOGY 🎼
+---
 
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ SYMPHONIC ARCHITECTURE TERMS:                                                                                 │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ • Symphony:          Logical grouping of related handler functions (e.g., Copy, Create, Drag)                 │
-│ • Sequence:          Execution order of handlers within a symphony (choreographed flow)                        │
-│ • Handler:           Individual function that performs a specific orchestration task                          │
-│ • Beat:              Execution unit within a Movement (4 movements × 4 beats = 16 beats total)               │
-│ • Movement:          Major phase in analysis (Discovery, Metrics, Coverage, Conformity)                       │
-│ • Data Baton 🎭:     Metadata container passed between beats (files, handlers, metrics)                       │
-│ • Orchestration:     Complete system of symphonies, sequences, and handlers working together                  │
-│                                                                                                                 │
-│ CODE ANALYSIS METRICS:                                                                                        │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ • LOC:               Lines of Code (measured, not synthetic)                                                   │
-│ • Coverage:          Percentage of code covered by tests (target: 80%+)                                       │
-│ • Avg LOC/Handler:   Average lines of code per handler function (29.33 current)                              │
-│ • God Handler:       Handler with 100+ LOC and <70% coverage (refactoring candidate)                         │
-│ • Risk Score:        (1 - coverage%) × (LOC / maxLOC) - identifies refactoring priorities                    │
-│ • Health Score:      Multi-factor index of code quality and test coverage                                     │
-│                                                                                                                 │
-│ COVERAGE SYMBOLS:                                                                                             │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ 🟢 GREEN (80%+):     Well-covered, production-ready                                                           │
-│ 🟡 YELLOW (50-79%):  Acceptable but needs improvement                                                         │
-│ 🔴 RED (<50%):       Poor coverage, high risk                                                                 │
-│ ⚠️  WARNING:          High complexity or high-risk area                                                         │
-│ ✓ CHECK:             Meets requirements/passing                                                               │
-│ ❌ FAIL:              Below threshold/needs work                                                               │
-│                                                                                                                 │
-│ HANDLER SIZES:                                                                                                │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ 🔹 Tiny:             < 10 LOC        (15 handlers, 10%) - Candidate for consolidation                        │
-│ 🔸 Small:            10-24 LOC       (28 handlers, 19%) - Well-scoped, maintainable                          │
-│ 🔶 Medium:           25-49 LOC       (42 handlers, 29%) - Optimal size range                                │
-│ 🟠 Large:            50-99 LOC       (38 handlers, 26%) - Consider refactoring                               │
-│ 🔴 X-Large:          100+ LOC        (24 handlers, 16%) - Priority refactoring targets                       │
-│                                                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+## CI/CD Readiness Assessment
 
-═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
 
-## 📊 Conformity Score
+Gating Level: **CONDITIONAL**
 
-### **ACCEPTABLE: 87.50%**
+✓ Conformity (87.50%) ✅
+✓ Coverage - Orchestration Suite (84.59%) ✅
+✓ Handler Scanning (283 handlers discovered) ✅
 
-| Aspect | Result | Status |
-|--------|--------|--------|
-| Conforming Beats | 14/16 | ⚠️ 2 violations |
-| Violations | 2 | ⚠️ 2 |
-| Fractal Reference | N/A | ❓ |
+---
 
-## 🎯 Executive Summary
+## Top 10 Actionable Improvements (Priority Order)
 
-The code analysis pipeline executed a **complete 4-movement symphony**:
+### [HIGH] 1. Improve handler type classification (currently 100% generic)
 
-- **Movement 1**: Code Discovery & Beat Mapping → 4 scripts
-- **Movement 2**: Code Metrics Analysis → 5045 LOC, 0 complexity
-- **Movement 3**: Test Coverage Analysis → 84.2% covered
-- **Movement 4**: Architecture Conformity → 87.50% conformity
+### [HIGH] 2. Increase branch test coverage (target 85%, currently 79.07%)
 
-| Metric | Value | Benchmark | Status |
-|--------|-------|-----------|--------|
-| Lines of Code | 5045 | <5,000 | ⚠️ |
-| Functions | 0 | >50 | ✅ |
-| System Complexity | 0 | <400 | ✅ |
-| Avg Complexity/Module | 0.0 | <20 | ✅ |
-| Maintainability | 80/100 | >70 | ✅ |
-| Duplication | 78.3% | <20% | ⚠️ |
+### [HIGH] 3. Add integration tests for Beat 4 (dependencies)
 
-| Coverage Type | Score | Status |
-|---|---|---|
-| Statements | 84.2% | 🟡 |
-| Branches | 82.9% | ✅ |
-| Functions | 88.8% | ✅ |
-| Lines | 84.2% | 🟡 |
+### [MEDIUM] 4. Execute 5 consolidation refactors (save 600+ duplicate lines)
 
-**Coverage Status**: 84.2% overall
+### [MEDIUM] 5. Distribute handlers across beats (target 50% beats with handlers, currently 15%)
 
-| Module | LOC | Functions | Complexity | Comments |
-|--------|-----|-----------|------------|----------|
-| beat-3-structure (Movement 1) | 5412 | 78 | 2.67 | 0 |
-| beat-2-metrics (Movement 2) | 3789 | 52 | 2.78 | 0 |
-| beat-1-metrics (Movement 2) | 3124 | 45 | 2.45 | 0 |
-| beat-1-discovery (Movement 1) | 2847 | 42 | 2.34 | 0 |
-| beat-4-metrics (Movement 2) | 2567 | 41 | 2.34 | 0 |
-| beat-2-coverage (Movement 3) | 2345 | 34 | 1.92 | 0 |
-| beat-3-metrics (Movement 2) | 2134 | 38 | 2.01 | 0 |
-| beat-2-baseline (Movement 1) | 1923 | 35 | 1.89 | 0 |
-| beat-4-coverage (Movement 3) | 1923 | 31 | 1.78 | 0 |
-| beat-1-coverage (Movement 3) | 1876 | 29 | 1.67 | 0 |
+### [MEDIUM] 6. Reduce Movement 2 maintainability complexity
 
-**Module Analysis**:
-- Largest: beat-3-structure (Movement 1) (5412 LOC)
-- Most Complex: beat-2-metrics (Movement 2) (2.78 branches)
-- Best Documented: beat-1-coverage (Movement 3) (0 comments)
+### [LOW] 7. Add JSDoc documentation (50-100 lines)
 
-## ⚠️ Risk Assessment
+### [LOW] 8. Tune trend thresholds and velocity alerts
 
-✅ **No critical risks identified**
+### [LOW] 9. Review and prioritize refactor suggestions (11 opportunities)
 
-The codebase meets all quality thresholds.
+### [LOW] 10. Establish team SLOs based on trend projections
 
-## 🔧 Recommendations
+---
 
-**2 Recommendation(s)**:
+## Summary & Next Steps
 
-### 1. [P2] 🟡 Document architecture patterns for new contributors
+**Overall Status**: ✅ **READY FOR REVIEW** (conditional CI gating)
 
-**Category**: Documentation
+- **Must Address** (blocker): Handler implementation status clarification
+- **Should Address** (next sprint): Duplication refactoring, branch coverage improvements
+- **Nice to Have** (backlog): Maintainability improvements, trend tracking
 
-**Rationale**: Reduce onboarding time and maintenance overhead
+**Recommended Action**:
+1. Schedule code review for Movement 2 (metrics, complexity)
+2. Assign handler implementation work (clarify TODO vs external)
+3. Plan coverage testing for Beats 3 & 4
+4. Add this report to CI/CD pipeline for automated gate enforcement
 
-**Effort**: low
+---
 
-### 2. [P3] 🟢 Profile and optimize hot paths
+## Artifacts Generated
 
-**Category**: Performance
+- **JSON Analysis**: renderx-web-orchestration-code-analysis-2025-11-28T18-19-38-171Z.json
+- **Coverage Summary**: renderx-web-orchestration-coverage-summary-2025-11-28T18-19-38-171Z.json
+- **Per-Beat Metrics**: renderx-web-orchestration-per-beat-metrics-2025-11-28T18-19-38-171Z.csv
+- **Trend Analysis**: renderx-web-orchestration-trends-2025-11-28T18-19-38-171Z.json
 
-**Rationale**: Improve system responsiveness
+---
 
-**Effort**: medium
-
-
-
-## 🎼 Fractal Architecture Assessment
-
-### Self-Reference Property
-
-The pipeline **successfully analyzed its own codebase**, confirming the fractal orchestration property:
-
-- **Self-Analysis**: ✅ CONFIRMED
-- **Fractal Recursion**: ✅ N/A
-- **Conformity Score**: ✅ 87.50%
-- **Violations**: ✅ 2
-
-This demonstrates that the code analysis pipeline can introspect and analyze its own behavior,
-a key characteristic of fractal architectures where each system can analyze itself at any scale.
-
-
-## 🧩 Handler Portfolio
-
-### 6.1 Symphonies Overview
-| Symphony | Handlers | Total LOC | Avg Coverage |
-|---|---:|---:|---:|
-| unknown | 147 | 1052 | 82.3% |
-
-### 6.2 Top Handlers by LOC / Complexity
-| Handler | Symphony | LOC | Complexity | Coverage | Size | Risk |
-|---|---|---:|---:|---:|---|---|
-| attachResizeHandlers | unknown | 192 | 0 | 80% | xl | low |
-| showSvgNodeOverlay | unknown | 155 | 0 | 82% | xl | low |
-| createNode | unknown | 126 | 0 | 85% | xl | low |
-| attachLineResizeHandlers | unknown | 96 | 0 | 84% | large | low |
-| createPastedComponent | unknown | 60 | 0 | 82% | large | low |
-| updatePosition | unknown | 55 | 0 | 86% | large | low |
-| showSelectionOverlay | unknown | 50 | 0 | 83% | large | low |
-| startDrag | unknown | 23 | 0 | 87% | small | low |
-| routeSelectionRequest | unknown | 23 | 0 | 84% | small | low |
-| endDrag | unknown | 23 | 0 | 82% | small | low |
-
-## 📊 Handler Distributions
-
-### 6.3 Size Distribution
-| Band | Count |
-|---|---:|
-| Tiny | 21 |
-| Small | 13 |
-| Medium | 0 |
-| Large | 4 |
-| XL | 3 |
-
-### 6.4 Coverage Distribution
-| Band | Count |
-|---|---:|
-| 0–30% | 0 |
-| 30–60% | 0 |
-| 60–80% | 46 |
-| 80–100% | 101 |
-
-## 🔥 Risk Hotspots & God Handlers
-
-| Handler | LOC | Complexity | Coverage |
-|---|---:|---:|---:|
-| attachResizeHandlers | 192 | 0 | 80% |
-| showSvgNodeOverlay | 155 | 0 | 82% |
-| createNode | 126 | 0 | 85% |
-
-## 🚦 CI/CD Readiness
-
-**Verdict**: Production Ready
-
-**Notes**:
-- N/A
-
-## 🛠️ Refactoring & Improvement Roadmap
-
-- Consolidate duplication in shared utilities
-- Increase branch coverage on critical paths
-- Split oversized handlers into smaller functions
-
-## ✅ Conclusion
-
-**Conformity Score**: ACCEPTABLE (87.50%)
-
-**Recommendation**: Production-ready with improvements recommended before scaling.
-
-**Next Steps**:
-1. Monitor for regressions
-2. Continue current practices
-3. Plan next feature development
+*Report auto-generated from symphonic-code-analysis-pipeline. All metrics are immutable and traceable to source analysis.*

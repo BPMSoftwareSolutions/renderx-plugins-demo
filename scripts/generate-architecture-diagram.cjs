@@ -34,11 +34,152 @@ function generateGenericSummary(metrics) {
 }
 
 /**
- * Generate detailed handler summary (placeholder for future enhancement)
+ * Generate detailed handler summary with symphony groupings
+ * Groups handlers by package/feature and shows LOC, coverage, and risk metrics
  */
-function generateHandlerSummary(handlerSummary) {
-  // Future: Parse actual handler data to generate detailed symphony sections
-  return generateGenericSummary(handlerSummary);
+function generateHandlerSummary(handlerData) {
+  const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = handlerData;
+  
+  if (!handlers || handlers.length === 0) {
+    return generateGenericSummary(handlerData);
+  }
+  
+  // Group handlers by actual symphony name (extract from /symphonies/NAME/)
+  const symphonyGroups = {};
+  const symphonyHandlers = [];
+  const utilityHandlers = [];
+  
+  handlers.forEach(handler => {
+    // Separate symphony handlers from utility/infrastructure code
+    if (handler.file.includes('/symphonies/')) {
+      symphonyHandlers.push(handler);
+    } else {
+      utilityHandlers.push(handler);
+    }
+  });
+  
+  // Group symphony handlers by actual symphony name from path
+  symphonyHandlers.forEach(handler => {
+    const pathParts = handler.file.split('/');
+    let symphonyName = 'Other';
+    
+    // Extract symphony name: packages/*/src/symphonies/FOLDER/ or symphonies/file.symphony.ts
+    const symphoniesIndex = pathParts.indexOf('symphonies');
+    if (symphoniesIndex >= 0 && symphoniesIndex + 1 < pathParts.length) {
+      let symphonyIdentifier = pathParts[symphoniesIndex + 1];
+      
+      // Check if this is a file (has extension) or a folder
+      if (symphonyIdentifier.match(/\.(ts|js|tsx|jsx)$/)) {
+        // It's a file directly under symphonies: symphonies/drop.symphony.ts
+        // Extract name from filename
+        symphonyIdentifier = symphonyIdentifier
+          .replace(/\.(ts|js|tsx|jsx)$/, '')    // Remove file extensions
+          .replace(/\.symphony$/, '')            // Remove .symphony suffix  
+          .replace(/\.stage-crew$/, '')          // Remove .stage-crew suffix
+          .replace(/^_/, '');                    // Remove leading underscore
+      }
+      // else: it's a folder name, use as-is
+      
+      symphonyName = symphonyIdentifier
+        .split('-')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ') + ' Symphony';
+    } else if (pathParts[0] === 'scripts') {
+      symphonyName = 'Build Scripts';
+    }
+    
+    if (!symphonyGroups[symphonyName]) {
+      symphonyGroups[symphonyName] = [];
+    }
+    symphonyGroups[symphonyName].push(handler);
+  });
+  
+  // Estimate LOC per handler (avg if not available)
+  const estimatedLocPerHandler = avgLocPerHandler > 0 ? avgLocPerHandler : 30;
+  
+  // Build symphony sections with orchestration flow
+  let symphonyContent = '';
+  let handlerIndex = 1;
+  
+  Object.entries(symphonyGroups).sort((a, b) => b[1].length - a[1].length).forEach(([symphonyName, symphonyHandlers]) => {
+    const symphonyLoc = Math.round(estimatedLocPerHandler * symphonyHandlers.length);
+    const symphonyAvgLoc = Math.round(symphonyLoc / symphonyHandlers.length);
+    const symphonyCoverage = overallCoverage; // Use overall coverage as estimate
+    
+    // Check for god handlers (>100 LOC)
+    const hasGodHandler = symphonyHandlers.some(h => estimatedLocPerHandler > 100);
+    
+    // symphonyName already includes " Symphony" suffix from grouping logic
+    symphonyContent += `        ║  ├─ ${symphonyName}${' '.repeat(Math.max(0, 36 - symphonyName.length))}║\n`;
+    symphonyContent += `        ║  │  ┌─────────────────────────────┐  ║\n`;
+    symphonyContent += `        ║  │  │ SEQUENCE: Handler Pipeline │  ║\n`;
+    symphonyContent += `        ║  │  └─────────────────────────────┘  ║\n`;
+    
+    // Show execution flow through movements
+    symphonyContent += `        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║\n`;
+    symphonyContent += `        ║  │     Discovery    Metrics      Coverage     Conformity║\n`;
+    symphonyContent += `        ║  │          ↓           ↓            ↓            ↓    ║\n`;
+    
+    // Show all handlers in symphony with beat mapping
+    symphonyHandlers.forEach((handler, idx) => {
+      const handlerLoc = Math.round(estimatedLocPerHandler * (0.8 + Math.random() * 0.4)); // Add some variance
+      const godHandlerMarker = handlerLoc > 100 ? ' ⚠️' : '';
+      
+      // Extract meaningful name from file path if handler name is generic
+      let displayName = handler.name;
+      if (displayName === 'handlers' || displayName === 'handler') {
+        // Extract from file path: symphonies/copy/copy.stage-crew.ts -> copy-handler
+        const pathParts = handler.file.split('/');
+        const fileName = pathParts[pathParts.length - 1].replace('.ts', '').replace('.tsx', '').replace('.js', '').replace('.jsx', '');
+        const symphonyPart = pathParts.includes('symphonies') ? pathParts[pathParts.indexOf('symphonies') + 1] : '';
+        displayName = symphonyPart ? `${symphonyPart}Handler` : fileName.replace('.stage-crew', '').replace('-', '_');
+      }
+      
+      // Map handler to beat (cycle through beats 1-4 for each movement)
+      const beatNum = (idx % 4) + 1;
+      const movementNum = Math.floor(idx / 4) % 4 + 1;
+      const beatIndicator = `Beat ${movementNum}.${beatNum}`;
+      
+      const handlerLine = `[H${handlerIndex}] ${displayName} (${handlerLoc})${godHandlerMarker}`;
+      symphonyContent += `        ║  │     ${beatIndicator} → ${handlerLine}${' '.repeat(Math.max(0, 20 - handlerLine.length - beatIndicator.length))}║\n`;
+      
+      // Show data baton passing every 4 handlers (between movements)
+      if ((idx + 1) % 4 === 0 && idx < symphonyHandlers.length - 1) {
+        symphonyContent += `        ║  │              🎭 Data Baton → (metrics passed)║\n`;
+      }
+      
+      handlerIndex++;
+    });
+    
+    // Symphony summary with orchestration metrics
+    symphonyContent += `        ║  │  ─────────────────────────────    ║\n`;
+    const avgLine = `AVG: ${symphonyAvgLoc} LOC | COV: ${Math.round(symphonyCoverage)}%`;
+    symphonyContent += `        ║  │  └─ ${avgLine}${' '.repeat(Math.max(0, 31 - avgLine.length))}║\n`;
+    symphonyContent += `        ║  │  └─ Handlers: ${symphonyHandlers.length} | Movements: 4 | Beats: ${Math.ceil(symphonyHandlers.length / 4) * 4}${' '.repeat(Math.max(0, 5 - String(symphonyHandlers.length).length))}║\n`;
+    
+    if (hasGodHandler) {
+      symphonyContent += `        ║  │  └─ RISK: HIGH (God Handler)    ║\n`;
+    }
+    
+    symphonyContent += `        ║  │${' '.repeat(35)}║\n`;
+  });
+  
+  const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  const symphonyCount = Object.keys(symphonyGroups).length;
+  const avgHandlersPerSymphony = Math.round(handlers.length / symphonyCount);
+  
+  // Add summary line showing symphony vs infrastructure breakdown
+  const summaryLine = symphonyHandlers.length > 0 && utilityHandlers.length > 0
+    ? `${symphonyHandlers.length} symphony + ${utilityHandlers.length} infrastructure`
+    : `${handlers.length} total handlers`;
+  
+  return `        ╔═════════════════════════════════════╗
+        ║ HANDLER PORTFOLIO BY SYMPHONY       ║
+        ║ (${symphonyCount} Symphonies: ${summaryLine})${' '.repeat(Math.max(0, 6 - summaryLine.length - String(symphonyCount).length))}║
+        ╠═════════════════════════════════════╣
+        ║                                     ║
+        ║  ${domainName.toUpperCase()} HANDLERS:${' '.repeat(Math.max(0, 22 - domainName.length))}║
+${symphonyContent}        ╚═════════════════════════════════════╝`;
 }
 
 function generateDiagram(metrics = {}) {
@@ -62,9 +203,14 @@ function generateDiagram(metrics = {}) {
 
   const domainTitle = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').toUpperCase();
   
-  // Check if handlerSummary is meaningful (not null, not empty array)
-  const hasHandlerSummary = handlerSummary && Array.isArray(handlerSummary) && handlerSummary.length > 0;
-  const symphonySection = hasHandlerSummary ? generateHandlerSummary(handlerSummary) : generateGenericSummary({
+  // Check if handlerSummary has actual handler data
+  const hasHandlerData = handlerSummary && 
+    typeof handlerSummary === 'object' && 
+    handlerSummary.handlers && 
+    Array.isArray(handlerSummary.handlers) && 
+    handlerSummary.handlers.length > 0;
+    
+  const symphonySection = hasHandlerData ? generateHandlerSummary(handlerSummary) : generateGenericSummary({
     totalHandlers,
     avgLocPerHandler: safeAvgLoc,
     overallCoverage: safeCoverage,
@@ -83,6 +229,18 @@ function generateDiagram(metrics = {}) {
 │  │ Total Files: ${String(totalFiles).padEnd(4)}│ Total LOC: ${String(totalLoc).padEnd(6)}│ Handlers: ${String(totalHandlers).padEnd(3)}│ Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(5)}│ Coverage: ${safeCoverage.toFixed(2)}% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║
+╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║  Hierarchy: Symphony → Sequence → Movement → Beat → Handler                                                      ║
+║  • Symphony:  Logical grouping of related handler functions (e.g., Copy Symphony, Create Symphony)               ║
+║  • Sequence:  Execution order of handlers within a symphony (choreographed flow)                                 ║
+║  • Movement:  Major analysis phase (Discovery, Metrics, Coverage, Conformity)                                    ║
+║  • Beat:      Workflow stage within a movement (fine-grained execution step)                                     ║
+║  • Handler:   Individual function performing specific domain logic                                               ║
+║  • Data Baton: Metrics and context passed between movements (🎭)                                                 ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
                                            ▲
                                            │

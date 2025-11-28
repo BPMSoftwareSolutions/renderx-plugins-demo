@@ -37,12 +37,18 @@ async function scanHandlerExports() {
       stdio: ['pipe', 'pipe', 'ignore']
     }).split('\n').filter(f => f);
 
-    // Patterns to match handler exports
+    // Patterns to match all exported functions (not just "handler" naming)
     const handlerPatterns = [
-      /export\s+const\s+(\w*[Hh]andler\w*)\s*[=:]/g,
-      /export\s+function\s+(\w*[Hh]andler\w*)\s*\(/g,
-      /export\s+async\s+function\s+(\w*[Hh]andler\w*)\s*\(/g,
-      /export\s+const\s+(\w*[Hh]andler\w*)\s*:\s*(?:Handler|AsyncHandler|\()/g
+      // Match: export const handlers = { ... } and extract the object
+      /export\s+const\s+handlers\s*=/g,
+      // Match: export const functionName = (async)? (args) => { ... }
+      /export\s+const\s+(\w+)\s*=\s*(?:async\s+)?\(/g,
+      // Match: export function functionName(...)
+      /export\s+(?:async\s+)?function\s+(\w+)\s*\(/g,
+      // Match: export const functionName: FunctionType = ...
+      /export\s+const\s+(\w+)\s*:\s*[A-Z]\w*\s*=/g,
+      // Legacy handler-specific patterns for backward compatibility
+      /export\s+const\s+(\w*[Hh]andler\w*)\s*[=:]/g
     ];
 
     // Scan each file for handler exports

@@ -36,10 +36,56 @@ const {
   generateMarkdownReport: generateHandlerScopeReport
 } = require('./analyze-handler-scopes-for-pipeline.cjs');
 
+// ============================================================================
+// DOMAIN REGISTRY INTEGRATION
+// ============================================================================
+
+/**
+ * Load domain configuration from DOMAIN_REGISTRY.json
+ * @param {string} domainId - Domain identifier
+ * @returns {object} Domain configuration with paths
+ */
+function loadDomainConfig(domainId) {
+  try {
+    const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+    
+    // Try to find domain in registry (check both domain_id match and alias match)
+    let domainConfig = null;
+    
+    // First try exact domain_id match
+    if (registry.domains[domainId]) {
+      domainConfig = registry.domains[domainId];
+    } else {
+      // Try to find by matching domain_id field
+      domainConfig = Object.values(registry.domains).find(d => d.domain_id === domainId);
+    }
+    
+    if (domainConfig && domainConfig.analysisConfig) {
+      return {
+        sourcePath: domainConfig.analysisConfig.analysisSourcePath || 'packages/',
+        analysisOutputPath: domainConfig.analysisConfig.analysisOutputPath || '.generated/analysis',
+        reportOutputPath: domainConfig.analysisConfig.reportOutputPath || 'docs/generated/symphonic-code-analysis-pipeline'
+      };
+    }
+    
+    console.warn(`⚠ Domain '${domainId}' not found in DOMAIN_REGISTRY.json or missing analysisConfig. Using defaults.`);
+    return null;
+  } catch (err) {
+    console.warn(`⚠ Could not load DOMAIN_REGISTRY.json: ${err.message}. Using defaults.`);
+    return null;
+  }
+}
+
 // Support environment variables for domain-based analysis orchestration
 const DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
-const ANALYSIS_OUTPUT_PATH = process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
-const REPORT_OUTPUT_PATH = process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
+
+// Load domain configuration from registry
+const domainConfig = loadDomainConfig(DOMAIN_ID);
+
+// Use registry paths if available, otherwise fall back to environment variables or defaults
+const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
+const REPORT_OUTPUT_PATH = domainConfig?.reportOutputPath || process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
 const AUTO_GENERATE_REPORT = process.env.AUTO_GENERATE_REPORT === 'true';
 
 const ANALYSIS_DIR = path.join(process.cwd(), ANALYSIS_OUTPUT_PATH);
@@ -66,7 +112,8 @@ const { generateDiagram } = require('./generate-architecture-diagram.cjs');
 function discoverSourceFiles() {
   log('Discovering source files...', '🔍');
   
-  const sourcePath = process.env.ANALYSIS_SOURCE_PATH || 'packages/';
+  // Use registry source path if available, otherwise fall back to environment variable or default
+  const sourcePath = domainConfig?.sourcePath || process.env.ANALYSIS_SOURCE_PATH || 'packages/';
   const sourcePatterns = [
     `${sourcePath}**/*.ts`,
     `${sourcePath}**/*.js`,
@@ -832,7 +879,13 @@ ${generateDiagram({
   avgLocPerHandler: (metrics.discoveredCount > 0 && metrics.loc?.totalLoc) ? (metrics.loc.totalLoc / metrics.discoveredCount) : 0,
   overallCoverage: metrics.coverage?.statements || 0,
   domainId: DOMAIN_ID,
-  handlerSummary: [], // TODO: Extract from handler metrics
+  handlerSummary: {
+    handlers: metrics.handlersToBeatMapping?.allHandlers || [],
+    totalHandlers: metrics.discoveredCount || 0,
+    avgLocPerHandler: (metrics.discoveredCount > 0 && metrics.loc?.totalLoc) ? (metrics.loc.totalLoc / metrics.discoveredCount) : 0,
+    overallCoverage: metrics.coverage?.statements || 0,
+    domainId: DOMAIN_ID
+  },
   duplicateBlocks: metrics.duplication?.duplicateBlocks || 0,
   duplicationPercent: metrics.duplication?.duplicationPercent || 0,
   godHandlers: metrics.refactoring?.godHandlers || []
@@ -1158,8 +1211,8 @@ async function run() {
     log(`✓ 4 Movements executed`, '🎭');
     log(`✓ 16 Beats completed successfully`, '✓');
     log(`✓ 5 Analysis artifacts generated`, '📦');
-    log(`✓ JSON files: .generated/analysis/`, '📁');
-    log(`✓ Report: docs/generated/symphonic-code-analysis-pipeline/`, '📁');
+    log(`✓ JSON files: ${ANALYSIS_OUTPUT_PATH}`, '📁');
+    log(`✓ Report: ${REPORT_OUTPUT_PATH}`, '📁');
     
     log(`\nNext: Run the symphonic-code-analysis-demo for stakeholder review`, '📣');
 
