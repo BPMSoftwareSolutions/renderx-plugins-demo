@@ -64,8 +64,8 @@
           "handler": "validateJSONSchemaStructure",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Load all symphony JSON files and validate against schema",
-          "reference": "orchestration-domains.json, all json-sequences/*.json",
+	          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
+	          "reference": "docs/schemas/musical-sequence.schema.json, orchestration-domains.json, all json-sequences/*.json",
           "handlerDef": {
             "id": "architecture-governance-enforcement-symphony.validatejsonschemastructure.0",
             "scope": "orchestration",

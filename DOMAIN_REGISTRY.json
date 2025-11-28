@@ -31,7 +31,18 @@
       "checksum": "cc6785471d80179e9e78637bde4c56dc7437b1715c3fd42231c3ea425461d20d",
       "supersedes": [],
       "deprecated": false,
-      "ownership": "Platform-Orchestration"
+      "ownership": "Platform-Orchestration",
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry"
+        }
+      }
     },
     "telemetry-pipeline": {
       "domain_id": "telemetry-pipeline",
@@ -71,10 +82,38 @@
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Observability"
+    },
+    "renderx-web-orchestration": {
+      "domain_id": "renderx-web-orchestration",
+      "domain_type": "orchestration",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "checksum": "pending-sequence-governance-computation",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "RenderX-Web",
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry",
+          "domain_id": "renderx-web-orchestration"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/renderx-web-orchestration.json"
+        ]
+      }
     }
   },
   "meta": {
-    "active_count": 4,
+    "active_count": 5,
     "deprecated_count": 0,
     "retired_count": 0,
     "last_validation": "2025-11-27T04:07:56.011Z",

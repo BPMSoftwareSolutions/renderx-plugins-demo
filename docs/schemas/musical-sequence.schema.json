@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MusicalSequence",
+  "description": "Canonical MusicalSequence JSON Schema used for orchestration sequences and registry projections.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "name", "movements"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique sequence identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable sequence name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Purpose and behavior description"
+    },
+    "key": {
+      "type": "string",
+      "description": "Musical key or organizational key"
+    },
+    "tempo": {
+      "type": "number",
+      "description": "Beats per minute (BPM)"
+    },
+    "timeSignature": {
+      "type": "string",
+      "description": "Time signature (organizational)"
+    },
+    "category": {
+      "type": "string",
+      "description": "Sequence category (see SequenceCategory in SequenceTypes.ts)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata for the sequence",
+      "additionalProperties": true,
+      "properties": {
+        "version": { "type": "string" },
+        "author": { "type": "string" },
+        "created": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "movements": {
+      "type": "array",
+      "description": "Array of movements in this sequence",
+      "items": { "$ref": "#/definitions/SequenceMovement" }
+    }
+  },
+  "definitions": {
+    "SequenceMovement": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name", "beats"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique movement identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Movement name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Movement description"
+        },
+        "tempo": {
+          "type": "number",
+          "description": "Optional BPM override for this movement"
+        },
+        "errorHandling": {
+          "type": "string",
+          "enum": ["continue", "abort-sequence"],
+          "description": "Movement-level error handling strategy"
+        },
+        "beats": {
+          "type": "array",
+          "description": "Beats within this movement",
+          "items": { "$ref": "#/definitions/SequenceBeat" }
+        }
+      }
+    },
+    "SequenceBeat": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["event"],
+      "properties": {
+        "beat": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Beat number (1-based index)"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Alternate beat number field used by some orchestration sequences"
+        },
+        "event": {
+          "type": "string",
+          "description": "Event type emitted at this beat"
+        },
+        "title": {
+          "type": "string",
+          "description": "Short human-readable title for the beat"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of what this beat does"
+        },
+        "dynamics": {
+          "type": "string",
+          "description": "Volume/priority level (pp, p, mp, mf, f, ff)"
+        },
+        "timing": {
+          "type": "string",
+          "description": "Timing semantics for when this beat executes"
+        },
+        "data": {
+          "type": "object",
+          "description": "Arbitrary data payload for the event"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of events this beat depends on"
+        },
+        "errorHandling": {
+          "type": "string",
+          "enum": ["continue", "abort-sequence", "retry", "abort"],
+          "description": "Error handling strategy for this beat"
+        },
+        "handler": {
+          "type": "string",
+          "description": "Name of the handler implementation invoked at this beat"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Handler kind (validation, orchestration, reporting, etc.)"
+        },
+        "reference": {
+          "type": "string",
+          "description": "Free-form reference or note field"
+        },
+        "handlerDef": {
+          "type": "object",
+          "description": "Handler identity including scope/kind metadata",
+          "additionalProperties": true,
+          "properties": {
+            "id": { "type": "string" },
+            "scope": { "type": "string" },
+            "kind": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
+

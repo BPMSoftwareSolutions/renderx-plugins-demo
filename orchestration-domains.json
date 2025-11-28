@@ -80,40 +80,41 @@
           "architecture-governance-enforcement-symphony handlers",
           "build-pipeline-symphony handlers"
         ],
-        "metrics": [
-          "Per-orchestration-handler LOC",
-          "Per-orchestration-handler coverage",
-          "Orchestration handler complexity"
-        ]
-      }
-    }
-  },
-    {
-      "step": 1,
-      "name": "Load Context",
-      "description": "Load governance and context"
-    },
-    {
-      "step": 2,
-      "name": "Validate",
-      "description": "Validate inputs and state"
-    },
-    {
-      "step": 3,
-      "name": "Execute",
-      "description": "Execute movements and beats"
-    },
-    {
-      "step": 4,
-      "name": "Monitor",
-      "description": "Monitor execution and telemetry"
-    },
-    {
-      "step": 5,
-      "name": "Report",
-      "description": "Report results and metrics"
-    }
-  ],
+	      "metrics": [
+	        "Per-orchestration-handler LOC",
+	        "Per-orchestration-handler coverage",
+	        "Orchestration handler complexity"
+	      ]
+	    }
+	  }
+	},
+	"executionFlow": [
+	  {
+	    "step": 1,
+	    "name": "Load Context",
+	    "description": "Load governance and context"
+	  },
+	  {
+	    "step": 2,
+	    "name": "Validate",
+	    "description": "Validate inputs and state"
+	  },
+	  {
+	    "step": 3,
+	    "name": "Execute",
+	    "description": "Execute movements and beats"
+	  },
+	  {
+	    "step": 4,
+	    "name": "Monitor",
+	    "description": "Monitor execution and telemetry"
+	  },
+	  {
+	    "step": 5,
+	    "name": "Report",
+	    "description": "Report results and metrics"
+	  }
+	],
   "categories": [
     {
       "id": "plugin",
