@@ -446,6 +446,25 @@ function generateModuleRows(analysis) {
     .join('\n');
 }
 
+function generateCoverageByBeatRows(analysis) {
+  if (!analysis.perBeatCoverage || analysis.perBeatCoverage.length === 0) {
+    return '| N/A | N/A | N/A | N/A |';
+  }
+  return analysis.perBeatCoverage
+    .map(b => `| ${b.beat} | ${b.movement} | ${b.coverage.toFixed(0)}% | ${b.status} |`)
+    .join('\n');
+}
+
+function generateBeatSequenceRows(analysis) {
+  const seq = analysis.beatSequenceMap;
+  if (!seq || seq.length === 0) {
+    return '| N/A | N/A | N/A | N/A |';
+  }
+  return seq
+    .map(s => `| ${s.beat} | ${s.movement || ''} | ${s.sequenceId || ''} | ${s.sequenceName || ''} |`)
+    .join('\n');
+}
+
 // ============================================================================
 // Main Report Generation
 // ============================================================================
@@ -465,6 +484,37 @@ function generateReport(analysisPath, outputPath) {
   context.recommendationsContent = generateRecommendationsContent(authority, analysis);
   context.fractalContent = generateFractalContent(analysis);
   context.moduleRows = generateModuleRows(analysis);
+  context.coverageByBeatRows = generateCoverageByBeatRows(analysis);
+  context.beatSequenceRows = generateBeatSequenceRows(analysis);
+  // Handler portfolio context additions
+  const hp = analysis.handlerPortfolio || { symphonies: [], handlers: [], summary: { totalHandlers: 0, totalSymphonies: 0, avgCoverage: 0 } };
+  const hd = analysis.handlerDistributions || { sizeBands: {}, coverageBands: {} };
+  context.handlerSymphonyRows = (hp.symphonies || []).length
+    ? hp.symphonies.map(s => `| ${s.symphony} | ${s.count} | ${s.totalLoc} | ${s.avgCoverage}% |`).join('\n')
+    : '| N/A | N/A | N/A | N/A |';
+  context.handlerTopRows = (hp.handlers || []).length
+    ? hp.handlers
+        .sort((a,b)=> (b.loc||0) - (a.loc||0))
+        .slice(0,10)
+        .map(h => `| ${h.name} | ${h.symphony} | ${h.loc} | ${h.complexity} | ${Number(h.coverage||0).toFixed(0)}% | ${h.sizeBand||''} | ${h.risk||''} |`)
+        .join('\n')
+    : '| N/A | N/A | N/A | N/A | N/A | N/A | N/A |';
+  context.handlerSizeDistRows = hd.sizeBands 
+    ? `| Tiny | ${hd.sizeBands.tiny||0} |\n| Small | ${hd.sizeBands.small||0} |\n| Medium | ${hd.sizeBands.medium||0} |\n| Large | ${hd.sizeBands.large||0} |\n| XL | ${hd.sizeBands.xl||0} |`
+    : '| N/A | 0 |';
+  context.handlerCoverageDistRows = hd.coverageBands 
+    ? `| 0–30% | ${hd.coverageBands.b0_30||0} |\n| 30–60% | ${hd.coverageBands.b30_60||0} |\n| 60–80% | ${hd.coverageBands.b60_80||0} |\n| 80–100% | ${hd.coverageBands.b80_100||0} |`
+    : '| N/A | 0 |';
+  context.godHandlerRows = (analysis.godHandlers || []).length
+    ? analysis.godHandlers.map(h => `| ${h.name} | ${h.loc} | ${h.complexity} | ${Number(h.coverage||0).toFixed(0)}% |`).join('\n')
+    : '| N/A | N/A | N/A | N/A |';
+  const ci = analysis.ciReadiness || { verdict: 'Unknown', notes: [] };
+  context.ciVerdict = ci.verdict;
+  context.ciNotes = (ci.notes||[]).map((n,i)=>`- ${i+1}. ${n}`).join('\n') || '- N/A';
+  const rr = analysis.refactorRoadmap || [];
+  context.roadmapRows = rr.length 
+    ? rr.map((item,i)=>`- ${i+1}. ${item.title || item.action || 'Action'}${item.target?` → ${item.target}`:''}${item.rationale?` — ${item.rationale}`:''}`).join('\n')
+    : '- Consolidate duplication in shared utilities\n- Increase branch coverage on critical paths\n- Split oversized handlers into smaller functions';
   
   console.log(`🎼 Rendering sections...`);
   

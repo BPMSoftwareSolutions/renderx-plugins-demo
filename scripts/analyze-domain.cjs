@@ -55,6 +55,18 @@ function transformAnalysisForReport(analysis) {
     return isNaN(num) ? def : num;
   };
   
+  // Build beat -> sequence map from Movement 1 beat_mapping if available
+  const beatMap = m1.beat_mapping || {};
+  const beatSequenceMap = Object.keys(beatMap).map((beat) => {
+    const entry = beatMap[beat];
+    return {
+      beat,
+      movement: entry?.movement || entry?.section || null,
+      sequenceId: entry?.sequenceId || entry?.sequence_id || null,
+      sequenceName: entry?.sequenceName || entry?.sequence_name || null,
+    };
+  });
+
   return {
     // Top-level metadata
     id: analysis.id,
@@ -109,6 +121,9 @@ function transformAnalysisForReport(analysis) {
       fileCount: files.length,
       status: 'PASS'
     })) : [],
+
+    // Beat → Sequence mapping
+    beatSequenceMap,
     
     // Beat coverage by movement
     beatCoverage: {
@@ -120,6 +135,20 @@ function transformAnalysisForReport(analysis) {
     
     // Per-module metrics (stub - can be enhanced)
     perModuleMetrics: [],
+
+    // Handler portfolio (optional; enriched later if artifacts exist)
+    handlerPortfolio: {
+      symphonies: [],
+      handlers: [],
+      summary: { totalHandlers: 0, totalSymphonies: 0, avgCoverage: 0 }
+    },
+    handlerDistributions: {
+      sizeBands: { tiny: 0, small: 0, medium: 0, large: 0, xl: 0 },
+      coverageBands: { b0_30: 0, b30_60: 0, b60_80: 0, b80_100: 0 }
+    },
+    godHandlers: [],
+    ciReadiness: { verdict: 'Unknown', notes: [] },
+    refactorRoadmap: [],
     
     // Fractal architecture
     fractalArchitecture: m4.fractal_architecture,
@@ -222,7 +251,8 @@ async function run() {
       ANALYSIS_OUTPUT_PATH: config.analysisOutputPath,
       REPORT_OUTPUT_PATH: config.reportOutputPath,
       REPORT_AUTHORITY_REF: config.reportAuthorityRef,
-      AUTO_GENERATE_REPORT: 'true'
+      // Suppress inner (subject) report generation; orchestrator will generate domain report
+      AUTO_GENERATE_REPORT: 'false'
     };
     
     try {
@@ -331,6 +361,13 @@ async function run() {
             complexity: Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0,
             comments: 0
           }));
+                    // Build per-beat coverage table
+                    transformedAnalysis.perBeatCoverage = rows.map(cols => ({
+                      beat: cols[idx.Beat],
+                      movement: cols[idx.Movement],
+                      coverage: Number(String(cols[idx.Coverage]).replace(/[^0-9.]/g, '')) || 0,
+                      status: cols[idx.Status]
+                    }));
           // sort by LOC desc and take top 10
           perModule.sort((a,b) => b.loc - a.loc);
           transformedAnalysis.perModuleMetrics = perModule.slice(0, 10);
@@ -364,6 +401,107 @@ async function run() {
         }
       } catch {}
     }
+
+    // Enrich with handler metrics artifacts if present
+    try {
+      const files = fs.readdirSync(analysisOutputDir);
+      const handlerJson = files.filter(f => /handler-metrics.*\.json$/i.test(f)).sort().reverse()[0];
+      const handlerCsv = files.filter(f => /handler-metrics.*\.csv$/i.test(f)).sort().reverse()[0];
+      const portfolioJson = files.filter(f => /handler-portfolio.*\.json$/i.test(f)).sort().reverse()[0];
+      const refactorJson = files.filter(f => /refactor-suggestions.*\.json$/i.test(f)).sort().reverse()[0];
+
+      if (handlerJson) {
+        const hm = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, handlerJson), 'utf8'));
+        const handlers = Array.isArray(hm.handlers) ? hm.handlers : (hm.data || []);
+        transformedAnalysis.handlerPortfolio.handlers = handlers.map(h => ({
+          name: h.name || h.id || 'unknown',
+          symphony: h.symphony || h.group || 'unknown',
+          loc: Number(h.loc || h.lines || 0),
+          complexity: Number(h.complexity || h.cyclomatic || 0),
+          coverage: Number(h.coverage || h.coverage_pct || 0),
+          sizeBand: h.sizeBand || h.size_band || null,
+          risk: h.risk || h.risk_level || null
+        }));
+        const symphonyAgg = {};
+        transformedAnalysis.handlerPortfolio.handlers.forEach(h => {
+          const key = h.symphony;
+          symphonyAgg[key] = symphonyAgg[key] || { symphony: key, count: 0, totalLoc: 0, coverageSum: 0 };
+          symphonyAgg[key].count += 1;
+          symphonyAgg[key].totalLoc += h.loc;
+          symphonyAgg[key].coverageSum += h.coverage;
+        });
+        transformedAnalysis.handlerPortfolio.symphonies = Object.values(symphonyAgg).map(s => ({
+          symphony: s.symphony,
+          count: s.count,
+          totalLoc: s.totalLoc,
+          avgCoverage: s.count ? Number((s.coverageSum / s.count).toFixed(1)) : 0
+        }));
+        transformedAnalysis.handlerPortfolio.summary = {
+          totalHandlers: transformedAnalysis.handlerPortfolio.handlers.length,
+          totalSymphonies: transformedAnalysis.handlerPortfolio.symphonies.length,
+          avgCoverage: transformedAnalysis.handlerPortfolio.handlers.length 
+            ? Number((transformedAnalysis.handlerPortfolio.handlers.reduce((a,b)=>a+b.coverage,0) / transformedAnalysis.handlerPortfolio.handlers.length).toFixed(1))
+            : 0
+        };
+        // distributions
+        const sizes = { tiny: 0, small: 0, medium: 0, large: 0, xl: 0 };
+        const cov = { b0_30: 0, b30_60: 0, b60_80: 0, b80_100: 0 };
+        transformedAnalysis.handlerPortfolio.handlers.forEach(h => {
+          const band = (h.sizeBand || '').toLowerCase();
+          if (sizes[band] !== undefined) sizes[band] += 1;
+          const c = h.coverage || 0;
+          if (c < 30) cov.b0_30 += 1; else if (c < 60) cov.b30_60 += 1; else if (c < 80) cov.b60_80 += 1; else cov.b80_100 += 1;
+        });
+        transformedAnalysis.handlerDistributions = { sizeBands: sizes, coverageBands: cov };
+        // god handlers
+        transformedAnalysis.godHandlers = transformedAnalysis.handlerPortfolio.handlers
+          .filter(h => (h.loc || 0) >= 500 || (h.complexity || 0) >= 25)
+          .slice(0, 10);
+      }
+
+      if (handlerCsv && transformedAnalysis.handlerPortfolio.handlers.length === 0) {
+        const csvText = fs.readFileSync(path.join(analysisOutputDir, handlerCsv), 'utf8');
+        const lines = csvText.trim().split(/\r?\n/);
+        const header = lines.shift();
+        const cols = header.split(',');
+        const idx = {
+          name: cols.findIndex(c=>/name|handler/i.test(c)),
+          symphony: cols.findIndex(c=>/symphony|group/i.test(c)),
+          loc: cols.findIndex(c=>/loc|lines/i.test(c)),
+          complexity: cols.findIndex(c=>/complexity|cyclomatic/i.test(c)),
+          coverage: cols.findIndex(c=>/coverage/i.test(c)),
+          sizeBand: cols.findIndex(c=>/size.?band|category/i.test(c))
+        };
+        transformedAnalysis.handlerPortfolio.handlers = lines.map(l => {
+          const c = l.split(',');
+          const num = v => Number(String(v).replace(/[^0-9.]/g,'')) || 0;
+          return {
+            name: c[idx.name] || 'unknown',
+            symphony: c[idx.symphony] || 'unknown',
+            loc: num(c[idx.loc]),
+            complexity: num(c[idx.complexity]),
+            coverage: num(c[idx.coverage]),
+            sizeBand: c[idx.sizeBand] || null,
+            risk: null
+          };
+        });
+      }
+
+      if (refactorJson) {
+        const rr = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, refactorJson), 'utf8'));
+        transformedAnalysis.refactorRoadmap = Array.isArray(rr.items) ? rr.items : (rr.roadmap || rr.suggestions || []);
+      }
+
+      // CI/CD readiness verdict from authority-like artifact if exists
+      const readinessJson = files.filter(f => /ci-readiness.*\.json$/i.test(f)).sort().reverse()[0];
+      if (readinessJson) {
+        const cr = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, readinessJson), 'utf8'));
+        transformedAnalysis.ciReadiness = {
+          verdict: cr.verdict || cr.status || 'Unknown',
+          notes: cr.notes || cr.reasons || []
+        };
+      }
+    } catch {}
     
     // Save transformed analysis temporarily
     const transformedPath = path.join(analysisOutputDir, 'transformed-for-report.json');

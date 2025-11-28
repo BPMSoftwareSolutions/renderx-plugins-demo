@@ -988,9 +988,14 @@ ${(() => {
 *Report auto-generated from symphonic-code-analysis-pipeline. All metrics are immutable and traceable to source analysis.*
 `;
 
-  const reportPath = path.join(DOCS_DIR, `renderx-web-CODE-ANALYSIS-REPORT.md`);
-  fs.writeFileSync(reportPath, report);
-  log(`Saved: ${path.relative(process.cwd(), reportPath)}`, '✓');
+  // Respect AUTO_GENERATE_REPORT flag to avoid inner subject report when orchestrated
+  if (AUTO_GENERATE_REPORT) {
+    const reportPath = path.join(DOCS_DIR, `renderx-web-CODE-ANALYSIS-REPORT.md`);
+    fs.writeFileSync(reportPath, report);
+    log(`Saved: ${path.relative(process.cwd(), reportPath)}`, '✓');
+  } else {
+    log('Skipped inner subject report (AUTO_GENERATE_REPORT=false)', 'ℹ');
+  }
 
   return report;
 }

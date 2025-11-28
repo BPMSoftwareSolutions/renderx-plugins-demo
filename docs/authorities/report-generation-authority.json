@@ -81,8 +81,48 @@
         "template": "## 🎼 Fractal Architecture Assessment\n\n{fractalContent}"
       },
       {
-        "id": "conclusion",
+        "id": "handler-portfolio",
         "order": 10,
+        "title": "Handler Portfolio",
+        "heading": "## 🧩 Handler Portfolio",
+        "description": "Symphonies and handlers overview",
+        "template": "## 🧩 Handler Portfolio\n\n### 6.1 Symphonies Overview\n| Symphony | Handlers | Total LOC | Avg Coverage |\n|---|---:|---:|---:|\n{handlerSymphonyRows}\n\n### 6.2 Top Handlers by LOC / Complexity\n| Handler | Symphony | LOC | Complexity | Coverage | Size | Risk |\n|---|---|---:|---:|---:|---|---|\n{handlerTopRows}"
+      },
+      {
+        "id": "handler-distributions",
+        "order": 11,
+        "title": "Handler Distributions",
+        "heading": "## 📊 Handler Distributions",
+        "description": "Size and coverage distributions",
+        "template": "## 📊 Handler Distributions\n\n### 6.3 Size Distribution\n| Band | Count |\n|---|---:|\n{handlerSizeDistRows}\n\n### 6.4 Coverage Distribution\n| Band | Count |\n|---|---:|\n{handlerCoverageDistRows}"
+      },
+      {
+        "id": "risk-hotspots",
+        "order": 12,
+        "title": "Risk Hotspots & God Handlers",
+        "heading": "## 🔥 Risk Hotspots & God Handlers",
+        "description": "Identify oversized and high-risk handlers",
+        "template": "## 🔥 Risk Hotspots & God Handlers\n\n| Handler | LOC | Complexity | Coverage |\n|---|---:|---:|---:|\n{godHandlerRows}"
+      },
+      {
+        "id": "ci-readiness",
+        "order": 13,
+        "title": "CI/CD Readiness",
+        "heading": "## 🚦 CI/CD Readiness",
+        "description": "Readiness verdict and rationale",
+        "template": "## 🚦 CI/CD Readiness\n\n**Verdict**: {ciVerdict}\n\n**Notes**:\n{ciNotes}"
+      },
+      {
+        "id": "refactor-roadmap",
+        "order": 14,
+        "title": "Refactoring & Improvement Roadmap",
+        "heading": "## 🛠️ Refactoring & Improvement Roadmap",
+        "description": "Prioritized actions to improve quality",
+        "template": "## 🛠️ Refactoring & Improvement Roadmap\n\n{roadmapRows}"
+      },
+      {
+        "id": "conclusion",
+        "order": 99,
         "title": "Conclusion",
         "heading": "## ✅ Conclusion",
         "description": "Final summary and next steps",

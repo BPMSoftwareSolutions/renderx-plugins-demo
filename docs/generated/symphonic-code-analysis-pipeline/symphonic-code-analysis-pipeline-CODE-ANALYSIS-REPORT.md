@@ -1,7 +1,7 @@
 # 🎼 Symphonic Code Analysis Report
 
-**Analysis Date**: 2025-11-28T14:44:19.243Z
-**Analysis ID**: 2025-11-28T14:44:17.828Z
+**Analysis Date**: 2025-11-28T15:27:59.539Z
+**Analysis ID**: 2025-11-28T15:27:58.153Z
 **Subject**: renderx-web-orchestration
 **Status**: ✅ **COMPLETE - ALL 4 MOVEMENTS × 16 BEATS EXECUTED**
 
@@ -21,7 +21,7 @@ The code analysis pipeline executed a **complete 4-movement symphony**:
 
 - **Movement 1**: Code Discovery & Beat Mapping → 4 scripts
 - **Movement 2**: Code Metrics Analysis → 18945 LOC, 2.28 complexity
-- **Movement 3**: Test Coverage Analysis → 84.2% covered
+- **Movement 3**: Test Coverage Analysis → 72.1% covered
 - **Movement 4**: Architecture Conformity → 87.50% conformity
 
 | Metric | Value | Benchmark | Status |
@@ -35,12 +35,12 @@ The code analysis pipeline executed a **complete 4-movement symphony**:
 
 | Coverage Type | Score | Status |
 |---|---|---|
-| Statements | 84.2% | 🟡 |
-| Branches | 80.7% | ✅ |
-| Functions | 75.9% | ⚠️ |
-| Lines | 74.9% | 🟡 |
+| Statements | 72.1% | 🟡 |
+| Branches | 75.5% | 🟡 |
+| Functions | 81.3% | ⚠️ |
+| Lines | 81.5% | ✅ |
 
-**Coverage Status**: 84.2% overall
+**Coverage Status**: 72.1% overall
 
 | Module | LOC | Functions | Complexity | Comments |
 |--------|-----|-----------|------------|----------|
@@ -102,6 +102,56 @@ The pipeline **successfully analyzed its own codebase**, confirming the fractal 
 This demonstrates that the code analysis pipeline can introspect and analyze its own behavior,
 a key characteristic of fractal architectures where each system can analyze itself at any scale.
 
+
+## 🧩 Handler Portfolio
+
+### 6.1 Symphonies Overview
+| Symphony | Handlers | Total LOC | Avg Coverage |
+|---|---:|---:|---:|
+| N/A | N/A | N/A | N/A |
+
+### 6.2 Top Handlers by LOC / Complexity
+| Handler | Symphony | LOC | Complexity | Coverage | Size | Risk |
+|---|---|---:|---:|---:|---|---|
+| N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+
+## 📊 Handler Distributions
+
+### 6.3 Size Distribution
+| Band | Count |
+|---|---:|
+| Tiny | 0 |
+| Small | 0 |
+| Medium | 0 |
+| Large | 0 |
+| XL | 0 |
+
+### 6.4 Coverage Distribution
+| Band | Count |
+|---|---:|
+| 0–30% | 0 |
+| 30–60% | 0 |
+| 60–80% | 0 |
+| 80–100% | 0 |
+
+## 🔥 Risk Hotspots & God Handlers
+
+| Handler | LOC | Complexity | Coverage |
+|---|---:|---:|---:|
+| N/A | N/A | N/A | N/A |
+
+## 🚦 CI/CD Readiness
+
+**Verdict**: Unknown
+
+**Notes**:
+- N/A
+
+## 🛠️ Refactoring & Improvement Roadmap
+
+- Consolidate duplication in shared utilities
+- Increase branch coverage on critical paths
+- Split oversized handlers into smaller functions
 
 ## ✅ Conclusion
 
