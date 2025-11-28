@@ -20,6 +20,7 @@ const { mapHandlersToBeat, calculateSympahonicHealthScore, formatHealthScoreMark
 const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
 const { generateRefactorSuggestions } = require('./generate-refactor-suggestions.cjs');
 const { trackHistoricalTrends } = require('./track-historical-trends.cjs');
+const { analyzeFractalArchitecture } = require('./analyze-fractal-architecture.cjs');
 const { 
   createMetricsEnvelope, 
   classifyCoverage, 
@@ -533,7 +534,13 @@ function generateJsonArtifacts(metrics) {
     maintainability: { ...metrics.maintainability, source: 'computed' },
     complexity: { ...metrics.complexity, source: 'measured' },
     duplication: { ...metrics.duplication, source: 'measured' },
-    loc: { ...metrics.loc, source: 'measured' }
+    loc: { ...metrics.loc, source: 'measured' },
+    // Fractal architecture metrics are optional but, when present, should be
+    // treated as measured data sourced from DOMAIN_REGISTRY.json and
+    // orchestration-domains.json.
+    fractalArchitecture: metrics.fractalArchitecture
+      ? { ...(metrics.fractalArchitecture.summary || {}), source: 'measured' }
+      : null
   };
   
   // Check for any mock data
@@ -581,7 +588,10 @@ function generateJsonArtifacts(metrics) {
       movement_4_conformity: {
         name: 'Architecture Conformity & Reporting',
         beats: 4,
-        conformity: metrics.conformity
+        conformity: metrics.conformity,
+        fractal_architecture: metrics.fractalArchitecture
+          ? metrics.fractalArchitecture.summary
+          : null
       }
     },
     summary: {
@@ -846,6 +856,22 @@ ${metrics.conformity.violations_details.map(v =>
   `- **${v.beat}** (${v.movement}): ${v.issue} [${v.severity.toUpperCase()}]`
 ).join('\n')}
 
+	### Fractal Architecture (Domains-as-Systems, Systems-as-Domains)
+
+	${(() => {
+	  const fractal = metricsEnvelope.fractal;
+	  if (!fractal || fractal.source === 'unavailable') {
+	    return '_Fractal architecture metrics are not available in this run._';
+	  }
+	  return [
+	    `- **Fractal Score**: ${fractal.score} (0-1)`,
+	    `- **Total Orchestration Domains**: ${fractal.totalOrchestrationDomains}`,
+	    `- **System-of-Systems Domains**: ${fractal.systemOfSystemsDomains}`,
+	    `- **Projection-only Domains**: ${fractal.projectionOnlyCount}`,
+	    `- **Registry-only Domains**: ${fractal.registryOnlyCount}`
+	  ].join('\n');
+	})()}
+
 ### Handler Metrics
 
 ${handlerMetrics}
@@ -1011,20 +1037,24 @@ async function run() {
       log(`Warning: Could not capture handler mapping: ${err.message}`, '⚠');
     }
 
-    // Collect metrics - ENHANCED WITH ENVELOPE
-    const baseMetrics = {
-      discoveredFiles: sourceFiles.length,
-      discoveredCount: handlersToBeatMapping.allHandlers?.length || 0,
-      beatMapping,
-      handlersToBeatMapping,  // Wire mapping data to envelope
-      loc,
-      complexity,
-      duplication,
-      maintainability,
-      coverage,
-      beatCoverage,
-      conformity
-    };
+	    // Collect metrics - ENHANCED WITH ENVELOPE
+	    const baseMetrics = {
+	      discoveredFiles: sourceFiles.length,
+	      discoveredCount: handlersToBeatMapping.allHandlers?.length || 0,
+	      beatMapping,
+	      handlersToBeatMapping,  // Wire mapping data to envelope
+	      loc,
+	      complexity,
+	      duplication,
+	      maintainability,
+	      coverage,
+	      beatCoverage,
+	      conformity,
+	      // Fractal architecture metrics derived from DOMAIN_REGISTRY.json and
+	      // orchestration-domains.json capture the "domains-as-systems and
+	      // systems-as-domains" property described in ADR-0038.
+	      fractalArchitecture: analyzeFractalArchitecture()
+	    };
     
     // Create metrics envelope with scopes and flags
     const metricsEnvelope = createMetricsEnvelope(baseMetrics);

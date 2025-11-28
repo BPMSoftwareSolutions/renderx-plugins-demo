@@ -2878,6 +2878,26 @@
       "parent": "architecture-governance-enforcement-symphony"
     },
     {
+      "id": "fractal-orchestration-domain-symphony",
+      "name": "Fractal Orchestration Domain",
+      "emoji": "🌀",
+      "description": "Didactic orchestration that encodes the recursive pattern where orchestrated domains become systems and systems become domains in a fractal architecture.",
+      "category": "orchestration",
+      "purpose": "Demonstrate and test fractal orchestration behaviour across DOMAIN_REGISTRY, orchestration registries, and governance symphonies.",
+      "relatedDomains": [
+        "symphonic-code-analysis-pipeline",
+        "architecture-governance-enforcement-symphony"
+      ],
+      "status": "experimental",
+      "sequenceFile": "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json",
+      "movements": 5,
+      "beats": 10,
+      "tempo": 60,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "parent": "architecture-governance-enforcement-symphony"
+    },
+    {
       "id": "symphonic-code-analysis-demo",
       "name": "Symphonic Code Analysis Demo",
       "emoji": "📊✅",

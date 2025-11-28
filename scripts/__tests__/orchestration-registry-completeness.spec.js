@@ -52,6 +52,22 @@ describe('Orchestration Registry - Domain Completeness', () => {
         category: 'orchestration'
       });
     });
+
+    it('should have fractal orchestration domain symphony registered', () => {
+      const domain = registry.domains.find(
+        d => d.id === 'fractal-orchestration-domain-symphony',
+      );
+
+      expect(domain).toBeDefined();
+      expect(domain).toMatchObject({
+        id: 'fractal-orchestration-domain-symphony',
+        category: 'orchestration',
+        status: 'experimental',
+      });
+      expect(domain.sequenceFile).toBe(
+        'packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json',
+      );
+    });
   });
 
   describe('All Registered Domains Must Conform to MusicalSequence', () => {

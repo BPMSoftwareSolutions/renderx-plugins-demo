@@ -56,6 +56,7 @@
     "movement-3:coverage:complete",
     "movement-4:conformity:started",
     "movement-4:architecture:validated",
+    "movement-4:fractal:analyzed",
     "movement-4:trend:analyzed",
     "movement-4:report:generated",
     "analysis:complete"
@@ -277,7 +278,7 @@
       "movement": 4,
       "number": 2,
       "name": "Calculate Conformity Score",
-      "description": "Synthesize all metrics into orchestration conformity score (0-1)",
+      "description": "Synthesize all metrics into orchestration conformity and fractal architecture score (0-1)",
       "kind": "synthesis",
       "timing": "immediate",
       "handler": {
@@ -384,6 +385,11 @@
         "description": "Conformity score based on all metrics (0-1)",
         "benchmark": "≥ 0.85",
         "impact": "CRITICAL"
+      },
+      "fractalArchitecture": {
+        "description": "Fractal architecture participation of orchestration domains (domains-as-systems and systems-as-domains)",
+        "benchmark": "≥ 0.50 fractalScore (50%+ orchestration domains acting as systems-of-systems)",
+        "impact": "HIGH"
       }
     }
   },

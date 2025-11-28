@@ -182,6 +182,29 @@ function createMetricsEnvelope(baseMetrics) {
       source: 'measured',
       description: 'Beat validation and handler conformity'
     },
+
+    // Fractal architecture metrics – derived from DOMAIN_REGISTRY.json and
+    // orchestration-domains.json when available. This encodes the
+    // "domains-as-systems and systems-as-domains" fractal property as a
+    // first-class metric.
+    fractal: {
+      score:
+        baseMetrics.fractalArchitecture?.summary &&
+        typeof baseMetrics.fractalArchitecture.summary.fractalScore === 'number'
+          ? baseMetrics.fractalArchitecture.summary.fractalScore
+          : 0,
+      totalOrchestrationDomains:
+        baseMetrics.fractalArchitecture?.summary?.totalOrchestrationDomains ?? 0,
+      systemOfSystemsDomains:
+        baseMetrics.fractalArchitecture?.summary?.systemOfSystemsDomains ?? 0,
+      projectionOnlyCount:
+        baseMetrics.fractalArchitecture?.summary?.projectionOnly?.length ?? 0,
+      registryOnlyCount:
+        baseMetrics.fractalArchitecture?.summary?.registryOnly?.length ?? 0,
+      source: baseMetrics.fractalArchitecture ? 'measured' : 'unavailable',
+      description:
+        'Fractal orchestration alignment between DOMAIN_REGISTRY.json and orchestration-domains.json'
+    },
     
     // Phase-specific metrics
     phases: {

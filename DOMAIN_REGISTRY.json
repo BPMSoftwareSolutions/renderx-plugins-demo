@@ -1719,6 +1719,30 @@
         }
       }
     },
+    "fractal-orchestration-domain-symphony": {
+      "domain_id": "fractal-orchestration-domain-symphony",
+      "domain_type": "orchestration",
+      "status": "experimental",
+      "description": "Didactic orchestration that encodes the recursive pattern where orchestrated domains become systems and systems become domains in a fractal architecture.",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "architecture-governance-enforcement-symphony"
+      ],
+      "ownership": "Platform-Orchestration",
+      "deprecated": false,
+      "supersedes": [],
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry"
+        }
+      }
+    },
     "symphonic-code-analysis-demo": {
       "domain_id": "symphonic-code-analysis-demo",
       "domain_type": "orchestration",
