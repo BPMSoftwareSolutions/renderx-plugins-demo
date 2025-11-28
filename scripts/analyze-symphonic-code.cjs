@@ -48,6 +48,9 @@ const {
 function loadDomainConfig(domainId) {
   try {
     const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    if (!fs.existsSync(registryPath)) {
+      throw new Error('DOMAIN_REGISTRY.json not found in the root directory.');
+    }
     const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
     
     // Try to find domain in registry (check both domain_id match and alias match)
@@ -61,19 +64,24 @@ function loadDomainConfig(domainId) {
       domainConfig = Object.values(registry.domains).find(d => d.domain_id === domainId);
     }
     
-    if (domainConfig && domainConfig.analysisConfig) {
-      return {
-        sourcePath: domainConfig.analysisConfig.analysisSourcePath || 'packages/',
-        analysisOutputPath: domainConfig.analysisConfig.analysisOutputPath || '.generated/analysis',
-        reportOutputPath: domainConfig.analysisConfig.reportOutputPath || 'docs/generated/symphonic-code-analysis-pipeline'
-      };
+    // Enforce configuration existence
+    if (!domainConfig) {
+      throw new Error(`Domain '${domainId}' is not registered in DOMAIN_REGISTRY.json.`);
     }
     
-    console.warn(`⚠ Domain '${domainId}' not found in DOMAIN_REGISTRY.json or missing analysisConfig. Using defaults.`);
-    return null;
+    if (!domainConfig.analysisConfig || !domainConfig.analysisConfig.analysisSourcePath) {
+      throw new Error(`Domain '${domainId}' is missing required 'analysisConfig' with 'analysisSourcePath' in DOMAIN_REGISTRY.json.`);
+    }
+    
+    // Configuration is valid, return it
+    return {
+      sourcePath: domainConfig.analysisConfig.analysisSourcePath,
+      analysisOutputPath: domainConfig.analysisConfig.analysisOutputPath || `.generated/analysis/${domainId}`,
+      reportOutputPath: domainConfig.analysisConfig.reportOutputPath || `docs/generated/${domainId}`
+    };
   } catch (err) {
-    console.warn(`⚠ Could not load DOMAIN_REGISTRY.json: ${err.message}. Using defaults.`);
-    return null;
+    console.error(`❌ FATAL: ${err.message}`);
+    process.exit(1);
   }
 }
 

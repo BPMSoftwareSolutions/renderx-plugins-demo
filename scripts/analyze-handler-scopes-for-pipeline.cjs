@@ -2,10 +2,15 @@
 
 /**
  * Handler Scope Analysis for Symphonic Pipeline
- * 
+ *
  * Reads handler scope/kind from sequence JSON files and correlates with
  * discovered handler implementations. Generates metrics separated by scope.
- * 
+ *
+ * DOMAIN AWARENESS:
+ * - Reads ANALYSIS_DOMAIN_ID environment variable to determine scope
+ * - Loads analysisSourcePath from DOMAIN_REGISTRY.json
+ * - Only scans sequence files within the domain-specific source path
+ *
  * Output:
  *   - handlers-by-scope.json: Handlers grouped by scope with metrics
  *   - handler-scope-report.md: Markdown report for pipeline documentation
@@ -16,17 +21,65 @@ const path = require('path');
 const glob = require('glob');
 
 /**
+ * Load domain-specific source path from DOMAIN_REGISTRY.json
+ * @returns {string} Source path for the current domain
+ */
+function getDomainSourcePath() {
+  const domainId = process.env.ANALYSIS_DOMAIN_ID;
+
+  // Default to packages/ if no domain specified (legacy behavior)
+  if (!domainId) {
+    return 'packages/';
+  }
+
+  try {
+    const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    if (!fs.existsSync(registryPath)) {
+      console.warn('[analyze-handler-scopes] DOMAIN_REGISTRY.json not found, using default packages/');
+      return 'packages/';
+    }
+
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+
+    // Try exact match first, then search by domain_id field
+    let domainConfig = registry.domains[domainId];
+    if (!domainConfig) {
+      domainConfig = Object.values(registry.domains).find(d => d.domain_id === domainId);
+    }
+
+    if (domainConfig?.analysisConfig?.analysisSourcePath) {
+      const sourcePath = domainConfig.analysisConfig.analysisSourcePath;
+      console.log(`[analyze-handler-scopes] Using domain source path: ${sourcePath} (domain: ${domainId})`);
+      return sourcePath;
+    }
+
+    console.warn(`[analyze-handler-scopes] Domain '${domainId}' not found in registry, using default packages/`);
+    return 'packages/';
+  } catch (err) {
+    console.warn(`[analyze-handler-scopes] Error loading domain config: ${err.message}, using default packages/`);
+    return 'packages/';
+  }
+}
+
+/**
  * Extract handler scope metadata from sequence files
  */
 function extractHandlerScopeFromSequences() {
   const handlers = [];
-  
-  // Find all sequence files
-  const patterns = [
-    'packages/orchestration/json-sequences/**/*.json',
-    'src/RenderX.Plugins.**/json-sequences/**/*.json',
-    'packages/plugins/**/json-sequences/**/*.json'
-  ];
+  const domainSourcePath = getDomainSourcePath();
+
+  // Build patterns based on domain source path
+  // Different patterns for packages/ vs scripts/ domains
+  const patterns = domainSourcePath.startsWith('packages')
+    ? [
+        `${domainSourcePath}orchestration/json-sequences/**/*.json`,
+        `${domainSourcePath}plugins/**/json-sequences/**/*.json`
+      ]
+    : [
+        // For scripts/ domain (analysis pipeline itself), look for any JSON sequences
+        `${domainSourcePath}**/*-sequence*.json`,
+        `${domainSourcePath}**/*-symphony*.json`
+      ];
 
   let allFiles = [];
   patterns.forEach(pattern => {

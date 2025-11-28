@@ -2,11 +2,16 @@
 
 /**
  * Handler Export Scanner
- * 
+ *
  * Scans the codebase for exported handler functions and returns
  * a measured list of discovered handlers with their locations and metadata.
- * 
+ *
  * This module replaces the synthetic 1/18 handler metric with real data.
+ *
+ * DOMAIN AWARENESS:
+ * - Reads ANALYSIS_DOMAIN_ID environment variable to determine scope
+ * - Loads analysisSourcePath from DOMAIN_REGISTRY.json
+ * - Only scans files within the domain-specific source path
  */
 
 const fs = require('fs');
@@ -14,23 +19,78 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 /**
+ * Load domain-specific source path from DOMAIN_REGISTRY.json
+ * @returns {string} Source path for the current domain
+ */
+function getDomainSourcePath() {
+  const domainId = process.env.ANALYSIS_DOMAIN_ID;
+
+  // Default to packages/ if no domain specified (legacy behavior)
+  if (!domainId) {
+    return 'packages/';
+  }
+
+  try {
+    const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    if (!fs.existsSync(registryPath)) {
+      console.warn('[scan-handlers] DOMAIN_REGISTRY.json not found, using default packages/');
+      return 'packages/';
+    }
+
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+
+    // Try exact match first, then search by domain_id field
+    let domainConfig = registry.domains[domainId];
+    if (!domainConfig) {
+      domainConfig = Object.values(registry.domains).find(d => d.domain_id === domainId);
+    }
+
+    if (domainConfig?.analysisConfig?.analysisSourcePath) {
+      const sourcePath = domainConfig.analysisConfig.analysisSourcePath;
+      console.log(`[scan-handlers] Using domain source path: ${sourcePath} (domain: ${domainId})`);
+      return sourcePath;
+    }
+
+    console.warn(`[scan-handlers] Domain '${domainId}' not found in registry, using default packages/`);
+    return 'packages/';
+  } catch (err) {
+    console.warn(`[scan-handlers] Error loading domain config: ${err.message}, using default packages/`);
+    return 'packages/';
+  }
+}
+
+/**
  * Scan for handler exports in TypeScript and JavaScript files
  * @returns {Object} Handler scan results with source:'measured'
  */
 async function scanHandlerExports() {
   const handlers = [];
-  
+
   try {
-    // Get all source files matching patterns
-    const sourcePatterns = [
-      'packages/*/src/**/*.ts',
-      'packages/*/src/**/*.tsx',
-      'packages/*/src/**/*.js',
-      'packages/*/src/**/*.jsx',
-      '!packages/**/node_modules/**',
-      '!packages/**/*.d.ts',
-      '!**/.generated/**'
-    ];
+    // Get domain-specific source path from DOMAIN_REGISTRY.json
+    const domainSourcePath = getDomainSourcePath();
+
+    // Build source patterns based on domain source path
+    // Handle both 'packages/' style and 'scripts/' style paths
+    const sourcePatterns = domainSourcePath.startsWith('packages')
+      ? [
+          `${domainSourcePath}*/src/**/*.ts`,
+          `${domainSourcePath}*/src/**/*.tsx`,
+          `${domainSourcePath}*/src/**/*.js`,
+          `${domainSourcePath}*/src/**/*.jsx`,
+          `!${domainSourcePath}**/node_modules/**`,
+          `!${domainSourcePath}**/*.d.ts`,
+          '!**/.generated/**'
+        ]
+      : [
+          `${domainSourcePath}**/*.ts`,
+          `${domainSourcePath}**/*.js`,
+          `${domainSourcePath}**/*.cjs`,
+          `${domainSourcePath}**/*.mjs`,
+          `!${domainSourcePath}**/node_modules/**`,
+          `!${domainSourcePath}**/*.d.ts`,
+          '!**/.generated/**'
+        ];
 
     const files = execSync(`git ls-files ${sourcePatterns.join(' ')}`, {
       encoding: 'utf8',

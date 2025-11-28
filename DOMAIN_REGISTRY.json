@@ -83,6 +83,35 @@
       "deprecated": false,
       "ownership": "Platform-Observability"
     },
+    "build-pipeline-orchestration": {
+      "domain_id": "build-pipeline-orchestration",
+      "domain_type": "orchestration",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "checksum": "pending-sequence-governance-computation",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "Platform-DevEx",
+      "analysisConfig": {
+        "analysisSourcePath": "packages/orchestration",
+        "analysisOutputPath": ".generated/analysis/build-pipeline",
+        "reportOutputPath": "docs/generated/build-pipeline"
+      },
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry"
+        }
+      }
+    },
     "renderx-web-orchestration": {
       "domain_id": "renderx-web-orchestration",
       "domain_type": "orchestration",
