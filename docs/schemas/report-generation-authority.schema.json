@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://renderx-plugins-demo.local/schemas/report-generation-authority.schema.json",
+  "title": "Report Generation Authority",
+  "description": "Complete authority for generating symphonic analysis reports - no hard-coded logic",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string" },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "owner": { "type": "string" },
+        "lastUpdated": { "type": "string" }
+      }
+    },
+    "templates": {
+      "type": "object",
+      "properties": {
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "order": { "type": "integer" },
+              "title": { "type": "string" },
+              "heading": { "type": "string" },
+              "description": { "type": "string" },
+              "template": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "maintainability": {
+          "type": "object",
+          "properties": {
+            "excellent": { "type": "number" },
+            "good": { "type": "number" },
+            "acceptable": { "type": "number" },
+            "poor": { "type": "number" }
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "statements": { "type": "number" },
+            "branches": { "type": "number" },
+            "functions": { "type": "number" },
+            "lines": { "type": "number" }
+          }
+        },
+        "complexity": {
+          "type": "object",
+          "properties": {
+            "optimal": { "type": "number" },
+            "acceptable": { "type": "number" },
+            "high": { "type": "number" }
+          }
+        },
+        "duplication": {
+          "type": "object",
+          "properties": {
+            "excellent": { "type": "number" },
+            "good": { "type": "number" },
+            "acceptable": { "type": "number" },
+            "high": { "type": "number" }
+          }
+        }
+      }
+    },
+    "statusMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "metric": { "type": "string" },
+          "ranges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "min": { "type": "number" },
+                "max": { "type": "number" },
+                "label": { "type": "string" },
+                "icon": { "type": "string" },
+                "color": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "riskRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "priority": { "integer": { "type": "number" } },
+          "level": { "enum": ["critical", "high", "medium", "low"] },
+          "category": { "type": "string" },
+          "condition": { "type": "string" },
+          "description": { "type": "string" },
+          "mitigation": { "type": "string" }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "priority": { "enum": ["P1", "P2", "P3"] },
+          "category": { "type": "string" },
+          "trigger": { "type": "string" },
+          "action": { "type": "string" },
+          "rationale": { "type": "string" },
+          "effort": { "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "formulas": {
+      "type": "object",
+      "properties": {
+        "conformityStatus": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "min": { "type": "number" },
+              "max": { "type": "number" },
+              "status": { "type": "string" },
+              "emoji": { "type": "string" },
+              "recommendation": { "type": "string" }
+            }
+          }
+        },
+        "productionReadiness": {
+          "type": "object",
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "metric": { "type": "string" },
+                  "operator": { "type": "string" },
+                  "value": { "type": "number" },
+                  "weight": { "type": "number" }
+                }
+              }
+            },
+            "thresholdScore": { "type": "number" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["version", "authority", "templates", "thresholds", "statusMappings", "riskRules", "recommendations"]
+}

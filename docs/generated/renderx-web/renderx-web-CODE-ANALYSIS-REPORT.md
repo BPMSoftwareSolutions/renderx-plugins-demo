@@ -1,6 +1,6 @@
 # RenderX-Web Code Analysis Report
 
-**Generated**: 2025-11-28T13:39:05.773Z  
+**Generated**: 2025-11-28T14:13:27.905Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -15,8 +15,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 86.63% | ✅ GOOD| Risk: LOW|
-| Maintainability | 58.08/100 | 🔴 POOR| Grade: C|
+| Test Coverage | 78.69% | ⚠️  FAIR| Risk: MEDIUM|
+| Maintainability | 71.45/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -381,18 +381,18 @@ NEXT ACTIONS:
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-28T13:39:04.732Z
+**Last Scan**: 2025-11-28T14:13:26.835Z
 
 ### Maintainability Index
-- **Score**: 58.08/100
-- **Classification**: 🔴 **POOR** (C)
-- **Threshold**: <60
-- **Guidance**: Critical refactoring needed. High priority for next cycle.
+- **Score**: 71.45/100
+- **Classification**: 🟡 **FAIR** (B)
+- **Threshold**: 60-80
+- **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 77.0%
-  - Documentation: 81.7%
-  - Comment Density: 24.3%
-  - Complexity Score: 54.0
+  - Test Coverage: 75.2%
+  - Documentation: 91.6%
+  - Comment Density: 71.2%
+  - Complexity Score: 45.5
 
 ---
 
@@ -405,10 +405,10 @@ NEXT ACTIONS:
 ### Coverage Metrics
 | Type | Coverage | Target | Gap | Status |
 |------|----------|--------|-----|--------|
-| Statements | 86.63% | 80% | 6.6% | ✅ On-target |
-| Branches | 80.18% | 75% | 5.2% | 🟡 Needs Improvement |
-| Functions | 87.17% | 80% | 7.2% | 🟢 Close |
-| Lines | 73.24% | 80% | -6.8% | 🔴 Off-track |
+| Statements | 78.69% | 80% | -1.3% | 🟢 Close |
+| Branches | 78.57% | 75% | 3.6% | 🟡 Needs Improvement |
+| Functions | 75.68% | 80% | -4.3% | 🔴 Off-track |
+| Lines | 84.96% | 80% | 5.0% | 🟢 Close |
 
 ### Beat-by-Beat Coverage
 ```
@@ -460,7 +460,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 1 types
-**Last Scan**: 2025-11-28T13:39:04.482Z
+**Last Scan**: 2025-11-28T14:13:26.608Z
 
 ### Handler Scope Analysis
 
@@ -468,7 +468,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 # Handler Scope Analysis Report
 
-**Generated**: 2025-11-28T13:39:04.530Z
+**Generated**: 2025-11-28T14:13:26.631Z
 
 ## Overview
 
@@ -650,24 +650,24 @@ With handler scope/kind now defined, the pipeline can now:
 ## Coverage by Handler Analysis
 
 ### Overall Test Coverage
-**Global Coverage**: 80.23% statements
+**Global Coverage**: 84.22% statements
 
 | Metric | Coverage | Status |
 |--------|----------|--------|
-| Statements | 80.23% | 🟢 |
-| Branches | 71.48% | 🟡 |
-| Functions | 89.34% | 🟢 |
-| Lines | 75.96% | 🟡 |
+| Statements | 84.22% | 🟢 |
+| Branches | 79.1% | 🟡 |
+| Functions | 75.29% | 🟡 |
+| Lines | 75.5% | 🟡 |
 
 ### Handler Coverage Summary
 | Category | Count | % | Status |
 |----------|-------|---|--------|
-| Well-Covered (80%+) | 83 | 56.5% | ✅ |
-| Partially-Covered (50-79%) | 64 | 43.5% | ⚠️ |
+| Well-Covered (80%+) | 131 | 89.1% | ✅ |
+| Partially-Covered (50-79%) | 16 | 10.9% | ⚠️ |
 | Poorly-Covered (1-49%) | 0 | 0.0% | ⚠️ |
 | Uncovered (0%) | 0 | 0.0% | ❌ |
 
-**Average Handler Coverage**: 80.31%
+**Average Handler Coverage**: 84.09%
 
 **Handlers**: 147 | **Average LOC per Handler**: 29.33 | **Total LOC**: 1320
 
@@ -675,22 +675,22 @@ With handler scope/kind now defined, the pipeline can now:
 
 | Beat | Avg Coverage | Handlers | Status |
 |------|--------------|----------|--------|
-| unassigned | 80.31% | 147 | ✅ |
+| unassigned | 84.09% | 147 | ✅ |
 
 ### ✅ Well-Tested Handlers (Coverage >= 80%)
 | Handler | Coverage | Beat |
 |---------|----------|------|
-| loadSchemas | 85.17% | unassigned |
-| removeClass | 85.13% | unassigned |
-| setDirty | 84.94% | unassigned |
-| endLineManip | 84.92% | unassigned |
-| updateSize | 84.66% | unassigned |
-| endDrag | 84.56% | unassigned |
-| offsetX | 84.48% | unassigned |
-| ctx | 84.44% | unassigned |
+| moveLineManip | 89.17% | unassigned |
+| ghost | 89.09% | unassigned |
+| parseUiFile | 89.08% | unassigned |
+| queryAllComponents | 89.02% | unassigned |
+| notifyUi | 88.87% | unassigned |
+| awaitRefresh | 88.86% | unassigned |
+| ctx | 88.84% | unassigned |
+| data | 88.83% | unassigned |
 
 **Measurement**: Source='measured' (test coverage analysis with handler-beat correlation)
-**Timestamp**: 2025-11-28T13:39:05.147Z
+**Timestamp**: 2025-11-28T14:13:27.336Z
 
 
 ### Automated Refactor Suggestions
@@ -830,7 +830,7 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 **Measurement**:
 - Source: 'computed' (suggestions derived from measured duplication & clustering data)
-- Timestamp: 2025-11-28T13:39:05.449Z
+- Timestamp: 2025-11-28T14:13:27.650Z
 
 
 ### Historical Trend Analysis
@@ -839,8 +839,8 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 ## Historical Trend Analysis
 
-**Analysis Period**: Last 12 snapshots
-**Current Baseline**: 2025-11-28T13:39:05.765Z
+**Analysis Period**: Last 18 snapshots
+**Current Baseline**: 2025-11-28T14:13:27.901Z
 
 ### Overall Trend Summary
 
@@ -848,8 +848,8 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 |--------|---------|----------|--------|-------|-----------|
 | Handler Count | 38 | 38 | - | New | - |
 | Duplication (blocks) | 561 | 561 | - | Monitoring | - |
-| Coverage (avg) | 80.40% | 38.14% | - | Monitoring | - |
-| Maintainability | 80.24/100 | - | - | Baseline | - |
+| Coverage (avg) | 81.15% | 42.85% | - | Monitoring | - |
+| Maintainability | 76.57/100 | - | - | Baseline | - |
 | Conformity | 87.50% | - | - | Baseline | - |
 
 ### Handler Metrics
@@ -886,10 +886,10 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 **Current Coverage Baselines**:
 | Metric | Current | Target | Gap | Status |
 |--------|---------|--------|-----|--------|
-| Statements | 82.80% | 85% | 2.20% | 🟡 Close |
-| Branches | 78.00% | 85% | 7.00% | 🟡 Close |
-| Functions | 77.13% | 90% | 12.87% | 🟡 Close |
-| Lines | 78.15% | 85% | 6.85% | ✅ On-target |
+| Statements | 77.35% | 85% | 7.65% | 🟡 Close |
+| Branches | 84.94% | 85% | 0.06% | 🟡 Close |
+| Functions | 75.39% | 90% | 14.61% | 🟡 Close |
+| Lines | 82.78% | 85% | 2.22% | ✅ On-target |
 
 **Coverage Improvement Roadmap**:
 - **Week 2**: Add 5-8 integration tests → +3% statements
@@ -899,12 +899,12 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 ### Maintainability Trends
 
-**Current Maintainability Index**: 80.24/100
+**Current Maintainability Index**: 76.57/100
 
 **Component Health**:
 - Complexity (average): 1.13
 - Documentation score: 70/100
-- Maintainability grade: A
+- Maintainability grade: B
 
 **Improvement Strategy**:
 - Add 50-100 lines of JSDoc documentation (+10 points)
@@ -930,22 +930,22 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 **Baseline (Today)**:
 - Handlers: 38
 - Duplication: 145.63%
-- Coverage: 80.40%
-- Maintainability: 80.24/100
+- Coverage: 81.15%
+- Maintainability: 76.57/100
 - Conformity: 87.50%
 
 **Projected (Week 4)**:
 - Handlers: +5% → 40
 - Duplication: -15% → 130.63%
-- Coverage: +3-5% → 84.40%
-- Maintainability: +5 → 85.24/100
+- Coverage: +3-5% → 85.15%
+- Maintainability: +5 → 81.57/100
 - Conformity: +2% → 89.50%
 
 **Projected (Week 8 - Full Sprint)**:
 - Handlers: +15% → 44
 - Duplication: -30% → 115.63%
-- Coverage: +8-10% → 89.40%
-- Maintainability: +15 → 95.24/100
+- Coverage: +8-10% → 90.15%
+- Maintainability: +15 → 91.57/100
 - Conformity: +5% → 92.50%
 
 ### Data Quality & Confidence
@@ -961,7 +961,7 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 **Retention**: Last 30 snapshots retained in `.generated/history/symphonic-metrics/`
 
-**Timestamp**: 2025-11-28T13:39:05.773Z
+**Timestamp**: 2025-11-28T14:13:27.905Z
 **Source**: 'measured + computed' (baseline establishment)
 
 ---
@@ -991,12 +991,12 @@ Branch coverage is 79.07%, below 85% target. Add tests for conditional paths.
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
+**Ready for CI Gating**: ❌ **NOT READY**
 
-Gating Level: **CONDITIONAL**
+Gating Level: **FAIL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage - Orchestration Suite (86.63%) ✅
+✓ Coverage - Orchestration Suite (78.69%) ❌
 ✓ Handler Scanning (38 handlers discovered) ✅
 
 ---
@@ -1043,10 +1043,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-code-analysis-2025-11-28T13-39-03-921Z.json
-- **Coverage Summary**: renderx-web-coverage-summary-2025-11-28T13-39-03-921Z.json
-- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-28T13-39-03-921Z.csv
-- **Trend Analysis**: renderx-web-trends-2025-11-28T13-39-03-921Z.json
+- **JSON Analysis**: renderx-web-code-analysis-2025-11-28T14-13-26-317Z.json
+- **Coverage Summary**: renderx-web-coverage-summary-2025-11-28T14-13-26-317Z.json
+- **Per-Beat Metrics**: renderx-web-per-beat-metrics-2025-11-28T14-13-26-317Z.csv
+- **Trend Analysis**: renderx-web-trends-2025-11-28T14-13-26-317Z.json
 
 ---
 

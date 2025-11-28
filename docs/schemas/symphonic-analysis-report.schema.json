@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://renderx-plugins-demo.local/schemas/symphonic-analysis-report.schema.json",
+  "title": "Symphonic Code Analysis Report Schema",
+  "description": "Authority schema for generating comprehensive analysis reports from JSON metrics",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string" },
+        "analysisId": { "type": "string" },
+        "subject": { "type": "string" },
+        "projectName": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "required": ["timestamp", "analysisId", "subject"]
+    },
+    "executive": {
+      "type": "object",
+      "properties": {
+        "summary": { "type": "string" },
+        "highlights": { "type": "array", "items": { "type": "string" } },
+        "riskLevel": { "enum": ["critical", "high", "medium", "low"] },
+        "readyForProduction": { "type": "boolean" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "totalLoc": { "type": "integer" },
+        "totalFunctions": { "type": "integer" },
+        "totalComplexity": { "type": "integer" },
+        "maintainabilityIndex": { "type": "number" },
+        "duplicationRate": { "type": "number" }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "statements": { "type": "number" },
+        "branches": { "type": "number" },
+        "functions": { "type": "number" },
+        "lines": { "type": "number" }
+      }
+    },
+    "conformity": {
+      "type": "object",
+      "properties": {
+        "conformityScore": { "type": "number" },
+        "conformingBeats": { "type": "integer" },
+        "totalBeats": { "type": "integer" },
+        "violations": { "type": "integer" },
+        "fractalReference": { "type": "boolean" }
+      }
+    },
+    "beatMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file": { "type": "string" },
+          "loc": { "type": "integer" },
+          "functions": { "type": "integer" },
+          "complexity": { "type": "integer" },
+          "comments": { "type": "integer" }
+        }
+      }
+    },
+    "movements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "integer" },
+          "name": { "type": "string" },
+          "purpose": { "type": "string" },
+          "beats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "number": { "type": "integer" },
+                "name": { "type": "string" },
+                "status": { "enum": ["complete", "partial", "pending"] },
+                "results": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "level": { "enum": ["critical", "high", "medium", "low"] },
+          "category": { "type": "string" },
+          "description": { "type": "string" },
+          "mitigation": { "type": "string" },
+          "priority": { "type": "integer" }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": { "enum": ["P1", "P2", "P3"] },
+          "category": { "type": "string" },
+          "action": { "type": "string" },
+          "rationale": { "type": "string" },
+          "effort": { "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "reportTemplate": {
+      "type": "string",
+      "description": "Template engine instruction (markdown-jinja2, handlebars, etc.)"
+    }
+  },
+  "required": ["metadata", "metrics", "coverage", "conformity", "beatMetrics"]
+}

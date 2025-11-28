@@ -36,8 +36,13 @@ const {
   generateMarkdownReport: generateHandlerScopeReport
 } = require('./analyze-handler-scopes-for-pipeline.cjs');
 
-const ANALYSIS_DIR = path.join(process.cwd(), '.generated', 'analysis');
-const DOCS_DIR = path.join(process.cwd(), 'docs', 'generated', 'symphonic-code-analysis-pipeline');
+// Support environment variables for domain-based analysis orchestration
+const ANALYSIS_OUTPUT_PATH = process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
+const REPORT_OUTPUT_PATH = process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
+const AUTO_GENERATE_REPORT = process.env.AUTO_GENERATE_REPORT === 'true';
+
+const ANALYSIS_DIR = path.join(process.cwd(), ANALYSIS_OUTPUT_PATH);
+const DOCS_DIR = path.join(process.cwd(), REPORT_OUTPUT_PATH);
 const TIMESTAMP = new Date().toISOString().replace(/[:.]/g, '-');
 
 // Initialize directories

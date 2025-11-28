@@ -1,0 +1,284 @@
+{
+  "version": "1.0.0",
+  "authority": {
+    "name": "Symphonic Report Generation Authority",
+    "description": "Data-driven authority for generating comprehensive analysis reports from JSON metrics",
+    "owner": "Platform-Orchestration",
+    "lastUpdated": "2025-11-28"
+  },
+  "templates": {
+    "sections": [
+      {
+        "id": "header",
+        "order": 1,
+        "title": "Report Header",
+        "heading": "# 🎼 Symphonic Code Analysis Report",
+        "description": "Report title and metadata",
+        "template": "# 🎼 Symphonic Code Analysis Report\n\n**Analysis Date**: {timestamp}\n**Analysis ID**: {analysisId}\n**Subject**: {subject}\n**Status**: ✅ **COMPLETE - ALL 4 MOVEMENTS × 16 BEATS EXECUTED**"
+      },
+      {
+        "id": "conformity-score",
+        "order": 2,
+        "title": "Conformity Score Banner",
+        "heading": "## 📊 Conformity Score",
+        "description": "Primary conformity metric",
+        "template": "## 📊 Conformity Score\n\n### **{conformityStatus}: {conformityScore}%**\n\n| Aspect | Result | Status |\n|--------|--------|--------|\n| Conforming Beats | {conformingBeats}/{totalBeats} | {beatsStatus} |\n| Violations | {violations} | {violationsStatus} |\n| Fractal Reference | {fractalStatus} | {fractalIcon} |"
+      },
+      {
+        "id": "executive-summary",
+        "order": 3,
+        "title": "Executive Summary",
+        "heading": "## 🎯 Executive Summary",
+        "description": "High-level overview",
+        "template": "## 🎯 Executive Summary\n\nThe code analysis pipeline executed a **complete 4-movement symphony**:\n\n- **Movement 1**: Code Discovery & Beat Mapping → {beatCount} scripts\n- **Movement 2**: Code Metrics Analysis → {totalLoc} LOC, {totalComplexity} complexity\n- **Movement 3**: Test Coverage Analysis → {statementCoverage}% covered\n- **Movement 4**: Architecture Conformity → {conformityScore}% conformity"
+      },
+      {
+        "id": "key-metrics-table",
+        "order": 4,
+        "title": "Key Metrics Table",
+        "heading": "### Key Findings",
+        "description": "Primary metrics with benchmarks",
+        "template": "| Metric | Value | Benchmark | Status |\n|--------|-------|-----------|--------|\n| Lines of Code | {totalLoc} | <5,000 | {locStatus} |\n| Functions | {totalFunctions} | >50 | {functionsStatus} |\n| System Complexity | {totalComplexity} | <400 | {complexityStatus} |\n| Avg Complexity/Module | {avgComplexity} | <20 | {avgComplexityStatus} |\n| Maintainability | {maintainability}/100 | >70 | {maintainabilityStatus} |\n| Duplication | {duplication}% | <20% | {duplicationStatus} |"
+      },
+      {
+        "id": "coverage-analysis",
+        "order": 5,
+        "title": "Coverage Analysis",
+        "heading": "## 📈 Coverage Analysis",
+        "description": "Test coverage metrics by type",
+        "template": "| Coverage Type | Score | Status |\n|---|---|---|\n| Statements | {statements}% | {statementsStatus} |\n| Branches | {branches}% | {branchesStatus} |\n| Functions | {functions}% | {functionsStatus} |\n| Lines | {lines}% | {linesStatus} |\n\n**Coverage Status**: {coverageSummary}"
+      },
+      {
+        "id": "detailed-metrics",
+        "order": 6,
+        "title": "Detailed Metrics Table",
+        "heading": "## 📋 Detailed Metrics by Module",
+        "description": "Per-module breakdown",
+        "template": "| Module | LOC | Functions | Complexity | Comments |\n|--------|-----|-----------|------------|----------|\n{moduleRows}\n\n**Module Analysis**:\n- Largest: {largestModule} ({largestLoc} LOC)\n- Most Complex: {mostComplexModule} ({maxComplexity} branches)\n- Best Documented: {mostDocumentedModule} ({maxComments} comments)"
+      },
+      {
+        "id": "risk-assessment",
+        "order": 7,
+        "title": "Risk Assessment",
+        "heading": "## ⚠️ Risk Assessment",
+        "description": "Identified risks by severity",
+        "template": "## ⚠️ Risk Assessment\n\n{risksContent}"
+      },
+      {
+        "id": "recommendations",
+        "order": 8,
+        "title": "Recommendations",
+        "heading": "## 🔧 Recommendations",
+        "description": "Action items by priority",
+        "template": "## 🔧 Recommendations\n\n{recommendationsContent}"
+      },
+      {
+        "id": "fractal-architecture",
+        "order": 9,
+        "title": "Fractal Architecture",
+        "heading": "## 🎼 Fractal Architecture Assessment",
+        "description": "Self-referential architecture validation",
+        "template": "## 🎼 Fractal Architecture Assessment\n\n{fractalContent}"
+      },
+      {
+        "id": "conclusion",
+        "order": 10,
+        "title": "Conclusion",
+        "heading": "## ✅ Conclusion",
+        "description": "Final summary and next steps",
+        "template": "## ✅ Conclusion\n\n**Conformity Score**: {conformityStatus} ({conformityScore}%)\n\n**Recommendation**: {productionRecommendation}\n\n**Next Steps**:\n{nextSteps}"
+      }
+    ]
+  },
+  "thresholds": {
+    "maintainability": {
+      "excellent": 80,
+      "good": 70,
+      "acceptable": 50,
+      "poor": 50
+    },
+    "coverage": {
+      "statements": 80,
+      "branches": 80,
+      "functions": 85,
+      "lines": 80
+    },
+    "complexity": {
+      "optimal": 15,
+      "acceptable": 20,
+      "high": 30
+    },
+    "duplication": {
+      "excellent": 10,
+      "good": 15,
+      "acceptable": 30,
+      "high": 30
+    },
+    "conformity": {
+      "perfect": 100,
+      "excellent": 95,
+      "good": 90,
+      "acceptable": 80,
+      "poor": 80
+    }
+  },
+  "statusMappings": [
+    {
+      "metric": "maintainability",
+      "ranges": [
+        { "min": 80, "max": 100, "label": "Excellent", "icon": "✅", "color": "green" },
+        { "min": 70, "max": 79, "label": "Good", "icon": "✅", "color": "green" },
+        { "min": 50, "max": 69, "label": "Acceptable", "icon": "🟡", "color": "yellow" },
+        { "min": 0, "max": 49, "label": "Poor", "icon": "❌", "color": "red" }
+      ]
+    },
+    {
+      "metric": "coverage",
+      "ranges": [
+        { "min": 85, "max": 100, "label": "Excellent", "icon": "✅", "color": "green" },
+        { "min": 80, "max": 84, "label": "Good", "icon": "✅", "color": "green" },
+        { "min": 70, "max": 79, "label": "Acceptable", "icon": "🟡", "color": "yellow" },
+        { "min": 0, "max": 69, "label": "Needs work", "icon": "🟡", "color": "yellow" }
+      ]
+    },
+    {
+      "metric": "complexity",
+      "ranges": [
+        { "min": 0, "max": 15, "label": "Optimal", "icon": "✅", "color": "green" },
+        { "min": 16, "max": 20, "label": "Good", "icon": "✅", "color": "green" },
+        { "min": 21, "max": 30, "label": "Review", "icon": "🟡", "color": "yellow" },
+        { "min": 31, "max": 100, "label": "High", "icon": "⚠️", "color": "orange" }
+      ]
+    },
+    {
+      "metric": "duplication",
+      "ranges": [
+        { "min": 0, "max": 10, "label": "Excellent", "icon": "✅", "color": "green" },
+        { "min": 11, "max": 15, "label": "Good", "icon": "✅", "color": "green" },
+        { "min": 16, "max": 30, "label": "Acceptable", "icon": "🟡", "color": "yellow" },
+        { "min": 31, "max": 100, "label": "High", "icon": "⚠️", "color": "orange" }
+      ]
+    },
+    {
+      "metric": "conformity",
+      "ranges": [
+        { "min": 100, "max": 100, "label": "Perfect", "icon": "✅", "color": "green" },
+        { "min": 95, "max": 99, "label": "Excellent", "icon": "✅", "color": "green" },
+        { "min": 90, "max": 94, "label": "Good", "icon": "✅", "color": "green" },
+        { "min": 80, "max": 89, "label": "Acceptable", "icon": "🟡", "color": "yellow" },
+        { "min": 0, "max": 79, "label": "Poor", "icon": "❌", "color": "red" }
+      ]
+    }
+  ],
+  "riskRules": [
+    {
+      "id": "risk-maintainability-critical",
+      "priority": 1,
+      "level": "critical",
+      "category": "Code Quality",
+      "condition": "maintainability < 50",
+      "description": "Maintainability index critically low",
+      "mitigation": "Refactor high-complexity modules, improve documentation"
+    },
+    {
+      "id": "risk-coverage-branches",
+      "priority": 2,
+      "level": "high",
+      "category": "Test Coverage",
+      "condition": "coverage.branches < 70",
+      "description": "Branch coverage below acceptable threshold",
+      "mitigation": "Add conditional branch tests, improve edge case coverage"
+    },
+    {
+      "id": "risk-duplication-high",
+      "priority": 3,
+      "level": "high",
+      "category": "Code Duplication",
+      "condition": "duplication > 40",
+      "description": "Code duplication rate critically high",
+      "mitigation": "Extract common patterns into shared utilities"
+    },
+    {
+      "id": "risk-conformity-violations",
+      "priority": 4,
+      "level": "high",
+      "category": "Architecture",
+      "condition": "violations > 0",
+      "description": "Conformity violations detected",
+      "mitigation": "Address violations in Movement 4 report"
+    },
+    {
+      "id": "risk-complexity-average",
+      "priority": 5,
+      "level": "medium",
+      "category": "Complexity",
+      "condition": "avgComplexity > 25",
+      "description": "Average module complexity elevated",
+      "mitigation": "Break down complex functions into smaller pieces"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "rec-refactor-maintainability",
+      "priority": "P1",
+      "category": "Refactoring",
+      "trigger": "maintainability < 50",
+      "action": "Split large handlers into smaller, focused functions",
+      "rationale": "Improves maintainability and testability",
+      "effort": "high"
+    },
+    {
+      "id": "rec-consolidate-duplication",
+      "priority": "P1",
+      "category": "Code Consolidation",
+      "trigger": "duplication > 35",
+      "action": "Extract duplicated patterns into utility modules",
+      "rationale": "Reduce maintenance burden and improve consistency",
+      "effort": "medium"
+    },
+    {
+      "id": "rec-increase-branch-coverage",
+      "priority": "P2",
+      "category": "Testing",
+      "trigger": "coverage.branches < 75",
+      "action": "Increase branch coverage to 80%+",
+      "rationale": "Detect edge cases and error conditions",
+      "effort": "medium"
+    },
+    {
+      "id": "rec-documentation",
+      "priority": "P2",
+      "category": "Documentation",
+      "trigger": "always",
+      "action": "Document architecture patterns for new contributors",
+      "rationale": "Reduce onboarding time and maintenance overhead",
+      "effort": "low"
+    },
+    {
+      "id": "rec-performance",
+      "priority": "P3",
+      "category": "Performance",
+      "trigger": "always",
+      "action": "Profile and optimize hot paths",
+      "rationale": "Improve system responsiveness",
+      "effort": "medium"
+    }
+  ],
+  "formulas": {
+    "conformityStatus": [
+      { "min": 100, "max": 100, "status": "PERFECT", "emoji": "✅", "recommendation": "Production-ready. Monitor for regressions." },
+      { "min": 95, "max": 99, "status": "EXCELLENT", "emoji": "✅", "recommendation": "Production-ready. Schedule improvement sprint." },
+      { "min": 90, "max": 94, "status": "GOOD", "emoji": "✅", "recommendation": "Production-ready with minor improvements recommended." },
+      { "min": 80, "max": 89, "status": "ACCEPTABLE", "emoji": "🟡", "recommendation": "Production-ready with improvements recommended before scaling." },
+      { "min": 0, "max": 79, "status": "POOR", "emoji": "❌", "recommendation": "Address critical items before production deployment." }
+    ],
+    "productionReadiness": {
+      "conditions": [
+        { "metric": "conformity", "operator": ">=", "value": 80, "weight": 0.4 },
+        { "metric": "coverage.statements", "operator": ">=", "value": 75, "weight": 0.3 },
+        { "metric": "maintainability", "operator": ">=", "value": 60, "weight": 0.3 }
+      ],
+      "thresholdScore": 0.75
+    }
+  }
+}

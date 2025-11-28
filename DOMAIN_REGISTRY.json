@@ -109,6 +109,12 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/renderx-web-orchestration.json"
         ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "packages/",
+        "analysisOutputPath": ".generated/analysis/renderx-web/",
+        "reportOutputPath": "docs/generated/renderx-web/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "canvas-component-copy-symphony": {
@@ -1717,6 +1723,12 @@
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
         }
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "analysisOutputPath": ".generated/analysis/symphonic-code-analysis-pipeline/",
+        "reportOutputPath": "docs/generated/symphonic-code-analysis-pipeline/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "fractal-orchestration-domain-symphony": {
