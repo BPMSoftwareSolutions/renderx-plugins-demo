@@ -7,9 +7,21 @@
       "id": "drag",
       "name": "Drag",
       "beats": [
-        { "beat": 1, "event": "library.component.drag.start.requested", "title": "Start Drag", "dynamics": "mf", "handler": "onDragStart", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "library.component.drag.start.requested",
+          "title": "Start Drag",
+          "dynamics": "mf",
+          "handler": "onDragStart",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "library-component-drag-symphony.ondragstart.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

@@ -14,7 +14,12 @@
           "handler": "openUiFile",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-import-symphony.openuifile.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "handler": "parseUiFile",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-import-symphony.parseuifile.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -32,7 +42,12 @@
           "handler": "injectCssClasses",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-import-symphony.injectcssclasses.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 4,
@@ -41,7 +56,12 @@
           "handler": "createComponentsSequentially",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-import-symphony.createcomponentssequentially.3",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 5,
@@ -50,7 +70,12 @@
           "handler": "applyHierarchyAndOrder",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-import-symphony.applyhierarchyandorder.4",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

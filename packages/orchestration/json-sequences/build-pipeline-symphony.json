@@ -75,7 +75,12 @@
           "handler": "loadBuildContext",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Load build configuration, environment variables, and previous state"
+          "description": "Load build configuration, environment variables, and previous state",
+          "handlerDef": {
+            "id": "build.validation.loadBuildContext",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -83,7 +88,12 @@
           "handler": "validateOrchestrationDomains",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate all orchestration domain definitions for structural integrity"
+          "description": "Validate all orchestration domain definitions for structural integrity",
+          "handlerDef": {
+            "id": "build.validation.validateOrchestrationDomains",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -91,7 +101,12 @@
           "handler": "validateGovernanceRules",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate governance policies and compliance documentation"
+          "description": "Validate governance policies and compliance documentation",
+          "handlerDef": {
+            "id": "build.validation.validateGovernanceRules",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -99,7 +114,12 @@
           "handler": "validateAgentBehavior",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate system agent behavior and decision logic"
+          "description": "Validate system agent behavior and decision logic",
+          "handlerDef": {
+            "id": "build.validation.validateAgentBehavior",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -107,7 +127,12 @@
           "handler": "recordValidationResults",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Record validation results and prepare for next movement"
+          "description": "Record validation results and prepare for next movement",
+          "handlerDef": {
+            "id": "build.validation.recordValidationResults",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -123,7 +148,12 @@
           "handler": "regenerateOrchestrationDomains",
           "kind": "generation",
           "timing": "immediate",
-          "description": "Regenerate orchestration domains from sequences and plugins (pre:manifests)"
+          "description": "Regenerate orchestration domains from sequences and plugins (pre:manifests)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.regenerateorchestrationdomains.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -131,7 +161,12 @@
           "handler": "syncJsonSources",
           "kind": "generation",
           "timing": "immediate",
-          "description": "Synchronize JSON component sources from catalog"
+          "description": "Synchronize JSON component sources from catalog",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.syncjsonsources.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -139,7 +174,12 @@
           "handler": "generateManifests",
           "kind": "generation",
           "timing": "immediate",
-          "description": "Generate all manifest files (components, sequences, topics, layout, interactions)"
+          "description": "Generate all manifest files (components, sequences, topics, layout, interactions)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.generatemanifests.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -147,7 +187,12 @@
           "handler": "validateManifestIntegrity",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate all generated manifests for consistency and completeness"
+          "description": "Validate all generated manifests for consistency and completeness",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.validatemanifestintegrity.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -155,7 +200,12 @@
           "handler": "recordManifestState",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Record manifest generation state and metrics"
+          "description": "Record manifest generation state and metrics",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.recordmanifeststate.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -171,7 +221,12 @@
           "handler": "initializePackageBuild",
           "kind": "initialization",
           "timing": "immediate",
-          "description": "Prepare package build environment and dependency order"
+          "description": "Prepare package build environment and dependency order",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.initializepackagebuild.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -179,7 +234,12 @@
           "handler": "buildComponentsPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/components (base utilities)"
+          "description": "Build @renderx-plugins/components (base utilities)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildcomponentspackage.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -187,7 +247,12 @@
           "handler": "buildMusicalConductorPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/musical-conductor (orchestration core)"
+          "description": "Build @renderx-plugins/musical-conductor (orchestration core)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildmusicalconductorpackage.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -195,7 +260,12 @@
           "handler": "buildHostSdkPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/host-sdk (SDK and interfaces)"
+          "description": "Build @renderx-plugins/host-sdk (SDK and interfaces)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildhostsdkpackage.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -203,7 +273,12 @@
           "handler": "buildManifestToolsPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/manifest-tools (tooling)"
+          "description": "Build @renderx-plugins/manifest-tools (tooling)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildmanifesttoolspackage.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -211,7 +286,12 @@
           "handler": "buildCanvasPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/canvas (rendering layer)"
+          "description": "Build @renderx-plugins/canvas (rendering layer)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildcanvaspackage.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 7,
@@ -219,7 +299,12 @@
           "handler": "buildCanvasComponentPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/canvas-component (interaction layer)"
+          "description": "Build @renderx-plugins/canvas-component (interaction layer)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildcanvascomponentpackage.6",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 8,
@@ -227,7 +312,12 @@
           "handler": "buildControlPanelPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/control-panel (UI controls)"
+          "description": "Build @renderx-plugins/control-panel (UI controls)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildcontrolpanelpackage.7",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 9,
@@ -235,7 +325,12 @@
           "handler": "buildHeaderPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/header (UI header)"
+          "description": "Build @renderx-plugins/header (UI header)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildheaderpackage.8",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 10,
@@ -243,7 +338,12 @@
           "handler": "buildLibraryPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/library (component library)"
+          "description": "Build @renderx-plugins/library (component library)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildlibrarypackage.9",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 11,
@@ -251,7 +351,12 @@
           "handler": "buildLibraryComponentPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/library-component (advanced library)"
+          "description": "Build @renderx-plugins/library-component (advanced library)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildlibrarycomponentpackage.10",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 12,
@@ -259,7 +364,12 @@
           "handler": "buildRealEstateAnalyzerPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/real-estate-analyzer (analytics)"
+          "description": "Build @renderx-plugins/real-estate-analyzer (analytics)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildrealestateanalyzerpackage.11",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 13,
@@ -267,7 +377,12 @@
           "handler": "buildSelfHealingPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/self-healing (observability)"
+          "description": "Build @renderx-plugins/self-healing (observability)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildselfhealingpackage.12",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 14,
@@ -275,7 +390,12 @@
           "handler": "buildSloDashboardPackage",
           "kind": "build",
           "timing": "deferred",
-          "description": "Build @renderx-plugins/slo-dashboard (SLO monitoring)"
+          "description": "Build @renderx-plugins/slo-dashboard (SLO monitoring)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.buildslodashboardpackage.13",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 15,
@@ -283,7 +403,12 @@
           "handler": "recordPackageBuildMetrics",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Record package build completion metrics and cache status"
+          "description": "Record package build completion metrics and cache status",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.recordpackagebuildmetrics.14",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -299,7 +424,12 @@
           "handler": "prepareHostBuild",
           "kind": "initialization",
           "timing": "immediate",
-          "description": "Prepare host application build environment"
+          "description": "Prepare host application build environment",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.preparehostbuild.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -307,7 +437,12 @@
           "handler": "viteHostBuild",
           "kind": "build",
           "timing": "deferred",
-          "description": "Execute Vite host application build"
+          "description": "Execute Vite host application build",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.vitehostbuild.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -315,7 +450,12 @@
           "handler": "validateHostArtifacts",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate host build artifacts (dist/ directory)"
+          "description": "Validate host build artifacts (dist/ directory)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.validatehostartifacts.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -323,7 +463,12 @@
           "handler": "recordHostBuildMetrics",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Record host build metrics (bundle size, chunks, etc)"
+          "description": "Record host build metrics (bundle size, chunks, etc)",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.recordhostbuildmetrics.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -339,7 +484,12 @@
           "handler": "collectArtifacts",
           "kind": "collection",
           "timing": "immediate",
-          "description": "Collect all build artifacts from dist/ and package dirs"
+          "description": "Collect all build artifacts from dist/ and package dirs",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.collectartifacts.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -347,7 +497,12 @@
           "handler": "computeArtifactHashes",
           "kind": "verification",
           "timing": "immediate",
-          "description": "Compute SHA-256 hashes for all artifacts"
+          "description": "Compute SHA-256 hashes for all artifacts",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.computeartifacthashes.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -355,7 +510,12 @@
           "handler": "validateArtifactSignatures",
           "kind": "verification",
           "timing": "immediate",
-          "description": "Validate artifact integrity signatures"
+          "description": "Validate artifact integrity signatures",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.validateartifactsignatures.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -363,7 +523,12 @@
           "handler": "generateArtifactManifest",
           "kind": "documentation",
           "timing": "immediate",
-          "description": "Generate comprehensive artifact manifest with metadata"
+          "description": "Generate comprehensive artifact manifest with metadata",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.generateartifactmanifest.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -371,7 +536,12 @@
           "handler": "recordArtifactMetrics",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Record artifact collection and verification metrics"
+          "description": "Record artifact collection and verification metrics",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.recordartifactmetrics.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -387,7 +557,12 @@
           "handler": "runLintChecks",
           "kind": "verification",
           "timing": "deferred",
-          "description": "Run ESLint across entire codebase"
+          "description": "Run ESLint across entire codebase",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.runlintchecks.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -395,7 +570,12 @@
           "handler": "enrichDomainAuthorities",
           "kind": "enrichment",
           "timing": "immediate",
-          "description": "Enrich domain definitions with build authority metadata"
+          "description": "Enrich domain definitions with build authority metadata",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.enrichdomainauthorities.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -403,7 +583,12 @@
           "handler": "generateGovernanceDocs",
           "kind": "generation",
           "timing": "immediate",
-          "description": "Generate governance documentation from build artifacts"
+          "description": "Generate governance documentation from build artifacts",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.generategovernancedocs.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -411,7 +596,12 @@
           "handler": "validateConformityDimensions",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate all 5 Symphonia conformity dimensions"
+          "description": "Validate all 5 Symphonia conformity dimensions",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.validateconformitydimensions.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -419,7 +609,12 @@
           "handler": "generateBuildReport",
           "kind": "observation",
           "timing": "immediate",
-          "description": "Generate comprehensive build report with all metrics"
+          "description": "Generate comprehensive build report with all metrics",
+          "handlerDef": {
+            "id": "build-pipeline-symphony.generatebuildreport.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     }

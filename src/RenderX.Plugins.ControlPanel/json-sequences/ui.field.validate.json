@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "validateField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-validate-symphony.validatefield.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "dynamics": "mf",
           "handler": "mergeErrors",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-validate-symphony.mergeerrors.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -32,10 +42,14 @@
           "dynamics": "mf",
           "handler": "updateView",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-validate-symphony.updateview.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

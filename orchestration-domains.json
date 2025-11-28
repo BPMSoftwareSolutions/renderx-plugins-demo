@@ -21,7 +21,73 @@
       "metadata"
     ]
   },
-  "executionFlow": [
+  "handlerSchema": {
+    "name": "OrchestrationHandler",
+    "description": "Handler-level metadata for beat implementation. Introduced to distinguish plugin-level handlers from orchestration-level handlers.",
+    "introduced": "2025-11-27",
+    "rationale": "Enables per-scope metrics, registry audit, and targeted self-healing operations by explicitly marking handler scope (plugin vs orchestration).",
+    "fields": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique handler identifier in format 'sequence.handler.beatIndex'",
+        "example": "analysis.discovery.discoverSourceFiles"
+      },
+      {
+        "name": "scope",
+        "type": "enum: plugin | orchestration | infra",
+        "description": "Handler scope - plugin for feature-level, orchestration for system-level",
+        "example": "orchestration"
+      },
+      {
+        "name": "kind",
+        "type": "enum: plugin | orchestration | infra",
+        "description": "Handler kind - mirrors scope for now, allows future differentiation",
+        "example": "orchestration"
+      },
+      {
+        "name": "stage",
+        "type": "string",
+        "description": "Optional: Execution stage/phase (discovery, metrics, coverage, conformity, etc.)",
+        "example": "discovery"
+      },
+      {
+        "name": "implementationRef",
+        "type": "string",
+        "description": "Optional: Path to implementation file and exported function",
+        "example": "packages/orchestration/src/handlers/analysisDiscovery.ts#discoverSourceFiles"
+      }
+    ],
+    "placement": "At beat level in sequence JSON: beat.handler or beat.handlerDef",
+    "scopes": {
+      "plugin": {
+        "description": "Handler implements plugin feature (UI behavior, component logic, etc.)",
+        "examples": [
+          "canvas-component-copy-symphony handlers",
+          "control-panel-ui-init handlers",
+          "library-component-drag handlers"
+        ],
+        "metrics": [
+          "Per-plugin-handler LOC",
+          "Per-plugin-handler coverage",
+          "Plugin handler complexity"
+        ]
+      },
+      "orchestration": {
+        "description": "Handler implements orchestration logic (code analysis, governance, build coordination, etc.)",
+        "examples": [
+          "symphonic-code-analysis-pipeline handlers",
+          "architecture-governance-enforcement-symphony handlers",
+          "build-pipeline-symphony handlers"
+        ],
+        "metrics": [
+          "Per-orchestration-handler LOC",
+          "Per-orchestration-handler coverage",
+          "Orchestration handler complexity"
+        ]
+      }
+    }
+  },
     {
       "step": 1,
       "name": "Load Context",

@@ -14,10 +14,14 @@
           "dynamics": "mf",
           "handler": "toggleTheme",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "header-ui-theme-toggle-symphony.toggletheme.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

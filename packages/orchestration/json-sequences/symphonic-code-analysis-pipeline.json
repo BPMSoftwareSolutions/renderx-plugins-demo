@@ -97,7 +97,13 @@
       "name": "Scan Orchestration Files",
       "description": "Scan JSON sequences and identify beat definitions, handlers, and event mappings",
       "kind": "discovery",
-      "timing": "< 2s"
+      "timing": "< 2s",
+      "handler": {
+        "id": "analysis.discovery.scanOrchestrationFiles",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery"
+      }
     },
     {
       "movement": 1,
@@ -105,7 +111,13 @@
       "name": "Discover Source Code",
       "description": "Discover all TypeScript/JavaScript implementation files matching beat handlers",
       "kind": "discovery",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.discovery.discoverSourceCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery"
+      }
     },
     {
       "movement": 1,
@@ -113,7 +125,13 @@
       "name": "Map Beats to Code",
       "description": "Create beat-to-handler-to-source-file mapping for correlation",
       "kind": "mapping",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.discovery.mapBeatsToCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery"
+      }
     },
     {
       "movement": 1,
@@ -121,7 +139,13 @@
       "name": "Collect Baseline",
       "description": "Establish baseline metrics for comparison and trend analysis",
       "kind": "collection",
-      "timing": "immediate"
+      "timing": "immediate",
+      "handler": {
+        "id": "analysis.discovery.collectBaseline",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "discovery"
+      }
     },
     {
       "movement": 2,
@@ -129,7 +153,13 @@
       "name": "Count Lines of Code",
       "description": "Calculate LOC per beat, per movement, and per orchestration domain",
       "kind": "metrics",
-      "timing": "< 2s"
+      "timing": "< 2s",
+      "handler": {
+        "id": "analysis.metrics.countLinesOfCode",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics"
+      }
     },
     {
       "movement": 2,
@@ -137,7 +167,13 @@
       "name": "Analyze Complexity",
       "description": "Calculate cyclomatic complexity, cognitive complexity per beat handler",
       "kind": "metrics",
-      "timing": "< 3s"
+      "timing": "< 3s",
+      "handler": {
+        "id": "analysis.metrics.analyzeComplexity",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics"
+      }
     },
     {
       "movement": 2,
@@ -145,7 +181,13 @@
       "name": "Detect Duplication",
       "description": "Identify code duplication patterns and calculate duplication percentage",
       "kind": "metrics",
-      "timing": "< 2s"
+      "timing": "< 2s",
+      "handler": {
+        "id": "analysis.metrics.detectDuplication",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics"
+      }
     },
     {
       "movement": 2,
@@ -153,7 +195,13 @@
       "name": "Calculate Maintainability",
       "description": "Compute maintainability index and technical debt score per module",
       "kind": "metrics",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.metrics.calculateMaintainability",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "metrics"
+      }
     },
     {
       "movement": 3,
@@ -161,7 +209,13 @@
       "name": "Measure Statement Coverage",
       "description": "Identify test files and calculate statement coverage with beat correlation",
       "kind": "coverage",
-      "timing": "< 3s"
+      "timing": "< 3s",
+      "handler": {
+        "id": "analysis.coverage.measureStatementCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage"
+      }
     },
     {
       "movement": 3,
@@ -169,7 +223,13 @@
       "name": "Measure Branch Coverage",
       "description": "Calculate branch coverage (if/else, switch paths) per beat",
       "kind": "coverage",
-      "timing": "< 3s"
+      "timing": "< 3s",
+      "handler": {
+        "id": "analysis.coverage.measureBranchCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage"
+      }
     },
     {
       "movement": 3,
@@ -177,7 +237,13 @@
       "name": "Measure Function Coverage",
       "description": "Calculate function call coverage and handler execution coverage",
       "kind": "coverage",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.coverage.measureFunctionCoverage",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage"
+      }
     },
     {
       "movement": 3,
@@ -185,7 +251,13 @@
       "name": "Calculate Gap Analysis",
       "description": "Identify uncovered code and test gaps aligned with beats",
       "kind": "analysis",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.coverage.calculateGapAnalysis",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "coverage"
+      }
     },
     {
       "movement": 4,
@@ -193,7 +265,13 @@
       "name": "Validate Handler Mapping",
       "description": "Verify all beats have handlers and handlers have corresponding implementation",
       "kind": "validation",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.conformity.validateHandlerMapping",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity"
+      }
     },
     {
       "movement": 4,
@@ -201,7 +279,13 @@
       "name": "Calculate Conformity Score",
       "description": "Synthesize all metrics into orchestration conformity score (0-1)",
       "kind": "synthesis",
-      "timing": "immediate"
+      "timing": "immediate",
+      "handler": {
+        "id": "analysis.conformity.calculateConformityScore",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity"
+      }
     },
     {
       "movement": 4,
@@ -209,7 +293,13 @@
       "name": "Analyze Trends",
       "description": "Compare current metrics to historical baseline and identify trends",
       "kind": "analysis",
-      "timing": "< 1s"
+      "timing": "< 1s",
+      "handler": {
+        "id": "analysis.conformity.analyzeTrends",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity"
+      }
     },
     {
       "movement": 4,
@@ -217,7 +307,13 @@
       "name": "Generate Reports",
       "description": "Generate JSON analysis artifacts, markdown reports, and visualization data",
       "kind": "reporting",
-      "timing": "< 2s"
+      "timing": "< 2s",
+      "handler": {
+        "id": "analysis.conformity.generateReports",
+        "scope": "orchestration",
+        "kind": "orchestration",
+        "stage": "conformity"
+      }
     }
   ],
   "analysisMetrics": {

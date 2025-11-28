@@ -49,12 +49,19 @@ async function scanHandlerExports() {
     for (const file of files) {
       try {
         const content = fs.readFileSync(file, 'utf8');
+        const lines = content.split('\n');
         
         // Find all handler matches
         for (const pattern of handlerPatterns) {
           let match;
+          let searchStart = 0;
+          
           while ((match = pattern.exec(content)) !== null) {
             const handlerName = match[1];
+            
+            // Find line number by counting newlines up to match position
+            const beforeMatch = content.substring(0, match.index);
+            const lineNumber = beforeMatch.split('\n').length;
             
             // Avoid duplicates
             const isDuplicate = handlers.some(
@@ -66,7 +73,8 @@ async function scanHandlerExports() {
                 name: handlerName,
                 file,
                 source: 'measured',
-                type: deriveHandlerType(handlerName)
+                type: deriveHandlerType(handlerName),
+                line: lineNumber  // Add line number for LOC analysis
               });
             }
           }

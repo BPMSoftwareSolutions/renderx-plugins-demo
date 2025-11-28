@@ -14,10 +14,14 @@
           "dynamics": "mf",
           "handler": "showSvgNodeOverlay",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-select-svg-node-symphony.showsvgnodeoverlay.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

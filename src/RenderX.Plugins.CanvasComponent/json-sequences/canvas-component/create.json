@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "resolveTemplate",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.resolvetemplate.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "dynamics": "mf",
           "handler": "registerInstance",
           "timing": "immediate",
-          "kind": "io"
+          "kind": "io",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.registerinstance.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -32,7 +42,12 @@
           "dynamics": "mf",
           "handler": "createNode",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.createnode.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 4,
@@ -41,7 +56,12 @@
           "dynamics": "mf",
           "handler": "renderReact",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.renderreact.3",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 5,
@@ -50,7 +70,12 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.notifyui.4",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 6,
@@ -59,7 +84,12 @@
           "dynamics": "mf",
           "handler": "enhanceLine",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-create-symphony.enhanceline.5",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

@@ -14,10 +14,14 @@
           "dynamics": "mf",
           "handler": "toggleSection",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-section-toggle-symphony.togglesection.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

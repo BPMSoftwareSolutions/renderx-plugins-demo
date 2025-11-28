@@ -7,10 +7,35 @@
       "id": "load",
       "name": "Load",
       "beats": [
-        { "beat": 1, "event": "library:components:load", "title": "Load Components", "dynamics": "mf", "handler": "loadComponents", "timing": "immediate", "kind": "pure" },
-        { "beat": 2, "event": "library:components:notify-ui", "title": "Notify UI", "dynamics": "mf", "handler": "notifyUi", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "library:components:load",
+          "title": "Load Components",
+          "dynamics": "mf",
+          "handler": "loadComponents",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "library-load-symphony.loadcomponents.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        },
+        {
+          "beat": 2,
+          "event": "library:components:notify-ui",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "library-load-symphony.notifyui.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

@@ -2,11 +2,24 @@
   "version": "0.1.0",
   "generatedAt": "2025-11-24T22:55:00Z",
   "description": "Global domain registration index. Each domain authority must be registered here for lineage, link resolution, and validation.",
+  "handlerLayerIntroduction": {
+    "date": "2025-11-27",
+    "status": "active",
+    "description": "Handler-level scope/kind metadata now distinguishes plugin vs orchestration handlers at beat level",
+    "structure": "Each beat in sequence JSON includes 'handler' field with 'scope' (plugin | orchestration | infra) and 'kind' (matches scope)",
+    "benefits": [
+      "Per-scope metrics in symphonic code analysis",
+      "Registry audit can identify missing orchestration handlers",
+      "Self-healing domain can target fixes by handler scope",
+      "Separation of concerns: feature logic vs system logic"
+    ]
+  },
   "registry_principles": [
     "Registry is append-only for active domains (mutations via lifecycle changes)",
     "All domain_ids are globally unique",
     "Lineage hashes are recomputed at validation time",
-    "Deprecation retains record but marks domain non-linkable unless migration"
+    "Deprecation retains record but marks domain non-linkable unless migration",
+    "Handler scope/kind is immutable per beat (tracks system vs feature logic)"
   ],
   "domains": {
     "orchestration-core": {

@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "startDrag",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-drag-start-symphony.startdrag.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

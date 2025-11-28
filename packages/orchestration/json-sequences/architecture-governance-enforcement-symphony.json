@@ -65,7 +65,12 @@
           "kind": "validation",
           "timing": "immediate",
           "description": "Load all symphony JSON files and validate against schema",
-          "reference": "orchestration-domains.json, all json-sequences/*.json"
+          "reference": "orchestration-domains.json, all json-sequences/*.json",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.validatejsonschemastructure.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -73,7 +78,12 @@
           "handler": "validateOrchestrationDomainsRegistry",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate orchestration-domains.json has all required fields and correct structure"
+          "description": "Validate orchestration-domains.json has all required fields and correct structure",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.validateorchestrationdomainsregistry.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -81,7 +91,12 @@
           "handler": "validateSymphonyFiles",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)"
+          "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.validatesymphonyfiles.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -89,7 +104,12 @@
           "handler": "validateSchemaSection",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Validate schema section exists and defines movement/beat/event requirements"
+          "description": "Validate schema section exists and defines movement/beat/event requirements",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.validateschemasection.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -97,7 +117,12 @@
           "handler": "reportJSONValidation",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Report validation results; fail if schema invalid"
+          "description": "Report validation results; fail if schema invalid",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.reportjsonvalidation.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -113,7 +138,12 @@
           "handler": "startHandlerMappingVerification",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Begin handler-to-beat mapping verification process"
+          "description": "Begin handler-to-beat mapping verification process",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.starthandlermappingverification.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -121,7 +151,12 @@
           "handler": "loadHandlerImplementations",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Load all handler implementations from scripts/build-symphony-handlers.js"
+          "description": "Load all handler implementations from scripts/build-symphony-handlers.js",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.loadhandlerimplementations.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -129,7 +164,12 @@
           "handler": "indexBeatsFromJSON",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Index all beats and their handler references from symphony JSON files"
+          "description": "Index all beats and their handler references from symphony JSON files",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.indexbeatsfromjson.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -137,7 +177,12 @@
           "handler": "verifyBeatHandlerMapping",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Verify every beat has corresponding handler; collect mapping violations"
+          "description": "Verify every beat has corresponding handler; collect mapping violations",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.verifybeathandlermapping.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -145,7 +190,12 @@
           "handler": "detectOrphanHandlers",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Find handlers in code that are not referenced by any beat"
+          "description": "Find handlers in code that are not referenced by any beat",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.detectorphanhandlers.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -153,7 +203,12 @@
           "handler": "reportHandlerMapping",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Report handler mapping status; fail if violations found"
+          "description": "Report handler mapping status; fail if violations found",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.reporthandlermapping.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -169,7 +224,12 @@
           "handler": "startTestCoverageVerification",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Begin test coverage verification process"
+          "description": "Begin test coverage verification process",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.starttestcoverageverification.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -177,7 +237,12 @@
           "handler": "catalogBeatsFromJSON",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Create exhaustive catalog of all beats and events in symphony JSON"
+          "description": "Create exhaustive catalog of all beats and events in symphony JSON",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.catalogbeatsfromjson.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -185,7 +250,12 @@
           "handler": "indexTestFiles",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Index all test files and their test descriptions (from .spec.ts)"
+          "description": "Index all test files and their test descriptions (from .spec.ts)",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.indextestfiles.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -193,7 +263,12 @@
           "handler": "analyzeTestCoverage",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Analyze coverage: which beats have tests, which don't"
+          "description": "Analyze coverage: which beats have tests, which don't",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.analyzetestcoverage.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -201,7 +276,12 @@
           "handler": "identifyUncoveredBeats",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Identify beats lacking test coverage; collect list"
+          "description": "Identify beats lacking test coverage; collect list",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.identifyuncoveredbeats.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -209,7 +289,12 @@
           "handler": "reportTestCoverage",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Report test coverage percentage and violations"
+          "description": "Report test coverage percentage and violations",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.reporttestcoverage.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -225,7 +310,12 @@
           "handler": "startMarkdownConsistencyCheck",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Begin markdown consistency verification process"
+          "description": "Begin markdown consistency verification process",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.startmarkdownconsistencycheck.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -233,7 +323,12 @@
           "handler": "extractFactsFromJSON",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Extract key facts from JSON: movement count, beat count, event count, handler names"
+          "description": "Extract key facts from JSON: movement count, beat count, event count, handler names",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.extractfactsfromjson.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -241,7 +336,12 @@
           "handler": "identifyMarkdownFiles",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Find all markdown files that reference symphonia"
+          "description": "Find all markdown files that reference symphonia",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.identifymarkdownfiles.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -249,7 +349,12 @@
           "handler": "verifyFactsInMarkdown",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Check if JSON facts are mentioned in markdown correctly"
+          "description": "Check if JSON facts are mentioned in markdown correctly",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.verifyfactsinmarkdown.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -257,7 +362,12 @@
           "handler": "detectMarkdownContradictions",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Find statements in markdown that contradict JSON"
+          "description": "Find statements in markdown that contradict JSON",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.detectmarkdowncontradictions.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -265,7 +375,12 @@
           "handler": "reportMarkdownConsistency",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Report markdown consistency score and contradictions"
+          "description": "Report markdown consistency score and contradictions",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.reportmarkdownconsistency.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -281,7 +396,12 @@
           "handler": "startAuditabilityVerification",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Begin auditability chain verification process"
+          "description": "Begin auditability chain verification process",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.startauditabilityverification.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -289,7 +409,12 @@
           "handler": "loadJSONDefinitions",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Load all JSON definitions as the starting point"
+          "description": "Load all JSON definitions as the starting point",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.loadjsondefinitions.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -297,7 +422,12 @@
           "handler": "createCodeMappings",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Create mapping: JSON beat → Code handler"
+          "description": "Create mapping: JSON beat → Code handler",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.createcodemappings.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -305,7 +435,12 @@
           "handler": "createTestMappings",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Create mapping: JSON beat → Test coverage"
+          "description": "Create mapping: JSON beat → Test coverage",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.createtestmappings.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -313,7 +448,12 @@
           "handler": "createMarkdownMappings",
           "kind": "data-gathering",
           "timing": "immediate",
-          "description": "Create mapping: JSON fact → Markdown mention"
+          "description": "Create mapping: JSON fact → Markdown mention",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.createmarkdownmappings.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -321,7 +461,12 @@
           "handler": "verifyChainCompleteness",
           "kind": "validation",
           "timing": "immediate",
-          "description": "Verify complete traceability for all definitions"
+          "description": "Verify complete traceability for all definitions",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.verifychaincompleteness.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 7,
@@ -329,7 +474,12 @@
           "handler": "reportAuditability",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Report auditability score: % of JSON with complete chain"
+          "description": "Report auditability score: % of JSON with complete chain",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.reportauditability.6",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     },
@@ -345,7 +495,12 @@
           "handler": "startConformityAnalysis",
           "kind": "synthesis",
           "timing": "immediate",
-          "description": "Begin overall conformity analysis"
+          "description": "Begin overall conformity analysis",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.startconformityanalysis.0",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 2,
@@ -353,7 +508,12 @@
           "handler": "aggregateGovernanceResults",
           "kind": "synthesis",
           "timing": "immediate",
-          "description": "Aggregate results from all 5 movements"
+          "description": "Aggregate results from all 5 movements",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.aggregategovernanceresults.1",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 3,
@@ -361,7 +521,12 @@
           "handler": "calculateConformityScore",
           "kind": "synthesis",
           "timing": "immediate",
-          "description": "Calculate overall conformity score (0-100%)"
+          "description": "Calculate overall conformity score (0-100%)",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.calculateconformityscore.2",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 4,
@@ -369,7 +534,12 @@
           "handler": "summarizeViolations",
           "kind": "synthesis",
           "timing": "immediate",
-          "description": "Summarize all governance violations found"
+          "description": "Summarize all governance violations found",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.summarizeviolations.3",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 5,
@@ -377,7 +547,12 @@
           "handler": "makeGovernanceDecision",
           "kind": "synthesis",
           "timing": "immediate",
-          "description": "Decide: PASS (allow changes) or FAIL (reject changes)"
+          "description": "Decide: PASS (allow changes) or FAIL (reject changes)",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.makegovernancedecision.4",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 6,
@@ -385,7 +560,12 @@
           "handler": "generateGovernanceReport",
           "kind": "reporting",
           "timing": "immediate",
-          "description": "Generate comprehensive governance report with recommendations"
+          "description": "Generate comprehensive governance report with recommendations",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.generategovernancereport.5",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         },
         {
           "number": 7,
@@ -393,7 +573,12 @@
           "handler": "concludeGovernanceEnforcement",
           "kind": "conclusion",
           "timing": "immediate",
-          "description": "Conclude governance enforcement; exit with appropriate status code"
+          "description": "Conclude governance enforcement; exit with appropriate status code",
+          "handlerDef": {
+            "id": "architecture-governance-enforcement-symphony.concludegovernanceenforcement.6",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
         }
       ]
     }

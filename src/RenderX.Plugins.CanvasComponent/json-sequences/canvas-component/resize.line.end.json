@@ -7,9 +7,21 @@
       "id": "resize-line-end",
       "name": "Resize Line End",
       "beats": [
-        { "beat": 1, "event": "canvas:component:resize:line:end", "title": "Line Resize End", "dynamics": "mf", "handler": "endLineResize", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:line:end",
+          "title": "Line Resize End",
+          "dynamics": "mf",
+          "handler": "endLineResize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-line-resize-end-symphony.endlineresize.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

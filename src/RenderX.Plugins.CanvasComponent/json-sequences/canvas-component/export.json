@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "queryAllComponents",
           "timing": "immediate",
-          "kind": "io"
+          "kind": "io",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.queryallcomponents.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "dynamics": "mf",
           "handler": "discoverComponentsFromDom",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.discovercomponentsfromdom.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -32,7 +42,12 @@
           "dynamics": "mf",
           "handler": "collectCssClasses",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.collectcssclasses.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -41,7 +56,12 @@
           "dynamics": "mf",
           "handler": "collectLayoutData",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.collectlayoutdata.3",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 4,
@@ -50,7 +70,12 @@
           "dynamics": "mf",
           "handler": "buildUiFileContent",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.builduifilecontent.4",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 5,
@@ -59,7 +84,12 @@
           "dynamics": "mf",
           "handler": "downloadUiFile",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-symphony.downloaduifile.5",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

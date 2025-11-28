@@ -7,10 +7,35 @@
       "id": "delete",
       "name": "Delete",
       "beats": [
-        { "beat": 1, "event": "canvas:component:delete", "title": "Delete Component", "dynamics": "mf", "handler": "deleteComponent", "timing": "immediate", "kind": "stage-crew" },
-        { "beat": 2, "event": "canvas:component:deleted", "title": "Publish Deleted", "dynamics": "mf", "handler": "publishDeleted", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "canvas:component:delete",
+          "title": "Delete Component",
+          "dynamics": "mf",
+          "handler": "deleteComponent",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-delete-symphony.deletecomponent.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:deleted",
+          "title": "Publish Deleted",
+          "dynamics": "mf",
+          "handler": "publishDeleted",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-delete-symphony.publishdeleted.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

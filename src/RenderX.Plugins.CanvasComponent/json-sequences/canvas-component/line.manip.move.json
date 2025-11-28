@@ -7,9 +7,21 @@
       "id": "manip-line-move",
       "name": "Manip Line Move",
       "beats": [
-        { "beat": 1, "event": "canvas:component:manip:line:move", "title": "Line Manip Move", "dynamics": "mf", "handler": "moveLineManip", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:manip:line:move",
+          "title": "Line Manip Move",
+          "dynamics": "mf",
+          "handler": "moveLineManip",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-line-manip-move-symphony.movelinemanip.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

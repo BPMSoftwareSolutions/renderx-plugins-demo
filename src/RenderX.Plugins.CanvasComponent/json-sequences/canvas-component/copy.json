@@ -17,7 +17,12 @@
           "dynamics": "mf",
           "handler": "serializeSelectedComponent",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-copy-symphony.serializeselectedcomponent.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -26,7 +31,12 @@
           "dynamics": "mf",
           "handler": "copyToClipboard",
           "timing": "immediate",
-          "kind": "io"
+          "kind": "io",
+          "handlerDef": {
+            "id": "canvas-component-copy-symphony.copytoclipboard.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -35,10 +45,14 @@
           "dynamics": "mf",
           "handler": "notifyCopyComplete",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-copy-symphony.notifycopycomplete.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

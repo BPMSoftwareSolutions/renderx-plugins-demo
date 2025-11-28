@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "updateSvgNodeAttribute",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-update-svg-node-symphony.updatesvgnodeattribute.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "dynamics": "mf",
           "handler": "refreshControlPanel",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-update-svg-node-symphony.refreshcontrolpanel.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

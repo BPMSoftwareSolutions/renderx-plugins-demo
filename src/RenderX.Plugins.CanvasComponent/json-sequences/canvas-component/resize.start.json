@@ -7,9 +7,21 @@
       "id": "resize-start",
       "name": "Resize Start",
       "beats": [
-        { "beat": 1, "event": "canvas:component:resize:start", "title": "Resize Start", "dynamics": "mf", "handler": "startResize", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:start",
+          "title": "Resize Start",
+          "dynamics": "mf",
+          "handler": "startResize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-resize-start-symphony.startresize.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

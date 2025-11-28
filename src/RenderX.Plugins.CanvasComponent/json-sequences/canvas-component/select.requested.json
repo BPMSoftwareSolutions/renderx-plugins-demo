@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "routeSelectionRequest",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-select-requested-symphony.routeselectionrequest.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

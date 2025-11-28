@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "prepareField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-change-symphony.preparefield.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,7 +28,12 @@
           "dynamics": "mf",
           "handler": "dispatchField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-change-symphony.dispatchfield.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -32,7 +42,12 @@
           "dynamics": "mf",
           "handler": "setDirty",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-change-symphony.setdirty.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 4,
@@ -41,10 +56,14 @@
           "dynamics": "mf",
           "handler": "awaitRefresh",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "control-panel-ui-field-change-symphony.awaitrefresh.3",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

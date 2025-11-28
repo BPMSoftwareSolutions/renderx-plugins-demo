@@ -17,7 +17,12 @@
           "dynamics": "mf",
           "handler": "readFromClipboard",
           "timing": "immediate",
-          "kind": "io"
+          "kind": "io",
+          "handlerDef": {
+            "id": "canvas-component-paste-symphony.readfromclipboard.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -26,7 +31,12 @@
           "dynamics": "mf",
           "handler": "deserializeComponentData",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-paste-symphony.deserializecomponentdata.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 3,
@@ -35,7 +45,12 @@
           "dynamics": "mf",
           "handler": "calculatePastePosition",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-paste-symphony.calculatepasteposition.2",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 4,
@@ -44,7 +59,12 @@
           "dynamics": "mf",
           "handler": "createPastedComponent",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-paste-symphony.createpastedcomponent.3",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 5,
@@ -53,10 +73,14 @@
           "dynamics": "mf",
           "handler": "notifyPasteComplete",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-paste-symphony.notifypastecomplete.4",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "getCurrentTheme",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "header-ui-theme-get-symphony.getcurrenttheme.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         },
         {
           "beat": 2,
@@ -23,10 +28,14 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "header-ui-theme-get-symphony.notifyui.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

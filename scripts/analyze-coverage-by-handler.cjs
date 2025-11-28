@@ -20,22 +20,30 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { analyzeAllHandlerLOC } = require('./analyze-handler-loc.cjs');
 
 /**
  * Load handler discoveries from prior scan
+ * Uses function-level granularity (65+ handlers) instead of symphony-level (38 exports)
  */
 function loadHandlerDiscoveries() {
   try {
-    const scanResult = require('./scan-handlers.cjs').scanHandlerExports;
-    // Call the async function
-    return Promise.resolve(scanResult());
+    // Try enhanced function-level scanner first
+    const scanResult = require('./scan-handler-functions.cjs').scanHandlerFunctions;
+    return scanResult();
   } catch (err) {
-    console.error('Error loading handlers:', err.message);
-    return Promise.resolve({
-      handlers: [],
-      discoveredCount: 0,
-      error: err.message
-    });
+    console.warn('Function-level scanner unavailable, trying legacy scanner:', err.message);
+    try {
+      const legacyScan = require('./scan-handlers.cjs').scanHandlerExports;
+      return Promise.resolve(legacyScan());
+    } catch (err2) {
+      console.error('Error loading handlers:', err2.message);
+      return Promise.resolve({
+        handlers: [],
+        discoveredCount: 0,
+        error: err2.message
+      });
+    }
   }
 }
 
@@ -164,9 +172,19 @@ async function analyzeCoveragePerHandler(handlers, beatMappings, overallCoverage
   let poorlyCovered = 0;
   let uncovered = 0;
 
+  // Get measured LOC per handler (replaced synthetic estimation)
+  const locAnalysis = await analyzeAllHandlerLOC(handlers);
+  const locByHandler = {};
+  const totalLoc = locAnalysis.statistics.totalLOC;
+  const avgLoc = locAnalysis.statistics.averageLOC;
+  
+  locAnalysis.handlers.forEach(h => {
+    locByHandler[h.name] = h.loc || 0;
+  });
+
   handlers.forEach(handler => {
-    // Estimate handler complexity and size
-    const estimatedLines = 50 + Math.floor(Math.random() * 200);
+    // Use measured LOC instead of synthetic estimation
+    const measuredLines = locByHandler[handler.name] || 0;
     
     // Get beat assignment
     const beatAssignment = beatMappings[handler.name] || 'unassigned';
@@ -201,7 +219,7 @@ async function analyzeCoveragePerHandler(handlers, beatMappings, overallCoverage
       name: handler.name,
       type: handler.type || 'generic',
       beat: beatAssignment,
-      lines: estimatedLines,
+      lines: measuredLines,
       coverage: handlerCoverage,
       status,
       risk: status === 'uncovered' ? 'critical' : 
@@ -218,6 +236,8 @@ async function analyzeCoveragePerHandler(handlers, beatMappings, overallCoverage
     stats: {
       totalHandlers: handlers.length,
       averageCoverage: parseFloat((totalCoverage / handlers.length).toFixed(2)),
+      averageLoc: avgLoc,
+      totalLoc: totalLoc,
       wellCovered,
       partiallyCovered: handlers.length - wellCovered - poorlyCovered - uncovered,
       poorlyCovered,
@@ -296,6 +316,8 @@ function formatCoverageMarkdown(coverageData, heatmap, overallCoverage) {
 | Uncovered (0%) | ${stats.uncovered} | ${((stats.uncovered / stats.totalHandlers) * 100).toFixed(1)}% | ❌ |
 
 **Average Handler Coverage**: ${stats.averageCoverage}%
+
+**Handlers**: ${stats.totalHandlers} | **Average LOC per Handler**: ${stats.averageLoc} | **Total LOC**: ${stats.totalLoc}
 
 ### Coverage Heatmap by Beat
 

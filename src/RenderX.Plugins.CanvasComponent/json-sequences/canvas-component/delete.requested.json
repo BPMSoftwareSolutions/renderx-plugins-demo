@@ -7,9 +7,21 @@
       "id": "route-delete",
       "name": "Route Delete",
       "beats": [
-        { "beat": 1, "event": "canvas:component:delete:route", "title": "Route Delete Request", "dynamics": "mf", "handler": "routeDeleteRequest", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "canvas:component:delete:route",
+          "title": "Route Delete Request",
+          "dynamics": "mf",
+          "handler": "routeDeleteRequest",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-delete-requested-symphony.routedeleterequest.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

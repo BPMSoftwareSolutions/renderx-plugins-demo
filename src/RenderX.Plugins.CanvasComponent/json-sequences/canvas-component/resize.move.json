@@ -10,10 +10,35 @@
       "id": "resize-move",
       "name": "Resize Move",
       "beats": [
-        { "beat": 1, "event": "canvas:component:resize:move", "title": "Resize Move", "dynamics": "mf", "handler": "updateSize", "timing": "immediate", "kind": "stage-crew" },
-        { "beat": 2, "event": "canvas:component:resize:forward", "title": "Forward to Control Panel", "dynamics": "mf", "handler": "forwardToControlPanel", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:move",
+          "title": "Resize Move",
+          "dynamics": "mf",
+          "handler": "updateSize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-resize-move-symphony.updatesize.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:resize:forward",
+          "title": "Forward to Control Panel",
+          "dynamics": "mf",
+          "handler": "forwardToControlPanel",
+          "timing": "immediate",
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-resize-move-symphony.forwardtocontrolpanel.1",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

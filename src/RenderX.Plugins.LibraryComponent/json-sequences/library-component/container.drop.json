@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "publishCreateRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "library-component-container-drop-symphony.publishcreaterequested.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

@@ -7,9 +7,21 @@
       "id": "resize-end",
       "name": "Resize End",
       "beats": [
-        { "beat": 1, "event": "canvas:component:resize:end", "title": "Resize End", "dynamics": "mf", "handler": "endResize", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:end",
+          "title": "Resize End",
+          "dynamics": "mf",
+          "handler": "endResize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-resize-end-symphony.endresize.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

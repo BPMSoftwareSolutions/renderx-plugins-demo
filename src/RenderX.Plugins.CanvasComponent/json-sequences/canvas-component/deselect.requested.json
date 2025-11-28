@@ -14,10 +14,14 @@
           "dynamics": "mf",
           "handler": "routeDeselectionRequest",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "handlerDef": {
+            "id": "canvas-component-deselect-requested-symphony.routedeselectionrequest.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
   ]
 }
-

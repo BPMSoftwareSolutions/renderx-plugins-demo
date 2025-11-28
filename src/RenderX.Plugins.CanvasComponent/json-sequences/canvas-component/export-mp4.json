@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "exportSvgToMp4",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-mp4-symphony.exportsvgtomp4.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }

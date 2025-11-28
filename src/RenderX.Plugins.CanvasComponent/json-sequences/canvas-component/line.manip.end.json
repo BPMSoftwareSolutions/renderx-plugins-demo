@@ -7,9 +7,21 @@
       "id": "manip-line-end",
       "name": "Manip Line End",
       "beats": [
-        { "beat": 1, "event": "canvas:component:manip:line:end", "title": "Line Manip End", "dynamics": "mf", "handler": "endLineManip", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:manip:line:end",
+          "title": "Line Manip End",
+          "dynamics": "mf",
+          "handler": "endLineManip",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-line-manip-end-symphony.endlinemanip.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
+        }
       ]
     }
   ]
 }
-

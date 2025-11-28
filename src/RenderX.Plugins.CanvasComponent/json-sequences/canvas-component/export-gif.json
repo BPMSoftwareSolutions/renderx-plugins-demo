@@ -14,7 +14,12 @@
           "dynamics": "mf",
           "handler": "exportSvgToGif",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "handlerDef": {
+            "id": "canvas-component-export-gif-symphony.exportsvgtogif.0",
+            "scope": "plugin",
+            "kind": "plugin"
+          }
         }
       ]
     }
