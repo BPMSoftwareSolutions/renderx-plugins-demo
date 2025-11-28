@@ -72,11 +72,39 @@ function matchHandlerToBeat(handler, beats) {
   }
   
   // Strategy 1: Symphony name contains beat keyword (highest confidence)
+  // Includes both analysis-pipeline and musical-conductor/renderx-web symphony names
   const beatKeywords = {
-    'beat-1-discovery': ['discover', 'scan', 'find', 'parse'],
-    'beat-2-baseline': ['analyze', 'metric', 'measure', 'baseline', 'complexity', 'duplication'],
-    'beat-3-structure': ['transform', 'convert', 'structure', 'organize', 'export', 'render'],
-    'beat-4-dependencies': ['depend', 'import', 'resolve', 'require', 'load']
+    'beat-1-discovery': [
+      // Analysis pipeline
+      'discover', 'scan', 'find', 'parse',
+      // Musical-conductor: initialization & registration
+      'initialize', 'register-sequence',
+      // RenderX-Web: creation & setup
+      'create', 'augment'
+    ],
+    'beat-2-baseline': [
+      // Analysis pipeline
+      'analyze', 'metric', 'measure', 'baseline', 'complexity', 'duplication',
+      // Musical-conductor: validation & monitoring
+      'validate-plugin', 'monitor',
+      // RenderX-Web: selection & inspection
+      'select', 'deselect', 'selection'
+    ],
+    'beat-3-structure': [
+      // Analysis pipeline
+      'transform', 'convert', 'structure', 'organize', 'render',
+      // Musical-conductor: execution
+      'execute-sequence',
+      // RenderX-Web: manipulation & styling
+      'drag', 'resize', 'resize-line', 'line-advanced',
+      'update', 'css-management', 'classes', 'ui'
+    ],
+    'beat-4-dependencies': [
+      // Analysis pipeline
+      'depend', 'require', 'load',
+      // RenderX-Web: import/export & data flow
+      'import', 'export', 'copy', 'paste', 'delete'
+    ]
   };
   
   for (const [beat, keywords] of Object.entries(beatKeywords)) {

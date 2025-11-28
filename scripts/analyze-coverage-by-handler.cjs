@@ -102,20 +102,30 @@ function loadOrchestrationBeats() {
 
 /**
  * Load handler-to-beat mappings from prior analysis
+ * Returns a map of handlerName → beatId
  */
 async function loadHandlerBeatMappings() {
   try {
     const mapModule = require('./map-handlers-to-beats.cjs');
     const handlers = await loadHandlerDiscoveries();
-    
+
     if (!handlers.handlers || handlers.handlers.length === 0) {
       return {};
     }
-    
-    const beatDefs = loadOrchestrationBeats();
-    const mappings = await mapModule.mapHandlersToBeat(handlers.handlers, beatDefs);
-    
-    return mappings.handlerToBeatMap || {};
+
+    // mapHandlersToBeat returns { mapped, orphaned, beatStats, ... }
+    // We need to build a handlerName → beatId map from the mapped array
+    const mappings = mapModule.mapHandlersToBeat(handlers.handlers);
+
+    // Build handlerName → beat map from mapped results
+    const handlerToBeatMap = {};
+    if (mappings.mapped && Array.isArray(mappings.mapped)) {
+      mappings.mapped.forEach(h => {
+        handlerToBeatMap[h.name] = h.mappedBeat || 'unassigned';
+      });
+    }
+
+    return handlerToBeatMap;
   } catch (err) {
     console.warn('Could not load handler-beat mappings:', err.message);
     return {};
