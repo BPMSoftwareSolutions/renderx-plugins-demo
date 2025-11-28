@@ -1041,6 +1041,12 @@ ${(() => {
 *Report auto-generated from symphonic-code-analysis-pipeline. All metrics are immutable and traceable to source analysis.*
 `;
 
+  // ALWAYS save rich markdown artifact for orchestrator consumption
+  // This contains ASCII diagrams, detailed handler portfolios, and comprehensive insights
+  const richMarkdownPath = path.join(ANALYSIS_DIR, `renderx-web-rich-markdown-${TIMESTAMP}.md`);
+  fs.writeFileSync(richMarkdownPath, report);
+  log(`Saved rich markdown artifact: ${path.relative(process.cwd(), richMarkdownPath)}`, '✓');
+  
   // Respect AUTO_GENERATE_REPORT flag to avoid inner subject report when orchestrated
   if (AUTO_GENERATE_REPORT) {
     const reportPath = path.join(DOCS_DIR, `renderx-web-CODE-ANALYSIS-REPORT.md`);
