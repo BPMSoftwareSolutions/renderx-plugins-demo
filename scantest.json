@@ -1,0 +1,1995 @@
+﻿{
+  "discoveredCount": 283,
+  "handlers": [
+    {
+      "name": "getClipboardText",
+      "file": "packages/canvas-component/src/symphonies/_clipboard.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 35
+    },
+    {
+      "name": "setClipboardText",
+      "file": "packages/canvas-component/src/symphonies/_clipboard.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 26
+    },
+    {
+      "name": "enhanceLine",
+      "file": "packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 30
+    },
+    {
+      "name": "recomputeLineSvg",
+      "file": "packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 95
+    },
+    {
+      "name": "resolveTemplate",
+      "file": "packages/canvas-component/src/symphonies/create/create.arrangement.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "injectCssFallback",
+      "file": "packages/canvas-component/src/symphonies/create/create.css.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "injectRawCss",
+      "file": "packages/canvas-component/src/symphonies/create/create.css.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 17
+    },
+    {
+      "name": "appendTo",
+      "file": "packages/canvas-component/src/symphonies/create/create.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 33
+    },
+    {
+      "name": "applyClasses",
+      "file": "packages/canvas-component/src/symphonies/create/create.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 22
+    },
+    {
+      "name": "applyInlineStyle",
+      "file": "packages/canvas-component/src/symphonies/create/create.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 26
+    },
+    {
+      "name": "createElementWithId",
+      "file": "packages/canvas-component/src/symphonies/create/create.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 10
+    },
+    {
+      "name": "getCanvasOrThrow",
+      "file": "packages/canvas-component/src/symphonies/create/create.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "attachStandardImportInteractions",
+      "file": "packages/canvas-component/src/symphonies/create/create.from-import.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 46
+    },
+    {
+      "name": "createFromImportRecord",
+      "file": "packages/canvas-component/src/symphonies/create/create.from-import.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 71
+    },
+    {
+      "name": "toCreatePayloadFromData",
+      "file": "packages/canvas-component/src/symphonies/create/create.from-import.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 97
+    },
+    {
+      "name": "transformClipboardToCreatePayload",
+      "file": "packages/canvas-component/src/symphonies/create/create.from-import.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 82
+    },
+    {
+      "name": "transformImportToCreatePayload",
+      "file": "packages/canvas-component/src/symphonies/create/create.from-import.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 4
+    },
+    {
+      "name": "attachDrag",
+      "file": "packages/canvas-component/src/symphonies/create/create.interactions.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 40
+    },
+    {
+      "name": "attachSelection",
+      "file": "packages/canvas-component/src/symphonies/create/create.interactions.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 25
+    },
+    {
+      "name": "attachSvgNodeClick",
+      "file": "packages/canvas-component/src/symphonies/create/create.interactions.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 153
+    },
+    {
+      "name": "registerInstance",
+      "file": "packages/canvas-component/src/symphonies/create/create.io.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "notifyUi",
+      "file": "packages/canvas-component/src/symphonies/create/create.notify.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "cleanupReactRoot",
+      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 385
+    },
+    {
+      "name": "exposeEventRouterToReact",
+      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 422
+    },
+    {
+      "name": "renderReact",
+      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 25
+    },
+    {
+      "name": "computeCssVarBlock",
+      "file": "packages/canvas-component/src/symphonies/create/create.style.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 7
+    },
+    {
+      "name": "computeInlineStyle",
+      "file": "packages/canvas-component/src/symphonies/create/create.style.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    },
+    {
+      "name": "computeInstanceClass",
+      "file": "packages/canvas-component/src/symphonies/create/create.style.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "validateReactCode",
+      "file": "packages/canvas-component/src/symphonies/create/react-code-validator.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 16
+    },
+    {
+      "name": "validateReactCodeOrThrow",
+      "file": "packages/canvas-component/src/symphonies/create/react-code-validator.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 113
+    },
+    {
+      "name": "collectCssClasses",
+      "file": "packages/canvas-component/src/symphonies/export/export.css.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "discoverComponentsFromDom",
+      "file": "packages/canvas-component/src/symphonies/export/export.discover.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "downloadUiFile",
+      "file": "packages/canvas-component/src/symphonies/export/export.download.stage-crew.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 2
+    },
+    {
+      "name": "exportSvgToGif",
+      "file": "packages/canvas-component/src/symphonies/export/export.gif.stage-crew.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 27
+    },
+    {
+      "name": "queryAllComponents",
+      "file": "packages/canvas-component/src/symphonies/export/export.io.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "createMP4Encoder",
+      "file": "packages/canvas-component/src/symphonies/export/export.mp4-encoder.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 64
+    },
+    {
+      "name": "exportSvgToMp4",
+      "file": "packages/canvas-component/src/symphonies/export/export.mp4.stage-crew.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 6
+    },
+    {
+      "name": "buildUiFileContent",
+      "file": "packages/canvas-component/src/symphonies/export/export.pure.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "collectLayoutData",
+      "file": "packages/canvas-component/src/symphonies/export/export.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 15
+    },
+    {
+      "name": "injectCssClasses",
+      "file": "packages/canvas-component/src/symphonies/import/import.css.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "openUiFile",
+      "file": "packages/canvas-component/src/symphonies/import/import.file.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "registerInstances",
+      "file": "packages/canvas-component/src/symphonies/import/import.io.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 1
+    },
+    {
+      "name": "applyHierarchyAndOrder",
+      "file": "packages/canvas-component/src/symphonies/import/import.nodes.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 35
+    },
+    {
+      "name": "createComponentsSequentially",
+      "file": "packages/canvas-component/src/symphonies/import/import.nodes.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 10
+    },
+    {
+      "name": "parseUiFile",
+      "file": "packages/canvas-component/src/symphonies/import/import.parse.pure.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 32
+    },
+    {
+      "name": "handlers",
+      "file": "packages/canvas-component/src/symphonies/line-advanced/line.manip.end.symphony.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "endLineManip",
+      "file": "packages/canvas-component/src/symphonies/line-advanced/line.manip.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 69
+    },
+    {
+      "name": "moveLineManip",
+      "file": "packages/canvas-component/src/symphonies/line-advanced/line.manip.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 49
+    },
+    {
+      "name": "startLineManip",
+      "file": "packages/canvas-component/src/symphonies/line-advanced/line.manip.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 44
+    },
+    {
+      "name": "handlers",
+      "file": "packages/canvas-component/src/symphonies/resize-line/resize.line.move.symphony.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "handlers",
+      "file": "packages/canvas-component/src/symphonies/resize-line/resize.line.start.symphony.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "handlers",
+      "file": "packages/canvas-component/src/symphonies/resize/resize.start.symphony.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "ensureOverlayCss",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.css.stage-crew.ts",
+      "source": "measured",
+      "type": "ui-interaction",
+      "line": 1
+    },
+    {
+      "name": "applyOverlayRectForEl",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "ui-interaction",
+      "line": 39
+    },
+    {
+      "name": "ensureOverlay",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "ui-interaction",
+      "line": 12
+    },
+    {
+      "name": "getCanvasOrThrow",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "getCanvasRect",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.dom.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 35
+    },
+    {
+      "name": "createOverlayStructure",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.helpers.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 36
+    },
+    {
+      "name": "resolveEndpoints",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.helpers.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 73
+    },
+    {
+      "name": "attachAdvancedLineManipHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 66
+    },
+    {
+      "name": "ensureAdvancedLineOverlayFor",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 24
+    },
+    {
+      "name": "attachLineResizeHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 79
+    },
+    {
+      "name": "ensureLineOverlayFor",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "source": "measured",
+      "type": "ui-interaction",
+      "line": 22
+    },
+    {
+      "name": "attachResizeHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.resize.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 30
+    },
+    {
+      "name": "refreshControlPanel",
+      "file": "packages/canvas-component/src/symphonies/update/update.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 39
+    },
+    {
+      "name": "updateAttribute",
+      "file": "packages/canvas-component/src/symphonies/update/update.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 8
+    },
+    {
+      "name": "refreshControlPanel",
+      "file": "packages/canvas-component/src/symphonies/update/update.svg-node.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 110
+    },
+    {
+      "name": "updateSvgNodeAttribute",
+      "file": "packages/canvas-component/src/symphonies/update/update.svg-node.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 44
+    },
+    {
+      "name": "initConductor",
+      "file": "packages/canvas-component/src/temp-deps/conductor.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 10
+    },
+    {
+      "name": "loadJsonSequenceCatalogs",
+      "file": "packages/canvas-component/src/temp-deps/conductor.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 32
+    },
+    {
+      "name": "registerAllSequences",
+      "file": "packages/canvas-component/src/temp-deps/conductor.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 22
+    },
+    {
+      "name": "clearFlagOverrides",
+      "file": "packages/canvas-component/src/temp-deps/feature-flags.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "getFlagOverride",
+      "file": "packages/canvas-component/src/temp-deps/feature-flags.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 14
+    },
+    {
+      "name": "isFlagEnabled",
+      "file": "packages/canvas-component/src/temp-deps/feature-flags.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 18
+    },
+    {
+      "name": "setFlagOverride",
+      "file": "packages/canvas-component/src/temp-deps/feature-flags.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "clearAllObservers",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 40
+    },
+    {
+      "name": "getClassesObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 26
+    },
+    {
+      "name": "getCssRegistryObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 35
+    },
+    {
+      "name": "getSelectionObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 17
+    },
+    {
+      "name": "setClassesObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 21
+    },
+    {
+      "name": "setCssRegistryObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 30
+    },
+    {
+      "name": "setSelectionObserver",
+      "file": "packages/canvas-component/src/temp-deps/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 12
+    },
+    {
+      "name": "getAllRulesConfig",
+      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 85
+    },
+    {
+      "name": "loadAllRulesFromWindow",
+      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 75
+    },
+    {
+      "name": "setAllRulesConfig",
+      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 71
+    },
+    {
+      "name": "sanitizeHtml",
+      "file": "packages/canvas-component/src/temp-deps/sanitizeHtml.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 65
+    },
+    {
+      "name": "transform",
+      "file": "packages/canvas-component/src/types/babel-standalone.d.ts",
+      "source": "measured",
+      "type": "transformation",
+      "line": 8
+    },
+    {
+      "name": "onDropForTest",
+      "file": "packages/canvas/src/ui/CanvasDrop.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "CanvasHeader",
+      "file": "packages/canvas/src/ui/CanvasHeader.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 9
+    },
+    {
+      "name": "CanvasPage",
+      "file": "packages/canvas/src/ui/CanvasPage.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 7
+    },
+    {
+      "name": "getFieldRenderer",
+      "file": "packages/control-panel/src/components/field-renderers/index.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 45
+    },
+    {
+      "name": "registerFieldRenderer",
+      "file": "packages/control-panel/src/components/field-renderers/index.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 38
+    },
+    {
+      "name": "EmptyState",
+      "file": "packages/control-panel/src/components/layout/EmptyState.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "LoadingState",
+      "file": "packages/control-panel/src/components/layout/LoadingState.tsx",
+      "source": "measured",
+      "type": "input",
+      "line": 3
+    },
+    {
+      "name": "PanelHeader",
+      "file": "packages/control-panel/src/components/layout/PanelHeader.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 4
+    },
+    {
+      "name": "useControlPanelActions",
+      "file": "packages/control-panel/src/hooks/useControlPanelActions.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 13
+    },
+    {
+      "name": "useControlPanelSequences",
+      "file": "packages/control-panel/src/hooks/useControlPanelSequences.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 17
+    },
+    {
+      "name": "useControlPanelState",
+      "file": "packages/control-panel/src/hooks/useControlPanelState.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "useSchemaResolver",
+      "file": "packages/control-panel/src/hooks/useSchemaResolver.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 30
+    },
+    {
+      "name": "controlPanelReducer",
+      "file": "packages/control-panel/src/state/control-panel.reducer.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "initialControlPanelState",
+      "file": "packages/control-panel/src/state/control-panel.reducer.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 51
+    },
+    {
+      "name": "clearAllObservers",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 60
+    },
+    {
+      "name": "getClassesObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 45
+    },
+    {
+      "name": "getCssRegistryObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 55
+    },
+    {
+      "name": "getSelectionObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 35
+    },
+    {
+      "name": "setClassesObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 39
+    },
+    {
+      "name": "setCssRegistryObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 49
+    },
+    {
+      "name": "setSelectionObserver",
+      "file": "packages/control-panel/src/state/observer.store.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 29
+    },
+    {
+      "name": "addClass",
+      "file": "packages/control-panel/src/symphonies/classes/classes.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "removeClass",
+      "file": "packages/control-panel/src/symphonies/classes/classes.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 18
+    },
+    {
+      "name": "applyCssClassToElement",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 186
+    },
+    {
+      "name": "createCssClass",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 6
+    },
+    {
+      "name": "deleteCssClass",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 73
+    },
+    {
+      "name": "getCssClass",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 112
+    },
+    {
+      "name": "listCssClasses",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 141
+    },
+    {
+      "name": "removeCssClassFromElement",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 218
+    },
+    {
+      "name": "updateCssClass",
+      "file": "packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 40
+    },
+    {
+      "name": "deriveSelectionModel",
+      "file": "packages/control-panel/src/symphonies/selection/selection.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 4
+    },
+    {
+      "name": "awaitRefresh",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 350
+    },
+    {
+      "name": "dispatchField",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 300
+    },
+    {
+      "name": "generateFields",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 212
+    },
+    {
+      "name": "generateSections",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 235
+    },
+    {
+      "name": "initConfig",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 97
+    },
+    {
+      "name": "initMovement",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 33
+    },
+    {
+      "name": "initResolver",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 112
+    },
+    {
+      "name": "loadSchemas",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 134
+    },
+    {
+      "name": "mergeErrors",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "error-handling",
+      "line": 395
+    },
+    {
+      "name": "notifyReady",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 194
+    },
+    {
+      "name": "prepareField",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 278
+    },
+    {
+      "name": "registerObservers",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "event",
+      "line": 181
+    },
+    {
+      "name": "renderView",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 258
+    },
+    {
+      "name": "setDirty",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 338
+    },
+    {
+      "name": "toggleSection",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 428
+    },
+    {
+      "name": "updateView",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 411
+    },
+    {
+      "name": "validateField",
+      "file": "packages/control-panel/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 366
+    },
+    {
+      "name": "updateFromElement",
+      "file": "packages/control-panel/src/symphonies/update/update.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 9
+    },
+    {
+      "name": "ControlPanel",
+      "file": "packages/control-panel/src/ui/ControlPanel.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 13
+    },
+    {
+      "name": "extractElementContent",
+      "file": "packages/control-panel/src/utils/content-extractor.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 7
+    },
+    {
+      "name": "formatLabel",
+      "file": "packages/control-panel/src/utils/field.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 28
+    },
+    {
+      "name": "generatePlaceholder",
+      "file": "packages/control-panel/src/utils/field.utils.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 39
+    },
+    {
+      "name": "getNestedValue",
+      "file": "packages/control-panel/src/utils/field.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 8
+    },
+    {
+      "name": "setNestedValue",
+      "file": "packages/control-panel/src/utils/field.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 15
+    },
+    {
+      "name": "getCurrentTheme",
+      "file": "packages/header/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 27
+    },
+    {
+      "name": "toggleTheme",
+      "file": "packages/header/src/symphonies/ui/ui.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 61
+    },
+    {
+      "name": "HeaderControls",
+      "file": "packages/header/src/ui/HeaderControls.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 4
+    },
+    {
+      "name": "HeaderThemeToggle",
+      "file": "packages/header/src/ui/HeaderThemeToggle.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    },
+    {
+      "name": "HeaderTitle",
+      "file": "packages/header/src/ui/HeaderTitle.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 4
+    },
+    {
+      "name": "applyTemplateStyles",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 94
+    },
+    {
+      "name": "computeCursorOffsets",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 112
+    },
+    {
+      "name": "computeGhostSize",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "createGhostContainer",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 31
+    },
+    {
+      "name": "ensurePayload",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 7
+    },
+    {
+      "name": "installDragImage",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 134
+    },
+    {
+      "name": "renderTemplatePreview",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 51
+    },
+    {
+      "name": "handlers",
+      "file": "packages/library-component/src/symphonies/drop.symphony.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 15
+    },
+    {
+      "name": "ChatMessageComponent",
+      "file": "packages/library/src/ui/ChatMessage.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "ChatWindow",
+      "file": "packages/library/src/ui/ChatWindow.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 20
+    },
+    {
+      "name": "ConfigStatusUI",
+      "file": "packages/library/src/ui/ConfigStatusUI.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 14
+    },
+    {
+      "name": "CustomComponentList",
+      "file": "packages/library/src/ui/CustomComponentList.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 30
+    },
+    {
+      "name": "CustomComponentUpload",
+      "file": "packages/library/src/ui/CustomComponentUpload.tsx",
+      "source": "measured",
+      "type": "input",
+      "line": 28
+    },
+    {
+      "name": "LibraryPanel",
+      "file": "packages/library/src/ui/LibraryPanel.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 77
+    },
+    {
+      "name": "registerCssForComponents",
+      "file": "packages/library/src/ui/LibraryPanel.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 59
+    },
+    {
+      "name": "LibraryPreview",
+      "file": "packages/library/src/ui/LibraryPreview.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 7
+    },
+    {
+      "name": "computePreviewModel",
+      "file": "packages/library/src/ui/preview.model.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "addMessagesToCurrentSession",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 86
+    },
+    {
+      "name": "cleanupChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 265
+    },
+    {
+      "name": "clearAllChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 153
+    },
+    {
+      "name": "createChatSession",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "initialization",
+      "line": 73
+    },
+    {
+      "name": "deleteChatSession",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 134
+    },
+    {
+      "name": "exportChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 207
+    },
+    {
+      "name": "getChatHistoryStats",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 166
+    },
+    {
+      "name": "getConversationContext",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 250
+    },
+    {
+      "name": "getCurrentChatSession",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 116
+    },
+    {
+      "name": "importChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 215
+    },
+    {
+      "name": "loadChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 35
+    },
+    {
+      "name": "saveChatHistory",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 51
+    },
+    {
+      "name": "startNewChatSession",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 124
+    },
+    {
+      "name": "getCategoryDisplayName",
+      "file": "packages/library/src/utils/library.utils.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 85
+    },
+    {
+      "name": "groupComponentsByCategory",
+      "file": "packages/library/src/utils/library.utils.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 63
+    },
+    {
+      "name": "pickDataAttrs",
+      "file": "packages/library/src/utils/library.utils.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 25
+    },
+    {
+      "name": "varsToStyle",
+      "file": "packages/library/src/utils/library.utils.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "buildSystemPrompt",
+      "file": "packages/library/src/utils/prompt.templates.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 287
+    },
+    {
+      "name": "getPromptTemplate",
+      "file": "packages/library/src/utils/prompt.templates.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 335
+    },
+    {
+      "name": "clearCustomComponents",
+      "file": "packages/library/src/utils/storage.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 170
+    },
+    {
+      "name": "getStorageInfo",
+      "file": "packages/library/src/utils/storage.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 183
+    },
+    {
+      "name": "loadCustomComponents",
+      "file": "packages/library/src/utils/storage.utils.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 133
+    },
+    {
+      "name": "removeCustomComponent",
+      "file": "packages/library/src/utils/storage.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 150
+    },
+    {
+      "name": "saveCustomComponent",
+      "file": "packages/library/src/utils/storage.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 72
+    },
+    {
+      "name": "normalizeComponent",
+      "file": "packages/library/src/utils/validation.utils.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 174
+    },
+    {
+      "name": "validateAndParseJson",
+      "file": "packages/library/src/utils/validation.utils.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 195
+    },
+    {
+      "name": "validateComponentJson",
+      "file": "packages/library/src/utils/validation.utils.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 122
+    },
+    {
+      "name": "validateFile",
+      "file": "packages/library/src/utils/validation.utils.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 213
+    },
+    {
+      "name": "OpportunityAnalyzer",
+      "file": "packages/real-estate-analyzer/src/ui/OpportunityAnalyzer.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "aggregateAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/aggregate.anomalies.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 8
+    },
+    {
+      "name": "detectBehavioralAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.behavioral.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 16
+    },
+    {
+      "name": "detectAnomaliesCompleted",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.completed.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 5
+    },
+    {
+      "name": "detectCoverageAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.coverage.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 16
+    },
+    {
+      "name": "detectErrorAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.errors.ts",
+      "source": "measured",
+      "type": "error-handling",
+      "line": 15
+    },
+    {
+      "name": "detectPerformanceAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.performance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 12
+    },
+    {
+      "name": "detectAnomaliesRequested",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.requested.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 3
+    },
+    {
+      "name": "detectSloBreaches",
+      "file": "packages/self-healing/src/handlers/anomaly/detect.slo.breaches.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 75
+    },
+    {
+      "name": "loadTelemetryData",
+      "file": "packages/self-healing/src/handlers/anomaly/load.telemetry.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 5
+    },
+    {
+      "name": "runAnomalyDetection",
+      "file": "packages/self-healing/src/handlers/anomaly/run.anomaly.detect.ts",
+      "source": "measured",
+      "type": "execution",
+      "line": 35
+    },
+    {
+      "name": "storeAnomalies",
+      "file": "packages/self-healing/src/handlers/anomaly/store.anomalies.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "aggregateBaselineMetrics",
+      "file": "packages/self-healing/src/handlers/baseline/aggregate.metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 14
+    },
+    {
+      "name": "baselineCompleted",
+      "file": "packages/self-healing/src/handlers/baseline/baseline.completed.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 16
+    },
+    {
+      "name": "collectBaselineMetrics",
+      "file": "packages/self-healing/src/handlers/baseline/collect.metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 20
+    },
+    {
+      "name": "establishBaseline",
+      "file": "packages/self-healing/src/handlers/baseline/establish.baseline.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 31
+    },
+    {
+      "name": "runBaselineEstablish",
+      "file": "packages/self-healing/src/handlers/baseline/run.baseline.establish.ts",
+      "source": "measured",
+      "type": "execution",
+      "line": 12
+    },
+    {
+      "name": "storeBaseline",
+      "file": "packages/self-healing/src/handlers/baseline/store.baseline.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 16
+    },
+    {
+      "name": "aggregateDiagnosis",
+      "file": "packages/self-healing/src/handlers/diagnosis/aggregate.diagnosis.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 22
+    },
+    {
+      "name": "analyzeBehavioralIssues",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.behavioral.issues.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 5
+    },
+    {
+      "name": "analyzeCompleted",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.completed.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 5
+    },
+    {
+      "name": "analyzeCoverageIssues",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.coverage.issues.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 5
+    },
+    {
+      "name": "analyzeErrorIssues",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.error.issues.ts",
+      "source": "measured",
+      "type": "error-handling",
+      "line": 5
+    },
+    {
+      "name": "analyzePerformanceIssues",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.performance.issues.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 5
+    },
+    {
+      "name": "analyzeRequested",
+      "file": "packages/self-healing/src/handlers/diagnosis/analyze.requested.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 7
+    },
+    {
+      "name": "assessImpact",
+      "file": "packages/self-healing/src/handlers/diagnosis/assess.impact.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 14
+    },
+    {
+      "name": "loadAnomalies",
+      "file": "packages/self-healing/src/handlers/diagnosis/load.anomalies.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 24
+    },
+    {
+      "name": "loadCodebaseInfo",
+      "file": "packages/self-healing/src/handlers/diagnosis/load.codebase.info.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 23
+    },
+    {
+      "name": "recommendFixes",
+      "file": "packages/self-healing/src/handlers/diagnosis/recommend.fixes.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 8
+    },
+    {
+      "name": "runDiagnosisAnalyze",
+      "file": "packages/self-healing/src/handlers/diagnosis/run.diagnosis.analyze.ts",
+      "source": "measured",
+      "type": "execution",
+      "line": 33
+    },
+    {
+      "name": "storeDiagnosis",
+      "file": "packages/self-healing/src/handlers/diagnosis/store.diagnosis.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "aggregateTelemetryMetrics",
+      "file": "packages/self-healing/src/handlers/telemetry/aggregate.metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 19
+    },
+    {
+      "name": "extractTelemetryEvents",
+      "file": "packages/self-healing/src/handlers/telemetry/extract.events.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 82
+    },
+    {
+      "name": "loadLogFiles",
+      "file": "packages/self-healing/src/handlers/telemetry/load.logs.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 101
+    },
+    {
+      "name": "normalizeTelemetryData",
+      "file": "packages/self-healing/src/handlers/telemetry/normalize.data.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 37
+    },
+    {
+      "name": "parseTelemetryCompleted",
+      "file": "packages/self-healing/src/handlers/telemetry/parse.completed.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "parseTelemetryRequested",
+      "file": "packages/self-healing/src/handlers/telemetry/parse.requested.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "runTelemetryParsing",
+      "file": "packages/self-healing/src/handlers/telemetry/run.telemetry.parse.ts",
+      "source": "measured",
+      "type": "execution",
+      "line": 33
+    },
+    {
+      "name": "storeTelemetryDatabase",
+      "file": "packages/self-healing/src/handlers/telemetry/store.database.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 25
+    },
+    {
+      "name": "annotateShapeEvolution",
+      "file": "packages/self-healing/src/telemetry/annotation.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 12
+    },
+    {
+      "name": "hasAnnotation",
+      "file": "packages/self-healing/src/telemetry/annotation.js",
+      "source": "measured",
+      "type": "generic",
+      "line": 20
+    },
+    {
+      "name": "annotateShapeEvolution",
+      "file": "packages/self-healing/src/telemetry/annotation.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 31
+    },
+    {
+      "name": "hasAnnotation",
+      "file": "packages/self-healing/src/telemetry/annotation.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 42
+    },
+    {
+      "name": "clearAnomalies",
+      "file": "packages/self-healing/src/telemetry/anomalies.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 27
+    },
+    {
+      "name": "getAnomalies",
+      "file": "packages/self-healing/src/telemetry/anomalies.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    },
+    {
+      "name": "recordAnomaly",
+      "file": "packages/self-healing/src/telemetry/anomalies.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 18
+    },
+    {
+      "name": "configExists",
+      "file": "packages/self-healing/src/telemetry/budget-evaluator.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 59
+    },
+    {
+      "name": "evaluateBudgets",
+      "file": "packages/self-healing/src/telemetry/budget-evaluator.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 39
+    },
+    {
+      "name": "clearTelemetry",
+      "file": "packages/self-healing/src/telemetry/collector.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    },
+    {
+      "name": "getTelemetry",
+      "file": "packages/self-healing/src/telemetry/collector.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 19
+    },
+    {
+      "name": "recordTelemetry",
+      "file": "packages/self-healing/src/telemetry/collector.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 15
+    },
+    {
+      "name": "matchesContract",
+      "file": "packages/self-healing/src/telemetry/contract.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 30
+    },
+    {
+      "name": "computeCoverageId",
+      "file": "packages/self-healing/src/telemetry/coverage-coupling.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "persistCoverageSegment",
+      "file": "packages/self-healing/src/telemetry/coverage-persistence.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "beat",
+      "file": "packages/self-healing/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 38
+    },
+    {
+      "name": "endFeature",
+      "file": "packages/self-healing/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 56
+    },
+    {
+      "name": "registerBatonMutation",
+      "file": "packages/self-healing/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 43
+    },
+    {
+      "name": "registerDomainMutation",
+      "file": "packages/self-healing/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 48
+    },
+    {
+      "name": "startFeature",
+      "file": "packages/self-healing/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 24
+    },
+    {
+      "name": "computeShapeHash",
+      "file": "packages/self-healing/src/telemetry/hash.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 29
+    },
+    {
+      "name": "shortHash",
+      "file": "packages/self-healing/src/telemetry/hash.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 35
+    },
+    {
+      "name": "installTelemetryMatcher",
+      "file": "packages/self-healing/src/telemetry/matcher.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "persistTelemetry",
+      "file": "packages/self-healing/src/telemetry/persistence.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 38
+    },
+    {
+      "name": "getAccessibilityLabelForColor",
+      "file": "packages/slo-dashboard/src/domain/accessibility.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 11
+    },
+    {
+      "name": "calculateProjectionStatus",
+      "file": "packages/slo-dashboard/src/domain/compliance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 54
+    },
+    {
+      "name": "computeWeightedCompliance",
+      "file": "packages/slo-dashboard/src/domain/compliance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 12
+    },
+    {
+      "name": "getProgressColor",
+      "file": "packages/slo-dashboard/src/domain/compliance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 43
+    },
+    {
+      "name": "isBurnRateSpike",
+      "file": "packages/slo-dashboard/src/domain/compliance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 35
+    },
+    {
+      "name": "sortByRemainingBudget",
+      "file": "packages/slo-dashboard/src/domain/compliance.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    },
+    {
+      "name": "_testClearTelemetry",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 102
+    },
+    {
+      "name": "computeCompliance",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 37
+    },
+    {
+      "name": "loadBudgets",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 21
+    },
+    {
+      "name": "loadMetrics",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 27
+    },
+    {
+      "name": "serializeDashboardState",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 76
+    },
+    {
+      "name": "triggerExportDownload",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "output",
+      "line": 94
+    },
+    {
+      "name": "validateExportSignature",
+      "file": "packages/slo-dashboard/src/handlers/metrics.ts",
+      "source": "measured",
+      "type": "validation",
+      "line": 88
+    },
+    {
+      "name": "useComplianceStatus",
+      "file": "packages/slo-dashboard/src/hooks/useComplianceStatus.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 10
+    },
+    {
+      "name": "useErrorBudget",
+      "file": "packages/slo-dashboard/src/hooks/useErrorBudget.ts",
+      "source": "measured",
+      "type": "error-handling",
+      "line": 10
+    },
+    {
+      "name": "useSLOMetrics",
+      "file": "packages/slo-dashboard/src/hooks/useSLOMetrics.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 9
+    },
+    {
+      "name": "clearTelemetryBuffer",
+      "file": "packages/slo-dashboard/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 21
+    },
+    {
+      "name": "emitTelemetry",
+      "file": "packages/slo-dashboard/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 13
+    },
+    {
+      "name": "getTelemetryBuffer",
+      "file": "packages/slo-dashboard/src/telemetry/emitter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 17
+    },
+    {
+      "name": "App",
+      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 13
+    },
+    {
+      "name": "buildFramesFromRawLog",
+      "file": "packages/telemetry-workbench/src/modules/frames/frames-builder.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 36
+    },
+    {
+      "name": "detectFileType",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 63
+    },
+    {
+      "name": "loadAndParseFile",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
+      "source": "measured",
+      "type": "input",
+      "line": 67
+    },
+    {
+      "name": "parseRawLogFile",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 6
+    },
+    {
+      "name": "applyEventFilter",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/OperationFilter.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 70
+    },
+    {
+      "name": "OperationFilterPanel",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/OperationFilter.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 106
+    },
+    {
+      "name": "analyzerToTimelineData",
+      "file": "packages/telemetry-workbench/src/modules/TimelineDataAdapter.ts",
+      "source": "measured",
+      "type": "generic",
+      "line": 13
+    },
+    {
+      "name": "TimelineFlowVisualization",
+      "file": "packages/telemetry-workbench/src/modules/TimelineFlowVisualization.tsx",
+      "source": "measured",
+      "type": "generic",
+      "line": 23
+    }
+  ],
+  "source": "measured",
+  "timestamp": "2025-11-28T19:25:40.488Z",
+  "scanPatterns": [
+    "/export\\s+const\\s+handlers\\s*=/g",
+    "/export\\s+const\\s+(\\w+)\\s*=\\s*(?:async\\s+)?\\(/g",
+    "/export\\s+(?:async\\s+)?function\\s+(\\w+)\\s*\\(/g",
+    "/export\\s+const\\s+(\\w+)\\s*:\\s*[A-Z]\\w*\\s*=/g",
+    "/export\\s+const\\s+(\\w*[Hh]andler\\w*)\\s*[=:]/g"
+  ]
+}

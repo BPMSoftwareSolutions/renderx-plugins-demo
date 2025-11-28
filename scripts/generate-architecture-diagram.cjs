@@ -268,7 +268,8 @@ function generateDiagram(metrics = {}) {
     conformityScore = 0,
     beatCoverage = null,
     conformityViolations = [],
-    symphonies = []
+    symphonies = [],
+    historicalData = null
   } = metrics;
   
   // Safe numeric conversions
@@ -449,37 +450,29 @@ ${(godHandlers && godHandlers.length > 0) || safeDuplication > 50 || safeCoverag
       ].slice(0, 5)
 ) : ''}
 
-═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+${historicalData ? renderHistoricalTrendAnalysis(historicalData) : ''}
 
-                           🎼 LEGEND & DOMAIN TERMINOLOGY 🎼
-
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ SYMPHONIC ARCHITECTURE TERMS:                                                                                 │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ • Symphony:          Logical grouping of related handler functions                                            │
-│ • Sequence:          Execution order of handlers within a symphony (choreographed flow)                        │
-│ • Handler:           Individual function that performs a specific orchestration task                          │
-│ • Beat:              Execution unit within a Movement (4 movements × 4 beats = 16 beats total)               │
-│ • Movement:          Major phase in analysis (Discovery, Metrics, Coverage, Conformity)                       │
-│ • Data Baton 🎭:     Metadata container passed between beats (files, handlers, metrics)                       │
-│ • Orchestration:     Complete system of symphonies, sequences, and handlers working together                  │
-│                                                                                                                 │
-│ CODE ANALYSIS METRICS:                                                                                        │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ • LOC:               Lines of Code (measured, not synthetic)                                                   │
-│ • Coverage:          Percentage of code covered by tests (target: 80%+)                                       │
-│ • Duplication:       Percentage of duplicate code blocks identified                                           │
-│ • God Handler:       Handler with 100+ LOC and <70% coverage (refactoring candidate)                         │
-│                                                                                                                 │
-│ COVERAGE SYMBOLS:                                                                                             │
-├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ 🟢 GREEN (80%+):     Well-covered, production-ready                                                           │
-│ 🟡 YELLOW (50-79%):  Acceptable but needs improvement                                                         │
-│ 🔴 RED (<50%):       Poor coverage, high risk                                                                 │
-│ ⚠️  WARNING:          High complexity or high-risk area                                                         │
-│ ✓ CHECK:             Meets requirements/passing                                                               │
-│                                                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+${renderLegendAndTerminology({
+  domainId: domainId,
+  entries: [
+    { term: 'Symphony', definition: 'Logical grouping of related handler functions' },
+    { term: 'Sequence', definition: 'Execution order of handlers (choreographed flow)' },
+    { term: 'Handler', definition: 'Individual function performing specific orchestration task' },
+    { term: 'Beat', definition: 'Execution unit within a Movement (4 movements × 4 beats)' },
+    { term: 'Movement', definition: 'Major phase (Discovery, Metrics, Coverage, Conformity)' },
+    { term: 'Data Baton 🎭', definition: 'Metadata passed between beats (files, handlers, metrics)' },
+    { term: 'Orchestration', definition: 'Complete system of symphonies, sequences, and handlers' },
+    { term: 'LOC', definition: 'Lines of Code (measured, not synthetic)' },
+    { term: 'Coverage', definition: 'Percentage covered by tests (target: 80%+)' },
+    { term: 'Duplication', definition: 'Percentage of duplicate code blocks identified' },
+    { term: 'God Handler', definition: 'Handler with 100+ LOC and <70% coverage (refactor)' },
+    { term: '🟢 GREEN (80%+)', definition: 'Well-covered, production-ready' },
+    { term: '🟡 YELLOW (50-79%)', definition: 'Acceptable but needs improvement' },
+    { term: '🔴 RED (<50%)', definition: 'Poor coverage, high risk' },
+    { term: '⚠️ WARNING', definition: 'High complexity or high-risk area' },
+    { term: '✓ CHECK', definition: 'Meets requirements/passing' }
+  ]
+})}
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 

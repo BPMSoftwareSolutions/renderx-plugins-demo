@@ -65,6 +65,11 @@ async function scanHandlerExports() {
           while ((match = pattern.exec(content)) !== null) {
             const handlerName = match[1];
             
+            // Skip if no capturing group (e.g., first pattern which just finds "handlers" object)
+            if (!handlerName) {
+              continue;
+            }
+            
             // Find line number by counting newlines up to match position
             const beforeMatch = content.substring(0, match.index);
             const lineNumber = beforeMatch.split('\n').length;

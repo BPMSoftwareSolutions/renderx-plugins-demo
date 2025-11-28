@@ -235,14 +235,14 @@ function renderHandlerPortfolioFoundation(data) {
 
   let output = '';
   output += '╔════ HANDLER PORTFOLIO METRICS ════╗\n';
-  output += `║ Files           : ${String(totalFiles).padStart(3)}    ║\n`;
-  output += `║ Total LOC       : ${String(totalLoc).padStart(4)}    ║\n`;
-  output += `║ Handlers        : ${String(handlerCount).padStart(3)}    ║\n`;
-  output += `║ Avg LOC/Handler : ${avgLocPerHandler.toFixed(1)}    ║\n`;
-  output += `║ Coverage        : ${coverageStatements.toFixed(1)}%    ║\n`;
-  output += `║ Duplication     : ${String(duplicationBlocks).padStart(3)}    ║\n`;
-  output += `║ Maintainability : ${safeMaintainability.toFixed(1)}    ║\n`;
-  output += `║ Conformity      : ${safeConformity.toFixed(1)}%    ║\n`;
+  output += `║ Files           : ${padString(String(totalFiles), 14)}║\n`;
+  output += `║ Total LOC       : ${padString(String(totalLoc), 14)}║\n`;
+  output += `║ Handlers        : ${padString(String(handlerCount), 14)}║\n`;
+  output += `║ Avg LOC/Handler : ${padString(avgLocPerHandler.toFixed(1), 14)}║\n`;
+  output += `║ Coverage        : ${padString(coverageStatements.toFixed(1) + '%', 14)}║\n`;
+  output += `║ Duplication     : ${padString(String(duplicationBlocks), 14)}║\n`;
+  output += `║ Maintainability : ${padString(safeMaintainability.toFixed(1), 14)}║\n`;
+  output += `║ Conformity      : ${padString(safeConformity.toFixed(1) + '%', 14)}║\n`;
   output += '╚════════════════════════════════════╝';
   return output;
 }
@@ -255,18 +255,18 @@ function renderHandlerPortfolioFoundation(data) {
 function renderCoverageHeatmapByBeat(data) {
   let output = '';
   output += '╔════ COVERAGE HEATMAP BY BEAT ════╗\n';
-  output += '║ Beat       Mov.   Cov   Bar      ║\n';
-  output += '╠══════════════════════════════════╣\n';
+  output += '║ Beat       Mov.  Cov  Bar         ║\n';
+  output += '╠═══════════════════════════════════╣\n';
 
   data.forEach(beat => {
     const beatName = padString(beat.beat, 10);
-    const movement = padString(beat.movement, 6);
-    const coverage = padString(Math.round(beat.coverage) + '%', 4, true);
-    const bar = generateBar(beat.coverage, 15);
-    output += `║ ${beatName} ${movement} ${coverage} ${padString(bar, 15)}║\n`;
+    const movement = padString(beat.movement, 5);
+    const coverage = padString(Math.round(beat.coverage) + '%', 3, true);
+    const bar = padString(generateBar(beat.coverage, 11), 11);
+    output += `║ ${beatName} ${movement} ${coverage} ${bar} ║\n`;
   });
 
-  output += '╚══════════════════════════════════╝';
+  output += '╚═══════════════════════════════════╝';
   return output;
 }
 
