@@ -1,6 +1,6 @@
 # Renderx Web Orchestration Code Analysis Report
 
-**Generated**: 2025-11-28T18:19:40.084Z  
+**Generated**: 2025-11-28T18:40:00.551Z  
 **Codebase**: renderx-web-orchestration  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -15,8 +15,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 84.59% | ✅ GOOD| Risk: LOW|
-| Maintainability | 48.44/100 | 🔴 POOR| Grade: C|
+| Test Coverage | 82.49% | ✅ GOOD| Risk: LOW|
+| Maintainability | 59.94/100 | 🔴 POOR| Grade: C|
 | Code Duplication | 78.30% | ❌ VERY HIGH| Action: Refactor|
 
 ---
@@ -30,9 +30,20 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │  📊 CODEBASE METRICS FOUNDATION                                                                                 │
 │  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: 777 │ Total LOC: 5045  │ Handlers: 283│ Avg LOC/Handler: 17.83│ Coverage: 84.59% │           │
+│  │ Total Files: 777 │ Total LOC: 5045  │ Handlers: 283│ Avg LOC/Handler: 17.83│ Coverage: 82.49% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+╔════ HANDLER PORTFOLIO METRICS ════╗
+║ Files           : 777    ║
+║ Total LOC       : 5045    ║
+║ Handlers        : 283    ║
+║ Avg LOC/Handler : 17.8    ║
+║ Coverage        : 82.5%    ║
+║ Duplication     :   0    ║
+║ Maintainability : 59.9    ║
+║ Conformity      : 87.5%    ║
+╚════════════════════════════════════╝
 
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║
@@ -84,7 +95,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ├──────────────────┤  ├──────────────────┤
         │ • Files: 777     │  │ • Handlers: 283 │
         │ • LOC: 5045      │  │ • Avg LOC: 17.83│
-        │ • Beats: 4/4 ✓   │  │ • Coverage: 84.6%│
+        │ • Beats: 4/4 ✓   │  │ • Coverage: 82.5%│
         │ • Status: READY  │  │ • Status: READY  │
         └────────┬─────────┘  └────────┬─────────┘
                  │                     │
@@ -104,40 +115,40 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H1] resolveTemplate (16)║
-        ║  │     Beat 1.2 → [H2] injectCssFallback (18)║
-        ║  │     Beat 1.3 → [H3] injectRawCss (15)║
-        ║  │     Beat 1.4 → [H4] appendTo (14)║
+        ║  │     Beat 1.1 → [H1] resolveTemplate (15)║
+        ║  │     Beat 1.2 → [H2] injectCssFallback (17)║
+        ║  │     Beat 1.3 → [H3] injectRawCss (17)║
+        ║  │     Beat 1.4 → [H4] appendTo (20)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H5] applyClasses (21)║
-        ║  │     Beat 2.2 → [H6] applyInlineStyle (15)║
-        ║  │     Beat 2.3 → [H7] createElementWithId (15)║
-        ║  │     Beat 2.4 → [H8] getCanvasOrThrow (15)║
+        ║  │     Beat 2.1 → [H5] applyClasses (18)║
+        ║  │     Beat 2.2 → [H6] applyInlineStyle (17)║
+        ║  │     Beat 2.3 → [H7] createElementWithId (19)║
+        ║  │     Beat 2.4 → [H8] getCanvasOrThrow (18)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 3.1 → [H9] attachStandardImportInteractions (16)║
-        ║  │     Beat 3.2 → [H10] createFromImportRecord (18)║
-        ║  │     Beat 3.3 → [H11] toCreatePayloadFromData (21)║
-        ║  │     Beat 3.4 → [H12] transformClipboardToCreatePayload (16)║
+        ║  │     Beat 3.1 → [H9] attachStandardImportInteractions (19)║
+        ║  │     Beat 3.2 → [H10] createFromImportRecord (15)║
+        ║  │     Beat 3.3 → [H11] toCreatePayloadFromData (15)║
+        ║  │     Beat 3.4 → [H12] transformClipboardToCreatePayload (18)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 4.1 → [H13] transformImportToCreatePayload (15)║
-        ║  │     Beat 4.2 → [H14] attachDrag (19)║
-        ║  │     Beat 4.3 → [H15] attachSelection (19)║
-        ║  │     Beat 4.4 → [H16] attachSvgNodeClick (21)║
+        ║  │     Beat 4.1 → [H13] transformImportToCreatePayload (18)║
+        ║  │     Beat 4.2 → [H14] attachDrag (21)║
+        ║  │     Beat 4.3 → [H15] attachSelection (20)║
+        ║  │     Beat 4.4 → [H16] attachSvgNodeClick (18)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 1.1 → [H17] registerInstance (19)║
+        ║  │     Beat 1.1 → [H17] registerInstance (21)║
         ║  │     Beat 1.2 → [H18] notifyUi (16)║
         ║  │     Beat 1.3 → [H19] cleanupReactRoot (21)║
-        ║  │     Beat 1.4 → [H20] exposeEventRouterToReact (19)║
+        ║  │     Beat 1.4 → [H20] exposeEventRouterToReact (18)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H21] renderReact (16)║
-        ║  │     Beat 2.2 → [H22] computeCssVarBlock (18)║
-        ║  │     Beat 2.3 → [H23] computeInlineStyle (20)║
+        ║  │     Beat 2.1 → [H21] renderReact (20)║
+        ║  │     Beat 2.2 → [H22] computeCssVarBlock (20)║
+        ║  │     Beat 2.3 → [H23] computeInlineStyle (19)║
         ║  │     Beat 2.4 → [H24] computeInstanceClass (17)║
         ║  │              🎭 Data Baton → (metrics passed)║
         ║  │     Beat 3.1 → [H25] validateReactCode (17)║
-        ║  │     Beat 3.2 → [H26] validateReactCodeOrThrow (17)║
+        ║  │     Beat 3.2 → [H26] validateReactCodeOrThrow (19)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 26 | Movements: 4 | Beats: 28   ║
         ║  │                                   ║
         ║  ├─ Ui Symphony                         ║
@@ -147,31 +158,31 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H27] awaitRefresh (20)║
-        ║  │     Beat 1.2 → [H28] dispatchField (20)║
-        ║  │     Beat 1.3 → [H29] generateFields (18)║
-        ║  │     Beat 1.4 → [H30] generateSections (15)║
+        ║  │     Beat 1.1 → [H27] awaitRefresh (18)║
+        ║  │     Beat 1.2 → [H28] dispatchField (19)║
+        ║  │     Beat 1.3 → [H29] generateFields (17)║
+        ║  │     Beat 1.4 → [H30] generateSections (21)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H31] initConfig (17)║
-        ║  │     Beat 2.2 → [H32] initMovement (14)║
+        ║  │     Beat 2.1 → [H31] initConfig (18)║
+        ║  │     Beat 2.2 → [H32] initMovement (20)║
         ║  │     Beat 2.3 → [H33] initResolver (16)║
-        ║  │     Beat 2.4 → [H34] loadSchemas (18)║
+        ║  │     Beat 2.4 → [H34] loadSchemas (20)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 3.1 → [H35] mergeErrors (20)║
-        ║  │     Beat 3.2 → [H36] notifyReady (20)║
-        ║  │     Beat 3.3 → [H37] prepareField (15)║
-        ║  │     Beat 3.4 → [H38] registerObservers (15)║
+        ║  │     Beat 3.1 → [H35] mergeErrors (16)║
+        ║  │     Beat 3.2 → [H36] notifyReady (21)║
+        ║  │     Beat 3.3 → [H37] prepareField (14)║
+        ║  │     Beat 3.4 → [H38] registerObservers (20)║
         ║  │              🎭 Data Baton → (metrics passed)║
         ║  │     Beat 4.1 → [H39] renderView (20)║
-        ║  │     Beat 4.2 → [H40] setDirty (18)║
+        ║  │     Beat 4.2 → [H40] setDirty (17)║
         ║  │     Beat 4.3 → [H41] toggleSection (17)║
-        ║  │     Beat 4.4 → [H42] updateView (16)║
+        ║  │     Beat 4.4 → [H42] updateView (17)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 1.1 → [H43] validateField (17)║
-        ║  │     Beat 1.2 → [H44] getCurrentTheme (18)║
-        ║  │     Beat 1.3 → [H45] toggleTheme (15)║
+        ║  │     Beat 1.1 → [H43] validateField (18)║
+        ║  │     Beat 1.2 → [H44] getCurrentTheme (20)║
+        ║  │     Beat 1.3 → [H45] toggleTheme (21)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 19 | Movements: 4 | Beats: 20   ║
         ║  │                                   ║
         ║  ├─ Select Symphony                     ║
@@ -181,22 +192,22 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H46] ensureOverlayCss (21)║
-        ║  │     Beat 1.2 → [H47] applyOverlayRectForEl (16)║
+        ║  │     Beat 1.1 → [H46] ensureOverlayCss (19)║
+        ║  │     Beat 1.2 → [H47] applyOverlayRectForEl (20)║
         ║  │     Beat 1.3 → [H48] ensureOverlay (17)║
-        ║  │     Beat 1.4 → [H49] getCanvasOrThrow (21)║
+        ║  │     Beat 1.4 → [H49] getCanvasOrThrow (15)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H50] getCanvasRect (17)║
+        ║  │     Beat 2.1 → [H50] getCanvasRect (16)║
         ║  │     Beat 2.2 → [H51] createOverlayStructure (19)║
-        ║  │     Beat 2.3 → [H52] resolveEndpoints (18)║
-        ║  │     Beat 2.4 → [H53] attachAdvancedLineManipHandlers (16)║
+        ║  │     Beat 2.3 → [H52] resolveEndpoints (14)║
+        ║  │     Beat 2.4 → [H53] attachAdvancedLineManipHandlers (17)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 3.1 → [H54] ensureAdvancedLineOverlayFor (15)║
-        ║  │     Beat 3.2 → [H55] attachLineResizeHandlers (17)║
+        ║  │     Beat 3.1 → [H54] ensureAdvancedLineOverlayFor (20)║
+        ║  │     Beat 3.2 → [H55] attachLineResizeHandlers (21)║
         ║  │     Beat 3.3 → [H56] ensureLineOverlayFor (18)║
-        ║  │     Beat 3.4 → [H57] attachResizeHandlers (20)║
+        ║  │     Beat 3.4 → [H57] attachResizeHandlers (17)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 12 | Movements: 4 | Beats: 12   ║
         ║  │                                   ║
         ║  ├─ Export Symphony                     ║
@@ -206,19 +217,19 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H58] collectCssClasses (19)║
-        ║  │     Beat 1.2 → [H59] discoverComponentsFromDom (21)║
-        ║  │     Beat 1.3 → [H60] downloadUiFile (21)║
-        ║  │     Beat 1.4 → [H61] exportSvgToGif (16)║
+        ║  │     Beat 1.1 → [H58] collectCssClasses (16)║
+        ║  │     Beat 1.2 → [H59] discoverComponentsFromDom (20)║
+        ║  │     Beat 1.3 → [H60] downloadUiFile (18)║
+        ║  │     Beat 1.4 → [H61] exportSvgToGif (20)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H62] queryAllComponents (21)║
-        ║  │     Beat 2.2 → [H63] createMP4Encoder (17)║
-        ║  │     Beat 2.3 → [H64] exportSvgToMp4 (19)║
-        ║  │     Beat 2.4 → [H65] buildUiFileContent (21)║
+        ║  │     Beat 2.1 → [H62] queryAllComponents (15)║
+        ║  │     Beat 2.2 → [H63] createMP4Encoder (16)║
+        ║  │     Beat 2.3 → [H64] exportSvgToMp4 (21)║
+        ║  │     Beat 2.4 → [H65] buildUiFileContent (17)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 3.1 → [H66] collectLayoutData (16)║
+        ║  │     Beat 3.1 → [H66] collectLayoutData (19)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 9 | Movements: 4 | Beats: 12    ║
         ║  │                                   ║
         ║  ├─ Css Management Symphony             ║
@@ -228,16 +239,16 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H67] applyCssClassToElement (20)║
-        ║  │     Beat 1.2 → [H68] createCssClass (16)║
-        ║  │     Beat 1.3 → [H69] deleteCssClass (20)║
-        ║  │     Beat 1.4 → [H70] getCssClass (21)║
+        ║  │     Beat 1.1 → [H67] applyCssClassToElement (15)║
+        ║  │     Beat 1.2 → [H68] createCssClass (18)║
+        ║  │     Beat 1.3 → [H69] deleteCssClass (19)║
+        ║  │     Beat 1.4 → [H70] getCssClass (20)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H71] listCssClasses (19)║
-        ║  │     Beat 2.2 → [H72] removeCssClassFromElement (21)║
-        ║  │     Beat 2.3 → [H73] updateCssClass (17)║
+        ║  │     Beat 2.1 → [H71] listCssClasses (16)║
+        ║  │     Beat 2.2 → [H72] removeCssClassFromElement (16)║
+        ║  │     Beat 2.3 → [H73] updateCssClass (21)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 7 | Movements: 4 | Beats: 8    ║
         ║  │                                   ║
         ║  ├─ Drag Symphony                       ║
@@ -247,16 +258,16 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H74] applyTemplateStyles (16)║
-        ║  │     Beat 1.2 → [H75] computeCursorOffsets (20)║
-        ║  │     Beat 1.3 → [H76] computeGhostSize (19)║
-        ║  │     Beat 1.4 → [H77] createGhostContainer (17)║
+        ║  │     Beat 1.1 → [H74] applyTemplateStyles (19)║
+        ║  │     Beat 1.2 → [H75] computeCursorOffsets (16)║
+        ║  │     Beat 1.3 → [H76] computeGhostSize (20)║
+        ║  │     Beat 1.4 → [H77] createGhostContainer (14)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H78] ensurePayload (17)║
-        ║  │     Beat 2.2 → [H79] installDragImage (18)║
-        ║  │     Beat 2.3 → [H80] renderTemplatePreview (19)║
+        ║  │     Beat 2.1 → [H78] ensurePayload (19)║
+        ║  │     Beat 2.2 → [H79] installDragImage (20)║
+        ║  │     Beat 2.3 → [H80] renderTemplatePreview (21)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 7 | Movements: 4 | Beats: 8    ║
         ║  │                                   ║
         ║  ├─ Import Symphony                     ║
@@ -266,15 +277,15 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H81] injectCssClasses (15)║
-        ║  │     Beat 1.2 → [H82] openUiFile (16)║
-        ║  │     Beat 1.3 → [H83] registerInstances (20)║
-        ║  │     Beat 1.4 → [H84] applyHierarchyAndOrder (18)║
+        ║  │     Beat 1.1 → [H81] injectCssClasses (20)║
+        ║  │     Beat 1.2 → [H82] openUiFile (21)║
+        ║  │     Beat 1.3 → [H83] registerInstances (21)║
+        ║  │     Beat 1.4 → [H84] applyHierarchyAndOrder (16)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H85] createComponentsSequentially (21)║
-        ║  │     Beat 2.2 → [H86] parseUiFile (17)║
+        ║  │     Beat 2.1 → [H85] createComponentsSequentially (15)║
+        ║  │     Beat 2.2 → [H86] parseUiFile (20)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 6 | Movements: 4 | Beats: 8    ║
         ║  │                                   ║
         ║  ├─ Update Symphony                     ║
@@ -284,14 +295,14 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H87] refreshControlPanel (21)║
-        ║  │     Beat 1.2 → [H88] updateAttribute (16)║
-        ║  │     Beat 1.3 → [H89] refreshControlPanel (15)║
-        ║  │     Beat 1.4 → [H90] updateSvgNodeAttribute (18)║
+        ║  │     Beat 1.1 → [H87] refreshControlPanel (17)║
+        ║  │     Beat 1.2 → [H88] updateAttribute (19)║
+        ║  │     Beat 1.3 → [H89] refreshControlPanel (20)║
+        ║  │     Beat 1.4 → [H90] updateSvgNodeAttribute (16)║
         ║  │              🎭 Data Baton → (metrics passed)║
-        ║  │     Beat 2.1 → [H91] updateFromElement (17)║
+        ║  │     Beat 2.1 → [H91] updateFromElement (15)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 5 | Movements: 4 | Beats: 8    ║
         ║  │                                   ║
         ║  ├─ Line Advanced Symphony              ║
@@ -301,12 +312,12 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H92] line-advancedHandler (19)║
-        ║  │     Beat 1.2 → [H93] endLineManip (20)║
-        ║  │     Beat 1.3 → [H94] moveLineManip (15)║
-        ║  │     Beat 1.4 → [H95] startLineManip (21)║
+        ║  │     Beat 1.1 → [H92] line-advancedHandler (17)║
+        ║  │     Beat 1.2 → [H93] endLineManip (16)║
+        ║  │     Beat 1.3 → [H94] moveLineManip (19)║
+        ║  │     Beat 1.4 → [H95] startLineManip (20)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 4 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Clipboard Symphony                  ║
@@ -316,10 +327,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H96] getClipboardText (20)║
+        ║  │     Beat 1.1 → [H96] getClipboardText (16)║
         ║  │     Beat 1.2 → [H97] setClipboardText (19)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Augment Symphony                    ║
@@ -329,10 +340,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H98] enhanceLine (21)║
+        ║  │     Beat 1.1 → [H98] enhanceLine (19)║
         ║  │     Beat 1.2 → [H99] recomputeLineSvg (18)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Resize Line Symphony                ║
@@ -342,10 +353,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H100] resize-lineHandler (21)║
-        ║  │     Beat 1.2 → [H101] resize-lineHandler (15)║
+        ║  │     Beat 1.1 → [H100] resize-lineHandler (16)║
+        ║  │     Beat 1.2 → [H101] resize-lineHandler (18)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Classes Symphony                    ║
@@ -355,10 +366,10 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H102] addClass (17)║
-        ║  │     Beat 1.2 → [H103] removeClass (17)║
+        ║  │     Beat 1.1 → [H102] addClass (21)║
+        ║  │     Beat 1.2 → [H103] removeClass (15)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 2 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Resize Symphony                     ║
@@ -368,9 +379,9 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H104] resizeHandler (19)║
+        ║  │     Beat 1.1 → [H104] resizeHandler (18)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Selection Symphony                  ║
@@ -380,9 +391,9 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║
         ║  │     Discovery    Metrics      Coverage     Conformity║
         ║  │          ↓           ↓            ↓            ↓    ║
-        ║  │     Beat 1.1 → [H105] deriveSelectionModel (14)║
+        ║  │     Beat 1.1 → [H105] deriveSelectionModel (19)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ║  ├─ Drop Symphony                       ║
@@ -394,7 +405,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║  │          ↓           ↓            ↓            ↓    ║
         ║  │     Beat 1.1 → [H106] drop.symphony.tsHandler (17)║
         ║  │  ─────────────────────────────    ║
-        ║  │  └─ AVG: 18 LOC | COV: 85%         ║
+        ║  │  └─ AVG: 18 LOC | COV: 82%         ║
         ║  │  └─ Handlers: 1 | Movements: 4 | Beats: 4    ║
         ║  │                                   ║
         ╚═════════════════════════════════════╝
@@ -411,7 +422,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║                                                       ║
         ║  Handlers Analyzed: 283                              ║
         ║  Avg LOC/Handler: 17.83                              ║
-        ║  Test Coverage: 84.6%                                  ║
+        ║  Test Coverage: 82.5%                                  ║
         ║  Duplication: 78.3%                                      ║
         ║  ✓  No God Handlers                              ║
         ║                                                       ║
@@ -457,7 +468,7 @@ ANALYSIS EXECUTION SUMMARY:
   ✅ Discovered: 777 source files in renderx-web-orchestration
   ✅ Analyzed: 283 handler functions with measured LOC (5045 total lines)
   ✅ Mapped: Files to orchestration beats
-  ✅ Measured: Test coverage (avg 84.6%)
+  ✅ Measured: Test coverage (avg 82.5%)
   ✅ No God handlers detected
   ✅ Generated: Comprehensive metrics and analysis artifacts
 
@@ -521,18 +532,18 @@ NEXT ACTIONS:
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 233 files)
-**Last Scan**: 2025-11-28T18:19:39.051Z
+**Last Scan**: 2025-11-28T18:39:59.492Z
 
 ### Maintainability Index
-- **Score**: 48.44/100
+- **Score**: 59.94/100
 - **Classification**: 🔴 **POOR** (C)
 - **Threshold**: <60
 - **Guidance**: Critical refactoring needed. High priority for next cycle.
 - **Contributing Factors**:
-  - Test Coverage: 74.5%
-  - Documentation: 81.7%
-  - Comment Density: 1.1%
-  - Complexity Score: 68.2
+  - Test Coverage: 78.3%
+  - Documentation: 71.8%
+  - Comment Density: 30.7%
+  - Complexity Score: 46.8
 
 ---
 
@@ -545,10 +556,10 @@ NEXT ACTIONS:
 ### Coverage Metrics
 | Type | Coverage | Target | Gap | Status |
 |------|----------|--------|-----|--------|
-| Statements | 84.59% | 80% | 4.6% | ✅ On-target |
-| Branches | 77.54% | 75% | 2.5% | 🟡 Needs Improvement |
-| Functions | 89.84% | 80% | 9.8% | 🟢 Close |
-| Lines | 77.72% | 80% | -2.3% | 🟡 Needs Improvement |
+| Statements | 82.49% | 80% | 2.5% | ✅ On-target |
+| Branches | 80.28% | 75% | 5.3% | 🟡 Needs Improvement |
+| Functions | 89.01% | 80% | 9.0% | 🟢 Close |
+| Lines | 77.55% | 80% | -2.5% | 🟡 Needs Improvement |
 
 ### Beat-by-Beat Coverage
 ```
@@ -609,7 +620,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 10 types
-**Last Scan**: 2025-11-28T18:19:38.823Z
+**Last Scan**: 2025-11-28T18:39:59.230Z
 
 ### Handler Scope Analysis
 
@@ -617,7 +628,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 # Handler Scope Analysis Report
 
-**Generated**: 2025-11-28T18:19:38.847Z
+**Generated**: 2025-11-28T18:39:59.254Z
 
 ## Overview
 
@@ -799,24 +810,24 @@ With handler scope/kind now defined, the pipeline can now:
 ## Coverage by Handler Analysis
 
 ### Overall Test Coverage
-**Global Coverage**: 79.58% statements
+**Global Coverage**: 80.68% statements
 
 | Metric | Coverage | Status |
 |--------|----------|--------|
-| Statements | 79.58% | 🟡 |
-| Branches | 66.34% | 🟡 |
-| Functions | 84.7% | 🟢 |
-| Lines | 78.29% | 🟡 |
+| Statements | 80.68% | 🟢 |
+| Branches | 71.43% | 🟡 |
+| Functions | 88.23% | 🟢 |
+| Lines | 82.99% | 🟢 |
 
 ### Handler Coverage Summary
 | Category | Count | % | Status |
 |----------|-------|---|--------|
-| Well-Covered (80%+) | 65 | 44.2% | ✅ |
-| Partially-Covered (50-79%) | 82 | 55.8% | ⚠️ |
+| Well-Covered (80%+) | 79 | 53.7% | ✅ |
+| Partially-Covered (50-79%) | 68 | 46.3% | ⚠️ |
 | Poorly-Covered (1-49%) | 0 | 0.0% | ⚠️ |
 | Uncovered (0%) | 0 | 0.0% | ❌ |
 
-**Average Handler Coverage**: 79.4%
+**Average Handler Coverage**: 80.47%
 
 **Handlers**: 147 | **Average LOC per Handler**: 29.33 | **Total LOC**: 1320
 
@@ -824,22 +835,22 @@ With handler scope/kind now defined, the pipeline can now:
 
 | Beat | Avg Coverage | Handlers | Status |
 |------|--------------|----------|--------|
-| unassigned | 79.4% | 147 | ⚠️ |
+| unassigned | 80.47% | 147 | ✅ |
 
 ### ✅ Well-Tested Handlers (Coverage >= 80%)
 | Handler | Coverage | Beat |
 |---------|----------|------|
-| addClass | 84.44% | unassigned |
-| generateSections | 84.43% | unassigned |
-| endResize | 84.35% | unassigned |
-| items | 84.23% | unassigned |
-| component | 84.21% | unassigned |
-| offsetY | 84.19% | unassigned |
-| ctx | 84.02% | unassigned |
-| notifyUi | 83.96% | unassigned |
+| ghost | 85.67% | unassigned |
+| targetEl | 85.62% | unassigned |
+| startLineManip | 85.42% | unassigned |
+| initResolver | 85% | unassigned |
+| updateSvgNodeAttribute | 84.9% | unassigned |
+| correlationId | 84.89% | unassigned |
+| applyCssClassToElement | 84.87% | unassigned |
+| ui | 84.84% | unassigned |
 
 **Measurement**: Source='measured' (test coverage analysis with handler-beat correlation)
-**Timestamp**: 2025-11-28T18:19:39.466Z
+**Timestamp**: 2025-11-28T18:39:59.884Z
 
 
 ### Automated Refactor Suggestions
@@ -979,7 +990,7 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 
 **Measurement**:
 - Source: 'computed' (suggestions derived from measured duplication & clustering data)
-- Timestamp: 2025-11-28T18:19:39.781Z
+- Timestamp: 2025-11-28T18:40:00.185Z
 
 
 ### Historical Trend Analysis
@@ -989,7 +1000,7 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 ## Historical Trend Analysis
 
 **Analysis Period**: Last 30 snapshots
-**Current Baseline**: 2025-11-28T18:19:40.078Z
+**Current Baseline**: 2025-11-28T18:40:00.546Z
 
 ### Overall Trend Summary
 
@@ -997,8 +1008,8 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 |--------|---------|----------|--------|-------|-----------|
 | Handler Count | 283 | 283 | - | New | - |
 | Duplication (blocks) | 561 | 561 | - | Monitoring | - |
-| Coverage (avg) | 81.27% | 37.93% | - | Monitoring | - |
-| Maintainability | 82.09/100 | - | - | Baseline | - |
+| Coverage (avg) | 79.08% | 41.40% | - | Monitoring | - |
+| Maintainability | 84.15/100 | - | - | Baseline | - |
 | Conformity | 87.50% | - | - | Baseline | - |
 
 ### Handler Metrics
@@ -1035,10 +1046,10 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 **Current Coverage Baselines**:
 | Metric | Current | Target | Gap | Status |
 |--------|---------|--------|-----|--------|
-| Statements | 82.41% | 85% | 2.59% | 🟡 Close |
-| Branches | 80.13% | 85% | 4.87% | 🟡 Close |
-| Functions | 77.58% | 90% | 12.42% | 🟡 Close |
-| Lines | 81.83% | 85% | 3.17% | ✅ On-target |
+| Statements | 74.82% | 85% | 10.18% | 🟡 Close |
+| Branches | 83.34% | 85% | 1.66% | 🟡 Close |
+| Functions | 86.05% | 90% | 3.95% | 🟡 Close |
+| Lines | 74.45% | 85% | 10.55% | ✅ On-target |
 
 **Coverage Improvement Roadmap**:
 - **Week 2**: Add 5-8 integration tests → +3% statements
@@ -1048,7 +1059,7 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 
 ### Maintainability Trends
 
-**Current Maintainability Index**: 82.09/100
+**Current Maintainability Index**: 84.15/100
 
 **Component Health**:
 - Complexity (average): 1.13
@@ -1079,22 +1090,22 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 **Baseline (Today)**:
 - Handlers: 283
 - Duplication: 145.63%
-- Coverage: 81.27%
-- Maintainability: 82.09/100
+- Coverage: 79.08%
+- Maintainability: 84.15/100
 - Conformity: 87.50%
 
 **Projected (Week 4)**:
 - Handlers: +5% → 298
 - Duplication: -15% → 130.63%
-- Coverage: +3-5% → 85.27%
-- Maintainability: +5 → 87.09/100
+- Coverage: +3-5% → 83.08%
+- Maintainability: +5 → 89.15/100
 - Conformity: +2% → 89.50%
 
 **Projected (Week 8 - Full Sprint)**:
 - Handlers: +15% → 326
 - Duplication: -30% → 115.63%
-- Coverage: +8-10% → 90.27%
-- Maintainability: +15 → 97.09/100
+- Coverage: +8-10% → 88.08%
+- Maintainability: +15 → 99.15/100
 - Conformity: +5% → 92.50%
 
 ### Data Quality & Confidence
@@ -1110,7 +1121,7 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 
 **Retention**: Last 30 snapshots retained in `.generated/history/symphonic-metrics/`
 
-**Timestamp**: 2025-11-28T18:19:40.084Z
+**Timestamp**: 2025-11-28T18:40:00.551Z
 **Source**: 'measured + computed' (baseline establishment)
 
 ---
@@ -1145,7 +1156,7 @@ Package contains 87 handlers clustered together. Consider extracting into specia
 Gating Level: **CONDITIONAL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage - Orchestration Suite (84.59%) ✅
+✓ Coverage - Orchestration Suite (82.49%) ✅
 ✓ Handler Scanning (283 handlers discovered) ✅
 
 ---
@@ -1192,10 +1203,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: renderx-web-orchestration-code-analysis-2025-11-28T18-19-38-171Z.json
-- **Coverage Summary**: renderx-web-orchestration-coverage-summary-2025-11-28T18-19-38-171Z.json
-- **Per-Beat Metrics**: renderx-web-orchestration-per-beat-metrics-2025-11-28T18-19-38-171Z.csv
-- **Trend Analysis**: renderx-web-orchestration-trends-2025-11-28T18-19-38-171Z.json
+- **JSON Analysis**: renderx-web-orchestration-code-analysis-2025-11-28T18-39-58-553Z.json
+- **Coverage Summary**: renderx-web-orchestration-coverage-summary-2025-11-28T18-39-58-553Z.json
+- **Per-Beat Metrics**: renderx-web-orchestration-per-beat-metrics-2025-11-28T18-39-58-553Z.csv
+- **Trend Analysis**: renderx-web-orchestration-trends-2025-11-28T18-39-58-553Z.json
 
 ---
 

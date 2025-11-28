@@ -6,6 +6,18 @@
  * DATA-DRIVEN: Generates diagram from actual analysis metrics
  */
 
+// Import ASCII sketch renderers
+const {
+  renderSymphonyArchitecture,
+  renderSymphonyHandlerBreakdown,
+  renderHandlerPortfolioFoundation,
+  renderCoverageHeatmapByBeat,
+  renderRiskAssessmentMatrix,
+  renderRefactoringRoadmap,
+  renderHistoricalTrendAnalysis,
+  renderLegendAndTerminology
+} = require('./ascii-sketch-renderers.cjs');
+
 /**
  * Generate a generic summary when detailed handler data isn't available
  */
@@ -193,7 +205,9 @@ function generateDiagram(metrics = {}) {
     handlerSummary = null,
     duplicateBlocks = 0,
     duplicationPercent = 0,
-    godHandlers = []
+    godHandlers = [],
+    maintainability = 0,
+    conformityScore = 0
   } = metrics;
   
   // Safe numeric conversions
@@ -229,6 +243,17 @@ function generateDiagram(metrics = {}) {
 │  │ Total Files: ${String(totalFiles).padEnd(4)}│ Total LOC: ${String(totalLoc).padEnd(6)}│ Handlers: ${String(totalHandlers).padEnd(3)}│ Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(5)}│ Coverage: ${safeCoverage.toFixed(2)}% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+${renderHandlerPortfolioFoundation({
+  totalFiles,
+  totalLoc,
+  handlerCount: totalHandlers,
+  avgLocPerHandler: safeAvgLoc,
+  coverageStatements: safeCoverage,
+  duplicationBlocks: duplicateBlocks,
+  maintainability,
+  conformityScore
+})}
 
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║

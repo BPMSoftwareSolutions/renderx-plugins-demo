@@ -888,7 +888,9 @@ ${generateDiagram({
   },
   duplicateBlocks: metrics.duplication?.duplicateBlocks || 0,
   duplicationPercent: metrics.duplication?.duplicationPercent || 0,
-  godHandlers: metrics.refactoring?.godHandlers || []
+  godHandlers: metrics.refactoring?.godHandlers || [],
+  maintainability: metrics.maintainability?.maintainability || 0,
+  conformityScore: parseFloat(metrics.conformity?.conformityScore) || 0
 })}
 
 ---
