@@ -23,6 +23,26 @@
  */
 
 /**
+ * @typedef {Object} CleanSymphonyHandler
+ * @property {string} symphonyName - Name of the symphony
+ * @property {string} domainId - Domain identifier
+ * @property {number} symphonyCount - Number of symphonies
+ * @property {number} movementCount - Number of movements
+ * @property {number} beatCount - Number of beats
+ * @property {number} handlerCount - Number of handlers
+ * @property {number} totalLoc - Total lines of code
+ * @property {number} avgCoverage - Average coverage percentage
+ * @property {string} sizeBand - Size classification (TINY/SMALL/MEDIUM/LARGE/XL)
+ * @property {string} riskLevel - Overall risk (LOW/MEDIUM/HIGH/CRITICAL)
+ * @property {Array<{name: string, description: string, beats: string}>} movements - Movement descriptions
+ * @property {Array<{beat: string, movement: string, handler: string, loc: number, sizeBand: string, coverage: number, risk: string, baton: string}>} handlers - Handler details
+ * @property {Object} metrics - Portfolio metrics
+ * @property {Object} metrics.sizeBands - Size band distribution
+ * @property {Object} metrics.coverageDist - Coverage distribution
+ * @property {Object} metrics.riskSummary - Risk level summary
+ */
+
+/**
  * @typedef {Object} HandlerPortfolioFoundation
  * @property {number} totalFiles
  * @property {number} totalLoc
@@ -393,6 +413,105 @@ function renderLegendAndTerminology(data) {
   return output;
 }
 
+/**
+ * Render clean symphony handler portfolio view
+ * @param {CleanSymphonyHandler} data
+ * @returns {string}
+ */
+function renderCleanSymphonyHandler(data) {
+  const {
+    symphonyName,
+    domainId,
+    symphonyCount,
+    movementCount,
+    beatCount,
+    handlerCount,
+    totalLoc,
+    avgCoverage,
+    sizeBand,
+    riskLevel,
+    movements,
+    handlers,
+    metrics
+  } = data;
+
+  const boxWidth = 68;
+  let output = '';
+
+  // Header
+  output += '╔' + '═'.repeat(boxWidth) + '╗\n';
+  output += `║ ${padString(`HANDLER SYMPHONY: ${symphonyName.toUpperCase()}`, boxWidth)}║\n`;
+  output += `║ ${padString(`Domain : ${domainId}`, boxWidth)}║\n`;
+  output += `║ ${padString(`Scope : ${symphonyCount} Symphony · ${movementCount} Movements · ${beatCount} Beats · ${handlerCount} Handlers`, boxWidth)}║\n`;
+  output += `║ ${padString(`Health: ${totalLoc} LOC · Avg Cov ${avgCoverage}% · Size Band: ${sizeBand} · Risk: ${riskLevel}`, boxWidth)}║\n`;
+
+  // Movement Map
+  output += '╠' + '═'.repeat(boxWidth) + '╣\n';
+  output += `║ ${padString('MOVEMENT MAP', boxWidth)}║\n`;
+  
+  // Build movement flow line
+  const movementLine = movements.map(m => m.name).join('   →   ');
+  output += `║ ${padString('  ' + movementLine, boxWidth)}║\n`;
+  
+  // Build beats line
+  const beatsLine = movements.map(m => m.beats).join('      ');
+  output += `║ ${padString('  ' + beatsLine, boxWidth)}║\n`;
+  
+  // Build focus line
+  const focusLine = movements.map(m => m.description).join('     ');
+  output += `║ ${padString('  ' + focusLine, boxWidth)}║\n`;
+
+  // Handler Portfolio Section
+  output += '╠' + '═'.repeat(24) + ' BEAT / HANDLER PORTFOLIO ' + '═'.repeat(boxWidth - 50) + '╣\n';
+  output += `║ ${padString('Beat Mov Handler                      LOC  Sz  Cov  Risk  Baton', boxWidth)}║\n`;
+  output += `║ ${padString('─'.repeat(boxWidth - 1), boxWidth)}║\n`;
+
+  // Handler rows
+  handlers.forEach((handler, idx) => {
+    const beat = padString(handler.beat, 4);
+    const mov = padString(handler.movement, 3);
+    const name = padString(handler.handler, 29);
+    const loc = padString(String(handler.loc), 3, true);
+    const sz = padString(handler.sizeBand, 2);
+    const cov = padString(handler.coverage + '%', 4, true);
+    const risk = padString(handler.risk, 5);
+    const baton = padString(handler.baton, 8);
+    
+    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${baton} ║\n`;
+    
+    // Add data baton handoff after movement boundaries
+    if (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload') {
+      const nextHandler = handlers[idx + 1];
+      if (nextHandler && nextHandler.baton !== handler.baton) {
+        let batonDesc = '';
+        if (handler.baton === 'metrics') batonDesc = 'handoff: template + CSS metrics';
+        else if (handler.baton === 'dom') batonDesc = 'handoff: DOM + styling coverage';
+        else if (handler.baton === 'payload') batonDesc = 'handoff: import + payload data';
+        
+        output += `║ ${padString(`     🎭 Data Baton ▸ ${batonDesc}`, boxWidth)}║\n`;
+      }
+    }
+  });
+
+  // Metrics Summary
+  output += '╠' + '═'.repeat(24) + ' HANDLER PORTFOLIO METRICS ' + '═'.repeat(boxWidth - 51) + '╣\n';
+  
+  // Size bands
+  const sizeLine = `Size Bands    : Tiny ${metrics.sizeBands.tiny} · Small ${metrics.sizeBands.small} · Medium ${metrics.sizeBands.medium} · Large ${metrics.sizeBands.large} · XL ${metrics.sizeBands.xl}`;
+  output += `║ ${padString(sizeLine, boxWidth)}║\n`;
+  
+  // Coverage distribution
+  const covLine = `Coverage Dist.: 0–30% ${metrics.coverageDist.low} · 30–60% ${metrics.coverageDist.medLow} · 60–80% ${metrics.coverageDist.medHigh} · 80–100% ${metrics.coverageDist.high}`;
+  output += `║ ${padString(covLine, boxWidth)}║\n`;
+  
+  // Risk summary
+  const riskLine = `Risk Summary  : CRITICAL ${metrics.riskSummary.critical} · HIGH ${metrics.riskSummary.high} · MEDIUM ${metrics.riskSummary.medium} · LOW ${metrics.riskSummary.low}`;
+  output += `║ ${padString(riskLine, boxWidth)}║\n`;
+
+  output += '╚' + '═'.repeat(boxWidth) + '╝';
+  return output;
+}
+
 // ===== EXPORTS =====
 
 module.exports = {
@@ -403,5 +522,6 @@ module.exports = {
   renderRiskAssessmentMatrix,
   renderRefactoringRoadmap,
   renderHistoricalTrendAnalysis,
-  renderLegendAndTerminology
+  renderLegendAndTerminology,
+  renderCleanSymphonyHandler
 };

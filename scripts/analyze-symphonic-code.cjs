@@ -890,7 +890,10 @@ ${generateDiagram({
   duplicationPercent: metrics.duplication?.duplicationPercent || 0,
   godHandlers: metrics.refactoring?.godHandlers || [],
   maintainability: metrics.maintainability?.maintainability || 0,
-  conformityScore: parseFloat(metrics.conformity?.conformityScore) || 0
+  conformityScore: parseFloat(metrics.conformity?.conformityScore) || 0,
+  beatCoverage: metrics.beatCoverage || null,
+  conformityViolations: metrics.conformity?.violations_details || [],
+  symphonies: []
 })}
 
 ---

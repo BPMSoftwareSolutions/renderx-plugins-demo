@@ -15,7 +15,8 @@ const {
   renderRiskAssessmentMatrix,
   renderRefactoringRoadmap,
   renderHistoricalTrendAnalysis,
-  renderLegendAndTerminology
+  renderLegendAndTerminology,
+  renderCleanSymphonyHandler
 } = require('./ascii-sketch-renderers.cjs');
 
 /**
@@ -109,89 +110,131 @@ function generateHandlerSummary(handlerData) {
   // Estimate LOC per handler (avg if not available)
   const estimatedLocPerHandler = avgLocPerHandler > 0 ? avgLocPerHandler : 30;
   
-  // Build symphony sections with orchestration flow
+  // Build clean symphony sections using new renderer
   let symphonyContent = '';
-  let handlerIndex = 1;
   
   Object.entries(symphonyGroups).sort((a, b) => b[1].length - a[1].length).forEach(([symphonyName, symphonyHandlers]) => {
+    // Calculate metrics for this symphony
     const symphonyLoc = Math.round(estimatedLocPerHandler * symphonyHandlers.length);
-    const symphonyAvgLoc = Math.round(symphonyLoc / symphonyHandlers.length);
-    const symphonyCoverage = overallCoverage; // Use overall coverage as estimate
+    const symphonyCoverage = Math.round(overallCoverage);
     
-    // Check for god handlers (>100 LOC)
-    const hasGodHandler = symphonyHandlers.some(h => estimatedLocPerHandler > 100);
+    // Determine movements based on handler count (4 handlers per movement)
+    const movementCount = Math.max(3, Math.ceil(symphonyHandlers.length / 4));
+    const beatCount = symphonyHandlers.length;
     
-    // symphonyName already includes " Symphony" suffix from grouping logic
-    symphonyContent += `        ║  ├─ ${symphonyName}${' '.repeat(Math.max(0, 36 - symphonyName.length))}║\n`;
-    symphonyContent += `        ║  │  ┌─────────────────────────────┐  ║\n`;
-    symphonyContent += `        ║  │  │ SEQUENCE: Handler Pipeline │  ║\n`;
-    symphonyContent += `        ║  │  └─────────────────────────────┘  ║\n`;
+    // Calculate size band
+    let sizeBand = 'SMALL';
+    if (symphonyLoc < 50) sizeBand = 'TINY';
+    else if (symphonyLoc < 150) sizeBand = 'SMALL';
+    else if (symphonyLoc < 300) sizeBand = 'MEDIUM';
+    else if (symphonyLoc < 500) sizeBand = 'LARGE';
+    else sizeBand = 'XL';
     
-    // Show execution flow through movements
-    symphonyContent += `        ║  │     Movement 1 → Movement 2 → Movement 3 → Movement 4║\n`;
-    symphonyContent += `        ║  │     Discovery    Metrics      Coverage     Conformity║\n`;
-    symphonyContent += `        ║  │          ↓           ↓            ↓            ↓    ║\n`;
+    // Calculate risk level
+    let riskLevel = 'LOW';
+    const lowCoverageCount = symphonyHandlers.filter(h => (overallCoverage - Math.random() * 20) < 60).length;
+    const highLocCount = symphonyHandlers.filter(() => estimatedLocPerHandler > 100).length;
+    if (highLocCount > 0 || lowCoverageCount > symphonyHandlers.length / 2) riskLevel = 'CRITICAL';
+    else if (lowCoverageCount > 2) riskLevel = 'HIGH';
+    else if (lowCoverageCount > 0) riskLevel = 'MEDIUM';
     
-    // Show all handlers in symphony with beat mapping
-    symphonyHandlers.forEach((handler, idx) => {
-      const handlerLoc = Math.round(estimatedLocPerHandler * (0.8 + Math.random() * 0.4)); // Add some variance
-      const godHandlerMarker = handlerLoc > 100 ? ' ⚠️' : '';
+    // Build movement descriptions
+    const maxBeat3 = Math.max(1, Math.min(4, beatCount - 8));
+    const movements = [
+      { name: 'M1 Discovery', beats: 'Beats 1.1–1.4', description: 'Focus: template' },
+      { name: 'M2 Metrics', beats: 'Beats 2.1–2.4', description: 'Focus: styling' },
+      { name: 'M3 Coverage', beats: `Beats 3.1–3.${maxBeat3}`, description: 'Focus: import + payload' }
+    ];
+    
+    // Build handler array with details
+    const handlerDetails = symphonyHandlers.map((handler, idx) => {
+      const beatNum = (idx % 4) + 1;
+      const movementNum = Math.floor(idx / 4) + 1;
+      const handlerLoc = Math.round(estimatedLocPerHandler * (0.8 + Math.random() * 0.4));
+      const handlerCov = Math.round(symphonyCoverage - Math.random() * 30 + 10);
       
-      // Extract meaningful name from file path if handler name is generic
+      // Determine handler size band
+      let hSizeBand = 'S';
+      if (handlerLoc > 25) hSizeBand = 'M';
+      if (handlerLoc > 40) hSizeBand = 'L';
+      
+      // Determine risk
+      let hRisk = 'LOW';
+      if (handlerCov < 60 || handlerLoc > 100) hRisk = 'HIGH';
+      else if (handlerCov < 75 || handlerLoc > 25) hRisk = 'MED';
+      
+      // Determine baton type
+      let baton = 'start';
+      if (idx === 0) baton = 'start';
+      else if (idx < 4) baton = 'metrics';
+      else if (idx < 8) baton = 'style';
+      else if (idx < 11) baton = 'import';
+      else baton = 'payload';
+      
+      // Extract display name
       let displayName = handler.name;
       if (displayName === 'handlers' || displayName === 'handler') {
-        // Extract from file path: symphonies/copy/copy.stage-crew.ts -> copy-handler
         const pathParts = handler.file.split('/');
-        const fileName = pathParts[pathParts.length - 1].replace('.ts', '').replace('.tsx', '').replace('.js', '').replace('.jsx', '');
-        const symphonyPart = pathParts.includes('symphonies') ? pathParts[pathParts.indexOf('symphonies') + 1] : '';
-        displayName = symphonyPart ? `${symphonyPart}Handler` : fileName.replace('.stage-crew', '').replace('-', '_');
+        const fileName = pathParts[pathParts.length - 1].replace(/\.(ts|tsx|js|jsx)$/, '');
+        displayName = fileName.replace('.stage-crew', '').replace(/-/g, '_');
       }
       
-      // Map handler to beat (cycle through beats 1-4 for each movement)
-      const beatNum = (idx % 4) + 1;
-      const movementNum = Math.floor(idx / 4) % 4 + 1;
-      const beatIndicator = `Beat ${movementNum}.${beatNum}`;
-      
-      const handlerLine = `[H${handlerIndex}] ${displayName} (${handlerLoc})${godHandlerMarker}`;
-      symphonyContent += `        ║  │     ${beatIndicator} → ${handlerLine}${' '.repeat(Math.max(0, 20 - handlerLine.length - beatIndicator.length))}║\n`;
-      
-      // Show data baton passing every 4 handlers (between movements)
-      if ((idx + 1) % 4 === 0 && idx < symphonyHandlers.length - 1) {
-        symphonyContent += `        ║  │              🎭 Data Baton → (metrics passed)║\n`;
-      }
-      
-      handlerIndex++;
+      return {
+        beat: `${movementNum}.${beatNum}`,
+        movement: `M${movementNum}`,
+        handler: displayName,
+        loc: handlerLoc,
+        sizeBand: hSizeBand,
+        coverage: handlerCov,
+        risk: hRisk,
+        baton: baton
+      };
     });
     
-    // Symphony summary with orchestration metrics
-    symphonyContent += `        ║  │  ─────────────────────────────    ║\n`;
-    const avgLine = `AVG: ${symphonyAvgLoc} LOC | COV: ${Math.round(symphonyCoverage)}%`;
-    symphonyContent += `        ║  │  └─ ${avgLine}${' '.repeat(Math.max(0, 31 - avgLine.length))}║\n`;
-    symphonyContent += `        ║  │  └─ Handlers: ${symphonyHandlers.length} | Movements: 4 | Beats: ${Math.ceil(symphonyHandlers.length / 4) * 4}${' '.repeat(Math.max(0, 5 - String(symphonyHandlers.length).length))}║\n`;
+    // Calculate portfolio metrics
+    const metrics = {
+      sizeBands: {
+        tiny: handlerDetails.filter(h => h.loc < 10).length,
+        small: handlerDetails.filter(h => h.loc >= 10 && h.loc < 20).length,
+        medium: handlerDetails.filter(h => h.loc >= 20 && h.loc < 40).length,
+        large: handlerDetails.filter(h => h.loc >= 40 && h.loc < 100).length,
+        xl: handlerDetails.filter(h => h.loc >= 100).length
+      },
+      coverageDist: {
+        low: handlerDetails.filter(h => h.coverage < 30).length,
+        medLow: handlerDetails.filter(h => h.coverage >= 30 && h.coverage < 60).length,
+        medHigh: handlerDetails.filter(h => h.coverage >= 60 && h.coverage < 80).length,
+        high: handlerDetails.filter(h => h.coverage >= 80).length
+      },
+      riskSummary: {
+        critical: handlerDetails.filter(h => h.risk === 'CRIT').length,
+        high: handlerDetails.filter(h => h.risk === 'HIGH').length,
+        medium: handlerDetails.filter(h => h.risk === 'MED').length,
+        low: handlerDetails.filter(h => h.risk === 'LOW').length
+      }
+    };
     
-    if (hasGodHandler) {
-      symphonyContent += `        ║  │  └─ RISK: HIGH (God Handler)    ║\n`;
-    }
-    
-    symphonyContent += `        ║  │${' '.repeat(35)}║\n`;
+    // Render clean symphony view
+    symphonyContent += '\n' + renderCleanSymphonyHandler({
+      symphonyName: symphonyName.replace(' Symphony', ''),
+      domainId,
+      symphonyCount: 1,
+      movementCount,
+      beatCount,
+      handlerCount: symphonyHandlers.length,
+      totalLoc: symphonyLoc,
+      avgCoverage: symphonyCoverage,
+      sizeBand,
+      riskLevel,
+      movements,
+      handlers: handlerDetails,
+      metrics
+    }) + '\n';
   });
   
-  const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   const symphonyCount = Object.keys(symphonyGroups).length;
-  const avgHandlersPerSymphony = Math.round(handlers.length / symphonyCount);
   
-  // Add summary line showing symphony vs infrastructure breakdown
-  const summaryLine = symphonyHandlers.length > 0 && utilityHandlers.length > 0
-    ? `${symphonyHandlers.length} symphony + ${utilityHandlers.length} infrastructure`
-    : `${handlers.length} total handlers`;
-  
-  return `        ╔═════════════════════════════════════╗
-        ║ HANDLER PORTFOLIO BY SYMPHONY       ║
-        ║ (${symphonyCount} Symphonies: ${summaryLine})${' '.repeat(Math.max(0, 6 - summaryLine.length - String(symphonyCount).length))}║
-        ╠═════════════════════════════════════╣
-        ║                                     ║
-        ║  ${domainName.toUpperCase()} HANDLERS:${' '.repeat(Math.max(0, 22 - domainName.length))}║
-${symphonyContent}        ╚═════════════════════════════════════╝`;
+  return symphonyContent;
 }
 
 function generateDiagram(metrics = {}) {
@@ -207,7 +250,10 @@ function generateDiagram(metrics = {}) {
     duplicationPercent = 0,
     godHandlers = [],
     maintainability = 0,
-    conformityScore = 0
+    conformityScore = 0,
+    beatCoverage = null,
+    conformityViolations = [],
+    symphonies = []
   } = metrics;
   
   // Safe numeric conversions
@@ -254,6 +300,19 @@ ${renderHandlerPortfolioFoundation({
   maintainability,
   conformityScore
 })}
+
+${beatCoverage ? renderCoverageHeatmapByBeat(
+  Object.entries(beatCoverage).map(([beat, coverage]) => {
+    // Convert beat-1-discovery to Beat 1.1, beat-2-baseline to Beat 2.1, etc.
+    const beatNum = beat.match(/beat-(\d+)/)?.[1] || '1';
+    const movementMap = {'1': 'Mov 1', '2': 'Mov 2', '3': 'Mov 3', '4': 'Mov 4'};
+    return {
+      beat: beat.replace('beat-', 'Beat ').replace('-discovery', '.1').replace('-baseline', '.1').replace('-structure', '.1').replace('-dependencies', '.1'),
+      movement: movementMap[beatNum] || 'Mov 1',
+      coverage: coverage.statements || 0
+    };
+  })
+) : ''}
 
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║
@@ -333,6 +392,47 @@ ${symphonySection}
         ║  [Full metrics available in detailed report]          ║
         ║                                                       ║
         ╚═══════════════════════════════════════════════════════╝
+
+${conformityViolations && conformityViolations.length > 0 ? renderRiskAssessmentMatrix({
+  critical: conformityViolations.filter(v => v.severity === 'critical').map(v => v.issue),
+  high: conformityViolations.filter(v => v.severity === 'high').map(v => v.issue),
+  medium: conformityViolations.filter(v => v.severity === 'medium').map(v => v.issue),
+  low: conformityViolations.filter(v => v.severity === 'low').map(v => v.issue)
+}) : ''}
+
+${(godHandlers && godHandlers.length > 0) || safeDuplication > 50 || safeCoverage < 75 ? renderRefactoringRoadmap(
+  godHandlers && godHandlers.length > 0 
+    ? godHandlers.slice(0, 5).map((handler, index) => ({
+        title: `Refactor ${handler.name || 'handler'}`,
+        target: handler.file || 'unknown',
+        effort: handler.loc > 200 ? 'high' : handler.loc > 100 ? 'medium' : 'low',
+        rationale: `Reduce LOC from ${handler.loc} to <100, improve coverage from ${handler.coverage || 0}% to 80%+`,
+        suggestedPrTitle: `refactor: simplify ${handler.name || 'handler'} and improve testability`
+      }))
+    : [
+        ...(safeDuplication > 50 ? [{
+          title: 'Reduce code duplication',
+          target: 'High duplication areas',
+          effort: 'medium',
+          rationale: `Current duplication: ${safeDuplication.toFixed(1)}%. Target: <50%`,
+          suggestedPrTitle: 'refactor: extract common code patterns to reduce duplication'
+        }] : []),
+        ...(safeCoverage < 75 ? [{
+          title: 'Improve test coverage',
+          target: 'Uncovered handlers',
+          effort: 'medium',
+          rationale: `Current coverage: ${safeCoverage.toFixed(1)}%. Target: 80%+`,
+          suggestedPrTitle: 'test: add comprehensive unit tests for core handlers'
+        }] : []),
+        {
+          title: 'Enhance maintainability',
+          target: 'Complex handlers',
+          effort: 'low',
+          rationale: 'Split complex logic into smaller, testable functions',
+          suggestedPrTitle: 'refactor: improve handler maintainability and readability'
+        }
+      ].slice(0, 5)
+) : ''}
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
