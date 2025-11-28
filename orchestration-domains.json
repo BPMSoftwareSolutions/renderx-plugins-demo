@@ -2969,6 +2969,7 @@
       "category": "infrastructure",
       "status": "active",
       "description": "Core Host SDK providing the plugin hosting environment, manifest management, and integration APIs for all UI components",
+      "purpose": "Provide the runtime host environment and orchestration integration surface for all RenderX plugins and orchestration sequences",
       "npmScripts": [
         "@renderx-plugins/host-sdk"
       ],
@@ -2980,6 +2981,7 @@
       "category": "infrastructure",
       "status": "active",
       "description": "Manifest generation and validation tools for orchestration domain definitions, sequence specifications, and plugin registrations",
+      "purpose": "Provide tooling and pipelines for generating, validating, and evolving manifests and orchestration domain definitions in a governed way",
       "npmScripts": [
         "@renderx-plugins/manifest-tools"
       ],
@@ -2991,6 +2993,7 @@
       "category": "infrastructure",
       "status": "active",
       "description": "Foundational component library providing base UI components and utility wrappers for all RenderX plugins",
+      "purpose": "Provide the shared UI component library backing all RenderX plugins and orchestration-driven experiences",
       "npmScripts": [
         "@renderx-plugins/components"
       ],
@@ -3002,6 +3005,7 @@
       "category": "infrastructure",
       "status": "active",
       "description": "Asset management system for icons, themes, branding, and static resources used across all UI plugins",
+      "purpose": "Provide managed digital assets (icons, themes, branding, static resources) consumed by RenderX plugins and orchestration sequences",
       "npmScripts": [
         "@renderx-plugins/digital-assets"
       ],

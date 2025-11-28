@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import AjvModule from 'ajv';
+import { getRenderxWebOrchestrationIds } from './helpers/renderxWebOrchestration';
 
 // Ajv wiring mirrors existing usage patterns in the repo (EventRouter, governance handlers)
 const Ajv: any = (AjvModule as any).default || (AjvModule as any);
@@ -26,27 +27,10 @@ describe('renderx-web-orchestration conflation vs MusicalSequence schema', () =>
     );
     const orchestrationRegistry = loadJson('../orchestration-domains.json');
 
-    const movements: any[] = Array.isArray(renderxWeb.movements)
-      ? renderxWeb.movements
-      : [];
     const domains: any[] = Array.isArray(orchestrationRegistry.domains)
       ? orchestrationRegistry.domains
       : [];
-
-    const referencedIds = new Set<string>();
-
-    for (const movement of movements) {
-      const orchestration = (movement as any).orchestration;
-      if (!orchestration) continue;
-
-      if (typeof orchestration === 'string') {
-        referencedIds.add(orchestration);
-      } else if (Array.isArray(orchestration)) {
-        for (const id of orchestration) {
-          if (typeof id === 'string') referencedIds.add(id);
-        }
-      }
-    }
+    const referencedIds = getRenderxWebOrchestrationIds(renderxWeb);
 
     expect(referencedIds.size).toBeGreaterThan(0);
 

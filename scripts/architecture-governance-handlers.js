@@ -96,21 +96,141 @@ const handlers = {
     console.log('\n🎵 [MOVEMENT 1, BEAT 2] Validating Orchestration Domains Registry');
     
     try {
-      const registryPath = path.join(process.cwd(), 'orchestration-domains.json');
-      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+	      const registryPath = path.join(process.cwd(), 'orchestration-domains.json');
+	      const domainRegistryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+	      const contextIndexPath = path.join(process.cwd(), '.generated/CONTEXT_TREE_INDEX.json');
 
-      const required = ['metadata', 'categories', 'domains'];
-      const missing = required.filter(field => !registry[field]);
+	      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+	      const domainRegistry = JSON.parse(fs.readFileSync(domainRegistryPath, 'utf8'));
+	      const contextIndex = fs.existsSync(contextIndexPath)
+	        ? JSON.parse(fs.readFileSync(contextIndexPath, 'utf8'))
+	        : null;
 
-      if (missing.length > 0) {
-        throw new Error(`Missing required fields: ${missing.join(', ')}`);
-      }
+	      const required = ['metadata', 'categories', 'domains'];
+	      const missing = required.filter(field => !registry[field]);
 
-      console.log(`   ✅ Registry has all required sections`);
-      console.log(`   📊 Categories: ${registry.categories.length}`);
-      console.log(`   📊 Domains: ${Object.keys(registry.domains || {}).length}`);
-      
-      return { valid: true, registry };
+	      if (missing.length > 0) {
+	        throw new Error(`Missing required fields: ${missing.join(', ')}`);
+	      }
+
+	      console.log(`   ✅ Registry has all required sections`);
+	      console.log(`   📊 Categories: ${registry.categories.length}`);
+	      console.log(`   📊 Domains: ${Object.keys(registry.domains || {}).length}`);
+
+	      // -------------------------------------------------------------------
+	      // Invariant 1: orchestration-domains IDs are a subset of DOMAIN_REGISTRY
+	      // -------------------------------------------------------------------
+	      const registryDomainIds = new Set(Object.keys(domainRegistry.domains || {}));
+	      const orchestrationDomains = registry.domains || [];
+	      const missingFromDomainRegistry = orchestrationDomains
+	        .filter(d => !registryDomainIds.has(d.id))
+	        .map(d => d.id);
+
+	      if (missingFromDomainRegistry.length > 0) {
+	        const message = `Orchestration registry domain_ids missing from DOMAIN_REGISTRY: ${missingFromDomainRegistry.join(', ')}`;
+	        console.error('   ❌', message);
+	        governanceState.violations.push({
+	          movement: 1,
+	          severity: 'CRITICAL',
+	          message,
+	          missingDomainIds: missingFromDomainRegistry
+	        });
+	        throw new Error(message);
+	      }
+
+	      console.log(`   ✅ DOMAIN_REGISTRY contains all ${orchestrationDomains.length} orchestration domains`);
+
+	      // -------------------------------------------------------------------
+	      // Invariant 2: registry orchestration blocks reference canonical schema
+	      // -------------------------------------------------------------------
+	      const orchestrationIds = new Set(orchestrationDomains.map(d => d.id));
+	      const missingOrchestrationBlock = [];
+	      const mismatchedOrchestrationRefs = [];
+
+	      for (const [id, domain] of Object.entries(domainRegistry.domains || {})) {
+	        if (!orchestrationIds.has(id)) continue;
+
+	        const orch = domain.orchestration;
+	        if (!orch) {
+	          missingOrchestrationBlock.push(id);
+	          continue;
+	        }
+
+	        const hasCanonicalSchema = orch.schema_ref === 'docs/schemas/musical-sequence.schema.json';
+	        const hasCanonicalInterface =
+	          orch.interface &&
+	          orch.interface.name === 'MusicalSequence' &&
+	          orch.interface.source === 'packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts';
+	        const hasCanonicalRegistryRef =
+	          orch.registry_ref &&
+	          orch.registry_ref.file === 'orchestration-domains.json' &&
+	          orch.registry_ref.id === 'orchestration-domains-registry';
+
+	        if (!hasCanonicalSchema || !hasCanonicalInterface || !hasCanonicalRegistryRef) {
+	          mismatchedOrchestrationRefs.push(id);
+	        }
+	      }
+
+	      if (missingOrchestrationBlock.length > 0 || mismatchedOrchestrationRefs.length > 0) {
+	        const parts = [];
+	        if (missingOrchestrationBlock.length > 0) {
+	          parts.push(`missing orchestration block for: ${missingOrchestrationBlock.join(', ')}`);
+	        }
+	        if (mismatchedOrchestrationRefs.length > 0) {
+	          parts.push(`mismatched orchestration refs for: ${mismatchedOrchestrationRefs.join(', ')}`);
+	        }
+	        const message = `DOMAIN_REGISTRY orchestration blocks are not canonical: ${parts.join(' ; ')}`;
+	        console.error('   ❌', message);
+	        governanceState.violations.push({
+	          movement: 1,
+	          severity: 'CRITICAL',
+	          message,
+	          missingOrchestrationBlock,
+	          mismatchedOrchestrationRefs
+	        });
+	        throw new Error(message);
+	      }
+
+	      console.log('   ✅ DOMAIN_REGISTRY orchestration blocks reference canonical MusicalSequence schema and orchestration registry');
+
+	      // -------------------------------------------------------------------
+	      // Invariant 3: Context tree domain counts align with orchestration-domains
+	      // -------------------------------------------------------------------
+	      const orchestrationCount = orchestrationDomains.length;
+
+	      if (contextIndex) {
+	        const sourceOfTruth = contextIndex.sourceArtifacts?.sourceOfTruth;
+	        const orchestrationDoc = (contextIndex.sourceArtifacts?.generatedDocumentation || []).find(
+	          doc => doc.file === 'docs/generated/orchestration-domains.md'
+	        );
+
+	        const mismatches = [];
+	        if (typeof sourceOfTruth?.domains === 'number' && sourceOfTruth.domains !== orchestrationCount) {
+	          mismatches.push(`sourceOfTruth.domains=${sourceOfTruth.domains}`);
+	        }
+	        if (orchestrationDoc && typeof orchestrationDoc.domains === 'number' && orchestrationDoc.domains !== orchestrationCount) {
+	          mismatches.push(`orchestrationDoc.domains=${orchestrationDoc.domains}`);
+	        }
+
+	        if (mismatches.length > 0) {
+	          const message = `Context tree / docs domain counts (${mismatches.join(', ')}) do not match orchestration-domains.json (${orchestrationCount}).`;
+	          console.error('   ❌', message);
+	          governanceState.violations.push({
+	            movement: 1,
+	            severity: 'CRITICAL',
+	            message,
+	            orchestrationCount,
+	            mismatches
+	          });
+	          throw new Error(message);
+	        }
+
+	        console.log(`   ✅ Context tree & docs aligned on orchestration domain count: ${orchestrationCount}`);
+	      } else {
+	        console.warn('   ⚠️  Context tree index not found; skipping domain count alignment check');
+	      }
+	      
+	      return { valid: true, registry, domainRegistry, contextIndex };
     } catch (err) {
       console.error('   💥 ERROR:', err.message);
       throw err;
@@ -275,7 +395,12 @@ const handlers = {
 
         if (symphony.movements) {
           symphony.movements.forEach((movement, mIdx) => {
-            if (movement.beats) {
+            // Some symphonies summarize beats as a number per movement
+            // (e.g., total beat count) instead of an explicit beats[]
+            // array. For handler mapping we only care about beats that
+            // declare concrete handler metadata, so we safely skip
+            // non-array "beats" values here.
+            if (Array.isArray(movement.beats)) {
               movement.beats.forEach((beat, bIdx) => {
                 beatIndex.push({
                   symphonyFile: file,

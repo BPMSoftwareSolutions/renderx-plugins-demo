@@ -15,6 +15,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import AjvModule from 'ajv';
+import { getRenderxWebOrchestrationIds } from './helpers/renderxWebOrchestration';
 
 // Ajv instantiation pattern mirrors governance-handlers.js and conflation test
 const Ajv: any = (AjvModule as any).default || (AjvModule as any);
@@ -75,27 +76,10 @@ describe('renderx-web-orchestration sequences validation', () => {
     );
     const orchestrationRegistry = loadJson('../orchestration-domains.json');
 
-    const movements: any[] = Array.isArray(renderxWeb.movements)
-      ? renderxWeb.movements
-      : [];
+    const referencedIds = getRenderxWebOrchestrationIds(renderxWeb);
     const domains: any[] = Array.isArray(orchestrationRegistry.domains)
       ? orchestrationRegistry.domains
       : [];
-
-    // Collect all orchestration IDs referenced in renderx-web movements
-    const referencedIds = new Set<string>();
-    for (const movement of movements) {
-      const orchestration = (movement as any).orchestration;
-      if (!orchestration) continue;
-
-      if (typeof orchestration === 'string') {
-        referencedIds.add(orchestration);
-      } else if (Array.isArray(orchestration)) {
-        for (const id of orchestration) {
-          if (typeof id === 'string') referencedIds.add(id);
-        }
-      }
-    }
 
     expect(referencedIds.size).toBeGreaterThan(0);
 
@@ -156,26 +140,10 @@ describe('renderx-web-orchestration sequences validation', () => {
     );
     const orchestrationRegistry = loadJson('../orchestration-domains.json');
 
-    const movements: any[] = Array.isArray(renderxWeb.movements)
-      ? renderxWeb.movements
-      : [];
+    const referencedIds = getRenderxWebOrchestrationIds(renderxWeb);
     const domains: any[] = Array.isArray(orchestrationRegistry.domains)
       ? orchestrationRegistry.domains
       : [];
-
-    const referencedIds = new Set<string>();
-    for (const movement of movements) {
-      const orchestration = (movement as any).orchestration;
-      if (!orchestration) continue;
-
-      if (typeof orchestration === 'string') {
-        referencedIds.add(orchestration);
-      } else if (Array.isArray(orchestration)) {
-        for (const id of orchestration) {
-          if (typeof id === 'string') referencedIds.add(id);
-        }
-      }
-    }
 
     const templateFailures: Array<{ id: string; reason: string }> = [];
 
@@ -285,23 +253,7 @@ describe('renderx-web-orchestration sequences validation', () => {
       ? orchestrationRegistry.domains
       : [];
 
-    const movements: any[] = Array.isArray(renderxWeb.movements)
-      ? renderxWeb.movements
-      : [];
-
-    const referencedIds = new Set<string>();
-    for (const movement of movements) {
-      const orchestration = (movement as any).orchestration;
-      if (!orchestration) continue;
-
-      if (typeof orchestration === 'string') {
-        referencedIds.add(orchestration);
-      } else if (Array.isArray(orchestration)) {
-        for (const id of orchestration) {
-          if (typeof id === 'string') referencedIds.add(id);
-        }
-      }
-    }
+    const referencedIds = getRenderxWebOrchestrationIds(renderxWeb);
 
     const domainIds = new Set(domains.map((d) => d.id));
     let registered = 0;
