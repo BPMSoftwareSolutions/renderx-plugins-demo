@@ -307,6 +307,9 @@ async function run() {
     } catch {}
 
     let transformedAnalysis = transformAnalysisForReport(analysisData);
+    // Ensure subject/codebase identity reflects the orchestrated domain
+    transformedAnalysis.subject = domainId;
+    transformedAnalysis.codebase = domainId;
     // Supplement coverage if missing
     if (coverageSummary && (!transformedAnalysis.coverage || (
       transformedAnalysis.coverage.statements === 0 &&
@@ -323,84 +326,72 @@ async function run() {
         lines: toNum(oc.lines)
       };
     }
-    // Supplement metrics if missing
-    if (trendsSummary && (!transformedAnalysis.metrics || (
-      (transformedAnalysis.metrics.totalLoc || 0) === 0 &&
-      (transformedAnalysis.metrics.totalFunctions || 0) === 0 &&
-      (transformedAnalysis.metrics.totalComplexity || 0) === 0
-    ))) {
-      const t = trendsSummary.trends || {};
-      transformedAnalysis.metrics = {
-        totalLoc: Number(t.loc?.current || 0),
-        totalComplexity: Number(t.complexity?.current || 0),
-        avgComplexity: Number(t.complexity?.current || 0),
-        totalFunctions: 0,
-        avgLocPerFunction: 0,
-        duplication: Number(t.duplication?.current || 0),
-        maintainability: Number(t.maintainability?.current || 0)
-      };
+    // CRITICAL: Read REAL domain metrics from domain-metrics artifact
+    // DO NOT backfill from trends (which contains synthetic beat-level aggregates)
+    try {
+      const domainMetricsFiles = fs.readdirSync(analysisOutputDir)
+        .filter(f => f.includes('domain-metrics') && f.endsWith('.json'))
+        .sort()
+        .reverse();
+      if (domainMetricsFiles.length > 0) {
+        const dm = JSON.parse(fs.readFileSync(path.join(analysisOutputDir, domainMetricsFiles[0]), 'utf8'));
+        log(`  ✓ Reading real domain metrics from: ${domainMetricsFiles[0]}`, '  ');
+        transformedAnalysis.metrics = {
+          totalLoc: Number(dm.metrics?.loc || 0),
+          totalComplexity: Number(dm.metrics?.complexity || 0),
+          avgComplexity: Number(dm.metrics?.complexity || 0),
+          totalFunctions: Number(dm.metrics?.functions || 0),
+          avgLocPerFunction: 0,
+          duplication: Number(dm.metrics?.duplication || 0),
+          maintainability: Number(dm.metrics?.maintainability || 100)
+        };
+        transformedAnalysis.coverage = {
+          statements: Number(dm.coverage?.statements || 0),
+          branches: Number(dm.coverage?.branches || 0),
+          functions: Number(dm.coverage?.functions || 0),
+          lines: Number(dm.coverage?.lines || 0)
+        };
+      } else {
+        log('  ⚠ No domain-metrics artifact found; metrics may be incorrect', '⚠');
+      }
+    } catch (err) {
+      log(`  ⚠ Failed to read domain-metrics: ${err.message}`, '⚠');
     }
-    // Build perModuleMetrics from per-beat CSV; also compute aggregates
-    if (true) {
-      try {
-        const beatCsvFiles = fs.readdirSync(analysisOutputDir)
-          .filter(f => f.includes('per-beat-metrics') && f.endsWith('.csv'))
-          .sort()
-          .reverse();
-        if (beatCsvFiles.length > 0) {
-          const csvPath = path.join(analysisOutputDir, beatCsvFiles[0]);
-          const csvText = fs.readFileSync(csvPath, 'utf8');
-          const lines = csvText.trim().split(/\r?\n/);
-          const header = lines.shift();
-          const idx = { Beat: 0, Movement: 1, Files: 2, LOC: 3, Complexity: 4, Coverage: 5, Status: 6 };
-          const rows = lines.map(line => line.split(','));
-          const perModule = rows.map(cols => ({
-            name: `${cols[idx.Beat]} (${cols[idx.Movement]})`,
-            loc: Number(cols[idx.LOC].replace(/[^0-9.]/g, '')) || 0,
-            functions: Number(cols[idx.Files].replace(/[^0-9.]/g, '')) || 0,
-            complexity: Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0,
-            comments: 0
-          }));
-                    // Build per-beat coverage table
-                    transformedAnalysis.perBeatCoverage = rows.map(cols => ({
-                      beat: cols[idx.Beat],
-                      movement: cols[idx.Movement],
-                      coverage: Number(String(cols[idx.Coverage]).replace(/[^0-9.]/g, '')) || 0,
-                      status: cols[idx.Status]
-                    }));
-          // sort by LOC desc and take top 10
-          perModule.sort((a,b) => b.loc - a.loc);
-          transformedAnalysis.perModuleMetrics = perModule.slice(0, 10);
-
-          // Aggregates for validation and metrics backfill
-          const totalLocCsv = perModule.reduce((sum, m) => sum + m.loc, 0);
-          const totalFunctionsCsv = rows.reduce((sum, cols) => sum + (Number(cols[idx.Files].replace(/[^0-9.]/g, '')) || 0), 0);
-          const avgComplexityCsv = rows.length
-            ? rows.reduce((sum, cols) => sum + (Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0), 0) / rows.length
-            : 0;
-
-          transformedAnalysis.validation = transformedAnalysis.validation || {};
-          transformedAnalysis.validation.moduleTable = {
-            rows: rows.length,
-            totalLocFromCsv: totalLocCsv,
-            totalFunctionsApprox: totalFunctionsCsv,
-            avgComplexityFromCsv: Number(avgComplexityCsv.toFixed(2))
-          };
-
-          // Backfill metrics if missing or zero
-          transformedAnalysis.metrics = transformedAnalysis.metrics || {};
-          if (!transformedAnalysis.metrics.totalLoc || transformedAnalysis.metrics.totalLoc === 0) {
-            transformedAnalysis.metrics.totalLoc = totalLocCsv;
-          }
-          if (!transformedAnalysis.metrics.totalFunctions || transformedAnalysis.metrics.totalFunctions === 0) {
-            transformedAnalysis.metrics.totalFunctions = totalFunctionsCsv;
-          }
-          if (!transformedAnalysis.metrics.avgComplexity || transformedAnalysis.metrics.avgComplexity === 0) {
-            transformedAnalysis.metrics.avgComplexity = Number(avgComplexityCsv.toFixed(2));
-          }
-        }
-      } catch {}
-    }
+    // Build perModuleMetrics from per-beat CSV for BEAT COVERAGE TABLE ONLY
+    // DO NOT use beat CSV for global metrics (those come from domain-metrics artifact)
+    try {
+      const beatCsvFiles = fs.readdirSync(analysisOutputDir)
+        .filter(f => f.includes('per-beat-metrics') && f.endsWith('.csv'))
+        .sort()
+        .reverse();
+      if (beatCsvFiles.length > 0) {
+        const csvPath = path.join(analysisOutputDir, beatCsvFiles[0]);
+        const csvText = fs.readFileSync(csvPath, 'utf8');
+        const lines = csvText.trim().split(/\r?\n/);
+        const header = lines.shift();
+        const idx = { Beat: 0, Movement: 1, Files: 2, LOC: 3, Complexity: 4, Coverage: 5, Status: 6 };
+        const rows = lines.map(line => line.split(','));
+        
+        // Build per-beat coverage table for beat-level insights
+        transformedAnalysis.perBeatCoverage = rows.map(cols => ({
+          beat: cols[idx.Beat],
+          movement: cols[idx.Movement],
+          coverage: Number(String(cols[idx.Coverage]).replace(/[^0-9.]/g, '')) || 0,
+          status: cols[idx.Status]
+        }));
+        
+        // Build perModuleMetrics for top modules view (sorted by LOC)
+        const perModule = rows.map(cols => ({
+          name: `${cols[idx.Beat]} (${cols[idx.Movement]})`,
+          loc: Number(cols[idx.LOC].replace(/[^0-9.]/g, '')) || 0,
+          functions: Number(cols[idx.Files].replace(/[^0-9.]/g, '')) || 0,
+          complexity: Number(cols[idx.Complexity].replace(/[^0-9.]/g, '')) || 0,
+          comments: 0
+        }));
+        perModule.sort((a,b) => b.loc - a.loc);
+        transformedAnalysis.perModuleMetrics = perModule.slice(0, 10);
+      }
+    } catch {}
 
     // Enrich with handler metrics artifacts if present
     try {
@@ -453,9 +444,16 @@ async function run() {
           if (c < 30) cov.b0_30 += 1; else if (c < 60) cov.b30_60 += 1; else if (c < 80) cov.b60_80 += 1; else cov.b80_100 += 1;
         });
         transformedAnalysis.handlerDistributions = { sizeBands: sizes, coverageBands: cov };
-        // god handlers
+        // god handlers - identify large handlers (100+ LOC) or high-risk handlers (large + low coverage)
         transformedAnalysis.godHandlers = transformedAnalysis.handlerPortfolio.handlers
-          .filter(h => (h.loc || 0) >= 500 || (h.complexity || 0) >= 25)
+          .filter(h => {
+            const loc = h.loc || 0;
+            const coverage = h.coverage || 0;
+            const complexity = h.complexity || 0;
+            // God handler criteria: 100+ LOC, or high complexity, or large with poor coverage
+            return loc >= 100 || complexity >= 15 || (loc >= 50 && coverage < 70);
+          })
+          .sort((a, b) => (b.loc || 0) - (a.loc || 0))
           .slice(0, 10);
       }
 

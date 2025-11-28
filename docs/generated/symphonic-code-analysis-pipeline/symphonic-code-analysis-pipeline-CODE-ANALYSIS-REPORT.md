@@ -1,8 +1,8 @@
 # 🎼 Symphonic Code Analysis Report
 
-**Analysis Date**: 2025-11-28T15:27:59.539Z
-**Analysis ID**: 2025-11-28T15:27:58.153Z
-**Subject**: renderx-web-orchestration
+**Analysis Date**: 2025-11-28T15:43:00.474Z
+**Analysis ID**: 2025-11-28T15:42:58.932Z
+**Subject**: symphonic-code-analysis-pipeline
 **Status**: ✅ **COMPLETE - ALL 4 MOVEMENTS × 16 BEATS EXECUTED**
 
 ## 📊 Conformity Score
@@ -21,7 +21,7 @@ The code analysis pipeline executed a **complete 4-movement symphony**:
 
 - **Movement 1**: Code Discovery & Beat Mapping → 4 scripts
 - **Movement 2**: Code Metrics Analysis → 18945 LOC, 2.28 complexity
-- **Movement 3**: Test Coverage Analysis → 72.1% covered
+- **Movement 3**: Test Coverage Analysis → 77.3% covered
 - **Movement 4**: Architecture Conformity → 87.50% conformity
 
 | Metric | Value | Benchmark | Status |
@@ -35,12 +35,12 @@ The code analysis pipeline executed a **complete 4-movement symphony**:
 
 | Coverage Type | Score | Status |
 |---|---|---|
-| Statements | 72.1% | 🟡 |
-| Branches | 75.5% | 🟡 |
-| Functions | 81.3% | ⚠️ |
-| Lines | 81.5% | ✅ |
+| Statements | 77.3% | 🟡 |
+| Branches | 77.7% | 🟡 |
+| Functions | 79.3% | ⚠️ |
+| Lines | 74.6% | 🟡 |
 
-**Coverage Status**: 72.1% overall
+**Coverage Status**: 77.3% overall
 
 | Module | LOC | Functions | Complexity | Comments |
 |--------|-----|-----------|------------|----------|
@@ -108,12 +108,21 @@ a key characteristic of fractal architectures where each system can analyze itse
 ### 6.1 Symphonies Overview
 | Symphony | Handlers | Total LOC | Avg Coverage |
 |---|---:|---:|---:|
-| N/A | N/A | N/A | N/A |
+| unknown | 38 | 0 | 0% |
 
 ### 6.2 Top Handlers by LOC / Complexity
 | Handler | Symphony | LOC | Complexity | Coverage | Size | Risk |
 |---|---|---:|---:|---:|---|---|
-| N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
+| handlers | unknown | 0 | 0 | 0% |  |  |
 
 ## 📊 Handler Distributions
 
@@ -129,7 +138,7 @@ a key characteristic of fractal architectures where each system can analyze itse
 ### 6.4 Coverage Distribution
 | Band | Count |
 |---|---:|
-| 0–30% | 0 |
+| 0–30% | 38 |
 | 30–60% | 0 |
 | 60–80% | 0 |
 | 80–100% | 0 |
@@ -142,7 +151,7 @@ a key characteristic of fractal architectures where each system can analyze itse
 
 ## 🚦 CI/CD Readiness
 
-**Verdict**: Unknown
+**Verdict**: Production Ready
 
 **Notes**:
 - N/A

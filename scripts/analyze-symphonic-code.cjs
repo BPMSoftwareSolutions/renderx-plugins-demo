@@ -528,7 +528,7 @@ Verify track-historical-trends.cjs is accessible.`;
   }
 }
 
-function generateJsonArtifacts(metrics) {
+async function generateJsonArtifacts(metrics) {
   log('Generating JSON analysis artifacts...', '📝');
   
   // Validate metric sources (guard against synthetic data)
@@ -612,6 +612,33 @@ function generateJsonArtifacts(metrics) {
   fs.writeFileSync(jsonPath, JSON.stringify(analysisData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), jsonPath)}`, '✓');
 
+  // CRITICAL: Save domain-specific metrics for orchestrator consumption
+  // This artifact contains REAL metrics from the analyzed source code,
+  // NOT synthetic beat-level aggregates. Orchestrator MUST read from this.
+  const domainMetrics = {
+    timestamp: new Date().toISOString(),
+    source: 'domain-analysis',
+    codebase: process.env.ANALYSIS_DOMAIN_ID || 'renderx-web',
+    analysisSourcePath: process.env.ANALYSIS_SOURCE_PATH || 'packages/',
+    metrics: {
+      loc: metrics.loc?.totalLoc || 0,
+      complexity: metrics.complexity?.avgComplexity || 0,
+      duplication: metrics.duplication?.duplicationPercent || 0,
+      maintainability: metrics.maintainability?.score || 100,
+      functions: metrics.complexity?.totalFunctions || 0
+    },
+    coverage: {
+      statements: metrics.coverage?.statements || 0,
+      branches: metrics.coverage?.branches || 0,
+      functions: metrics.coverage?.functions || 0,
+      lines: metrics.coverage?.lines || 0
+    },
+    integrity: checkpoint
+  };
+  const domainMetricsPath = path.join(ANALYSIS_DIR, `renderx-web-domain-metrics-${TIMESTAMP}.json`);
+  fs.writeFileSync(domainMetricsPath, JSON.stringify(domainMetrics, null, 2));
+  log(`Saved domain metrics: ${path.relative(process.cwd(), domainMetricsPath)}`, '✓');
+
   // Coverage Summary
   const coverageSummary = {
     timestamp: new Date().toISOString(),
@@ -671,6 +698,32 @@ function generateJsonArtifacts(metrics) {
   const trendsPath = path.join(ANALYSIS_DIR, `renderx-web-trends-${TIMESTAMP}.json`);
   fs.writeFileSync(trendsPath, JSON.stringify(trendData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), trendsPath)}`, '✓');
+
+  // Save handler metrics for orchestrator enrichment
+  try {
+    const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
+    const handlerResults = await analyzeCoverageByHandler();
+    if (handlerResults.success && handlerResults.handlers && handlerResults.handlers.length > 0) {
+      const handlerMetricsPath = path.join(ANALYSIS_DIR, `handler-metrics-${TIMESTAMP}.json`);
+      fs.writeFileSync(handlerMetricsPath, JSON.stringify({
+        timestamp: new Date().toISOString(),
+        handlers: handlerResults.handlers.map(h => ({
+          name: h.name,
+          symphony: 'unknown', // Will be derived from file path during orchestrator enrichment
+          loc: h.lines || 0,
+          complexity: 0, // Not computed by coverage analyzer
+          coverage: h.coverage || 0,
+          sizeBand: h.lines ? (h.lines < 10 ? 'tiny' : h.lines < 25 ? 'small' : h.lines < 50 ? 'medium' : h.lines < 100 ? 'large' : 'xl') : null,
+          risk: h.risk || null,
+          type: h.type || 'generic',
+          file: 'unknown', // Not available from coverage analyzer
+          beat: h.beat || 'unassigned'
+        })),
+        discoveredCount: handlerResults.handlers.length
+      }, null, 2));
+      log(`Saved: ${path.relative(process.cwd(), handlerMetricsPath)}`, '✓');
+    }
+  } catch {}
 
   return { analysisData, coverageSummary, trendData };
 }
@@ -1071,7 +1124,7 @@ async function run() {
 
     // Generate artifacts
     log('Generating analysis artifacts...', '🎬');
-    const artifacts = generateJsonArtifacts(baseMetrics);
+    const artifacts = await generateJsonArtifacts(baseMetrics);
     await generateMarkdownReport(baseMetrics, metricsEnvelope, artifacts);
 
     // Final summary

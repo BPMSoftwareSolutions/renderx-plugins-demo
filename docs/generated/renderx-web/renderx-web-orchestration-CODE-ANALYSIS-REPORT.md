@@ -1,7 +1,7 @@
 # 🎼 Symphonic Code Analysis Report
 
-**Analysis Date**: 2025-11-28T15:30:24.603Z
-**Analysis ID**: 2025-11-28T15:30:23.194Z
+**Analysis Date**: 2025-11-28T16:08:49.392Z
+**Analysis ID**: 2025-11-28T16:08:47.541Z
 **Subject**: renderx-web-orchestration
 **Status**: ✅ **COMPLETE - ALL 4 MOVEMENTS × 16 BEATS EXECUTED**
 
@@ -20,27 +20,27 @@
 The code analysis pipeline executed a **complete 4-movement symphony**:
 
 - **Movement 1**: Code Discovery & Beat Mapping → 4 scripts
-- **Movement 2**: Code Metrics Analysis → 18945 LOC, 2.28 complexity
-- **Movement 3**: Test Coverage Analysis → 83.6% covered
+- **Movement 2**: Code Metrics Analysis → 5045 LOC, 0 complexity
+- **Movement 3**: Test Coverage Analysis → 72.4% covered
 - **Movement 4**: Architecture Conformity → 87.50% conformity
 
 | Metric | Value | Benchmark | Status |
 |--------|-------|-----------|--------|
-| Lines of Code | 18945 | <5,000 | ⚠️ |
-| Functions | 558 | >50 | ⚠️ |
-| System Complexity | 2.28 | <400 | ✅ |
-| Avg Complexity/Module | 2.3 | <20 | ✅ |
-| Maintainability | 95/100 | >70 | ✅ |
-| Duplication | 2.8% | <20% | ✅ |
+| Lines of Code | 5045 | <5,000 | ⚠️ |
+| Functions | 0 | >50 | ✅ |
+| System Complexity | 0 | <400 | ✅ |
+| Avg Complexity/Module | 0.0 | <20 | ✅ |
+| Maintainability | 80/100 | >70 | ✅ |
+| Duplication | 78.3% | <20% | ⚠️ |
 
 | Coverage Type | Score | Status |
 |---|---|---|
-| Statements | 83.6% | ✅ |
-| Branches | 76.4% | 🟡 |
-| Functions | 89.4% | ⚠️ |
-| Lines | 80.8% | ✅ |
+| Statements | 72.4% | 🟡 |
+| Branches | 84.1% | 🟡 |
+| Functions | 76.3% | ✅ |
+| Lines | 78.2% | 🟡 |
 
-**Coverage Status**: 83.6% overall
+**Coverage Status**: 72.4% overall
 
 | Module | LOC | Functions | Complexity | Comments |
 |--------|-----|-----------|------------|----------|
@@ -108,44 +108,55 @@ a key characteristic of fractal architectures where each system can analyze itse
 ### 6.1 Symphonies Overview
 | Symphony | Handlers | Total LOC | Avg Coverage |
 |---|---:|---:|---:|
-| N/A | N/A | N/A | N/A |
+| unknown | 147 | 1052 | 77.7% |
 
 ### 6.2 Top Handlers by LOC / Complexity
 | Handler | Symphony | LOC | Complexity | Coverage | Size | Risk |
 |---|---|---:|---:|---:|---|---|
-| N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| attachResizeHandlers | unknown | 192 | 0 | 74% | xl | medium |
+| showSvgNodeOverlay | unknown | 155 | 0 | 73% | xl | medium |
+| createNode | unknown | 126 | 0 | 80% | xl | low |
+| attachLineResizeHandlers | unknown | 96 | 0 | 80% | large | low |
+| createPastedComponent | unknown | 60 | 0 | 73% | large | medium |
+| updatePosition | unknown | 55 | 0 | 78% | large | medium |
+| showSelectionOverlay | unknown | 50 | 0 | 82% | large | low |
+| routeSelectionRequest | unknown | 23 | 0 | 82% | small | low |
+| endDrag | unknown | 23 | 0 | 82% | small | low |
+| startDrag | unknown | 23 | 0 | 74% | small | medium |
 
 ## 📊 Handler Distributions
 
 ### 6.3 Size Distribution
 | Band | Count |
 |---|---:|
-| Tiny | 0 |
-| Small | 0 |
+| Tiny | 21 |
+| Small | 13 |
 | Medium | 0 |
-| Large | 0 |
-| XL | 0 |
+| Large | 4 |
+| XL | 3 |
 
 ### 6.4 Coverage Distribution
 | Band | Count |
 |---|---:|
 | 0–30% | 0 |
 | 30–60% | 0 |
-| 60–80% | 0 |
-| 80–100% | 0 |
+| 60–80% | 104 |
+| 80–100% | 43 |
 
 ## 🔥 Risk Hotspots & God Handlers
 
 | Handler | LOC | Complexity | Coverage |
 |---|---:|---:|---:|
-| N/A | N/A | N/A | N/A |
+| attachResizeHandlers | 192 | 0 | 74% |
+| showSvgNodeOverlay | 155 | 0 | 73% |
+| createNode | 126 | 0 | 80% |
 
 ## 🚦 CI/CD Readiness
 
-**Verdict**: Unknown
+**Verdict**: Requires Gating
 
 **Notes**:
-- N/A
+- 1. coverage.statements >= 75 not met (actual 72.4)
 
 ## 🛠️ Refactoring & Improvement Roadmap
 

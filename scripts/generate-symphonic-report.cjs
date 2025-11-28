@@ -509,8 +509,37 @@ function generateReport(analysisPath, outputPath) {
     ? analysis.godHandlers.map(h => `| ${h.name} | ${h.loc} | ${h.complexity} | ${Number(h.coverage||0).toFixed(0)}% |`).join('\n')
     : '| N/A | N/A | N/A | N/A |';
   const ci = analysis.ciReadiness || { verdict: 'Unknown', notes: [] };
-  context.ciVerdict = ci.verdict;
-  context.ciNotes = (ci.notes||[]).map((n,i)=>`- ${i+1}. ${n}`).join('\n') || '- N/A';
+  // Auto-compute CI/CD readiness if not provided, using authority formulas
+  function computeCiVerdict() {
+    const pr = authority.formulas?.productionReadiness;
+    if (!pr) return { verdict: 'Unknown', reasons: [] };
+    // derive maintainability from context
+    const maintainability = Number(context.maintainability || 0);
+    const conformity = Number(context.conformityScore || 0);
+    const statements = Number(context.statements || 0);
+    const weights = pr.conditions.reduce((acc, c) => acc + (c.weight || 0), 0) || 1;
+    let score = 0;
+    const reasons = [];
+    pr.conditions.forEach(cond => {
+      let metricVal = 0;
+      if (cond.metric === 'conformity') metricVal = conformity;
+      if (cond.metric === 'coverage.statements') metricVal = statements;
+      if (cond.metric === 'maintainability') metricVal = maintainability;
+      const ok = (cond.operator === '>=') ? (metricVal >= cond.value) : (metricVal > cond.value);
+      score += (ok ? (cond.weight || 0) : 0);
+      if (!ok) reasons.push(`${cond.metric} ${cond.operator} ${cond.value} not met (actual ${metricVal.toFixed(1)})`);
+    });
+    const normalized = score / weights;
+    let verdict = 'Requires Gating';
+    if (normalized >= (pr.thresholdScore || 0.75)) verdict = 'Production Ready';
+    if (reasons.length === pr.conditions.length) verdict = 'Not Ready';
+    return { verdict, reasons };
+  }
+  const autoCi = computeCiVerdict();
+  const effectiveVerdict = ci.verdict && ci.verdict !== 'Unknown' ? ci.verdict : autoCi.verdict;
+  const effectiveNotes = (ci.notes && ci.notes.length ? ci.notes : autoCi.reasons);
+  context.ciVerdict = effectiveVerdict;
+  context.ciNotes = (effectiveNotes||[]).map((n,i)=>`- ${i+1}. ${n}`).join('\n') || '- N/A';
   const rr = analysis.refactorRoadmap || [];
   context.roadmapRows = rr.length 
     ? rr.map((item,i)=>`- ${i+1}. ${item.title || item.action || 'Action'}${item.target?` → ${item.target}`:''}${item.rationale?` — ${item.rationale}`:''}`).join('\n')
@@ -518,8 +547,17 @@ function generateReport(analysisPath, outputPath) {
   
   console.log(`🎼 Rendering sections...`);
   
-  // Sort sections by order
-  const sections = authority.templates.sections.sort((a, b) => a.order - b.order);
+  // Sort sections by order and optionally hide empty handler-related sections
+  let sections = authority.templates.sections.sort((a, b) => a.order - b.order);
+  const hasHandlerData = (hp.handlers && hp.handlers.length) || (hp.symphonies && hp.symphonies.length);
+  if (!hasHandlerData) {
+    sections = sections.filter(s => !['handler-portfolio','handler-distributions','risk-hotspots'].includes(s.id));
+  }
+  // Optionally hide CI/CD section if verdict is Unknown and no notes
+  const showCi = !(context.ciVerdict === 'Unknown' && (!effectiveNotes || effectiveNotes.length === 0));
+  if (!showCi) {
+    sections = sections.filter(s => s.id !== 'ci-readiness');
+  }
   
   // Render each section
   const reportSections = sections.map(section => {
