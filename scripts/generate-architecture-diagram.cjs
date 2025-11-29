@@ -23,15 +23,18 @@ const {
  * Generate a generic summary when detailed handler data isn't available
  */
 function generateGenericSummary(metrics) {
-  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = metrics;
+  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', handlers = [] } = metrics;
   const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
   // Safe numeric conversions (coverage might be string from metrics)
   const safeAvgLoc = Number(avgLocPerHandler) || 0;
   const safeCoverage = Number(overallCoverage) || 0;
 
-  // Check if this is a self-analysis (fractal property)
-  const isSelfAnalysis = domainId === 'symphonic-code-analysis-pipeline';
+  // DATA-DRIVEN DETECTION: Check if this is a self-analysis (fractal property)
+  // Self-analysis is detected when ALL handlers are in the scripts/ directory
+  // This indicates the analysis pipeline is analyzing its own implementation
+  const isSelfAnalysis = handlers.length > 0 &&
+    handlers.every(h => h.file && (h.file.startsWith('scripts/') || h.file.includes('/scripts/')));
 
   if (isSelfAnalysis) {
     return `        ╔═════════════════════════════════════════════════════════╗
@@ -78,16 +81,30 @@ function generateGenericSummary(metrics) {
 function generateHandlerSummary(handlerData) {
   const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = handlerData;
 
-  // For self-analysis domain, always use fractal banner (even if handlers exist globally)
-  const isSelfAnalysis = domainId === 'symphonic-code-analysis-pipeline';
-
-  if (isSelfAnalysis || !handlers || handlers.length === 0) {
-    // Pass through with proper structure for generateGenericSummary
+  // If no handlers, use generic summary
+  if (!handlers || handlers.length === 0) {
     return generateGenericSummary({
       totalHandlers,
       avgLocPerHandler,
       overallCoverage,
-      domainId
+      domainId,
+      handlers: []
+    });
+  }
+
+  // DATA-DRIVEN DETECTION: Check if handlers have symphony structure
+  // Symphony structure is indicated by file paths containing '/symphonies/'
+  const hasSymphonyStructure = handlers.some(h => h.file && h.file.includes('/symphonies/'));
+
+  // If no symphony structure detected, use generic summary
+  // This handles utility/script-based domains like symphonic-code-analysis-pipeline
+  if (!hasSymphonyStructure) {
+    return generateGenericSummary({
+      totalHandlers,
+      avgLocPerHandler,
+      overallCoverage,
+      domainId,
+      handlers
     });
   }
   
@@ -327,7 +344,8 @@ function generateDiagram(metrics = {}) {
     totalHandlers,
     avgLocPerHandler: safeAvgLoc,
     overallCoverage: safeCoverage,
-    domainId
+    domainId,
+    handlers: []
   });
 
   return `
