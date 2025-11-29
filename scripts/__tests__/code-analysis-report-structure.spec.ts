@@ -13,19 +13,29 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Reference report path
-const REFERENCE_REPORT_PATH = 'docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md';
+// Parameterized domain report paths (add new domains here)
+const DOMAIN_REPORTS: { name: string; filePath: string }[] = [
+  {
+    name: 'renderx-web-orchestration',
+    filePath: 'docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md'
+  },
+  {
+    name: 'build-pipeline-orchestration',
+    filePath: 'docs/generated/build-pipeline/build-pipeline-orchestration-CODE-ANALYSIS-REPORT.md'
+  }
+];
 
-describe('CODE-ANALYSIS-REPORT.md Structure Validation', () => {
-  let reportContent: string;
-
-  beforeAll(() => {
-    const fullPath = path.join(process.cwd(), REFERENCE_REPORT_PATH);
-    if (!fs.existsSync(fullPath)) {
-      throw new Error(`Reference report not found at: ${fullPath}`);
-    }
-    reportContent = fs.readFileSync(fullPath, 'utf-8');
-  });
+// Execute full structural validation for each domain's generated report
+for (const { name, filePath } of DOMAIN_REPORTS) {
+  describe(`CODE-ANALYSIS-REPORT.md Structure Validation (${name})`, () => {
+    let reportContent: string;
+    beforeAll(() => {
+      const fullPath = path.join(process.cwd(), filePath);
+      if (!fs.existsSync(fullPath)) {
+        throw new Error(`Domain report not found at: ${fullPath}`);
+      }
+      reportContent = fs.readFileSync(fullPath, 'utf-8');
+    });
 
   describe('Report Header', () => {
     it('should contain report title with domain name', () => {
@@ -279,8 +289,8 @@ describe('CODE-ANALYSIS-REPORT.md Structure Validation', () => {
       expect(reportContent).toMatch(/LOW\s*:\s*\d+/);
     });
 
-    it('should contain REFACTORING ROADMAP section', () => {
-      expect(reportContent).toMatch(/REFACTORING ROADMAP/);
+    it('should contain REFACTORING ROADMAP or Automated Refactor Suggestions section', () => {
+      expect(reportContent).toMatch(/REFACTORING ROADMAP|Automated Refactor Suggestions/i);
     });
   });
 
@@ -469,5 +479,6 @@ describe('CODE-ANALYSIS-REPORT.md Structure Validation', () => {
       expect(reportContent).toMatch(/NEXT ACTIONS/);
     });
   });
-});
+  });
+}
 

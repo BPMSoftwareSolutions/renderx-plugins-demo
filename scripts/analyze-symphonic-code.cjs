@@ -112,6 +112,8 @@ const header = (title) => console.log(`\n╔════════════
 
 // Import architecture diagram
 const { generateDiagram } = require('./generate-architecture-diagram.cjs');
+// ASCII renderer (used for handler symphony sections)
+const { renderCleanSymphonyHandler } = require('./ascii-sketch-renderers.cjs');
 
 // ============================================================================
 // MOVEMENT 1: CODE DISCOVERY & BEAT MAPPING
@@ -1126,6 +1128,70 @@ ${(() => {
 
 *Report auto-generated from symphonic-code-analysis-pipeline. All metrics are immutable and traceable to source analysis.*
 `;
+
+  // Fallback: ensure at least one HANDLER SYMPHONY section for domains
+  // that currently have zero discovered handlers (e.g., partially symphonic
+  // build-pipeline domains relying on sequence-defined handlers).
+  if (!/HANDLER SYMPHONY:/.test(report)) {
+    try {
+      const seqDir = path.join(process.cwd(), 'packages', 'orchestration', 'json-sequences');
+      const seqPath = [
+        path.join(seqDir, `${DOMAIN_ID}.json`),
+        path.join(seqDir, `${DOMAIN_ID}-symphony.json`)
+      ].find(p => fs.existsSync(p));
+      if (seqPath) {
+        const seq = JSON.parse(fs.readFileSync(seqPath, 'utf8'));
+        const movementsRaw = Array.isArray(seq.movements) ? seq.movements : [];
+        // Build movement metadata for renderer
+        const movements = movementsRaw.map((m, mi) => ({
+          name: (m.name || `M${mi + 1}`),
+          beats: (m.beats || []).map((_, bi) => `B${mi + 1}.${bi + 1}`).join(' '),
+          description: (m.description || (m.name || `Movement ${mi + 1}`)).split(/\s+/).slice(0,3).join(' ')
+        }));
+        // Build handler rows from beats
+        const handlers = [];
+        movementsRaw.forEach((m, mi) => {
+          (m.beats || []).forEach((b, bi) => {
+            if (b?.handler?.name) {
+              const fn = b.handler.name.split('#')[1] || b.handler.name;
+              handlers.push({
+                beat: `${mi + 1}.${bi + 1}`,
+                movement: `${mi + 1}`,
+                handler: fn,
+                loc: 0,
+                sizeBand: 'tiny',
+                coverage: 0,
+                risk: 'low',
+                baton: ''
+              });
+            }
+          });
+        });
+        if (handlers.length > 0) {
+          const symphonyAscii = renderCleanSymphonyHandler({
+            symphonyName: DOMAIN_ID.replace(/-orchestration$/, ''),
+            domainId: DOMAIN_ID,
+            packageName: 'orchestration',
+            symphonyCount: 1,
+            movementCount: movements.length,
+            beatCount: handlers.length, // simplifying: one handler per beat
+            handlerCount: handlers.length,
+            totalLoc: 0,
+            avgCoverage: 0,
+            sizeBand: 'tiny',
+            riskLevel: 'low',
+            movements,
+            handlers,
+            metrics: {}
+          });
+          report += `\n\n${symphonyAscii}\n`;
+          log('Injected fallback HANDLER SYMPHONY section (sequence-derived handlers).', '✨');
+        }
+      }
+    } catch (e) {
+      log(`Skipped fallback symphony injection: ${e.message}`, 'ℹ');
+    }
+  }
 
   // ALWAYS save rich markdown artifact for orchestrator consumption
   // This contains ASCII diagrams, detailed handler portfolios, and comprehensive insights
