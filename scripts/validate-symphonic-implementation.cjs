@@ -71,24 +71,115 @@ function findSymphoniesRoot(dir) {
   return null;
 }
 
-function collectExportedFunctions(files) {
-  // Lightweight scan: look for `export const name =` or `exports.name =` or `export function name(`
-  const exports = new Set();
+function findSymphoniesAcrossPackages(packagesRoot) {
+  const dirs = [];
+  let entries = [];
+  try { entries = fs.readdirSync(packagesRoot, { withFileTypes: true }); } catch { return dirs; }
+  for (const ent of entries) {
+    if (!ent.isDirectory()) continue;
+    const sub = path.join(packagesRoot, ent.name);
+    const sym1 = path.join(sub, 'src', 'symphonies');
+    const sym2 = path.join(sub, 'symphonies');
+    if (fs.existsSync(sym1) && fs.statSync(sym1).isDirectory()) dirs.push(sym1);
+    else if (fs.existsSync(sym2) && fs.statSync(sym2).isDirectory()) dirs.push(sym2);
+  }
+  return dirs;
+}
+
+function collectExportedFunctionsByModule(files, symRoot) {
+  // Build an index: Map<moduleKey, Set<exportName>> where moduleKey derives from path under symRoot
+  const index = new Map();
   for (const f of files) {
     let txt = '';
     try { txt = fs.readFileSync(f, 'utf8'); } catch { continue; }
     const reConst = /export\s+const\s+(\w+)/g;
-    const reFunc = /export\s+function\s+(\w+)/g;
+    const reFunc = /export\s+(?:async\s+)?function\s+(\w+)/g;
     const reCommon = /exports\.(\w+)\s*=\s*/g;
+    const reObj = /export\s+\{\s*([^}]+)\s*\}/g;
+    const exports = new Set();
     let m;
     while ((m = reConst.exec(txt))) exports.add(m[1]);
     while ((m = reFunc.exec(txt))) exports.add(m[1]);
     while ((m = reCommon.exec(txt))) exports.add(m[1]);
+    while ((m = reObj.exec(txt))) {
+      m[1].split(',').map(s=>s.trim()).filter(Boolean).forEach(n=>exports.add(n.replace(/\sas\s.+$/, '')));
+    }
+    // derive moduleKey from relative path under symRoot
+    const rel = symRoot ? path.relative(symRoot, f).replace(/\\/g,'/') : path.basename(f);
+    const parts = rel.split('/');
+    const fileName = parts.pop() || '';
+    const dirParts = parts;
+    const base = fileName.replace(/\.(ts|js|cjs|mjs|tsx|jsx)$/i, '')
+                         .replace(/\.stage-crew$/, '')
+                         .replace(/\.symphony$/, '');
+    let moduleKey = base;
+    if (dirParts.length) {
+      const dirKey = dirParts.join('.');
+      moduleKey = base === 'index' ? dirKey : `${dirKey}.${base}`;
+    }
+    moduleKey = moduleKey.replace(/\._/g, '.').replace(/^_/, '');
+    if (!index.has(moduleKey)) index.set(moduleKey, new Set());
+    const set = index.get(moduleKey);
+    exports.forEach(e=>set.add(e));
   }
-  return exports;
+  return index;
 }
 
-function validateBeatHandlers(sequenceJson, implDir) {
+function buildMultiPackageExportIndex(implDirs) {
+  // implDirs are one or more symphony roots across packages
+  // Return Map<packageName, Map<moduleKey, Set<exportName>>>; packageName inferred from symRoot path
+  const result = new Map();
+  for (const symRoot of implDirs) {
+    if (!symRoot) continue;
+    let pkgName = 'unknown-package';
+    try {
+      // Expected: packages/<pkg>/src/symphonies
+      const pkgDir = path.dirname(path.dirname(symRoot));
+      pkgName = path.basename(pkgDir);
+    } catch {}
+    const files = listFilesRec(symRoot, (f) => exts.includes(path.extname(f)));
+    const modIdx = collectExportedFunctionsByModule(files, symRoot);
+    result.set(pkgName, modIdx);
+  }
+  return result;
+}
+
+function resolveHandler(handlerName, exportIndex) {
+  // handlerName: 'package/module#function' or 'module#function'
+  const [qual, fn] = handlerName.split('#');
+  if (!fn) return false;
+  const tryModuleMatch = (pkgIndex, modulePath) => {
+    const candidates = [modulePath, modulePath.replace(/\//g, '.')];
+    for (const cand of candidates) {
+      const set = pkgIndex.get(cand);
+      if (set && set.has(fn)) return true;
+    }
+    // fallback: startsWith/endsWith/contains segment
+    for (const [key, set] of pkgIndex.entries()) {
+      const segContains = key.includes(`${modulePath}.`) || key.includes(`.${modulePath}`);
+      if ((key === modulePath || key.endsWith(`.${modulePath}`) || key.startsWith(`${modulePath}.`) || segContains) && set.has(fn)) return true;
+    }
+    // ultimate fallback: function-name only within package index
+    for (const [, set] of pkgIndex.entries()) {
+      if (set && set.has(fn)) return true;
+    }
+    return false;
+  };
+  if (qual.includes('/')) {
+    const [pkg, modulePath] = qual.split('/');
+    const pkgIndex = exportIndex.get(pkg);
+    if (!pkgIndex) return false;
+    return tryModuleMatch(pkgIndex, modulePath);
+  } else {
+    // search all packages by module
+    for (const [, pkgIndex] of exportIndex.entries()) {
+      if (tryModuleMatch(pkgIndex, qual)) return true;
+    }
+    return false;
+  }
+}
+
+function validateBeatHandlers(sequenceJson, implDirs) {
   const beats = [];
   const issues = [];
 
@@ -97,9 +188,9 @@ function validateBeatHandlers(sequenceJson, implDir) {
     return { beats, issues, implemented: 0, total: 0 };
   }
 
-  // Gather all implementation files under implDir
-  const implFiles = implDir ? listFilesRec(implDir, (f) => exts.includes(path.extname(f))) : [];
-  const exported = collectExportedFunctions(implFiles);
+  // Build export index across packages
+  const dirList = Array.isArray(implDirs) ? implDirs.filter(Boolean) : (implDirs ? [implDirs] : []);
+  const exportIndex = buildMultiPackageExportIndex(dirList);
 
   let total = 0;
   let implemented = 0;
@@ -114,7 +205,7 @@ function validateBeatHandlers(sequenceJson, implDir) {
         issues.push(`Beat '${beat?.id || beat?.name || 'unknown'}' missing handler name`);
         continue;
       }
-      const ok = exported.has(name);
+      const ok = resolveHandler(name, exportIndex);
       beats.push({ id: beat.id || beat.name || `beat-${total}`, handlerName: name, implemented: ok });
       if (ok) implemented += 1;
       else issues.push(`Handler not implemented: '${name}'`);
@@ -169,13 +260,26 @@ function validateDomain(domain) {
   else notes.push(`Sequence JSON: ${path.relative(ROOT, seqFile)}`);
 
   const symRoot = analysisSourcePath ? findSymphoniesRoot(analysisSourcePath) : null;
+  let implDirs = symRoot ? [symRoot] : [];
   if (!symRoot) {
+    // If pointing to packages/, scan subpackages for symphonies folders
+    const normalized = (analysisSourcePath || '').replace(/\\/g,'/');
+    const base = normalized.endsWith('packages') || normalized.endsWith('packages/') ? analysisSourcePath : null;
+    if (base && fs.existsSync(base)) {
+      const found = findSymphoniesAcrossPackages(base);
+      if (found.length) {
+        implDirs = found;
+        notes.push(`Found symphonies across packages: ${found.map(d=>path.relative(ROOT,d)).join(', ')}`);
+      }
+    }
+  }
+  if (!implDirs.length) {
     problems.push('Symphonies folder not found (expected src/symphonies or symphonies)');
-  } else {
-    notes.push(`Symphonies root: ${path.relative(ROOT, symRoot)}`);
+  } else if (implDirs.length === 1) {
+    notes.push(`Symphonies root: ${path.relative(ROOT, implDirs[0])}`);
   }
 
-  const beatCheck = validateBeatHandlers(seqJson, symRoot || analysisSourcePath);
+  const beatCheck = validateBeatHandlers(seqJson, implDirs.length ? implDirs : analysisSourcePath);
 
   const passBible = problems.length === 0 && beatCheck.issues.length === 0 && beatCheck.total > 0 && beatCheck.implemented === beatCheck.total;
   const status = passBible ? 'pass' : 'fail';
@@ -249,6 +353,30 @@ function main() {
 
   for (const d of orchestrationDomains) {
     const r = validateDomain(d);
+    // Optional debug of export index for canvas-component
+    if (process.env.DEBUG_BIBLE === '1' && r.domainId === 'renderx-web-orchestration') {
+      const analysisConfig = d.analysisConfig || {};
+      const analysisSourcePath = analysisConfig.analysisSourcePath ? path.join(ROOT, analysisConfig.analysisSourcePath) : null;
+      const symRoot = analysisSourcePath ? findSymphoniesRoot(analysisSourcePath) : null;
+      let implDirs = symRoot ? [symRoot] : [];
+      if (!symRoot) {
+        const normalized = (analysisSourcePath || '').replace(/\\/g,'/');
+        const base = normalized.endsWith('packages') || normalized.endsWith('packages/') ? analysisSourcePath : null;
+        if (base && fs.existsSync(base)) {
+          implDirs = findSymphoniesAcrossPackages(base);
+        }
+      }
+      const exportIndex = buildMultiPackageExportIndex(implDirs);
+      const cc = exportIndex.get('canvas-component');
+      if (cc) {
+        console.log('DEBUG canvas-component export index keys:');
+        for (const [k, v] of cc.entries()) {
+          console.log('  -', k, '=>', Array.from(v.values()));
+        }
+      } else {
+        console.log('DEBUG canvas-component export index not found');
+      }
+    }
     results.push(r);
     const tag = r.status === 'pass' ? '✓ PASS' : r.status === 'fail' ? '✖ FAIL' : '↷ SKIP';
     console.log(`${tag} — ${r.domainId}`);

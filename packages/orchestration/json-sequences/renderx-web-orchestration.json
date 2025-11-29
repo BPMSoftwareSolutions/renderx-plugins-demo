@@ -42,14 +42,26 @@
       "number": 1,
       "name": "Initialization",
       "description": "Initialize RenderX Web build environment and dependencies",
-      "status": "active"
+      "status": "active",
+      "beats": [
+        { "name": "resolve-theme", "handler": { "name": "header/ui#getCurrentTheme" } },
+        { "name": "apply-theme",   "handler": { "name": "header/ui#toggleTheme" } },
+        { "name": "init-control-panel", "handler": { "name": "control-panel/ui#initConfig" } },
+        { "name": "init-resolver",      "handler": { "name": "control-panel/ui#initResolver" } },
+        { "name": "register-observers", "handler": { "name": "control-panel/ui#registerObservers" } },
+        { "name": "notify-ready",       "handler": { "name": "control-panel/ui#notifyReady" } }
+      ]
     },
     {
       "number": 2,
       "name": "Build",
       "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
       "orchestration": "pre-build-pipeline-check-symphony",
-      "status": "active"
+      "status": "active",
+      "beats": [
+        { "name": "update-attribute",       "handler": { "name": "canvas-component/update#updateAttribute" } },
+        { "name": "refresh-control-panel",  "handler": { "name": "canvas-component/update#refreshControlPanel" } }
+      ]
     },
     {
       "number": 3,
@@ -59,21 +71,41 @@
         "e2e-cypress-symphony",
         "check-pipeline-compliance-7layer-symphony"
       ],
-      "status": "active"
+      "status": "active",
+      "beats": [
+        { "name": "show-selection-overlay", "handler": { "name": "canvas-component/select#showSelectionOverlay" } },
+        { "name": "hide-selection-overlay", "handler": { "name": "canvas-component/select#hideSelectionOverlay" } },
+        { "name": "attach-line-resize",    "handler": { "name": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers" } },
+        { "name": "ensure-line-overlay",    "handler": { "name": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor" } },
+        { "name": "notify-ui",              "handler": { "name": "canvas-component/select#notifyUi" } }
+      ]
     },
     {
       "number": 4,
       "name": "Delivery",
       "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
       "orchestration": "pipeline-delivery-execute-symphony",
-      "status": "active"
+      "status": "active",
+      "beats": [
+        { "name": "export-gif",  "handler": { "name": "canvas-component/export.export.gif#exportSvgToGif" } },
+        { "name": "export-mp4",  "handler": { "name": "canvas-component/export.export.mp4#exportSvgToMp4" } }
+      ]
     },
     {
       "number": 5,
       "name": "Telemetry & Monitoring",
       "description": "Collect and instrument telemetry for observability and SLO tracking",
       "orchestration": "generate-telemetry-instrumentation-symphony",
-      "status": "active"
+      "status": "active",
+      "beats": [
+        { "name": "ensure-payload",        "handler": { "name": "library-component/drag.preview#ensurePayload" } },
+        { "name": "compute-ghost-size",    "handler": { "name": "library-component/drag.preview#computeGhostSize" } },
+        { "name": "create-ghost-container", "handler": { "name": "library-component/drag.preview#createGhostContainer" } },
+        { "name": "render-template-preview", "handler": { "name": "library-component/drag.preview#renderTemplatePreview" } },
+        { "name": "apply-template-styles",  "handler": { "name": "library-component/drag.preview#applyTemplateStyles" } },
+        { "name": "compute-cursor-offsets", "handler": { "name": "library-component/drag.preview#computeCursorOffsets" } },
+        { "name": "install-drag-image",     "handler": { "name": "library-component/drag.preview#installDragImage" } }
+      ]
     },
     {
       "number": 6,

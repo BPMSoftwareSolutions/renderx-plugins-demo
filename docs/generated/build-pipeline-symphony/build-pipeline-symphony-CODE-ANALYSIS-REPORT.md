@@ -1,6 +1,6 @@
 # Build Pipeline Symphony Code Analysis Report
 
-**Generated**: 2025-11-29T18:52:18.161Z  
+**Generated**: 2025-11-29T19:15:23.112Z  
 **Codebase**: build-pipeline-symphony  
 **Pipeline**: symphonic-code-analysis-pipeline
 
@@ -15,8 +15,8 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 | Metric | Value | Status | Classification |
 |--------|-------|--------|-----------------|
 | Conformity Score | 87.50% | ⚠️  FAIR| Governance: CONDITIONAL|
-| Test Coverage | 83.33% | ✅ GOOD| Risk: LOW|
-| Maintainability | 64.72/100 | 🟡 FAIR| Grade: B|
+| Test Coverage | 72.72% | ⚠️  FAIR| Risk: MEDIUM|
+| Maintainability | 60.90/100 | 🟡 FAIR| Grade: B|
 | Code Duplication | 19.20% | ✅ GOOD| Action: Refactor|
 
 ---
@@ -30,7 +30,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │  📊 CODEBASE METRICS FOUNDATION                                                                                 │
 │  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: 19  │ Total LOC: 1658  │ Handlers: 15 │ Avg LOC/Handler: 110.53│ Coverage: 83.33% │           │
+│  │ Total Files: 19  │ Total LOC: 1658  │ Handlers: 15 │ Avg LOC/Handler: 110.53│ Coverage: 72.72% │           │
 │  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -39,9 +39,9 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ║ Total LOC       : 1658          ║
 ║ Handlers        : 15            ║
 ║ Avg LOC/Handler : 110.5         ║
-║ Coverage        : 83.3%         ║
+║ Coverage        : 72.7%         ║
 ║ Duplication     : 0             ║
-║ Maintainability : 64.7          ║
+║ Maintainability : 60.9          ║
 ║ Conformity      : 87.5%         ║
 ╚════════════════════════════════════╝
 
@@ -104,7 +104,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ├──────────────────┤  ├──────────────────┤
         │ • Files: 19      │  │ • Handlers: 15  │
         │ • LOC: 1658      │  │ • Avg LOC: 110.53│
-        │ • Beats: 4/4 ✓   │  │ • Coverage: 83.3%│
+        │ • Beats: 4/4 ✓   │  │ • Coverage: 72.7%│
         │ • Status: READY  │  │ • Status: READY  │
         └────────┬─────────┘  └────────┬─────────┘
                  │                     │
@@ -121,7 +121,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║                                                         ║
         ║  Meta-Handlers: 15                (analysis functions)     ║
         ║  Avg LOC/Handler: 110.53          (analysis complexity)  ║
-        ║  Self-Coverage: 83.3%          (recursive validation)     ║
+        ║  Self-Coverage: 72.7%          (recursive validation)     ║
         ║                                                         ║
         ║  This recursive self-examination demonstrates:         ║
         ║  • Domains-as-Systems principle                        ║
@@ -138,7 +138,7 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
         ║                                                       ║
         ║  Handlers Analyzed: 15                               ║
         ║  Avg LOC/Handler: 110.53                             ║
-        ║  Test Coverage: 83.3%                                  ║
+        ║  Test Coverage: 72.7%                                  ║
         ║  Duplication: 19.2%                                      ║
         ║  ✓  No God Handlers                              ║
         ║                                                       ║
@@ -155,7 +155,19 @@ This comprehensive analysis spans 4 movements with 16 beat stages, providing dee
 ║ LOW     : 0                                 ║
 ╚══════════════════════════════════════════════╝
 
-
+╔════ REFACTORING ROADMAP ══════════════════════════════╗
+║ 1. Improve test coverage                               ║
+║   Target : Uncovered handlers                          ║
+║   Effort : medium                                      ║
+║   Rationale: Current coverage: 72.7%. Target: 80%+     ║
+║   PR: test: add comprehensive unit tests for core handl║
+║                                                        ║
+║ 2. Enhance maintainability                             ║
+║   Target : Complex handlers                            ║
+║   Effort : low                                         ║
+║   Rationale: Split complex logic into smaller, testable║
+║   PR: refactor: improve handler maintainability and rea║
+╚═════════════════════════════════════════════════════════╝
 
 
 
@@ -187,14 +199,14 @@ ANALYSIS EXECUTION SUMMARY:
   ✅ Discovered: 19 source files in build-pipeline-symphony
   ✅ Analyzed: 15 handler functions with measured LOC (1658 total lines)
   ✅ Mapped: Files to orchestration beats
-  ✅ Measured: Test coverage (avg 83.3%)
+  ✅ Measured: Test coverage (avg 72.7%)
   ✅ No God handlers detected
   ✅ Generated: Comprehensive metrics and analysis artifacts
 
 NEXT ACTIONS:
   → Review detailed metrics in full report
   → Maintain low duplication levels
-  → Maintain excellent test coverage
+  → Improve test coverage to 80%+ (currently 72.7%)
   
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -251,18 +263,18 @@ NEXT ACTIONS:
 **Status**: Review and refactor identified blocks. Priority: #1 (highest frequency)
 
 **Measurement**: Source='measured' (AST region hashing across 243 files)
-**Last Scan**: 2025-11-29T18:52:16.910Z
+**Last Scan**: 2025-11-29T19:15:21.855Z
 
 ### Maintainability Index
-- **Score**: 64.72/100
+- **Score**: 60.90/100
 - **Classification**: 🟡 **FAIR** (B)
 - **Threshold**: 60-80
 - **Guidance**: Address technical debt in next sprint. Schedule refactoring review.
 - **Contributing Factors**:
-  - Test Coverage: 75.5%
-  - Documentation: 93.4%
-  - Comment Density: 43.2%
-  - Complexity Score: 50.8
+  - Test Coverage: 65.9%
+  - Documentation: 76.0%
+  - Comment Density: 87.7%
+  - Complexity Score: 72.1
 
 ---
 
@@ -275,10 +287,10 @@ NEXT ACTIONS:
 ### Coverage Metrics
 | Type | Coverage | Target | Gap | Status |
 |------|----------|--------|-----|--------|
-| Statements | 83.33% | 80% | 3.3% | ✅ On-target |
-| Branches | 67.85% | 75% | -7.2% | 🔴 Off-track |
-| Functions | 85.32% | 80% | 5.3% | 🟡 Needs Improvement |
-| Lines | 87.44% | 80% | 7.4% | ✅ On-target |
+| Statements | 72.72% | 80% | -7.3% | 🟡 Needs Improvement |
+| Branches | 66.84% | 75% | -8.2% | 🔴 Off-track |
+| Functions | 75.93% | 80% | -4.1% | 🔴 Off-track |
+| Lines | 77.16% | 80% | -2.8% | 🟡 Needs Improvement |
 
 ### Beat-by-Beat Coverage
 ```
@@ -333,7 +345,7 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 
 **Measurement**: Source='measured' (real discovered exports via pattern matching)
 **Coverage**: Handlers distributed across 4 types
-**Last Scan**: 2025-11-29T18:52:16.703Z
+**Last Scan**: 2025-11-29T19:15:21.620Z
 
 ### Handler Scope Analysis
 
@@ -400,24 +412,24 @@ See HANDLER_SCOPE_KIND_QUICK_REF.md for implementation guide.
 ## Coverage by Handler Analysis
 
 ### Overall Test Coverage
-**Global Coverage**: 86.93% statements
+**Global Coverage**: 74.21% statements
 
 | Metric | Coverage | Status |
 |--------|----------|--------|
-| Statements | 86.93% | 🟢 |
-| Branches | 72.87% | 🟡 |
-| Functions | 82.05% | 🟢 |
-| Lines | 75.71% | 🟡 |
+| Statements | 74.21% | 🟡 |
+| Branches | 75.83% | 🟡 |
+| Functions | 77.31% | 🟡 |
+| Lines | 78.46% | 🟡 |
 
 ### Handler Coverage Summary
 | Category | Count | % | Status |
 |----------|-------|---|--------|
-| Well-Covered (80%+) | 155 | 79.5% | ✅ |
-| Partially-Covered (50-79%) | 40 | 20.5% | ⚠️ |
+| Well-Covered (80%+) | 0 | 0.0% | ✅ |
+| Partially-Covered (50-79%) | 195 | 100.0% | ⚠️ |
 | Poorly-Covered (1-49%) | 0 | 0.0% | ⚠️ |
 | Uncovered (0%) | 0 | 0.0% | ❌ |
 
-**Average Handler Coverage**: 83.72%
+**Average Handler Coverage**: 71.29%
 
 **Handlers**: 195 | **Average LOC per Handler**: 23.68 | **Total LOC**: 2202
 
@@ -425,25 +437,13 @@ See HANDLER_SCOPE_KIND_QUICK_REF.md for implementation guide.
 
 | Beat | Avg Coverage | Handlers | Status |
 |------|--------------|----------|--------|
-| beat-4-dependencies | 87.58% | 28 | ✅ |
-| beat-3-structure | 86.73% | 84 | ✅ |
-| beat-2a-baseline-metrics | 86.65% | 43 | ✅ |
-| beat-1-discovery | 71.56% | 40 | ⚠️ |
-
-### ✅ Well-Tested Handlers (Coverage >= 80%)
-| Handler | Coverage | Beat |
-|---------|----------|------|
-| async | 91.91% | beat-4-dependencies |
-| ctx | 91.88% | beat-4-dependencies |
-| checkSPACompliance | 91.88% | beat-2a-baseline-metrics |
-| generateValidationReport | 91.64% | beat-2a-baseline-metrics |
-| toggleTheme | 91.53% | beat-3-structure |
-| checkResources | 91.52% | beat-3-structure |
-| readFromClipboard | 91.48% | beat-4-dependencies |
-| notifyUi | 91.26% | beat-3-structure |
+| beat-4-dependencies | 75.08% | 28 | ⚠️ |
+| beat-2a-baseline-metrics | 74.44% | 43 | ⚠️ |
+| beat-3-structure | 74.21% | 84 | ⚠️ |
+| beat-1-discovery | 59.14% | 40 | ⚠️ |
 
 **Measurement**: Source='measured' (test coverage analysis with handler-beat correlation)
-**Timestamp**: 2025-11-29T18:52:17.590Z
+**Timestamp**: 2025-11-29T19:15:22.570Z
 
 
 ### Automated Refactor Suggestions
@@ -574,7 +574,7 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 
 **Measurement**:
 - Source: 'computed' (suggestions derived from measured duplication & clustering data)
-- Timestamp: 2025-11-29T18:52:17.872Z
+- Timestamp: 2025-11-29T19:15:22.861Z
 
 
 ### Historical Trend Analysis
@@ -584,16 +584,16 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 ## Historical Trend Analysis
 
 **Analysis Period**: Last 30 snapshots
-**Current Baseline**: 2025-11-29T18:52:18.154Z
+**Current Baseline**: 2025-11-29T19:15:23.100Z
 
 ### Overall Trend Summary
 
 | Metric | Current | Previous | Change | Trend | Direction |
 |--------|---------|----------|--------|-------|-----------|
-| Handler Count | 15 | 515 | - | New | - |
+| Handler Count | 15 | 15 | - | New | - |
 | Duplication (blocks) | 562 | 562 | - | Monitoring | - |
-| Coverage (avg) | 83.80% | 41.25% | - | Monitoring | - |
-| Maintainability | 70.88/100 | - | - | Baseline | - |
+| Coverage (avg) | 84.30% | 39.30% | - | Monitoring | - |
+| Maintainability | 77.24/100 | - | - | Baseline | - |
 | Conformity | 87.50% | - | - | Baseline | - |
 
 ### Handler Metrics
@@ -630,10 +630,10 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 **Current Coverage Baselines**:
 | Metric | Current | Target | Gap | Status |
 |--------|---------|--------|-----|--------|
-| Statements | 78.60% | 85% | 6.40% | 🟡 Close |
-| Branches | 89.00% | 85% | -4.00% | 🟡 Close |
-| Functions | 88.99% | 90% | 1.01% | 🟡 Close |
-| Lines | 87.66% | 85% | -2.66% | ✅ On-target |
+| Statements | 80.08% | 85% | 4.92% | 🟡 Close |
+| Branches | 88.52% | 85% | -3.52% | 🟡 Close |
+| Functions | 76.41% | 90% | 13.59% | 🟡 Close |
+| Lines | 79.65% | 85% | 5.35% | ✅ On-target |
 
 **Coverage Improvement Roadmap**:
 - **Week 2**: Add 5-8 integration tests → +3% statements
@@ -643,7 +643,7 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 
 ### Maintainability Trends
 
-**Current Maintainability Index**: 70.88/100
+**Current Maintainability Index**: 77.24/100
 
 **Component Health**:
 - Complexity (average): 1.13
@@ -674,22 +674,22 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 **Baseline (Today)**:
 - Handlers: 15
 - Duplication: 145.55%
-- Coverage: 83.80%
-- Maintainability: 70.88/100
+- Coverage: 84.30%
+- Maintainability: 77.24/100
 - Conformity: 87.50%
 
 **Projected (Week 4)**:
 - Handlers: +5% → 16
 - Duplication: -15% → 130.55%
-- Coverage: +3-5% → 87.80%
-- Maintainability: +5 → 75.88/100
+- Coverage: +3-5% → 88.30%
+- Maintainability: +5 → 82.24/100
 - Conformity: +2% → 89.50%
 
 **Projected (Week 8 - Full Sprint)**:
 - Handlers: +15% → 18
 - Duplication: -30% → 115.55%
-- Coverage: +8-10% → 92.80%
-- Maintainability: +15 → 85.88/100
+- Coverage: +8-10% → 93.30%
+- Maintainability: +15 → 92.24/100
 - Conformity: +5% → 92.50%
 
 ### Data Quality & Confidence
@@ -705,7 +705,7 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 
 **Retention**: Last 30 snapshots retained in `.generated/history/symphonic-metrics/`
 
-**Timestamp**: 2025-11-29T18:52:18.160Z
+**Timestamp**: 2025-11-29T19:15:23.112Z
 **Source**: 'measured + computed' (baseline establishment)
 
 ---
@@ -735,12 +735,12 @@ Package contains 15 handlers clustered together. Consider extracting into specia
 
 ## CI/CD Readiness Assessment
 
-**Ready for CI Gating**: ⚠️ **READY WITH CAUTION**
+**Ready for CI Gating**: ❌ **NOT READY**
 
-Gating Level: **CONDITIONAL**
+Gating Level: **FAIL**
 
 ✓ Conformity (87.50%) ✅
-✓ Coverage - Orchestration Suite (83.33%) ✅
+✓ Coverage - Orchestration Suite (72.72%) ❌
 ✓ Handler Scanning (15 handlers discovered) ✅
 
 ---
@@ -787,10 +787,10 @@ Gating Level: **CONDITIONAL**
 
 ## Artifacts Generated
 
-- **JSON Analysis**: build-pipeline-symphony-code-analysis-2025-11-29T18-52-15-795Z.json
-- **Coverage Summary**: build-pipeline-symphony-coverage-summary-2025-11-29T18-52-15-795Z.json
-- **Per-Beat Metrics**: build-pipeline-symphony-per-beat-metrics-2025-11-29T18-52-15-795Z.csv
-- **Trend Analysis**: build-pipeline-symphony-trends-2025-11-29T18-52-15-795Z.json
+- **JSON Analysis**: build-pipeline-symphony-code-analysis-2025-11-29T19-15-20-623Z.json
+- **Coverage Summary**: build-pipeline-symphony-coverage-summary-2025-11-29T19-15-20-623Z.json
+- **Per-Beat Metrics**: build-pipeline-symphony-per-beat-metrics-2025-11-29T19-15-20-623Z.csv
+- **Trend Analysis**: build-pipeline-symphony-trends-2025-11-29T19-15-20-623Z.json
 
 ---
 

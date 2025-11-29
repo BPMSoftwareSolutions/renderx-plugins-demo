@@ -1,0 +1,171 @@
+--- a/packages/orchestration/json-sequences/renderx-web-orchestration.json
++++ b/packages/orchestration/json-sequences/renderx-web-orchestration.json
+@@
+{
+  "domain": "renderx-web-orchestration",
+  "version": "1",
+  "movements": [
+    {
+      "name": "Initialize UI",
+      "beats": [
+        {
+          "name": "resolve-theme",
++         "handler": { "name": "header/ui#getCurrentTheme" }
+        },
+        {
+          "name": "apply-theme",
++         "handler": { "name": "header/ui#toggleTheme" }
+        },
+        {
+          "name": "init-control-panel",
++         "handler": { "name": "control-panel/ui#initConfig" }
+        },
+        {
+          "name": "init-resolver",
++         "handler": { "name": "control-panel/ui#initResolver" }
+        },
+        {
+          "name": "register-observers",
++         "handler": { "name": "control-panel/ui#registerObservers" }
+        },
+        {
+          "name": "notify-ready",
++         "handler": { "name": "control-panel/ui#notifyReady" }
+        }
+      ]
+    },
+    {
+      "name": "Canvas Selection",
+      "beats": [
+        {
+          "name": "show-selection-overlay",
++         "handler": { "name": "canvas-component/select#showSelectionOverlay" }
+        },
+        {
+          "name": "hide-selection-overlay",
++         "handler": { "name": "canvas-component/select#hideSelectionOverlay" }
+        },
+        {
+          "name": "attach-line-resize",
++         "handler": { "name": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers" }
+        },
+        {
+          "name": "ensure-line-overlay",
++         "handler": { "name": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor" }
+        },
+        {
+          "name": "notify-ui",
++         "handler": { "name": "canvas-component/select#notifyUi" }
+        }
+      ]
+    },
+    {
+      "name": "Component Updates",
+      "beats": [
+        {
+          "name": "update-attribute",
++         "handler": { "name": "canvas-component/update#updateAttribute" }
+        },
+        {
+          "name": "refresh-control-panel",
++         "handler": { "name": "canvas-component/update#refreshControlPanel" }
+        }
+      ]
+    },
+    {
+      "name": "Control Panel UI",
+      "beats": [
+        {
+          "name": "generate-fields",
++         "handler": { "name": "control-panel/ui#generateFields" }
+        },
+        {
+          "name": "generate-sections",
++         "handler": { "name": "control-panel/ui#generateSections" }
+        },
+        {
+          "name": "render-view",
++         "handler": { "name": "control-panel/ui#renderView" }
+        },
+        {
+          "name": "prepare-field",
++         "handler": { "name": "control-panel/ui#prepareField" }
+        },
+        {
+          "name": "dispatch-field",
++         "handler": { "name": "control-panel/ui#dispatchField" }
+        },
+        {
+          "name": "set-dirty",
++         "handler": { "name": "control-panel/ui#setDirty" }
+        },
+        {
+          "name": "await-refresh",
++         "handler": { "name": "control-panel/ui#awaitRefresh" }
+        },
+        {
+          "name": "validate-field",
++         "handler": { "name": "control-panel/ui#validateField" }
+        },
+        {
+          "name": "merge-errors",
++         "handler": { "name": "control-panel/ui#mergeErrors" }
+        },
+        {
+          "name": "update-view",
++         "handler": { "name": "control-panel/ui#updateView" }
+        },
+        {
+          "name": "toggle-section",
++         "handler": { "name": "control-panel/ui#toggleSection" }
+        }
+      ]
+    },
+    {
+      "name": "Export Media",
+      "beats": [
+        {
+          "name": "export-gif",
++         "handler": { "name": "canvas-component/export#exportSvgToGif" }
+        },
+        {
+          "name": "export-mp4",
++         "handler": { "name": "canvas-component/export#exportSvgToMp4" }
+        }
+      ]
+    },
+    {
+      "name": "Drag Preview",
+      "beats": [
+        {
+          "name": "ensure-payload",
++         "handler": { "name": "library-component/drag.preview#ensurePayload" }
+        },
+        {
+          "name": "compute-ghost-size",
++         "handler": { "name": "library-component/drag.preview#computeGhostSize" }
+        },
+        {
+          "name": "create-ghost-container",
++         "handler": { "name": "library-component/drag.preview#createGhostContainer" }
+        },
+        {
+          "name": "render-template-preview",
++         "handler": { "name": "library-component/drag.preview#renderTemplatePreview" }
+        },
+        {
+          "name": "apply-template-styles",
++         "handler": { "name": "library-component/drag.preview#applyTemplateStyles" }
+        },
+        {
+          "name": "compute-cursor-offsets",
++         "handler": { "name": "library-component/drag.preview#computeCursorOffsets" }
+        },
+        {
+          "name": "install-drag-image",
++         "handler": { "name": "library-component/drag.preview#installDragImage" }
+        }
+      ]
+    }
+  ]
+}

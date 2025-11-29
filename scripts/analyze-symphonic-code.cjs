@@ -1229,6 +1229,22 @@ async function run() {
     
     log(`\nNext: Run the symphonic-code-analysis-demo for stakeholder review`, '📣');
 
+    // Optional Bible validation hook to link analysis with implementation standard
+    try {
+      if (process.env.VALIDATE_BIBLE === '1') {
+        log('Running Symphonic Implementation Validator (Bible linkage) ...', '🔗');
+        const { spawnSync } = require('child_process');
+        const res = spawnSync(process.execPath, [path.join(process.cwd(), 'scripts', 'validate-symphonic-implementation.cjs')], { stdio: 'inherit' });
+        if (res.status === 0) {
+          log('Bible validation completed. See docs/generated/validation/SYMPHONIC_IMPLEMENTATION_AUDIT.md', '✓');
+        } else {
+          log('Bible validation failed (see output above).', '⚠️');
+        }
+      }
+    } catch (e) {
+      log(`Bible validation hook error: ${e?.message || e}`, '⚠️');
+    }
+
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     process.exit(1);
