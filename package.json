@@ -174,6 +174,7 @@
                     "new:feature":  "node scripts/interactive-bdd-wizard.js",
                     "recover:feature":  "node scripts/auto-recovery.js",
                     "validate:domains":  "node scripts/validate-domain-authorities.cjs",
+                    "validate:symphonic": "node scripts/validate-symphonic-implementation.cjs",
                     "ci:domains":  "npm run validate:domains",
                     "prebuild:domains":  "npm run validate:domains",
                     "audit:symphonia:conformity":  "node scripts/audit-symphonia-conformity.cjs",
