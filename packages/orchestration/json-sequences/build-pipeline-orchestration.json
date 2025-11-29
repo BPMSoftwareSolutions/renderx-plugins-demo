@@ -1,0 +1,41 @@
+{
+  "id": "build-pipeline-orchestration",
+  "sequenceId": "build-pipeline-orchestration",
+  "name": "Build Pipeline Orchestration",
+  "packageName": "orchestration",
+  "title": "Build Pipeline Orchestration",
+  "description": "Compliant orchestration with explicit handler mappings",
+  "kind": "orchestration",
+  "status": "active",
+  "movements": [
+    {
+      "name": "Validation & Verification",
+      "beats": [
+        { "name": "load-context", "handler": { "name": "orchestration/build-pipeline.build.validation#loadBuildContext" } },
+        { "name": "validate-domains", "handler": { "name": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains" } },
+        { "name": "validate-governance", "handler": { "name": "orchestration/build-pipeline.build.validation#validateGovernanceRules" } },
+        { "name": "validate-agent", "handler": { "name": "orchestration/build-pipeline.build.validation#validateAgentBehavior" } },
+        { "name": "record-validation", "handler": { "name": "orchestration/build-pipeline.build.validation#recordValidationResults" } }
+      ]
+    },
+    {
+      "name": "Manifest Preparation",
+      "beats": [
+        { "name": "regenerate-domains", "handler": { "name": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains" } },
+        { "name": "sync-json-sources", "handler": { "name": "orchestration/build-pipeline.manifests#syncJsonSources" } },
+        { "name": "generate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#generateManifests" } },
+        { "name": "validate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#validateManifestIntegrity" } },
+        { "name": "record-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#recordManifestState" } }
+      ]
+    },
+    {
+      "name": "Package Building",
+      "beats": [
+        { "name": "initialize", "handler": { "name": "orchestration/build-pipeline.packages.build#initializePackageBuild" } },
+        { "name": "build-components", "handler": { "name": "orchestration/build-pipeline.packages.build#buildComponentsPackage" } },
+        { "name": "build-musical-conductor", "handler": { "name": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage" } },
+        { "name": "build-host-sdk", "handler": { "name": "orchestration/build-pipeline.packages.build#buildHostSdkPackage" } }
+      ]
+    }
+  ]
+}

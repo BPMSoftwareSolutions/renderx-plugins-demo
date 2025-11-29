@@ -71,26 +71,43 @@ async function scanHandlerExports() {
     const domainSourcePath = getDomainSourcePath();
 
     // Build source patterns based on domain source path
-    // Handle both 'packages/' style and 'scripts/' style paths
-    const sourcePatterns = domainSourcePath.startsWith('packages')
-      ? [
-          `${domainSourcePath}*/src/**/*.ts`,
-          `${domainSourcePath}*/src/**/*.tsx`,
-          `${domainSourcePath}*/src/**/*.js`,
-          `${domainSourcePath}*/src/**/*.jsx`,
-          `!${domainSourcePath}**/node_modules/**`,
-          `!${domainSourcePath}**/*.d.ts`,
-          '!**/.generated/**'
-        ]
-      : [
-          `${domainSourcePath}**/*.ts`,
-          `${domainSourcePath}**/*.js`,
-          `${domainSourcePath}**/*.cjs`,
-          `${domainSourcePath}**/*.mjs`,
-          `!${domainSourcePath}**/node_modules/**`,
-          `!${domainSourcePath}**/*.d.ts`,
-          '!**/.generated/**'
-        ];
+    // Robust handling for:
+    // 1) Monorepo packages (e.g., 'packages/')
+    // 2) Direct src subtree paths (e.g., 'packages/orchestration/src/symphonies/build-pipeline')
+    // 3) Arbitrary folders (e.g., 'scripts/' or custom paths)
+
+    const normalizedPath = domainSourcePath.replace(/\\/g, '/');
+    const exists = fs.existsSync(path.join(process.cwd(), normalizedPath));
+    const pointsToSrcSubtree = /(^|\/)src(\/|$)/.test(normalizedPath);
+
+    let sourcePatterns;
+    if (normalizedPath.startsWith('packages') && !pointsToSrcSubtree) {
+      // Monorepo top-level packages: look inside each package src
+      sourcePatterns = [
+        `${normalizedPath}*/src/**/*.ts`,
+        `${normalizedPath}*/src/**/*.tsx`,
+        `${normalizedPath}*/src/**/*.js`,
+        `${normalizedPath}*/src/**/*.jsx`,
+        `!${normalizedPath}**/node_modules/**`,
+        `!${normalizedPath}**/*.d.ts`,
+        '!**/.generated/**'
+      ];
+    } else {
+      // Direct path (existing folder or src subtree): scan within it directly
+      // Fallback if path does not exist: still use patterns relative to it
+      const base = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
+      sourcePatterns = [
+        `${base}**/*.ts`,
+        `${base}**/*.tsx`,
+        `${base}**/*.js`,
+        `${base}**/*.jsx`,
+        `${base}**/*.cjs`,
+        `${base}**/*.mjs`,
+        `!${base}**/node_modules/**`,
+        `!${base}**/*.d.ts`,
+        '!**/.generated/**'
+      ];
+    }
 
     const files = execSync(`git ls-files ${sourcePatterns.join(' ')}`, {
       encoding: 'utf8',
@@ -174,9 +191,50 @@ async function scanHandlerExports() {
       }
     }
 
+    // Fallback: if no handlers discovered from source scan, derive from sequence JSON
+    if (handlers.length === 0) {
+      try {
+        const domainId = process.env.ANALYSIS_DOMAIN_ID;
+        const seqDir = path.join(process.cwd(), 'packages', 'orchestration', 'json-sequences');
+        const candidates = domainId
+          ? [
+              path.join(seqDir, `${domainId}.json`),
+              path.join(seqDir, `${domainId}-symphony.json`)
+            ]
+          : [];
+        const seqFile = candidates.find(p => fs.existsSync(p));
+        if (seqFile) {
+          const seq = JSON.parse(fs.readFileSync(seqFile, 'utf8'));
+          const beats = (seq.movements || [])
+            .flatMap(m => m.beats || [])
+            .filter(b => b?.handler?.name);
+
+          beats.forEach(b => {
+            const name = b.handler.name.split('#')[1] || b.handler.name;
+            const file = b.handler.name.split('#')[0];
+            const isDuplicate = handlers.some(h => h.name === name && h.file === file);
+            if (!isDuplicate) {
+              handlers.push({
+                name,
+                file,
+                source: 'sequence',
+                type: deriveHandlerType(name),
+                line: 0
+              });
+            }
+          });
+          if (handlers.length) {
+            console.log(`[scan-handlers] Derived ${handlers.length} handlers from sequence: ${path.basename(seqFile)}`);
+          }
+        }
+      } catch (e) {
+        // ignore fallback errors
+      }
+    }
+
     // Sort by file and name
     handlers.sort((a, b) => {
-      const fileCompare = a.file.localeCompare(b.file);
+      const fileCompare = String(a.file || '').localeCompare(String(b.file || ''));
       return fileCompare !== 0 ? fileCompare : a.name.localeCompare(b.name);
     });
 
