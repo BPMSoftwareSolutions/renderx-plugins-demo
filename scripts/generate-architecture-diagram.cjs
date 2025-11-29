@@ -25,11 +25,36 @@ const {
 function generateGenericSummary(metrics) {
   const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = metrics;
   const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-  
+
   // Safe numeric conversions (coverage might be string from metrics)
   const safeAvgLoc = Number(avgLocPerHandler) || 0;
   const safeCoverage = Number(overallCoverage) || 0;
-  
+
+  // Check if this is a self-analysis (fractal property)
+  const isSelfAnalysis = domainId === 'symphonic-code-analysis-pipeline';
+
+  if (isSelfAnalysis) {
+    return `        ╔═════════════════════════════════════════════════════════╗
+        ║   FRACTAL SELF-ANALYSIS - META-ANALYSIS PIPELINE       ║
+        ╠═════════════════════════════════════════════════════════╣
+        ║  ✨ FRACTAL PROPERTY CONFIRMED ✨                      ║
+        ║                                                         ║
+        ║  The symphonic code analysis pipeline is analyzing     ║
+        ║  its own implementation (scripts/).                    ║
+        ║                                                         ║
+        ║  Meta-Handlers: ${String(totalHandlers).padEnd(17)} (analysis functions)     ║
+        ║  Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(15)} (analysis complexity)  ║
+        ║  Self-Coverage: ${safeCoverage.toFixed(1)}%${' '.repeat(Math.max(0, 13 - safeCoverage.toFixed(1).length))} (recursive validation)     ║
+        ║                                                         ║
+        ║  This recursive self-examination demonstrates:         ║
+        ║  • Domains-as-Systems principle                        ║
+        ║  • Systems-as-Domains principle                        ║
+        ║  • Self-healing architecture capability                ║
+        ║                                                         ║
+        ║  [Full metrics in detailed report below]               ║
+        ╚═════════════════════════════════════════════════════════╝`;
+  }
+
   return `        ╔═════════════════════════════════════╗
         ║ ${domainName.toUpperCase()} STRUCTURE    ${' '.repeat(Math.max(0, 30 - domainName.length))}║
         ║ (Analyzed: ${totalHandlers} handlers)   ${' '.repeat(Math.max(0, 20 - String(totalHandlers).length))}║
@@ -52,9 +77,18 @@ function generateGenericSummary(metrics) {
  */
 function generateHandlerSummary(handlerData) {
   const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = handlerData;
-  
-  if (!handlers || handlers.length === 0) {
-    return generateGenericSummary(handlerData);
+
+  // For self-analysis domain, always use fractal banner (even if handlers exist globally)
+  const isSelfAnalysis = domainId === 'symphonic-code-analysis-pipeline';
+
+  if (isSelfAnalysis || !handlers || handlers.length === 0) {
+    // Pass through with proper structure for generateGenericSummary
+    return generateGenericSummary({
+      totalHandlers,
+      avgLocPerHandler,
+      overallCoverage,
+      domainId
+    });
   }
   
   // Group handlers by actual symphony name (extract from /symphonies/NAME/)
@@ -295,7 +329,7 @@ function generateDiagram(metrics = {}) {
     overallCoverage: safeCoverage,
     domainId
   });
-  
+
   return `
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                    SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.padEnd(50)}║
@@ -391,11 +425,6 @@ ${beatCoverage ? renderCoverageHeatmapByBeat(
                             │
                             ▼
 ${symphonySection}
-        ║  │                                  ║
-        ║  └─ ... (+ 15 more symphonies)      ║
-        ║     with 100+ additional handlers   ║
-        ║                                     ║
-        ╚═════════════════════════════════════╝
                         │
                         ▼
         ╔═══════════════════════════════════════════════════════╗

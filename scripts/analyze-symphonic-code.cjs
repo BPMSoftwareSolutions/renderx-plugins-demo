@@ -1036,7 +1036,7 @@ ${handlerMappingMetrics}
 
 **Mapping Status**: ${metricsEnvelope.handlers.mapped}/${metricsEnvelope.handlers.discovered} handlers have explicit beat mappings. Coverage heatmap reflects current measurement scope.
 
-**Heatmap Terminology**: "Unassigned" in the Coverage Heatmap table refers to handlers without coverage measurement data correlated to specific beats in the current analysis scope, not to unmapped handlers. All 38 handlers have explicit beat assignments in the orchestration-domains.json mapping.
+**Heatmap Terminology**: "Unassigned" in the Coverage Heatmap table refers to handlers without coverage measurement data correlated to specific beats in the current analysis scope, not to unmapped handlers. All ${metricsEnvelope.handlers.discovered} handlers have explicit beat assignments in the orchestration-domains.json mapping.
 
 ${coverageByHandlerMetrics}
 
