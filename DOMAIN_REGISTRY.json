@@ -98,7 +98,8 @@
       "analysisConfig": {
         "analysisSourcePath": "packages/orchestration",
         "analysisOutputPath": ".generated/analysis/build-pipeline",
-        "reportOutputPath": "docs/generated/build-pipeline"
+        "reportOutputPath": "docs/generated/build-pipeline",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       },
       "orchestration": {
         "schema_ref": "docs/schemas/musical-sequence.schema.json",
