@@ -78,7 +78,7 @@
         "examples": [
           "symphonic-code-analysis-pipeline handlers",
           "architecture-governance-enforcement-symphony handlers",
-          "build-pipeline-symphony handlers"
+          "build-pipeline-orchestration handlers"
         ],
 	      "metrics": [
 	        "Per-orchestration-handler LOC",
@@ -2642,71 +2642,6 @@
       "parent": "safe-continuous-delivery-pipeline"
     },
     {
-      "id": "build-pipeline-symphony",
-      "name": "Build Pipeline Symphony",
-      "emoji": "🎼",
-      "description": "Multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.",
-      "category": "orchestration",
-      "purpose": "Orchestrate builds as symphonic compositions with clear movements, beats, and telemetry tracking for governance and observability",
-      "relatedDomains": [
-        "renderx-web-orchestration"
-      ],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/build-pipeline-symphony.json",
-      "movements": 6,
-      "beats": 33,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Build Pipeline Symphony",
-        "sequence": {
-          "id": "build-pipeline-symphony",
-          "name": "Build Pipeline Symphony",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Validation & Verification",
-            "description": "Validate domain definitions, governance rules, and agent behavior",
-            "items": 5
-          },
-          {
-            "name": "Movement 2: Manifest Preparation",
-            "description": "Generate and prepare manifests and orchestration artifacts",
-            "items": 5
-          },
-          {
-            "name": "Movement 3: Package Building",
-            "description": "Build all 14 plugin packages in optimized order",
-            "items": 15
-          },
-          {
-            "name": "Movement 4: Host Application Building",
-            "description": "Build main host application with Vite",
-            "items": 4
-          },
-          {
-            "name": "Movement 5: Artifact Management",
-            "description": "Process, verify, and catalog all build artifacts",
-            "items": 5
-          },
-          {
-            "name": "Movement 6: Verification & Conformity",
-            "description": "Run comprehensive verification and conformity checks",
-            "items": 5
-          }
-        ]
-      },
-      "npmScripts": "build:symphony, build:symphony:telemetry, build:symphony:telemetry:p, build:symphony:telemetry:f, build:symphony:telemetry:ff",
-      "docsPath": "docs/generated/build-pipeline-symphony/",
-      "artifactPath": ".generated/build/",
-      "parent": "safe-continuous-delivery-pipeline"
-    },
-    {
       "id": "symphonia-conformity-alignment-pipeline",
       "name": "Symphonia Conformity Alignment Pipeline",
       "emoji": "⚙️",
@@ -2714,7 +2649,7 @@
       "category": "orchestration",
       "purpose": "Detect and intelligently remediate 60+ conformity violation patterns through automated three-phase alignment fixing with rollback capabilities",
       "relatedDomains": [
-        "build-pipeline-symphony"
+        "build-pipeline-orchestration"
       ],
       "status": "active",
       "sequenceFile": "packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json",
@@ -2765,7 +2700,7 @@
       "purpose": "Ensure that JSON definitions drive all changes - code must conform, tests must validate, markdown must be derived. Every change flows through explicit governance beats with full traceability",
       "relatedDomains": [
         "symphonia-conformity-alignment-pipeline",
-        "build-pipeline-symphony"
+        "build-pipeline-orchestration"
       ],
       "status": "active",
       "sequenceFile": "packages/orchestration/json-sequences/architecture-governance-enforcement-symphony.json",
@@ -2829,7 +2764,7 @@
       "category": "orchestration",
       "purpose": "Analyze and visualize symphonic orchestration code quality with per-beat metrics, coverage analysis, complexity scoring, and architecture conformity validation",
       "relatedDomains": [
-        "build-pipeline-symphony",
+        "build-pipeline-orchestration",
         "architecture-governance-enforcement-symphony"
       ],
       "status": "active",
@@ -2934,7 +2869,7 @@
       "category": "orchestration",
       "purpose": "Ensure all orchestration domains meet the governance requirement: each domain must have a JSON authority file (sequenceFile) and a set of executable npm scripts (npmScripts).",
       "relatedDomains": [
-        "build-pipeline-symphony",
+        "build-pipeline-orchestration",
         "symphonia-conformity-alignment-pipeline",
         "architecture-governance-enforcement-symphony"
       ],

@@ -92,7 +92,7 @@
         "orchestration-core"
       ],
       "checksum": "pending-sequence-governance-computation",
-      "supersedes": [],
+      "supersedes": ["build-pipeline-symphony"],
       "deprecated": false,
       "ownership": "Platform-DevEx",
       "analysisConfig": {
@@ -1662,14 +1662,16 @@
     "build-pipeline-symphony": {
       "domain_id": "build-pipeline-symphony",
       "domain_type": "orchestration",
-      "status": "active",
-      "description": "Multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.",
+      "status": "deprecated",
+      "description": "DEPRECATED: Superseded by build-pipeline-orchestration. Legacy multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.",
       "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
       "parent_refs": [
         "safe-continuous-delivery-pipeline"
       ],
       "ownership": "Platform-Orchestration",
-      "deprecated": false,
+      "deprecated": true,
+      "deprecation_date": "2025-11-29",
+      "deprecation_reason": "Superseded by build-pipeline-orchestration which follows standard naming conventions and compliant architecture patterns",
       "supersedes": [],
       "orchestration": {
         "schema_ref": "docs/schemas/musical-sequence.schema.json",
@@ -1937,8 +1939,8 @@
     }
   },
   "meta": {
-    "active_count": 78,
-    "deprecated_count": 0,
+    "active_count": 77,
+    "deprecated_count": 1,
     "retired_count": 0,
     "last_validation": "2025-11-27T04:07:56.011Z",
     "demo_runs": [

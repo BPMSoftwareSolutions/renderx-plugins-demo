@@ -22,6 +22,10 @@ const DOMAIN_REPORTS: { name: string; filePath: string }[] = [
   {
     name: 'build-pipeline-orchestration',
     filePath: 'docs/generated/build-pipeline/build-pipeline-orchestration-CODE-ANALYSIS-REPORT.md'
+  },
+  {
+    name: 'symphonic-code-analysis-pipeline',
+    filePath: 'docs/generated/symphonic-code-analysis-pipeline/symphonic-code-analysis-pipeline-CODE-ANALYSIS-REPORT.md'
   }
 ];
 

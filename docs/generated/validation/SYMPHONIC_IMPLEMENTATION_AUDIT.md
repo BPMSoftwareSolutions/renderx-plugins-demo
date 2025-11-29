@@ -1,10 +1,10 @@
 # Symphonic Implementation Audit
 
-Generated: 2025-11-29T22:26:41.214Z
+Generated: 2025-11-29T23:50:19.872Z
 
 - Domains inspected: 18
-- Pass: 2
-- Fail: 16
+- Pass: 3
+- Fail: 15
 - Skipped: 0
 
 ## orchestration-core — FAIL
@@ -22,7 +22,7 @@ Generated: 2025-11-29T22:26:41.214Z
 - sequenceFile: packages\orchestration\json-sequences\build-pipeline-orchestration.json
 - Beats implemented: 14/14
 - Notes:
-  - Implementation code found under: C:\source\repos\bpm\Internal\renderx-plugins-demo\packages\orchestration
+  - Implementation code found under: c:\source\repos\bpm\Internal\renderx-plugins-demo\packages\orchestration
   - Sequence JSON: packages\orchestration\json-sequences\build-pipeline-orchestration.json
   - Symphonies root: packages\orchestration\src\symphonies
 
@@ -31,7 +31,7 @@ Generated: 2025-11-29T22:26:41.214Z
 - sequenceFile: packages\orchestration\json-sequences\renderx-web-orchestration.json
 - Beats implemented: 22/22
 - Notes:
-  - Implementation code found under: C:\source\repos\bpm\Internal\renderx-plugins-demo\packages\
+  - Implementation code found under: c:\source\repos\bpm\Internal\renderx-plugins-demo\packages\
   - Sequence JSON: packages\orchestration\json-sequences\renderx-web-orchestration.json
   - Found symphonies across packages: packages\canvas-component\src\symphonies, packages\control-panel\src\symphonies, packages\header\src\symphonies, packages\library\src\symphonies, packages\library-component\src\symphonies, packages\musical-conductor\src\symphonies, packages\orchestration\src\symphonies
 
@@ -109,53 +109,15 @@ Generated: 2025-11-29T22:26:41.214Z
 
 ## build-pipeline-symphony — FAIL
 - analysisSourcePath: scripts
-- sequenceFile: packages\orchestration\json-sequences\build-pipeline-symphony.json
-- Beats implemented: 0/39
+- symphoniesRoot: scripts\symphonies
+- Beats implemented: 0/0
 - Notes:
-  - Implementation code found under: C:\source\repos\bpm\Internal\renderx-plugins-demo\scripts\
-  - Sequence JSON: packages\orchestration\json-sequences\build-pipeline-symphony.json
+  - Implementation code found under: c:\source\repos\bpm\Internal\renderx-plugins-demo\scripts\
+  - Symphonies root: scripts\symphonies
 - Problems:
-  - Symphonies folder not found (expected src/symphonies or symphonies)
+  - Sequence JSON not found for domain 'build-pipeline-symphony' (checked: packages\orchestration\json-sequences\build-pipeline-symphony-symphony.json, packages\orchestration\json-sequences\build-pipeline-symphony.json)
 - Beat Issues:
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
-  - Beat 'unknown' missing handler name
+  - Invalid sequence JSON: missing movements array
 
 ## symphonia-conformity-alignment-pipeline — FAIL
 - sequenceFile: packages\orchestration\json-sequences\symphonia-conformity-alignment-pipeline.json
@@ -213,15 +175,15 @@ Generated: 2025-11-29T22:26:41.214Z
   - Beat 'unknown' missing handler name
   - Beat 'unknown' missing handler name
 
-## symphonic-code-analysis-pipeline — FAIL
+## symphonic-code-analysis-pipeline — PASS
 - analysisSourcePath: scripts
+- symphoniesRoot: scripts\symphonies
 - sequenceFile: packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json
-- Beats implemented: 0/0
+- Beats implemented: 16/16
 - Notes:
-  - Implementation code found under: C:\source\repos\bpm\Internal\renderx-plugins-demo\scripts\
+  - Implementation code found under: c:\source\repos\bpm\Internal\renderx-plugins-demo\scripts\
   - Sequence JSON: packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json
-- Problems:
-  - Symphonies folder not found (expected src/symphonies or symphonies)
+  - Symphonies root: scripts\symphonies
 
 ## fractal-orchestration-domain-symphony — FAIL
 - sequenceFile: packages\orchestration\json-sequences\fractal-orchestration-domain-symphony.json
