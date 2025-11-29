@@ -525,63 +525,45 @@ async function run() {
     
     log(`✓ Report generated: ${path.relative(process.cwd(), reportPath)}`, '✓');
     
-    // Step 10: Enhance report with rich markdown content from analysis artifacts
-    log('Enriching report with detailed handler portfolio insights...', '✨');
+    // Step 10: Use rich markdown report directly (contains all detailed analysis)
+    log('Using comprehensive rich markdown report...', '✨');
     try {
+      // Filter for rich markdown files that match the domain ID
+      // This ensures we pick the correct file when multiple domains have been analyzed
       const richMarkdownFiles = fs.readdirSync(analysisOutputDir)
-        .filter(f => f.includes('rich-markdown') && f.endsWith('.md'))
+        .filter(f => f.startsWith(domainId) && f.includes('rich-markdown') && f.endsWith('.md'))
         .sort()
         .reverse();
-      
+
       if (richMarkdownFiles.length > 0) {
-        const richMd = fs.readFileSync(path.join(analysisOutputDir, richMarkdownFiles[0]), 'utf8');
-        const canonicalReport = fs.readFileSync(reportPath, 'utf8');
-        
-        // Extract ALL rich content sections from the legacy report format
-        // 1. ASCII architecture diagram with complete symphony structure
-        const diagramMatch = richMd.match(/╔══════════════════════════════════════════[\s\S]*?═══════════════════════════════════════════════════════════════════════\n\n/);
-        
-        // 2. Complete Movement sections with detailed metrics
-        const movements = richMd.match(/---\n\n## Movement 1: Code Discovery[\s\S]*?(?=---\n\n## Movement Governance|---\n\n## CI\/CD Readiness)/);
-        
-        // 3. Legend and terminology section
-        const legendMatch = richMd.match(/═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n\n[\s\S]*?🎼 LEGEND & DOMAIN TERMINOLOGY 🎼[\s\S]*?═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n\n/);
-        
-        // Build enriched report by replacing canonical report with rich content structure
-        // Keep canonical header but inject all rich content after it
-        const headerEnd = canonicalReport.indexOf('\n\n', canonicalReport.indexOf('**Status**:'));
-        if (headerEnd > 0 && diagramMatch) {
-          let enrichedReport = canonicalReport.substring(0, headerEnd + 2);
-          
-          // Inject ASCII diagram
-          enrichedReport += '\n' + diagramMatch[0];
-          
-          // Inject detailed Movement sections if available
-          if (movements) {
-            enrichedReport += movements[0] + '\n\n';
-          }
-          
-          // Inject legend if available
-          if (legendMatch) {
-            enrichedReport += legendMatch[0];
-          }
-          
-          // Append remaining canonical sections (Handler Portfolio, CI/CD, etc.)
-          const handlerSectionStart = canonicalReport.indexOf('## 📊 Conformity Score');
-          if (handlerSectionStart > 0) {
-            enrichedReport += canonicalReport.substring(handlerSectionStart);
-          }
-          
-          fs.writeFileSync(reportPath, enrichedReport, 'utf8');
-          log(`  ✓ Injected ASCII architecture diagram`, '  ');
-          log(`  ✓ Injected detailed Movement sections`, '  ');
-          log(`  ✓ Injected legend and terminology`, '  ');
-        }
+        const richMdPath = path.join(analysisOutputDir, richMarkdownFiles[0]);
+        log(`  ✓ Found rich markdown: ${richMarkdownFiles[0]}`, '  ');
+        const richMd = fs.readFileSync(richMdPath, 'utf8');
+
+        // The rich markdown file is already a complete, comprehensive report
+        // containing all detailed sections:
+        // - Executive Summary & Health metrics
+        // - Handler Symphony breakdowns with Beat/Handler tables
+        // - Coverage Heatmaps by Beat
+        // - Handler Portfolio Metrics
+        // - Handler Scope Analysis
+        // - Coverage by Handler Analysis
+        // - Automated Refactor Suggestions
+        // - Historical Trend Analysis
+        // - Movement Governance Summary
+        // - CI/CD Readiness Assessment
+        // - Top 10 Actionable Improvements
+        //
+        // Use it directly instead of complex regex extraction/merging
+        fs.writeFileSync(reportPath, richMd, 'utf8');
+        log(`  ✓ Used complete rich markdown report`, '  ');
+        log(`  ✓ Includes handler symphony breakdowns`, '  ');
+        log(`  ✓ Includes coverage analysis & trends`, '  ');
       } else {
-        log(`  ⚠ No rich markdown artifact found`, '  ');
+        log(`  ⚠ No rich markdown artifact found, using canonical report`, '  ');
       }
     } catch (err) {
-      log(`  ⚠ Failed to enrich report: ${err.message}`, '  ');
+      log(`  ⚠ Failed to use rich markdown: ${err.message}`, '  ');
     }
     
     // Step 11: Summary

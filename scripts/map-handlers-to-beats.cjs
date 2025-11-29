@@ -2,56 +2,189 @@
 
 /**
  * Handler-to-Beat Mapper
- * 
+ *
  * Maps discovered handlers to orchestration beats, identifying:
  * 1. Handlers mapped to beats
  * 2. Orphaned handlers (not in any beat)
  * 3. Beats with no handlers
  * 4. Handler distribution and coverage
- * 
+ *
  * Produces a Symphonic Health Score measuring handler-beat alignment.
+ *
+ * DATA-DRIVEN: Reads beat definitions from the domain's sequence file
+ * specified in orchestration-domains.json.
  */
 
 const fs = require('fs');
 const path = require('path');
 
 /**
- * Load orchestration registry to get beats
- * @returns {Array} Beat definitions from registry
+ * Get the current domain ID from environment
+ * @returns {string} Domain ID or default
  */
-function loadOrchestrationBeats() {
+function getDomainId() {
+  return process.env.ANALYSIS_DOMAIN_ID || 'renderx-web-orchestration';
+}
+
+/**
+ * Load sequence file for current domain from orchestration-domains.json
+ * @returns {Object|null} Sequence definition with beatDetails
+ */
+function loadDomainSequence() {
+  const domainId = getDomainId();
+
   try {
     const registryPath = path.join(process.cwd(), 'orchestration-domains.json');
     const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-    
-    // Extract all beats from all movements
-    const beats = [];
-    const movements = [
-      { name: 'Movement 1', beats: ['beat-1-discovery', 'beat-1a-discovery-core', 'beat-1b-discovery-extended', 'beat-1c-discovery-analysis', 'beat-1d-discovery-telemetry'] },
-      { name: 'Movement 2', beats: ['beat-2-baseline', 'beat-2a-baseline-metrics', 'beat-2b-baseline-analysis', 'beat-2c-baseline-validation', 'beat-2d-baseline-reporting'] },
-      { name: 'Movement 3', beats: ['beat-3-structure', 'beat-3a-structure-parse', 'beat-3b-structure-analysis', 'beat-3c-structure-validation', 'beat-3d-structure-reporting'] },
-      { name: 'Movement 4', beats: ['beat-4-dependencies', 'beat-4a-deps-resolve', 'beat-4b-deps-analysis', 'beat-4c-deps-validation', 'beat-4d-deps-reporting'] }
-    ];
-    
-    for (const movement of movements) {
-      for (const beat of movement.beats) {
-        beats.push({
-          name: beat,
-          movement: movement.name,
-          handlers: []
-        });
-      }
+
+    // Find the domain entry
+    const domain = registry.domains?.find(d => d.id === domainId);
+    if (!domain || !domain.sequenceFile) {
+      console.warn(`[map-handlers-to-beats] No sequenceFile for domain: ${domainId}, using fallback`);
+      return null;
     }
-    
-    return beats;
+
+    // Load the sequence file
+    const sequencePath = path.join(process.cwd(), domain.sequenceFile);
+    if (!fs.existsSync(sequencePath)) {
+      console.warn(`[map-handlers-to-beats] Sequence file not found: ${sequencePath}`);
+      return null;
+    }
+
+    return JSON.parse(fs.readFileSync(sequencePath, 'utf8'));
   } catch (err) {
-    console.error('Error loading beats:', err.message);
-    return [];
+    console.warn(`[map-handlers-to-beats] Error loading domain sequence: ${err.message}`);
+    return null;
   }
 }
 
 /**
+ * Build beat keywords from sequence beatDetails
+ * @param {Object} sequence Sequence definition with beatDetails
+ * @returns {Object} Map of beat name to keywords
+ */
+function buildBeatKeywordsFromSequence(sequence) {
+  const keywords = {};
+
+  if (!sequence?.beatDetails) return keywords;
+
+  for (const beat of sequence.beatDetails) {
+    const beatKey = `beat-${beat.movement}-${beat.kind || 'general'}`;
+    if (!keywords[beatKey]) {
+      keywords[beatKey] = [];
+    }
+
+    // Extract keywords from beat name and kind
+    const nameWords = (beat.name || '').toLowerCase().split(/\s+/);
+    const kindWord = (beat.kind || '').toLowerCase();
+    const descWords = (beat.description || '').toLowerCase().split(/\s+/).filter(w => w.length > 4);
+
+    keywords[beatKey].push(...nameWords, kindWord, ...descWords.slice(0, 3));
+    keywords[beatKey] = [...new Set(keywords[beatKey])].filter(Boolean);
+  }
+
+  return keywords;
+}
+
+/**
+ * Load orchestration registry to get beats
+ * DATA-DRIVEN: Reads from domain's sequence file or falls back to defaults
+ * @returns {Array} Beat definitions from registry
+ */
+function loadOrchestrationBeats() {
+  const domainId = getDomainId();
+
+  try {
+    // Try to load from domain's sequence file first
+    const sequence = loadDomainSequence();
+
+    if (sequence?.movements && sequence?.beatDetails) {
+      const beats = [];
+
+      // Build beats from sequence movements and beatDetails
+      for (const movement of sequence.movements) {
+        const movementBeats = sequence.beatDetails
+          .filter(bd => bd.movement === movement.number)
+          .map(bd => ({
+            name: `beat-${bd.movement}-${bd.kind || 'beat-' + bd.number}`,
+            movement: `Movement ${movement.number}: ${movement.name}`,
+            kind: bd.kind,
+            description: bd.description,
+            handlers: []
+          }));
+
+        beats.push(...movementBeats);
+      }
+
+      if (beats.length > 0) {
+        console.log(`[map-handlers-to-beats] Loaded ${beats.length} beats from sequence file (domain: ${domainId})`);
+        return beats;
+      }
+    }
+
+    // Fallback to default beat structure
+    console.log(`[map-handlers-to-beats] Using fallback beat definitions (domain: ${domainId})`);
+    return loadFallbackBeats();
+  } catch (err) {
+    console.error('Error loading beats:', err.message);
+    return loadFallbackBeats();
+  }
+}
+
+/**
+ * Fallback beat definitions for domains without sequence files
+ * @returns {Array} Default beat definitions
+ */
+function loadFallbackBeats() {
+  const beats = [];
+  const movements = [
+    { name: 'Movement 1', beats: ['beat-1-discovery', 'beat-1a-discovery-core', 'beat-1b-discovery-extended', 'beat-1c-discovery-analysis', 'beat-1d-discovery-telemetry'] },
+    { name: 'Movement 2', beats: ['beat-2-baseline', 'beat-2a-baseline-metrics', 'beat-2b-baseline-analysis', 'beat-2c-baseline-validation', 'beat-2d-baseline-reporting'] },
+    { name: 'Movement 3', beats: ['beat-3-structure', 'beat-3a-structure-parse', 'beat-3b-structure-analysis', 'beat-3c-structure-validation', 'beat-3d-structure-reporting'] },
+    { name: 'Movement 4', beats: ['beat-4-dependencies', 'beat-4a-deps-resolve', 'beat-4b-deps-analysis', 'beat-4c-deps-validation', 'beat-4d-deps-reporting'] }
+  ];
+
+  for (const movement of movements) {
+    for (const beat of movement.beats) {
+      beats.push({
+        name: beat,
+        movement: movement.name,
+        handlers: []
+      });
+    }
+  }
+
+  return beats;
+}
+
+/**
+ * Load beat keyword mappings from sequence file or use fallback
+ * DATA-DRIVEN: Reads from domain's sequence beatDetails
+ * @returns {Object} Map of beat category to keywords
+ */
+function loadBeatKeywords() {
+  const sequence = loadDomainSequence();
+
+  if (sequence?.beatDetails) {
+    // Build keywords from sequence beatDetails
+    const keywords = buildBeatKeywordsFromSequence(sequence);
+    if (Object.keys(keywords).length > 0) {
+      return keywords;
+    }
+  }
+
+  // Fallback keywords - generic patterns that work across domains
+  return {
+    'discovery': ['discover', 'scan', 'find', 'parse', 'initialize', 'register', 'create', 'augment'],
+    'metrics': ['analyze', 'metric', 'measure', 'baseline', 'complexity', 'duplication', 'validate', 'monitor', 'select', 'deselect'],
+    'structure': ['transform', 'convert', 'structure', 'organize', 'render', 'execute', 'drag', 'resize', 'update', 'css', 'classes', 'ui'],
+    'dependencies': ['depend', 'require', 'load', 'import', 'export', 'copy', 'paste', 'delete']
+  };
+}
+
+/**
  * Match handler to beat based on naming and location conventions
+ * DATA-DRIVEN: Uses beat keywords from sequence file
  * @param {Object} handler Handler with name and file path
  * @param {Array} beats Available beats
  * @returns {Object} Match result
@@ -60,7 +193,7 @@ function matchHandlerToBeat(handler, beats) {
   const handlerName = handler.name.toLowerCase();
   const filePath = handler.file.toLowerCase();
   const fileSegments = filePath.split('/');
-  
+
   // Extract symphony name from path
   // e.g., packages/canvas-component/src/symphonies/create/create.stage-crew.ts -> create
   let symphonyName = '';
@@ -70,109 +203,104 @@ function matchHandlerToBeat(handler, beats) {
       break;
     }
   }
-  
-  // Strategy 1: Symphony name contains beat keyword (highest confidence)
-  // Includes both analysis-pipeline and musical-conductor/renderx-web symphony names
-  const beatKeywords = {
-    'beat-1-discovery': [
-      // Analysis pipeline
-      'discover', 'scan', 'find', 'parse',
-      // Musical-conductor: initialization & registration
-      'initialize', 'register-sequence',
-      // RenderX-Web: creation & setup
-      'create', 'augment'
-    ],
-    'beat-2-baseline': [
-      // Analysis pipeline
-      'analyze', 'metric', 'measure', 'baseline', 'complexity', 'duplication',
-      // Musical-conductor: validation & monitoring
-      'validate-plugin', 'monitor',
-      // RenderX-Web: selection & inspection
-      'select', 'deselect', 'selection'
-    ],
-    'beat-3-structure': [
-      // Analysis pipeline
-      'transform', 'convert', 'structure', 'organize', 'render',
-      // Musical-conductor: execution
-      'execute-sequence',
-      // RenderX-Web: manipulation & styling
-      'drag', 'resize', 'resize-line', 'line-advanced',
-      'update', 'css-management', 'classes', 'ui'
-    ],
-    'beat-4-dependencies': [
-      // Analysis pipeline
-      'depend', 'require', 'load',
-      // RenderX-Web: import/export & data flow
-      'import', 'export', 'copy', 'paste', 'delete'
-    ]
-  };
-  
-  for (const [beat, keywords] of Object.entries(beatKeywords)) {
-    const beatObj = beats.find(b => b.name === beat);
-    if (beatObj) {
-      for (const keyword of keywords) {
-        if (symphonyName.includes(keyword)) {
-          return { beat: beat, movement: beatObj.movement, confidence: 0.85, reason: 'symphony-keyword' };
+
+  // Load beat keywords from sequence file or use fallback
+  const beatKeywords = loadBeatKeywords();
+
+  // Strategy 1: Match beat by kind (data-driven from sequence beatDetails)
+  for (const beat of beats) {
+    if (beat.kind) {
+      // Check if handler name or symphony name matches beat kind
+      if (handlerName.includes(beat.kind) || symphonyName.includes(beat.kind)) {
+        return { beat: beat.name, movement: beat.movement, confidence: 0.9, reason: 'beat-kind-match' };
+      }
+    }
+  }
+
+  // Strategy 2: Match by category keywords
+  for (const [category, keywords] of Object.entries(beatKeywords)) {
+    for (const keyword of keywords) {
+      if (symphonyName.includes(keyword) || handlerName.includes(keyword)) {
+        // Find a beat that matches this category
+        const matchingBeat = beats.find(b =>
+          b.name.includes(category) ||
+          b.kind === category ||
+          (b.description && b.description.toLowerCase().includes(category))
+        );
+        if (matchingBeat) {
+          return { beat: matchingBeat.name, movement: matchingBeat.movement, confidence: 0.85, reason: 'category-keyword' };
         }
       }
     }
   }
-  
-  // Strategy 2: File path contains beat keyword
+
+  // Strategy 3: File path contains beat keyword
   for (const beat of beats) {
-    const beatShort = beat.name.split('-').slice(-1)[0]; // e.g., 'discovery' from 'beat-1-discovery'
+    const beatParts = beat.name.split('-');
+    const beatShort = beatParts[beatParts.length - 1]; // e.g., 'discovery' from 'beat-1-discovery'
     if (filePath.includes(beatShort)) {
       return { beat: beat.name, movement: beat.movement, confidence: 0.7, reason: 'path-match' };
     }
   }
-  
-  // Strategy 3: Stage-crew patterns (ui-interaction handlers)
+
+  // Strategy 4: Match by beat description keywords
+  for (const beat of beats) {
+    if (beat.description) {
+      const descWords = beat.description.toLowerCase().split(/\s+/).filter(w => w.length > 4);
+      for (const word of descWords) {
+        if (handlerName.includes(word) || symphonyName.includes(word)) {
+          return { beat: beat.name, movement: beat.movement, confidence: 0.65, reason: 'description-match' };
+        }
+      }
+    }
+  }
+
+  // Strategy 5: Stage-crew patterns (ui-interaction handlers)
   if (filePath.includes('stage-crew')) {
-    const beatObj = beats.find(b => b.name === 'beat-3-structure');
+    const beatObj = beats.find(b => b.kind === 'structure' || b.name.includes('structure'));
     if (beatObj) {
-      return { beat: 'beat-3-structure', movement: beatObj.movement, confidence: 0.6, reason: 'stage-crew' };
+      return { beat: beatObj.name, movement: beatObj.movement, confidence: 0.6, reason: 'stage-crew' };
     }
   }
-  
-  // Strategy 4: Overlay patterns (selection/manipulation)
+
+  // Strategy 6: Overlay patterns (selection/manipulation)
   if (filePath.includes('overlay')) {
-    const beatObj = beats.find(b => b.name === 'beat-2-baseline');
+    const beatObj = beats.find(b => b.kind === 'metrics' || b.name.includes('baseline'));
     if (beatObj) {
-      return { beat: 'beat-2-baseline', movement: beatObj.movement, confidence: 0.55, reason: 'overlay' };
+      return { beat: beatObj.name, movement: beatObj.movement, confidence: 0.55, reason: 'overlay' };
     }
   }
-  
-  // Strategy 5: Generic handler mapping to default beat
-  const defaultMapping = {
-    'initialization': 'beat-1-discovery',
-    'validation': 'beat-2-baseline',
-    'transformation': 'beat-3-structure',
-    'input': 'beat-4-dependencies',
-    'output': 'beat-3-structure',
-    'execution': 'beat-3-structure',
-    'ui-interaction': 'beat-3-structure',
-    'event': 'beat-2-baseline'
-  };
-  
-  if (handler.type && defaultMapping[handler.type]) {
-    const beatName = defaultMapping[handler.type];
-    const beatObj = beats.find(b => b.name === beatName);
-    if (beatObj) {
-      return { 
-        beat: beatName, 
-        movement: beatObj.movement,
-        confidence: 0.5, 
-        reason: 'type-default' 
-      };
+
+  // Strategy 7: Handler type mapping (if available)
+  if (handler.type) {
+    const typeToCategory = {
+      'initialization': 'discovery',
+      'validation': 'metrics',
+      'transformation': 'structure',
+      'input': 'dependencies',
+      'output': 'structure',
+      'execution': 'structure',
+      'ui-interaction': 'structure',
+      'event': 'metrics'
+    };
+
+    const category = typeToCategory[handler.type];
+    if (category) {
+      const beatObj = beats.find(b =>
+        b.kind === category ||
+        b.name.includes(category)
+      );
+      if (beatObj) {
+        return { beat: beatObj.name, movement: beatObj.movement, confidence: 0.5, reason: 'type-category' };
+      }
     }
   }
-  
-  // No match found - map to Movement 2 as default (most central)
-  const defaultBeat = beats.find(b => b.name === 'beat-2-baseline');
-  if (defaultBeat) {
-    return { beat: 'beat-2-baseline', movement: defaultBeat.movement, confidence: 0.3, reason: 'default' };
+
+  // No match found - use first beat as default
+  if (beats.length > 0) {
+    return { beat: beats[0].name, movement: beats[0].movement, confidence: 0.3, reason: 'default' };
   }
-  
+
   return { beat: null, movement: null, confidence: 0, reason: 'no-match' };
 }
 

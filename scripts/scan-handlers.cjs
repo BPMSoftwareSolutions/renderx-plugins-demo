@@ -99,6 +99,7 @@ async function scanHandlerExports() {
 
     // Patterns to match all exported functions (not just "handler" naming)
     const handlerPatterns = [
+      // === ES Module patterns ===
       // Match: export const handlers = { ... } and extract the object
       /export\s+const\s+handlers\s*=/g,
       // Match: export const functionName = (async)? (args) => { ... }
@@ -108,45 +109,63 @@ async function scanHandlerExports() {
       // Match: export const functionName: FunctionType = ...
       /export\s+const\s+(\w+)\s*:\s*[A-Z]\w*\s*=/g,
       // Legacy handler-specific patterns for backward compatibility
-      /export\s+const\s+(\w*[Hh]andler\w*)\s*[=:]/g
+      /export\s+const\s+(\w*[Hh]andler\w*)\s*[=:]/g,
+
+      // === CommonJS patterns (for .cjs files) ===
+      // Match: module.exports = { functionName, ... } - extract each property
+      /module\.exports\s*=\s*\{([^}]+)\}/g,
+      // Match: function functionName(...) { - standalone functions
+      /^(?:async\s+)?function\s+(\w+)\s*\(/gm,
+      // Match: const functionName = (async)? (...) => - arrow functions
+      /^const\s+(\w+)\s*=\s*(?:async\s+)?\([^)]*\)\s*=>/gm,
+      // Match: const functionName = function(...) - function expressions
+      /^const\s+(\w+)\s*=\s*(?:async\s+)?function\s*\(/gm
     ];
 
     // Scan each file for handler exports
     for (const file of files) {
       try {
         const content = fs.readFileSync(file, 'utf8');
-        const lines = content.split('\n');
-        
+
+        // Helper to add handler without duplicates
+        const addHandler = (name, lineNumber) => {
+          const isDuplicate = handlers.some(h => h.name === name && h.file === file);
+          if (!isDuplicate && name && !name.startsWith('_')) {
+            handlers.push({
+              name,
+              file,
+              source: 'measured',
+              type: deriveHandlerType(name),
+              line: lineNumber
+            });
+          }
+        };
+
         // Find all handler matches
         for (const pattern of handlerPatterns) {
           let match;
-          let searchStart = 0;
-          
+          pattern.lastIndex = 0; // Reset regex state
+
           while ((match = pattern.exec(content)) !== null) {
-            const handlerName = match[1];
-            
-            // Skip if no capturing group (e.g., first pattern which just finds "handlers" object)
-            if (!handlerName) {
-              continue;
-            }
-            
-            // Find line number by counting newlines up to match position
+            const captured = match[1];
+
+            // Skip if no capturing group
+            if (!captured) continue;
+
+            // Find line number
             const beforeMatch = content.substring(0, match.index);
             const lineNumber = beforeMatch.split('\n').length;
-            
-            // Avoid duplicates
-            const isDuplicate = handlers.some(
-              h => h.name === handlerName && h.file === file
-            );
-            
-            if (!isDuplicate) {
-              handlers.push({
-                name: handlerName,
-                file,
-                source: 'measured',
-                type: deriveHandlerType(handlerName),
-                line: lineNumber  // Add line number for LOC analysis
-              });
+
+            // Handle module.exports = { func1, func2, ... } pattern
+            if (pattern.source.includes('module\\.exports')) {
+              // Extract individual function names from the exports object
+              const exportNames = captured
+                .split(/[,\n]/)
+                .map(s => s.trim())
+                .filter(s => s && /^\w+$/.test(s));
+              exportNames.forEach(name => addHandler(name, lineNumber));
+            } else {
+              addHandler(captured, lineNumber);
             }
           }
         }

@@ -275,8 +275,13 @@ function renderCoverageHeatmapByBeat(data) {
  * @param {RiskMatrix} data
  * @returns {string}
  */
-function renderRiskAssessmentMatrix(data) {
-  const { critical, high, medium, low } = data;
+function renderRiskAssessmentMatrix(godHandlers, conformityViolations) {
+  const safeGodHandlers = Array.isArray(godHandlers) ? godHandlers : [];
+  const safeViolations = Array.isArray(conformityViolations) ? conformityViolations : [];
+  const critical = safeViolations.filter(v => v.severity === 'critical').map(v => v.check);
+  const high = safeGodHandlers.map(h => `God Handler: ${h.name}`);
+  const medium = safeViolations.filter(v => v.severity === 'high').map(v => v.check);
+  const low = safeViolations.filter(v => v.severity === 'medium').map(v => v.check);
 
   const boxWidth = 45;
   let output = '';
@@ -313,6 +318,9 @@ function renderRiskAssessmentMatrix(data) {
  * @returns {string}
  */
 function renderRefactoringRoadmap(data) {
+  if (!Array.isArray(data)) {
+    return ''; // Return empty string if data is not an array
+  }
   let output = '';
   const boxWidth = 55;
   output += '╔════ REFACTORING ROADMAP ══════════════════════════════╗\n';

@@ -505,8 +505,9 @@ function generateReport(analysisPath, outputPath) {
   context.handlerCoverageDistRows = hd.coverageBands 
     ? `| 0–30% | ${hd.coverageBands.b0_30||0} |\n| 30–60% | ${hd.coverageBands.b30_60||0} |\n| 60–80% | ${hd.coverageBands.b60_80||0} |\n| 80–100% | ${hd.coverageBands.b80_100||0} |`
     : '| N/A | 0 |';
-  context.godHandlerRows = (analysis.godHandlers || []).length
-    ? analysis.godHandlers.map(h => `| ${h.name} | ${h.loc} | ${h.complexity} | ${Number(h.coverage||0).toFixed(0)}% |`).join('\n')
+  const godHandlersArray = Array.isArray(analysis.godHandlers) ? analysis.godHandlers : [];
+  context.godHandlerRows = godHandlersArray.length
+    ? godHandlersArray.map(h => `| ${h.name} | ${h.loc} | ${h.complexity} | ${Number(h.coverage||0).toFixed(0)}% |`).join('\n')
     : '| N/A | N/A | N/A | N/A |';
   const ci = analysis.ciReadiness || { verdict: 'Unknown', notes: [] };
   // Auto-compute CI/CD readiness if not provided, using authority formulas

@@ -263,7 +263,7 @@ function generateDiagram(metrics = {}) {
     handlerSummary = null,
     duplicateBlocks = 0,
     duplicationPercent = 0,
-    godHandlers = [],
+    godHandlers: rawGodHandlers = [],
     maintainability = 0,
     conformityScore = 0,
     beatCoverage = null,
@@ -271,6 +271,9 @@ function generateDiagram(metrics = {}) {
     symphonies = [],
     historicalData = null
   } = metrics;
+
+  // Ensure godHandlers is always an array
+  const godHandlers = Array.isArray(rawGodHandlers) ? rawGodHandlers : [];
   
   // Safe numeric conversions
   const safeAvgLoc = Number(avgLocPerHandler) || 0;
