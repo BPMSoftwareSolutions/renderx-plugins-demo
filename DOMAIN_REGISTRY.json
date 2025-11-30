@@ -47,40 +47,40 @@
     "telemetry-pipeline": {
       "domain_id": "telemetry-pipeline",
       "domain_type": "workflow",
-      "status": "active",
-      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
-      "parent_refs": [
-        "orchestration-core"
-      ],
-      "checksum": "e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe",
-      "supersedes": [],
-      "deprecated": false,
-      "ownership": "Platform-Telemetry"
-    },
-    "self-healing": {
-      "domain_id": "self-healing",
-      "domain_type": "capability",
-      "status": "active",
-      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
-      "parent_refs": [
-        "orchestration-core"
-      ],
-      "checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a",
-      "supersedes": [],
-      "deprecated": false,
-      "ownership": "Platform-Reliability"
-    },
-    "slo-dashboard": {
-      "domain_id": "slo-dashboard",
-      "domain_type": "capability",
-      "status": "active",
-      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
-      "parent_refs": [
-        "orchestration-core"
-      ],
-      "checksum": "35c03f64b9f4980bb2b3a66e0738a8ec71f2ed20985cdde2d941c6bc69eb8ca8",
-      "supersedes": [],
-      "deprecated": false,
+        "symphonic-code-analysis-demo": {
+        "domain_id": "fractal-orchestration-domain-symphony",
+        "domain_type": "orchestration",
+        "status": "experimental",
+        "description": "Didactic orchestration that encodes the recursive pattern where orchestrated domains become systems and systems become domains in a fractal architecture.",
+        "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+        "parent_refs": [
+          "architecture-governance-enforcement-symphony"
+        ],
+        "ownership": "Platform-Orchestration",
+        "deprecated": false,
+        "supersedes": [],
+        "orchestration": {
+          "schema_ref": "docs/schemas/musical-sequence.schema.json",
+          "interface": {
+            "name": "MusicalSequence",
+            "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+          },
+          "registry_ref": {
+            "file": "orchestration-domains.json",
+            "id": "orchestration-domains-registry"
+          },
+          "sequence_files": [
+            "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json"
+          ]
+        },
+        "analysisConfig": {
+          "analysisSourcePath": "scripts/",
+          "symphoniesRoot": "scripts/symphonies",
+          "analysisOutputPath": ".generated/analysis/fractal-orchestration-domain-symphony/",
+          "reportOutputPath": "docs/generated/fractal-orchestration-domain-symphony/",
+          "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
+        }
+      },
       "ownership": "Platform-Observability"
     },
     "build-pipeline-orchestration": {
@@ -1736,7 +1736,17 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/architecture-governance-enforcement-symphony.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "symphoniesRoot": "scripts/symphonies",
+        "analysisOutputPath": ".generated/analysis/architecture-governance-enforcement-symphony/",
+        "reportOutputPath": "docs/generated/architecture-governance-enforcement-symphony/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "symphonic-code-analysis-pipeline": {
@@ -1760,10 +1770,14 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/symphonic-code-analysis-pipeline.json"
+        ]
       },
       "analysisConfig": {
-        "analysisSourcePath": "scripts/symphonies",
+        "analysisSourcePath": "scripts/",
+        "symphoniesRoot": "scripts/symphonies",
         "analysisOutputPath": ".generated/analysis/symphonic-code-analysis-pipeline/",
         "reportOutputPath": "docs/generated/symphonic-code-analysis-pipeline/",
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
@@ -1790,7 +1804,17 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "symphoniesRoot": "scripts/symphonies",
+        "analysisOutputPath": ".generated/analysis/fractal-orchestration-domain-symphony/",
+        "reportOutputPath": "docs/generated/fractal-orchestration-domain-symphony/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "symphonic-code-analysis-demo": {
@@ -1814,7 +1838,17 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/symphonic-code-analysis-demo.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "symphoniesRoot": "scripts/symphonies",
+        "analysisOutputPath": ".generated/analysis/symphonic-code-analysis-demo/",
+        "reportOutputPath": "docs/generated/symphonic-code-analysis-demo/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "orchestration-registry-audit-pipeline": {
@@ -1838,7 +1872,17 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/orchestration-registry-audit-pipeline.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts/",
+        "symphoniesRoot": "scripts/symphonies",
+        "analysisOutputPath": ".generated/analysis/orchestration-registry-audit-pipeline/",
+        "reportOutputPath": "docs/generated/orchestration-registry-audit-pipeline/",
+        "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
     "host-sdk-infrastructure": {

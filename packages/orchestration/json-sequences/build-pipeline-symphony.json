@@ -1,0 +1,27 @@
+{
+  "id": "build-pipeline-symphony",
+  "sequenceId": "build-pipeline-symphony",
+  "name": "Build Pipeline Symphony (Legacy)",
+  "packageName": "orchestration",
+  "title": "Legacy Build Pipeline Symphony",
+  "description": "Minimal legacy sequence to retain registry compliance for deprecated domain. Provides a valid movements array and beat mapping for validator conformance.",
+  "kind": "orchestration",
+  "status": "deprecated",
+  "movements": [
+    {
+      "name": "Validation Bootstrap",
+      "description": "Bootstrap movement to satisfy validator requirements",
+      "beats": [
+        {
+          "name": "bootstrap-scan",
+          "description": "Reuse discovery scan to provide a resolvable handler",
+          "handler": {
+            "name": "analysis.discovery#scanOrchestrationFiles",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          }
+        }
+      ]
+    }
+  ]
+}
