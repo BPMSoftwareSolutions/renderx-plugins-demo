@@ -18,151 +18,28 @@
       "number": 1,
       "name": "From Domain to Orchestrated Domain",
       "description": "A static domain is given flow, handlers, and intent, becoming an orchestrated domain.",
-      "beats": [
-        {
-          "number": 1,
-          "beat": 1,
-          "event": "fractal:domain:identified",
-          "handler": "fractalNarrator",
-          "kind": "narration",
-          "timing": "immediate",
-          "description": "Recognize a cohesive domain of concern with clear boundaries."
-        },
-        {
-          "number": 2,
-          "beat": 2,
-          "event": "fractal:domain:orchestrated",
-          "handler": "fractalNarrator",
-          "kind": "transition",
-          "timing": "immediate",
-          "description": "Bind the domain to a MusicalSequence: movements, beats, handlers, and rules."
-        }
-      ]
-    },
-    {
+      {
+        "$schema": "./musical-sequence.schema.json",
+        "name": "fractal-orchestration-domain-symphony",
+        "version": "0.1.0",
+        "movements": [
+          {
+            "name": "bootstrap",
+            "beats": [
+              {
+                "name": "fractal-domain-identified",
+                "handler": { "name": "fractal.narration#fractalNarrator" },
+                "notes": ["Recognize domain boundaries and intent"]
+              },
+              {
+                "name": "fractal-domain-orchestrated",
+                "handler": { "name": "fractal.narration#fractalNarrator" },
+                "notes": ["Bind domain to MusicalSequence"]
+              }
+            ]
+          }
+        ]
+      }
       "number": 2,
-      "name": "Domain Becomes System",
-      "description": "Once orchestrated, the domain exhibits system behavior: state, feedback, and correction.",
-      "beats": [
-        {
-          "number": 3,
-          "beat": 3,
-          "event": "fractal:system:emerges",
-          "handler": "fractalNarrator",
-          "kind": "observation",
-          "timing": "immediate",
-          "description": "The orchestrated domain now has flow, telemetry, and self-awareness hooks."
-        },
-        {
-          "number": 4,
-          "beat": 4,
-          "event": "fractal:system:stabilized",
-          "handler": "fractalNarrator",
-          "kind": "stabilization",
-          "timing": "after:fractal:system:emerges",
-          "description": "Feedback loops and governance beats keep the system within safe bounds."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "name": "System Becomes Subsystem",
-      "description": "The living system is packaged as a reusable building block in a larger orchestration.",
-      "beats": [
-        {
-          "number": 5,
-          "beat": 5,
-          "event": "fractal:subsystem:packaged",
-          "handler": "fractalNarrator",
-          "kind": "composition",
-          "timing": "immediate",
-          "description": "Treat the system as a black-box capability with a manifest and contracts."
-        },
-        {
-          "number": 6,
-          "beat": 6,
-          "event": "fractal:subsystem:composed",
-          "handler": "fractalNarrator",
-          "kind": "composition",
-          "timing": "after:fractal:subsystem:packaged",
-          "description": "Compose this subsystem alongside others inside a higher-order sequence."
-        }
-      ]
-    },
-    {
-      "number": 4,
-      "name": "Subsystem Becomes Higher-Level Domain",
-      "description": "At the next scale, the subsystem is named and governed as a domain inside a meta-system.",
-      "beats": [
-        {
-          "number": 7,
-          "beat": 7,
-          "event": "fractal:domain:promoted",
-          "handler": "fractalNarrator",
-          "kind": "promotion",
-          "timing": "immediate",
-          "description": "Promote the subsystem to a first-class domain in the global registry."
-        },
-        {
-          "number": 8,
-          "beat": 8,
-          "event": "fractal:domain:linked",
-          "handler": "fractalNarrator",
-          "kind": "governance",
-          "timing": "after:fractal:domain:promoted",
-          "description": "Link the new domain into orchestration registries, context tree, and governance symphonies."
-        }
-      ]
-    },
-    {
-      "number": 5,
-      "name": "Meta-System and Fractal Ecosystem",
-      "description": "Many orchestrated domains interlock into a meta-system that audits, adapts, and evolves.",
-      "beats": [
-        {
-          "number": 9,
-          "beat": 9,
-          "event": "fractal:metasystem:formed",
-          "handler": "fractalNarrator",
-          "kind": "observation",
-          "timing": "immediate",
-          "description": "Multiple orchestration domains now function as a coordinated meta-system."
-        },
-        {
-          "number": 10,
-          "beat": 10,
-          "event": "fractal:ecosystem:self-similar",
-          "handler": "fractalNarrator",
-          "kind": "reflection",
-          "timing": "after:fractal:metasystem:formed",
-          "description": "Every level repeats the same pattern: domain as system, system as domain, in a fractal ecosystem."
-        }
-      ]
-    }
-  ],
-  "events": [
-    "fractal:domain:identified",
-    "fractal:domain:orchestrated",
-    "fractal:system:emerges",
-    "fractal:system:stabilized",
-    "fractal:subsystem:packaged",
-    "fractal:subsystem:composed",
-    "fractal:domain:promoted",
-    "fractal:domain:linked",
-    "fractal:metasystem:formed",
-    "fractal:ecosystem:self-similar"
-  ],
-  "metadata": {
-    "version": "0.1.0",
-    "created": "2025-11-28",
-    "author": "Fractal Orchestration Design",
-    "tags": [
-      "fractal",
-      "orchestration",
-      "domain-as-system",
-      "system-as-domain",
-      "musical-sequence-demo"
-    ]
-  }
-}
 
+      "name": "Domain Becomes System",

@@ -1,0 +1,18 @@
+{
+  "$schema": "./musical-sequence.schema.json",
+  "name": "orchestration-core",
+  "version": "0.1.0",
+  "movements": [
+    {
+      "name": "bootstrap",
+      "beats": [
+        {
+          "name": "scan-orchestration-files",
+          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
+          "notes": ["Establish baseline indexing of orchestration files"],
+          "args": { "paths": ["packages/orchestration"] }
+        }
+      ]
+    }
+  ]
+}

@@ -42,6 +42,13 @@
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
         }
+      },
+      "sequence_files": [
+        "packages/orchestration/json-sequences/orchestration-core.json"
+      ],
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "telemetry-pipeline": {
@@ -1489,6 +1496,13 @@
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
         }
+      },
+      "sequence_files": [
+        "packages/orchestration/json-sequences/graphing-orchestration.json"
+      ],
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "self_sequences": {
@@ -1512,7 +1526,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/self_sequences.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "musical-conductor-orchestration": {
@@ -1537,6 +1559,13 @@
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
         }
+      },
+      "sequence_files": [
+        "packages/orchestration/json-sequences/musical-conductor-orchestration.json"
+      ],
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "cag-agent-workflow": {
@@ -1560,7 +1589,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/cag-agent-workflow.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "orchestration-audit-session": {

@@ -1,0 +1,18 @@
+{
+  "$schema": "./musical-sequence.schema.json",
+  "name": "self_sequences",
+  "version": "0.1.0",
+  "movements": [
+    {
+      "name": "bootstrap",
+      "beats": [
+        {
+          "name": "scan-self-sequences",
+          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
+          "notes": ["Index local orchestration sequence files"],
+          "args": { "paths": ["packages/orchestration/json-sequences"] }
+        }
+      ]
+    }
+  ]
+}

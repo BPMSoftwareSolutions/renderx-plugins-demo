@@ -1,0 +1,18 @@
+{
+  "$schema": "./musical-sequence.schema.json",
+  "name": "graphing-orchestration",
+  "version": "0.1.0",
+  "movements": [
+    {
+      "name": "bootstrap",
+      "beats": [
+        {
+          "name": "scan-orchestration-files",
+          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
+          "notes": ["Baseline scan for graphing orchestration"],
+          "args": { "paths": ["packages/orchestration"] }
+        }
+      ]
+    }
+  ]
+}

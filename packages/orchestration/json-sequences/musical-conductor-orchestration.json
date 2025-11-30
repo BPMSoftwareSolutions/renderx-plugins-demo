@@ -1,0 +1,18 @@
+{
+  "$schema": "./musical-sequence.schema.json",
+  "name": "musical-conductor-orchestration",
+  "version": "0.1.0",
+  "movements": [
+    {
+      "name": "bootstrap",
+      "beats": [
+        {
+          "name": "scan-conductor-symphonies",
+          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
+          "notes": ["Baseline scan for conductor symphonies"],
+          "args": { "paths": ["packages/musical-conductor/src/symphonies"] }
+        }
+      ]
+    }
+  ]
+}

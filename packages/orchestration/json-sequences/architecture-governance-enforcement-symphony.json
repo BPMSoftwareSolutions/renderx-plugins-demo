@@ -61,7 +61,7 @@
         {
           "number": 1,
           "event": "movement-1:json-validation:started",
-          "handler": "validateJSONSchemaStructure",
+          "handler": { "name": "governance.handlers#validateJSONSchemaStructure" },
           "kind": "validation",
           "timing": "immediate",
 	          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
@@ -75,7 +75,7 @@
         {
           "number": 2,
           "event": "movement-1:orchestration-domains:validated",
-          "handler": "validateOrchestrationDomainsRegistry",
+          "handler": { "name": "governance.handlers#validateOrchestrationDomainsRegistry" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate orchestration-domains.json has all required fields and correct structure",
@@ -88,7 +88,7 @@
         {
           "number": 3,
           "event": "movement-1:symphony-files:validated",
-          "handler": "validateSymphonyFiles",
+          "handler": { "name": "governance.handlers#validateSymphonyFiles" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)",
@@ -101,7 +101,7 @@
         {
           "number": 4,
           "event": "movement-1:schema-section:validated",
-          "handler": "validateSchemaSection",
+          "handler": { "name": "governance.handlers#validateSchemaSection" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate schema section exists and defines movement/beat/event requirements",
@@ -114,7 +114,7 @@
         {
           "number": 5,
           "event": "movement-1:json-validation:complete",
-          "handler": "reportJSONValidation",
+          "handler": { "name": "governance.handlers#reportJSONValidation" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report validation results; fail if schema invalid",
@@ -135,7 +135,7 @@
         {
           "number": 1,
           "event": "movement-2:handler-mapping:started",
-          "handler": "startHandlerMappingVerification",
+          "handler": { "name": "governance.handlers#startHandlerMappingVerification" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin handler-to-beat mapping verification process",
@@ -148,7 +148,7 @@
         {
           "number": 2,
           "event": "movement-2:handlers:loaded",
-          "handler": "loadHandlerImplementations",
+          "handler": { "name": "governance.handlers#loadHandlerImplementations" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all handler implementations from scripts/build-symphony-handlers.js",
@@ -161,7 +161,7 @@
         {
           "number": 3,
           "event": "movement-2:beats-indexed",
-          "handler": "indexBeatsFromJSON",
+          "handler": { "name": "governance.handlers#indexBeatsFromJSON" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all beats and their handler references from symphony JSON files",
@@ -174,7 +174,7 @@
         {
           "number": 4,
           "event": "movement-2:mapping-verified",
-          "handler": "verifyBeatHandlerMapping",
+          "handler": { "name": "governance.handlers#verifyBeatHandlerMapping" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify every beat has corresponding handler; collect mapping violations",
@@ -187,7 +187,7 @@
         {
           "number": 5,
           "event": "movement-2:orphans-detected",
-          "handler": "detectOrphanHandlers",
+          "handler": { "name": "governance.handlers#detectOrphanHandlers" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find handlers in code that are not referenced by any beat",
@@ -200,7 +200,7 @@
         {
           "number": 6,
           "event": "movement-2:handler-mapping:complete",
-          "handler": "reportHandlerMapping",
+          "handler": { "name": "governance.handlers#reportHandlerMapping" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report handler mapping status; fail if violations found",
@@ -221,7 +221,7 @@
         {
           "number": 1,
           "event": "movement-3:test-coverage:started",
-          "handler": "startTestCoverageVerification",
+          "handler": { "name": "governance.handlers#startTestCoverageVerification" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin test coverage verification process",
@@ -234,7 +234,7 @@
         {
           "number": 2,
           "event": "movement-3:beats-catalogued",
-          "handler": "catalogBeatsFromJSON",
+          "handler": { "name": "governance.handlers#catalogBeatsFromJSON" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create exhaustive catalog of all beats and events in symphony JSON",
@@ -247,7 +247,7 @@
         {
           "number": 3,
           "event": "movement-3:tests-indexed",
-          "handler": "indexTestFiles",
+          "handler": { "name": "governance.handlers#indexTestFiles" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all test files and their test descriptions (from .spec.ts)",
@@ -260,7 +260,7 @@
         {
           "number": 4,
           "event": "movement-3:coverage-analyzed",
-          "handler": "analyzeTestCoverage",
+          "handler": { "name": "governance.handlers#analyzeTestCoverage" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Analyze coverage: which beats have tests, which don't",
@@ -273,7 +273,7 @@
         {
           "number": 5,
           "event": "movement-3:uncovered-beats-identified",
-          "handler": "identifyUncoveredBeats",
+          "handler": { "name": "governance.handlers#identifyUncoveredBeats" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Identify beats lacking test coverage; collect list",
@@ -286,7 +286,7 @@
         {
           "number": 6,
           "event": "movement-3:test-coverage:complete",
-          "handler": "reportTestCoverage",
+          "handler": { "name": "governance.handlers#reportTestCoverage" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report test coverage percentage and violations",
@@ -307,7 +307,7 @@
         {
           "number": 1,
           "event": "movement-4:markdown-consistency:started",
-          "handler": "startMarkdownConsistencyCheck",
+          "handler": { "name": "governance.handlers#startMarkdownConsistencyCheck" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin markdown consistency verification process",
@@ -320,7 +320,7 @@
         {
           "number": 2,
           "event": "movement-4:facts-extracted",
-          "handler": "extractFactsFromJSON",
+          "handler": { "name": "governance.handlers#extractFactsFromJSON" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Extract key facts from JSON: movement count, beat count, event count, handler names",
@@ -333,7 +333,7 @@
         {
           "number": 3,
           "event": "movement-4:markdown-files:identified",
-          "handler": "identifyMarkdownFiles",
+          "handler": { "name": "governance.handlers#identifyMarkdownFiles" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Find all markdown files that reference symphonia",
@@ -346,7 +346,7 @@
         {
           "number": 4,
           "event": "movement-4:facts-verified",
-          "handler": "verifyFactsInMarkdown",
+          "handler": { "name": "governance.handlers#verifyFactsInMarkdown" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Check if JSON facts are mentioned in markdown correctly",
@@ -359,7 +359,7 @@
         {
           "number": 5,
           "event": "movement-4:contradictions-detected",
-          "handler": "detectMarkdownContradictions",
+          "handler": { "name": "governance.handlers#detectMarkdownContradictions" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find statements in markdown that contradict JSON",
@@ -372,7 +372,7 @@
         {
           "number": 6,
           "event": "movement-4:markdown-consistency:complete",
-          "handler": "reportMarkdownConsistency",
+          "handler": { "name": "governance.handlers#reportMarkdownConsistency" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report markdown consistency score and contradictions",
@@ -393,7 +393,7 @@
         {
           "number": 1,
           "event": "movement-5:auditability:started",
-          "handler": "startAuditabilityVerification",
+          "handler": { "name": "governance.handlers#startAuditabilityVerification" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin auditability chain verification process",
@@ -406,7 +406,7 @@
         {
           "number": 2,
           "event": "movement-5:json-definitions:loaded",
-          "handler": "loadJSONDefinitions",
+          "handler": { "name": "governance.handlers#loadJSONDefinitions" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all JSON definitions as the starting point",
@@ -419,7 +419,7 @@
         {
           "number": 3,
           "event": "movement-5:code-mappings:created",
-          "handler": "createCodeMappings",
+          "handler": { "name": "governance.handlers#createCodeMappings" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Code handler",
@@ -432,7 +432,7 @@
         {
           "number": 4,
           "event": "movement-5:test-mappings:created",
-          "handler": "createTestMappings",
+          "handler": { "name": "governance.handlers#createTestMappings" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Test coverage",
@@ -445,7 +445,7 @@
         {
           "number": 5,
           "event": "movement-5:markdown-mappings:created",
-          "handler": "createMarkdownMappings",
+          "handler": { "name": "governance.handlers#createMarkdownMappings" },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON fact → Markdown mention",
@@ -458,7 +458,7 @@
         {
           "number": 6,
           "event": "movement-5:chain-completeness:verified",
-          "handler": "verifyChainCompleteness",
+          "handler": { "name": "governance.handlers#verifyChainCompleteness" },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify complete traceability for all definitions",
@@ -471,7 +471,7 @@
         {
           "number": 7,
           "event": "movement-5:auditability:complete",
-          "handler": "reportAuditability",
+          "handler": { "name": "governance.handlers#reportAuditability" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report auditability score: % of JSON with complete chain",
@@ -492,7 +492,7 @@
         {
           "number": 1,
           "event": "movement-6:conformity:started",
-          "handler": "startConformityAnalysis",
+          "handler": { "name": "governance.handlers#startConformityAnalysis" },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Begin overall conformity analysis",
@@ -505,7 +505,7 @@
         {
           "number": 2,
           "event": "movement-6:results:aggregated",
-          "handler": "aggregateGovernanceResults",
+          "handler": { "name": "governance.handlers#aggregateGovernanceResults" },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Aggregate results from all 5 movements",
@@ -518,7 +518,7 @@
         {
           "number": 3,
           "event": "movement-6:conformity-score:calculated",
-          "handler": "calculateConformityScore",
+          "handler": { "name": "governance.handlers#calculateConformityScore" },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Calculate overall conformity score (0-100%)",
@@ -531,7 +531,7 @@
         {
           "number": 4,
           "event": "movement-6:violations:summarized",
-          "handler": "summarizeViolations",
+          "handler": { "name": "governance.handlers#summarizeViolations" },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Summarize all governance violations found",
@@ -544,7 +544,7 @@
         {
           "number": 5,
           "event": "movement-6:decision:made",
-          "handler": "makeGovernanceDecision",
+          "handler": { "name": "governance.handlers#makeGovernanceDecision" },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Decide: PASS (allow changes) or FAIL (reject changes)",
@@ -557,7 +557,7 @@
         {
           "number": 6,
           "event": "movement-6:report:generated",
-          "handler": "generateGovernanceReport",
+          "handler": { "name": "governance.handlers#generateGovernanceReport" },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Generate comprehensive governance report with recommendations",
@@ -570,7 +570,7 @@
         {
           "number": 7,
           "event": "governance:complete",
-          "handler": "concludeGovernanceEnforcement",
+          "handler": { "name": "governance.handlers#concludeGovernanceEnforcement" },
           "kind": "conclusion",
           "timing": "immediate",
           "description": "Conclude governance enforcement; exit with appropriate status code",
