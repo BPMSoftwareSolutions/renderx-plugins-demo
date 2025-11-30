@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json -->
-<!-- Generated: 2025-11-30T23:31:42.356Z -->
+<!-- Generated: 2025-11-30T23:41:41.464Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run generate:domain:indexes -->
 
 # Global Documentation Index
@@ -67,5 +67,5 @@ Found in repository root:
 
 ---
 
-**Generated**: 2025-11-30T23:31:42.357Z
+**Generated**: 2025-11-30T23:41:41.464Z
 **Regenerate with**: `npm run generate:domain:indexes`
