@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.telemetryGovernance.instrumentation) -->
-<!-- Generated: 2025-11-27T04:08:46.440Z -->
+<!-- Generated: 2025-11-30T23:23:04.763Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Demo Telemetry Instrumentation Guide

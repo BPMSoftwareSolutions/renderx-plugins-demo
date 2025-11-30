@@ -233,7 +233,8 @@
           "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
         }
       },
-      "ownership": "Platform-Observability"
+      "ownership": "Platform-Observability",
+      "checksum": "e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe"
     },
     "build-pipeline-orchestration": {
       "domain_id": "build-pipeline-orchestration",
@@ -300,6 +301,36 @@
         "reportOutputPath": "docs/generated/renderx-web/",
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
+    },
+    "self-healing": {
+      "domain_id": "self-healing",
+      "domain_type": "capability",
+      "status": "active",
+      "description": "Self-Healing capability domain",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "ownership": "Platform Reliability",
+      "deprecated": false,
+      "supersedes": [],
+      "authority_ref": "docs/domains/self-healing.json",
+      "checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a"
+    },
+    "slo-dashboard": {
+      "domain_id": "slo-dashboard",
+      "domain_type": "capability",
+      "status": "active",
+      "description": "SLO Dashboard capability domain",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "ownership": "Platform Observability",
+      "deprecated": false,
+      "supersedes": [],
+      "authority_ref": "docs/domains/slo-dashboard.json",
+      "checksum": "35c03f64b9f4980bb2b3a66e0738a8ec71f2ed20985cdde2d941c6bc69eb8ca8"
     },
     "canvas-component-copy-symphony": {
       "domain_id": "canvas-component-copy-symphony",
@@ -2203,7 +2234,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-11-30T23:09:50.909Z",
+    "last_validation": "2025-11-30T23:22:24.044Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

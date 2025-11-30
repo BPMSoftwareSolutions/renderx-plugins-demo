@@ -63,14 +63,15 @@ export const validateBeats = (data: any, ctx: any) => {
     }
     
     movement.beats.forEach((beat, beatIdx) => {
-      if (!beat.id) {
-        beatErrors.push(`Movement ${movIdx + 1}, Beat ${beatIdx + 1} missing id`);
+      if (beat.beat === undefined || beat.beat === null) {
+        beatErrors.push(`Movement ${movIdx + 1}, Beat ${beatIdx + 1} missing beat number`);
       }
-      
-      if (!beat.handler && !beat.handlerName) {
-        beatErrors.push(`Movement ${movIdx + 1}, Beat ${beatIdx + 1} missing handler`);
+      if (!beat.event || typeof beat.event !== "string") {
+        beatErrors.push(`Movement ${movIdx + 1}, Beat ${beatIdx + 1} missing event type`);
       }
-      
+      if (!beat.dynamics) {
+        beatErrors.push(`Movement ${movIdx + 1}, Beat ${beatIdx + 1} missing dynamics`);
+      }
       totalBeats++;
     });
   });

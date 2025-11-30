@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-30T09:11:46.395Z"
+    "generated": "2025-11-30T23:23:03.287Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -105,42 +105,6 @@
     }
   ],
   "domains": [
-    {
-      "id": "safe-continuous-delivery-pipeline",
-      "name": "SAFe Continuous Delivery Pipeline",
-      "emoji": "🛠️",
-      "description": "System-level orchestration for SAFe Continuous Delivery",
-      "category": "orchestration",
-      "purpose": "Coordinate delivery stages across the pipeline",
-      "status": "active",
-      "movements": 5,
-      "beats": 24,
-      "sequenceFile": "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json"
-    },
-    {
-      "id": "renderx-web-orchestration",
-      "name": "RenderX Web Orchestration",
-      "emoji": "🌐",
-      "description": "Master orchestration for RenderX Web application lifecycle",
-      "category": "orchestration",
-      "purpose": "Centralized build, test, validation, delivery, and monitoring",
-      "status": "active",
-      "movements": 6,
-      "beats": 30,
-      "sequenceFile": "packages/orchestration/json-sequences/renderx-web-orchestration.json"
-    },
-    {
-      "id": "fractal-orchestration-domain-symphony",
-      "name": "fractal-orchestration-domain-symphony",
-      "emoji": "🧩",
-      "description": "Experimental orchestration encoding fractal architecture",
-      "category": "orchestration",
-      "purpose": "Demonstrate recursive orchestration-domain pattern",
-      "status": "experimental",
-      "movements": 1,
-      "beats": 2,
-      "sequenceFile": "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json"
-    },
     {
       "id": "canvas-component-copy-symphony",
       "name": "Canvas Component Copy",
@@ -2139,95 +2103,6 @@
           "category": "orchestration"
         },
         "phases": []
-      }
-    },
-    {
-      "id": "musical-conductor-orchestration",
-      "name": "Musical Conductor Orchestration Sequence",
-      "emoji": "🎼",
-      "description": "High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages\\musical-conductor\\.ographx\\sequences\\musical-conductor-orchestration.json",
-      "movements": 6,
-      "beats": 30,
-      "tempo": 112,
-      "key": "C Minor",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Musical Conductor Orchestration Sequence",
-        "sequence": {
-          "id": "musical-conductor-orchestration",
-          "name": "Musical Conductor Orchestration Sequence",
-          "tempo": 112,
-          "key": "C Minor",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Movement 1: Initialization",
-            "items": [
-              "Load conductor configuration",
-              "Register communication channels",
-              "Allocate event bus",
-              "Bootstrap telemetry hooks",
-              "Create session envelope"
-            ]
-          },
-          {
-            "name": "Movement 2: Movement 2: Score Loading",
-            "items": [
-              "Resolve score index",
-              "Fetch sequence definitions",
-              "Validate structural signature",
-              "Normalize movement metadata",
-              "Publish score loaded event"
-            ]
-          },
-          {
-            "name": "Movement 3: Movement 3: Session Start",
-            "items": [
-              "Initialize timeline",
-              "Register performance metrics",
-              "Activate dynamic evaluation",
-              "Broadcast session start",
-              "Record provenance snapshot"
-            ]
-          },
-          {
-            "name": "Movement 4: Movement 4: Movement Execution",
-            "items": [
-              "Iterate movements",
-              "Dispatch beat handlers",
-              "Capture performance samples",
-              "Apply scheduled dynamics",
-              "Accumulate execution log"
-            ]
-          },
-          {
-            "name": "Movement 5: Movement 5: Adaptive Adjustment",
-            "items": [
-              "Evaluate tempo variance",
-              "Apply dynamic level changes",
-              "Rebalance resource usage",
-              "Update execution state",
-              "Emit adjustment event"
-            ]
-          },
-          {
-            "name": "Movement 6: Movement 6: Finalization",
-            "items": [
-              "Flush telemetry buffers",
-              "Persist session summary",
-              "Emit completion event",
-              "Release orchestration resources",
-              "Publish integrity hash"
-            ]
-          }
-        ]
       }
     },
     {
