@@ -126,7 +126,7 @@ function generateHandlerSummary(handlerData) {
   symphonyHandlers.forEach(handler => {
     const pathParts = handler.file.split('/');
     let symphonyName = 'Other';
-    
+
     // Extract symphony name: packages/*/src/symphonies/FOLDER/ or symphonies/file.symphony.ts
     const symphoniesIndex = pathParts.indexOf('symphonies');
     if (symphoniesIndex >= 0 && symphoniesIndex + 1 < pathParts.length) {
@@ -151,7 +151,7 @@ function generateHandlerSummary(handlerData) {
     } else if (pathParts[0] === 'scripts') {
       symphonyName = 'Build Scripts';
     }
-    
+
     if (!symphonyGroups[symphonyName]) {
       symphonyGroups[symphonyName] = [];
     }
@@ -163,7 +163,7 @@ function generateHandlerSummary(handlerData) {
   
   // Build clean symphony sections using new renderer
   let symphonyContent = '';
-  
+
   Object.entries(symphonyGroups).sort((a, b) => b[1].length - a[1].length).forEach(([symphonyName, symphonyHandlers]) => {
     // Extract package name from handler file paths
     // Example: packages/renderx-orchestration/src/symphonies/create/...
