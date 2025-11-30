@@ -78,7 +78,7 @@ beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish selection eve
 [symphony:select.requested]
 role: Interaction designer
 movementStory: As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.
-beat: resolveSelection -> As an engineer, I need `resolveSelection` to identify the target node and context.
+beat: routeSelectionRequest -> As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.
 
 [symphony:select.svg-node]
 role: Design systems engineer
@@ -93,7 +93,7 @@ beat: hideSelectionOverlay -> As a runtime engineer, I need `hideSelectionOverla
 [symphony:deselect.requested]
 role: Interaction designer
 movementStory: As an interaction designer, I need requested deselect to route to base and clear selection consistently.
-beat: resolveDeselect -> As an engineer, I need `resolveDeselect` to identify current selection and clear state.
+beat: routeDeselectionRequest -> As an engineer, I need `routeDeselectionRequest` to identify current selection and clear state.
 
 [symphony:deselect-all]
 role: Interaction designer
