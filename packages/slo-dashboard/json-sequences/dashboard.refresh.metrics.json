@@ -11,45 +11,45 @@
           "handler": "loadMetrics",
           "kind": "io",
           "number": 1,
-          "scenario": "loadMetrics Operation",
+          "scenario": "load Metrics",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadMetrics operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadMetrics processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadMetrics encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/slo-dashboard/__tests__/load-metrics.test.ts",
           "testCase": "should load-metrics",
-          "userStory": "As a system user, I want the loadMetrics operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
           "handler": "computeCompliance",
           "kind": "pure",
           "number": 2,
-          "scenario": "computeCompliance Operation",
+          "scenario": "compute Compliance",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the computeCompliance operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen computeCompliance processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen computeCompliance encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen computeCompliance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen computeCompliance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/slo-dashboard/__tests__/compute-compliance.test.ts",
           "testCase": "should compute-compliance",
-          "userStory": "As a system user, I want the computeCompliance operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want computeCompliance to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want refresh so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want loadMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "name": "Dashboard.refresh.metrics",
   "beats": 2,
   "tempo": 120,
-  "userStory": "Dashboard.refresh.metrics workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want loadMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

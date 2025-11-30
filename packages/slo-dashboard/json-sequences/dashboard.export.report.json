@@ -11,45 +11,45 @@
           "handler": "serializeDashboardState",
           "kind": "pure",
           "number": 1,
-          "scenario": "serializeDashboardState Operation",
+          "scenario": "serialize Dashboard State",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the serializeDashboardState operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen serializeDashboardState processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen serializeDashboardState encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen serializeDashboardState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen serializeDashboardState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/slo-dashboard/__tests__/serialize-dashboard-state.test.ts",
           "testCase": "should serialize-dashboard-state",
-          "userStory": "As a system user, I want the serializeDashboardState operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
           "handler": "triggerExportDownload",
           "kind": "io",
           "number": 2,
-          "scenario": "triggerExportDownload Operation",
+          "scenario": "trigger Export Download",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the triggerExportDownload operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen triggerExportDownload processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen triggerExportDownload encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen triggerExportDownload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen triggerExportDownload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/slo-dashboard/__tests__/trigger-export-download.test.ts",
           "testCase": "should trigger-export-download",
-          "userStory": "As a system user, I want the triggerExportDownload operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want triggerExportDownload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want export so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "name": "Dashboard.export.report",
   "beats": 2,
   "tempo": 120,
-  "userStory": "Dashboard.export.report workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

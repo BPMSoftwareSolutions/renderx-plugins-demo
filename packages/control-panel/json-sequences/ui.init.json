@@ -16,17 +16,17 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "number": 1,
-          "scenario": "initConfig Operation",
+          "scenario": "Initialize Control Panel with Configuration",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given configuration metadata\nWhen initConfig is called\nThen configuration is loaded within 200ms\nAnd all fields are prepared for rendering\nAnd validation rules are attached",
+            "Given complex nested configuration\nWhen initConfig processes it\nThen all nested sections are initialized\nAnd dependencies between sections are resolved\nAnd no circular dependencies cause deadlock",
+            "Given configuration with 100+ fields\nWhen initConfig prepares the form\nThen initialization completes within 300ms\nAnd form is ready for user interaction\nAnd memory usage scales linearly with field count",
+            "Given configuration errors\nWhen initConfig encounters invalid config\nThen error is reported with specific issue\nAnd fallback configuration is applied\nAnd system degrades gracefully",
+            "Given performance SLA\nWhen initConfig completes\nThen Time to Interactive (TTI) is < 500ms\nAnd First Contentful Paint (FCP) is < 1 second\nAnd form is responsive immediately"
           ],
           "testFile": "packages/control-panel/__tests__/init-config.test.ts",
           "testCase": "should init config",
-          "userStory": "As a system user, I want the initConfig operation to execute reliably so that system functions operate as expected."
+          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model)."
         },
         {
           "beat": 2,
@@ -37,17 +37,17 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "initResolver Operation",
+          "scenario": "Initialize or Configure init Resolver",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the initResolver operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen initResolver processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen initResolver encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen initResolver executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen initResolver operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/init-resolver.test.ts",
           "testCase": "should init resolver",
-          "userStory": "As a system user, I want the initResolver operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -58,17 +58,17 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "number": 3,
-          "scenario": "loadSchemas Operation",
+          "scenario": "load Schemas",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadSchemas operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadSchemas processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadSchemas encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadSchemas executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadSchemas operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/load-schemas.test.ts",
           "testCase": "should load schemas",
-          "userStory": "As a system user, I want the loadSchemas operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -79,17 +79,17 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "number": 4,
-          "scenario": "registerObservers Operation",
+          "scenario": "register Observers",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the registerObservers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen registerObservers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen registerObservers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen registerObservers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen registerObservers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/register-observers.test.ts",
           "testCase": "should register observers",
-          "userStory": "As a system user, I want the registerObservers operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -100,17 +100,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 5,
-          "scenario": "notifyReady Operation",
+          "scenario": "Notify or Publish notify Ready",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the notifyReady operation is triggered\nWhen the handler executes\nThen it completes successfully within < 50ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen notifyReady processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen notifyReady encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 50ms\nWhen notifyReady executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen notifyReady operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/notify-ready.test.ts",
           "testCase": "should notify ready",
-          "userStory": "As a system user, I want the notifyReady operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -121,27 +121,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 6,
-          "scenario": "initMovement Operation",
+          "scenario": "Initialize or Configure init Movement",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the initMovement operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen initMovement processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen initMovement encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen initMovement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen initMovement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/init-movement.test.ts",
           "testCase": "should init movement",
-          "userStory": "As a system user, I want the initMovement operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Init so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+      "persona": "System Operator",
+      "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
     }
   ],
   "beats": 6,
   "tempo": 120,
-  "userStory": "Control Panel UI Init workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+  "persona": "Product Owner",
+  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
 }

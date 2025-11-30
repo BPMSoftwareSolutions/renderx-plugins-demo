@@ -20,16 +20,17 @@
             "scope": "plugin",
             "kind": "plugin"
           },
-          "scenario": "getCurrentTheme Operation",
+          "scenario": "Retrieve Current Application Theme Configuration",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the theme system is initialized\nWhen getCurrentTheme is called\nThen current theme (dark/light) is returned within 10ms\nAnd theme preference from localStorage is respected\nAnd default theme is applied if no preference exists",
+            "Given user has theme preference saved\nWhen getCurrentTheme executes\nThen saved preference is returned\nAnd the response includes theme metadata (colors, fonts)\nAnd no API calls are made (cached lookup)",
+            "Given theme system encounters error\nWhen getCurrentTheme fails\nThen fallback default theme is returned\nAnd error is logged for monitoring\nAnd system remains functional",
+            "Given performance SLA of 10ms\nWhen getCurrentTheme completes\nThen operation time is < 10ms\nAnd memory footprint is < 100KB\nAnd no memory leaks occur on repeated calls",
+            "Given concurrent requests for theme\nWhen multiple calls occur\nThen all requests return consistent value\nAnd response time remains < 10ms per request\nAnd no race conditions exist"
           ],
-          "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should get current theme"
+          "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+          "testCase": "should get current theme",
+          "testFile": "TBD"
         },
         {
           "beat": 2,
@@ -44,24 +45,25 @@
             "scope": "plugin",
             "kind": "plugin"
           },
-          "scenario": "Publish UI Class Change Notification",
+          "scenario": "Publish UI State Change Notifications to Event System",
           "acceptanceCriteria": [
-            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
-            "The event payload contains the element ID and updated classes list",
-            "The notification is published only when payload contains updated class data",
-            "Event is published to the global EventRouter for downstream listeners",
-            "Notifications maintain consistency across multiple class changes"
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions.",
-          "testCase": "should notify ui"
+          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "testCase": "should notify ui",
+          "testFile": "TBD"
         }
       ],
-      "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
-      "persona": "Platform User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+      "persona": "System Operator",
+      "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
     }
   ],
-  "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
-  "persona": "Platform User",
-  "businessValue": "Improves system quality and reliability"
+  "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+  "persona": "Product Owner",
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
 }

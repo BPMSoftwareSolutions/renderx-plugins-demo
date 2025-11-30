@@ -72,9 +72,10 @@
           "timing": "< 150ms"
         }
       ],
-      "userStory": "As a user, I want Data Collection & Aggregation so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a system component, I want the Data Collection & Aggregation process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     },
     {
       "movement": 2,
@@ -127,9 +128,10 @@
           "timing": "< 100ms"
         }
       ],
-      "userStory": "As a user, I want Executive Summary Synthesis so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a system component, I want the Executive Summary Synthesis process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     },
     {
       "movement": 3,
@@ -182,9 +184,10 @@
           "timing": "< 200ms"
         }
       ],
-      "userStory": "As a user, I want Detailed Analysis & Recommendations so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a system component, I want the Detailed Analysis & Recommendations process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     },
     {
       "movement": 4,
@@ -237,9 +240,10 @@
           "timing": "< 50ms"
         }
       ],
-      "userStory": "As a user, I want Report Generation (Multi-Format) so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a system component, I want the Report Generation (Multi-Format) process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     },
     {
       "movement": 5,
@@ -292,9 +296,10 @@
           "timing": "< 100ms"
         }
       ],
-      "userStory": "As a user, I want Lineage & Audit Trail Construction so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a system component, I want the Lineage & Audit Trail Construction process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     },
     {
       "movement": 6,
@@ -347,14 +352,15 @@
           "timing": "< 50ms"
         }
       ],
-      "userStory": "As a Release Manager, I want to coordinate deployment and publish artifacts so that the application reaches users with minimal downtime.",
-      "persona": "Release Manager",
-      "businessValue": "Enables reliable, repeatable deployments; supports blue-green/canary strategies; reduces deployment risk"
+      "userStory": "As a system component, I want the Report Delivery & Distribution process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
+      "beats": []
     }
   ],
   "tempo": 120,
   "beats": 6,
-  "userStory": "symphony report pipeline workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As a product stakeholder, I want the symphony report pipeline process to execute with measurable, auditable results and quantifiable KPIs so that business outcomes are predictable and verifiable (target SLA: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables measurable business value with SLA compliance and performance tracking; supports data-driven optimization"
 }

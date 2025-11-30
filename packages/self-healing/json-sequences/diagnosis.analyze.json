@@ -19,17 +19,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 1,
-          "scenario": "analyzeRequested Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Requested",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-requested.test.ts",
           "testCase": "should analyze-requested",
-          "userStory": "As a system user, I want the analyzeRequested operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -41,17 +41,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "loadAnomalies Operation",
+          "scenario": "load Anomalies",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadAnomalies operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadAnomalies processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadAnomalies encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-anomalies.test.ts",
           "testCase": "should load-anomalies",
-          "userStory": "As a system user, I want the loadAnomalies operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadAnomalies to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -63,17 +63,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 3,
-          "scenario": "loadCodebaseInfo Operation",
+          "scenario": "load Codebase Info",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadCodebaseInfo operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadCodebaseInfo processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadCodebaseInfo encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadCodebaseInfo executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadCodebaseInfo operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-codebase-info.test.ts",
           "testCase": "should load-codebase-info",
-          "userStory": "As a system user, I want the loadCodebaseInfo operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadCodebaseInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -85,17 +85,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 4,
-          "scenario": "analyzePerformanceIssues Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Performance Issues",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzePerformanceIssues operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzePerformanceIssues processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzePerformanceIssues encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzePerformanceIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzePerformanceIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-performance-issues.test.ts",
           "testCase": "should analyze-performance-issues",
-          "userStory": "As a system user, I want the analyzePerformanceIssues operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzePerformanceIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -107,17 +107,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 5,
-          "scenario": "analyzeBehavioralIssues Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Behavioral Issues",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeBehavioralIssues operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeBehavioralIssues processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeBehavioralIssues encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeBehavioralIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeBehavioralIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-behavioral-issues.test.ts",
           "testCase": "should analyze-behavioral-issues",
-          "userStory": "As a system user, I want the analyzeBehavioralIssues operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeBehavioralIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -129,17 +129,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 6,
-          "scenario": "analyzeCoverageIssues Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Coverage Issues",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeCoverageIssues operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeCoverageIssues processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeCoverageIssues encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeCoverageIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeCoverageIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-coverage-issues.test.ts",
           "testCase": "should analyze-coverage-issues",
-          "userStory": "As a system user, I want the analyzeCoverageIssues operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeCoverageIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -151,17 +151,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 7,
-          "scenario": "analyzeErrorIssues Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Error Issues",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeErrorIssues operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeErrorIssues processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeErrorIssues encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeErrorIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeErrorIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-error-issues.test.ts",
           "testCase": "should analyze-error-issues",
-          "userStory": "As a system user, I want the analyzeErrorIssues operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeErrorIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -173,17 +173,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 8,
-          "scenario": "assessImpact Operation",
+          "scenario": "assess Impact",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the assessImpact operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen assessImpact processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen assessImpact encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen assessImpact executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen assessImpact operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/assess-impact.test.ts",
           "testCase": "should assess-impact",
-          "userStory": "As a system user, I want the assessImpact operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want assessImpact to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -195,17 +195,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 9,
-          "scenario": "recommendFixes Operation",
+          "scenario": "recommend Fixes",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the recommendFixes operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen recommendFixes processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen recommendFixes encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen recommendFixes executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen recommendFixes operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/recommend-fixes.test.ts",
           "testCase": "should recommend-fixes",
-          "userStory": "As a system user, I want the recommendFixes operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want recommendFixes to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 10,
@@ -217,17 +217,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 10,
-          "scenario": "storeDiagnosis Operation",
+          "scenario": "store Diagnosis",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the storeDiagnosis operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storeDiagnosis processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storeDiagnosis encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storeDiagnosis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storeDiagnosis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/store-diagnosis.test.ts",
           "testCase": "should store-diagnosis",
-          "userStory": "As a system user, I want the storeDiagnosis operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want storeDiagnosis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 11,
@@ -239,27 +239,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 11,
-          "scenario": "analyzeCompleted Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Completed",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/analyze-completed.test.ts",
           "testCase": "should analyze-completed",
-          "userStory": "As a system user, I want the analyzeCompleted operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeCompleted to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Analyze Root Cause so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     }
   ],
   "beats": 11,
   "tempo": 120,
-  "userStory": "Analyze Root Cause workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
 }

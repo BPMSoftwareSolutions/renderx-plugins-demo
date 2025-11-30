@@ -20,24 +20,25 @@
             "scope": "plugin",
             "kind": "plugin"
           },
-          "scenario": "toggleTheme Operation",
+          "scenario": "Switch Between Light and Dark Theme",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the current theme\nWhen toggleTheme is invoked\nThen theme switches to opposite value within 50ms\nAnd new preference is saved to localStorage\nAnd 'theme:changed' event is published",
+            "Given animation requirements\nWhen theme toggles\nThen CSS transitions are applied smoothly\nAnd no layout shift occurs (CLS < 0.1)\nAnd visual change appears within 100ms total",
+            "Given DOM elements with theme-dependent styling\nWhen toggleTheme executes\nThen all styled elements update immediately\nAnd CSS variables are recalculated\nAnd no flickering or flashing occurs",
+            "Given accessibility requirements\nWhen theme changes\nThen color contrast remains >= 4.5:1 for all text\nAnd prefers-color-scheme media query is respected\nAnd system respects 'no-preference' setting",
+            "Given performance budget\nWhen toggleTheme completes\nThen theme switch completes within 100ms\nAnd no frame drops occur (maintain 60fps)\nAnd memory usage stays within baseline (no leaks)"
           ],
-          "userStory": "As a system user, I want the toggleTheme operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should toggle theme"
+          "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",
+          "testCase": "should toggle theme",
+          "testFile": "TBD"
         }
       ],
-      "userStory": "As a system user, I want the toggleTheme operation to execute reliably so that system functions operate as expected.",
-      "persona": "Platform User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",
+      "persona": "System Operator",
+      "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
     }
   ],
-  "userStory": "As a system user, I want the toggleTheme operation to execute reliably so that system functions operate as expected.",
-  "persona": "Platform User",
-  "businessValue": "Improves system quality and reliability"
+  "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",
+  "persona": "Product Owner",
+  "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
 }

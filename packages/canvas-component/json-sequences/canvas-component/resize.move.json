@@ -18,16 +18,17 @@
           "handler": "updateSize",
           "timing": "immediate",
           "kind": "stage-crew",
-          "scenario": "updateSize Operation",
+          "scenario": "Update or Modify update Size",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the updateSize operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen updateSize processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen updateSize encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen updateSize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen updateSize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should update size"
+          "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should update size",
+          "testFile": "TBD"
         },
         {
           "beat": 2,
@@ -37,25 +38,26 @@
           "handler": "forwardToControlPanel",
           "timing": "immediate",
           "kind": "pure",
-          "scenario": "forwardToControlPanel Operation",
+          "scenario": "forward To Control Panel",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the forwardToControlPanel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen forwardToControlPanel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen forwardToControlPanel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen forwardToControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen forwardToControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the forwardToControlPanel operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should forward to control panel"
+          "userStory": "As an operations system, I want forwardToControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should forward to control panel",
+          "testFile": "TBD"
         }
       ],
-      "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
-      "persona": "Platform User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
-  "persona": "Platform User",
-  "businessValue": "Improves system quality and reliability"
+  "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

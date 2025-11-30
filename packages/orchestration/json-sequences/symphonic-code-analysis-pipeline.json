@@ -32,17 +32,17 @@
           "handler": {
             "name": "analysis.discovery#scanOrchestrationFiles"
           },
-          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "scenario": "Scan, Discover, or Analyze scan Orchestration Files",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the scanOrchestrationFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen scanOrchestrationFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen scanOrchestrationFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen scanOrchestrationFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen scanOrchestrationFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
           "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
-          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "discover-source-code",
@@ -50,17 +50,17 @@
           "handler": {
             "name": "analysis.discovery#discoverSourceCode"
           },
-          "scenario": "analysis.discovery#discoverSourceCode Operation",
+          "scenario": "Scan, Discover, or Analyze discover Source Code",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the discoverSourceCode operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen discoverSourceCode processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen discoverSourceCode encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen discoverSourceCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen discoverSourceCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.discovery#discoverSourceCode.spec.ts",
           "testCase": "should analysis.discovery#discoverSourceCode when event published",
-          "userStory": "As a system user, I want the analysis.discovery#discoverSourceCode operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want discoverSourceCode to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "map-beats-to-code",
@@ -68,17 +68,17 @@
           "handler": {
             "name": "analysis.discovery#mapBeatsToCode"
           },
-          "scenario": "analysis.discovery#mapBeatsToCode Operation",
+          "scenario": "map Beats To Code",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the mapBeatsToCode operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen mapBeatsToCode processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen mapBeatsToCode encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen mapBeatsToCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen mapBeatsToCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.discovery#mapBeatsToCode.spec.ts",
           "testCase": "should analysis.discovery#mapBeatsToCode when event published",
-          "userStory": "As a system user, I want the analysis.discovery#mapBeatsToCode operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want mapBeatsToCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "collect-baseline",
@@ -86,22 +86,22 @@
           "handler": {
             "name": "analysis.discovery#collectBaseline"
           },
-          "scenario": "analysis.discovery#collectBaseline Operation",
+          "scenario": "collect Baseline",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the collectBaseline operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen collectBaseline processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen collectBaseline encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen collectBaseline executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen collectBaseline operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.discovery#collectBaseline.spec.ts",
           "testCase": "should analysis.discovery#collectBaseline when event published",
-          "userStory": "As a system user, I want the analysis.discovery#collectBaseline operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want collectBaseline to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Code Discovery & Beat Mapping so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     },
     {
       "name": "Code Metrics Analysis",
@@ -113,17 +113,17 @@
           "handler": {
             "name": "analysis.metrics#countLinesOfCode"
           },
-          "scenario": "analysis.metrics#countLinesOfCode Operation",
+          "scenario": "count Lines Of Code",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the countLinesOfCode operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen countLinesOfCode processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen countLinesOfCode encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen countLinesOfCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen countLinesOfCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.metrics#countLinesOfCode.spec.ts",
           "testCase": "should analysis.metrics#countLinesOfCode when event published",
-          "userStory": "As a system user, I want the analysis.metrics#countLinesOfCode operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want countLinesOfCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "analyze-complexity",
@@ -131,17 +131,17 @@
           "handler": {
             "name": "analysis.metrics#analyzeComplexity"
           },
-          "scenario": "analysis.metrics#analyzeComplexity Operation",
+          "scenario": "Scan, Discover, or Analyze analyze Complexity",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the analyzeComplexity operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeComplexity processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeComplexity encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeComplexity executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeComplexity operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.metrics#analyzeComplexity.spec.ts",
           "testCase": "should analysis.metrics#analyzeComplexity when event published",
-          "userStory": "As a system user, I want the analysis.metrics#analyzeComplexity operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want analyzeComplexity to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "detect-duplication",
@@ -149,17 +149,17 @@
           "handler": {
             "name": "analysis.metrics#detectDuplication"
           },
-          "scenario": "analysis.metrics#detectDuplication Operation",
+          "scenario": "Detect or Identify detect Duplication",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the detectDuplication operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectDuplication processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectDuplication encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectDuplication executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectDuplication operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.metrics#detectDuplication.spec.ts",
           "testCase": "should analysis.metrics#detectDuplication when event published",
-          "userStory": "As a system user, I want the analysis.metrics#detectDuplication operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want detectDuplication to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "calculate-maintainability",
@@ -167,22 +167,22 @@
           "handler": {
             "name": "analysis.metrics#calculateMaintainability"
           },
-          "scenario": "analysis.metrics#calculateMaintainability Operation",
+          "scenario": "calculate Maintainability",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the calculateMaintainability operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen calculateMaintainability processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen calculateMaintainability encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen calculateMaintainability executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen calculateMaintainability operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.metrics#calculateMaintainability.spec.ts",
           "testCase": "should analysis.metrics#calculateMaintainability when event published",
-          "userStory": "As a system user, I want the analysis.metrics#calculateMaintainability operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want calculateMaintainability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Code Metrics Analysis so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want countLinesOfCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Test Coverage Analysis",
@@ -194,17 +194,17 @@
           "handler": {
             "name": "analysis.coverage#measureStatementCoverage"
           },
-          "scenario": "analysis.coverage#measureStatementCoverage Operation",
+          "scenario": "measure Statement Coverage",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the measureStatementCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen measureStatementCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen measureStatementCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen measureStatementCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen measureStatementCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.coverage#measureStatementCoverage.spec.ts",
           "testCase": "should analysis.coverage#measureStatementCoverage when event published",
-          "userStory": "As a system user, I want the analysis.coverage#measureStatementCoverage operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want measureStatementCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "measure-branch-coverage",
@@ -212,17 +212,17 @@
           "handler": {
             "name": "analysis.coverage#measureBranchCoverage"
           },
-          "scenario": "analysis.coverage#measureBranchCoverage Operation",
+          "scenario": "measure Branch Coverage",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the measureBranchCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen measureBranchCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen measureBranchCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen measureBranchCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen measureBranchCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.coverage#measureBranchCoverage.spec.ts",
           "testCase": "should analysis.coverage#measureBranchCoverage when event published",
-          "userStory": "As a system user, I want the analysis.coverage#measureBranchCoverage operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want measureBranchCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "measure-function-coverage",
@@ -230,17 +230,17 @@
           "handler": {
             "name": "analysis.coverage#measureFunctionCoverage"
           },
-          "scenario": "analysis.coverage#measureFunctionCoverage Operation",
+          "scenario": "measure Function Coverage",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the measureFunctionCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen measureFunctionCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen measureFunctionCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen measureFunctionCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen measureFunctionCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.coverage#measureFunctionCoverage.spec.ts",
           "testCase": "should analysis.coverage#measureFunctionCoverage when event published",
-          "userStory": "As a system user, I want the analysis.coverage#measureFunctionCoverage operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want measureFunctionCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "calculate-gap-analysis",
@@ -248,22 +248,22 @@
           "handler": {
             "name": "analysis.coverage#calculateGapAnalysis"
           },
-          "scenario": "analysis.coverage#calculateGapAnalysis Operation",
+          "scenario": "calculate Gap Analysis",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the calculateGapAnalysis operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen calculateGapAnalysis processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen calculateGapAnalysis encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen calculateGapAnalysis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen calculateGapAnalysis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.coverage#calculateGapAnalysis.spec.ts",
           "testCase": "should analysis.coverage#calculateGapAnalysis when event published",
-          "userStory": "As a system user, I want the analysis.coverage#calculateGapAnalysis operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want calculateGapAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a QA Validator, I want to execute comprehensive tests and validate compliance so that only high-quality builds proceed to production.",
-      "persona": "QA Validator",
-      "businessValue": "Detects regressions; validates architecture governance; prevents non-compliant code deployment"
+      "userStory": "As an operations system, I want measureStatementCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Architecture Conformity & Reporting",
@@ -275,17 +275,17 @@
           "handler": {
             "name": "analysis.conformity#validateHandlerMapping"
           },
-          "scenario": "analysis.conformity#validateHandlerMapping Operation",
+          "scenario": "Validate or Verify validate Handler Mapping",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the validateHandlerMapping operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateHandlerMapping processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateHandlerMapping encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.conformity#validateHandlerMapping.spec.ts",
           "testCase": "should analysis.conformity#validateHandlerMapping when event published",
-          "userStory": "As a system user, I want the analysis.conformity#validateHandlerMapping operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "calculate-conformity-score",
@@ -293,17 +293,17 @@
           "handler": {
             "name": "analysis.conformity#calculateConformityScore"
           },
-          "scenario": "analysis.conformity#calculateConformityScore Operation",
+          "scenario": "calculate Conformity Score",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the calculateConformityScore operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen calculateConformityScore processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen calculateConformityScore encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen calculateConformityScore executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen calculateConformityScore operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.conformity#calculateConformityScore.spec.ts",
           "testCase": "should analysis.conformity#calculateConformityScore when event published",
-          "userStory": "As a system user, I want the analysis.conformity#calculateConformityScore operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "generate-trend-report",
@@ -311,17 +311,17 @@
           "handler": {
             "name": "analysis.conformity#generateTrendReport"
           },
-          "scenario": "analysis.conformity#generateTrendReport Operation",
+          "scenario": "Generate or Create generate Trend Report",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateTrendReport operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateTrendReport processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateTrendReport encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateTrendReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateTrendReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.conformity#generateTrendReport.spec.ts",
           "testCase": "should analysis.conformity#generateTrendReport when event published",
-          "userStory": "As a system user, I want the analysis.conformity#generateTrendReport operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateTrendReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "generate-analysis-report",
@@ -329,22 +329,22 @@
           "handler": {
             "name": "analysis.conformity#generateAnalysisReport"
           },
-          "scenario": "analysis.conformity#generateAnalysisReport Operation",
+          "scenario": "Generate or Create generate Analysis Report",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateAnalysisReport operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateAnalysisReport processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateAnalysisReport encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateAnalysisReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateAnalysisReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.conformity#generateAnalysisReport.spec.ts",
           "testCase": "should analysis.conformity#generateAnalysisReport when event published",
-          "userStory": "As a system user, I want the analysis.conformity#generateAnalysisReport operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Architecture Conformity & Reporting so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     }
   ],
   "analysisMetrics": {
@@ -574,7 +574,7 @@
       "description": "Produce final analysis report and artifacts"
     }
   ],
-  "userStory": "Symphonic Code Analysis Pipeline workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
 }

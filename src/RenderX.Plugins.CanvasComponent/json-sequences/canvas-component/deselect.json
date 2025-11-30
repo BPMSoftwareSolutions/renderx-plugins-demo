@@ -20,16 +20,17 @@
             "scope": "plugin",
             "kind": "plugin"
           },
-          "scenario": "deselectComponent Operation",
+          "scenario": "deselect Component",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the deselectComponent operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deselectComponent processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deselectComponent encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen deselectComponent executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deselectComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the deselectComponent operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should deselect component"
+          "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should deselect component",
+          "testFile": "TBD"
         },
         {
           "beat": 2,
@@ -44,24 +45,25 @@
             "scope": "plugin",
             "kind": "plugin"
           },
-          "scenario": "publishDeselectionChanged Operation",
+          "scenario": "Publish or Deploy publish Deselection Changed",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the publishDeselectionChanged operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen publishDeselectionChanged processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen publishDeselectionChanged encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen publishDeselectionChanged executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen publishDeselectionChanged operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the publishDeselectionChanged operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should publish deselection changed"
+          "userStory": "As an operations system, I want publishDeselectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should publish deselection changed",
+          "testFile": "TBD"
         }
       ],
-      "userStory": "As a system user, I want the deselectComponent operation to execute reliably so that system functions operate as expected.",
-      "persona": "Platform User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "userStory": "As a system user, I want the deselectComponent operation to execute reliably so that system functions operate as expected.",
-  "persona": "Platform User",
-  "businessValue": "Improves system quality and reliability"
+  "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

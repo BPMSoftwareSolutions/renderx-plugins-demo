@@ -19,17 +19,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 1,
-          "scenario": "validateRequested Operation",
+          "scenario": "Validate or Verify validate Requested",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the validateRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/validate-requested.test.ts",
           "testCase": "should validate-requested",
-          "userStory": "As a system user, I want the validateRequested operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -41,17 +41,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "loadPatch Operation",
+          "scenario": "load Patch",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadPatch operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadPatch processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadPatch encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadPatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadPatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-patch.test.ts",
           "testCase": "should load-patch",
-          "userStory": "As a system user, I want the loadPatch operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -63,17 +63,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 3,
-          "scenario": "applyPatch Operation",
+          "scenario": "apply Patch",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the applyPatch operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen applyPatch processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen applyPatch encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen applyPatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen applyPatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/apply-patch.test.ts",
           "testCase": "should apply-patch",
-          "userStory": "As a system user, I want the applyPatch operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want applyPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -85,18 +85,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 4,
-          "scenario": "Execute Test Suite",
+          "scenario": "Execute Test Suite and Report Results",
           "acceptanceCriteria": [
-            "All configured test suites (unit, integration, e2e) are executed",
-            "Test results include pass/fail status, execution time, and coverage metrics",
-            "Failed tests halt the build process; details logged for troubleshooting",
-            "Test execution time is tracked for performance trending",
-            "Coverage is calculated and compared against minimum thresholds",
-            "System emits 'tests.executed' event with results summary"
+            "Given a test suite for the project\nWhen runTests is invoked\nThen all tests are executed\nAnd results are collected and reported\nAnd failed tests are identified with failure reason",
+            "Given 1000+ unit tests\nWhen runTests processes them\nThen tests execute in parallel (sharded across cores)\nAnd total execution time is < 10 minutes\nAnd all tests complete (none skipped)",
+            "Given test failure\nWhen runTests encounters failure\nThen failure reason is reported with assertion details\nAnd stack trace is captured\nAnd build halts (fail fast)\nAnd developer gets clear guidance on fix",
+            "Given test coverage requirement (80%)\nWhen runTests completes\nThen code coverage is measured\nAnd coverage report is generated\nAnd build fails if coverage < target",
+            "Given flaky test detection\nWhen same test fails intermittently\nThen test is marked as flaky\nAnd developer is notified\nAnd flaky test is retried or investigated"
           ],
           "testFile": "packages/self-healing/__tests__/run-tests.test.ts",
           "testCase": "should run-tests",
-          "userStory": "As a QA lead, I want comprehensive test execution so that I can ensure code quality before deployment."
+          "userStory": "As a QA system, I want test execution to complete in <10 minutes so that developers get rapid feedback on code quality (target: 80% of test suites run < 5 min)."
         },
         {
           "beat": 5,
@@ -108,17 +107,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 5,
-          "scenario": "checkCoverage Operation",
+          "scenario": "Validate or Verify check Coverage",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the checkCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen checkCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen checkCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen checkCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen checkCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/check-coverage.test.ts",
           "testCase": "should check-coverage",
-          "userStory": "As a system user, I want the checkCoverage operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want checkCoverage to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -130,17 +129,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 6,
-          "scenario": "verifyPerformance Operation",
+          "scenario": "Validate or Verify verify Performance",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the verifyPerformance operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen verifyPerformance processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen verifyPerformance encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen verifyPerformance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen verifyPerformance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/verify-performance.test.ts",
           "testCase": "should verify-performance",
-          "userStory": "As a system user, I want the verifyPerformance operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want verifyPerformance to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -152,17 +151,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 7,
-          "scenario": "validateDocumentation Operation",
+          "scenario": "Validate or Verify validate Documentation",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the validateDocumentation operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateDocumentation processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateDocumentation encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateDocumentation executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateDocumentation operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/validate-documentation.test.ts",
           "testCase": "should validate-documentation",
-          "userStory": "As a system user, I want the validateDocumentation operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want validateDocumentation to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -174,17 +173,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 8,
-          "scenario": "aggregateValidationResults Operation",
+          "scenario": "aggregate Validation Results",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the aggregateValidationResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen aggregateValidationResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen aggregateValidationResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen aggregateValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen aggregateValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/aggregate-validation-results.test.ts",
           "testCase": "should aggregate-validation-results",
-          "userStory": "As a system user, I want the aggregateValidationResults operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want aggregateValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -196,17 +195,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 9,
-          "scenario": "storeValidationResults Operation",
+          "scenario": "store Validation Results",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the storeValidationResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storeValidationResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storeValidationResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storeValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storeValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/store-validation-results.test.ts",
           "testCase": "should store-validation-results",
-          "userStory": "As a system user, I want the storeValidationResults operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want storeValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 10,
@@ -218,27 +217,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 10,
-          "scenario": "validateCompleted Operation",
+          "scenario": "Validate or Verify validate Completed",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the validateCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/validate-completed.test.ts",
           "testCase": "should validate-completed",
-          "userStory": "As a system user, I want the validateCompleted operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want validateCompleted to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Validate Fix so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     }
   ],
   "beats": 10,
   "tempo": 120,
-  "userStory": "Validate Fix workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
 }

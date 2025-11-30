@@ -19,17 +19,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 1,
-          "scenario": "generateFixRequested Operation",
+          "scenario": "Generate or Create generate Fix Requested",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateFixRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateFixRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateFixRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateFixRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateFixRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/generate-fix-requested.test.ts",
           "testCase": "should generate-fix-requested",
-          "userStory": "As a system user, I want the generateFixRequested operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -41,17 +41,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "loadDiagnosis Operation",
+          "scenario": "load Diagnosis",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadDiagnosis operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadDiagnosis processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadDiagnosis encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadDiagnosis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadDiagnosis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-diagnosis.test.ts",
           "testCase": "should load-diagnosis",
-          "userStory": "As a system user, I want the loadDiagnosis operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadDiagnosis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -63,17 +63,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 3,
-          "scenario": "generateCodeFix Operation",
+          "scenario": "Generate or Create generate Code Fix",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateCodeFix operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateCodeFix processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateCodeFix encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateCodeFix executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateCodeFix operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/generate-code-fix.test.ts",
           "testCase": "should generate-code-fix",
-          "userStory": "As a system user, I want the generateCodeFix operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateCodeFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -85,17 +85,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 4,
-          "scenario": "generateTestFix Operation",
+          "scenario": "Generate or Create generate Test Fix",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateTestFix operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateTestFix processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateTestFix encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateTestFix executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateTestFix operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/generate-test-fix.test.ts",
           "testCase": "should generate-test-fix",
-          "userStory": "As a system user, I want the generateTestFix operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateTestFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -107,17 +107,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 5,
-          "scenario": "generateDocumentationFix Operation",
+          "scenario": "Generate or Create generate Documentation Fix",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateDocumentationFix operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateDocumentationFix processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateDocumentationFix encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateDocumentationFix executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateDocumentationFix operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/generate-documentation-fix.test.ts",
           "testCase": "should generate-documentation-fix",
-          "userStory": "As a system user, I want the generateDocumentationFix operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateDocumentationFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -129,17 +129,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 6,
-          "scenario": "createPatch Operation",
+          "scenario": "Generate or Create create Patch",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the createPatch operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createPatch processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createPatch encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createPatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createPatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/create-patch.test.ts",
           "testCase": "should create-patch",
-          "userStory": "As a system user, I want the createPatch operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want createPatch to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -151,17 +151,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 7,
-          "scenario": "validateSyntax Operation",
+          "scenario": "Validate or Verify validate Syntax",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the validateSyntax operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateSyntax processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateSyntax encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateSyntax executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateSyntax operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/validate-syntax.test.ts",
           "testCase": "should validate-syntax",
-          "userStory": "As a system user, I want the validateSyntax operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want validateSyntax to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -173,17 +173,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 8,
-          "scenario": "storePatch Operation",
+          "scenario": "store Patch",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the storePatch operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storePatch processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storePatch encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storePatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storePatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/store-patch.test.ts",
           "testCase": "should store-patch",
-          "userStory": "As a system user, I want the storePatch operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want storePatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -195,27 +195,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 9,
-          "scenario": "generateFixCompleted Operation",
+          "scenario": "Generate or Create generate Fix Completed",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the generateFixCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateFixCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateFixCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateFixCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateFixCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/generate-fix-completed.test.ts",
           "testCase": "should generate-fix-completed",
-          "userStory": "As a system user, I want the generateFixCompleted operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want generateFixCompleted to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Generate Fix so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "Generate Fix workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
 }

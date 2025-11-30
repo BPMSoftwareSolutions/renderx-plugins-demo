@@ -19,25 +19,25 @@
               "packages/orchestration/json-sequences"
             ]
           },
-          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "scenario": "Scan, Discover, or Analyze scan Orchestration Files",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the scanOrchestrationFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen scanOrchestrationFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen scanOrchestrationFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen scanOrchestrationFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen scanOrchestrationFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
           "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
-          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want bootstrap so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     }
   ],
-  "userStory": "orchestration-audit-session workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
 }

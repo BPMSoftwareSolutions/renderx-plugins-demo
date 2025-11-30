@@ -19,18 +19,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 1,
-          "scenario": "Detect Anomalies in System Behavior",
+          "scenario": "Detect or Identify detect Anomalies Requested",
           "acceptanceCriteria": [
-            "System analyzes telemetry data against baseline metrics",
-            "Anomalies detected when current metrics exceed configured thresholds (e.g., 1.5x baseline)",
-            "Each anomaly includes handler name, metric type, observed value, baseline, and deviation percentage",
-            "Anomalies are categorized by severity (critical, major, minor)",
-            "System publishes 'anomaly.detected' event for each identified anomaly",
-            "Detection includes timestamp and context for incident response"
+            "Given the detectAnomaliesRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectAnomaliesRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectAnomaliesRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectAnomaliesRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectAnomaliesRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-anomalies-requested.test.ts",
           "testCase": "should detect-anomalies-requested",
-          "userStory": "As a platform reliability engineer, I want the system to detect performance and behavioral anomalies automatically so that I can respond before they impact users."
+          "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -42,18 +41,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "Load Telemetry Data from System",
+          "scenario": "load Telemetry Data",
           "acceptanceCriteria": [
-            "System loads telemetry records from database or telemetry collector",
-            "Data includes metrics for all handlers, response times, error rates, and resource usage",
-            "Telemetry is loaded for specified time window (default: last 5 minutes)",
-            "Data is enriched with context (handler name, service, environment)",
-            "System handles missing or incomplete telemetry gracefully",
-            "Loading operation includes performance tracking and logging"
+            "Given the loadTelemetryData operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadTelemetryData processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadTelemetryData encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadTelemetryData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadTelemetryData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-telemetry-data.test.ts",
           "testCase": "should load-telemetry-data",
-          "userStory": "As the anomaly detection system, I want access to current telemetry data so that I can analyze performance trends and identify anomalies."
+          "userStory": "As an operations system, I want loadTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -65,18 +63,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 3,
-          "scenario": "Detect Performance Anomalies in Handler Execution",
+          "scenario": "Detect or Identify detect Performance Anomalies",
           "acceptanceCriteria": [
-            "System compares current handler execution times against baseline (p50, p95, p99)",
-            "Performance anomaly flagged when latency exceeds threshold (e.g., p95 > baseline * 1.5x)",
-            "Anomaly includes affected handler, observed latency, baseline latency, and deviation",
-            "System tracks which handlers are performing poorly for prioritization",
-            "System emits 'performance.anomaly.detected' event with performance data",
-            "Detection supports configurable thresholds per handler"
+            "Given the detectPerformanceAnomalies operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectPerformanceAnomalies processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectPerformanceAnomalies encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectPerformanceAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectPerformanceAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-performance-anomalies.test.ts",
           "testCase": "should detect-performance-anomalies",
-          "userStory": "As an ops engineer, I want to be alerted when handler performance degrades so that I can investigate and mitigate before user impact."
+          "userStory": "As an operations system, I want detectPerformanceAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -88,18 +85,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 4,
-          "scenario": "Detect Behavioral Anomalies in Sequence Execution",
+          "scenario": "Detect or Identify detect Behavioral Anomalies",
           "acceptanceCriteria": [
-            "System detects deviations from expected handler execution sequence",
-            "Anomaly flagged when handlers execute in unexpected order or skip expected steps",
-            "System identifies handlers that timeout or fail to complete",
-            "Behavioral anomaly includes sequence context and deviation details",
-            "System emits 'behavioral.anomaly.detected' event for sequence deviations",
-            "Detection supports configurable expected sequences per workflow"
+            "Given the detectBehavioralAnomalies operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectBehavioralAnomalies processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectBehavioralAnomalies encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectBehavioralAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectBehavioralAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-behavioral-anomalies.test.ts",
           "testCase": "should detect-behavioral-anomalies",
-          "userStory": "As an architect, I want to detect when workflows deviate from expected behavior so that I can identify integration issues early."
+          "userStory": "As an operations system, I want detectBehavioralAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -111,17 +107,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 5,
-          "scenario": "detectCoverageGaps Operation",
+          "scenario": "Detect or Identify detect Coverage Gaps",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the detectCoverageGaps operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectCoverageGaps processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectCoverageGaps encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectCoverageGaps executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectCoverageGaps operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-coverage-gaps.test.ts",
           "testCase": "should detect-coverage-gaps",
-          "userStory": "As a system user, I want the detectCoverageGaps operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want detectCoverageGaps to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -133,17 +129,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 6,
-          "scenario": "detectErrorPatterns Operation",
+          "scenario": "Detect or Identify detect Error Patterns",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the detectErrorPatterns operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectErrorPatterns processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectErrorPatterns encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectErrorPatterns executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectErrorPatterns operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-error-patterns.test.ts",
           "testCase": "should detect-error-patterns",
-          "userStory": "As a system user, I want the detectErrorPatterns operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want detectErrorPatterns to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -155,17 +151,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 7,
-          "scenario": "aggregateAnomalyResults Operation",
+          "scenario": "aggregate Anomaly Results",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the aggregateAnomalyResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen aggregateAnomalyResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen aggregateAnomalyResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen aggregateAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen aggregateAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/aggregate-anomaly-results.test.ts",
           "testCase": "should aggregate-anomaly-results",
-          "userStory": "As a system user, I want the aggregateAnomalyResults operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want aggregateAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -177,17 +173,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 8,
-          "scenario": "storeAnomalyResults Operation",
+          "scenario": "store Anomaly Results",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the storeAnomalyResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storeAnomalyResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storeAnomalyResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storeAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storeAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/store-anomaly-results.test.ts",
           "testCase": "should store-anomaly-results",
-          "userStory": "As a system user, I want the storeAnomalyResults operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want storeAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -199,28 +195,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 9,
-          "scenario": "Detect Anomalies in System Behavior",
+          "scenario": "Detect or Identify detect Anomalies Completed",
           "acceptanceCriteria": [
-            "System analyzes telemetry data against baseline metrics",
-            "Anomalies detected when current metrics exceed configured thresholds (e.g., 1.5x baseline)",
-            "Each anomaly includes handler name, metric type, observed value, baseline, and deviation percentage",
-            "Anomalies are categorized by severity (critical, major, minor)",
-            "System publishes 'anomaly.detected' event for each identified anomaly",
-            "Detection includes timestamp and context for incident response"
+            "Given the detectAnomaliesCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectAnomaliesCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectAnomaliesCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectAnomaliesCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectAnomaliesCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/detect-anomalies-completed.test.ts",
           "testCase": "should detect-anomalies-completed",
-          "userStory": "As a platform reliability engineer, I want the system to detect performance and behavioral anomalies automatically so that I can respond before they impact users."
+          "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Detect Anomalies so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "Detect Anomalies workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
 }

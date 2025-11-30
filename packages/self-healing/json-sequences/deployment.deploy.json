@@ -19,17 +19,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 1,
-          "scenario": "deployRequested Operation",
+          "scenario": "Publish or Deploy deploy Requested",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the deployRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deployRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deployRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen deployRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deployRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/deploy-requested.test.ts",
           "testCase": "should deploy-requested",
-          "userStory": "As a system user, I want the deployRequested operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -41,17 +41,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 2,
-          "scenario": "loadValidationResults Operation",
+          "scenario": "load Validation Results",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the loadValidationResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadValidationResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadValidationResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/load-validation-results.test.ts",
           "testCase": "should load-validation-results",
-          "userStory": "As a system user, I want the loadValidationResults operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want loadValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -63,17 +63,17 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 3,
-          "scenario": "checkApproval Operation",
+          "scenario": "Validate or Verify check Approval",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the checkApproval operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen checkApproval processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen checkApproval encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen checkApproval executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen checkApproval operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/check-approval.test.ts",
           "testCase": "should check-approval",
-          "userStory": "As a system user, I want the checkApproval operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want checkApproval to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -85,17 +85,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 4,
-          "scenario": "createBranch Operation",
+          "scenario": "Generate or Create create Branch",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the createBranch operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createBranch processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createBranch encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createBranch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createBranch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/create-branch.test.ts",
           "testCase": "should create-branch",
-          "userStory": "As a system user, I want the createBranch operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want createBranch to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -107,17 +107,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 5,
-          "scenario": "applyChanges Operation",
+          "scenario": "apply Changes",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the applyChanges operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen applyChanges processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen applyChanges encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen applyChanges executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen applyChanges operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/apply-changes.test.ts",
           "testCase": "should apply-changes",
-          "userStory": "As a system user, I want the applyChanges operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want applyChanges to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -129,17 +129,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 6,
-          "scenario": "createPullRequest Operation",
+          "scenario": "Generate or Create create Pull Request",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the createPullRequest operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createPullRequest processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createPullRequest encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createPullRequest executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createPullRequest operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/create-pull-request.test.ts",
           "testCase": "should create-pull-request",
-          "userStory": "As a system user, I want the createPullRequest operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want createPullRequest to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -151,17 +151,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 7,
-          "scenario": "runCIChecks Operation",
+          "scenario": "Test or Execute run C I Checks",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the runCIChecks operation is triggered\nWhen the handler executes\nThen it completes successfully within < 10 minutes\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen runCIChecks processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen runCIChecks encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 10 minutes\nWhen runCIChecks executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen runCIChecks operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/run-c-i-checks.test.ts",
           "testCase": "should run-c-i-checks",
-          "userStory": "As a system user, I want the runCIChecks operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want runCIChecks to execute reliably with latency < 10 minutes so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -173,17 +173,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 8,
-          "scenario": "autoMergePR Operation",
+          "scenario": "auto Merge P R",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the autoMergePR operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen autoMergePR processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen autoMergePR encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen autoMergePR executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen autoMergePR operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/auto-merge-p-r.test.ts",
           "testCase": "should auto-merge-p-r",
-          "userStory": "As a system user, I want the autoMergePR operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want autoMergePR to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -195,17 +195,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 9,
-          "scenario": "deployToProduction Operation",
+          "scenario": "Publish or Deploy deploy To Production",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the deployToProduction operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deployToProduction processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deployToProduction encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen deployToProduction executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deployToProduction operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/deploy-to-production.test.ts",
           "testCase": "should deploy-to-production",
-          "userStory": "As a system user, I want the deployToProduction operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want deployToProduction to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 10,
@@ -217,17 +217,17 @@
           "timing": "async",
           "kind": "stage-crew",
           "number": 10,
-          "scenario": "verifyDeployment Operation",
+          "scenario": "Validate or Verify verify Deployment",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the verifyDeployment operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen verifyDeployment processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen verifyDeployment encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen verifyDeployment executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen verifyDeployment operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/verify-deployment.test.ts",
           "testCase": "should verify-deployment",
-          "userStory": "As a system user, I want the verifyDeployment operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want verifyDeployment to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 11,
@@ -239,27 +239,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 11,
-          "scenario": "deployCompleted Operation",
+          "scenario": "Publish or Deploy deploy Completed",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the deployCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deployCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deployCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen deployCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deployCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/self-healing/__tests__/deploy-completed.test.ts",
           "testCase": "should deploy-completed",
-          "userStory": "As a system user, I want the deployCompleted operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want deployCompleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a user, I want Deploy Fix so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
     }
   ],
   "beats": 11,
   "tempo": 120,
-  "userStory": "Deploy Fix workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
 }

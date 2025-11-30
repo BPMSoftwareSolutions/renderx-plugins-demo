@@ -42,9 +42,9 @@
       "number": 1,
       "name": "Initialization",
       "description": "Initialize RenderX Web build environment and dependencies",
-      "userStory": "As a Build Orchestrator, I want to initialize build context and validate prerequisites so that the build pipeline executes with consistent state and validated dependencies.",
-      "persona": "Build System Administrator",
-      "businessValue": "Reduces build failures due to missing/invalid dependencies; enables reproducible builds; establishes traceability baseline",
+      "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+      "persona": "System Operator",
+      "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
       "status": "active",
       "beats": [
         {
@@ -56,17 +56,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:theme-resolved",
-          "scenario": "header/ui#getCurrentTheme Operation",
+          "scenario": "Retrieve Current Application Theme Configuration",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the theme system is initialized\nWhen getCurrentTheme is called\nThen current theme (dark/light) is returned within 10ms\nAnd theme preference from localStorage is respected\nAnd default theme is applied if no preference exists",
+            "Given user has theme preference saved\nWhen getCurrentTheme executes\nThen saved preference is returned\nAnd the response includes theme metadata (colors, fonts)\nAnd no API calls are made (cached lookup)",
+            "Given theme system encounters error\nWhen getCurrentTheme fails\nThen fallback default theme is returned\nAnd error is logged for monitoring\nAnd system remains functional",
+            "Given performance SLA of 10ms\nWhen getCurrentTheme completes\nThen operation time is < 10ms\nAnd memory footprint is < 100KB\nAnd no memory leaks occur on repeated calls",
+            "Given concurrent requests for theme\nWhen multiple calls occur\nThen all requests return consistent value\nAnd response time remains < 10ms per request\nAnd no race conditions exist"
           ],
           "testFile": "packages/orchestration/test/header/ui#getCurrentTheme.spec.ts",
           "testCase": "should header/ui#getCurrentTheme when event published",
-          "userStory": "As a system user, I want the header/ui#getCurrentTheme operation to execute reliably so that system functions operate as expected."
+          "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile)."
         },
         {
           "name": "apply-theme",
@@ -77,17 +77,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:theme-applied",
-          "scenario": "header/ui#toggleTheme Operation",
+          "scenario": "Switch Between Light and Dark Theme",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the current theme\nWhen toggleTheme is invoked\nThen theme switches to opposite value within 50ms\nAnd new preference is saved to localStorage\nAnd 'theme:changed' event is published",
+            "Given animation requirements\nWhen theme toggles\nThen CSS transitions are applied smoothly\nAnd no layout shift occurs (CLS < 0.1)\nAnd visual change appears within 100ms total",
+            "Given DOM elements with theme-dependent styling\nWhen toggleTheme executes\nThen all styled elements update immediately\nAnd CSS variables are recalculated\nAnd no flickering or flashing occurs",
+            "Given accessibility requirements\nWhen theme changes\nThen color contrast remains >= 4.5:1 for all text\nAnd prefers-color-scheme media query is respected\nAnd system respects 'no-preference' setting",
+            "Given performance budget\nWhen toggleTheme completes\nThen theme switch completes within 100ms\nAnd no frame drops occur (maintain 60fps)\nAnd memory usage stays within baseline (no leaks)"
           ],
           "testFile": "packages/orchestration/test/header/ui#toggleTheme.spec.ts",
           "testCase": "should header/ui#toggleTheme when event published",
-          "userStory": "As a system user, I want the header/ui#toggleTheme operation to execute reliably so that system functions operate as expected."
+          "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps)."
         },
         {
           "name": "init-control-panel",
@@ -98,17 +98,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:control-panel-ready",
-          "scenario": "control-panel/ui#initConfig Operation",
+          "scenario": "Initialize Control Panel with Configuration",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given configuration metadata\nWhen initConfig is called\nThen configuration is loaded within 200ms\nAnd all fields are prepared for rendering\nAnd validation rules are attached",
+            "Given complex nested configuration\nWhen initConfig processes it\nThen all nested sections are initialized\nAnd dependencies between sections are resolved\nAnd no circular dependencies cause deadlock",
+            "Given configuration with 100+ fields\nWhen initConfig prepares the form\nThen initialization completes within 300ms\nAnd form is ready for user interaction\nAnd memory usage scales linearly with field count",
+            "Given configuration errors\nWhen initConfig encounters invalid config\nThen error is reported with specific issue\nAnd fallback configuration is applied\nAnd system degrades gracefully",
+            "Given performance SLA\nWhen initConfig completes\nThen Time to Interactive (TTI) is < 500ms\nAnd First Contentful Paint (FCP) is < 1 second\nAnd form is responsive immediately"
           ],
           "testFile": "packages/orchestration/test/control-panel/ui#initConfig.spec.ts",
           "testCase": "should control-panel/ui#initConfig when event published",
-          "userStory": "As a system user, I want the control-panel/ui#initConfig operation to execute reliably so that system functions operate as expected."
+          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model)."
         },
         {
           "name": "init-resolver",
@@ -119,17 +119,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:resolver-ready",
-          "scenario": "control-panel/ui#initResolver Operation",
+          "scenario": "Initialize or Configure init Resolver",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the initResolver operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen initResolver processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen initResolver encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen initResolver executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen initResolver operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/control-panel/ui#initResolver.spec.ts",
           "testCase": "should control-panel/ui#initResolver when event published",
-          "userStory": "As a system user, I want the control-panel/ui#initResolver operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "register-observers",
@@ -140,17 +140,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:observers-registered",
-          "scenario": "control-panel/ui#registerObservers Operation",
+          "scenario": "register Observers",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the registerObservers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen registerObservers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen registerObservers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen registerObservers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen registerObservers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/control-panel/ui#registerObservers.spec.ts",
           "testCase": "should control-panel/ui#registerObservers when event published",
-          "userStory": "As a system user, I want the control-panel/ui#registerObservers operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "notify-ready",
@@ -161,17 +161,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:initialization:complete",
-          "scenario": "control-panel/ui#notifyReady Operation",
+          "scenario": "Notify or Publish notify Ready",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the notifyReady operation is triggered\nWhen the handler executes\nThen it completes successfully within < 50ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen notifyReady processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen notifyReady encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 50ms\nWhen notifyReady executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen notifyReady operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/control-panel/ui#notifyReady.spec.ts",
           "testCase": "should control-panel/ui#notifyReady when event published",
-          "userStory": "As a system user, I want the control-panel/ui#notifyReady operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ]
     },
@@ -179,9 +179,9 @@
       "number": 2,
       "name": "Build",
       "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
-      "userStory": "As a Build Orchestrator, I want to compile source code and generate artifacts so that downstream processes have validated, executable output.",
-      "persona": "Build System Administrator",
-      "businessValue": "Ensures code quality; catches compilation errors early; generates deployment-ready artifacts",
+      "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
       "orchestration": "pre-build-pipeline-check-symphony",
       "status": "active",
       "beats": [
@@ -194,17 +194,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:build:attribute-updated",
-          "scenario": "canvas-component/update#updateAttribute Operation",
+          "scenario": "Update or Modify update Attribute",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the updateAttribute operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen updateAttribute processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen updateAttribute encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen updateAttribute executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen updateAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/update#updateAttribute.spec.ts",
           "testCase": "should canvas-component/update#updateAttribute when event published",
-          "userStory": "As a system user, I want the canvas-component/update#updateAttribute operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "refresh-control-panel",
@@ -215,17 +215,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:build:complete",
-          "scenario": "canvas-component/update#refreshControlPanel Operation",
+          "scenario": "refresh Control Panel",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the refreshControlPanel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen refreshControlPanel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen refreshControlPanel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen refreshControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen refreshControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/update#refreshControlPanel.spec.ts",
           "testCase": "should canvas-component/update#refreshControlPanel when event published",
-          "userStory": "As a system user, I want the canvas-component/update#refreshControlPanel operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ]
     },
@@ -233,9 +233,9 @@
       "number": 3,
       "name": "Test & Validation",
       "description": "Execute E2E Cypress tests and compliance validation (7-layer framework)",
-      "userStory": "As a QA Validator, I want to execute comprehensive tests and validate compliance so that only high-quality builds proceed to production.",
-      "persona": "QA Validator",
-      "businessValue": "Detects regressions; validates architecture governance; prevents non-compliant code deployment",
+      "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
       "orchestration": [
         "e2e-cypress-symphony",
         "check-pipeline-compliance-7layer-symphony"
@@ -251,17 +251,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:test:selection-overlay-shown",
-          "scenario": "canvas-component/select#showSelectionOverlay Operation",
+          "scenario": "Render or Display show Selection Overlay",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the showSelectionOverlay operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen showSelectionOverlay processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen showSelectionOverlay encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 200ms\nWhen showSelectionOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen showSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/select#showSelectionOverlay.spec.ts",
           "testCase": "should canvas-component/select#showSelectionOverlay when event published",
-          "userStory": "As a system user, I want the canvas-component/select#showSelectionOverlay operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "hide-selection-overlay",
@@ -272,17 +272,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:test:selection-overlay-hidden",
-          "scenario": "canvas-component/select#hideSelectionOverlay Operation",
+          "scenario": "hide Selection Overlay",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the hideSelectionOverlay operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen hideSelectionOverlay processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen hideSelectionOverlay encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen hideSelectionOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen hideSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/select#hideSelectionOverlay.spec.ts",
           "testCase": "should canvas-component/select#hideSelectionOverlay when event published",
-          "userStory": "As a system user, I want the canvas-component/select#hideSelectionOverlay operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want hideSelectionOverlay to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "attach-line-resize",
@@ -293,17 +293,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:test:line-resize-attached",
-          "scenario": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers Operation",
+          "scenario": "attach Line Resize Handlers",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the attachLineResizeHandlers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen attachLineResizeHandlers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen attachLineResizeHandlers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen attachLineResizeHandlers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen attachLineResizeHandlers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/select.overlay.line-resize#attachLineResizeHandlers.spec.ts",
           "testCase": "should canvas-component/select.overlay.line-resize#attachLineResizeHandlers when event published",
-          "userStory": "As a system user, I want the canvas-component/select.overlay.line-resize#attachLineResizeHandlers operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want attachLineResizeHandlers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "ensure-line-overlay",
@@ -314,17 +314,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:test:line-overlay-ensured",
-          "scenario": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor Operation",
+          "scenario": "ensure Line Overlay For",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the ensureLineOverlayFor operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen ensureLineOverlayFor processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen ensureLineOverlayFor encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen ensureLineOverlayFor executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen ensureLineOverlayFor operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/select.overlay.line-resize#ensureLineOverlayFor.spec.ts",
           "testCase": "should canvas-component/select.overlay.line-resize#ensureLineOverlayFor when event published",
-          "userStory": "As a system user, I want the canvas-component/select.overlay.line-resize#ensureLineOverlayFor operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want ensureLineOverlayFor to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "notify-ui",
@@ -335,17 +335,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:test:complete",
-          "scenario": "Publish UI Class Change Notification",
+          "scenario": "Publish UI State Change Notifications to Event System",
           "acceptanceCriteria": [
-            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
-            "The event payload contains the element ID and updated classes list",
-            "The notification is published only when payload contains updated class data",
-            "Event is published to the global EventRouter for downstream listeners",
-            "Notifications maintain consistency across multiple class changes"
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
           "testFile": "packages/orchestration/test/canvas-component/select#notifyUi.spec.ts",
           "testCase": "should canvas-component/select#notifyUi when event published",
-          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
+          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
       ]
     },
@@ -353,9 +353,9 @@
       "number": 4,
       "name": "Delivery",
       "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
-      "userStory": "As a Release Manager, I want to coordinate deployment and publish artifacts so that the application reaches users with minimal downtime.",
-      "persona": "Release Manager",
-      "businessValue": "Enables reliable, repeatable deployments; supports blue-green/canary strategies; reduces deployment risk",
+      "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-delivery-execute-symphony",
       "status": "active",
       "beats": [
@@ -368,17 +368,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:delivery:gif-exported",
-          "scenario": "canvas-component/export.export.gif#exportSvgToGif Operation",
+          "scenario": "export Svg To Gif",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the exportSvgToGif operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen exportSvgToGif processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen exportSvgToGif encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen exportSvgToGif executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen exportSvgToGif operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/export.export.gif#exportSvgToGif.spec.ts",
           "testCase": "should canvas-component/export.export.gif#exportSvgToGif when event published",
-          "userStory": "As a system user, I want the canvas-component/export.export.gif#exportSvgToGif operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "export-mp4",
@@ -389,17 +389,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:delivery:complete",
-          "scenario": "canvas-component/export.export.mp4#exportSvgToMp4 Operation",
+          "scenario": "export Svg To Mp4",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the exportSvgToMp4 operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen exportSvgToMp4 processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen exportSvgToMp4 encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen exportSvgToMp4 executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen exportSvgToMp4 operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/canvas-component/export.export.mp4#exportSvgToMp4.spec.ts",
           "testCase": "should canvas-component/export.export.mp4#exportSvgToMp4 when event published",
-          "userStory": "As a system user, I want the canvas-component/export.export.mp4#exportSvgToMp4 operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ]
     },
@@ -407,9 +407,9 @@
       "number": 5,
       "name": "Telemetry & Monitoring",
       "description": "Collect and instrument telemetry for observability and SLO tracking",
-      "userStory": "As an Operations Engineer, I want to instrument the pipeline and collect telemetry so that I can monitor performance, detect anomalies, and optimize pipeline efficiency.",
-      "persona": "Operations Engineer",
-      "businessValue": "Enables proactive performance optimization; provides visibility into pipeline health; supports SLA tracking",
+      "userStory": "As an operations system, I want ensurePayload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "generate-telemetry-instrumentation-symphony",
       "status": "active",
       "beats": [
@@ -422,17 +422,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:payload-ensured",
-          "scenario": "library-component/drag.preview#ensurePayload Operation",
+          "scenario": "ensure Payload",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the ensurePayload operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen ensurePayload processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen ensurePayload encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen ensurePayload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen ensurePayload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#ensurePayload.spec.ts",
           "testCase": "should library-component/drag.preview#ensurePayload when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#ensurePayload operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want ensurePayload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "compute-ghost-size",
@@ -443,17 +443,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:ghost-size-computed",
-          "scenario": "library-component/drag.preview#computeGhostSize Operation",
+          "scenario": "compute Ghost Size",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the computeGhostSize operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen computeGhostSize processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen computeGhostSize encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen computeGhostSize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen computeGhostSize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#computeGhostSize.spec.ts",
           "testCase": "should library-component/drag.preview#computeGhostSize when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#computeGhostSize operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want computeGhostSize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "create-ghost-container",
@@ -464,17 +464,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:ghost-container-created",
-          "scenario": "library-component/drag.preview#createGhostContainer Operation",
+          "scenario": "Generate or Create create Ghost Container",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the createGhostContainer operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createGhostContainer processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createGhostContainer encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createGhostContainer executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createGhostContainer operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#createGhostContainer.spec.ts",
           "testCase": "should library-component/drag.preview#createGhostContainer when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#createGhostContainer operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want createGhostContainer to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "render-template-preview",
@@ -485,17 +485,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:template-preview-rendered",
-          "scenario": "library-component/drag.preview#renderTemplatePreview Operation",
+          "scenario": "Render or Display render Template Preview",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the renderTemplatePreview operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen renderTemplatePreview processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen renderTemplatePreview encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 200ms\nWhen renderTemplatePreview executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen renderTemplatePreview operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#renderTemplatePreview.spec.ts",
           "testCase": "should library-component/drag.preview#renderTemplatePreview when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#renderTemplatePreview operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want renderTemplatePreview to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "apply-template-styles",
@@ -506,17 +506,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:template-styles-applied",
-          "scenario": "library-component/drag.preview#applyTemplateStyles Operation",
+          "scenario": "apply Template Styles",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the applyTemplateStyles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen applyTemplateStyles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen applyTemplateStyles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen applyTemplateStyles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen applyTemplateStyles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#applyTemplateStyles.spec.ts",
           "testCase": "should library-component/drag.preview#applyTemplateStyles when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#applyTemplateStyles operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want applyTemplateStyles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "compute-cursor-offsets",
@@ -527,17 +527,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:cursor-offsets-computed",
-          "scenario": "library-component/drag.preview#computeCursorOffsets Operation",
+          "scenario": "compute Cursor Offsets",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the computeCursorOffsets operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen computeCursorOffsets processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen computeCursorOffsets encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen computeCursorOffsets executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen computeCursorOffsets operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#computeCursorOffsets.spec.ts",
           "testCase": "should library-component/drag.preview#computeCursorOffsets when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#computeCursorOffsets operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want computeCursorOffsets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "install-drag-image",
@@ -548,17 +548,17 @@
             "kind": "plugin"
           },
           "event": "renderx-web:telemetry:complete",
-          "scenario": "library-component/drag.preview#installDragImage Operation",
+          "scenario": "install Drag Image",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the installDragImage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen installDragImage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen installDragImage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen installDragImage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen installDragImage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#installDragImage.spec.ts",
           "testCase": "should library-component/drag.preview#installDragImage when event published",
-          "userStory": "As a system user, I want the library-component/drag.preview#installDragImage operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want installDragImage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ]
     },
@@ -566,9 +566,9 @@
       "number": 6,
       "name": "Recovery & Resilience",
       "description": "Enable recovery procedures and resilience mechanisms",
-      "userStory": "As a Platform Reliability Engineer, I want to detect failures and execute automated recovery so that pipeline disruptions are minimized.",
-      "persona": "Platform Reliability Engineer",
-      "businessValue": "Reduces MTTR; enables self-healing pipelines; improves availability SLA",
+      "userStory": "As an operations system, I want establish to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-recovery-symphony",
       "status": "available",
       "beats": [
@@ -581,17 +581,17 @@
             "kind": "orchestration"
           },
           "event": "renderx-web:recovery:enabled",
-          "scenario": "self-healing/baseline#establish Operation",
+          "scenario": "establish",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the establish operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen establish processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen establish encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen establish executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen establish operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/orchestration/test/self-healing/baseline#establish.spec.ts",
           "testCase": "should self-healing/baseline#establish when event published",
-          "userStory": "As a system user, I want the self-healing/baseline#establish operation to execute reliably so that system functions operate as expected."
+          "userStory": "As an operations system, I want establish to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ]
     }
@@ -644,7 +644,7 @@
       "continuous-delivery"
     ]
   },
-  "userStory": "RenderX Web Orchestration workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+  "persona": "Product Owner",
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
 }

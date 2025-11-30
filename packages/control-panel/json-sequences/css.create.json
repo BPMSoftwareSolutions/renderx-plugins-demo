@@ -16,17 +16,17 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "number": 1,
-          "scenario": "Create New CSS Rule",
+          "scenario": "Generate or Create create Css Class",
           "acceptanceCriteria": [
-            "System accepts CSS rule definition (selector, properties, values)",
-            "CSS rule is created in the stylesheet without syntax errors",
-            "New rule is immediately available to matching DOM elements",
-            "System prevents duplicate rules with identical selectors",
-            "CSS rule modifications are tracked in telemetry"
+            "Given the createCssClass operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createCssClass processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createCssClass encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createCssClass executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createCssClass operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "testFile": "packages/control-panel/__tests__/create-css-class.test.ts",
           "testCase": "should create css class",
-          "userStory": "As a configuration administrator, I want to create new CSS rules dynamically so that I can customize styling without modifying source files."
+          "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -37,27 +37,27 @@
           "timing": "immediate",
           "kind": "pure",
           "number": 2,
-          "scenario": "Publish UI Class Change Notification",
+          "scenario": "Publish UI State Change Notifications to Event System",
           "acceptanceCriteria": [
-            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
-            "The event payload contains the element ID and updated classes list",
-            "The notification is published only when payload contains updated class data",
-            "Event is published to the global EventRouter for downstream listeners",
-            "Notifications maintain consistency across multiple class changes"
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
           "testFile": "packages/control-panel/__tests__/notify-ui.test.ts",
           "testCase": "should notify ui",
-          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
+          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
       ],
-      "userStory": "As a user, I want Create CSS Class so that the system operates correctly.",
-      "persona": "System User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "Control Panel CSS Create workflow",
-  "persona": "System User",
-  "businessValue": "Improves system quality"
+  "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
 }

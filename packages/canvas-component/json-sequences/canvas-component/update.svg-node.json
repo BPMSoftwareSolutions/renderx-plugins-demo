@@ -15,16 +15,17 @@
           "handler": "updateSvgNodeAttribute",
           "timing": "immediate",
           "kind": "stage-crew",
-          "scenario": "updateSvgNodeAttribute Operation",
+          "scenario": "Update or Modify update Svg Node Attribute",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the updateSvgNodeAttribute operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen updateSvgNodeAttribute processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen updateSvgNodeAttribute encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen updateSvgNodeAttribute executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen updateSvgNodeAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should update svg node attribute"
+          "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should update svg node attribute",
+          "testFile": "TBD"
         },
         {
           "beat": 2,
@@ -34,25 +35,26 @@
           "handler": "refreshControlPanel",
           "timing": "immediate",
           "kind": "pure",
-          "scenario": "refreshControlPanel Operation",
+          "scenario": "refresh Control Panel",
           "acceptanceCriteria": [
-            "Handler executes successfully and completes",
-            "Output is valid and conforms to schema",
-            "Event is published to event stream",
-            "Telemetry is recorded for monitoring",
-            "No errors or warnings are logged"
+            "Given the refreshControlPanel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen refreshControlPanel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen refreshControlPanel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen refreshControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen refreshControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As a system user, I want the refreshControlPanel operation to execute reliably so that system functions operate as expected.",
-          "testCase": "should refresh control panel"
+          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should refresh control panel",
+          "testFile": "TBD"
         }
       ],
-      "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
-      "persona": "Platform User",
-      "businessValue": "Improves system quality and reliability"
+      "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
-  "persona": "Platform User",
-  "businessValue": "Improves system quality and reliability"
+  "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }
