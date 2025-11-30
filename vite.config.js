@@ -245,6 +245,13 @@ export default {
       // SDK deep import shims → map to host-provided vendor helpers
       "../../vendor/vendor-symphony-loader": path.resolve(process.cwd(), "src/vendor/vendor-symphony-loader.ts"),
       "../../../data/feature-flags.json": path.resolve(process.cwd(), "data/feature-flags.json"),
+      // Silence Node core module warnings in browser build by aliasing to empty stubs
+      "fs": path.resolve(process.cwd(), "src/shims/empty.js"),
+      "node:fs": path.resolve(process.cwd(), "src/shims/empty.js"),
+      "fs/promises": path.resolve(process.cwd(), "src/shims/empty-promises.js"),
+      "node:fs/promises": path.resolve(process.cwd(), "src/shims/empty-promises.js"),
+      "path": path.resolve(process.cwd(), "src/shims/empty.js"),
+      "node:path": path.resolve(process.cwd(), "src/shims/empty.js"),
     },
     // Ensure a single React instance across host and plugins
     dedupe: ["react", "react-dom", "@renderx-plugins/host-sdk"],
