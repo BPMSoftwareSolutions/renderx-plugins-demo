@@ -29,8 +29,8 @@
             "Given performance SLA of < 100ms\nWhen deleteCssClass executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen deleteCssClass operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/deleteCssClassTests.cs",
-          "testCase": "Should_deleteCssClass_When_ConfigurationProvided",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\delete.spec.ts",
+          "testCase": "publishes canvas.component.deleted when publishDeleted is called",
           "userStory": "As an operations system, I want deleteCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -55,8 +55,8 @@
             "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
-          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
           "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
       ],

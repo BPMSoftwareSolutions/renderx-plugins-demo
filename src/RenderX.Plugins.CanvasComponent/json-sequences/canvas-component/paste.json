@@ -32,8 +32,8 @@
             "Given compliance and governance\nWhen readFromClipboard operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should read from clipboard",
-          "testFile": "TBD"
+          "testCase": "builds create payload from clipboard-shaped component without preserving id",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
         },
         {
           "beat": 2,
@@ -57,8 +57,8 @@
             "Given compliance and governance\nWhen deserializeComponentData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want deserializeComponentData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should deserialize component data",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 3,
@@ -82,8 +82,8 @@
             "Given compliance and governance\nWhen calculatePastePosition operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want calculatePastePosition to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should calculate paste position",
-          "testFile": "TBD"
+          "testCase": "every beat declares dynamics",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts"
         },
         {
           "beat": 4,
@@ -107,8 +107,8 @@
             "Given compliance and governance\nWhen createPastedComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want createPastedComponent to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should create pasted component",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 5,
@@ -132,8 +132,8 @@
             "Given compliance and governance\nWhen notifyPasteComplete operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want notifyPasteComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should notify paste complete",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

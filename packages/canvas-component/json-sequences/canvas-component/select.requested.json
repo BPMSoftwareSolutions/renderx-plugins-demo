@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen routeSelectionRequest operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want routeSelectionRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should route selection request",
-          "testFile": "TBD"
+          "testCase": "should route-selection-request",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want routeSelectionRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

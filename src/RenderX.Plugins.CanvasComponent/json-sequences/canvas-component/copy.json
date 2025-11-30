@@ -32,8 +32,8 @@
             "Given compliance and governance\nWhen serializeSelectedComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want serializeSelectedComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should serialize selected component",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 2,
@@ -57,8 +57,8 @@
             "Given compliance and governance\nWhen copyToClipboard operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want copyToClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should copy to clipboard",
-          "testFile": "TBD"
+          "testCase": "does not throw for Map",
+          "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js"
         },
         {
           "beat": 3,
@@ -82,8 +82,8 @@
             "Given compliance and governance\nWhen notifyCopyComplete operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want notifyCopyComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should notify copy complete",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want serializeSelectedComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

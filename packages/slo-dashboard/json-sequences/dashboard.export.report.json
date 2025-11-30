@@ -19,8 +19,8 @@
             "Given performance SLA of < 1 second\nWhen serializeDashboardState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen serializeDashboardState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/slo-dashboard/__tests__/serialize-dashboard-state.test.ts",
-          "testCase": "should serialize-dashboard-state",
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts",
+          "testCase": "Scenario: Prepare export payload containing compliance snapshot.",
           "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -36,8 +36,8 @@
             "Given performance SLA of < 1 second\nWhen triggerExportDownload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen triggerExportDownload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/slo-dashboard/__tests__/trigger-export-download.test.ts",
-          "testCase": "should trigger-export-download",
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts",
+          "testCase": "Scenario: Initiate download of signed export artifacts.",
           "userStory": "As an operations system, I want triggerExportDownload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

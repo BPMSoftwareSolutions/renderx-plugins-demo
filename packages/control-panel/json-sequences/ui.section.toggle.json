@@ -24,8 +24,8 @@
             "Given performance SLA of < 1 second\nWhen toggleSection executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen toggleSection operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/toggle-section.test.ts",
-          "testCase": "should toggle section",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
+          "testCase": "applies rx-button--<variant> from content.variant even if classRefs lacked it",
           "userStory": "As an operations system, I want toggleSection to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

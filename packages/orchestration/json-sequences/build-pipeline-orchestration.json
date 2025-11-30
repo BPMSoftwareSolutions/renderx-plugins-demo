@@ -24,8 +24,8 @@
             "Given performance SLA of < 1 second\nWhen loadBuildContext executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadBuildContext operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#loadBuildContext.spec.ts",
-          "testCase": "should orchestration/build-pipeline.build.validation#loadBuildContext when event published",
+          "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
+          "testCase": "should build context for symbol generation",
           "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -41,8 +41,8 @@
             "Given performance SLA of < 500ms\nWhen validateOrchestrationDomains executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateOrchestrationDomains operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateOrchestrationDomains.spec.ts",
-          "testCase": "should orchestration/build-pipeline.build.validation#validateOrchestrationDomains when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateOrchestrationDomains to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -58,8 +58,8 @@
             "Given performance SLA of < 500ms\nWhen validateGovernanceRules executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateGovernanceRules operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateGovernanceRules.spec.ts",
-          "testCase": "should orchestration/build-pipeline.build.validation#validateGovernanceRules when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateGovernanceRules to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -75,8 +75,8 @@
             "Given performance SLA of < 500ms\nWhen validateAgentBehavior executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateAgentBehavior operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateAgentBehavior.spec.ts",
-          "testCase": "should orchestration/build-pipeline.build.validation#validateAgentBehavior when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateAgentBehavior to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -92,8 +92,8 @@
             "Given performance SLA of < 1 second\nWhen recordValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen recordValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#recordValidationResults.spec.ts",
-          "testCase": "should orchestration/build-pipeline.build.validation#recordValidationResults when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want recordValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -117,8 +117,8 @@
             "Given performance SLA of < 2 seconds\nWhen regenerateOrchestrationDomains executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen regenerateOrchestrationDomains operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#regenerateOrchestrationDomains.spec.ts",
-          "testCase": "should orchestration/build-pipeline.manifests#regenerateOrchestrationDomains when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want regenerateOrchestrationDomains to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -134,8 +134,8 @@
             "Given performance SLA of < 1 second\nWhen syncJsonSources executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen syncJsonSources operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#syncJsonSources.spec.ts",
-          "testCase": "should orchestration/build-pipeline.manifests#syncJsonSources when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want syncJsonSources to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -151,8 +151,8 @@
             "Given performance SLA of < 2 seconds\nWhen generateManifests executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen generateManifests operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#generateManifests.spec.ts",
-          "testCase": "should orchestration/build-pipeline.manifests#generateManifests when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateManifests to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -168,8 +168,8 @@
             "Given performance SLA of < 500ms\nWhen validateManifestIntegrity executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateManifestIntegrity operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#validateManifestIntegrity.spec.ts",
-          "testCase": "should orchestration/build-pipeline.manifests#validateManifestIntegrity when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateManifestIntegrity to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -185,8 +185,8 @@
             "Given performance SLA of < 1 second\nWhen recordManifestState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen recordManifestState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#recordManifestState.spec.ts",
-          "testCase": "should orchestration/build-pipeline.manifests#recordManifestState when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
+          "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
           "userStory": "As an operations system, I want recordManifestState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -210,8 +210,8 @@
             "Given performance SLA of < 500ms\nWhen initializePackageBuild executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen initializePackageBuild operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#initializePackageBuild.spec.ts",
-          "testCase": "should orchestration/build-pipeline.packages.build#initializePackageBuild when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
+          "testCase": "exposes handlers and a register(conductor) function",
           "userStory": "As an operations system, I want initializePackageBuild to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -227,8 +227,8 @@
             "Given performance SLA of < 2 seconds\nWhen buildComponentsPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen buildComponentsPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildComponentsPackage.spec.ts",
-          "testCase": "should orchestration/build-pipeline.packages.build#buildComponentsPackage when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
+          "testCase": "exposes handlers and a register(conductor) function",
           "userStory": "As an operations system, I want buildComponentsPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -244,8 +244,8 @@
             "Given performance SLA of < 2 seconds\nWhen buildMusicalConductorPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen buildMusicalConductorPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildMusicalConductorPackage.spec.ts",
-          "testCase": "should orchestration/build-pipeline.packages.build#buildMusicalConductorPackage when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\sequences\\MusicalConductor.minimal.test.ts",
+          "testCase": "should create a MusicalConductor instance",
           "userStory": "As an operations system, I want buildMusicalConductorPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -261,8 +261,8 @@
             "Given performance SLA of < 2 seconds\nWhen buildHostSdkPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen buildHostSdkPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildHostSdkPackage.spec.ts",
-          "testCase": "should orchestration/build-pipeline.packages.build#buildHostSdkPackage when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want buildHostSdkPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

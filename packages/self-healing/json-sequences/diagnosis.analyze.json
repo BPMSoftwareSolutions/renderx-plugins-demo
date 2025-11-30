@@ -27,8 +27,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-requested.test.ts",
-          "testCase": "should analyze-requested",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
+          "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
           "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -49,8 +49,8 @@
             "Given performance SLA of < 1 second\nWhen loadAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-anomalies.test.ts",
-          "testCase": "should load-anomalies",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\18-load-anomalies.spec.ts",
+          "testCase": "loads anomalies when file exists and provides structured envelope (Given anomalies stored, When load runs, Then anomalies available for analysis)",
           "userStory": "As an operations system, I want loadAnomalies to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -71,8 +71,8 @@
             "Given performance SLA of < 1 second\nWhen loadCodebaseInfo executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadCodebaseInfo operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-codebase-info.test.ts",
-          "testCase": "should load-codebase-info",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadCodebaseInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -93,8 +93,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzePerformanceIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzePerformanceIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-performance-issues.test.ts",
-          "testCase": "should analyze-performance-issues",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\20-analyze-performance-issues.spec.ts",
+          "testCase": "classifies latency spike severity and emits issue list",
           "userStory": "As an operations system, I want analyzePerformanceIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -115,8 +115,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeBehavioralIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeBehavioralIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-behavioral-issues.test.ts",
-          "testCase": "should analyze-behavioral-issues",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\21-analyze-behavioral-issues.spec.ts",
+          "testCase": "Scenario: Analyze behavioral anomalies to find sequence issues",
           "userStory": "As an operations system, I want analyzeBehavioralIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -137,8 +137,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeCoverageIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeCoverageIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-coverage-issues.test.ts",
-          "testCase": "should analyze-coverage-issues",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
+          "testCase": "Scenario: Analyze coverage gaps to identify untested code",
           "userStory": "As an operations system, I want analyzeCoverageIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeErrorIssues executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeErrorIssues operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-error-issues.test.ts",
-          "testCase": "should analyze-error-issues",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\23-analyze-error-issues.spec.ts",
+          "testCase": "Scenario: Analyze error patterns to find root cause",
           "userStory": "As an operations system, I want analyzeErrorIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -181,8 +181,8 @@
             "Given performance SLA of < 1 second\nWhen assessImpact executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen assessImpact operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/assess-impact.test.ts",
-          "testCase": "should assess-impact",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\69-assess-impact.spec.ts",
+          "testCase": "Scenario: Aggregate issue severities into overall impact",
           "userStory": "As an operations system, I want assessImpact to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -203,8 +203,8 @@
             "Given performance SLA of < 1 second\nWhen recommendFixes executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen recommendFixes operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/recommend-fixes.test.ts",
-          "testCase": "should recommend-fixes",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\70-recommend-fixes.spec.ts",
+          "testCase": "Scenario: Generate recommendations for mixed issues",
           "userStory": "As an operations system, I want recommendFixes to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -225,8 +225,8 @@
             "Given performance SLA of < 1 second\nWhen storeDiagnosis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen storeDiagnosis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/store-diagnosis.test.ts",
-          "testCase": "should store-diagnosis",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\25-store-diagnosis.spec.ts",
+          "testCase": "persists diagnosis slice (all issue arrays present) and exposes file path (Given aggregated slice, When store runs, Then fix generation can proceed)",
           "userStory": "As an operations system, I want storeDiagnosis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -247,8 +247,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/analyze-completed.test.ts",
-          "testCase": "should analyze-completed",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\27-analyze-completed.spec.ts",
+          "testCase": "emits completion event with counts and overall severity",
           "userStory": "As an operations system, I want analyzeCompleted to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

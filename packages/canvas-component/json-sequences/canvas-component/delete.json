@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen deleteComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should delete component",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 2,
@@ -44,8 +44,8 @@
             "Given compliance and governance\nWhen publishDeleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want publishDeleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should publish deleted",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",

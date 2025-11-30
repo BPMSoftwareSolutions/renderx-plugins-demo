@@ -40,8 +40,8 @@
             "Given performance SLA of < 5 seconds\nWhen scanOrchestrationFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen scanOrchestrationFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
-          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
+          "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -58,8 +58,8 @@
             "Given performance SLA of < 5 seconds\nWhen discoverSourceCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen discoverSourceCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.discovery#discoverSourceCode.spec.ts",
-          "testCase": "should analysis.discovery#discoverSourceCode when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\react-code-validator.spec.ts",
+          "testCase": "should validate simple React component",
           "userStory": "As an operations system, I want discoverSourceCode to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -76,8 +76,8 @@
             "Given performance SLA of < 1 second\nWhen mapBeatsToCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen mapBeatsToCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.discovery#mapBeatsToCode.spec.ts",
-          "testCase": "should analysis.discovery#mapBeatsToCode when event published",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\html.code-editor.mapping.spec.ts",
+          "testCase": "uses code textarea renderer (type=code)",
           "userStory": "As an operations system, I want mapBeatsToCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -94,8 +94,8 @@
             "Given performance SLA of < 1 second\nWhen collectBaseline executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen collectBaseline operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.discovery#collectBaseline.spec.ts",
-          "testCase": "should analysis.discovery#collectBaseline when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
+          "testCase": "collects CSS from components with template.classRefs (current export format)",
           "userStory": "As an operations system, I want collectBaseline to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -121,8 +121,8 @@
             "Given performance SLA of < 1 second\nWhen countLinesOfCode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen countLinesOfCode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.metrics#countLinesOfCode.spec.ts",
-          "testCase": "should analysis.metrics#countLinesOfCode when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\react-code-validator.spec.ts",
+          "testCase": "should validate simple React component",
           "userStory": "As an operations system, I want countLinesOfCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -139,8 +139,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeComplexity executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeComplexity operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.metrics#analyzeComplexity.spec.ts",
-          "testCase": "should analysis.metrics#analyzeComplexity when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
+          "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
           "userStory": "As an operations system, I want analyzeComplexity to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -157,8 +157,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectDuplication executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectDuplication operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.metrics#detectDuplication.spec.ts",
-          "testCase": "should analysis.metrics#detectDuplication when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
+          "testCase": "detectAnomaliesRequested - happy path",
           "userStory": "As an operations system, I want detectDuplication to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -175,8 +175,8 @@
             "Given performance SLA of < 1 second\nWhen calculateMaintainability executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen calculateMaintainability operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.metrics#calculateMaintainability.spec.ts",
-          "testCase": "should analysis.metrics#calculateMaintainability when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateMaintainability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -202,8 +202,8 @@
             "Given performance SLA of < 1 second\nWhen measureStatementCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen measureStatementCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.coverage#measureStatementCoverage.spec.ts",
-          "testCase": "should analysis.coverage#measureStatementCoverage when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
+          "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
           "userStory": "As an operations system, I want measureStatementCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -220,8 +220,8 @@
             "Given performance SLA of < 1 second\nWhen measureBranchCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen measureBranchCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.coverage#measureBranchCoverage.spec.ts",
-          "testCase": "should analysis.coverage#measureBranchCoverage when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
+          "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
           "userStory": "As an operations system, I want measureBranchCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -238,8 +238,8 @@
             "Given performance SLA of < 1 second\nWhen measureFunctionCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen measureFunctionCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.coverage#measureFunctionCoverage.spec.ts",
-          "testCase": "should analysis.coverage#measureFunctionCoverage when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
+          "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
           "userStory": "As an operations system, I want measureFunctionCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -256,8 +256,8 @@
             "Given performance SLA of < 1 second\nWhen calculateGapAnalysis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen calculateGapAnalysis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.coverage#calculateGapAnalysis.spec.ts",
-          "testCase": "should analysis.coverage#calculateGapAnalysis when event published",
+          "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
+          "testCase": "should analyze a property and return opportunity score",
           "userStory": "As an operations system, I want calculateGapAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -283,8 +283,8 @@
             "Given performance SLA of < 500ms\nWhen validateHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.conformity#validateHandlerMapping.spec.ts",
-          "testCase": "should analysis.conformity#validateHandlerMapping when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -301,8 +301,8 @@
             "Given performance SLA of < 1 second\nWhen calculateConformityScore executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen calculateConformityScore operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.conformity#calculateConformityScore.spec.ts",
-          "testCase": "should analysis.conformity#calculateConformityScore when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -319,8 +319,8 @@
             "Given performance SLA of < 2 seconds\nWhen generateTrendReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen generateTrendReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.conformity#generateTrendReport.spec.ts",
-          "testCase": "should analysis.conformity#generateTrendReport when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateTrendReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -337,8 +337,8 @@
             "Given performance SLA of < 2 seconds\nWhen generateAnalysisReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen generateAnalysisReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.conformity#generateAnalysisReport.spec.ts",
-          "testCase": "should analysis.conformity#generateAnalysisReport when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

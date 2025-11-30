@@ -32,8 +32,8 @@
             "Given compliance and governance\nWhen updateSize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should update size",
-          "testFile": "TBD"
+          "testCase": "forwards drag position updates to Control Panel",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts"
         },
         {
           "beat": 2,
@@ -57,8 +57,8 @@
             "Given compliance and governance\nWhen forwardToControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want forwardToControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should forward to control panel",
-          "testFile": "TBD"
+          "testCase": "addClass adds class and populates payload",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",

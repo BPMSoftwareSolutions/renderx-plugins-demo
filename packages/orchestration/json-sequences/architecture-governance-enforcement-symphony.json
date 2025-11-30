@@ -81,8 +81,8 @@
             "Given performance SLA of < 500ms\nWhen validateJSONSchemaStructure executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateJSONSchemaStructure operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#validateJSONSchemaStructure.spec.ts",
-          "testCase": "should governance.handlers#validateJSONSchemaStructure when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -107,8 +107,8 @@
             "Given performance SLA of < 500ms\nWhen validateOrchestrationDomainsRegistry executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateOrchestrationDomainsRegistry operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#validateOrchestrationDomainsRegistry.spec.ts",
-          "testCase": "should governance.handlers#validateOrchestrationDomainsRegistry when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -133,8 +133,8 @@
             "Given performance SLA of < 500ms\nWhen validateSymphonyFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateSymphonyFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#validateSymphonyFiles.spec.ts",
-          "testCase": "should governance.handlers#validateSymphonyFiles when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 500ms\nWhen validateSchemaSection executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateSchemaSection operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#validateSchemaSection.spec.ts",
-          "testCase": "should governance.handlers#validateSchemaSection when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -185,8 +185,8 @@
             "Given performance SLA of < 1 second\nWhen reportJSONValidation executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen reportJSONValidation operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#reportJSONValidation.spec.ts",
-          "testCase": "should governance.handlers#reportJSONValidation when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -222,8 +222,8 @@
             "Given performance SLA of < 1 second\nWhen startHandlerMappingVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen startHandlerMappingVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#startHandlerMappingVerification.spec.ts",
-          "testCase": "should governance.handlers#startHandlerMappingVerification when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
           "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -248,8 +248,8 @@
             "Given performance SLA of < 1 second\nWhen loadHandlerImplementations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadHandlerImplementations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#loadHandlerImplementations.spec.ts",
-          "testCase": "should governance.handlers#loadHandlerImplementations when event published",
+          "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
+          "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
           "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -274,8 +274,8 @@
             "Given performance SLA of < 1 second\nWhen indexBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen indexBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#indexBeatsFromJSON.spec.ts",
-          "testCase": "should governance.handlers#indexBeatsFromJSON when event published",
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -300,8 +300,8 @@
             "Given performance SLA of < 500ms\nWhen verifyBeatHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen verifyBeatHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#verifyBeatHandlerMapping.spec.ts",
-          "testCase": "should governance.handlers#verifyBeatHandlerMapping when event published",
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -326,8 +326,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectOrphanHandlers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectOrphanHandlers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#detectOrphanHandlers.spec.ts",
-          "testCase": "should governance.handlers#detectOrphanHandlers when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
           "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -352,8 +352,8 @@
             "Given performance SLA of < 1 second\nWhen reportHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen reportHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#reportHandlerMapping.spec.ts",
-          "testCase": "should governance.handlers#reportHandlerMapping when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
           "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -389,8 +389,8 @@
             "Given performance SLA of < 1 second\nWhen startTestCoverageVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen startTestCoverageVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#startTestCoverageVerification.spec.ts",
-          "testCase": "should governance.handlers#startTestCoverageVerification when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -415,8 +415,8 @@
             "Given performance SLA of < 1 second\nWhen catalogBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen catalogBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#catalogBeatsFromJSON.spec.ts",
-          "testCase": "should governance.handlers#catalogBeatsFromJSON when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -441,8 +441,8 @@
             "Given performance SLA of < 1 second\nWhen indexTestFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen indexTestFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#indexTestFiles.spec.ts",
-          "testCase": "should governance.handlers#indexTestFiles when event published",
+          "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js",
+          "testCase": "should index-test-files",
           "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -467,8 +467,8 @@
             "Given performance SLA of < 5 seconds\nWhen analyzeTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen analyzeTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#analyzeTestCoverage.spec.ts",
-          "testCase": "should governance.handlers#analyzeTestCoverage when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
+          "testCase": "Scenario: Analyze coverage gaps to identify untested code",
           "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -493,8 +493,8 @@
             "Given performance SLA of < 30 seconds\nWhen identifyUncoveredBeats executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen identifyUncoveredBeats operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#identifyUncoveredBeats.spec.ts",
-          "testCase": "should governance.handlers#identifyUncoveredBeats when event published",
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -519,8 +519,8 @@
             "Given performance SLA of < 1 second\nWhen reportTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen reportTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#reportTestCoverage.spec.ts",
-          "testCase": "should governance.handlers#reportTestCoverage when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts",
+          "testCase": "should calculate duration reduction",
           "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -582,8 +582,8 @@
             "Given performance SLA of < 1 second\nWhen extractFactsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen extractFactsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#extractFactsFromJSON.spec.ts",
-          "testCase": "should governance.handlers#extractFactsFromJSON when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -608,8 +608,8 @@
             "Given performance SLA of < 30 seconds\nWhen identifyMarkdownFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen identifyMarkdownFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#identifyMarkdownFiles.spec.ts",
-          "testCase": "should governance.handlers#identifyMarkdownFiles when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
+          "testCase": "should load valid logs and skip corrupted ones, reporting progress",
           "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -634,8 +634,8 @@
             "Given performance SLA of < 500ms\nWhen verifyFactsInMarkdown executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen verifyFactsInMarkdown operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#verifyFactsInMarkdown.spec.ts",
-          "testCase": "should governance.handlers#verifyFactsInMarkdown when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "testCase": "should verify-facts-in-markdown",
           "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -660,8 +660,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectMarkdownContradictions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectMarkdownContradictions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#detectMarkdownContradictions.spec.ts",
-          "testCase": "should governance.handlers#detectMarkdownContradictions when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
+          "testCase": "detectAnomaliesRequested - happy path",
           "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -686,8 +686,8 @@
             "Given performance SLA of < 1 second\nWhen reportMarkdownConsistency executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen reportMarkdownConsistency operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#reportMarkdownConsistency.spec.ts",
-          "testCase": "should governance.handlers#reportMarkdownConsistency when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -749,8 +749,8 @@
             "Given performance SLA of < 500ms\nWhen loadJSONDefinitions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadJSONDefinitions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#loadJSONDefinitions.spec.ts",
-          "testCase": "should governance.handlers#loadJSONDefinitions when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -775,8 +775,8 @@
             "Given performance SLA of < 2 seconds\nWhen createCodeMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createCodeMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#createCodeMappings.spec.ts",
-          "testCase": "should governance.handlers#createCodeMappings when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -801,8 +801,8 @@
             "Given performance SLA of < 2 seconds\nWhen createTestMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createTestMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#createTestMappings.spec.ts",
-          "testCase": "should governance.handlers#createTestMappings when event published",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -827,8 +827,8 @@
             "Given performance SLA of < 2 seconds\nWhen createMarkdownMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createMarkdownMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#createMarkdownMappings.spec.ts",
-          "testCase": "should governance.handlers#createMarkdownMappings when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -853,8 +853,8 @@
             "Given performance SLA of < 500ms\nWhen verifyChainCompleteness executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen verifyChainCompleteness operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#verifyChainCompleteness.spec.ts",
-          "testCase": "should governance.handlers#verifyChainCompleteness when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -879,8 +879,8 @@
             "Given performance SLA of < 1 second\nWhen reportAuditability executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen reportAuditability operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#reportAuditability.spec.ts",
-          "testCase": "should governance.handlers#reportAuditability when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
@@ -916,8 +916,8 @@
             "Given performance SLA of < 1 second\nWhen startConformityAnalysis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen startConformityAnalysis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#startConformityAnalysis.spec.ts",
-          "testCase": "should governance.handlers#startConformityAnalysis when event published",
+          "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
+          "testCase": "should analyze a property and return opportunity score",
           "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -942,8 +942,8 @@
             "Given performance SLA of < 1 second\nWhen aggregateGovernanceResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen aggregateGovernanceResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#aggregateGovernanceResults.spec.ts",
-          "testCase": "should governance.handlers#aggregateGovernanceResults when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -968,8 +968,8 @@
             "Given performance SLA of < 1 second\nWhen calculateConformityScore executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen calculateConformityScore operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#calculateConformityScore.spec.ts",
-          "testCase": "should governance.handlers#calculateConformityScore when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -994,8 +994,8 @@
             "Given performance SLA of < 1 second\nWhen summarizeViolations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen summarizeViolations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#summarizeViolations.spec.ts",
-          "testCase": "should governance.handlers#summarizeViolations when event published",
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\spa-validator.stage-crew-violations.test.ts",
+          "testCase": "stage:cue",
           "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -1020,8 +1020,8 @@
             "Given performance SLA of < 1 second\nWhen makeGovernanceDecision executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen makeGovernanceDecision operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#makeGovernanceDecision.spec.ts",
-          "testCase": "should governance.handlers#makeGovernanceDecision when event published",
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -1046,8 +1046,8 @@
             "Given performance SLA of < 2 seconds\nWhen generateGovernanceReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen generateGovernanceReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#generateGovernanceReport.spec.ts",
-          "testCase": "should governance.handlers#generateGovernanceReport when event published",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -1072,8 +1072,8 @@
             "Given performance SLA of < 1 second\nWhen concludeGovernanceEnforcement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen concludeGovernanceEnforcement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/governance.handlers#concludeGovernanceEnforcement.spec.ts",
-          "testCase": "should governance.handlers#concludeGovernanceEnforcement when event published",
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

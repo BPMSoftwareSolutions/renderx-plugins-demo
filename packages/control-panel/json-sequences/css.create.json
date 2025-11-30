@@ -24,8 +24,8 @@
             "Given performance SLA of < 2 seconds\nWhen createCssClass executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createCssClass operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/create-css-class.test.ts",
-          "testCase": "should create css class",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -45,8 +45,8 @@
             "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "testFile": "packages/control-panel/__tests__/notify-ui.test.ts",
-          "testCase": "should notify ui",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
           "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
       ],

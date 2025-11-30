@@ -27,8 +27,8 @@
             "Given performance SLA of < 1 minute\nWhen deployRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen deployRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/deploy-requested.test.ts",
-          "testCase": "should deploy-requested",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\47-deploy-fix-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -49,8 +49,8 @@
             "Given performance SLA of < 1 second\nWhen loadValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-validation-results.test.ts",
-          "testCase": "should load-validation-results",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -93,8 +93,8 @@
             "Given performance SLA of < 2 seconds\nWhen createBranch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createBranch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/create-branch.test.ts",
-          "testCase": "should create-branch",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createBranch to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -115,8 +115,8 @@
             "Given performance SLA of < 1 second\nWhen applyChanges executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen applyChanges operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/apply-changes.test.ts",
-          "testCase": "should apply-changes",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+          "testCase": "getCssClass returns built-in class definition (rx-button)",
           "userStory": "As an operations system, I want applyChanges to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -137,8 +137,8 @@
             "Given performance SLA of < 2 seconds\nWhen createPullRequest executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen createPullRequest operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/create-pull-request.test.ts",
-          "testCase": "should create-pull-request",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\48-create-pull-request.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want createPullRequest to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 10 minutes\nWhen runCIChecks executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen runCIChecks operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/run-c-i-checks.test.ts",
-          "testCase": "should run-c-i-checks",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
+          "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
           "userStory": "As an operations system, I want runCIChecks to execute reliably with latency < 10 minutes so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -181,8 +181,8 @@
             "Given performance SLA of < 1 second\nWhen autoMergePR executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen autoMergePR operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/auto-merge-p-r.test.ts",
-          "testCase": "should auto-merge-p-r",
+          "testFile": "node_modules\\@jest\\reporters\\node_modules\\@bcoe\\v8-coverage\\src\\test\\merge.spec.ts",
+          "testCase": "accepts empty arrays for `mergeProcessCovs`",
           "userStory": "As an operations system, I want autoMergePR to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -203,8 +203,8 @@
             "Given performance SLA of < 1 minute\nWhen deployToProduction executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen deployToProduction operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/deploy-to-production.test.ts",
-          "testCase": "should deploy-to-production",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\54-deploy-to-production.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want deployToProduction to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -225,8 +225,8 @@
             "Given performance SLA of < 500ms\nWhen verifyDeployment executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen verifyDeployment operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/verify-deployment.test.ts",
-          "testCase": "should verify-deployment",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\53-validate-staging-deployment.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want verifyDeployment to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -247,8 +247,8 @@
             "Given performance SLA of < 1 minute\nWhen deployCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen deployCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/deploy-completed.test.ts",
-          "testCase": "should deploy-completed",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\57-deploy-fix-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want deployCompleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

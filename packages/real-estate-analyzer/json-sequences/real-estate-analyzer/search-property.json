@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen fetchPropertyData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should fetch property data",
-          "testFile": "TBD"
+          "testCase": "builds create payload from clipboard-shaped component without preserving id",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
         },
         {
           "beat": 2,
@@ -43,8 +43,8 @@
             "Given compliance and governance\nWhen analyze operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want analyze to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should analyze",
-          "testFile": "TBD"
+          "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts"
         },
         {
           "beat": 3,

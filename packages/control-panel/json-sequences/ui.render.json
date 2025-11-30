@@ -24,8 +24,8 @@
             "Given required and optional fields are mixed\nWhen generateFields marks requirements\nThen required fields have aria-required='true'\nAnd visual indicators (asterisk) are shown\nAnd form submission validation respects these flags",
             "Given field dependencies and show/hide rules\nWhen generateFields creates the form\nThen conditional visibility logic is initialized\nAnd dependent fields are shown/hidden correctly\nAnd no orphaned validation rules exist"
           ],
-          "testFile": "packages/control-panel/__tests__/generate-fields.test.ts",
-          "testCase": "should generate fields",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As a form builder, I want to generate form fields from configuration in <100ms so that form loading is imperceptible (target: instantaneous at 60fps)."
         },
         {
@@ -45,8 +45,8 @@
             "Given sections that depend on other sections\nWhen generateSections creates the form\nThen dependency ordering is respected\nAnd parent sections expand when child interactions occur\nAnd nested visibility rules work correctly",
             "Given accessibility requirements\nWhen generateSections renders\nThen proper heading hierarchy (h1, h2, h3) is used\nAnd aria-expanded attributes are set on collapse toggles\nAnd keyboard navigation works between sections"
           ],
-          "testFile": "packages/control-panel/__tests__/generate-sections.test.ts",
-          "testCase": "should generate sections",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As a form designer, I want to generate organized form sections in <100ms so that complex multi-section forms load quickly and users can find relevant fields (target: cognitive load reduction)."
         },
         {
@@ -66,8 +66,8 @@
             "Given accessibility requirements (WCAG 2.1 AA)\nWhen renderView renders\nThen all elements have proper semantic HTML\nAnd color contrast is >= 4.5:1 for text\nAnd keyboard navigation is fully functional",
             "Given performance budgets\nWhen renderView completes\nThen First Contentful Paint (FCP) is < 1 second\nAnd Largest Contentful Paint (LCP) is < 2.5 seconds\nAnd Cumulative Layout Shift (CLS) is < 0.1"
           ],
-          "testFile": "packages/control-panel/__tests__/render-view.test.ts",
-          "testCase": "should render view",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
+          "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
           "userStory": "As an end user, I want forms to render completely in <500ms so that I can start interacting with the application immediately (target: <1 second total load time per RAIL model)."
         }
       ],

@@ -27,8 +27,8 @@
             "Given performance SLA of < 1 second\nWhen trackRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen trackRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/track-requested.test.ts",
-          "testCase": "should track-requested",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\58-track-effectiveness-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want trackRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -49,8 +49,8 @@
             "Given performance SLA of < 1 second\nWhen loadDeploymentInfo executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadDeploymentInfo operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-deployment-info.test.ts",
-          "testCase": "should load-deployment-info",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadDeploymentInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -71,8 +71,8 @@
             "Given performance SLA of < 1 second\nWhen collectPostDeploymentMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen collectPostDeploymentMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/collect-post-deployment-metrics.test.ts",
-          "testCase": "should collect-post-deployment-metrics",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\59-load-deployment-metrics.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want collectPostDeploymentMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -93,8 +93,8 @@
             "Given performance SLA of < 1 second\nWhen compareMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen compareMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/compare-metrics.test.ts",
-          "testCase": "should compare-metrics",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\60-compare-metrics.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want compareMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -115,8 +115,8 @@
             "Given performance SLA of < 1 second\nWhen calculateImprovement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen calculateImprovement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/calculate-improvement.test.ts",
-          "testCase": "should calculate-improvement",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateImprovement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -137,8 +137,8 @@
             "Given performance SLA of < 1 second\nWhen assessSuccess executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen assessSuccess operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/assess-success.test.ts",
-          "testCase": "should assess-success",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\69-assess-impact.spec.ts",
+          "testCase": "Scenario: Aggregate issue severities into overall impact",
           "userStory": "As an operations system, I want assessSuccess to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 100ms\nWhen updateLearningModels executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen updateLearningModels operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/update-learning-models.test.ts",
-          "testCase": "should update-learning-models",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\62-update-learning-model.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want updateLearningModels to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -181,8 +181,8 @@
             "Given performance SLA of < 2 seconds\nWhen generateInsights executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen generateInsights operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/generate-insights.test.ts",
-          "testCase": "should generate-insights",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateInsights to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -203,8 +203,8 @@
             "Given performance SLA of < 1 second\nWhen storeEffectiveness executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen storeEffectiveness operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/store-effectiveness.test.ts",
-          "testCase": "should store-effectiveness",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
+          "testCase": "should load default CSS classes",
           "userStory": "As an operations system, I want storeEffectiveness to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -225,8 +225,8 @@
             "Given performance SLA of < 1 second\nWhen trackCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen trackCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/track-completed.test.ts",
-          "testCase": "should track-completed",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\67-track-effectiveness-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want trackCompleted to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

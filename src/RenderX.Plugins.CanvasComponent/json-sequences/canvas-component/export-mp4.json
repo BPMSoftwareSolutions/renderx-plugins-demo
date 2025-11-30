@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen exportSvgToMp4 operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should export svg to mp4",
-          "testFile": "TBD"
+          "testCase": "exports CSS classes from registry in the UI file",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

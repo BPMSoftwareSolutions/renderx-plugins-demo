@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen exportSvgToGif operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should export svg to gif",
-          "testFile": "TBD"
+          "testCase": "success minimal export triggers download without error",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

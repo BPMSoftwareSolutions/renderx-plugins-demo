@@ -19,8 +19,8 @@
             "Given performance SLA of < 1 second\nWhen loadMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/slo-dashboard/__tests__/load-metrics.test.ts",
-          "testCase": "should load-metrics",
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\02-load-metrics.spec.ts",
+          "testCase": "Scenario: Retrieve latest SLI metrics for compliance calculation.",
           "userStory": "As an operations system, I want loadMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -36,8 +36,8 @@
             "Given performance SLA of < 1 second\nWhen computeCompliance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen computeCompliance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/slo-dashboard/__tests__/compute-compliance.test.ts",
-          "testCase": "should compute-compliance",
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\03-compute-compliance.spec.ts",
+          "testCase": "Scenario: Aggregate weighted compliance across loaded SLO budgets and metrics.",
           "userStory": "As an operations system, I want computeCompliance to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

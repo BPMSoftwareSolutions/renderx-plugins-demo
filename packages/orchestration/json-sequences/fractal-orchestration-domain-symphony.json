@@ -27,8 +27,8 @@
             "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/fractal.narration#fractalNarrator.spec.ts",
-          "testCase": "should fractal.narration#fractalNarrator when event published",
+          "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
+          "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
           "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -50,8 +50,8 @@
             "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/fractal.narration#fractalNarrator.spec.ts",
-          "testCase": "should fractal.narration#fractalNarrator when event published",
+          "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
+          "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
           "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

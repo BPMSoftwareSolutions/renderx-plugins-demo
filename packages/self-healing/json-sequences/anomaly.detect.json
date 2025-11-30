@@ -27,8 +27,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectAnomaliesRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectAnomaliesRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-anomalies-requested.test.ts",
-          "testCase": "should detect-anomalies-requested",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\8-detect-anomalies-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -49,8 +49,8 @@
             "Given performance SLA of < 1 second\nWhen loadTelemetryData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadTelemetryData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-telemetry-data.test.ts",
-          "testCase": "should load-telemetry-data",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\9-load-telemetry-data.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -71,8 +71,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectPerformanceAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectPerformanceAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-performance-anomalies.test.ts",
-          "testCase": "should detect-performance-anomalies",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectPerformanceAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -93,8 +93,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectBehavioralAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectBehavioralAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-behavioral-anomalies.test.ts",
-          "testCase": "should detect-behavioral-anomalies",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\11-detect-behavioral-anomalies.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectBehavioralAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -115,8 +115,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectCoverageGaps executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectCoverageGaps operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-coverage-gaps.test.ts",
-          "testCase": "should detect-coverage-gaps",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\12-detect-coverage-gaps.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectCoverageGaps to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -137,8 +137,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectErrorPatterns executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectErrorPatterns operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-error-patterns.test.ts",
-          "testCase": "should detect-error-patterns",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\13-detect-error-patterns.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectErrorPatterns to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 1 second\nWhen aggregateAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen aggregateAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/aggregate-anomaly-results.test.ts",
-          "testCase": "should aggregate-anomaly-results",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -181,8 +181,8 @@
             "Given performance SLA of < 1 second\nWhen storeAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen storeAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/store-anomaly-results.test.ts",
-          "testCase": "should store-anomaly-results",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\15-store-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want storeAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -203,8 +203,8 @@
             "Given performance SLA of < 30 seconds\nWhen detectAnomaliesCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen detectAnomaliesCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/detect-anomalies-completed.test.ts",
-          "testCase": "should detect-anomalies-completed",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\16-detect-anomalies-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

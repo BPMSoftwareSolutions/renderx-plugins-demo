@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen startResize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want startResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should start resize",
-          "testFile": "TBD"
+          "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want startResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

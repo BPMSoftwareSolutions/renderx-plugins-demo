@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen setAllRulesConfig operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should set all rules config",
-          "testFile": "TBD"
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         },
         {
           "beat": 2,
@@ -44,8 +44,8 @@
             "Given compliance and governance\nWhen loadAllRulesFromWindow operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want loadAllRulesFromWindow to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should load all rules from window",
-          "testFile": "TBD"
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         },
         {
           "beat": 3,
@@ -64,8 +64,8 @@
             "Given compliance and governance\nWhen getAllRulesConfig operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want getAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should get all rules config",
-          "testFile": "TBD"
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

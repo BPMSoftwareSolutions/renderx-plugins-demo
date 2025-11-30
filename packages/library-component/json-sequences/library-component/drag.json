@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen onDragStart operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want onDragStart to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should on drag start",
-          "testFile": "TBD"
+          "testCase": "publishes drag.move with { id, position }",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want onDragStart to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

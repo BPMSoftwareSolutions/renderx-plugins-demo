@@ -27,8 +27,8 @@
             "Given performance SLA of < 500ms\nWhen validateRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/validate-requested.test.ts",
-          "testCase": "should validate-requested",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\37-validate-fix-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -49,8 +49,8 @@
             "Given performance SLA of < 1 second\nWhen loadPatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen loadPatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/load-patch.test.ts",
-          "testCase": "should load-patch",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\38-load-patch.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -71,8 +71,8 @@
             "Given performance SLA of < 1 second\nWhen applyPatch executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen applyPatch operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/apply-patch.test.ts",
-          "testCase": "should apply-patch",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\39-apply-patch.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want applyPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -93,8 +93,8 @@
             "Given test coverage requirement (80%)\nWhen runTests completes\nThen code coverage is measured\nAnd coverage report is generated\nAnd build fails if coverage < target",
             "Given flaky test detection\nWhen same test fails intermittently\nThen test is marked as flaky\nAnd developer is notified\nAnd flaky test is retried or investigated"
           ],
-          "testFile": "packages/self-healing/__tests__/run-tests.test.ts",
-          "testCase": "should run-tests",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\40-run-unit-tests.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As a QA system, I want test execution to complete in <10 minutes so that developers get rapid feedback on code quality (target: 80% of test suites run < 5 min)."
         },
         {
@@ -115,8 +115,8 @@
             "Given performance SLA of < 500ms\nWhen checkCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen checkCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/check-coverage.test.ts",
-          "testCase": "should check-coverage",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
+          "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
           "userStory": "As an operations system, I want checkCoverage to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -137,8 +137,8 @@
             "Given performance SLA of < 500ms\nWhen verifyPerformance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen verifyPerformance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/verify-performance.test.ts",
-          "testCase": "should verify-performance",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want verifyPerformance to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -159,8 +159,8 @@
             "Given performance SLA of < 500ms\nWhen validateDocumentation executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateDocumentation operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/validate-documentation.test.ts",
-          "testCase": "should validate-documentation",
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateDocumentation to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -181,8 +181,8 @@
             "Given performance SLA of < 1 second\nWhen aggregateValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen aggregateValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/aggregate-validation-results.test.ts",
-          "testCase": "should aggregate-validation-results",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -203,8 +203,8 @@
             "Given performance SLA of < 1 second\nWhen storeValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen storeValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/store-validation-results.test.ts",
-          "testCase": "should store-validation-results",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\45-store-validation-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want storeValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -225,8 +225,8 @@
             "Given performance SLA of < 500ms\nWhen validateCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen validateCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/self-healing/__tests__/validate-completed.test.ts",
-          "testCase": "should validate-completed",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\46-validate-fix-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want validateCompleted to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

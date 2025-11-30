@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen endDrag operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want endDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should end drag",
-          "testFile": "TBD"
+          "testCase": "should end-drag",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want endDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen openUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want openUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should open ui file",
-          "testFile": "TBD"
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 2,
@@ -54,8 +54,8 @@
             "Given compliance and governance\nWhen parseUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want parseUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should parse ui file",
-          "testFile": "TBD"
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 3,
@@ -79,8 +79,8 @@
             "Given compliance and governance\nWhen injectCssClasses operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want injectCssClasses to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should inject css classes",
-          "testFile": "TBD"
+          "testCase": "collects CSS from components with template.classRefs (current export format)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts"
         },
         {
           "beat": 4,
@@ -104,8 +104,8 @@
             "Given compliance and governance\nWhen createComponentsSequentially operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want createComponentsSequentially to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should create components sequentially",
-          "testFile": "TBD"
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts"
         },
         {
           "beat": 5,
@@ -129,8 +129,8 @@
             "Given compliance and governance\nWhen applyHierarchyAndOrder operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want applyHierarchyAndOrder to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should apply hierarchy and order",
-          "testFile": "TBD"
+          "testCase": "placeholder passes",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want openUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

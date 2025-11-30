@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen showSvgNodeOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should show svg node overlay",
-          "testFile": "TBD"
+          "testCase": "positions overlay over the target sub-element given a child-index path (e.g., ",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",

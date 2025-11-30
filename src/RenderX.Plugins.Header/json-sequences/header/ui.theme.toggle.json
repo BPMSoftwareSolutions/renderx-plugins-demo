@@ -29,8 +29,8 @@
             "Given performance budget\nWhen toggleTheme completes\nThen theme switch completes within 100ms\nAnd no frame drops occur (maintain 60fps)\nAnd memory usage stays within baseline (no leaks)"
           ],
           "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",
-          "testCase": "should toggle theme",
-          "testFile": "TBD"
+          "testCase": "should render theme toggle component with light mode by default",
+          "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts"
         }
       ],
       "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",

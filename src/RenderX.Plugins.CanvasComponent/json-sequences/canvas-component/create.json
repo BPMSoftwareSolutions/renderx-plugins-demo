@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen resolveTemplate operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want resolveTemplate to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should resolve template",
-          "testFile": "TBD"
+          "testCase": "dedupes schema fetches across multiple calls and instances",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts"
         },
         {
           "beat": 2,
@@ -54,8 +54,8 @@
             "Given compliance and governance\nWhen registerInstance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want registerInstance to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should register instance",
-          "testFile": "TBD"
+          "testCase": "adds rx-comp-<tag>-<id> class for imported components",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts"
         },
         {
           "beat": 3,
@@ -79,8 +79,8 @@
             "Given compliance and governance\nWhen createNode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want createNode to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should create node",
-          "testFile": "TBD"
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts"
         },
         {
           "beat": 4,
@@ -104,8 +104,8 @@
             "Given compliance and governance\nWhen renderReact operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want renderReact to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should render react",
-          "testFile": "TBD"
+          "testCase": "creates a React component through the complete create sequence",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts"
         },
         {
           "beat": 5,
@@ -129,8 +129,8 @@
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
           "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
-          "testCase": "should notify ui",
-          "testFile": "TBD"
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 6,
@@ -154,8 +154,8 @@
             "Given compliance and governance\nWhen enhanceLine operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want enhanceLine to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should enhance line",
-          "testFile": "TBD"
+          "testCase": "should enhance-line",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want resolveTemplate to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

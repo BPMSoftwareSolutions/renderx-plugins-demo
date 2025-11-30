@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen updateLine operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should update line",
-          "testFile": "TBD"
+          "testCase": "should update-line",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",

@@ -29,8 +29,8 @@
             "Given compliance and governance\nWhen showSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should show selection overlay",
-          "testFile": "TBD"
+          "testCase": "getCanvasRect returns patched bounding client rect values",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts"
         },
         {
           "beat": 2,
@@ -54,8 +54,8 @@
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
           "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
-          "testCase": "should notify ui",
-          "testFile": "TBD"
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 3,
@@ -79,8 +79,8 @@
             "Given compliance and governance\nWhen publishSelectionChanged operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want publishSelectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should publish selection changed",
-          "testFile": "TBD"
+          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",

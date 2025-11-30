@@ -24,8 +24,8 @@
             "Given an invalid element ID\nWhen addClass is invoked\nThen an error is caught and logged\nAnd the error does not propagate to UI\nAnd recovery attempt is made with fallback selector",
             "Given a class already exists on the element\nWhen addClass is called with the same class\nThen the class is not duplicated in classList\nAnd idempotency is maintained\nAnd the operation succeeds without side effects"
           ],
-          "testFile": "packages/control-panel/__tests__/add-class.test.ts",
-          "testCase": "should add class",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
+          "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
           "userStory": "As a UI system, I want to apply CSS classes dynamically to elements with <100ms latency so that visual state changes appear instantaneous to users (target 60fps interactions)."
         },
         {
@@ -45,8 +45,8 @@
             "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "testFile": "packages/control-panel/__tests__/notify-ui.test.ts",
-          "testCase": "should notify ui",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
           "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
       ],

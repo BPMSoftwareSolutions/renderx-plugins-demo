@@ -27,8 +27,8 @@
             "Given performance SLA of < 5 seconds\nWhen scanOrchestrationFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen scanOrchestrationFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
-          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
+          "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

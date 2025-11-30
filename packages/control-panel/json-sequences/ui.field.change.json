@@ -24,8 +24,8 @@
             "Given performance SLA of < 1 second\nWhen prepareField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen prepareField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/prepare-field.test.ts",
-          "testCase": "should prepare field",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As an operations system, I want prepareField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -45,8 +45,8 @@
             "Given performance SLA of < 1 second\nWhen dispatchField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen dispatchField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/dispatch-field.test.ts",
-          "testCase": "should dispatch field",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As an operations system, I want dispatchField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -66,8 +66,8 @@
             "Given performance SLA of < 1 second\nWhen setDirty executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen setDirty operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/set-dirty.test.ts",
-          "testCase": "should set dirty",
+          "testFile": "tests\\digital-assets.spec.ts",
+          "testCase": "resolves and exposes correct package name",
           "userStory": "As an operations system, I want setDirty to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
@@ -87,8 +87,8 @@
             "Given performance SLA of < 1 second\nWhen awaitRefresh executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen awaitRefresh operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "testFile": "packages/control-panel/__tests__/await-refresh.test.ts",
-          "testCase": "should await refresh",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "testCase": "setDirty marks isDirty with timestamp",
           "userStory": "As an operations system, I want awaitRefresh to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],

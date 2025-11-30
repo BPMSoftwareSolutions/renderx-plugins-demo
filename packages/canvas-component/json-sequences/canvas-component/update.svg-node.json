@@ -24,8 +24,8 @@
             "Given compliance and governance\nWhen updateSvgNodeAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should update svg node attribute",
-          "testFile": "TBD"
+          "testCase": "updates rect fill attribute correctly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\svg-node.update.spec.ts"
         },
         {
           "beat": 2,
@@ -44,8 +44,8 @@
             "Given compliance and governance\nWhen refreshControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
           "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "should refresh control panel",
-          "testFile": "TBD"
+          "testCase": "setDirty marks isDirty with timestamp",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
         }
       ],
       "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
