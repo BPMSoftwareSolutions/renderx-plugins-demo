@@ -252,14 +252,14 @@
           "userStory": "As an operations system, I want deployCompleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.",
+      "persona": "Release manager",
       "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
     }
   ],
   "beats": 11,
   "tempo": 120,
-  "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.",
+  "persona": "Release manager",
   "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
 }

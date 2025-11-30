@@ -1,0 +1,7 @@
+# Domain: header
+
+[symphony:index]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need the header to render and handle theme toggles with <200ms P95 render and ≤20ms event handling so navigation feels instant.
+beat: ui.theme.toggle -> As an engineer, I need `ui.theme.toggle` to persist preference, update classes, and notify UI within <20ms.
+beat: ui.theme.get -> As an engineer, I need `ui.theme.get` to read and apply current theme in ≤1s P95 without blocking.

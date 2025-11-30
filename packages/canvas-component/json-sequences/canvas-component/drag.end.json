@@ -23,13 +23,13 @@
             "Given performance SLA of < 1 second\nWhen endDrag executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen endDrag operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want endDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `endDrag` to finalize position, snap to grid, and publish outcome telemetry.",
           "testCase": "should end-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want endDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
@@ -37,7 +37,7 @@
     "routeToBase": true
   },
   "beats": 1,
-  "userStory": "As an operations system, I want endDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

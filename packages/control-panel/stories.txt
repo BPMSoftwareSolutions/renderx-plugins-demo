@@ -1,0 +1,14 @@
+# Domain: control-panel
+
+[symphony:ui.init]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need the control panel to initialize views and data sources with <200ms render and ≤1s data fetch P95, emitting telemetry so operators can track responsiveness.
+beat: ui.init -> As an engineer, I need `ui.init` to bootstrap state, feature flags, and subscriptions within ≤1s P95, avoiding blocking renders.
+beat: ui.render -> As a runtime owner, I need `ui.render` to draw controls in <200ms P95 with memoized props and keyed lists.
+
+[symphony:css.create]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need CSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks.
+beat: css.create -> As an engineer, I need `css.create` to insert styles atomically, validate specificity, and register change events.
+beat: classes.add -> As an engineer, I need `classes.add` to add semantic classes with immediate UI notification (<20ms) and audit trail.
+beat: classes.remove -> As an engineer, I need `classes.remove` to remove classes safely, preserving accessibility and notifying subscribers.

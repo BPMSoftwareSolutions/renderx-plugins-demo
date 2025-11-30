@@ -9,6 +9,7 @@
       "file": "ui.theme.get.json",
       "handlersPath": "@renderx-plugins/header"
     }
-  ]
+  ],
+  "userStory": "As a UI runtime engineer, I need the header to render and handle theme toggles with <200ms P95 render and ≤20ms event handling so navigation feels instant.",
+  "persona": "UI runtime engineer"
 }
-

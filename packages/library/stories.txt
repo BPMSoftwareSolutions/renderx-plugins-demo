@@ -1,0 +1,11 @@
+# Domain: library
+
+[symphony:library-load]
+role: Library curator
+movementStory: As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.
+beat: library.load -> As a curator, I need `library.load` to fetch catalog, validate checksums, and cache indexes within ≤1s P95.
+
+[symphony:index]
+role: Platform operator
+movementStory: As an operator, I need the library index symphony to refresh and publish indices in ≤1s P95, with audit trails and rollback.
+beat: index -> As an operator, I need `index` to compute sorted views and tag filters within ≤1s P95.

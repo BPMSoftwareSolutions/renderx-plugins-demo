@@ -23,13 +23,13 @@
             "Given performance SLA of < 1 second\nWhen startDrag executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen startDrag operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want startDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `startDrag` to capture source element, compute ghost offsets, and emit telemetry in ≤100ms P95.",
           "testCase": "should start-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want startDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
@@ -37,7 +37,7 @@
     "routeToBase": true
   },
   "beats": 1,
-  "userStory": "As an operations system, I want startDrag to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

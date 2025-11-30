@@ -23,18 +23,18 @@
             "Given performance SLA of < 1 second\nWhen exportSvgToMp4 executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen exportSvgToMp4 operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `exportSvgToMp4` to rasterize frames and encode MP4 with telemetry.",
           "testCase": "exports CSS classes from registry in the UI file",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+      "persona": "Platform operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+  "persona": "Platform operator",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

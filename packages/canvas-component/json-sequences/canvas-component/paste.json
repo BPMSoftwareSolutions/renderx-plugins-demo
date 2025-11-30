@@ -111,13 +111,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a content author, I need paste to insert components honoring hierarchy and constraints within ≤1s P95.",
+      "persona": "Content author",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 5,
-  "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a content author, I need paste to insert components honoring hierarchy and constraints within ≤1s P95.",
+  "persona": "Content author",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

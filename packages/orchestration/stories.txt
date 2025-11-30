@@ -1,0 +1,11 @@
+# Domain: orchestration
+
+[symphony:build-pipeline-orchestration]
+role: DevOps engineer
+movementStory: As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.
+beat: orchestration-core -> As an engineer, I need `orchestration-core` to schedule and monitor tasks with backpressure and retries.
+
+[symphony:architecture-governance-enforcement-symphony]
+role: Governance lead
+movementStory: As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.
+beat: orchestration-audit-system -> As a lead, I need `orchestration-audit-system` to collect evidence and publish summaries deterministically.

@@ -48,13 +48,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+      "persona": "Security-conscious operator",
       "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+  "persona": "Security-conscious operator",
   "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
 }

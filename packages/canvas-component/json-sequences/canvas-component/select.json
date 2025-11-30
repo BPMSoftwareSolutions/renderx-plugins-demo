@@ -23,7 +23,7 @@
             "Given performance SLA of < 200ms\nWhen showSelectionOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen showSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As a runtime engineer, I need `showSelectionOverlay` to render selection affordances and register handlers.",
           "testCase": "getCanvasRect returns patched bounding client rect values",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts"
         },
@@ -43,7 +43,7 @@
             "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "userStory": "As an orchestrator, I need `notifyUi` to publish selection events with <20ms delivery.",
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
@@ -68,13 +68,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+      "persona": "Interaction designer",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
     }
   ],
   "beats": 3,
-  "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+  "persona": "Interaction designer",
   "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
 }

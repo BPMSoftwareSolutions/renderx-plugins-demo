@@ -128,13 +128,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want queryAllComponents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.",
+      "persona": "Platform operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 6,
-  "userStory": "As an operations system, I want queryAllComponents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.",
+  "persona": "Platform operator",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

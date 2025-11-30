@@ -48,13 +48,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         }
       ],
-      "userStory": "As an application initializer, I want to load all components with proper dependency resolution in <500ms so that the app becomes interactive quickly (target: <1s Time to Interactive).",
-      "persona": "System Operator",
+      "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+      "persona": "Library curator",
       "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
     }
   ],
   "beats": 2,
-  "userStory": "As an application initializer, I want to load all components with proper dependency resolution in <500ms so that the app becomes interactive quickly (target: <1s Time to Interactive).",
-  "persona": "Product Owner",
+  "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+  "persona": "Library curator",
   "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
 }

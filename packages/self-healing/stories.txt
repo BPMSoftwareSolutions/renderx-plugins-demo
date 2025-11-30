@@ -1,0 +1,16 @@
+# Domain: self-healing
+
+[symphony:anomaly.detect]
+role: SRE
+movementStory: As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.
+beat: anomaly.detect -> As an SRE, I need `anomaly.detect` to compute baselines and thresholds and emit events.
+
+[symphony:fix.generate]
+role: SRE
+movementStory: As an SRE, I need fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails.
+beat: fix.generate -> As an SRE, I need `fix.generate` to propose and score fixes deterministically.
+
+[symphony:deployment.deploy]
+role: Release manager
+movementStory: As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.
+beat: deployment.deploy -> As a manager, I need `deployment.deploy` to apply staged deployments and publish outcomes.

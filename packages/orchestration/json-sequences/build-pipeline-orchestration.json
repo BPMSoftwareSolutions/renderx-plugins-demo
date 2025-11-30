@@ -97,8 +97,8 @@
           "userStory": "As an operations system, I want recordValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
@@ -190,8 +190,8 @@
           "userStory": "As an operations system, I want recordManifestState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want regenerateOrchestrationDomains to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     },
     {
@@ -266,12 +266,12 @@
           "userStory": "As an operations system, I want buildHostSdkPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want initializePackageBuild to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
       "businessValue": "Accelerates onboarding; reduces setup time by 50%; enables self-service configuration; improves first-time success"
     }
   ],
-  "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+  "persona": "DevOps engineer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

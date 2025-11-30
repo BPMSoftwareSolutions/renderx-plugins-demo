@@ -28,13 +28,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.",
+      "persona": "Design systems engineer",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.",
+  "persona": "Design systems engineer",
   "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
 }
