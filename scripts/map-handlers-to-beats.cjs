@@ -59,13 +59,37 @@ function loadDomainSequence() {
 }
 
 /**
- * Build beat keywords from sequence beatDetails
- * @param {Object} sequence Sequence definition with beatDetails
+ * Build beat keywords from sequence beatDetails or movements[].beats[]
+ * @param {Object} sequence Sequence definition with beatDetails or movements
  * @returns {Object} Map of beat name to keywords
  */
 function buildBeatKeywordsFromSequence(sequence) {
   const keywords = {};
 
+  // NEW FORMAT: movements[].beats[]
+  if (sequence?.movements && Array.isArray(sequence.movements) && sequence.movements[0]?.beats) {
+    for (const movement of sequence.movements) {
+      if (!Array.isArray(movement.beats)) continue;
+
+      for (const beat of movement.beats) {
+        const beatKey = beat.name || 'unknown';
+        if (!keywords[beatKey]) {
+          keywords[beatKey] = [];
+        }
+
+        // Extract keywords from beat name and description
+        const nameWords = (beat.name || '').toLowerCase().split(/[-_\s]+/);
+        const descWords = (beat.description || '').toLowerCase().split(/\s+/).filter(w => w.length > 4);
+
+        keywords[beatKey].push(...nameWords, ...descWords.slice(0, 3));
+        keywords[beatKey] = [...new Set(keywords[beatKey])].filter(Boolean);
+      }
+    }
+
+    return keywords;
+  }
+
+  // OLD FORMAT: beatDetails array (legacy)
   if (!sequence?.beatDetails) return keywords;
 
   for (const beat of sequence.beatDetails) {
@@ -98,27 +122,62 @@ function loadOrchestrationBeats() {
     // Try to load from domain's sequence file first
     const sequence = loadDomainSequence();
 
-    if (sequence?.movements && sequence?.beatDetails) {
+    if (sequence?.movements) {
       const beats = [];
 
-      // Build beats from sequence movements and beatDetails
-      for (const movement of sequence.movements) {
-        const movementBeats = sequence.beatDetails
-          .filter(bd => bd.movement === movement.number)
-          .map(bd => ({
-            name: `beat-${bd.movement}-${bd.kind || 'beat-' + bd.number}`,
-            movement: `Movement ${movement.number}: ${movement.name}`,
-            kind: bd.kind,
-            description: bd.description,
-            handlers: []
-          }));
+      // NEW FORMAT: movements[].beats[] (compliant structure)
+      if (Array.isArray(sequence.movements) && sequence.movements.length > 0 && sequence.movements[0].beats) {
+        for (let mi = 0; mi < sequence.movements.length; mi++) {
+          const movement = sequence.movements[mi];
+          const movementName = movement.name || `Movement ${mi + 1}`;
 
-        beats.push(...movementBeats);
+          if (Array.isArray(movement.beats)) {
+            for (const beat of movement.beats) {
+              // Extract handler name from beat.handler.name (format: "namespace.category#handlerFunction")
+              let expectedHandlerName = null;
+              if (beat.handler?.name) {
+                const parts = beat.handler.name.split('#');
+                expectedHandlerName = parts[parts.length - 1]; // Get the function name after #
+              }
+
+              beats.push({
+                name: beat.name || `beat-${mi + 1}-${beats.length + 1}`,
+                movement: `Movement ${mi + 1}: ${movementName}`,
+                kind: beat.kind || 'general',
+                description: beat.description || '',
+                expectedHandler: expectedHandlerName,
+                handlers: []
+              });
+            }
+          }
+        }
+
+        if (beats.length > 0) {
+          console.log(`[map-handlers-to-beats] Loaded ${beats.length} beats from sequence file (domain: ${domainId})`);
+          return beats;
+        }
       }
 
-      if (beats.length > 0) {
-        console.log(`[map-handlers-to-beats] Loaded ${beats.length} beats from sequence file (domain: ${domainId})`);
-        return beats;
+      // OLD FORMAT: beatDetails array (legacy structure)
+      if (sequence?.beatDetails) {
+        for (const movement of sequence.movements) {
+          const movementBeats = sequence.beatDetails
+            .filter(bd => bd.movement === movement.number)
+            .map(bd => ({
+              name: `beat-${bd.movement}-${bd.kind || 'beat-' + bd.number}`,
+              movement: `Movement ${movement.number}: ${movement.name}`,
+              kind: bd.kind,
+              description: bd.description,
+              handlers: []
+            }));
+
+          beats.push(...movementBeats);
+        }
+
+        if (beats.length > 0) {
+          console.log(`[map-handlers-to-beats] Loaded ${beats.length} beats from sequence file (domain: ${domainId})`);
+          return beats;
+        }
       }
     }
 
@@ -206,6 +265,14 @@ function matchHandlerToBeat(handler, beats) {
 
   // Load beat keywords from sequence file or use fallback
   const beatKeywords = loadBeatKeywords();
+
+  // Strategy 0: Direct handler name match (highest confidence)
+  // Match handler.name against beat.expectedHandler from sequence JSON
+  for (const beat of beats) {
+    if (beat.expectedHandler && handler.name === beat.expectedHandler) {
+      return { beat: beat.name, movement: beat.movement, confidence: 1.0, reason: 'exact-handler-match' };
+    }
+  }
 
   // Strategy 1: Match beat by kind (data-driven from sequence beatDetails)
   for (const beat of beats) {

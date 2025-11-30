@@ -1763,7 +1763,7 @@
         }
       },
       "analysisConfig": {
-        "analysisSourcePath": "scripts/",
+        "analysisSourcePath": "scripts/symphonies",
         "analysisOutputPath": ".generated/analysis/symphonic-code-analysis-pipeline/",
         "reportOutputPath": "docs/generated/symphonic-code-analysis-pipeline/",
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
