@@ -29,6 +29,102 @@ Check out these supporting projects for more detail on the underlying architectu
 - **renderx-plugins** — core utilities, base interfaces, and manifest schema for RenderX-compatible plugins:
   https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md
 
+<!-- AUTO-GENERATED:START - Do not modify this section manually -->
+
+## 📊 Domain Registry Overview
+
+> **Auto-generated on 2025-11-30T09:34:32.414Z**
+> This section is automatically maintained. To update: `npm run generate:readme`
+
+**Total Domains**: 78 (75 active, 1 deprecated, 1 experimental)
+
+### By Type
+- **capability**: 59 domains
+- **orchestration**: 18 domains
+- **workflow**: 1 domains
+
+### By Ownership
+- **RenderX-Web**: 56 domains
+- **Platform-Orchestration**: 16 domains
+- **Platform-Infrastructure**: 4 domains
+- **Platform-Observability**: 1 domains
+- **Platform-DevEx**: 1 domains
+
+### 🎼 Key Orchestration Domains
+
+- **[orchestration-core](.generated/analysis/orchestration-core/orchestration-core-rich-markdown-2025-11-30T09-14-54-209Z.md)** (69 handlers, 76.51% coverage, 87.5% conformity)
+- **[build-pipeline-orchestration](.generated/analysis/build-pipeline-orchestration-rich-markdown-2025-11-28T20-04-20-338Z.md)** (403 handlers, 73.94% coverage, 87.5% conformity)
+- **[renderx-web-orchestration](#)**
+- **[graphing-orchestration](.generated/analysis/graphing-orchestration/graphing-orchestration-rich-markdown-2025-11-30T09-15-04-809Z.md)** (69 handlers, 80.49% coverage, 87.5% conformity): Orchestration domain: graphing-orchestration
+- **[self_sequences](.generated/analysis/self_sequences/self_sequences-rich-markdown-2025-11-30T09-15-07-839Z.md)** (69 handlers, 81.26% coverage, 87.5% conformity): Orchestration domain: self_sequences
+- **[musical-conductor-orchestration](.generated/analysis/musical-conductor-orchestration/musical-conductor-orchestration-rich-markdown-2025-11-30T09-15-14-101Z.md)** (69 handlers, 83.02% coverage, 87.5% conformity): High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
+- **[cag-agent-workflow](.generated/analysis/cag-agent-workflow/cag-agent-workflow-rich-markdown-2025-11-30T09-15-17-300Z.md)** (69 handlers, 76.64% coverage, 87.5% conformity): Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.
+- **[orchestration-audit-session](.generated/analysis/orchestration-audit-session/orchestration-audit-session-rich-markdown-2025-11-30T09-15-20-481Z.md)** (69 handlers, 84.48% coverage, 87.5% conformity): Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
+
+
+<details>
+<summary>View all 18 orchestration domains</summary>
+
+- **orchestration-core**: No description
+- **build-pipeline-orchestration**: No description
+- **renderx-web-orchestration**: No description
+- **graphing-orchestration**: Orchestration domain: graphing-orchestration
+- **self_sequences**: Orchestration domain: self_sequences
+- **musical-conductor-orchestration**: High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
+- **cag-agent-workflow**: Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.
+- **orchestration-audit-session**: Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
+- **orchestration-audit-system**: System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).
+- **safe-continuous-delivery-pipeline**: Master orchestrator implementing Scaled Agile Framework (SAFe) for continuous delivery. Coordinates all development team activities from idea to production.
+- **product-owner-signoff-demo**: Gating orchestration for product owner validation and feature sign-off. Conducts guided demos in staging environment before production deployment.
+- **build-pipeline-symphony**: DEPRECATED: Superseded by build-pipeline-orchestration. Legacy multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.
+- **symphonia-conformity-alignment-pipeline**: Three-movement orchestration for automated detection and remediation of orchestration architecture violations across domain definitions, sequences, and handlers.
+- **architecture-governance-enforcement-symphony**: Multi-movement orchestration that enforces JSON as single source of truth through systematic validation, implementation verification, and auditability across the entire system.
+- **symphonic-code-analysis-pipeline**: Multi-movement orchestration for comprehensive code analysis of symphonic orchestration codebases, measuring code metrics per beat, test coverage, complexity, and architectural conformity.
+- **fractal-orchestration-domain-symphony**: Didactic orchestration that encodes the recursive pattern where orchestrated domains become systems and systems become domains in a fractal architecture.
+- **symphonic-code-analysis-demo**: Demo and review gate for symphonic code analysis results. Presents analysis findings, metrics trends, and architectural conformity to stakeholders for review and approval before publication.
+- **orchestration-registry-audit-pipeline**: Audit orchestration to validate that all registered orchestration domains have both JSON authority files and npm scripts defined. Produces completeness reports and governance compliance verification.
+</details>
+
+
+### ⚙️ Infrastructure Domains
+
+- **host-sdk-infrastructure**: Core Host SDK providing the plugin hosting environment, manifest management, and integration APIs for all UI components
+- **manifest-tools-infrastructure**: Manifest generation and validation tools for orchestration domain definitions, sequence specifications, and plugin registrations
+- **components-library-infrastructure**: Foundational component library providing base UI components and utility wrappers for all RenderX plugins
+- **digital-assets-infrastructure**: Asset management system for icons, themes, branding, and static resources used across all UI plugins
+
+### 🔧 Capability Domains
+
+**55 capability domains** providing UI features, plugin sequences, and user interactions.
+
+
+<details>
+<summary>View capability domains</summary>
+
+Top capabilities:
+- **canvas-component-copy-symphony**: Plugin sequence: Canvas Component Copy
+- **canvas-component-create-symphony**: Plugin sequence: Canvas Component Create
+- **canvas-component-delete-symphony**: Plugin sequence: Canvas Component Delete
+- **canvas-component-delete-requested-symphony**: Plugin sequence: Canvas Component Delete Requested
+- **canvas-component-deselect-all-symphony**: Plugin sequence: Canvas Component Deselect All
+- **canvas-component-deselect-symphony**: Plugin sequence: Canvas Component Deselect
+- **canvas-component-deselect-requested-symphony**: Plugin sequence: Canvas Component Deselect Requested
+- **canvas-component-drag-end-symphony**: Plugin sequence: Canvas Component Drag End
+- **canvas-component-drag-move-symphony**: Plugin sequence: Canvas Component Drag Move
+- **canvas-component-drag-start-symphony**: Plugin sequence: Canvas Component Drag Start
+
+_...and 45 more_
+</details>
+
+
+### 📈 Analysis Status
+
+- **18** orchestration domains have analysis configuration
+- **Latest Validation**: 2025-11-27T04:07:56.011Z
+- **Analysis Reports**: [View all](.generated/analysis/)
+
+<!-- AUTO-GENERATED:END -->
+
 ## Governance Tooling Registry
 
 - Source of truth lives in `docs/governance/tools-registry.json`; it is the JSON-first index of every cross-cutting governance, orchestration, telemetry, and auditing tool.

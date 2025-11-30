@@ -1,6 +1,8 @@
 {
   "$schema": "./musical-sequence.schema.json",
+  "id": "fractal-orchestration-domain-symphony",
   "name": "fractal-orchestration-domain-symphony",
+  "category": "orchestration",
   "version": "0.1.0",
   "movements": [
     {
@@ -8,11 +10,15 @@
       "beats": [
         {
           "name": "fractal-domain-identified",
+          "event": "fractal.domain.identified",
+          "beat": 1,
           "handler": { "name": "fractal.narration#fractalNarrator" },
           "notes": ["Recognize domain boundaries and intent"]
         },
         {
           "name": "fractal-domain-orchestrated",
+          "event": "fractal.domain.orchestrated",
+          "beat": 2,
           "handler": { "name": "fractal.narration#fractalNarrator" },
           "notes": ["Bind domain to MusicalSequence"]
         }

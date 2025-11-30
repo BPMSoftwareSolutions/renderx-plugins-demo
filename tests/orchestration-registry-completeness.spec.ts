@@ -105,7 +105,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
     it('domains should have status field with valid value', () => {
       registry.domains.forEach(domain => {
         expect(domain).toHaveProperty('status');
-        expect(['active', 'planned', 'deprecated']).toContain(domain.status);
+        expect(['active', 'planned', 'deprecated', 'experimental']).toContain(domain.status);
       });
     });
   });

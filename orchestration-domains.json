@@ -106,6 +106,42 @@
   ],
   "domains": [
     {
+      "id": "safe-continuous-delivery-pipeline",
+      "name": "SAFe Continuous Delivery Pipeline",
+      "emoji": "🛠️",
+      "description": "System-level orchestration for SAFe Continuous Delivery",
+      "category": "orchestration",
+      "purpose": "Coordinate delivery stages across the pipeline",
+      "status": "active",
+      "movements": 5,
+      "beats": 24,
+      "sequenceFile": "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json"
+    },
+    {
+      "id": "renderx-web-orchestration",
+      "name": "RenderX Web Orchestration",
+      "emoji": "🌐",
+      "description": "Master orchestration for RenderX Web application lifecycle",
+      "category": "orchestration",
+      "purpose": "Centralized build, test, validation, delivery, and monitoring",
+      "status": "active",
+      "movements": 6,
+      "beats": 30,
+      "sequenceFile": "packages/orchestration/json-sequences/renderx-web-orchestration.json"
+    },
+    {
+      "id": "fractal-orchestration-domain-symphony",
+      "name": "fractal-orchestration-domain-symphony",
+      "emoji": "🧩",
+      "description": "Experimental orchestration encoding fractal architecture",
+      "category": "orchestration",
+      "purpose": "Demonstrate recursive orchestration-domain pattern",
+      "status": "experimental",
+      "movements": 1,
+      "beats": 2,
+      "sequenceFile": "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json"
+    },
+    {
       "id": "canvas-component-copy-symphony",
       "name": "Canvas Component Copy",
       "emoji": "🔌",

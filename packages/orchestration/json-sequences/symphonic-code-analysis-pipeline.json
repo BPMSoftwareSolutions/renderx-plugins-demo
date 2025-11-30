@@ -220,6 +220,11 @@
         "benchmark": ">= 0.85 overall",
         "impact": "medium"
       },
+      "fractalArchitecture": {
+        "description": "Fractal architecture alignment across orchestration domains and sequences",
+        "benchmark": ">= 0.85",
+        "impact": "high"
+      },
       "architectureConformity": {
         "description": "Alignment with orchestration and fractal architecture",
         "benchmark": ">= 0.85",
@@ -289,6 +294,14 @@
     "analysis.metrics.completed",
     "analysis.coverage.completed",
     "analysis.conformity.completed",
-    "analysis.reporting.completed"
+    "analysis.reporting.completed",
+    "movement-4:fractal-architecture-analyzed"
+  ]
+  ,
+  "beatDetails": [
+    { "movement": 4, "number": 1, "name": "validate-handler-mapping", "description": "Validate handler-to-beat mapping across orchestration domains" },
+    { "movement": 4, "number": 2, "name": "fractal-architecture-evaluation", "description": "Evaluate fractal architecture alignment and compute conformity scores" },
+    { "movement": 4, "number": 3, "name": "generate-trend-report", "description": "Generate trend report comparing current metrics to baseline" },
+    { "movement": 4, "number": 4, "name": "generate-analysis-report", "description": "Produce final analysis report and artifacts" }
   ]
 }
