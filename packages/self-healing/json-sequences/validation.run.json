@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "validateRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "validateRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/validate-requested.test.ts",
+          "testCase": "should validate-requested",
+          "userStory": "As a system user, I want the validateRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadPatch",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadPatch Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-patch.test.ts",
+          "testCase": "should load-patch",
+          "userStory": "As a system user, I want the loadPatch operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "applyPatch",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "applyPatch Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/apply-patch.test.ts",
+          "testCase": "should apply-patch",
+          "userStory": "As a system user, I want the applyPatch operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,20 @@
           "dynamics": "mf",
           "handler": "runTests",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "Execute Test Suite",
+          "acceptanceCriteria": [
+            "All configured test suites (unit, integration, e2e) are executed",
+            "Test results include pass/fail status, execution time, and coverage metrics",
+            "Failed tests halt the build process; details logged for troubleshooting",
+            "Test execution time is tracked for performance trending",
+            "Coverage is calculated and compared against minimum thresholds",
+            "System emits 'tests.executed' event with results summary"
+          ],
+          "testFile": "packages/self-healing/__tests__/run-tests.test.ts",
+          "testCase": "should run-tests",
+          "userStory": "As a QA lead, I want comprehensive test execution so that I can ensure code quality before deployment."
         },
         {
           "beat": 5,
@@ -57,7 +106,19 @@
           "dynamics": "mf",
           "handler": "checkCoverage",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 5,
+          "scenario": "checkCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/check-coverage.test.ts",
+          "testCase": "should check-coverage",
+          "userStory": "As a system user, I want the checkCoverage operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +128,19 @@
           "dynamics": "mf",
           "handler": "verifyPerformance",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 6,
+          "scenario": "verifyPerformance Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/verify-performance.test.ts",
+          "testCase": "should verify-performance",
+          "userStory": "As a system user, I want the verifyPerformance operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,7 +150,19 @@
           "dynamics": "mf",
           "handler": "validateDocumentation",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "validateDocumentation Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/validate-documentation.test.ts",
+          "testCase": "should validate-documentation",
+          "userStory": "As a system user, I want the validateDocumentation operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 8,
@@ -87,7 +172,19 @@
           "dynamics": "mf",
           "handler": "aggregateValidationResults",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 8,
+          "scenario": "aggregateValidationResults Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/aggregate-validation-results.test.ts",
+          "testCase": "should aggregate-validation-results",
+          "userStory": "As a system user, I want the aggregateValidationResults operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 9,
@@ -97,7 +194,19 @@
           "dynamics": "mf",
           "handler": "storeValidationResults",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 9,
+          "scenario": "storeValidationResults Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/store-validation-results.test.ts",
+          "testCase": "should store-validation-results",
+          "userStory": "As a system user, I want the storeValidationResults operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 10,
@@ -107,11 +216,29 @@
           "dynamics": "mf",
           "handler": "validateCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 10,
+          "scenario": "validateCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/validate-completed.test.ts",
+          "testCase": "should validate-completed",
+          "userStory": "As a system user, I want the validateCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Validate Fix so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 10,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Validate Fix workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

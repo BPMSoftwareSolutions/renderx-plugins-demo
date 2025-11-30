@@ -22,7 +22,17 @@
             "id": "canvas-component-resize-move-symphony.updatesize.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "updateSize Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should update size"
         },
         {
           "beat": 2,
@@ -36,9 +46,25 @@
             "id": "canvas-component-resize-move-symphony.forwardtocontrolpanel.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "forwardToControlPanel Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the forwardToControlPanel operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should forward to control panel"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "As a system user, I want the updateSize operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

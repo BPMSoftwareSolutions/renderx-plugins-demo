@@ -9,17 +9,47 @@
         {
           "beat": 1,
           "handler": "serializeDashboardState",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "serializeDashboardState Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/slo-dashboard/__tests__/serialize-dashboard-state.test.ts",
+          "testCase": "should serialize-dashboard-state",
+          "userStory": "As a system user, I want the serializeDashboardState operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
           "handler": "triggerExportDownload",
-          "kind": "io"
+          "kind": "io",
+          "number": 2,
+          "scenario": "triggerExportDownload Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/slo-dashboard/__tests__/trigger-export-download.test.ts",
+          "testCase": "should trigger-export-download",
+          "userStory": "As a system user, I want the triggerExportDownload operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want export so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "name": "Dashboard.export.report",
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Dashboard.export.report workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

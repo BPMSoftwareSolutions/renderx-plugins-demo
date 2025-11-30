@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "addClass",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Add CSS Class to UI Element",
+          "acceptanceCriteria": [
+            "When user adds a class to an element, the class is applied to the DOM immediately",
+            "The element's classList is updated with the new class name",
+            "The operation populates the context payload with element ID and updated classes list",
+            "Multiple classes can be added in sequence without conflicts",
+            "System maintains accurate class list for subsequent operations"
+          ],
+          "testFile": "packages/control-panel/__tests__/add-class.test.ts",
+          "testCase": "should add class",
+          "userStory": "As a UI developer, I want to dynamically add CSS classes to DOM elements so that I can apply styling changes in response to user interactions without requiring page reloads."
         },
         {
           "beat": 2,
@@ -23,11 +35,29 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "packages/control-panel/__tests__/notify-ui.test.ts",
+          "testCase": "should notify ui",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Add Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel Classes Add workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

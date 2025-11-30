@@ -19,7 +19,17 @@
             "id": "canvas-component-update-svg-node-symphony.updatesvgnodeattribute.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "updateSvgNodeAttribute Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should update svg node attribute"
         },
         {
           "beat": 2,
@@ -33,9 +43,25 @@
             "id": "canvas-component-update-svg-node-symphony.refreshcontrolpanel.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "refreshControlPanel Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the refreshControlPanel operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should refresh control panel"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "As a system user, I want the updateSvgNodeAttribute operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

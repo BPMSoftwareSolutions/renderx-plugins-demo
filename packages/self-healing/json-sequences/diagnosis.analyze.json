@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "analyzeRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "analyzeRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-requested.test.ts",
+          "testCase": "should analyze-requested",
+          "userStory": "As a system user, I want the analyzeRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadAnomalies",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadAnomalies Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-anomalies.test.ts",
+          "testCase": "should load-anomalies",
+          "userStory": "As a system user, I want the loadAnomalies operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "loadCodebaseInfo",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "loadCodebaseInfo Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-codebase-info.test.ts",
+          "testCase": "should load-codebase-info",
+          "userStory": "As a system user, I want the loadCodebaseInfo operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "analyzePerformanceIssues",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "analyzePerformanceIssues Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-performance-issues.test.ts",
+          "testCase": "should analyze-performance-issues",
+          "userStory": "As a system user, I want the analyzePerformanceIssues operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "analyzeBehavioralIssues",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "analyzeBehavioralIssues Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-behavioral-issues.test.ts",
+          "testCase": "should analyze-behavioral-issues",
+          "userStory": "As a system user, I want the analyzeBehavioralIssues operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "analyzeCoverageIssues",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 6,
+          "scenario": "analyzeCoverageIssues Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-coverage-issues.test.ts",
+          "testCase": "should analyze-coverage-issues",
+          "userStory": "As a system user, I want the analyzeCoverageIssues operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,7 +149,19 @@
           "dynamics": "mf",
           "handler": "analyzeErrorIssues",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "analyzeErrorIssues Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-error-issues.test.ts",
+          "testCase": "should analyze-error-issues",
+          "userStory": "As a system user, I want the analyzeErrorIssues operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 8,
@@ -87,7 +171,19 @@
           "dynamics": "mf",
           "handler": "assessImpact",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 8,
+          "scenario": "assessImpact Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/assess-impact.test.ts",
+          "testCase": "should assess-impact",
+          "userStory": "As a system user, I want the assessImpact operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 9,
@@ -97,7 +193,19 @@
           "dynamics": "mf",
           "handler": "recommendFixes",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 9,
+          "scenario": "recommendFixes Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/recommend-fixes.test.ts",
+          "testCase": "should recommend-fixes",
+          "userStory": "As a system user, I want the recommendFixes operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 10,
@@ -107,7 +215,19 @@
           "dynamics": "mf",
           "handler": "storeDiagnosis",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 10,
+          "scenario": "storeDiagnosis Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/store-diagnosis.test.ts",
+          "testCase": "should store-diagnosis",
+          "userStory": "As a system user, I want the storeDiagnosis operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 11,
@@ -117,11 +237,29 @@
           "dynamics": "mf",
           "handler": "analyzeCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 11,
+          "scenario": "analyzeCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/analyze-completed.test.ts",
+          "testCase": "should analyze-completed",
+          "userStory": "As a system user, I want the analyzeCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Analyze Root Cause so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 11,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Analyze Root Cause workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

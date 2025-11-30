@@ -8,11 +8,36 @@
       "beats": [
         {
           "name": "scan-orchestration-files",
-          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
-          "notes": ["Baseline scan for graphing orchestration"],
-          "args": { "paths": ["packages/orchestration"] }
+          "handler": {
+            "name": "analysis.discovery#scanOrchestrationFiles"
+          },
+          "notes": [
+            "Baseline scan for graphing orchestration"
+          ],
+          "args": {
+            "paths": [
+              "packages/orchestration"
+            ]
+          },
+          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
+          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want bootstrap so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "graphing-orchestration workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

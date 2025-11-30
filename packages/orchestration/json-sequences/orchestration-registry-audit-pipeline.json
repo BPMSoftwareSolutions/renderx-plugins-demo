@@ -29,9 +29,25 @@
         {
           "name": "scan-registry",
           "description": "Load orchestration-domains.json and prepare statistics",
-          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" }
+          "handler": {
+            "name": "analysis.discovery#scanOrchestrationFiles"
+          },
+          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
+          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Registry Discovery so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Validation",
@@ -41,19 +57,61 @@
         {
           "name": "validate-sequence-files",
           "description": "Check that each domain has an existing sequenceFile",
-          "handler": { "name": "analysis.conformity#validateHandlerMapping" }
+          "handler": {
+            "name": "analysis.conformity#validateHandlerMapping"
+          },
+          "scenario": "analysis.conformity#validateHandlerMapping Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#validateHandlerMapping.spec.ts",
+          "testCase": "should analysis.conformity#validateHandlerMapping when event published",
+          "userStory": "As a system user, I want the analysis.conformity#validateHandlerMapping operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "validate-npm-scripts",
           "description": "Check that npmScripts exist and reference valid scripts",
-          "handler": { "name": "analysis.conformity#validateHandlerMapping" }
+          "handler": {
+            "name": "analysis.conformity#validateHandlerMapping"
+          },
+          "scenario": "analysis.conformity#validateHandlerMapping Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#validateHandlerMapping.spec.ts",
+          "testCase": "should analysis.conformity#validateHandlerMapping when event published",
+          "userStory": "As a system user, I want the analysis.conformity#validateHandlerMapping operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "compute-compliance-score",
           "description": "Compute completeness and compliance scores",
-          "handler": { "name": "analysis.conformity#calculateConformityScore" }
+          "handler": {
+            "name": "analysis.conformity#calculateConformityScore"
+          },
+          "scenario": "analysis.conformity#calculateConformityScore Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#calculateConformityScore.spec.ts",
+          "testCase": "should analysis.conformity#calculateConformityScore when event published",
+          "userStory": "As a system user, I want the analysis.conformity#calculateConformityScore operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Validation so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Reporting",
@@ -63,9 +121,25 @@
         {
           "name": "generate-audit-report",
           "description": "Produce markdown and JSON audit reports",
-          "handler": { "name": "analysis.conformity#generateAnalysisReport" }
+          "handler": {
+            "name": "analysis.conformity#generateAnalysisReport"
+          },
+          "scenario": "analysis.conformity#generateAnalysisReport Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#generateAnalysisReport.spec.ts",
+          "testCase": "should analysis.conformity#generateAnalysisReport when event published",
+          "userStory": "As a system user, I want the analysis.conformity#generateAnalysisReport operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Reporting so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "auditFramework": {
@@ -76,14 +150,36 @@
       "Generated documentation must be auto-marked and domain-scoped"
     ],
     "checkpoints": [
-      { "name": "Sequence Completeness", "description": "sequenceFile present and valid", "severity": "major" },
-      { "name": "Script Bindings", "description": "npmScripts resolve to existing scripts", "severity": "major" },
-      { "name": "Linkage Validity", "description": "Paths exist and are accessible", "severity": "minor" }
+      {
+        "name": "Sequence Completeness",
+        "description": "sequenceFile present and valid",
+        "severity": "major"
+      },
+      {
+        "name": "Script Bindings",
+        "description": "npmScripts resolve to existing scripts",
+        "severity": "major"
+      },
+      {
+        "name": "Linkage Validity",
+        "description": "Paths exist and are accessible",
+        "severity": "minor"
+      }
     ]
   },
   "reportingArtifacts": [
-    { "name": "Registry Audit Report", "type": "markdown", "description": "Human-readable audit documentation", "location": "docs/generated/orchestration-registry-audit-pipeline/INDEX.md" },
-    { "name": "Registry Audit JSON", "type": "json", "description": "Machine-readable audit results", "location": ".generated/audit/orchestration-registry-audit.json" }
+    {
+      "name": "Registry Audit Report",
+      "type": "markdown",
+      "description": "Human-readable audit documentation",
+      "location": "docs/generated/orchestration-registry-audit-pipeline/INDEX.md"
+    },
+    {
+      "name": "Registry Audit JSON",
+      "type": "json",
+      "description": "Machine-readable audit results",
+      "location": ".generated/audit/orchestration-registry-audit.json"
+    }
   ],
   "governance": {
     "policies": [
@@ -94,17 +190,44 @@
   },
   "implementation": {
     "bindings": [
-      { "beat": 1, "handler": "analysis.discovery#scanOrchestrationFiles", "script": "scripts/audit-orchestration-registry.js" },
-      { "beat": 2, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/audit-orchestration-registry.js" },
-      { "beat": 3, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/audit-orchestration-registry.js" },
-      { "beat": 4, "handler": "analysis.conformity#calculateConformityScore", "script": "scripts/audit-orchestration-registry.js" },
-      { "beat": 5, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/audit-orchestration-registry.js" },
-      { "beat": 6, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/gen-orchestration-registry-audit-docs.js" }
+      {
+        "beat": 1,
+        "handler": "analysis.discovery#scanOrchestrationFiles",
+        "script": "scripts/audit-orchestration-registry.js"
+      },
+      {
+        "beat": 2,
+        "handler": "analysis.conformity#validateHandlerMapping",
+        "script": "scripts/audit-orchestration-registry.js"
+      },
+      {
+        "beat": 3,
+        "handler": "analysis.conformity#validateHandlerMapping",
+        "script": "scripts/audit-orchestration-registry.js"
+      },
+      {
+        "beat": 4,
+        "handler": "analysis.conformity#calculateConformityScore",
+        "script": "scripts/audit-orchestration-registry.js"
+      },
+      {
+        "beat": 5,
+        "handler": "analysis.conformity#generateAnalysisReport",
+        "script": "scripts/audit-orchestration-registry.js"
+      },
+      {
+        "beat": 6,
+        "handler": "analysis.conformity#generateAnalysisReport",
+        "script": "scripts/gen-orchestration-registry-audit-docs.js"
+      }
     ]
   },
   "events": [
     "audit.registry.discovery.completed",
     "audit.registry.validation.completed",
     "audit.registry.reporting.completed"
-  ]
+  ],
+  "userStory": "Orchestration Registry Audit Pipeline workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

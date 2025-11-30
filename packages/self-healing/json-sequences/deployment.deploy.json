@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "deployRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "deployRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/deploy-requested.test.ts",
+          "testCase": "should deploy-requested",
+          "userStory": "As a system user, I want the deployRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadValidationResults",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadValidationResults Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-validation-results.test.ts",
+          "testCase": "should load-validation-results",
+          "userStory": "As a system user, I want the loadValidationResults operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "checkApproval",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 3,
+          "scenario": "checkApproval Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/check-approval.test.ts",
+          "testCase": "should check-approval",
+          "userStory": "As a system user, I want the checkApproval operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "createBranch",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "createBranch Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/create-branch.test.ts",
+          "testCase": "should create-branch",
+          "userStory": "As a system user, I want the createBranch operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "applyChanges",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 5,
+          "scenario": "applyChanges Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/apply-changes.test.ts",
+          "testCase": "should apply-changes",
+          "userStory": "As a system user, I want the applyChanges operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "createPullRequest",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 6,
+          "scenario": "createPullRequest Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/create-pull-request.test.ts",
+          "testCase": "should create-pull-request",
+          "userStory": "As a system user, I want the createPullRequest operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,7 +149,19 @@
           "dynamics": "mf",
           "handler": "runCIChecks",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 7,
+          "scenario": "runCIChecks Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/run-c-i-checks.test.ts",
+          "testCase": "should run-c-i-checks",
+          "userStory": "As a system user, I want the runCIChecks operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 8,
@@ -87,7 +171,19 @@
           "dynamics": "mf",
           "handler": "autoMergePR",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 8,
+          "scenario": "autoMergePR Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/auto-merge-p-r.test.ts",
+          "testCase": "should auto-merge-p-r",
+          "userStory": "As a system user, I want the autoMergePR operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 9,
@@ -97,7 +193,19 @@
           "dynamics": "mf",
           "handler": "deployToProduction",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 9,
+          "scenario": "deployToProduction Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/deploy-to-production.test.ts",
+          "testCase": "should deploy-to-production",
+          "userStory": "As a system user, I want the deployToProduction operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 10,
@@ -107,7 +215,19 @@
           "dynamics": "mf",
           "handler": "verifyDeployment",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 10,
+          "scenario": "verifyDeployment Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/verify-deployment.test.ts",
+          "testCase": "should verify-deployment",
+          "userStory": "As a system user, I want the verifyDeployment operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 11,
@@ -117,11 +237,29 @@
           "dynamics": "mf",
           "handler": "deployCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 11,
+          "scenario": "deployCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/deploy-completed.test.ts",
+          "testCase": "should deploy-completed",
+          "userStory": "As a system user, I want the deployCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Deploy Fix so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 11,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Deploy Fix workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

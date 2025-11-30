@@ -71,7 +71,10 @@
           "kind": "transformation",
           "timing": "< 150ms"
         }
-      ]
+      ],
+      "userStory": "As a user, I want Data Collection & Aggregation so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "movement": 2,
@@ -123,7 +126,10 @@
           "kind": "synthesis",
           "timing": "< 100ms"
         }
-      ]
+      ],
+      "userStory": "As a user, I want Executive Summary Synthesis so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "movement": 3,
@@ -175,7 +181,10 @@
           "kind": "synthesis",
           "timing": "< 200ms"
         }
-      ]
+      ],
+      "userStory": "As a user, I want Detailed Analysis & Recommendations so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "movement": 4,
@@ -227,7 +236,10 @@
           "kind": "validation",
           "timing": "< 50ms"
         }
-      ]
+      ],
+      "userStory": "As a user, I want Report Generation (Multi-Format) so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "movement": 5,
@@ -279,7 +291,10 @@
           "kind": "synthesis",
           "timing": "< 100ms"
         }
-      ]
+      ],
+      "userStory": "As a user, I want Lineage & Audit Trail Construction so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "movement": 6,
@@ -331,9 +346,15 @@
           "kind": "telemetry",
           "timing": "< 50ms"
         }
-      ]
+      ],
+      "userStory": "As a Release Manager, I want to coordinate deployment and publish artifacts so that the application reaches users with minimal downtime.",
+      "persona": "Release Manager",
+      "businessValue": "Enables reliable, repeatable deployments; supports blue-green/canary strategies; reduces deployment risk"
     }
   ],
   "tempo": 120,
-  "beats": 6
+  "beats": 6,
+  "userStory": "symphony report pipeline workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

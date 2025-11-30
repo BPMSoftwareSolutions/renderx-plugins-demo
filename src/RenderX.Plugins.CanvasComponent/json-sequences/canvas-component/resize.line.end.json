@@ -19,9 +19,25 @@
             "id": "canvas-line-resize-end-symphony.endlineresize.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "endLineResize Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the endLineResize operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should end line resize"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the endLineResize operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "As a system user, I want the endLineResize operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

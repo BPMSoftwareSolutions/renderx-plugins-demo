@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "trackRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "trackRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/track-requested.test.ts",
+          "testCase": "should track-requested",
+          "userStory": "As a system user, I want the trackRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadDeploymentInfo",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadDeploymentInfo Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-deployment-info.test.ts",
+          "testCase": "should load-deployment-info",
+          "userStory": "As a system user, I want the loadDeploymentInfo operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "collectPostDeploymentMetrics",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "collectPostDeploymentMetrics Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/collect-post-deployment-metrics.test.ts",
+          "testCase": "should collect-post-deployment-metrics",
+          "userStory": "As a system user, I want the collectPostDeploymentMetrics operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "compareMetrics",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "compareMetrics Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/compare-metrics.test.ts",
+          "testCase": "should compare-metrics",
+          "userStory": "As a system user, I want the compareMetrics operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "calculateImprovement",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "calculateImprovement Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/calculate-improvement.test.ts",
+          "testCase": "should calculate-improvement",
+          "userStory": "As a system user, I want the calculateImprovement operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "assessSuccess",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 6,
+          "scenario": "assessSuccess Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/assess-success.test.ts",
+          "testCase": "should assess-success",
+          "userStory": "As a system user, I want the assessSuccess operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,7 +149,19 @@
           "dynamics": "mf",
           "handler": "updateLearningModels",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "updateLearningModels Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/update-learning-models.test.ts",
+          "testCase": "should update-learning-models",
+          "userStory": "As a system user, I want the updateLearningModels operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 8,
@@ -87,7 +171,19 @@
           "dynamics": "mf",
           "handler": "generateInsights",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 8,
+          "scenario": "generateInsights Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-insights.test.ts",
+          "testCase": "should generate-insights",
+          "userStory": "As a system user, I want the generateInsights operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 9,
@@ -97,7 +193,19 @@
           "dynamics": "mf",
           "handler": "storeEffectiveness",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 9,
+          "scenario": "storeEffectiveness Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/store-effectiveness.test.ts",
+          "testCase": "should store-effectiveness",
+          "userStory": "As a system user, I want the storeEffectiveness operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 10,
@@ -107,11 +215,29 @@
           "dynamics": "mf",
           "handler": "trackCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 10,
+          "scenario": "trackCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/track-completed.test.ts",
+          "testCase": "should track-completed",
+          "userStory": "As a system user, I want the trackCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Track Effectiveness so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 10,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Track Effectiveness workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

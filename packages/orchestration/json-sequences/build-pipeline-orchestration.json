@@ -11,31 +11,267 @@
     {
       "name": "Validation & Verification",
       "beats": [
-        { "name": "load-context", "handler": { "name": "orchestration/build-pipeline.build.validation#loadBuildContext" } },
-        { "name": "validate-domains", "handler": { "name": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains" } },
-        { "name": "validate-governance", "handler": { "name": "orchestration/build-pipeline.build.validation#validateGovernanceRules" } },
-        { "name": "validate-agent", "handler": { "name": "orchestration/build-pipeline.build.validation#validateAgentBehavior" } },
-        { "name": "record-validation", "handler": { "name": "orchestration/build-pipeline.build.validation#recordValidationResults" } }
-      ]
+        {
+          "name": "load-context",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#loadBuildContext"
+          },
+          "scenario": "orchestration/build-pipeline.build.validation#loadBuildContext Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#loadBuildContext.spec.ts",
+          "testCase": "should orchestration/build-pipeline.build.validation#loadBuildContext when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.build.validation#loadBuildContext operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "validate-domains",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains"
+          },
+          "scenario": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateOrchestrationDomains.spec.ts",
+          "testCase": "should orchestration/build-pipeline.build.validation#validateOrchestrationDomains when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.build.validation#validateOrchestrationDomains operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "validate-governance",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateGovernanceRules"
+          },
+          "scenario": "orchestration/build-pipeline.build.validation#validateGovernanceRules Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateGovernanceRules.spec.ts",
+          "testCase": "should orchestration/build-pipeline.build.validation#validateGovernanceRules when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.build.validation#validateGovernanceRules operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "validate-agent",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateAgentBehavior"
+          },
+          "scenario": "orchestration/build-pipeline.build.validation#validateAgentBehavior Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#validateAgentBehavior.spec.ts",
+          "testCase": "should orchestration/build-pipeline.build.validation#validateAgentBehavior when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.build.validation#validateAgentBehavior operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "record-validation",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#recordValidationResults"
+          },
+          "scenario": "orchestration/build-pipeline.build.validation#recordValidationResults Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.build.validation#recordValidationResults.spec.ts",
+          "testCase": "should orchestration/build-pipeline.build.validation#recordValidationResults when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.build.validation#recordValidationResults operation to execute reliably so that system functions operate as expected."
+        }
+      ],
+      "userStory": "As a user, I want Validation & Verification so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Manifest Preparation",
       "beats": [
-        { "name": "regenerate-domains", "handler": { "name": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains" } },
-        { "name": "sync-json-sources", "handler": { "name": "orchestration/build-pipeline.manifests#syncJsonSources" } },
-        { "name": "generate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#generateManifests" } },
-        { "name": "validate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#validateManifestIntegrity" } },
-        { "name": "record-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#recordManifestState" } }
-      ]
+        {
+          "name": "regenerate-domains",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains"
+          },
+          "scenario": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#regenerateOrchestrationDomains.spec.ts",
+          "testCase": "should orchestration/build-pipeline.manifests#regenerateOrchestrationDomains when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.manifests#regenerateOrchestrationDomains operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "sync-json-sources",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#syncJsonSources"
+          },
+          "scenario": "orchestration/build-pipeline.manifests#syncJsonSources Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#syncJsonSources.spec.ts",
+          "testCase": "should orchestration/build-pipeline.manifests#syncJsonSources when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.manifests#syncJsonSources operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "generate-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#generateManifests"
+          },
+          "scenario": "orchestration/build-pipeline.manifests#generateManifests Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#generateManifests.spec.ts",
+          "testCase": "should orchestration/build-pipeline.manifests#generateManifests when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.manifests#generateManifests operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "validate-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#validateManifestIntegrity"
+          },
+          "scenario": "orchestration/build-pipeline.manifests#validateManifestIntegrity Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#validateManifestIntegrity.spec.ts",
+          "testCase": "should orchestration/build-pipeline.manifests#validateManifestIntegrity when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.manifests#validateManifestIntegrity operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "record-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#recordManifestState"
+          },
+          "scenario": "orchestration/build-pipeline.manifests#recordManifestState Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.manifests#recordManifestState.spec.ts",
+          "testCase": "should orchestration/build-pipeline.manifests#recordManifestState when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.manifests#recordManifestState operation to execute reliably so that system functions operate as expected."
+        }
+      ],
+      "userStory": "As a user, I want Manifest Preparation so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Package Building",
       "beats": [
-        { "name": "initialize", "handler": { "name": "orchestration/build-pipeline.packages.build#initializePackageBuild" } },
-        { "name": "build-components", "handler": { "name": "orchestration/build-pipeline.packages.build#buildComponentsPackage" } },
-        { "name": "build-musical-conductor", "handler": { "name": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage" } },
-        { "name": "build-host-sdk", "handler": { "name": "orchestration/build-pipeline.packages.build#buildHostSdkPackage" } }
-      ]
+        {
+          "name": "initialize",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#initializePackageBuild"
+          },
+          "scenario": "orchestration/build-pipeline.packages.build#initializePackageBuild Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#initializePackageBuild.spec.ts",
+          "testCase": "should orchestration/build-pipeline.packages.build#initializePackageBuild when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.packages.build#initializePackageBuild operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "build-components",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildComponentsPackage"
+          },
+          "scenario": "orchestration/build-pipeline.packages.build#buildComponentsPackage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildComponentsPackage.spec.ts",
+          "testCase": "should orchestration/build-pipeline.packages.build#buildComponentsPackage when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.packages.build#buildComponentsPackage operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "build-musical-conductor",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage"
+          },
+          "scenario": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildMusicalConductorPackage.spec.ts",
+          "testCase": "should orchestration/build-pipeline.packages.build#buildMusicalConductorPackage when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.packages.build#buildMusicalConductorPackage operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "build-host-sdk",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildHostSdkPackage"
+          },
+          "scenario": "orchestration/build-pipeline.packages.build#buildHostSdkPackage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/orchestration/build-pipeline.packages.build#buildHostSdkPackage.spec.ts",
+          "testCase": "should orchestration/build-pipeline.packages.build#buildHostSdkPackage when event published",
+          "userStory": "As a system user, I want the orchestration/build-pipeline.packages.build#buildHostSdkPackage operation to execute reliably so that system functions operate as expected."
+        }
+      ],
+      "userStory": "As a Build Orchestrator, I want to compile source code and generate artifacts so that downstream processes have validated, executable output.",
+      "persona": "Build System Administrator",
+      "businessValue": "Ensures code quality; catches compilation errors early; generates deployment-ready artifacts"
     }
-  ]
+  ],
+  "userStory": "Build Pipeline Orchestration workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

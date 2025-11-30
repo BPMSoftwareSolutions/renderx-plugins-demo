@@ -19,7 +19,19 @@
             "id": "control-panel-css-create-symphony.createcssclass.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "Create New CSS Rule",
+          "acceptanceCriteria": [
+            "System accepts CSS rule definition (selector, properties, values)",
+            "CSS rule is created in the stylesheet without syntax errors",
+            "New rule is immediately available to matching DOM elements",
+            "System prevents duplicate rules with identical selectors",
+            "CSS rule modifications are tracked in telemetry"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/createCssClassTests.cs",
+          "testCase": "Should_createCssClass_When_ConfigurationProvided",
+          "userStory": "As a configuration administrator, I want to create new CSS rules dynamically so that I can customize styling without modifying source files."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-css-create-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
+          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Create CSS Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel CSS Create workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

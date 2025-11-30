@@ -12,17 +12,55 @@
           "name": "fractal-domain-identified",
           "event": "fractal.domain.identified",
           "beat": 1,
-          "handler": { "name": "fractal.narration#fractalNarrator" },
-          "notes": ["Recognize domain boundaries and intent"]
+          "handler": {
+            "name": "fractal.narration#fractalNarrator"
+          },
+          "notes": [
+            "Recognize domain boundaries and intent"
+          ],
+          "number": 1,
+          "scenario": "fractal.narration#fractalNarrator Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/fractal.narration#fractalNarrator.spec.ts",
+          "testCase": "should fractal.narration#fractalNarrator when event published",
+          "userStory": "As a system user, I want the fractal.narration#fractalNarrator operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "fractal-domain-orchestrated",
           "event": "fractal.domain.orchestrated",
           "beat": 2,
-          "handler": { "name": "fractal.narration#fractalNarrator" },
-          "notes": ["Bind domain to MusicalSequence"]
+          "handler": {
+            "name": "fractal.narration#fractalNarrator"
+          },
+          "notes": [
+            "Bind domain to MusicalSequence"
+          ],
+          "number": 2,
+          "scenario": "fractal.narration#fractalNarrator Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/fractal.narration#fractalNarrator.spec.ts",
+          "testCase": "should fractal.narration#fractalNarrator when event published",
+          "userStory": "As a system user, I want the fractal.narration#fractalNarrator operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want bootstrap so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "fractal-orchestration-domain-symphony workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

@@ -14,7 +14,17 @@
           "handler": "openUiFile",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "openUiFile Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the openUiFile operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should open ui file"
         },
         {
           "beat": 2,
@@ -23,7 +33,17 @@
           "handler": "parseUiFile",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "parseUiFile Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the parseUiFile operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should parse ui file"
         },
         {
           "beat": 3,
@@ -32,7 +52,17 @@
           "handler": "injectCssClasses",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "injectCssClasses Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the injectCssClasses operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should inject css classes"
         },
         {
           "beat": 4,
@@ -41,7 +71,17 @@
           "handler": "createComponentsSequentially",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "createComponentsSequentially Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the createComponentsSequentially operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should create components sequentially"
         },
         {
           "beat": 5,
@@ -50,10 +90,26 @@
           "handler": "applyHierarchyAndOrder",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "applyHierarchyAndOrder Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the applyHierarchyAndOrder operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should apply hierarchy and order"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the openUiFile operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
-  "beats": 5
+  "beats": 5,
+  "userStory": "As a system user, I want the openUiFile operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

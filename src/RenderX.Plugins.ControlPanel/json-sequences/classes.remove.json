@@ -19,7 +19,19 @@
             "id": "control-panel-classes-remove-symphony.removeclass.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "Remove CSS Class from UI Element",
+          "acceptanceCriteria": [
+            "When user removes a class from an element, the class is removed from the DOM immediately",
+            "The element's classList is updated by removing the specified class",
+            "The operation populates the context payload with element ID and remaining classes",
+            "Removing a non-existent class does not cause errors",
+            "System maintains accurate class list after removal"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/removeClassTests.cs",
+          "testCase": "Should_removeClass_When_ConfigurationProvided",
+          "userStory": "As a UI developer, I want to dynamically remove CSS classes from DOM elements so that I can revert styling changes in response to state transitions."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-classes-remove-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
+          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Remove Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel Classes Remove workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

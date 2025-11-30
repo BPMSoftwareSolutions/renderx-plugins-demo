@@ -19,9 +19,27 @@
             "id": "control-panel-ui-section-toggle-symphony.togglesection.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "toggleSection Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/toggleSectionTests.cs",
+          "testCase": "Should_toggleSection_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the toggleSection operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Section Toggle so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel UI Section Toggle workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

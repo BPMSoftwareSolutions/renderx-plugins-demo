@@ -19,7 +19,19 @@
             "id": "control-panel-ui-init-symphony.initconfig.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "initConfig Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/initConfigTests.cs",
+          "testCase": "Should_initConfig_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the initConfig operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -33,7 +45,19 @@
             "id": "control-panel-ui-init-symphony.initresolver.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "initResolver Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/initResolverTests.cs",
+          "testCase": "Should_initResolver_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the initResolver operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -47,7 +71,19 @@
             "id": "control-panel-ui-init-symphony.loadschemas.2",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 3,
+          "scenario": "loadSchemas Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/loadSchemasTests.cs",
+          "testCase": "Should_loadSchemas_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the loadSchemas operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -61,7 +97,19 @@
             "id": "control-panel-ui-init-symphony.registerobservers.3",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 4,
+          "scenario": "registerObservers Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/registerObserversTests.cs",
+          "testCase": "Should_registerObservers_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the registerObservers operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -75,7 +123,19 @@
             "id": "control-panel-ui-init-symphony.notifyready.4",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 5,
+          "scenario": "notifyReady Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyReadyTests.cs",
+          "testCase": "Should_notifyReady_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the notifyReady operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -89,9 +149,27 @@
             "id": "control-panel-ui-init-symphony.initmovement.5",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 6,
+          "scenario": "initMovement Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/initMovementTests.cs",
+          "testCase": "Should_initMovement_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the initMovement operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a Configuration Administrator, I want to initialize the Control Panel with domain-specific configuration so that users can see contextualized UI tailored to their domain.",
+      "persona": "Configuration Administrator",
+      "businessValue": "Enables rapid UI customization without code changes; reduces time-to-market; supports multi-tenancy"
     }
-  ]
+  ],
+  "userStory": "Control Panel UI Init workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

@@ -42,77 +42,558 @@
       "number": 1,
       "name": "Initialization",
       "description": "Initialize RenderX Web build environment and dependencies",
+      "userStory": "As a Build Orchestrator, I want to initialize build context and validate prerequisites so that the build pipeline executes with consistent state and validated dependencies.",
+      "persona": "Build System Administrator",
+      "businessValue": "Reduces build failures due to missing/invalid dependencies; enables reproducible builds; establishes traceability baseline",
       "status": "active",
       "beats": [
-        { "name": "resolve-theme", "handler": { "name": "header/ui#getCurrentTheme" } },
-        { "name": "apply-theme",   "handler": { "name": "header/ui#toggleTheme" } },
-        { "name": "init-control-panel", "handler": { "name": "control-panel/ui#initConfig" } },
-        { "name": "init-resolver",      "handler": { "name": "control-panel/ui#initResolver" } },
-        { "name": "register-observers", "handler": { "name": "control-panel/ui#registerObservers" } },
-        { "name": "notify-ready",       "handler": { "name": "control-panel/ui#notifyReady" } }
+        {
+          "name": "resolve-theme",
+          "number": 1,
+          "handler": {
+            "name": "header/ui#getCurrentTheme",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:theme-resolved",
+          "scenario": "header/ui#getCurrentTheme Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/header/ui#getCurrentTheme.spec.ts",
+          "testCase": "should header/ui#getCurrentTheme when event published",
+          "userStory": "As a system user, I want the header/ui#getCurrentTheme operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "apply-theme",
+          "number": 2,
+          "handler": {
+            "name": "header/ui#toggleTheme",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:theme-applied",
+          "scenario": "header/ui#toggleTheme Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/header/ui#toggleTheme.spec.ts",
+          "testCase": "should header/ui#toggleTheme when event published",
+          "userStory": "As a system user, I want the header/ui#toggleTheme operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "init-control-panel",
+          "number": 3,
+          "handler": {
+            "name": "control-panel/ui#initConfig",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:control-panel-ready",
+          "scenario": "control-panel/ui#initConfig Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/control-panel/ui#initConfig.spec.ts",
+          "testCase": "should control-panel/ui#initConfig when event published",
+          "userStory": "As a system user, I want the control-panel/ui#initConfig operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "init-resolver",
+          "number": 4,
+          "handler": {
+            "name": "control-panel/ui#initResolver",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:resolver-ready",
+          "scenario": "control-panel/ui#initResolver Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/control-panel/ui#initResolver.spec.ts",
+          "testCase": "should control-panel/ui#initResolver when event published",
+          "userStory": "As a system user, I want the control-panel/ui#initResolver operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "register-observers",
+          "number": 5,
+          "handler": {
+            "name": "control-panel/ui#registerObservers",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:observers-registered",
+          "scenario": "control-panel/ui#registerObservers Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/control-panel/ui#registerObservers.spec.ts",
+          "testCase": "should control-panel/ui#registerObservers when event published",
+          "userStory": "As a system user, I want the control-panel/ui#registerObservers operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "notify-ready",
+          "number": 6,
+          "handler": {
+            "name": "control-panel/ui#notifyReady",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:initialization:complete",
+          "scenario": "control-panel/ui#notifyReady Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/control-panel/ui#notifyReady.spec.ts",
+          "testCase": "should control-panel/ui#notifyReady when event published",
+          "userStory": "As a system user, I want the control-panel/ui#notifyReady operation to execute reliably so that system functions operate as expected."
+        }
       ]
     },
     {
       "number": 2,
       "name": "Build",
       "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
+      "userStory": "As a Build Orchestrator, I want to compile source code and generate artifacts so that downstream processes have validated, executable output.",
+      "persona": "Build System Administrator",
+      "businessValue": "Ensures code quality; catches compilation errors early; generates deployment-ready artifacts",
       "orchestration": "pre-build-pipeline-check-symphony",
       "status": "active",
       "beats": [
-        { "name": "update-attribute",       "handler": { "name": "canvas-component/update#updateAttribute" } },
-        { "name": "refresh-control-panel",  "handler": { "name": "canvas-component/update#refreshControlPanel" } }
+        {
+          "name": "update-attribute",
+          "number": 1,
+          "handler": {
+            "name": "canvas-component/update#updateAttribute",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:build:attribute-updated",
+          "scenario": "canvas-component/update#updateAttribute Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/update#updateAttribute.spec.ts",
+          "testCase": "should canvas-component/update#updateAttribute when event published",
+          "userStory": "As a system user, I want the canvas-component/update#updateAttribute operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "refresh-control-panel",
+          "number": 2,
+          "handler": {
+            "name": "canvas-component/update#refreshControlPanel",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:build:complete",
+          "scenario": "canvas-component/update#refreshControlPanel Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/update#refreshControlPanel.spec.ts",
+          "testCase": "should canvas-component/update#refreshControlPanel when event published",
+          "userStory": "As a system user, I want the canvas-component/update#refreshControlPanel operation to execute reliably so that system functions operate as expected."
+        }
       ]
     },
     {
       "number": 3,
       "name": "Test & Validation",
       "description": "Execute E2E Cypress tests and compliance validation (7-layer framework)",
+      "userStory": "As a QA Validator, I want to execute comprehensive tests and validate compliance so that only high-quality builds proceed to production.",
+      "persona": "QA Validator",
+      "businessValue": "Detects regressions; validates architecture governance; prevents non-compliant code deployment",
       "orchestration": [
         "e2e-cypress-symphony",
         "check-pipeline-compliance-7layer-symphony"
       ],
       "status": "active",
       "beats": [
-        { "name": "show-selection-overlay", "handler": { "name": "canvas-component/select#showSelectionOverlay" } },
-        { "name": "hide-selection-overlay", "handler": { "name": "canvas-component/select#hideSelectionOverlay" } },
-        { "name": "attach-line-resize",    "handler": { "name": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers" } },
-        { "name": "ensure-line-overlay",    "handler": { "name": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor" } },
-        { "name": "notify-ui",              "handler": { "name": "canvas-component/select#notifyUi" } }
+        {
+          "name": "show-selection-overlay",
+          "number": 1,
+          "handler": {
+            "name": "canvas-component/select#showSelectionOverlay",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:test:selection-overlay-shown",
+          "scenario": "canvas-component/select#showSelectionOverlay Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/select#showSelectionOverlay.spec.ts",
+          "testCase": "should canvas-component/select#showSelectionOverlay when event published",
+          "userStory": "As a system user, I want the canvas-component/select#showSelectionOverlay operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "hide-selection-overlay",
+          "number": 2,
+          "handler": {
+            "name": "canvas-component/select#hideSelectionOverlay",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:test:selection-overlay-hidden",
+          "scenario": "canvas-component/select#hideSelectionOverlay Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/select#hideSelectionOverlay.spec.ts",
+          "testCase": "should canvas-component/select#hideSelectionOverlay when event published",
+          "userStory": "As a system user, I want the canvas-component/select#hideSelectionOverlay operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "attach-line-resize",
+          "number": 3,
+          "handler": {
+            "name": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:test:line-resize-attached",
+          "scenario": "canvas-component/select.overlay.line-resize#attachLineResizeHandlers Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/select.overlay.line-resize#attachLineResizeHandlers.spec.ts",
+          "testCase": "should canvas-component/select.overlay.line-resize#attachLineResizeHandlers when event published",
+          "userStory": "As a system user, I want the canvas-component/select.overlay.line-resize#attachLineResizeHandlers operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "ensure-line-overlay",
+          "number": 4,
+          "handler": {
+            "name": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:test:line-overlay-ensured",
+          "scenario": "canvas-component/select.overlay.line-resize#ensureLineOverlayFor Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/select.overlay.line-resize#ensureLineOverlayFor.spec.ts",
+          "testCase": "should canvas-component/select.overlay.line-resize#ensureLineOverlayFor when event published",
+          "userStory": "As a system user, I want the canvas-component/select.overlay.line-resize#ensureLineOverlayFor operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "notify-ui",
+          "number": 5,
+          "handler": {
+            "name": "canvas-component/select#notifyUi",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:test:complete",
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/select#notifyUi.spec.ts",
+          "testCase": "should canvas-component/select#notifyUi when event published",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
+        }
       ]
     },
     {
       "number": 4,
       "name": "Delivery",
       "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
+      "userStory": "As a Release Manager, I want to coordinate deployment and publish artifacts so that the application reaches users with minimal downtime.",
+      "persona": "Release Manager",
+      "businessValue": "Enables reliable, repeatable deployments; supports blue-green/canary strategies; reduces deployment risk",
       "orchestration": "pipeline-delivery-execute-symphony",
       "status": "active",
       "beats": [
-        { "name": "export-gif",  "handler": { "name": "canvas-component/export.export.gif#exportSvgToGif" } },
-        { "name": "export-mp4",  "handler": { "name": "canvas-component/export.export.mp4#exportSvgToMp4" } }
+        {
+          "name": "export-gif",
+          "number": 1,
+          "handler": {
+            "name": "canvas-component/export.export.gif#exportSvgToGif",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:delivery:gif-exported",
+          "scenario": "canvas-component/export.export.gif#exportSvgToGif Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/export.export.gif#exportSvgToGif.spec.ts",
+          "testCase": "should canvas-component/export.export.gif#exportSvgToGif when event published",
+          "userStory": "As a system user, I want the canvas-component/export.export.gif#exportSvgToGif operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "export-mp4",
+          "number": 2,
+          "handler": {
+            "name": "canvas-component/export.export.mp4#exportSvgToMp4",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:delivery:complete",
+          "scenario": "canvas-component/export.export.mp4#exportSvgToMp4 Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/canvas-component/export.export.mp4#exportSvgToMp4.spec.ts",
+          "testCase": "should canvas-component/export.export.mp4#exportSvgToMp4 when event published",
+          "userStory": "As a system user, I want the canvas-component/export.export.mp4#exportSvgToMp4 operation to execute reliably so that system functions operate as expected."
+        }
       ]
     },
     {
       "number": 5,
       "name": "Telemetry & Monitoring",
       "description": "Collect and instrument telemetry for observability and SLO tracking",
+      "userStory": "As an Operations Engineer, I want to instrument the pipeline and collect telemetry so that I can monitor performance, detect anomalies, and optimize pipeline efficiency.",
+      "persona": "Operations Engineer",
+      "businessValue": "Enables proactive performance optimization; provides visibility into pipeline health; supports SLA tracking",
       "orchestration": "generate-telemetry-instrumentation-symphony",
       "status": "active",
       "beats": [
-        { "name": "ensure-payload",        "handler": { "name": "library-component/drag.preview#ensurePayload" } },
-        { "name": "compute-ghost-size",    "handler": { "name": "library-component/drag.preview#computeGhostSize" } },
-        { "name": "create-ghost-container", "handler": { "name": "library-component/drag.preview#createGhostContainer" } },
-        { "name": "render-template-preview", "handler": { "name": "library-component/drag.preview#renderTemplatePreview" } },
-        { "name": "apply-template-styles",  "handler": { "name": "library-component/drag.preview#applyTemplateStyles" } },
-        { "name": "compute-cursor-offsets", "handler": { "name": "library-component/drag.preview#computeCursorOffsets" } },
-        { "name": "install-drag-image",     "handler": { "name": "library-component/drag.preview#installDragImage" } }
+        {
+          "name": "ensure-payload",
+          "number": 1,
+          "handler": {
+            "name": "library-component/drag.preview#ensurePayload",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:payload-ensured",
+          "scenario": "library-component/drag.preview#ensurePayload Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#ensurePayload.spec.ts",
+          "testCase": "should library-component/drag.preview#ensurePayload when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#ensurePayload operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "compute-ghost-size",
+          "number": 2,
+          "handler": {
+            "name": "library-component/drag.preview#computeGhostSize",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:ghost-size-computed",
+          "scenario": "library-component/drag.preview#computeGhostSize Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#computeGhostSize.spec.ts",
+          "testCase": "should library-component/drag.preview#computeGhostSize when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#computeGhostSize operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "create-ghost-container",
+          "number": 3,
+          "handler": {
+            "name": "library-component/drag.preview#createGhostContainer",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:ghost-container-created",
+          "scenario": "library-component/drag.preview#createGhostContainer Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#createGhostContainer.spec.ts",
+          "testCase": "should library-component/drag.preview#createGhostContainer when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#createGhostContainer operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "render-template-preview",
+          "number": 4,
+          "handler": {
+            "name": "library-component/drag.preview#renderTemplatePreview",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:template-preview-rendered",
+          "scenario": "library-component/drag.preview#renderTemplatePreview Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#renderTemplatePreview.spec.ts",
+          "testCase": "should library-component/drag.preview#renderTemplatePreview when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#renderTemplatePreview operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "apply-template-styles",
+          "number": 5,
+          "handler": {
+            "name": "library-component/drag.preview#applyTemplateStyles",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:template-styles-applied",
+          "scenario": "library-component/drag.preview#applyTemplateStyles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#applyTemplateStyles.spec.ts",
+          "testCase": "should library-component/drag.preview#applyTemplateStyles when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#applyTemplateStyles operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "compute-cursor-offsets",
+          "number": 6,
+          "handler": {
+            "name": "library-component/drag.preview#computeCursorOffsets",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:cursor-offsets-computed",
+          "scenario": "library-component/drag.preview#computeCursorOffsets Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#computeCursorOffsets.spec.ts",
+          "testCase": "should library-component/drag.preview#computeCursorOffsets when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#computeCursorOffsets operation to execute reliably so that system functions operate as expected."
+        },
+        {
+          "name": "install-drag-image",
+          "number": 7,
+          "handler": {
+            "name": "library-component/drag.preview#installDragImage",
+            "scope": "plugin",
+            "kind": "plugin"
+          },
+          "event": "renderx-web:telemetry:complete",
+          "scenario": "library-component/drag.preview#installDragImage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/library-component/drag.preview#installDragImage.spec.ts",
+          "testCase": "should library-component/drag.preview#installDragImage when event published",
+          "userStory": "As a system user, I want the library-component/drag.preview#installDragImage operation to execute reliably so that system functions operate as expected."
+        }
       ]
     },
     {
       "number": 6,
       "name": "Recovery & Resilience",
       "description": "Enable recovery procedures and resilience mechanisms",
+      "userStory": "As a Platform Reliability Engineer, I want to detect failures and execute automated recovery so that pipeline disruptions are minimized.",
+      "persona": "Platform Reliability Engineer",
+      "businessValue": "Reduces MTTR; enables self-healing pipelines; improves availability SLA",
       "orchestration": "pipeline-recovery-symphony",
-      "status": "available"
+      "status": "available",
+      "beats": [
+        {
+          "name": "establish-recovery-checkpoint",
+          "number": 1,
+          "handler": {
+            "name": "self-healing/baseline#establish",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:recovery:enabled",
+          "scenario": "self-healing/baseline#establish Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/self-healing/baseline#establish.spec.ts",
+          "testCase": "should self-healing/baseline#establish when event published",
+          "userStory": "As a system user, I want the self-healing/baseline#establish operation to execute reliably so that system functions operate as expected."
+        }
+      ]
     }
   ],
   "events": [
@@ -162,5 +643,8 @@
       "renderx",
       "continuous-delivery"
     ]
-  }
+  },
+  "userStory": "RenderX Web Orchestration workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

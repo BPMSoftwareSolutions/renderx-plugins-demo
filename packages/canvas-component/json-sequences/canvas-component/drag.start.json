@@ -14,13 +14,29 @@
           "dynamics": "mf",
           "handler": "startDrag",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "startDrag Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the startDrag operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should start drag"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the startDrag operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "topicMapping": {
     "routeToBase": true
   },
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a system user, I want the startDrag operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

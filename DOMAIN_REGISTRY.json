@@ -98,10 +98,22 @@
     },
     "documentation_links": {
       "core": [
-        {"title": "Monorepo Guidelines", "path": "./MONOREPO.md"},
-        {"title": "Knowledge Layers Architecture", "path": "./KNOWLEDGE_LAYERS_ARCHITECTURE.md"},
-        {"title": "Complete Knowledge System Index", "path": "./COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md"},
-        {"title": "Project Knowledge Query Guide", "path": "./PROJECT_KNOWLEDGE_QUERY_GUIDE.md"}
+        {
+          "title": "Monorepo Guidelines",
+          "path": "./MONOREPO.md"
+        },
+        {
+          "title": "Knowledge Layers Architecture",
+          "path": "./KNOWLEDGE_LAYERS_ARCHITECTURE.md"
+        },
+        {
+          "title": "Complete Knowledge System Index",
+          "path": "./COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md"
+        },
+        {
+          "title": "Project Knowledge Query Guide",
+          "path": "./PROJECT_KNOWLEDGE_QUERY_GUIDE.md"
+        }
       ],
       "governance": {
         "registry": "docs/governance/tools-registry.json",
@@ -110,10 +122,22 @@
       }
     },
     "testing_commands": [
-      {"command": "npm test", "description": "Run all tests"},
-      {"command": "npm run test:coverage", "description": "Generate test coverage"},
-      {"command": "npm run validate:domains", "description": "Run domain validation"},
-      {"command": "npm run audit:full", "description": "Comprehensive audit"}
+      {
+        "command": "npm test",
+        "description": "Run all tests"
+      },
+      {
+        "command": "npm run test:coverage",
+        "description": "Generate test coverage"
+      },
+      {
+        "command": "npm run validate:domains",
+        "description": "Run domain validation"
+      },
+      {
+        "command": "npm run audit:full",
+        "description": "Comprehensive audit"
+      }
     ],
     "packages": [
       "@renderx/host-sdk - Host SDK for plugin integration",
@@ -123,9 +147,18 @@
       "...and more in `packages/`"
     ],
     "domain_analysis_commands": [
-      {"command": "node scripts/analyze-domain.cjs <domain-id>", "description": "Analyze single domain"},
-      {"command": "node scripts/analyze-all-domains.cjs", "description": "Analyze all domains"},
-      {"command": "ls .generated/analysis/", "description": "View analysis results"}
+      {
+        "command": "node scripts/analyze-domain.cjs <domain-id>",
+        "description": "Analyze single domain"
+      },
+      {
+        "command": "node scripts/analyze-all-domains.cjs",
+        "description": "Analyze all domains"
+      },
+      {
+        "command": "ls .generated/analysis/",
+        "description": "View analysis results"
+      }
     ],
     "contributing": {
       "note": "This is a demo repository showcasing the RenderX plugin architecture.",
@@ -166,7 +199,7 @@
     "telemetry-pipeline": {
       "domain_id": "telemetry-pipeline",
       "domain_type": "workflow",
-        "symphonic-code-analysis-demo": {
+      "symphonic-code-analysis-demo": {
         "domain_id": "fractal-orchestration-domain-symphony",
         "domain_type": "orchestration",
         "status": "experimental",
@@ -211,7 +244,9 @@
         "orchestration-core"
       ],
       "checksum": "pending-sequence-governance-computation",
-      "supersedes": ["build-pipeline-symphony"],
+      "supersedes": [
+        "build-pipeline-symphony"
+      ],
       "deprecated": false,
       "ownership": "Platform-DevEx",
       "analysisConfig": {
@@ -1642,8 +1677,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/self_sequences.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1705,8 +1739,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/cag-agent-workflow.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1737,8 +1770,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/orchestration-audit-session.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1769,8 +1801,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/orchestration-audit-system.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1801,8 +1832,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1833,8 +1863,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/product-owner-signoff-demo.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -1897,8 +1926,7 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json"
         ]
-      }
-      ,
+      },
       "analysisConfig": {
         "analysisSourcePath": "scripts",
         "symphoniesRoot": "scripts/symphonies"
@@ -2175,7 +2203,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-11-27T04:07:56.011Z",
+    "last_validation": "2025-11-30T14:47:25.435Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

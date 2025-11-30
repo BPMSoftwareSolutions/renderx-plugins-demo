@@ -8,13 +8,32 @@
       "beats": [
         {
           "name": "scan-conformity",
-          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
+          "handler": {
+            "name": "analysis.discovery#scanOrchestrationFiles"
+          },
           "notes": [
             "Bootstrap the conformity alignment domain",
             "Scan orchestration files to validate structure"
-          ]
+          ],
+          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
+          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want bootstrap so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "symphonia-conformity-alignment-pipeline workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

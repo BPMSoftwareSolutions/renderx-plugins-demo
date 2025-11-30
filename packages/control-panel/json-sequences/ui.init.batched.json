@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "initConfig",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "initConfig Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/init-config.test.ts",
+          "testCase": "should init config",
+          "userStory": "As a system user, I want the initConfig operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -23,7 +35,19 @@
           "dynamics": "mf",
           "handler": "initResolver",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "initResolver Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/init-resolver.test.ts",
+          "testCase": "should init resolver",
+          "userStory": "As a system user, I want the initResolver operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -32,7 +56,19 @@
           "dynamics": "mf",
           "handler": "loadSchemas",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "loadSchemas Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/load-schemas.test.ts",
+          "testCase": "should load schemas",
+          "userStory": "As a system user, I want the loadSchemas operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -41,7 +77,19 @@
           "dynamics": "mf",
           "handler": "registerObservers",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "registerObservers Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/register-observers.test.ts",
+          "testCase": "should register observers",
+          "userStory": "As a system user, I want the registerObservers operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -50,7 +98,19 @@
           "dynamics": "mf",
           "handler": "notifyReady",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "notifyReady Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/notify-ready.test.ts",
+          "testCase": "should notify ready",
+          "userStory": "As a system user, I want the notifyReady operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -59,11 +119,29 @@
           "dynamics": "mf",
           "handler": "initMovement",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 6,
+          "scenario": "initMovement Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/init-movement.test.ts",
+          "testCase": "should init movement",
+          "userStory": "As a system user, I want the initMovement operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Init so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 6,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel UI Init (Batched) workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

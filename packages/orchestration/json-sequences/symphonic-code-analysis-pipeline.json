@@ -31,30 +31,77 @@
           "description": "Scan JSON sequences and identify beat definitions, handlers, and event mappings",
           "handler": {
             "name": "analysis.discovery#scanOrchestrationFiles"
-          }
+          },
+          "scenario": "analysis.discovery#scanOrchestrationFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#scanOrchestrationFiles.spec.ts",
+          "testCase": "should analysis.discovery#scanOrchestrationFiles when event published",
+          "userStory": "As a system user, I want the analysis.discovery#scanOrchestrationFiles operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "discover-source-code",
           "description": "Discover all TypeScript/JavaScript implementation files matching beat handlers",
           "handler": {
             "name": "analysis.discovery#discoverSourceCode"
-          }
+          },
+          "scenario": "analysis.discovery#discoverSourceCode Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#discoverSourceCode.spec.ts",
+          "testCase": "should analysis.discovery#discoverSourceCode when event published",
+          "userStory": "As a system user, I want the analysis.discovery#discoverSourceCode operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "map-beats-to-code",
           "description": "Create beat-to-handler-to-source-file mapping for correlation",
           "handler": {
             "name": "analysis.discovery#mapBeatsToCode"
-          }
+          },
+          "scenario": "analysis.discovery#mapBeatsToCode Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#mapBeatsToCode.spec.ts",
+          "testCase": "should analysis.discovery#mapBeatsToCode when event published",
+          "userStory": "As a system user, I want the analysis.discovery#mapBeatsToCode operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "collect-baseline",
           "description": "Establish baseline metrics for comparison and trend analysis",
           "handler": {
             "name": "analysis.discovery#collectBaseline"
-          }
+          },
+          "scenario": "analysis.discovery#collectBaseline Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.discovery#collectBaseline.spec.ts",
+          "testCase": "should analysis.discovery#collectBaseline when event published",
+          "userStory": "As a system user, I want the analysis.discovery#collectBaseline operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Code Discovery & Beat Mapping so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Code Metrics Analysis",
@@ -65,30 +112,77 @@
           "description": "Calculate LOC per beat, per movement, and per orchestration domain",
           "handler": {
             "name": "analysis.metrics#countLinesOfCode"
-          }
+          },
+          "scenario": "analysis.metrics#countLinesOfCode Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.metrics#countLinesOfCode.spec.ts",
+          "testCase": "should analysis.metrics#countLinesOfCode when event published",
+          "userStory": "As a system user, I want the analysis.metrics#countLinesOfCode operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "analyze-complexity",
           "description": "Calculate cyclomatic complexity, cognitive complexity per beat handler",
           "handler": {
             "name": "analysis.metrics#analyzeComplexity"
-          }
+          },
+          "scenario": "analysis.metrics#analyzeComplexity Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.metrics#analyzeComplexity.spec.ts",
+          "testCase": "should analysis.metrics#analyzeComplexity when event published",
+          "userStory": "As a system user, I want the analysis.metrics#analyzeComplexity operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "detect-duplication",
           "description": "Identify code duplication patterns and calculate duplication percentage",
           "handler": {
             "name": "analysis.metrics#detectDuplication"
-          }
+          },
+          "scenario": "analysis.metrics#detectDuplication Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.metrics#detectDuplication.spec.ts",
+          "testCase": "should analysis.metrics#detectDuplication when event published",
+          "userStory": "As a system user, I want the analysis.metrics#detectDuplication operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "calculate-maintainability",
           "description": "Compute maintainability index and technical debt score per module",
           "handler": {
             "name": "analysis.metrics#calculateMaintainability"
-          }
+          },
+          "scenario": "analysis.metrics#calculateMaintainability Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.metrics#calculateMaintainability.spec.ts",
+          "testCase": "should analysis.metrics#calculateMaintainability when event published",
+          "userStory": "As a system user, I want the analysis.metrics#calculateMaintainability operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Code Metrics Analysis so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Test Coverage Analysis",
@@ -99,30 +193,77 @@
           "description": "Identify test files and calculate statement coverage with beat correlation",
           "handler": {
             "name": "analysis.coverage#measureStatementCoverage"
-          }
+          },
+          "scenario": "analysis.coverage#measureStatementCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.coverage#measureStatementCoverage.spec.ts",
+          "testCase": "should analysis.coverage#measureStatementCoverage when event published",
+          "userStory": "As a system user, I want the analysis.coverage#measureStatementCoverage operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "measure-branch-coverage",
           "description": "Calculate branch coverage (if/else, switch paths) per beat",
           "handler": {
             "name": "analysis.coverage#measureBranchCoverage"
-          }
+          },
+          "scenario": "analysis.coverage#measureBranchCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.coverage#measureBranchCoverage.spec.ts",
+          "testCase": "should analysis.coverage#measureBranchCoverage when event published",
+          "userStory": "As a system user, I want the analysis.coverage#measureBranchCoverage operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "measure-function-coverage",
           "description": "Calculate function call coverage and handler execution coverage",
           "handler": {
             "name": "analysis.coverage#measureFunctionCoverage"
-          }
+          },
+          "scenario": "analysis.coverage#measureFunctionCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.coverage#measureFunctionCoverage.spec.ts",
+          "testCase": "should analysis.coverage#measureFunctionCoverage when event published",
+          "userStory": "As a system user, I want the analysis.coverage#measureFunctionCoverage operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "calculate-gap-analysis",
           "description": "Identify uncovered code and test gaps aligned with beats",
           "handler": {
             "name": "analysis.coverage#calculateGapAnalysis"
-          }
+          },
+          "scenario": "analysis.coverage#calculateGapAnalysis Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.coverage#calculateGapAnalysis.spec.ts",
+          "testCase": "should analysis.coverage#calculateGapAnalysis when event published",
+          "userStory": "As a system user, I want the analysis.coverage#calculateGapAnalysis operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a QA Validator, I want to execute comprehensive tests and validate compliance so that only high-quality builds proceed to production.",
+      "persona": "QA Validator",
+      "businessValue": "Detects regressions; validates architecture governance; prevents non-compliant code deployment"
     },
     {
       "name": "Architecture Conformity & Reporting",
@@ -133,33 +274,79 @@
           "description": "Verify all beats have handlers and handlers have corresponding implementation",
           "handler": {
             "name": "analysis.conformity#validateHandlerMapping"
-          }
+          },
+          "scenario": "analysis.conformity#validateHandlerMapping Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#validateHandlerMapping.spec.ts",
+          "testCase": "should analysis.conformity#validateHandlerMapping when event published",
+          "userStory": "As a system user, I want the analysis.conformity#validateHandlerMapping operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "calculate-conformity-score",
           "description": "Synthesize all metrics into orchestration conformity and fractal architecture score (0-1)",
           "handler": {
             "name": "analysis.conformity#calculateConformityScore"
-          }
+          },
+          "scenario": "analysis.conformity#calculateConformityScore Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#calculateConformityScore.spec.ts",
+          "testCase": "should analysis.conformity#calculateConformityScore when event published",
+          "userStory": "As a system user, I want the analysis.conformity#calculateConformityScore operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "generate-trend-report",
           "description": "Compare current metrics to historical baselines and project trends",
           "handler": {
             "name": "analysis.conformity#generateTrendReport"
-          }
+          },
+          "scenario": "analysis.conformity#generateTrendReport Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#generateTrendReport.spec.ts",
+          "testCase": "should analysis.conformity#generateTrendReport when event published",
+          "userStory": "As a system user, I want the analysis.conformity#generateTrendReport operation to execute reliably so that system functions operate as expected."
         },
         {
           "name": "generate-analysis-report",
           "description": "Produce final markdown report with all metrics, diagrams, and recommendations",
           "handler": {
             "name": "analysis.conformity#generateAnalysisReport"
-          }
+          },
+          "scenario": "analysis.conformity#generateAnalysisReport Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/analysis.conformity#generateAnalysisReport.spec.ts",
+          "testCase": "should analysis.conformity#generateAnalysisReport when event published",
+          "userStory": "As a system user, I want the analysis.conformity#generateAnalysisReport operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Architecture Conformity & Reporting so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
-  ,
+  ],
   "analysisMetrics": {
     "codeMetrics": {
       "linesOfCode": {
@@ -270,22 +457,86 @@
   },
   "implementation": {
     "bindings": [
-      { "beat": 1, "handler": "analysis.discovery#scanOrchestrationFiles", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 2, "handler": "analysis.discovery#discoverSourceCode", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 3, "handler": "analysis.discovery#mapBeatsToCode", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 4, "handler": "analysis.discovery#collectBaseline", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 5, "handler": "analysis.metrics#countLinesOfCode", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 6, "handler": "analysis.metrics#analyzeComplexity", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 7, "handler": "analysis.metrics#detectDuplication", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 8, "handler": "analysis.metrics#calculateMaintainability", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 9, "handler": "analysis.coverage#measureStatementCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 10, "handler": "analysis.coverage#measureBranchCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 11, "handler": "analysis.coverage#measureFunctionCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 12, "handler": "analysis.coverage#calculateGapAnalysis", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 13, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 14, "handler": "analysis.conformity#calculateConformityScore", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 15, "handler": "analysis.conformity#generateTrendReport", "script": "scripts/analyze-symphonic-code.cjs" },
-      { "beat": 16, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/analyze-symphonic-code.cjs" }
+      {
+        "beat": 1,
+        "handler": "analysis.discovery#scanOrchestrationFiles",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 2,
+        "handler": "analysis.discovery#discoverSourceCode",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 3,
+        "handler": "analysis.discovery#mapBeatsToCode",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 4,
+        "handler": "analysis.discovery#collectBaseline",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 5,
+        "handler": "analysis.metrics#countLinesOfCode",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 6,
+        "handler": "analysis.metrics#analyzeComplexity",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 7,
+        "handler": "analysis.metrics#detectDuplication",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 8,
+        "handler": "analysis.metrics#calculateMaintainability",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 9,
+        "handler": "analysis.coverage#measureStatementCoverage",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 10,
+        "handler": "analysis.coverage#measureBranchCoverage",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 11,
+        "handler": "analysis.coverage#measureFunctionCoverage",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 12,
+        "handler": "analysis.coverage#calculateGapAnalysis",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 13,
+        "handler": "analysis.conformity#validateHandlerMapping",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 14,
+        "handler": "analysis.conformity#calculateConformityScore",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 15,
+        "handler": "analysis.conformity#generateTrendReport",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      },
+      {
+        "beat": 16,
+        "handler": "analysis.conformity#generateAnalysisReport",
+        "script": "scripts/analyze-symphonic-code.cjs"
+      }
     ]
   },
   "events": [
@@ -296,12 +547,34 @@
     "analysis.conformity.completed",
     "analysis.reporting.completed",
     "movement-4:fractal-architecture-analyzed"
-  ]
-  ,
+  ],
   "beatDetails": [
-    { "movement": 4, "number": 1, "name": "validate-handler-mapping", "description": "Validate handler-to-beat mapping across orchestration domains" },
-    { "movement": 4, "number": 2, "name": "fractal-architecture-evaluation", "description": "Evaluate fractal architecture alignment and compute conformity scores" },
-    { "movement": 4, "number": 3, "name": "generate-trend-report", "description": "Generate trend report comparing current metrics to baseline" },
-    { "movement": 4, "number": 4, "name": "generate-analysis-report", "description": "Produce final analysis report and artifacts" }
-  ]
+    {
+      "movement": 4,
+      "number": 1,
+      "name": "validate-handler-mapping",
+      "description": "Validate handler-to-beat mapping across orchestration domains"
+    },
+    {
+      "movement": 4,
+      "number": 2,
+      "name": "fractal-architecture-evaluation",
+      "description": "Evaluate fractal architecture alignment and compute conformity scores"
+    },
+    {
+      "movement": 4,
+      "number": 3,
+      "name": "generate-trend-report",
+      "description": "Generate trend report comparing current metrics to baseline"
+    },
+    {
+      "movement": 4,
+      "number": 4,
+      "name": "generate-analysis-report",
+      "description": "Produce final analysis report and artifacts"
+    }
+  ],
+  "userStory": "Symphonic Code Analysis Pipeline workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

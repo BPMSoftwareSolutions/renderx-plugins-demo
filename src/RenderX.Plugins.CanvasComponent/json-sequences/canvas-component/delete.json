@@ -19,7 +19,17 @@
             "id": "canvas-component-delete-symphony.deletecomponent.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "deleteComponent Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the deleteComponent operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should delete component"
         },
         {
           "beat": 2,
@@ -33,9 +43,25 @@
             "id": "canvas-component-delete-symphony.publishdeleted.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "publishDeleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the publishDeleted operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should publish deleted"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the deleteComponent operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "As a system user, I want the deleteComponent operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

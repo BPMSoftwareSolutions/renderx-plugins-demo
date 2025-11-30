@@ -19,7 +19,19 @@
             "id": "control-panel-css-delete-symphony.deletecssclass.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "Delete CSS Rule",
+          "acceptanceCriteria": [
+            "System removes the specified CSS rule from the stylesheet",
+            "Affected elements revert to inherited or default styles immediately",
+            "System prevents deletion of system-critical CSS rules",
+            "Deletion is logged and tracked for audit purposes",
+            "DOM elements are not removed, only their styling is reverted"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/deleteCssClassTests.cs",
+          "testCase": "Should_deleteCssClass_When_ConfigurationProvided",
+          "userStory": "As a configuration administrator, I want to remove CSS rules that are no longer needed so that I can keep the stylesheet clean and manageable."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-css-delete-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
+          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Delete CSS Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel CSS Delete workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

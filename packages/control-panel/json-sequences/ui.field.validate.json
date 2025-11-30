@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "validateField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "validateField Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/validate-field.test.ts",
+          "testCase": "should validate field",
+          "userStory": "As a system user, I want the validateField operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -23,7 +35,19 @@
           "dynamics": "mf",
           "handler": "mergeErrors",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "mergeErrors Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/merge-errors.test.ts",
+          "testCase": "should merge errors",
+          "userStory": "As a system user, I want the mergeErrors operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -32,11 +56,29 @@
           "dynamics": "mf",
           "handler": "updateView",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "updateView Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/update-view.test.ts",
+          "testCase": "should update view",
+          "userStory": "As a system user, I want the updateView operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Field Validate so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 3,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel UI Field Validate workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

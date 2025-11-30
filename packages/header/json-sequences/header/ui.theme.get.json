@@ -14,7 +14,17 @@
           "dynamics": "mf",
           "handler": "getCurrentTheme",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "getCurrentTheme Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should get current theme"
         },
         {
           "beat": 2,
@@ -23,10 +33,26 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions.",
+          "testCase": "should notify ui"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As a system user, I want the getCurrentTheme operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

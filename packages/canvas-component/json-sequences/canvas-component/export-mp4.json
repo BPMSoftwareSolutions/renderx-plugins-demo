@@ -14,10 +14,26 @@
           "dynamics": "mf",
           "handler": "exportSvgToMp4",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "exportSvgToMp4 Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the exportSvgToMp4 operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should export svg to mp4"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the exportSvgToMp4 operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a system user, I want the exportSvgToMp4 operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

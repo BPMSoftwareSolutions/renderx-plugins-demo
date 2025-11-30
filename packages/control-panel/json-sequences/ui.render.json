@@ -14,7 +14,20 @@
           "dynamics": "mf",
           "handler": "generateFields",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Generate Form Fields from Configuration",
+          "acceptanceCriteria": [
+            "System loads field configuration (type, label, validation rules) from metadata",
+            "Field DOM elements are created with correct input types (text, email, select, checkbox, etc.)",
+            "Each field includes accessible labels, placeholders, and help text as configured",
+            "Field validation rules are attached as event listeners or constraints",
+            "Generated fields are rendered in the correct order with proper visual hierarchy",
+            "System emits 'fields.generated' event when all fields are created"
+          ],
+          "testFile": "packages/control-panel/__tests__/generate-fields.test.ts",
+          "testCase": "should generate fields",
+          "userStory": "As a form builder, I want to generate form fields dynamically from configuration metadata so that I can create complex multi-field forms without manual DOM construction."
         },
         {
           "beat": 2,
@@ -23,7 +36,20 @@
           "dynamics": "mf",
           "handler": "generateSections",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "Generate UI Sections from Configuration",
+          "acceptanceCriteria": [
+            "System loads section configuration (title, description, collapsible state) from metadata",
+            "Section DOM structure is created with proper semantic HTML",
+            "Section headers, descriptions, and icons are rendered per configuration",
+            "Sections support collapse/expand functionality when configured",
+            "Sections maintain visual grouping and hierarchy in the rendered UI",
+            "System emits 'sections.generated' event when all sections are created"
+          ],
+          "testFile": "packages/control-panel/__tests__/generate-sections.test.ts",
+          "testCase": "should generate sections",
+          "userStory": "As a form organizer, I want to group form fields into collapsible sections so that users can focus on one logical group at a time."
         },
         {
           "beat": 3,
@@ -32,11 +58,30 @@
           "dynamics": "mf",
           "handler": "renderView",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "Render Complete Control Panel View",
+          "acceptanceCriteria": [
+            "System renders all configured sections, fields, and controls without errors",
+            "All accessibility attributes (aria-label, aria-describedby, role) are present",
+            "CSS styling is applied correctly and rendered elements are visually consistent",
+            "Form is responsive and adapts correctly to different screen sizes",
+            "Event listeners for user interactions are properly attached and functional",
+            "System emits 'view.rendered' event when rendering is complete"
+          ],
+          "testFile": "packages/control-panel/__tests__/render-view.test.ts",
+          "testCase": "should render view",
+          "userStory": "As an end user, I want the control panel to render completely and correctly so that I can interact with the form without visual glitches or functional issues."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Render so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 3,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel UI Render workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

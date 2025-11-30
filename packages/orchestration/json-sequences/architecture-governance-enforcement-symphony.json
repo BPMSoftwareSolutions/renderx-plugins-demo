@@ -61,21 +61,36 @@
         {
           "number": 1,
           "event": "movement-1:json-validation:started",
-          "handler": { "name": "governance.handlers#validateJSONSchemaStructure" },
+          "handler": {
+            "name": "governance.handlers#validateJSONSchemaStructure"
+          },
           "kind": "validation",
           "timing": "immediate",
-	          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
-	          "reference": "docs/schemas/musical-sequence.schema.json, orchestration-domains.json, all json-sequences/*.json",
+          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
+          "reference": "docs/schemas/musical-sequence.schema.json, orchestration-domains.json, all json-sequences/*.json",
           "handlerDef": {
             "id": "architecture-governance-enforcement-symphony.validatejsonschemastructure.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#validateJSONSchemaStructure Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#validateJSONSchemaStructure.spec.ts",
+          "testCase": "should governance.handlers#validateJSONSchemaStructure when event published",
+          "userStory": "As a system user, I want the governance.handlers#validateJSONSchemaStructure operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-1:orchestration-domains:validated",
-          "handler": { "name": "governance.handlers#validateOrchestrationDomainsRegistry" },
+          "handler": {
+            "name": "governance.handlers#validateOrchestrationDomainsRegistry"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate orchestration-domains.json has all required fields and correct structure",
@@ -83,12 +98,25 @@
             "id": "architecture-governance-enforcement-symphony.validateorchestrationdomainsregistry.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#validateOrchestrationDomainsRegistry Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#validateOrchestrationDomainsRegistry.spec.ts",
+          "testCase": "should governance.handlers#validateOrchestrationDomainsRegistry when event published",
+          "userStory": "As a system user, I want the governance.handlers#validateOrchestrationDomainsRegistry operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-1:symphony-files:validated",
-          "handler": { "name": "governance.handlers#validateSymphonyFiles" },
+          "handler": {
+            "name": "governance.handlers#validateSymphonyFiles"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)",
@@ -96,12 +124,25 @@
             "id": "architecture-governance-enforcement-symphony.validatesymphonyfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#validateSymphonyFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#validateSymphonyFiles.spec.ts",
+          "testCase": "should governance.handlers#validateSymphonyFiles when event published",
+          "userStory": "As a system user, I want the governance.handlers#validateSymphonyFiles operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-1:schema-section:validated",
-          "handler": { "name": "governance.handlers#validateSchemaSection" },
+          "handler": {
+            "name": "governance.handlers#validateSchemaSection"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate schema section exists and defines movement/beat/event requirements",
@@ -109,12 +150,25 @@
             "id": "architecture-governance-enforcement-symphony.validateschemasection.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#validateSchemaSection Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#validateSchemaSection.spec.ts",
+          "testCase": "should governance.handlers#validateSchemaSection when event published",
+          "userStory": "As a system user, I want the governance.handlers#validateSchemaSection operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-1:json-validation:complete",
-          "handler": { "name": "governance.handlers#reportJSONValidation" },
+          "handler": {
+            "name": "governance.handlers#reportJSONValidation"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report validation results; fail if schema invalid",
@@ -122,9 +176,23 @@
             "id": "architecture-governance-enforcement-symphony.reportjsonvalidation.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#reportJSONValidation Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#reportJSONValidation.spec.ts",
+          "testCase": "should governance.handlers#reportJSONValidation when event published",
+          "userStory": "As a system user, I want the governance.handlers#reportJSONValidation operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want JSON Schema Validation so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Handler-to-Beat Mapping Verification",
@@ -135,7 +203,9 @@
         {
           "number": 1,
           "event": "movement-2:handler-mapping:started",
-          "handler": { "name": "governance.handlers#startHandlerMappingVerification" },
+          "handler": {
+            "name": "governance.handlers#startHandlerMappingVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin handler-to-beat mapping verification process",
@@ -143,12 +213,25 @@
             "id": "architecture-governance-enforcement-symphony.starthandlermappingverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#startHandlerMappingVerification Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startHandlerMappingVerification.spec.ts",
+          "testCase": "should governance.handlers#startHandlerMappingVerification when event published",
+          "userStory": "As a system user, I want the governance.handlers#startHandlerMappingVerification operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-2:handlers:loaded",
-          "handler": { "name": "governance.handlers#loadHandlerImplementations" },
+          "handler": {
+            "name": "governance.handlers#loadHandlerImplementations"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all handler implementations from scripts/build-symphony-handlers.js",
@@ -156,12 +239,25 @@
             "id": "architecture-governance-enforcement-symphony.loadhandlerimplementations.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#loadHandlerImplementations Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#loadHandlerImplementations.spec.ts",
+          "testCase": "should governance.handlers#loadHandlerImplementations when event published",
+          "userStory": "As a system user, I want the governance.handlers#loadHandlerImplementations operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-2:beats-indexed",
-          "handler": { "name": "governance.handlers#indexBeatsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#indexBeatsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all beats and their handler references from symphony JSON files",
@@ -169,12 +265,25 @@
             "id": "architecture-governance-enforcement-symphony.indexbeatsfromjson.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#indexBeatsFromJSON Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#indexBeatsFromJSON.spec.ts",
+          "testCase": "should governance.handlers#indexBeatsFromJSON when event published",
+          "userStory": "As a system user, I want the governance.handlers#indexBeatsFromJSON operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-2:mapping-verified",
-          "handler": { "name": "governance.handlers#verifyBeatHandlerMapping" },
+          "handler": {
+            "name": "governance.handlers#verifyBeatHandlerMapping"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify every beat has corresponding handler; collect mapping violations",
@@ -182,12 +291,25 @@
             "id": "architecture-governance-enforcement-symphony.verifybeathandlermapping.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#verifyBeatHandlerMapping Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#verifyBeatHandlerMapping.spec.ts",
+          "testCase": "should governance.handlers#verifyBeatHandlerMapping when event published",
+          "userStory": "As a system user, I want the governance.handlers#verifyBeatHandlerMapping operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-2:orphans-detected",
-          "handler": { "name": "governance.handlers#detectOrphanHandlers" },
+          "handler": {
+            "name": "governance.handlers#detectOrphanHandlers"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find handlers in code that are not referenced by any beat",
@@ -195,12 +317,25 @@
             "id": "architecture-governance-enforcement-symphony.detectorphanhandlers.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#detectOrphanHandlers Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#detectOrphanHandlers.spec.ts",
+          "testCase": "should governance.handlers#detectOrphanHandlers when event published",
+          "userStory": "As a system user, I want the governance.handlers#detectOrphanHandlers operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 6,
           "event": "movement-2:handler-mapping:complete",
-          "handler": { "name": "governance.handlers#reportHandlerMapping" },
+          "handler": {
+            "name": "governance.handlers#reportHandlerMapping"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report handler mapping status; fail if violations found",
@@ -208,9 +343,23 @@
             "id": "architecture-governance-enforcement-symphony.reporthandlermapping.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#reportHandlerMapping Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#reportHandlerMapping.spec.ts",
+          "testCase": "should governance.handlers#reportHandlerMapping when event published",
+          "userStory": "As a system user, I want the governance.handlers#reportHandlerMapping operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Handler-to-Beat Mapping Verification so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Test Coverage Verification",
@@ -221,7 +370,9 @@
         {
           "number": 1,
           "event": "movement-3:test-coverage:started",
-          "handler": { "name": "governance.handlers#startTestCoverageVerification" },
+          "handler": {
+            "name": "governance.handlers#startTestCoverageVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin test coverage verification process",
@@ -229,12 +380,25 @@
             "id": "architecture-governance-enforcement-symphony.starttestcoverageverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#startTestCoverageVerification Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startTestCoverageVerification.spec.ts",
+          "testCase": "should governance.handlers#startTestCoverageVerification when event published",
+          "userStory": "As a system user, I want the governance.handlers#startTestCoverageVerification operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-3:beats-catalogued",
-          "handler": { "name": "governance.handlers#catalogBeatsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#catalogBeatsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create exhaustive catalog of all beats and events in symphony JSON",
@@ -242,12 +406,25 @@
             "id": "architecture-governance-enforcement-symphony.catalogbeatsfromjson.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#catalogBeatsFromJSON Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#catalogBeatsFromJSON.spec.ts",
+          "testCase": "should governance.handlers#catalogBeatsFromJSON when event published",
+          "userStory": "As a system user, I want the governance.handlers#catalogBeatsFromJSON operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-3:tests-indexed",
-          "handler": { "name": "governance.handlers#indexTestFiles" },
+          "handler": {
+            "name": "governance.handlers#indexTestFiles"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all test files and their test descriptions (from .spec.ts)",
@@ -255,12 +432,25 @@
             "id": "architecture-governance-enforcement-symphony.indextestfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#indexTestFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#indexTestFiles.spec.ts",
+          "testCase": "should governance.handlers#indexTestFiles when event published",
+          "userStory": "As a system user, I want the governance.handlers#indexTestFiles operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-3:coverage-analyzed",
-          "handler": { "name": "governance.handlers#analyzeTestCoverage" },
+          "handler": {
+            "name": "governance.handlers#analyzeTestCoverage"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Analyze coverage: which beats have tests, which don't",
@@ -268,12 +458,25 @@
             "id": "architecture-governance-enforcement-symphony.analyzetestcoverage.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#analyzeTestCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#analyzeTestCoverage.spec.ts",
+          "testCase": "should governance.handlers#analyzeTestCoverage when event published",
+          "userStory": "As a system user, I want the governance.handlers#analyzeTestCoverage operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-3:uncovered-beats-identified",
-          "handler": { "name": "governance.handlers#identifyUncoveredBeats" },
+          "handler": {
+            "name": "governance.handlers#identifyUncoveredBeats"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Identify beats lacking test coverage; collect list",
@@ -281,12 +484,25 @@
             "id": "architecture-governance-enforcement-symphony.identifyuncoveredbeats.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#identifyUncoveredBeats Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#identifyUncoveredBeats.spec.ts",
+          "testCase": "should governance.handlers#identifyUncoveredBeats when event published",
+          "userStory": "As a system user, I want the governance.handlers#identifyUncoveredBeats operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 6,
           "event": "movement-3:test-coverage:complete",
-          "handler": { "name": "governance.handlers#reportTestCoverage" },
+          "handler": {
+            "name": "governance.handlers#reportTestCoverage"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report test coverage percentage and violations",
@@ -294,9 +510,23 @@
             "id": "architecture-governance-enforcement-symphony.reporttestcoverage.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#reportTestCoverage Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#reportTestCoverage.spec.ts",
+          "testCase": "should governance.handlers#reportTestCoverage when event published",
+          "userStory": "As a system user, I want the governance.handlers#reportTestCoverage operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a QA Validator, I want to execute comprehensive tests and validate compliance so that only high-quality builds proceed to production.",
+      "persona": "QA Validator",
+      "businessValue": "Detects regressions; validates architecture governance; prevents non-compliant code deployment"
     },
     {
       "name": "Markdown Consistency Verification",
@@ -307,7 +537,9 @@
         {
           "number": 1,
           "event": "movement-4:markdown-consistency:started",
-          "handler": { "name": "governance.handlers#startMarkdownConsistencyCheck" },
+          "handler": {
+            "name": "governance.handlers#startMarkdownConsistencyCheck"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin markdown consistency verification process",
@@ -315,12 +547,25 @@
             "id": "architecture-governance-enforcement-symphony.startmarkdownconsistencycheck.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#startMarkdownConsistencyCheck Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts",
+          "testCase": "should governance.handlers#startMarkdownConsistencyCheck when event published",
+          "userStory": "As a system user, I want the governance.handlers#startMarkdownConsistencyCheck operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-4:facts-extracted",
-          "handler": { "name": "governance.handlers#extractFactsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#extractFactsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Extract key facts from JSON: movement count, beat count, event count, handler names",
@@ -328,12 +573,25 @@
             "id": "architecture-governance-enforcement-symphony.extractfactsfromjson.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#extractFactsFromJSON Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#extractFactsFromJSON.spec.ts",
+          "testCase": "should governance.handlers#extractFactsFromJSON when event published",
+          "userStory": "As a system user, I want the governance.handlers#extractFactsFromJSON operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-4:markdown-files:identified",
-          "handler": { "name": "governance.handlers#identifyMarkdownFiles" },
+          "handler": {
+            "name": "governance.handlers#identifyMarkdownFiles"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Find all markdown files that reference symphonia",
@@ -341,12 +599,25 @@
             "id": "architecture-governance-enforcement-symphony.identifymarkdownfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#identifyMarkdownFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#identifyMarkdownFiles.spec.ts",
+          "testCase": "should governance.handlers#identifyMarkdownFiles when event published",
+          "userStory": "As a system user, I want the governance.handlers#identifyMarkdownFiles operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-4:facts-verified",
-          "handler": { "name": "governance.handlers#verifyFactsInMarkdown" },
+          "handler": {
+            "name": "governance.handlers#verifyFactsInMarkdown"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Check if JSON facts are mentioned in markdown correctly",
@@ -354,12 +625,25 @@
             "id": "architecture-governance-enforcement-symphony.verifyfactsinmarkdown.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#verifyFactsInMarkdown Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#verifyFactsInMarkdown.spec.ts",
+          "testCase": "should governance.handlers#verifyFactsInMarkdown when event published",
+          "userStory": "As a system user, I want the governance.handlers#verifyFactsInMarkdown operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-4:contradictions-detected",
-          "handler": { "name": "governance.handlers#detectMarkdownContradictions" },
+          "handler": {
+            "name": "governance.handlers#detectMarkdownContradictions"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find statements in markdown that contradict JSON",
@@ -367,12 +651,25 @@
             "id": "architecture-governance-enforcement-symphony.detectmarkdowncontradictions.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#detectMarkdownContradictions Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#detectMarkdownContradictions.spec.ts",
+          "testCase": "should governance.handlers#detectMarkdownContradictions when event published",
+          "userStory": "As a system user, I want the governance.handlers#detectMarkdownContradictions operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 6,
           "event": "movement-4:markdown-consistency:complete",
-          "handler": { "name": "governance.handlers#reportMarkdownConsistency" },
+          "handler": {
+            "name": "governance.handlers#reportMarkdownConsistency"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report markdown consistency score and contradictions",
@@ -380,9 +677,23 @@
             "id": "architecture-governance-enforcement-symphony.reportmarkdownconsistency.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#reportMarkdownConsistency Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#reportMarkdownConsistency.spec.ts",
+          "testCase": "should governance.handlers#reportMarkdownConsistency when event published",
+          "userStory": "As a system user, I want the governance.handlers#reportMarkdownConsistency operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Markdown Consistency Verification so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Auditability Chain Verification",
@@ -393,7 +704,9 @@
         {
           "number": 1,
           "event": "movement-5:auditability:started",
-          "handler": { "name": "governance.handlers#startAuditabilityVerification" },
+          "handler": {
+            "name": "governance.handlers#startAuditabilityVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin auditability chain verification process",
@@ -401,12 +714,25 @@
             "id": "architecture-governance-enforcement-symphony.startauditabilityverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#startAuditabilityVerification Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startAuditabilityVerification.spec.ts",
+          "testCase": "should governance.handlers#startAuditabilityVerification when event published",
+          "userStory": "As a system user, I want the governance.handlers#startAuditabilityVerification operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-5:json-definitions:loaded",
-          "handler": { "name": "governance.handlers#loadJSONDefinitions" },
+          "handler": {
+            "name": "governance.handlers#loadJSONDefinitions"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all JSON definitions as the starting point",
@@ -414,12 +740,25 @@
             "id": "architecture-governance-enforcement-symphony.loadjsondefinitions.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#loadJSONDefinitions Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#loadJSONDefinitions.spec.ts",
+          "testCase": "should governance.handlers#loadJSONDefinitions when event published",
+          "userStory": "As a system user, I want the governance.handlers#loadJSONDefinitions operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-5:code-mappings:created",
-          "handler": { "name": "governance.handlers#createCodeMappings" },
+          "handler": {
+            "name": "governance.handlers#createCodeMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Code handler",
@@ -427,12 +766,25 @@
             "id": "architecture-governance-enforcement-symphony.createcodemappings.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#createCodeMappings Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#createCodeMappings.spec.ts",
+          "testCase": "should governance.handlers#createCodeMappings when event published",
+          "userStory": "As a system user, I want the governance.handlers#createCodeMappings operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-5:test-mappings:created",
-          "handler": { "name": "governance.handlers#createTestMappings" },
+          "handler": {
+            "name": "governance.handlers#createTestMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Test coverage",
@@ -440,12 +792,25 @@
             "id": "architecture-governance-enforcement-symphony.createtestmappings.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#createTestMappings Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#createTestMappings.spec.ts",
+          "testCase": "should governance.handlers#createTestMappings when event published",
+          "userStory": "As a system user, I want the governance.handlers#createTestMappings operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-5:markdown-mappings:created",
-          "handler": { "name": "governance.handlers#createMarkdownMappings" },
+          "handler": {
+            "name": "governance.handlers#createMarkdownMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON fact → Markdown mention",
@@ -453,12 +818,25 @@
             "id": "architecture-governance-enforcement-symphony.createmarkdownmappings.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#createMarkdownMappings Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#createMarkdownMappings.spec.ts",
+          "testCase": "should governance.handlers#createMarkdownMappings when event published",
+          "userStory": "As a system user, I want the governance.handlers#createMarkdownMappings operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 6,
           "event": "movement-5:chain-completeness:verified",
-          "handler": { "name": "governance.handlers#verifyChainCompleteness" },
+          "handler": {
+            "name": "governance.handlers#verifyChainCompleteness"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify complete traceability for all definitions",
@@ -466,12 +844,25 @@
             "id": "architecture-governance-enforcement-symphony.verifychaincompleteness.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#verifyChainCompleteness Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#verifyChainCompleteness.spec.ts",
+          "testCase": "should governance.handlers#verifyChainCompleteness when event published",
+          "userStory": "As a system user, I want the governance.handlers#verifyChainCompleteness operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 7,
           "event": "movement-5:auditability:complete",
-          "handler": { "name": "governance.handlers#reportAuditability" },
+          "handler": {
+            "name": "governance.handlers#reportAuditability"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report auditability score: % of JSON with complete chain",
@@ -479,9 +870,23 @@
             "id": "architecture-governance-enforcement-symphony.reportauditability.6",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#reportAuditability Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#reportAuditability.spec.ts",
+          "testCase": "should governance.handlers#reportAuditability when event published",
+          "userStory": "As a system user, I want the governance.handlers#reportAuditability operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Auditability Chain Verification so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     },
     {
       "name": "Overall Governance Conformity",
@@ -492,7 +897,9 @@
         {
           "number": 1,
           "event": "movement-6:conformity:started",
-          "handler": { "name": "governance.handlers#startConformityAnalysis" },
+          "handler": {
+            "name": "governance.handlers#startConformityAnalysis"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Begin overall conformity analysis",
@@ -500,12 +907,25 @@
             "id": "architecture-governance-enforcement-symphony.startconformityanalysis.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#startConformityAnalysis Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startConformityAnalysis.spec.ts",
+          "testCase": "should governance.handlers#startConformityAnalysis when event published",
+          "userStory": "As a system user, I want the governance.handlers#startConformityAnalysis operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 2,
           "event": "movement-6:results:aggregated",
-          "handler": { "name": "governance.handlers#aggregateGovernanceResults" },
+          "handler": {
+            "name": "governance.handlers#aggregateGovernanceResults"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Aggregate results from all 5 movements",
@@ -513,12 +933,25 @@
             "id": "architecture-governance-enforcement-symphony.aggregategovernanceresults.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#aggregateGovernanceResults Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#aggregateGovernanceResults.spec.ts",
+          "testCase": "should governance.handlers#aggregateGovernanceResults when event published",
+          "userStory": "As a system user, I want the governance.handlers#aggregateGovernanceResults operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 3,
           "event": "movement-6:conformity-score:calculated",
-          "handler": { "name": "governance.handlers#calculateConformityScore" },
+          "handler": {
+            "name": "governance.handlers#calculateConformityScore"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Calculate overall conformity score (0-100%)",
@@ -526,12 +959,25 @@
             "id": "architecture-governance-enforcement-symphony.calculateconformityscore.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#calculateConformityScore Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#calculateConformityScore.spec.ts",
+          "testCase": "should governance.handlers#calculateConformityScore when event published",
+          "userStory": "As a system user, I want the governance.handlers#calculateConformityScore operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 4,
           "event": "movement-6:violations:summarized",
-          "handler": { "name": "governance.handlers#summarizeViolations" },
+          "handler": {
+            "name": "governance.handlers#summarizeViolations"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Summarize all governance violations found",
@@ -539,12 +985,25 @@
             "id": "architecture-governance-enforcement-symphony.summarizeviolations.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#summarizeViolations Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#summarizeViolations.spec.ts",
+          "testCase": "should governance.handlers#summarizeViolations when event published",
+          "userStory": "As a system user, I want the governance.handlers#summarizeViolations operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 5,
           "event": "movement-6:decision:made",
-          "handler": { "name": "governance.handlers#makeGovernanceDecision" },
+          "handler": {
+            "name": "governance.handlers#makeGovernanceDecision"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Decide: PASS (allow changes) or FAIL (reject changes)",
@@ -552,12 +1011,25 @@
             "id": "architecture-governance-enforcement-symphony.makegovernancedecision.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#makeGovernanceDecision Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#makeGovernanceDecision.spec.ts",
+          "testCase": "should governance.handlers#makeGovernanceDecision when event published",
+          "userStory": "As a system user, I want the governance.handlers#makeGovernanceDecision operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 6,
           "event": "movement-6:report:generated",
-          "handler": { "name": "governance.handlers#generateGovernanceReport" },
+          "handler": {
+            "name": "governance.handlers#generateGovernanceReport"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Generate comprehensive governance report with recommendations",
@@ -565,12 +1037,25 @@
             "id": "architecture-governance-enforcement-symphony.generategovernancereport.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#generateGovernanceReport Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#generateGovernanceReport.spec.ts",
+          "testCase": "should governance.handlers#generateGovernanceReport when event published",
+          "userStory": "As a system user, I want the governance.handlers#generateGovernanceReport operation to execute reliably so that system functions operate as expected."
         },
         {
           "number": 7,
           "event": "governance:complete",
-          "handler": { "name": "governance.handlers#concludeGovernanceEnforcement" },
+          "handler": {
+            "name": "governance.handlers#concludeGovernanceEnforcement"
+          },
           "kind": "conclusion",
           "timing": "immediate",
           "description": "Conclude governance enforcement; exit with appropriate status code",
@@ -578,9 +1063,26 @@
             "id": "architecture-governance-enforcement-symphony.concludegovernanceenforcement.6",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "governance.handlers#concludeGovernanceEnforcement Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#concludeGovernanceEnforcement.spec.ts",
+          "testCase": "should governance.handlers#concludeGovernanceEnforcement when event published",
+          "userStory": "As a system user, I want the governance.handlers#concludeGovernanceEnforcement operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Overall Governance Conformity so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Architecture Governance Enforcement Symphony workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

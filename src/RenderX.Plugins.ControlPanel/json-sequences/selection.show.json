@@ -19,7 +19,19 @@
             "id": "control-panel-selection-show-symphony.deriveselectionmodel.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "deriveSelectionModel Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/deriveSelectionModelTests.cs",
+          "testCase": "Should_deriveSelectionModel_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the deriveSelectionModel operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-selection-show-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
+          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Selection so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel Selection Show workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

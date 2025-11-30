@@ -19,7 +19,19 @@
             "id": "control-panel-ui-field-change-symphony.preparefield.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "prepareField Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/prepareFieldTests.cs",
+          "testCase": "Should_prepareField_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the prepareField operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -33,7 +45,19 @@
             "id": "control-panel-ui-field-change-symphony.dispatchfield.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "dispatchField Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/dispatchFieldTests.cs",
+          "testCase": "Should_dispatchField_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the dispatchField operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -47,7 +71,19 @@
             "id": "control-panel-ui-field-change-symphony.setdirty.2",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 3,
+          "scenario": "setDirty Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/setDirtyTests.cs",
+          "testCase": "Should_setDirty_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the setDirty operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -61,9 +97,27 @@
             "id": "control-panel-ui-field-change-symphony.awaitrefresh.3",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 4,
+          "scenario": "awaitRefresh Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/awaitRefreshTests.cs",
+          "testCase": "Should_awaitRefresh_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the awaitRefresh operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Field Change so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel UI Field Change workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

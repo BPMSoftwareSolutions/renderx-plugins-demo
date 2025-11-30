@@ -14,7 +14,17 @@
           "dynamics": "mf",
           "handler": "hideAllOverlays",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "hideAllOverlays Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the hideAllOverlays operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should hide all overlays"
         },
         {
           "beat": 2,
@@ -23,10 +33,26 @@
           "dynamics": "mf",
           "handler": "publishSelectionsCleared",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "publishSelectionsCleared Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the publishSelectionsCleared operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should publish selections cleared"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the hideAllOverlays operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As a system user, I want the hideAllOverlays operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

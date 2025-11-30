@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "parseTelemetryRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "parseTelemetryRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/parse-telemetry-requested.test.ts",
+          "testCase": "should parse-telemetry-requested",
+          "userStory": "As a system user, I want the parseTelemetryRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadLogFiles",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadLogFiles Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-log-files.test.ts",
+          "testCase": "should load-log-files",
+          "userStory": "As a system user, I want the loadLogFiles operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "extractTelemetryEvents",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "extractTelemetryEvents Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/extract-telemetry-events.test.ts",
+          "testCase": "should extract-telemetry-events",
+          "userStory": "As a system user, I want the extractTelemetryEvents operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "normalizeTelemetryData",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "normalizeTelemetryData Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/normalize-telemetry-data.test.ts",
+          "testCase": "should normalize-telemetry-data",
+          "userStory": "As a system user, I want the normalizeTelemetryData operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "aggregateTelemetryMetrics",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "aggregateTelemetryMetrics Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/aggregate-telemetry-metrics.test.ts",
+          "testCase": "should aggregate-telemetry-metrics",
+          "userStory": "As a system user, I want the aggregateTelemetryMetrics operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "storeTelemetryDatabase",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 6,
+          "scenario": "storeTelemetryDatabase Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/store-telemetry-database.test.ts",
+          "testCase": "should store-telemetry-database",
+          "userStory": "As a system user, I want the storeTelemetryDatabase operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,11 +149,29 @@
           "dynamics": "mf",
           "handler": "parseTelemetryCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "parseTelemetryCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/parse-telemetry-completed.test.ts",
+          "testCase": "should parse-telemetry-completed",
+          "userStory": "As a system user, I want the parseTelemetryCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Parse Telemetry so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 7,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Parse Production Telemetry workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

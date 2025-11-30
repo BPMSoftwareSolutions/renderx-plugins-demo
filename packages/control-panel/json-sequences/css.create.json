@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "createCssClass",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Create New CSS Rule",
+          "acceptanceCriteria": [
+            "System accepts CSS rule definition (selector, properties, values)",
+            "CSS rule is created in the stylesheet without syntax errors",
+            "New rule is immediately available to matching DOM elements",
+            "System prevents duplicate rules with identical selectors",
+            "CSS rule modifications are tracked in telemetry"
+          ],
+          "testFile": "packages/control-panel/__tests__/create-css-class.test.ts",
+          "testCase": "should create css class",
+          "userStory": "As a configuration administrator, I want to create new CSS rules dynamically so that I can customize styling without modifying source files."
         },
         {
           "beat": 2,
@@ -23,11 +35,29 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "packages/control-panel/__tests__/notify-ui.test.ts",
+          "testCase": "should notify ui",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Create CSS Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel CSS Create workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

@@ -19,7 +19,19 @@
             "id": "control-panel-css-edit-symphony.updatecssclass.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "updateCssClass Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/updateCssClassTests.cs",
+          "testCase": "Should_updateCssClass_When_ConfigurationProvided",
+          "userStory": "As a system user, I want the updateCssClass operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-css-edit-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI Class Change Notification",
+          "acceptanceCriteria": [
+            "When class changes occur, notifyUi publishes a 'control.panel.classes.updated' event",
+            "The event payload contains the element ID and updated classes list",
+            "The notification is published only when payload contains updated class data",
+            "Event is published to the global EventRouter for downstream listeners",
+            "Notifications maintain consistency across multiple class changes"
+          ],
+          "testFile": "src/RenderX.Plugins.ControlPanel/Tests/notifyUiTests.cs",
+          "testCase": "Should_notifyUi_When_ConfigurationProvided",
+          "userStory": "As a system integrator, I want UI class changes to be published as events so that other components can react to styling state transitions."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Update CSS Class so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
-  ]
+  ],
+  "userStory": "Control Panel CSS Edit workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

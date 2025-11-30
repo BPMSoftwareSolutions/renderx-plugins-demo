@@ -1,0 +1,130 @@
+{
+  "auditDate": "2024",
+  "purpose": "Symphonic domain-driven design metadata enhancement roadmap",
+  "summary": {
+    "totalSymphonies": 57,
+    "totalBeats": "~300",
+    "totalHandlers": "~140",
+    "withMetadata": 1,
+    "completionTarget": 57
+  },
+  "packages": {
+    "orchestration": {
+      "symphonies": 19,
+      "beats": "~140",
+      "priority": "P1",
+      "status": "1/19 complete (renderx-web)",
+      "examples": [
+        "renderx-web-orchestration.json (ENHANCED ✅)",
+        "build-pipeline-symphony.json",
+        "orchestration-core.json",
+        "architecture-governance-enforcement-symphony.json"
+      ],
+      "notes": "Core platform layer; high-impact symphonies; master orchestration definitions"
+    },
+    "RenderX.Plugins.ControlPanel": {
+      "symphonies": 13,
+      "beats": "~80",
+      "priority": "P1",
+      "status": "0/13 complete",
+      "examples": [
+        "ui.render.json (3 beats: Generate Fields, Generate Sections, Render View)",
+        "ui.init.json",
+        "ui.field.validate.json",
+        "css.create.json",
+        "selection.show.json"
+      ],
+      "notes": "C# plugin; UI orchestration; strong test coverage expected in .Tests project"
+    },
+    "control-panel": {
+      "symphonies": 13,
+      "beats": "~80",
+      "priority": "P2",
+      "status": "0/13 complete",
+      "examples": [
+        "ui.render.json (JavaScript wrapper equivalent)",
+        "ui.init.json",
+        "classes.add.json"
+      ],
+      "notes": "JavaScript/TypeScript mirror of ControlPanel; likely similar structure with dual test links"
+    },
+    "self-healing": {
+      "symphonies": 9,
+      "beats": "~70",
+      "priority": "P2",
+      "status": "0/9 complete",
+      "examples": [
+        "anomaly.detect.json (5+ beats: Detect Anomalies, Load Telemetry, Performance Detection, etc.)",
+        "baseline.metrics.establish.json",
+        "validation.run.json",
+        "telemetry.parse.json"
+      ],
+      "notes": "Observability & resilience; anomaly detection to remediation workflow"
+    },
+    "slo-dashboard": {
+      "symphonies": 3,
+      "beats": "~20",
+      "priority": "P2",
+      "status": "0/3 complete",
+      "notes": "Monitoring/observability dashboarding; smallest package; likely test coverage gaps"
+    }
+  },
+  "metadata": {
+    "renderxWebPattern": {
+      "description": "Complete metadata enhancement pattern applied to renderx-web",
+      "movements": 6,
+      "beats": 23,
+      "enhancedFields": [
+        "number",
+        "userStory",
+        "persona",
+        "businessValue",
+        "event",
+        "scenario",
+        "acceptanceCriteria[]",
+        "testFile",
+        "testCase",
+        "handler.scope",
+        "handler.kind"
+      ],
+      "testCoverage": "100% (23/23 beats mapped to test files)",
+      "location": "packages/orchestration/json-sequences/renderx-web-orchestration.json"
+    },
+    "controlPanelCurrent": {
+      "description": "Sample structure from ui.render.json (unenriched)",
+      "example_beat": {
+        "beat": 1,
+        "event": "control:panel:ui:fields:generate",
+        "title": "Generate Fields",
+        "handler": "generateFields",
+        "timing": "immediate",
+        "kind": "stage-crew",
+        "handlerDef": {
+          "scope": "plugin",
+          "kind": "plugin"
+        },
+        "missing": ["userStory", "persona", "businessValue", "scenario", "acceptanceCriteria", "testFile", "testCase"]
+      }
+    },
+    "selfHealingCurrent": {
+      "description": "Sample structure from anomaly.detect.json (unenriched)",
+      "example_beat": {
+        "beat": 1,
+        "event": "self-healing:anomaly:detect:requested",
+        "title": "Detection Requested",
+        "handler": "detectAnomaliesRequested",
+        "timing": "immediate",
+        "kind": "pure",
+        "missing": ["userStory", "persona", "businessValue", "scenario", "acceptanceCriteria", "testFile", "testCase"]
+      }
+    }
+  },
+  "nextSteps": [
+    "✅ Task 1 COMPLETE: Audit complete (57 symphonies identified; patterns documented)",
+    "⏳ Task 2: Create per-package enhancement templates (userStory, persona, business value)",
+    "⏳ Task 3: Map all handlers to existing test files (identify coverage gaps)",
+    "⏳ Task 4: Auto-generate metadata script to enhance all 56 remaining symphonies",
+    "⏳ Task 5: Generate BDD feature files for major packages",
+    "⏳ Task 6: Create traceability indices per package"
+  ]
+}

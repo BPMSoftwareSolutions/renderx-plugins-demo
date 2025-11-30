@@ -14,11 +14,29 @@
           "dynamics": "mf",
           "handler": "toggleSection",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "toggleSection Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/toggle-section.test.ts",
+          "testCase": "should toggle section",
+          "userStory": "As a system user, I want the toggleSection operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Section Toggle so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 1,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel UI Section Toggle workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

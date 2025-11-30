@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "generateFixRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "generateFixRequested Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-fix-requested.test.ts",
+          "testCase": "should generate-fix-requested",
+          "userStory": "As a system user, I want the generateFixRequested operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadDiagnosis",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "loadDiagnosis Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/load-diagnosis.test.ts",
+          "testCase": "should load-diagnosis",
+          "userStory": "As a system user, I want the loadDiagnosis operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "generateCodeFix",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 3,
+          "scenario": "generateCodeFix Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-code-fix.test.ts",
+          "testCase": "should generate-code-fix",
+          "userStory": "As a system user, I want the generateCodeFix operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "generateTestFix",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "generateTestFix Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-test-fix.test.ts",
+          "testCase": "should generate-test-fix",
+          "userStory": "As a system user, I want the generateTestFix operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "generateDocumentationFix",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "generateDocumentationFix Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-documentation-fix.test.ts",
+          "testCase": "should generate-documentation-fix",
+          "userStory": "As a system user, I want the generateDocumentationFix operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "createPatch",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 6,
+          "scenario": "createPatch Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/create-patch.test.ts",
+          "testCase": "should create-patch",
+          "userStory": "As a system user, I want the createPatch operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 7,
@@ -77,7 +149,19 @@
           "dynamics": "mf",
           "handler": "validateSyntax",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "validateSyntax Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/validate-syntax.test.ts",
+          "testCase": "should validate-syntax",
+          "userStory": "As a system user, I want the validateSyntax operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 8,
@@ -87,7 +171,19 @@
           "dynamics": "mf",
           "handler": "storePatch",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 8,
+          "scenario": "storePatch Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/store-patch.test.ts",
+          "testCase": "should store-patch",
+          "userStory": "As a system user, I want the storePatch operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 9,
@@ -97,11 +193,29 @@
           "dynamics": "mf",
           "handler": "generateFixCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 9,
+          "scenario": "generateFixCompleted Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/self-healing/__tests__/generate-fix-completed.test.ts",
+          "testCase": "should generate-fix-completed",
+          "userStory": "As a system user, I want the generateFixCompleted operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Generate Fix so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 9,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Generate Fix workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

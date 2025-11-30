@@ -58,5 +58,8 @@
   },
   "id": "baseline.metrics.establish",
   "beats": 1,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "baseline-metrics-establish workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

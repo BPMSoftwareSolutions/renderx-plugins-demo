@@ -14,7 +14,17 @@
           "handler": "fetchPropertyData",
           "kind": "pure",
           "dynamics": "mf",
-          "timing": "immediate"
+          "timing": "immediate",
+          "scenario": "fetchPropertyData Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the fetchPropertyData operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should fetch property data"
         },
         {
           "beat": 2,
@@ -22,7 +32,17 @@
           "handler": "analyze",
           "kind": "pure",
           "dynamics": "mf",
-          "timing": "immediate"
+          "timing": "immediate",
+          "scenario": "analyze Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the analyze operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should analyze"
         },
         {
           "beat": 3,
@@ -30,10 +50,26 @@
           "handler": "format",
           "kind": "pure",
           "dynamics": "mf",
-          "timing": "immediate"
+          "timing": "immediate",
+          "scenario": "format Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "userStory": "As a system user, I want the format operation to execute reliably so that system functions operate as expected.",
+          "testCase": "should format"
         }
-      ]
+      ],
+      "userStory": "As a system user, I want the fetchPropertyData operation to execute reliably so that system functions operate as expected.",
+      "persona": "Platform User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
-  "beats": 3
+  "beats": 3,
+  "userStory": "As a system user, I want the fetchPropertyData operation to execute reliably so that system functions operate as expected.",
+  "persona": "Platform User",
+  "businessValue": "Improves system quality and reliability"
 }

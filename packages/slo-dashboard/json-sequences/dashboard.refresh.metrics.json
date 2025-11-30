@@ -9,17 +9,47 @@
         {
           "beat": 1,
           "handler": "loadMetrics",
-          "kind": "io"
+          "kind": "io",
+          "number": 1,
+          "scenario": "loadMetrics Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/slo-dashboard/__tests__/load-metrics.test.ts",
+          "testCase": "should load-metrics",
+          "userStory": "As a system user, I want the loadMetrics operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
           "handler": "computeCompliance",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 2,
+          "scenario": "computeCompliance Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/slo-dashboard/__tests__/compute-compliance.test.ts",
+          "testCase": "should compute-compliance",
+          "userStory": "As a system user, I want the computeCompliance operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want refresh so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "name": "Dashboard.refresh.metrics",
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Dashboard.refresh.metrics workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }

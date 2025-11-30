@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "prepareField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "prepareField Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/prepare-field.test.ts",
+          "testCase": "should prepare field",
+          "userStory": "As a system user, I want the prepareField operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 2,
@@ -23,7 +35,19 @@
           "dynamics": "mf",
           "handler": "dispatchField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "dispatchField Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/dispatch-field.test.ts",
+          "testCase": "should dispatch field",
+          "userStory": "As a system user, I want the dispatchField operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 3,
@@ -32,7 +56,19 @@
           "dynamics": "mf",
           "handler": "setDirty",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "setDirty Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/set-dirty.test.ts",
+          "testCase": "should set dirty",
+          "userStory": "As a system user, I want the setDirty operation to execute reliably so that system functions operate as expected."
         },
         {
           "beat": 4,
@@ -41,11 +77,29 @@
           "dynamics": "mf",
           "handler": "awaitRefresh",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "awaitRefresh Operation",
+          "acceptanceCriteria": [
+            "Handler executes successfully and completes",
+            "Output is valid and conforms to schema",
+            "Event is published to event stream",
+            "Telemetry is recorded for monitoring",
+            "No errors or warnings are logged"
+          ],
+          "testFile": "packages/control-panel/__tests__/await-refresh.test.ts",
+          "testCase": "should await refresh",
+          "userStory": "As a system user, I want the awaitRefresh operation to execute reliably so that system functions operate as expected."
         }
-      ]
+      ],
+      "userStory": "As a user, I want Field Change so that the system operates correctly.",
+      "persona": "System User",
+      "businessValue": "Improves system quality and reliability"
     }
   ],
   "beats": 4,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "Control Panel UI Field Change workflow",
+  "persona": "System User",
+  "businessValue": "Improves system quality"
 }
