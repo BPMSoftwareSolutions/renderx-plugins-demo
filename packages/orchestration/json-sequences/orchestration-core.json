@@ -32,12 +32,12 @@
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.",
+      "persona": "DevOps engineer",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     }
   ],
-  "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.",
+  "persona": "DevOps engineer",
   "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
 }

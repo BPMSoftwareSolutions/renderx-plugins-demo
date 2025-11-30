@@ -23,7 +23,7 @@
             "Given performance SLA of 10ms\nWhen getCurrentTheme completes\nThen operation time is < 10ms\nAnd memory footprint is < 100KB\nAnd no memory leaks occur on repeated calls",
             "Given concurrent requests for theme\nWhen multiple calls occur\nThen all requests return consistent value\nAnd response time remains < 10ms per request\nAnd no race conditions exist"
           ],
-          "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+          "userStory": "As an engineer, I need `getCurrentTheme` to read persisted theme and apply classes.",
           "testCase": "should have required metadata fields",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js"
         },
@@ -43,18 +43,18 @@
             "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
             "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
           ],
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "userStory": "As an orchestrator, I need `notifyUi` to publish theme state in <20ms.",
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         }
       ],
-      "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
-      "persona": "System Operator",
+      "userStory": "As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).",
+      "persona": "UI runtime engineer",
       "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
     }
   ],
   "beats": 2,
-  "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
-  "persona": "Product Owner",
+  "userStory": "As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).",
+  "persona": "UI runtime engineer",
   "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
 }

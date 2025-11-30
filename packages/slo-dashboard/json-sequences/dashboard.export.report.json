@@ -21,7 +21,7 @@
           ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts",
           "testCase": "Scenario: Prepare export payload containing compliance snapshot.",
-          "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an SRE, I need `serializeDashboardState` to produce a stable report."
         },
         {
           "beat": 2,
@@ -38,18 +38,18 @@
           ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts",
           "testCase": "Scenario: Initiate download of signed export artifacts.",
-          "userStory": "As an operations system, I want triggerExportDownload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an SRE, I need `triggerExportDownload` to initiate download reliably."
         }
       ],
-      "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+      "persona": "SRE",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "name": "Dashboard.export.report",
   "beats": 2,
   "tempo": 120,
-  "userStory": "As an operations system, I want serializeDashboardState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+  "persona": "SRE",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

@@ -45,8 +45,8 @@
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "persona": "Governance lead",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     },
     {
@@ -109,8 +109,8 @@
           "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "persona": "Governance lead",
       "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     },
     {
@@ -137,8 +137,8 @@
           "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "persona": "Governance lead",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
@@ -227,7 +227,7 @@
     "audit.registry.validation.completed",
     "audit.registry.reporting.completed"
   ],
-  "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+  "persona": "Governance lead",
   "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
 }

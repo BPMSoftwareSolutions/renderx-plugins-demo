@@ -26,7 +26,7 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
           "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
-          "userStory": "As a UI system, I want to remove CSS classes from elements with <100ms latency so that state cleanup is imperceptible to users during transitions."
+          "userStory": "As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events."
         },
         {
           "beat": 2,
@@ -47,17 +47,17 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
+          "userStory": "As an orchestrator, I need `notifyUi` to publish class-remove events with <20ms delivery and backpressure."
         }
       ],
-      "userStory": "As a UI system, I want to remove CSS classes from elements with <100ms latency so that state cleanup is imperceptible to users during transitions.",
-      "persona": "System Operator",
+      "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+      "persona": "Design systems engineer",
       "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a UI system, I want to remove CSS classes from elements with <100ms latency so that state cleanup is imperceptible to users during transitions.",
-  "persona": "Product Owner",
+  "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+  "persona": "Design systems engineer",
   "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
 }

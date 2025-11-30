@@ -23,18 +23,18 @@
             "Given performance SLA of < 1 second\nWhen onDragStart executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen onDragStart operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want onDragStart to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `onDragStart` to prepare drag payload and emit telemetry.",
           "testCase": "publishes drag.move with { id, position }",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want onDragStart to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want onDragStart to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

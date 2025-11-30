@@ -12,3 +12,66 @@ movementStory: As a design systems engineer, I need CSS creation to apply scoped
 beat: css.create -> As an engineer, I need `css.create` to insert styles atomically, validate specificity, and register change events.
 beat: classes.add -> As an engineer, I need `classes.add` to add semantic classes with immediate UI notification (<20ms) and audit trail.
 beat: classes.remove -> As an engineer, I need `classes.remove` to remove classes safely, preserving accessibility and notifying subscribers.
+
+[symphony:classes.add]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need class additions to be deterministic and auditable, updating UI within <20ms and persisting edits within ≤1s P95.
+beat: addClass -> As an engineer, I need `addClass` to apply semantic classes atomically, validate specificity, and record change events.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish class-add events with <20ms delivery and backpressure.
+
+[symphony:classes.remove]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.
+beat: removeClass -> As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish class-remove events with <20ms delivery and backpressure.
+
+[symphony:css.edit]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.
+beat: updateCssClass -> As an engineer, I need `updateCssClass` to modify rules atomically and register change events.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish style-change events within <20ms.
+
+[symphony:css.delete]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need CSS deletion to remove scoped rules safely with governance checks in ≤1s P95.
+beat: deleteCssClass -> As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish style-delete events within <20ms.
+
+[symphony:selection.show]
+role: Interaction designer
+movementStory: As an interaction designer, I need selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms.
+beat: deriveSelectionModel -> As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish selection model events within <20ms.
+
+[symphony:ui.field.change]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.
+beat: prepareField -> As an engineer, I need `prepareField` to normalize input and validate.
+beat: dispatchField -> As an engineer, I need `dispatchField` to route changes to the canvas component.
+beat: setDirty -> As an engineer, I need `setDirty` to mark state and enable save.
+beat: awaitRefresh -> As an engineer, I need `awaitRefresh` to synchronize view updates.
+
+[symphony:ui.field.validate]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need field validation to merge errors and update views within ≤1s P95.
+beat: validateField -> As an engineer, I need `validateField` to run validators and collect errors.
+beat: mergeErrors -> As an engineer, I need `mergeErrors` to compose error state.
+beat: updateView -> As an engineer, I need `updateView` to render errors promptly.
+
+[symphony:ui.render]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.
+beat: generateFields -> As an engineer, I need `generateFields` to derive UI elements from schema.
+beat: generateSections -> As an engineer, I need `generateSections` to group fields semantically.
+beat: renderView -> As a runtime owner, I need `renderView` to render efficiently with memoization.
+
+[symphony:ui.section.toggle]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need section toggles to update visibility and persist preference within ≤1s P95.
+beat: toggleSection -> As an engineer, I need `toggleSection` to apply state and notify UI.
+
+[symphony:update]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need updates from canvas components to refresh control panel state deterministically with <20ms notifications.
+beat: updateFromElement -> As an engineer, I need `updateFromElement` to map element changes into panel state.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish panel updates with <20ms delivery.
