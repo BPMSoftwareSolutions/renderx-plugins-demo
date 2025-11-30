@@ -214,6 +214,7 @@
                     "analyze:symphonic:code:trends":  "node scripts/analyze-symphonic-code.cjs --trends",
                     "analyze:symphonic:code:renderx":  "node scripts/analyze-symphonic-code.cjs",
                     "analyze:symphonic:code:domain":  "node scripts/analyze-domain.cjs",
+                    "analyze:domains:all": "node scripts/analyze-all-domains.cjs",
                     "gen:symphonic:code:docs":  "node scripts/gen-symphonic-code-analysis-docs.js",
                     "orchestrate:graphing":  "node scripts/execute-orchestration.js packages/ographx/.ographx/sequences/graphing-orchestration.json",
                     "orchestrate:self-sequences":  "node scripts/execute-orchestration.js packages/ographx/.ographx/sequences/self_sequences.json",

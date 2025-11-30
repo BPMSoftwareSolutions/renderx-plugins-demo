@@ -1,216 +1,110 @@
 {
+  "$schema": "./musical-sequence.schema.json",
   "id": "orchestration-registry-audit-pipeline",
+  "sequenceId": "orchestration-registry-audit-pipeline",
   "name": "Orchestration Registry Audit Pipeline",
-  "version": "1.0.0",
-  "category": "orchestration",
+  "packageName": "orchestration",
+  "title": "Orchestration Registry Audit Pipeline - Completeness & Governance",
+  "description": "Audit the orchestration registry for sequence file completeness, npm script bindings, linkage validity, and governance compliance.",
+  "kind": "orchestration",
   "status": "active",
-  "description": "Audit orchestration to validate that all registered orchestration domains have both JSON authority files and npm scripts defined. Produces completeness reports and governance compliance verification.",
-  "purpose": "Ensure all orchestration domains meet the governance requirement: each domain must have a JSON authority file (sequenceFile) and a set of executable npm scripts (npmScripts).",
-  "emoji": "🔍",
-  "tempo": 120,
-  "key": "C Major",
-  "timeSignature": "4/4",
+  "category": "audit-pipeline",
+  "version": "0.1.0",
+  "purpose": "Ensure every orchestration domain has valid sequence files and executable npm script bindings with zero masking of missing data.",
+  "metadata": {
+    "relatedDomains": [
+      "build-pipeline-symphony",
+      "symphonia-conformity-alignment-pipeline",
+      "safe-continuous-delivery-pipeline",
+      "orchestration-core"
+    ]
+  },
+  "beats": 6,
   "movements": [
     {
-      "id": "discovery",
-      "name": "Discovery & Inventory",
-      "description": "Discover all registered orchestration domains and their current state",
-      "purpose": "Build complete inventory of orchestration domains with their linkages",
-      "beats": 3
+      "name": "Registry Discovery",
+      "description": "Scan orchestration registry and collect domain entries",
+      "purpose": "Establish audit inputs",
+      "beats": [
+        {
+          "name": "scan-registry",
+          "description": "Load orchestration-domains.json and prepare statistics",
+          "handler": { "name": "analysis.discovery#scanOrchestrationFiles" }
+        }
+      ]
     },
     {
-      "id": "validation",
-      "name": "Validation & Completeness Check",
-      "description": "Validate that all domains have both sequence files and npm scripts",
-      "purpose": "Identify any missing linkages or incomplete registrations",
-      "beats": 3
+      "name": "Validation",
+      "description": "Validate completeness and linkage for registry entries",
+      "purpose": "Identify missing or invalid bindings",
+      "beats": [
+        {
+          "name": "validate-sequence-files",
+          "description": "Check that each domain has an existing sequenceFile",
+          "handler": { "name": "analysis.conformity#validateHandlerMapping" }
+        },
+        {
+          "name": "validate-npm-scripts",
+          "description": "Check that npmScripts exist and reference valid scripts",
+          "handler": { "name": "analysis.conformity#validateHandlerMapping" }
+        },
+        {
+          "name": "compute-compliance-score",
+          "description": "Compute completeness and compliance scores",
+          "handler": { "name": "analysis.conformity#calculateConformityScore" }
+        }
+      ]
     },
     {
-      "id": "analysis",
-      "name": "Analysis & Metrics",
-      "description": "Analyze completeness metrics and generate compliance report",
-      "purpose": "Produce actionable audit findings and statistics",
-      "beats": 3
-    },
-    {
-      "id": "reporting",
-      "name": "Reporting & Documentation",
-      "description": "Generate audit report and governance compliance documentation",
-      "purpose": "Create traceable audit trail and compliance verification",
-      "beats": 3
+      "name": "Reporting",
+      "description": "Generate audit documentation and JSON artifacts",
+      "purpose": "Publish audit results",
+      "beats": [
+        {
+          "name": "generate-audit-report",
+          "description": "Produce markdown and JSON audit reports",
+          "handler": { "name": "analysis.conformity#generateAnalysisReport" }
+        }
+      ]
     }
   ],
-  "beats": 12,
-  "metadata": {
-    "relatedDomains": ["build-pipeline-symphony", "symphonia-conformity-alignment-pipeline", "architecture-governance-enforcement-symphony"],
-    "auditMetrics": {
-      "totalDomains": "Count of all registered orchestration domains",
-      "sequenceFileCompleteness": "Percentage of domains with valid sequenceFile",
-      "npmScriptsCompleteness": "Percentage of domains with npmScripts defined",
-      "totalScripts": "Total npm scripts across all domains",
-      "governanceCompliance": "Overall governance policy compliance score"
-    }
-  },
   "auditFramework": {
     "requirements": [
-      "Each orchestration domain must have a JSON Authority File (sequenceFile)",
-      "Each orchestration domain must have NPM Scripts defined (npmScripts field)",
-      "All sequence file paths must point to existing JSON files",
-      "All npm scripts must be defined in package.json",
-      "Registry entries must conform to MusicalSequence interface"
+      "Every orchestration domain must declare a valid sequenceFile",
+      "Every orchestration domain must declare npmScripts that resolve",
+      "All paths must exist and be readable",
+      "Generated documentation must be auto-marked and domain-scoped"
     ],
     "checkpoints": [
-      {
-        "name": "Sequence File Validation",
-        "description": "Verify all sequenceFile fields point to existing JSON files",
-        "severity": "critical"
-      },
-      {
-        "name": "NPM Scripts Binding",
-        "description": "Verify all npmScripts are defined in package.json",
-        "severity": "critical"
-      },
-      {
-        "name": "Registry Structure",
-        "description": "Verify registry entries conform to MusicalSequence interface",
-        "severity": "major"
-      },
-      {
-        "name": "Traceability",
-        "description": "Verify clear lineage from domain → sequence → scripts",
-        "severity": "major"
-      }
+      { "name": "Sequence Completeness", "description": "sequenceFile present and valid", "severity": "major" },
+      { "name": "Script Bindings", "description": "npmScripts resolve to existing scripts", "severity": "major" },
+      { "name": "Linkage Validity", "description": "Paths exist and are accessible", "severity": "minor" }
     ]
   },
   "reportingArtifacts": [
-    {
-      "name": "Completeness Summary Table",
-      "type": "markdown-table",
-      "description": "Table showing each domain's sequence file and npm scripts status",
-      "location": ".generated/audit/registry-completeness-summary.md"
-    },
-    {
-      "name": "Domain Details",
-      "type": "markdown-list",
-      "description": "Detailed information for each orchestration domain",
-      "location": ".generated/audit/registry-domain-details.md"
-    },
-    {
-      "name": "Audit Report",
-      "type": "markdown",
-      "description": "Comprehensive audit report with findings and compliance status",
-      "location": ".generated/audit/registry-audit-report.md"
-    },
-    {
-      "name": "Compliance Metrics",
-      "type": "json",
-      "description": "Structured audit metrics and compliance scores",
-      "location": ".generated/audit/registry-audit-metrics.json"
-    },
-    {
-      "name": "Domain Details JSON",
-      "type": "json",
-      "description": "Structured data for all audited domains",
-      "location": ".generated/audit/registry-audit-domains.json"
-    }
+    { "name": "Registry Audit Report", "type": "markdown", "description": "Human-readable audit documentation", "location": "docs/generated/orchestration-registry-audit-pipeline/INDEX.md" },
+    { "name": "Registry Audit JSON", "type": "json", "description": "Machine-readable audit results", "location": ".generated/audit/orchestration-registry-audit.json" }
   ],
   "governance": {
     "policies": [
-      "All audit reports must be auto-generated from this JSON authority",
-      "Audit documentation must be in docs/generated/orchestration-registry-audit-pipeline/",
-      "Registry audit must run before pre:manifests pipeline",
-      "Audit must validate registry integrity and governance compliance",
-      "All audit outputs must be marked as AUTO-GENERATED"
-    ],
-    "automationLevel": "full",
-    "documentation": "Auto-generated by scripts/gen-orchestration-registry-audit-docs.js"
+      "No masking of missing data",
+      "Publish audit artifacts",
+      "Validate registry integrity"
+    ]
   },
   "implementation": {
     "bindings": [
-      {
-        "beat": 1,
-        "name": "Load Registry",
-        "handler": "loadOrchestrationRegistry",
-        "script": "scripts/audit-orchestration-registry-load.js"
-      },
-      {
-        "beat": 2,
-        "name": "Enumerate Domains",
-        "handler": "enumerateOrchestratingDomains",
-        "script": "scripts/audit-orchestration-registry-enumerate.js"
-      },
-      {
-        "beat": 3,
-        "name": "Collect Inventory",
-        "handler": "collectDomainInventory",
-        "script": "scripts/audit-orchestration-registry-inventory.js"
-      },
-      {
-        "beat": 4,
-        "name": "Validate Sequence Files",
-        "handler": "validateSequenceFiles",
-        "script": "scripts/audit-orchestration-registry-sequences.js"
-      },
-      {
-        "beat": 5,
-        "name": "Validate NPM Scripts",
-        "handler": "validateNpmScripts",
-        "script": "scripts/audit-orchestration-registry-npm.js"
-      },
-      {
-        "beat": 6,
-        "name": "Check Completeness",
-        "handler": "checkCompleteness",
-        "script": "scripts/audit-orchestration-registry-completeness.js"
-      },
-      {
-        "beat": 7,
-        "name": "Analyze Metrics",
-        "handler": "analyzeMetrics",
-        "script": "scripts/audit-orchestration-registry-metrics.js"
-      },
-      {
-        "beat": 8,
-        "name": "Calculate Compliance",
-        "handler": "calculateCompliance",
-        "script": "scripts/audit-orchestration-registry-compliance.js"
-      },
-      {
-        "beat": 9,
-        "name": "Generate Summary",
-        "handler": "generateSummary",
-        "script": "scripts/audit-orchestration-registry-summary.js"
-      },
-      {
-        "beat": 10,
-        "name": "Generate Details Report",
-        "handler": "generateDetailsReport",
-        "script": "scripts/audit-orchestration-registry-details.js"
-      },
-      {
-        "beat": 11,
-        "name": "Generate Main Report",
-        "handler": "generateMainReport",
-        "script": "scripts/audit-orchestration-registry-report.js"
-      },
-      {
-        "beat": 12,
-        "name": "Generate Documentation",
-        "handler": "generateAuditDocumentation",
-        "script": "scripts/gen-orchestration-registry-audit-docs.js"
-      }
+      { "beat": 1, "handler": "analysis.discovery#scanOrchestrationFiles", "script": "scripts/audit-orchestration-registry.js" },
+      { "beat": 2, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/audit-orchestration-registry.js" },
+      { "beat": 3, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/audit-orchestration-registry.js" },
+      { "beat": 4, "handler": "analysis.conformity#calculateConformityScore", "script": "scripts/audit-orchestration-registry.js" },
+      { "beat": 5, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/audit-orchestration-registry.js" },
+      { "beat": 6, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/gen-orchestration-registry-audit-docs.js" }
     ]
   },
   "events": [
-    "audit:registry:started",
-    "audit:registry:domain-discovered",
-    "audit:registry:sequence-validated",
-    "audit:registry:scripts-validated",
-    "audit:registry:completeness-checked",
-    "audit:registry:metrics-analyzed",
-    "audit:registry:compliance-calculated",
-    "audit:registry:report-generated",
-    "audit:registry:documentation-generated",
-    "audit:registry:completed"
+    "audit.registry.discovery.completed",
+    "audit.registry.validation.completed",
+    "audit.registry.reporting.completed"
   ]
 }

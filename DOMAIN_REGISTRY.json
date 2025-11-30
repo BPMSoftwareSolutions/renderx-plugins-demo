@@ -1621,7 +1621,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/orchestration-audit-session.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "orchestration-audit-system": {
@@ -1645,7 +1653,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/orchestration-audit-system.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "safe-continuous-delivery-pipeline": {
@@ -1669,7 +1685,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "product-owner-signoff-demo": {
@@ -1693,7 +1717,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/product-owner-signoff-demo.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "build-pipeline-symphony": {
@@ -1749,7 +1781,15 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json"
+        ]
+      }
+      ,
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
       }
     },
     "architecture-governance-enforcement-symphony": {

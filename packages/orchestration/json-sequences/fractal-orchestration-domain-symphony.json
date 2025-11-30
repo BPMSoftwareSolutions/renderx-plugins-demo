@@ -1,45 +1,22 @@
 {
-  "id": "fractal-orchestration-domain-symphony",
-  "sequenceId": "fractal-orchestration-domain-symphony",
-  "name": "Fractal Orchestration Domain",
-  "packageName": "orchestration",
-  "title": "Fractal Orchestration Domain - Domain as System, System as Domain",
-  "description": "Didactic symphony that encodes the recursive pattern where orchestrated domains become systems, systems become domains, and architecture becomes fractal.",
-  "purpose": "Capture the Domain - Orchestrated Domain - System - Subsystem - Higher-Level Domain - Meta-System loop as a MusicalSequence for discussion and governance experiments.",
-  "trigger": "Architecture design discussions, governance dry-runs, or meta-orchestration demos.",
-  "kind": "orchestration",
-  "status": "experimental",
-  "tempo": 60,
-  "key": "C Major",
-  "timeSignature": "4/4",
-  "category": "fractal-orchestration-demo",
+  "$schema": "./musical-sequence.schema.json",
+  "name": "fractal-orchestration-domain-symphony",
+  "version": "0.1.0",
   "movements": [
     {
-      "number": 1,
-      "name": "From Domain to Orchestrated Domain",
-      "description": "A static domain is given flow, handlers, and intent, becoming an orchestrated domain.",
-      {
-        "$schema": "./musical-sequence.schema.json",
-        "name": "fractal-orchestration-domain-symphony",
-        "version": "0.1.0",
-        "movements": [
-          {
-            "name": "bootstrap",
-            "beats": [
-              {
-                "name": "fractal-domain-identified",
-                "handler": { "name": "fractal.narration#fractalNarrator" },
-                "notes": ["Recognize domain boundaries and intent"]
-              },
-              {
-                "name": "fractal-domain-orchestrated",
-                "handler": { "name": "fractal.narration#fractalNarrator" },
-                "notes": ["Bind domain to MusicalSequence"]
-              }
-            ]
-          }
-        ]
-      }
-      "number": 2,
-
-      "name": "Domain Becomes System",
+      "name": "bootstrap",
+      "beats": [
+        {
+          "name": "fractal-domain-identified",
+          "handler": { "name": "fractal.narration#fractalNarrator" },
+          "notes": ["Recognize domain boundaries and intent"]
+        },
+        {
+          "name": "fractal-domain-orchestrated",
+          "handler": { "name": "fractal.narration#fractalNarrator" },
+          "notes": ["Bind domain to MusicalSequence"]
+        }
+      ]
+    }
+  ]
+}

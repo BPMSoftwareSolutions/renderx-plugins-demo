@@ -1,22 +1,22 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: C:\source\repos\bpm\Internal\renderx-plugins-demo\packages\orchestration\json-sequences\orchestration-registry-audit-pipeline.json -->
-<!-- Generated: 2025-11-27T07:40:39.373Z -->
+<!-- Generated: 2025-11-30T09:12:17.895Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Orchestration Registry Audit Pipeline
 
 **Status**: active  
-**Version**: 1.0.0  
-**Category**: orchestration  
-**Beats**: 12 | **Movements**: 4
+**Version**: 0.1.0  
+**Category**: audit-pipeline  
+**Beats**: 6 | **Movements**: 3
 
 ---
 
 ## Overview
 
-Audit orchestration to validate that all registered orchestration domains have both JSON authority files and npm scripts defined. Produces completeness reports and governance compliance verification.
+Audit the orchestration registry for sequence file completeness, npm script bindings, linkage validity, and governance compliance.
 
-**Purpose**: Ensure all orchestration domains meet the governance requirement: each domain must have a JSON authority file (sequenceFile) and a set of executable npm scripts (npmScripts).
+**Purpose**: Ensure every orchestration domain has valid sequence files and executable npm script bindings with zero masking of missing data.
 
 ---
 
@@ -34,91 +34,75 @@ npm run gen:registry:audit:docs # Generate documentation
 
 | Metric | Value |
 |--------|-------|
-| Total Orchestration Domains | 13 |
-| Domains with Sequence Files | 13/13 (100.0%) |
-| Domains with NPM Scripts | 13/13 (100.0%) |
-| Total NPM Scripts | 40 |
-| Overall Compliance Score | 100.0% |
+| Total Orchestration Domains | 6 |
+| Domains with Sequence Files | 6/6 (100.0%) |
+| Domains with NPM Scripts | 0/6 (0.0%) |
+| Total NPM Scripts | 0 |
+| Overall Compliance Score | 0.0% |
 
 
 ---
 
-## Movements (4 Total)
+## Movements (3 Total)
 
 
-### Movement 1: Discovery & Inventory
+### Movement 1: Registry Discovery
 
-**Description**: Discover all registered orchestration domains and their current state
+**Description**: Scan orchestration registry and collect domain entries
 
-**Purpose**: Build complete inventory of orchestration domains with their linkages
+**Purpose**: Establish audit inputs
 
-**Beats**: 3
-
-
-### Movement 2: Validation & Completeness Check
-
-**Description**: Validate that all domains have both sequence files and npm scripts
-
-**Purpose**: Identify any missing linkages or incomplete registrations
-
-**Beats**: 3
+**Beats**: [object Object]
 
 
-### Movement 3: Analysis & Metrics
+### Movement 2: Validation
 
-**Description**: Analyze completeness metrics and generate compliance report
+**Description**: Validate completeness and linkage for registry entries
 
-**Purpose**: Produce actionable audit findings and statistics
+**Purpose**: Identify missing or invalid bindings
 
-**Beats**: 3
+**Beats**: [object Object],[object Object],[object Object]
 
 
-### Movement 4: Reporting & Documentation
+### Movement 3: Reporting
 
-**Description**: Generate audit report and governance compliance documentation
+**Description**: Generate audit documentation and JSON artifacts
 
-**Purpose**: Create traceable audit trail and compliance verification
+**Purpose**: Publish audit results
 
-**Beats**: 3
+**Beats**: [object Object]
 
 
 ---
 
 ## Audit Requirements
 
-- Each orchestration domain must have a JSON Authority File (sequenceFile)
-- Each orchestration domain must have NPM Scripts defined (npmScripts field)
-- All sequence file paths must point to existing JSON files
-- All npm scripts must be defined in package.json
-- Registry entries must conform to MusicalSequence interface
+- Every orchestration domain must declare a valid sequenceFile
+- Every orchestration domain must declare npmScripts that resolve
+- All paths must exist and be readable
+- Generated documentation must be auto-marked and domain-scoped
 
 ---
 
 ## Audit Checkpoints
 
 
-### Sequence File Validation
+### Sequence Completeness
 
-**Description**: Verify all sequenceFile fields point to existing JSON files  
-**Severity**: critical
-
-
-### NPM Scripts Binding
-
-**Description**: Verify all npmScripts are defined in package.json  
-**Severity**: critical
-
-
-### Registry Structure
-
-**Description**: Verify registry entries conform to MusicalSequence interface  
+**Description**: sequenceFile present and valid  
 **Severity**: major
 
 
-### Traceability
+### Script Bindings
 
-**Description**: Verify clear lineage from domain → sequence → scripts  
+**Description**: npmScripts resolve to existing scripts  
 **Severity**: major
+
+
+### Linkage Validity
+
+**Description**: Paths exist and are accessible  
+**Severity**: minor
 
 
 ---
@@ -126,50 +110,27 @@ npm run gen:registry:audit:docs # Generate documentation
 ## Reporting Artifacts
 
 
-### Completeness Summary Table
-
-- **Type**: markdown-table
-- **Description**: Table showing each domain's sequence file and npm scripts status
-- **Location**: .generated/audit/registry-completeness-summary.md
-
-
-### Domain Details
-
-- **Type**: markdown-list
-- **Description**: Detailed information for each orchestration domain
-- **Location**: .generated/audit/registry-domain-details.md
-
-
-### Audit Report
+### Registry Audit Report
 
 - **Type**: markdown
-- **Description**: Comprehensive audit report with findings and compliance status
-- **Location**: .generated/audit/registry-audit-report.md
+- **Description**: Human-readable audit documentation
+- **Location**: docs/generated/orchestration-registry-audit-pipeline/INDEX.md
 
 
-### Compliance Metrics
-
-- **Type**: json
-- **Description**: Structured audit metrics and compliance scores
-- **Location**: .generated/audit/registry-audit-metrics.json
-
-
-### Domain Details JSON
+### Registry Audit JSON
 
 - **Type**: json
-- **Description**: Structured data for all audited domains
-- **Location**: .generated/audit/registry-audit-domains.json
+- **Description**: Machine-readable audit results
+- **Location**: .generated/audit/orchestration-registry-audit.json
 
 
 ---
 
 ## Governance Policies
 
-- All audit reports must be auto-generated from this JSON authority
-- Audit documentation must be in docs/generated/orchestration-registry-audit-pipeline/
-- Registry audit must run before pre:manifests pipeline
-- Audit must validate registry integrity and governance compliance
-- All audit outputs must be marked as AUTO-GENERATED
+- No masking of missing data
+- Publish audit artifacts
+- Validate registry integrity
 
 ---
 
@@ -178,51 +139,27 @@ npm run gen:registry:audit:docs # Generate documentation
 ### Beat Bindings
 
 
-**Beat 1**: `loadOrchestrationRegistry`
-- Script: `scripts/audit-orchestration-registry-load.js`
+**Beat 1**: `analysis.discovery#scanOrchestrationFiles`
+- Script: `scripts/audit-orchestration-registry.js`
 
 
-**Beat 2**: `enumerateOrchestratingDomains`
-- Script: `scripts/audit-orchestration-registry-enumerate.js`
+**Beat 2**: `analysis.conformity#validateHandlerMapping`
+- Script: `scripts/audit-orchestration-registry.js`
 
 
-**Beat 3**: `collectDomainInventory`
-- Script: `scripts/audit-orchestration-registry-inventory.js`
+**Beat 3**: `analysis.conformity#validateHandlerMapping`
+- Script: `scripts/audit-orchestration-registry.js`
 
 
-**Beat 4**: `validateSequenceFiles`
-- Script: `scripts/audit-orchestration-registry-sequences.js`
+**Beat 4**: `analysis.conformity#calculateConformityScore`
+- Script: `scripts/audit-orchestration-registry.js`
 
 
-**Beat 5**: `validateNpmScripts`
-- Script: `scripts/audit-orchestration-registry-npm.js`
+**Beat 5**: `analysis.conformity#generateAnalysisReport`
+- Script: `scripts/audit-orchestration-registry.js`
 
 
-**Beat 6**: `checkCompleteness`
-- Script: `scripts/audit-orchestration-registry-completeness.js`
-
-
-**Beat 7**: `analyzeMetrics`
-- Script: `scripts/audit-orchestration-registry-metrics.js`
-
-
-**Beat 8**: `calculateCompliance`
-- Script: `scripts/audit-orchestration-registry-compliance.js`
-
-
-**Beat 9**: `generateSummary`
-- Script: `scripts/audit-orchestration-registry-summary.js`
-
-
-**Beat 10**: `generateDetailsReport`
-- Script: `scripts/audit-orchestration-registry-details.js`
-
-
-**Beat 11**: `generateMainReport`
-- Script: `scripts/audit-orchestration-registry-report.js`
-
-
-**Beat 12**: `generateAuditDocumentation`
+**Beat 6**: `analysis.conformity#generateAnalysisReport`
 - Script: `scripts/gen-orchestration-registry-audit-docs.js`
 
 
@@ -232,7 +169,8 @@ npm run gen:registry:audit:docs # Generate documentation
 
 - build-pipeline-symphony
 - symphonia-conformity-alignment-pipeline
-- architecture-governance-enforcement-symphony
+- safe-continuous-delivery-pipeline
+- orchestration-core
 
 ---
 
@@ -240,16 +178,9 @@ npm run gen:registry:audit:docs # Generate documentation
 
 The audit pipeline emits the following orchestration events:
 
-- `audit:registry:started`
-- `audit:registry:domain-discovered`
-- `audit:registry:sequence-validated`
-- `audit:registry:scripts-validated`
-- `audit:registry:completeness-checked`
-- `audit:registry:metrics-analyzed`
-- `audit:registry:compliance-calculated`
-- `audit:registry:report-generated`
-- `audit:registry:documentation-generated`
-- `audit:registry:completed`
+- `audit.registry.discovery.completed`
+- `audit.registry.validation.completed`
+- `audit.registry.reporting.completed`
 
 ---
 

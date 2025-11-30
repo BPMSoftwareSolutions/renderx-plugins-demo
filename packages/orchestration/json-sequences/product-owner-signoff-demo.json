@@ -1,15 +1,16 @@
 {
   "$schema": "./musical-sequence.schema.json",
-  "name": "symphonic-code-analysis-demo",
+  "name": "product-owner-signoff-demo",
   "version": "0.1.0",
   "movements": [
     {
       "name": "bootstrap",
       "beats": [
         {
-          "name": "present-analysis",
+          "name": "stage-demo-for-po",
           "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
-          "notes": ["Prepare demo artifacts and present analysis results"]
+          "notes": ["Ensure staging demo symphonies are present"],
+          "args": { "paths": ["packages/orchestration/json-sequences"] }
         }
       ]
     }

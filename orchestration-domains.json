@@ -1,10 +1,8 @@
 {
-  "id": "orchestration-domains-registry",
-  "name": "Orchestration Domains Registry",
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-27T04:08:45.192Z"
+    "generated": "2025-11-30T09:11:46.395Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -21,100 +19,33 @@
       "metadata"
     ]
   },
-  "handlerSchema": {
-    "name": "OrchestrationHandler",
-    "description": "Handler-level metadata for beat implementation. Introduced to distinguish plugin-level handlers from orchestration-level handlers.",
-    "introduced": "2025-11-27",
-    "rationale": "Enables per-scope metrics, registry audit, and targeted self-healing operations by explicitly marking handler scope (plugin vs orchestration).",
-    "fields": [
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique handler identifier in format 'sequence.handler.beatIndex'",
-        "example": "analysis.discovery.discoverSourceFiles"
-      },
-      {
-        "name": "scope",
-        "type": "enum: plugin | orchestration | infra",
-        "description": "Handler scope - plugin for feature-level, orchestration for system-level",
-        "example": "orchestration"
-      },
-      {
-        "name": "kind",
-        "type": "enum: plugin | orchestration | infra",
-        "description": "Handler kind - mirrors scope for now, allows future differentiation",
-        "example": "orchestration"
-      },
-      {
-        "name": "stage",
-        "type": "string",
-        "description": "Optional: Execution stage/phase (discovery, metrics, coverage, conformity, etc.)",
-        "example": "discovery"
-      },
-      {
-        "name": "implementationRef",
-        "type": "string",
-        "description": "Optional: Path to implementation file and exported function",
-        "example": "packages/orchestration/src/handlers/analysisDiscovery.ts#discoverSourceFiles"
-      }
-    ],
-    "placement": "At beat level in sequence JSON: beat.handler or beat.handlerDef",
-    "scopes": {
-      "plugin": {
-        "description": "Handler implements plugin feature (UI behavior, component logic, etc.)",
-        "examples": [
-          "canvas-component-copy-symphony handlers",
-          "control-panel-ui-init handlers",
-          "library-component-drag handlers"
-        ],
-        "metrics": [
-          "Per-plugin-handler LOC",
-          "Per-plugin-handler coverage",
-          "Plugin handler complexity"
-        ]
-      },
-      "orchestration": {
-        "description": "Handler implements orchestration logic (code analysis, governance, build coordination, etc.)",
-        "examples": [
-          "symphonic-code-analysis-pipeline handlers",
-          "architecture-governance-enforcement-symphony handlers",
-          "build-pipeline-orchestration handlers"
-        ],
-	      "metrics": [
-	        "Per-orchestration-handler LOC",
-	        "Per-orchestration-handler coverage",
-	        "Orchestration handler complexity"
-	      ]
-	    }
-	  }
-	},
-	"executionFlow": [
-	  {
-	    "step": 1,
-	    "name": "Load Context",
-	    "description": "Load governance and context"
-	  },
-	  {
-	    "step": 2,
-	    "name": "Validate",
-	    "description": "Validate inputs and state"
-	  },
-	  {
-	    "step": 3,
-	    "name": "Execute",
-	    "description": "Execute movements and beats"
-	  },
-	  {
-	    "step": 4,
-	    "name": "Monitor",
-	    "description": "Monitor execution and telemetry"
-	  },
-	  {
-	    "step": 5,
-	    "name": "Report",
-	    "description": "Report results and metrics"
-	  }
-	],
+  "executionFlow": [
+    {
+      "step": 1,
+      "name": "Load Context",
+      "description": "Load governance and context"
+    },
+    {
+      "step": 2,
+      "name": "Validate",
+      "description": "Validate inputs and state"
+    },
+    {
+      "step": 3,
+      "name": "Execute",
+      "description": "Execute movements and beats"
+    },
+    {
+      "step": 4,
+      "name": "Monitor",
+      "description": "Monitor execution and telemetry"
+    },
+    {
+      "step": 5,
+      "name": "Report",
+      "description": "Report results and metrics"
+    }
+  ],
   "categories": [
     {
       "id": "plugin",
@@ -209,8 +140,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-create-symphony",
@@ -250,8 +180,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-delete-symphony",
@@ -287,8 +216,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-delete-requested-symphony",
@@ -323,8 +251,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-deselect-all-symphony",
@@ -360,8 +287,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-deselect-symphony",
@@ -397,8 +323,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-deselect-requested-symphony",
@@ -433,8 +358,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-drag-end-symphony",
@@ -469,8 +393,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-drag-move-symphony",
@@ -506,8 +429,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-drag-start-symphony",
@@ -542,8 +464,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-export-gif-symphony",
@@ -578,8 +499,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-export-mp4-symphony",
@@ -614,8 +534,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-export-symphony",
@@ -655,8 +574,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-import-symphony",
@@ -695,8 +613,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "catalog-placeholder-1",
@@ -758,8 +675,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-line-manip-move-symphony",
@@ -794,8 +710,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-line-manip-start-symphony",
@@ -830,8 +745,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-paste-symphony",
@@ -870,8 +784,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-resize-end-symphony",
@@ -906,8 +819,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-line-resize-end-symphony",
@@ -942,8 +854,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-line-resize-move-symphony",
@@ -978,8 +889,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-line-resize-start-symphony",
@@ -1014,8 +924,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-resize-move-symphony",
@@ -1051,8 +960,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-resize-start-symphony",
@@ -1087,8 +995,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-rules-config-symphony",
@@ -1125,8 +1032,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-select-symphony",
@@ -1163,8 +1069,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-select-requested-symphony",
@@ -1199,8 +1104,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-select-svg-node-symphony",
@@ -1235,8 +1139,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-update-symphony",
@@ -1272,8 +1175,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "canvas-component-update-svg-node-symphony",
@@ -1309,8 +1211,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-classes-add-symphony",
@@ -1346,8 +1247,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-classes-remove-symphony",
@@ -1383,8 +1283,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-css-create-symphony",
@@ -1420,8 +1319,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-css-delete-symphony",
@@ -1457,8 +1355,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-css-edit-symphony",
@@ -1494,8 +1391,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "catalog-placeholder-2",
@@ -1558,8 +1454,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-field-change-symphony",
@@ -1597,8 +1492,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-field-validate-symphony",
@@ -1635,8 +1529,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-init-batched-symphony",
@@ -1676,8 +1569,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-init-symphony",
@@ -1717,8 +1609,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-render-symphony",
@@ -1755,8 +1646,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-ui-section-toggle-symphony",
@@ -1791,8 +1681,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "control-panel-update-symphony",
@@ -1828,8 +1717,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "catalog-placeholder-3",
@@ -1892,8 +1780,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "header-ui-theme-toggle-symphony",
@@ -1928,8 +1815,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "catalog-placeholder-4",
@@ -1992,8 +1878,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "library-component-container-drop-symphony",
@@ -2028,8 +1913,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "library-component-drag-symphony",
@@ -2064,8 +1948,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "library-component-drop-symphony",
@@ -2100,8 +1983,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "catalog-placeholder-5",
@@ -2165,8 +2047,7 @@
             ]
           }
         ]
-      },
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "graphing-orchestration",
@@ -2194,8 +2075,7 @@
           "category": "orchestration"
         },
         "phases": []
-      },
-      "npmScripts": "orchestrate:graphing"
+      }
     },
     {
       "id": "self_sequences",
@@ -2223,8 +2103,7 @@
           "category": "orchestration"
         },
         "phases": []
-      },
-      "npmScripts": "orchestrate:self-sequences"
+      }
     },
     {
       "id": "musical-conductor-orchestration",
@@ -2313,9 +2192,7 @@
             ]
           }
         ]
-      },
-      "npmScripts": "orchestrate:musical-conductor",
-      "parent": "renderx-web-orchestration"
+      }
     },
     {
       "id": "cag-agent-workflow",
@@ -2376,8 +2253,7 @@
             "items": 6
           }
         ]
-      },
-      "npmScripts": "orchestrate:cag-agent"
+      }
     },
     {
       "id": "orchestration-audit-session",
@@ -2438,9 +2314,7 @@
             "items": 3
           }
         ]
-      },
-      "npmScripts": "orchestrate:audit-session",
-      "parent": "orchestration-audit-system"
+      }
     },
     {
       "id": "orchestration-audit-system",
@@ -2501,470 +2375,7 @@
             "items": 3
           }
         ]
-      },
-      "npmScripts": "orchestrate:audit-system"
-    },
-    {
-      "id": "safe-continuous-delivery-pipeline",
-      "name": "SAFe Continuous Delivery Pipeline",
-      "emoji": "🚀",
-      "description": "Master orchestrator implementing Scaled Agile Framework (SAFe) for continuous delivery. Coordinates all development team activities from idea to production.",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json",
-      "movements": 4,
-      "beats": 18,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "SAFe Continuous Delivery Pipeline",
-        "sequence": {
-          "id": "safe-continuous-delivery-pipeline",
-          "name": "SAFe Continuous Delivery Pipeline",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Continuous Exploration",
-            "description": "Hypothesis, collaboration, architecture, and vision synthesis",
-            "items": 4
-          },
-          {
-            "name": "Movement 2: Continuous Integration",
-            "description": "Development, build automation, testing, staging validation, and product owner sign-off",
-            "items": 6
-          },
-          {
-            "name": "Movement 3: Continuous Deployment",
-            "description": "Production deployment with feature toggles and monitoring",
-            "items": 4
-          },
-          {
-            "name": "Movement 4: Release on Demand",
-            "description": "Controlled feature releases and outcome measurement",
-            "items": 4
-          }
-        ]
-      },
-      "npmScripts": "pipeline:delivery:execute, pipeline:delivery:exploration, pipeline:delivery:integration, pipeline:delivery:deployment, pipeline:delivery:release, pipeline:delivery:report"
-    },
-    {
-      "id": "product-owner-signoff-demo",
-      "name": "Product Owner Sign-off Demo",
-      "emoji": "✅",
-      "description": "Gating orchestration for product owner validation and feature sign-off. Conducts guided demos in staging environment before production deployment.",
-      "category": "orchestration",
-      "purpose": "Verification and stakeholder sign-off gate",
-      "relatedDomains": [],
-      "status": "active",
-      "parent": "safe-continuous-delivery-pipeline",
-      "sequenceFile": null,
-      "movements": null,
-      "beats": null,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "description_long": "Product owner sign-off demo is a critical gating mechanism in the SAFe Continuous Integration movement (beat 5). It ensures that features have been validated by product owners and receive formal approval before production deployment. This orchestration conducts guided demos, verifies feature acceptance criteria, demonstrates business value, and obtains sign-off.",
-      "sketch": {
-        "title": "Product Owner Sign-off Demo",
-        "description": "Gating orchestration for product owner validation before production",
-        "role": "Demo and approval gate within Continuous Integration",
-        "triggers": ["Staging environment ready", "Feature complete", "All acceptance criteria met"],
-        "outcomes": ["Sign-off approved", "Sign-off rejected", "Feedback captured"]
-      },
-      "npmScripts": ["demo:feature:stage", "demo:feature:validate", "demo:feature:signoff"]
-    },
-    {
-      "id": "renderx-web-orchestration",
-      "name": "RenderX Web Orchestration",
-      "emoji": "🌐",
-      "description": "Master orchestration for RenderX Web application lifecycle. Manages build, test, validation, delivery, telemetry collection, and recovery operations.",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/renderx-web-orchestration.json",
-      "movements": 6,
-      "beats": 30,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "RenderX Web Orchestration",
-        "sequence": {
-          "id": "renderx-web-orchestration",
-          "name": "RenderX Web Orchestration",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Initialization",
-            "description": "Initialize build environment and dependencies",
-            "items": 5
-          },
-          {
-            "name": "Movement 2: Build",
-            "description": "Execute build with pre-build validation",
-            "items": 5
-          },
-          {
-            "name": "Movement 3: Test & Validation",
-            "description": "Run E2E tests and compliance checks",
-            "items": 5
-          },
-          {
-            "name": "Movement 4: Delivery",
-            "description": "Orchestrate deployment to environments",
-            "items": 5
-          },
-          {
-            "name": "Movement 5: Telemetry & Monitoring",
-            "description": "Collect and instrument observability data",
-            "items": 5
-          },
-          {
-            "name": "Movement 6: Recovery & Resilience",
-            "description": "Enable failure recovery procedures",
-            "items": 5
-          }
-        ]
-      },
-      "npmScripts": "diagnose:renderx-web",
-      "parent": "safe-continuous-delivery-pipeline"
-    },
-    {
-      "id": "symphonia-conformity-alignment-pipeline",
-      "name": "Symphonia Conformity Alignment Pipeline",
-      "emoji": "⚙️",
-      "description": "Three-movement orchestration for automated detection and remediation of orchestration architecture violations across domain definitions, sequences, and handlers.",
-      "category": "orchestration",
-      "purpose": "Detect and intelligently remediate 60+ conformity violation patterns through automated three-phase alignment fixing with rollback capabilities",
-      "relatedDomains": [
-        "build-pipeline-orchestration"
-      ],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json",
-      "movements": 3,
-      "beats": 4,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Symphonia Conformity Alignment Pipeline",
-        "sequence": {
-          "id": "symphonia-conformity-alignment-pipeline",
-          "name": "Symphonia Conformity Alignment Pipeline",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Domain & Orchestration Alignment",
-            "description": "Detect and fix domain definition and orchestration misalignments",
-            "items": 1
-          },
-          {
-            "name": "Movement 2: Sequence & Beat Alignment",
-            "description": "Detect and fix sequence and beat structure misalignments",
-            "items": 1
-          },
-          {
-            "name": "Movement 3: Handler & Process Alignment",
-            "description": "Detect and fix handler and process symphonic misalignments",
-            "items": 2
-          }
-        ]
-      },
-      "npmScripts": "pipeline:conformity:execute, pipeline:conformity:phase-1, pipeline:conformity:phase-2, pipeline:conformity:phase-3, pipeline:conformity:phase-4, pipeline:conformity:dry-run, fix:conformity:phase-1, fix:conformity:phase-1b, fix:conformity:phase-2, fix:conformity:phase-3, fix:conformity:phase-4, fix:conformity:all, audit:symphonia:conformity",
-      "docsPath": "docs/generated/symphonia-conformity-alignment-pipeline/",
-      "artifactPath": ".generated/conformity/",
-      "parent": "architecture-governance-enforcement-symphony"
-    },
-    {
-      "id": "architecture-governance-enforcement-symphony",
-      "name": "Architecture Governance Enforcement Symphony",
-      "emoji": "🏛️",
-      "description": "Multi-movement orchestration that enforces JSON as single source of truth through systematic validation, implementation verification, and auditability across the entire system.",
-      "category": "orchestration",
-      "purpose": "Ensure that JSON definitions drive all changes - code must conform, tests must validate, markdown must be derived. Every change flows through explicit governance beats with full traceability",
-      "relatedDomains": [
-        "symphonia-conformity-alignment-pipeline",
-        "build-pipeline-orchestration"
-      ],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/architecture-governance-enforcement-symphony.json",
-      "movements": 6,
-      "beats": 37,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Architecture Governance Enforcement Symphony",
-        "sequence": {
-          "id": "architecture-governance-enforcement-symphony",
-          "name": "Architecture Governance Enforcement Symphony",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: JSON Schema Validation",
-            "description": "Validate all JSON files against schema; establish JSON as authoritative",
-            "items": 5
-          },
-          {
-            "name": "Movement 2: Handler Implementation Mapping",
-            "description": "Verify all beats have handlers and handlers have beats",
-            "items": 6
-          },
-          {
-            "name": "Movement 3: Test Coverage Verification",
-            "description": "Ensure all beats have test coverage",
-            "items": 6
-          },
-          {
-            "name": "Movement 4: Markdown Consistency",
-            "description": "Verify markdown documentation is consistent with JSON",
-            "items": 6
-          },
-          {
-            "name": "Movement 5: Auditability & Traceability",
-            "description": "Establish full change traceability chain",
-            "items": 8
-          },
-          {
-            "name": "Movement 6: Conformity Synthesis",
-            "description": "Synthesize conformity score and make governance decision",
-            "items": 7
-          }
-        ]
-      },
-      "npmScripts": "governance:enforce, governance:enforce:strict, governance:enforce:report",
-      "docsPath": "docs/generated/architecture-governance-enforcement-symphony/",
-      "artifactPath": ".generated/governance/"
-    },
-    {
-      "id": "symphonic-code-analysis-pipeline",
-      "name": "Symphonic Code Analysis Pipeline",
-      "emoji": "📊",
-      "description": "Multi-movement orchestration for comprehensive code analysis of symphonic orchestration codebases, measuring code metrics per beat, test coverage, complexity, and architectural conformity.",
-      "category": "orchestration",
-      "purpose": "Analyze and visualize symphonic orchestration code quality with per-beat metrics, coverage analysis, complexity scoring, and architecture conformity validation",
-      "relatedDomains": [
-        "build-pipeline-orchestration",
-        "architecture-governance-enforcement-symphony"
-      ],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/symphonic-code-analysis-pipeline.json",
-      "movements": 4,
-      "beats": 16,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Symphonic Code Analysis Pipeline",
-        "sequence": {
-          "id": "symphonic-code-analysis-pipeline",
-          "name": "Symphonic Code Analysis Pipeline",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": [
-          {
-            "name": "Movement 1: Code Discovery & Beat Mapping",
-            "description": "Discover source files and map them to orchestration beats",
-            "items": 4
-          },
-          {
-            "name": "Movement 2: Code Metrics Analysis",
-            "description": "Calculate LOC, complexity, duplication, and maintainability",
-            "items": 4
-          },
-          {
-            "name": "Movement 3: Test Coverage Analysis",
-            "description": "Measure statement, branch, function, and line coverage",
-            "items": 4
-          },
-          {
-            "name": "Movement 4: Architecture Conformity & Reporting",
-            "description": "Validate handler mapping, generate reports and trends",
-            "items": 4
-          }
-        ]
-      },
-      "npmScripts": "analyze:symphonic:code, analyze:symphonic:code:baseline, analyze:symphonic:code:trends, analyze:symphonic:code:domain, gen:symphonic:code:docs",
-      "docsPath": "docs/generated/symphonic-code-analysis-pipeline/",
-      "artifactPath": ".generated/analysis/",
-      "parent": "architecture-governance-enforcement-symphony"
-    },
-    {
-      "id": "fractal-orchestration-domain-symphony",
-      "name": "Fractal Orchestration Domain",
-      "emoji": "🌀",
-      "description": "Didactic orchestration that encodes the recursive pattern where orchestrated domains become systems and systems become domains in a fractal architecture.",
-      "category": "orchestration",
-      "purpose": "Demonstrate and test fractal orchestration behaviour across DOMAIN_REGISTRY, orchestration registries, and governance symphonies.",
-      "relatedDomains": [
-        "symphonic-code-analysis-pipeline",
-        "architecture-governance-enforcement-symphony"
-      ],
-      "status": "experimental",
-      "sequenceFile": "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json",
-      "movements": 5,
-      "beats": 10,
-      "tempo": 60,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "parent": "architecture-governance-enforcement-symphony"
-    },
-    {
-      "id": "symphonic-code-analysis-demo",
-      "name": "Symphonic Code Analysis Demo",
-      "emoji": "📊✅",
-      "description": "Demo and review gate for symphonic code analysis results. Presents analysis findings, metrics trends, and architectural conformity to stakeholders for review and approval before publication.",
-      "category": "orchestration",
-      "purpose": "Enable architecture review teams to validate code analysis results, discuss findings, and approve metrics before governance enforcement",
-      "relatedDomains": [
-        "symphonic-code-analysis-pipeline",
-        "architecture-governance-enforcement-symphony"
-      ],
-      "status": "active",
-      "parent": "symphonic-code-analysis-pipeline",
-      "sequenceFile": "packages/orchestration/json-sequences/symphonic-code-analysis-demo.json",
-      "movements": 4,
-      "beats": 4,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "description_long": "Symphonic Code Analysis Demo is a critical review and approval gate following the Symphonic Code Analysis Pipeline. It enables architecture review teams to examine code metrics, discuss trends and findings with stakeholders, and formally approve results before they're used for governance enforcement.",
-      "sketch": {
-        "title": "Symphonic Code Analysis Demo",
-        "description": "Stakeholder review and approval gate for code analysis results",
-        "role": "Demo and review gate within code analysis workflow",
-        "triggers": ["Code analysis complete", "Architecture review scheduled", "Metrics baseline update"],
-        "outcomes": ["Metrics approved", "Metrics rejected", "Findings documented", "Recommendations captured"]
-      },
-      "npmScripts": ["demo:code:analysis:present", "demo:code:analysis:review", "demo:code:analysis:discuss", "demo:code:analysis:approve"]
-    },
-    {
-      "id": "orchestration-registry-audit-pipeline",
-      "name": "Orchestration Registry Audit Pipeline",
-      "emoji": "🔍",
-      "description": "Audit orchestration to validate that all registered orchestration domains have both JSON authority files and npm scripts defined. Produces completeness reports and governance compliance verification.",
-      "category": "orchestration",
-      "purpose": "Ensure all orchestration domains meet the governance requirement: each domain must have a JSON authority file (sequenceFile) and a set of executable npm scripts (npmScripts).",
-      "relatedDomains": [
-        "build-pipeline-orchestration",
-        "symphonia-conformity-alignment-pipeline",
-        "architecture-governance-enforcement-symphony"
-      ],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/orchestration-registry-audit-pipeline.json",
-      "movements": 4,
-      "beats": 12,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "npmScripts": "audit:registry",
-      "docsPath": "docs/generated/orchestration-registry-audit-pipeline/",
-      "artifactPath": ".generated/audit/",
-      "sketch": {
-        "title": "Orchestration Registry Audit Pipeline",
-        "phases": [
-          {
-            "description": "Discover all registered orchestration domains and their current state",
-            "name": "Discovery & Inventory",
-            "items": 3
-          },
-          {
-            "description": "Validate that all domains have both sequence files and npm scripts",
-            "name": "Validation & Completeness Check",
-            "items": 3
-          },
-          {
-            "description": "Analyze completeness metrics and generate compliance report",
-            "name": "Analysis & Metrics",
-            "items": 3
-          },
-          {
-            "description": "Generate audit report and governance compliance documentation",
-            "name": "Reporting & Documentation",
-            "items": 3
-          }
-        ],
-        "sequence": {
-          "id": "orchestration-registry-audit-pipeline",
-          "name": "Orchestration Registry Audit Pipeline",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        }
-      },
-      "parent": "architecture-governance-enforcement-symphony"
-    },
-    {
-      "id": "host-sdk-infrastructure",
-      "name": "Host SDK Infrastructure",
-      "category": "infrastructure",
-      "status": "active",
-      "description": "Core Host SDK providing the plugin hosting environment, manifest management, and integration APIs for all UI components",
-      "purpose": "Provide the runtime host environment and orchestration integration surface for all RenderX plugins and orchestration sequences",
-      "npmScripts": [
-        "@renderx-plugins/host-sdk"
-      ],
-      "parent": "safe-continuous-delivery-pipeline"
-    },
-    {
-      "id": "manifest-tools-infrastructure",
-      "name": "Manifest Tools Infrastructure",
-      "category": "infrastructure",
-      "status": "active",
-      "description": "Manifest generation and validation tools for orchestration domain definitions, sequence specifications, and plugin registrations",
-      "purpose": "Provide tooling and pipelines for generating, validating, and evolving manifests and orchestration domain definitions in a governed way",
-      "npmScripts": [
-        "@renderx-plugins/manifest-tools"
-      ],
-      "parent": "safe-continuous-delivery-pipeline"
-    },
-    {
-      "id": "components-library-infrastructure",
-      "name": "Components Library Infrastructure",
-      "category": "infrastructure",
-      "status": "active",
-      "description": "Foundational component library providing base UI components and utility wrappers for all RenderX plugins",
-      "purpose": "Provide the shared UI component library backing all RenderX plugins and orchestration-driven experiences",
-      "npmScripts": [
-        "@renderx-plugins/components"
-      ],
-      "parent": "renderx-web-orchestration"
-    },
-    {
-      "id": "digital-assets-infrastructure",
-      "name": "Digital Assets Infrastructure",
-      "category": "infrastructure",
-      "status": "active",
-      "description": "Asset management system for icons, themes, branding, and static resources used across all UI plugins",
-      "purpose": "Provide managed digital assets (icons, themes, branding, static resources) consumed by RenderX plugins and orchestration sequences",
-      "npmScripts": [
-        "@renderx-plugins/digital-assets"
-      ],
-      "parent": "renderx-web-orchestration"
+      }
     }
   ]
 }

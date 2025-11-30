@@ -70,6 +70,13 @@
       "newHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
       "annotatedAt": "2025-11-26T22:29:26.938Z",
       "reason": "Test run with handler payload fixes"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
+      "newHash": "8bfab878b3e787cf6672e20ee35ececa61ee498cd8bf88aaf38a224afcafbfad",
+      "annotatedAt": "2025-11-30T09:26:17.808Z",
+      "reason": "Symphonic analysis pipeline update; expected shape evolution"
     }
   ]
 }

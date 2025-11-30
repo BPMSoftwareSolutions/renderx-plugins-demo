@@ -1,15 +1,16 @@
 {
   "$schema": "./musical-sequence.schema.json",
-  "name": "symphonic-code-analysis-demo",
+  "name": "orchestration-audit-system",
   "version": "0.1.0",
   "movements": [
     {
       "name": "bootstrap",
       "beats": [
         {
-          "name": "present-analysis",
+          "name": "scan-audit-system",
           "handler": { "name": "analysis.discovery#scanOrchestrationFiles" },
-          "notes": ["Prepare demo artifacts and present analysis results"]
+          "notes": ["Index orchestration audit system sequences"],
+          "args": { "paths": ["packages/orchestration/json-sequences"] }
         }
       ]
     }

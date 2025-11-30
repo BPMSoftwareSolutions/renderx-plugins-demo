@@ -7,6 +7,20 @@
   "description": "Multi-movement orchestration for comprehensive code analysis of symphonic orchestration codebases, measuring code metrics per beat, test coverage, complexity, and architectural conformity.",
   "kind": "orchestration",
   "status": "active",
+  "category": "analysis-pipeline",
+  "purpose": "Provide comprehensive, per-beat code metrics, test coverage, and architecture conformity reporting across all orchestration domains without suppressing or masking missing data.",
+  "metadata": {
+    "version": "1.0.0",
+    "relatedDomains": [
+      "build-pipeline-symphony",
+      "orchestration-core",
+      "renderx-web-orchestration",
+      "graphing-orchestration",
+      "symphonia-conformity-alignment-pipeline",
+      "safe-continuous-delivery-pipeline"
+    ]
+  },
+  "beats": 16,
   "movements": [
     {
       "name": "Code Discovery & Beat Mapping",
@@ -144,5 +158,137 @@
         }
       ]
     }
+  ]
+  ,
+  "analysisMetrics": {
+    "codeMetrics": {
+      "linesOfCode": {
+        "description": "Total and per-scope LOC across beats and movements",
+        "benchmark": "Track trend vs. baseline; no hard threshold",
+        "aggregation": "sum, perBeat, perMovement, perDomain",
+        "visualization": "bar-chart"
+      },
+      "complexity": {
+        "description": "Cyclomatic and cognitive complexity per handler",
+        "benchmark": "Average cyclomatic < 10; cognitive < 8",
+        "aggregation": "average, perBeat",
+        "visualization": "line-chart"
+      },
+      "duplication": {
+        "description": "Percentage of duplicated code",
+        "benchmark": "< 5%",
+        "aggregation": "percentage",
+        "visualization": "gauge"
+      },
+      "maintainability": {
+        "description": "Maintainability index per module",
+        "benchmark": ">= 80 (green)",
+        "aggregation": "perModule",
+        "visualization": "scatter"
+      }
+    },
+    "testCoverage": {
+      "statement": {
+        "description": "Statement coverage across handlers",
+        "benchmark": ">= 85%",
+        "perBeat": true
+      },
+      "branch": {
+        "description": "Branch coverage (decision points)",
+        "benchmark": ">= 80%",
+        "perBeat": true
+      },
+      "function": {
+        "description": "Function coverage and handler execution",
+        "benchmark": ">= 90%",
+        "perBeat": true
+      },
+      "line": {
+        "description": "Line coverage",
+        "benchmark": ">= 85%",
+        "perBeat": true
+      }
+    },
+    "conformityMetrics": {
+      "handlerCompleteness": {
+        "description": "All beats mapped to implemented handlers",
+        "benchmark": "100%",
+        "impact": "high"
+      },
+      "testCoverageConformity": {
+        "description": "Coverage meets minimum benchmarks",
+        "benchmark": ">= 0.85 overall",
+        "impact": "medium"
+      },
+      "architectureConformity": {
+        "description": "Alignment with orchestration and fractal architecture",
+        "benchmark": ">= 0.85",
+        "impact": "high"
+      },
+      "overallScore": {
+        "description": "Composite score of all metrics",
+        "benchmark": ">= 0.85",
+        "impact": "critical"
+      }
+    }
+  },
+  "reportingArtifacts": [
+    {
+      "name": "Beat Metrics Report",
+      "type": "markdown",
+      "description": "Per-beat LOC, complexity, and coverage",
+      "purpose": "Enable targeted improvements",
+      "generated": true
+    },
+    {
+      "name": "Domain Analysis JSON",
+      "type": "json",
+      "description": "Machine-readable analysis for automation",
+      "purpose": "CI validation and trend tracking",
+      "generated": true
+    },
+    {
+      "name": "Trend Comparison",
+      "type": "markdown",
+      "description": "Baseline vs. current deltas",
+      "purpose": "Reveal regressions and improvements",
+      "generated": true
+    }
+  ],
+  "governance": {
+    "policies": [
+      "No masking of missing data",
+      "Publish all analysis artifacts",
+      "Require handler-to-beat mapping",
+      "Validate coverage thresholds"
+    ]
+  },
+  "implementation": {
+    "bindings": [
+      { "beat": 1, "handler": "analysis.discovery#scanOrchestrationFiles", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 2, "handler": "analysis.discovery#discoverSourceCode", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 3, "handler": "analysis.discovery#mapBeatsToCode", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 4, "handler": "analysis.discovery#collectBaseline", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 5, "handler": "analysis.metrics#countLinesOfCode", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 6, "handler": "analysis.metrics#analyzeComplexity", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 7, "handler": "analysis.metrics#detectDuplication", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 8, "handler": "analysis.metrics#calculateMaintainability", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 9, "handler": "analysis.coverage#measureStatementCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 10, "handler": "analysis.coverage#measureBranchCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 11, "handler": "analysis.coverage#measureFunctionCoverage", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 12, "handler": "analysis.coverage#calculateGapAnalysis", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 13, "handler": "analysis.conformity#validateHandlerMapping", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 14, "handler": "analysis.conformity#calculateConformityScore", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 15, "handler": "analysis.conformity#generateTrendReport", "script": "scripts/analyze-symphonic-code.cjs" },
+      { "beat": 16, "handler": "analysis.conformity#generateAnalysisReport", "script": "scripts/analyze-symphonic-code.cjs" }
+    ]
+  },
+  "events": [
+    "analysis.discovery.started",
+    "analysis.discovery.completed",
+    "analysis.metrics.completed",
+    "analysis.coverage.completed",
+    "analysis.conformity.completed",
+    "analysis.reporting.completed"
   ]
 }
