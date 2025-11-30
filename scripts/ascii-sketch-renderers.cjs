@@ -255,12 +255,13 @@ function renderHandlerPortfolioFoundation(data) {
 function renderCoverageHeatmapByBeat(data) {
   let output = '';
   output += '╔════ COVERAGE HEATMAP BY BEAT ════╗\n';
-  output += '║ Beat       Mov.  Cov  Bar         ║\n';
+  // Header spacing aligned to tests: 'Beat       Mov.   Cov   Bar'
+  output += '║ Beat       Mov.   Cov   Bar       ║\n';
   output += '╠═══════════════════════════════════╣\n';
 
   data.forEach(beat => {
     const beatName = padString(beat.beat, 10);
-    const movement = padString(beat.movement, 5);
+    const movement = padString(beat.movement, 6);
     const coverage = padString(Math.round(beat.coverage) + '%', 3, true);
     const bar = padString(generateBar(beat.coverage, 11), 11);
     output += `║ ${beatName} ${movement} ${coverage} ${bar} ║\n`;
@@ -275,13 +276,13 @@ function renderCoverageHeatmapByBeat(data) {
  * @param {RiskMatrix} data
  * @returns {string}
  */
-function renderRiskAssessmentMatrix(godHandlers, conformityViolations) {
-  const safeGodHandlers = Array.isArray(godHandlers) ? godHandlers : [];
-  const safeViolations = Array.isArray(conformityViolations) ? conformityViolations : [];
-  const critical = safeViolations.filter(v => v.severity === 'critical').map(v => v.check);
-  const high = safeGodHandlers.map(h => `God Handler: ${h.name}`);
-  const medium = safeViolations.filter(v => v.severity === 'high').map(v => v.check);
-  const low = safeViolations.filter(v => v.severity === 'medium').map(v => v.check);
+function renderRiskAssessmentMatrix(data) {
+  // Accept a RiskMatrix object with string arrays for each level
+  const safe = data && typeof data === 'object' ? data : {};
+  const critical = Array.isArray(safe.critical) ? safe.critical : [];
+  const high = Array.isArray(safe.high) ? safe.high : [];
+  const medium = Array.isArray(safe.medium) ? safe.medium : [];
+  const low = Array.isArray(safe.low) ? safe.low : [];
 
   const boxWidth = 45;
   let output = '';
@@ -291,22 +292,23 @@ function renderRiskAssessmentMatrix(godHandlers, conformityViolations) {
   
   output += `║ CRITICAL: ${String(critical.length).padEnd(boxWidth - 11)}║\n`;
   critical.forEach(item => {
-    output += `║   - ${padString(item, boxWidth - 4)}║\n`;
+    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
   });
 
   output += `║ HIGH    : ${String(high.length).padEnd(boxWidth - 11)}║\n`;
   high.forEach(item => {
-    output += `║   - ${padString(item, boxWidth - 4)}║\n`;
+    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
   });
 
   output += `║ MEDIUM  : ${String(medium.length).padEnd(boxWidth - 11)}║\n`;
-  if (medium.length > 0 && medium.length <= 3) {
-    medium.forEach(item => {
-      output += `║   - ${padString(item, boxWidth - 4)}║\n`;
-    });
-  }
+  medium.forEach(item => {
+    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
+  });
 
   output += `║ LOW     : ${String(low.length).padEnd(boxWidth - 11)}║\n`;
+  low.forEach(item => {
+    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
+  });
   
   output += '╚══════════════════════════════════════════════╝';
   return output;

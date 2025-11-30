@@ -7,7 +7,7 @@
         "p95Time": 0,
         "p99Time": 0,
         "errorRate": 0,
-        "lastSeen": "2025-11-30T09:31:45.190Z"
+        "lastSeen": "2025-11-30T09:46:18.445Z"
       },
       "B": {
         "count": 1,
@@ -15,11 +15,11 @@
         "p95Time": 0,
         "p99Time": 0,
         "errorRate": 0,
-        "lastSeen": "2025-11-30T09:31:45.191Z"
+        "lastSeen": "2025-11-30T09:46:18.446Z"
       }
     },
     "sequences": {},
-    "timestamp": "2025-11-30T09:31:45.192Z",
+    "timestamp": "2025-11-30T09:46:18.446Z",
     "totalEvents": 2
   }
 }

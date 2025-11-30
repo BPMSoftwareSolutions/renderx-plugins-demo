@@ -1,236 +1,337 @@
-# Auto-Generated README System
+# Auto-Generated README System - Fully Data-Driven
 
 ## Overview
 
-The root [README.md](../README.md) contains an **auto-generated "Domain Registry Overview" section** that stays synchronized with the domain registry and code analysis reports. The rest of the README is manually maintained to preserve rich documentation.
+The root [README.md](../README.md) is **completely data-driven** from [DOMAIN_REGISTRY.json](../DOMAIN_REGISTRY.json). The registry serves as the **single source of truth** for all README content through the `readme_metadata` section.
 
-**Key Point**: Only the "Domain Registry Overview" section is auto-generated. All other sections (Overview, Telemetry System, Governance, Getting Started, etc.) are preserved exactly as written.
+**Key Principle**: Content comes from JSON, not hardcoded in scripts. To change the README, edit the domain registry.
+
+## Architecture
+
+### Data Flow
+
+```
+DOMAIN_REGISTRY.json (readme_metadata)
+         ↓
+  generate-readme.cjs
+         ↓
+     README.md
+```
+
+### Content Sources
+
+1. **Generated from Metadata** (`readme_metadata` in registry):
+   - Title & subtitle
+   - Overview (architecture, benefits, contents)
+   - Related resources
+   - Getting Started (prerequisites, installation, commands)
+   - Documentation links
+   - Testing commands
+   - Packages list
+   - Domain analysis commands
+   - Contributing info
+   - License
+
+2. **Generated from Domain Data**:
+   - Domain counts (total, active, deprecated, experimental)
+   - Breakdown by type
+   - Breakdown by ownership
+   - Key orchestration domains with live metrics
+   - Infrastructure domains
+   - Capability domains
+
+3. **Preserved from Existing README** (`preserve_sections` list):
+   - Governance Tooling Registry
+   - Telemetry Governance & Traceability System
+   - Active Refactoring Zones
+   - And other legacy rich documentation
+
+## Single Source of Truth: DOMAIN_REGISTRY.json
+
+### readme_metadata Structure
+
+```json
+{
+  "readme_metadata": {
+    "title": "RenderX Plugins Demo",
+    "subtitle": "A thin-client host application...",
+    "overview": {
+      "architecture": "monorepo",
+      "benefits": ["...", "..."],
+      "contents": ["...", "..."],
+      "monorepo_doc": "MONOREPO.md"
+    },
+    "related_resources": [
+      {
+        "name": "MusicalConductor",
+        "description": "orchestration engine...",
+        "url": "https://..."
+      }
+    ],
+    "preserve_sections": [
+      "Governance Tooling Registry",
+      "� Telemetry Governance & Traceability System",
+      "..."
+    ],
+    "getting_started": {
+      "prerequisites": ["Node.js 18+", "..."],
+      "installation_steps": ["git clone ...", "..."],
+      "development_commands": [
+        {"command": "npm run dev", "description": "Start server"}
+      ]
+    },
+    "documentation_links": {
+      "core": [
+        {"title": "...", "path": "..."}
+      ],
+      "governance": {
+        "registry": "docs/governance/tools-registry.json",
+        "generated_docs": "npm run generate:governance:registry",
+        "validation": "npm run validate:governance:registry"
+      }
+    },
+    "testing_commands": [...],
+    "packages": [...],
+    "domain_analysis_commands": [...],
+    "contributing": {...},
+    "license": "..."
+  }
+}
+```
 
 ## How It Works
 
-### Data Sources
+### Generation Process
 
-The README generator pulls data from:
+1. **Load Registry**: Read `DOMAIN_REGISTRY.json`
+2. **Extract Preserved Sections**: Parse existing README for sections in `preserve_sections` list
+3. **Generate Content**: Build README from `readme_metadata`
+4. **Inject Domain Data**: Add live domain counts and metrics
+5. **Insert Preserved Sections**: Add back preserved content in order
+6. **Write README**: Save to `README.md`
 
-1. **DOMAIN_REGISTRY.json** - Complete domain registry with:
-   - Domain count by type (orchestration, capability, infrastructure)
-   - Domain ownership breakdown
-   - Domain status (active, deprecated, experimental)
-   - Domain descriptions
+### Section Ordering
 
-2. **Code Analysis Reports** - Latest analysis from `.generated/analysis/**`:
-   - Handler counts
-   - Test coverage percentages
-   - Conformity scores
-   - Maintainability metrics
-   - Code duplication stats
-   - Overall health status
-
-### Generation Script
-
-**Location**: [scripts/generate-readme.cjs](../scripts/generate-readme.cjs)
-
-The script:
-- Loads the domain registry
-- Scans for latest analysis reports per domain
-- Extracts metrics from markdown reports
-- Categorizes domains by type and ownership
-- **Inserts/updates** a single section between HTML markers
-
-### Insertion Strategy
-
-The auto-generated section is inserted into the existing README using HTML comment markers:
-
-```html
-<!-- AUTO-GENERATED:START - Do not modify this section manually -->
-... generated content ...
-<!-- AUTO-GENERATED:END -->
-```
-
-- **Insertion Point**: After "Related Resources", before "Governance Tooling Registry"
-- **Method**: Markers preserve boundaries
-- **Updates**: Script replaces only the marked section
-- **Preservation**: All other content remains untouched
-
-### Auto-Generated Section
-
-The **"Domain Registry Overview"** section includes:
-
-- Total domain counts (active, deprecated, experimental)
-- Breakdown by type (orchestration, capability, workflow)
-- Breakdown by ownership (Platform teams)
-- Key orchestration domains (top 8 with metrics)
-- Infrastructure domains
-- Capability domains (collapsible)
-- Analysis status
-
-### Manually Maintained Sections
-
-All other README sections are preserved:
-
-- Overview & Monorepo Benefits
-- Related Resources
-- Governance Tooling Registry
-- Telemetry Governance & Traceability System
-- Refactoring Zones
-- Getting Started
-- Example Plugins
-- Development Workflow
-- And much more...
+1. Title & Subtitle (from metadata)
+2. Overview (from metadata)
+3. Related Resources (from metadata)
+4. 📊 Domain Registry Overview (generated from domain data + analysis)
+5. Preserved Sections (in order from `preserve_sections`)
+6. Data-Driven Sections (Getting Started, Documentation, etc.)
+7. Auto-Generation Footer
 
 ## Usage
 
 ### Manual Generation
 
 ```bash
-# Generate README
 npm run generate:readme
 ```
 
-### Automatic Generation
-
-The README is automatically regenerated during the build process:
+### Automatic (Build Integration)
 
 ```bash
 npm run build
-# ↳ runs validate:domains → generate:readme → ...
+# ↳ runs: validate:domains → generate:readme → ...
 ```
 
-### Integration Points
+## Updating README Content
 
-The `generate:readme` script is integrated into:
+### To Change Static Content
 
-- **Build Pipeline**: Runs after domain validation
-- **Can be run standalone**: For quick updates without full build
+**Edit DOMAIN_REGISTRY.json**, not the script or README directly.
 
-## Customization
-
-### Adding Static Content
-
-To add static sections, edit [scripts/generate-readme.cjs](../scripts/generate-readme.cjs):
-
-```javascript
-function generateReadme(registry) {
-  // ... existing code ...
-
-  let readme = `# RenderX Plugins Demo
-
-> Auto-generated...
-
-// Add your custom section here
-## 🆕 My Custom Section
-
-Custom content here...
-
-`;
-
-  return readme;
+```json
+{
+  "readme_metadata": {
+    "title": "New Title",  // ← Change title
+    "overview": {
+      "benefits": [  // ← Add/remove benefits
+        "New benefit here"
+      ]
+    }
+  }
 }
 ```
 
-### Modifying Metrics Extraction
+Then regenerate:
+```bash
+npm run generate:readme
+```
 
-To extract additional metrics from analysis reports, update the `extractMetrics()` function:
+### To Add a New Section
 
-```javascript
-function extractMetrics(reportPath) {
-  // ... existing patterns ...
+1. Add metadata to `readme_metadata` in the registry
+2. Update the generator script to use that metadata
+3. Regenerate
 
-  // Add new metric extraction
-  const myMetricMatch = content.match(/My Metric:\s*([\d.]+)/);
-  if (myMetricMatch) metrics.myMetric = parseFloat(myMetricMatch[1]);
+### To Preserve a Section
 
-  return metrics;
+Add to `preserve_sections` list:
+
+```json
+{
+  "readme_metadata": {
+    "preserve_sections": [
+      "Governance Tooling Registry",
+      "My New Rich Section"  // ← Add here
+    ]
+  }
 }
 ```
 
-### Changing Domain Categorization
+The section will be extracted from the existing README and preserved during generation.
 
-To modify how domains are categorized, edit the `generateDomainSummary()` function:
+## Benefits
 
-```javascript
-// Example: Add new category
-summary.myCategory = [];
+✅ **Single Source of Truth** - All content in JSON, not scattered across files
+✅ **Version Controlled** - README changes tracked through registry changes
+✅ **Data-Driven** - Live metrics from analysis reports
+✅ **Preserves Rich Content** - Important documentation sections kept intact
+✅ **Easy Updates** - Change JSON, regenerate
+✅ **Consistent** - Same structure every time
+✅ **Traceable** - Know exactly where each piece of content comes from
 
-// In the forEach loop:
-if (someCondition) {
-  summary.myCategory.push({ id, ...def });
-}
+## Example Updates
+
+### Change Installation Steps
+
+**Before**:
+```json
+"installation_steps": [
+  "git clone https://github.com/...",
+  "cd renderx-plugins-demo",
+  "npm install"
+]
 ```
+
+**After**:
+```json
+"installation_steps": [
+  "git clone https://github.com/...",
+  "cd renderx-plugins-demo",
+  "npm install",
+  "npm run setup"  // ← Added
+]
+```
+
+**Result**: README automatically reflects new setup step on next generation.
+
+### Add a New Resource
+
+```json
+"related_resources": [
+  {
+    "name": "MusicalConductor",
+    "description": "...",
+    "url": "..."
+  },
+  {  // ← New resource
+    "name": "New Project",
+    "description": "new thing",
+    "url": "https://..."
+  }
+]
+```
+
+### Update Prerequisites
+
+```json
+"prerequisites": [
+  "Node.js 18+",  // Updated from 16+
+  "npm 9+",
+  "Docker 24+"  // ← Added
+]
+```
+
+## Migration Notes
+
+### From Previous Approach
+
+The previous approach used HTML markers (`<!-- AUTO-GENERATED:START -->`) to insert a single section. The new approach generates the **entire README** from metadata while preserving specific sections.
+
+**Key Difference**:
+- **Old**: Insert one section, keep everything else
+- **New**: Generate everything, preserve specific sections
+
+### Preserved Sections List
+
+These sections from the original README are preserved as-is:
+
+- Governance Tooling Registry
+- � Telemetry Governance & Traceability System (all 5 layers!)
+- �🚧 Active Refactoring Zones
+- Getting Started (if you want manual control)
+- Example Plugins
+- Development Workflow
+- Artifact Mode
+- Host SDK Surface
+- Artifact Integrity
+- Environment Variables
+- Layout and Slots
+- Host SDK Migration
+- License (if custom)
+- Source Layout Refactor
+
+To remove a section from preservation, remove it from `preserve_sections` in the registry.
+
+## Troubleshooting
+
+### Section Not Appearing
+
+**Check**:
+1. Is it in `readme_metadata` in the registry?
+2. Is the generator script using that field?
+3. Is it in `preserve_sections` (if from old README)?
+
+### Section Appearing Twice
+
+**Cause**: Section is both generated AND preserved.
+
+**Fix**: Either:
+- Add to `preserve_sections` to use existing content
+- Remove from `preserve_sections` to use generated content
+
+### Metrics Not Showing
+
+**Check**:
+1. Domain has analysis configuration in registry
+2. Analysis has been run (`npm run analyze:all:domains`)
+3. Analysis report exists in `.generated/analysis/`
 
 ## File Structure
 
 ```
 renderx-plugins-demo/
-├── README.md                          # ← Auto-generated
-├── DOMAIN_REGISTRY.json              # → Source of truth
+├── DOMAIN_REGISTRY.json           # ← SINGLE SOURCE OF TRUTH
+│   └── readme_metadata             # ← All README content
+├── README.md                       # ← Auto-generated output
 ├── .generated/
-│   └── analysis/
-│       ├── orchestration-core/
-│       │   └── orchestration-core-rich-markdown-*.md  # → Latest metrics
-│       ├── build-pipeline/
-│       │   └── build-pipeline-orchestration-rich-markdown-*.md
-│       └── ...
+│   └── analysis/**/*.md            # → Live metrics source
 └── scripts/
-    └── generate-readme.cjs           # → Generator script
+    └── generate-readme.cjs         # → Generator (data-driven)
 ```
-
-## Maintenance
-
-### When to Regenerate
-
-The README should be regenerated when:
-
-1. **Domains change** - New domains added/removed from registry
-2. **Analysis runs** - After `npm run analyze:all:domains`
-3. **Build time** - Automatically during `npm run build`
-4. **Manual updates needed** - When static sections need refresh
-
-### Verification
-
-After generation, verify:
-
-```bash
-# Check README was updated
-git status
-
-# View the generated README
-cat README.md | head -50
-
-# Validate domain counts match registry
-grep "Total Domains:" README.md
-```
-
-## Benefits
-
-✅ **Always Up-to-Date** - README reflects actual codebase state
-✅ **Metrics Integration** - Shows real analysis data
-✅ **Zero Manual Effort** - Automatic during builds
-✅ **Consistency** - Same format every time
-✅ **Traceability** - Links to analysis reports
-✅ **Governance** - Enforces documentation standards
 
 ## Future Enhancements
 
-Potential improvements:
+Potential additions to `readme_metadata`:
 
-- [ ] Add trend graphs (coverage over time)
-- [ ] Include package dependency visualization
-- [ ] Show test health per domain
-- [ ] Add architecture diagrams
-- [ ] Include recent commits/changes
-- [ ] Show domain dependency graph
-- [ ] Add performance metrics
-- [ ] Include API documentation links
+- [ ] Badges (build status, coverage, license)
+- [ ] Screenshots/GIFs paths
+- [ ] Table of contents configuration
+- [ ] Custom sections with markdown templates
+- [ ] Section visibility toggles
+- [ ] Multi-language support
+- [ ] Dynamic charts/graphs configuration
 
 ## Related Documentation
 
-- [Domain Registry](../DOMAIN_REGISTRY.json) - Source of truth
-- [analyze-all-domains.cjs](../scripts/analyze-all-domains.cjs) - Batch analysis
-- [analyze-domain.cjs](../scripts/analyze-domain.cjs) - Single domain analysis
-- [Governance Docs](./governance/) - Governance framework
+- [DOMAIN_REGISTRY.json](../DOMAIN_REGISTRY.json) - Single source of truth
+- [generate-readme.cjs](../scripts/generate-readme.cjs) - Data-driven generator
+- [README.md](../README.md) - Generated output
 
 ---
 
+**Principle**: README is a VIEW of the domain registry data, not a separate source of truth.
 **Last Updated**: Auto-generated on build
 **Maintainer**: Platform-Orchestration team

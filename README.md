@@ -29,11 +29,9 @@ Check out these supporting projects for more detail on the underlying architectu
 - **renderx-plugins** — core utilities, base interfaces, and manifest schema for RenderX-compatible plugins:
   https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md
 
-<!-- AUTO-GENERATED:START - Do not modify this section manually -->
-
 ## 📊 Domain Registry Overview
 
-> **Auto-generated on 2025-11-30T09:34:32.414Z**
+> **Auto-generated on 2025-11-30T09:40:52.853Z**
 > This section is automatically maintained. To update: `npm run generate:readme`
 
 **Total Domains**: 78 (75 active, 1 deprecated, 1 experimental)
@@ -122,8 +120,6 @@ _...and 45 more_
 - **18** orchestration domains have analysis configuration
 - **Latest Validation**: 2025-11-27T04:07:56.011Z
 - **Analysis Reports**: [View all](.generated/analysis/)
-
-<!-- AUTO-GENERATED:END -->
 
 ## Governance Tooling Registry
 
@@ -558,3 +554,89 @@ Specify your preferred license here (e.g., MIT).
 ### Source Layout Refactor (#171)
 
 The codebase was reorganized into layered folders (`core/`, `domain/`, `ui/`, `infrastructure/`, `vendor/`). See `docs/design-reviews/NEW_STRUCTURE.md` for mapping and migration notes.
+
+## 📚 Documentation
+
+### Core Documentation
+- [Monorepo Guidelines](./MONOREPO.md)
+- [Knowledge Layers Architecture](./KNOWLEDGE_LAYERS_ARCHITECTURE.md)
+- [Complete Knowledge System Index](./COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md)
+- [Project Knowledge Query Guide](./PROJECT_KNOWLEDGE_QUERY_GUIDE.md)
+
+### Governance & Tooling
+- **Governance Tooling Registry**: `docs/governance/tools-registry.json`
+- **Generated Registry Docs**: Auto-generated via `npm run generate:governance:registry`
+- **Validation**: `npm run validate:governance:registry`
+
+### Related Projects
+- [MusicalConductor](https://github.com/BPMSoftwareSolutions/MusicalConductor/blob/main/README.md) - The orchestration engine powering plugin coordination (symphonies, movements, beats)
+- [renderx-plugins](https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md) - Core utilities, base interfaces, and manifest schema for RenderX-compatible plugins
+
+---
+
+## 🧪 Testing & Quality
+
+```bash
+# Run all tests
+npm test
+
+# Generate test coverage
+npm run test:coverage
+
+# Run domain validation
+npm run validate:domains
+
+# Comprehensive audit
+npm run audit:full
+```
+
+---
+
+## 📦 Packages
+
+This monorepo contains the following packages:
+
+- `@renderx/host-sdk - Host SDK for plugin integration`
+- `@renderx/musical-conductor - Orchestration engine`
+- `@renderx/components - Shared UI components`
+- `@renderx/manifest-tools - Manifest generation tools`
+- `...and more in `packages/``
+
+---
+
+## 🔍 Domain Analysis
+
+To analyze a specific domain:
+
+```bash
+# Analyze single domain
+node scripts/analyze-domain.cjs <domain-id>
+
+# Analyze all domains
+node scripts/analyze-all-domains.cjs
+
+# View analysis results
+ls .generated/analysis/
+```
+
+---
+
+## 🤝 Contributing
+
+This is a demo repository showcasing the RenderX plugin architecture. For contribution guidelines, please see the main [renderx-plugins](https://github.com/BPMSoftwareSolutions/renderx-plugins) repository.
+
+---
+
+## 🔄 Auto-Generation
+
+This README is automatically generated from:
+- `DOMAIN_REGISTRY.json` - Single source of truth for all metadata
+- `.generated/analysis/**` - Code analysis reports
+- Domain analysis configuration
+
+**Last Generated**: 2025-11-30T09:40:52.853Z
+
+To update this README, run:
+```bash
+npm run generate:readme
+```

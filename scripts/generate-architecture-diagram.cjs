@@ -389,7 +389,7 @@ ${beatCoverage ? renderCoverageHeatmapByBeat(
 ║                           SYMPHONY ORCHESTRATION STRUCTURE                                                        ║
 ╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║  Hierarchy: Symphony → Sequence → Movement → Beat → Handler                                                      ║
-║  • Symphony:  Logical grouping of related handler functions (e.g., Copy Symphony, Create Symphony)               ║
+║  • Symphony:  Logical grouping of related handler functions                                                      ║
 ║  • Sequence:  Execution order of handlers within a symphony (choreographed flow)                                 ║
 ║  • Movement:  Major analysis phase (Discovery, Metrics, Coverage, Conformity)                                    ║
 ║  • Beat:      Workflow stage within a movement (fine-grained execution step)                                     ║

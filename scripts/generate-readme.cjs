@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * Auto-Generate README.md - Domain Registry Section
+ * Auto-Generate README.md - Fully Data-Driven
  *
- * This script INSERTS/UPDATES the "Domain Registry Overview" section
- * in the existing README.md while preserving all other content.
+ * This script generates the ENTIRE README from DOMAIN_REGISTRY.json
+ * using the readme_metadata section as the single source of truth.
  *
- * The section is inserted after "Related Resources" and before
- * "Governance Tooling Registry".
+ * Only sections listed in preserve_sections are kept from the existing README.
+ * All other content is generated from the domain registry metadata.
  *
  * Data sources:
- * - DOMAIN_REGISTRY.json (domain count, status, ownership)
+ * - DOMAIN_REGISTRY.json (readme_metadata + domain data)
  * - Latest code analysis reports from .generated/analysis/**
  *
  * Usage:
@@ -24,10 +24,6 @@ const path = require('path');
 const log = (msg, icon = '📝') => console.log(`${icon} ${msg}`);
 const error = (msg) => console.error(`❌ ${msg}`);
 
-// Marker comments for the auto-generated section
-const START_MARKER = '<!-- AUTO-GENERATED:START - Do not modify this section manually -->';
-const END_MARKER = '<!-- AUTO-GENERATED:END -->';
-
 // Load registry
 function loadRegistry() {
   const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
@@ -38,11 +34,36 @@ function loadRegistry() {
   return JSON.parse(fs.readFileSync(registryPath, 'utf8'));
 }
 
+// Extract preserved sections from existing README
+function extractPreservedSections(existingReadme, sectionTitles) {
+  const preserved = {};
+
+  sectionTitles.forEach(title => {
+    // Find section by matching "## Title"
+    const regex = new RegExp(`^##\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'gm');
+    const match = regex.exec(existingReadme);
+
+    if (match) {
+      const startIndex = match.index;
+      // Find next ## heading or end of file
+      const nextHeadingRegex = /^##\s+/gm;
+      nextHeadingRegex.lastIndex = startIndex + match[0].length;
+      const nextMatch = nextHeadingRegex.exec(existingReadme);
+
+      const endIndex = nextMatch ? nextMatch.index : existingReadme.length;
+      const sectionContent = existingReadme.substring(startIndex, endIndex).trim();
+
+      preserved[title] = sectionContent;
+    }
+  });
+
+  return preserved;
+}
+
 // Find latest analysis report for a domain
 function findLatestAnalysis(domainId) {
   const analysisDir = path.join(process.cwd(), '.generated', 'analysis');
 
-  // Check domain-specific directory first
   const domainDir = path.join(analysisDir, domainId);
   if (fs.existsSync(domainDir)) {
     const files = fs.readdirSync(domainDir)
@@ -55,7 +76,6 @@ function findLatestAnalysis(domainId) {
     }
   }
 
-  // Fallback to root analysis directory
   if (fs.existsSync(analysisDir)) {
     const files = fs.readdirSync(analysisDir)
       .filter(f => f.includes(domainId) && f.includes('rich-markdown') && f.endsWith('.md'))
@@ -77,50 +97,27 @@ function extractMetrics(reportPath) {
   }
 
   const content = fs.readFileSync(reportPath, 'utf8');
-  const metrics = {
-    conformity: null,
-    coverage: null,
-    maintainability: null,
-    duplication: null,
-    health: null,
-    handlers: null,
-    files: null,
-    loc: null
+  const metrics = {};
+
+  const patterns = {
+    conformity: /Conformity Score\s*\|\s*([\d.]+)%/,
+    coverage: /Test Coverage\s*\|\s*([\d.]+)%/,
+    maintainability: /Maintainability\s*\|\s*([\d.]+)/,
+    duplication: /Code Duplication\s*\|\s*([\d.]+)%/,
+    health: /Overall Health:\s*(\w+)/,
+    handlers: /Handlers:\s*(\d+)/,
+    files: /Total Files:\s*(\d+)/,
+    loc: /Total LOC:\s*(\d+)/
   };
 
-  // Extract conformity score
-  const conformityMatch = content.match(/Conformity Score\s*\|\s*([\d.]+)%/);
-  if (conformityMatch) metrics.conformity = parseFloat(conformityMatch[1]);
+  Object.entries(patterns).forEach(([key, pattern]) => {
+    const match = content.match(pattern);
+    if (match) {
+      metrics[key] = key === 'health' ? match[1] : parseFloat(match[1]);
+    }
+  });
 
-  // Extract test coverage
-  const coverageMatch = content.match(/Test Coverage\s*\|\s*([\d.]+)%/);
-  if (coverageMatch) metrics.coverage = parseFloat(coverageMatch[1]);
-
-  // Extract maintainability
-  const maintMatch = content.match(/Maintainability\s*\|\s*([\d.]+)/);
-  if (maintMatch) metrics.maintainability = parseFloat(maintMatch[1]);
-
-  // Extract duplication
-  const dupMatch = content.match(/Code Duplication\s*\|\s*([\d.]+)%/);
-  if (dupMatch) metrics.duplication = parseFloat(dupMatch[1]);
-
-  // Extract overall health
-  const healthMatch = content.match(/Overall Health:\s*(\w+)/);
-  if (healthMatch) metrics.health = healthMatch[1];
-
-  // Extract handler count
-  const handlerMatch = content.match(/Handlers:\s*(\d+)/);
-  if (handlerMatch) metrics.handlers = parseInt(handlerMatch[1]);
-
-  // Extract file count
-  const fileMatch = content.match(/Total Files:\s*(\d+)/);
-  if (fileMatch) metrics.files = parseInt(fileMatch[1]);
-
-  // Extract LOC
-  const locMatch = content.match(/Total LOC:\s*(\d+)/);
-  if (locMatch) metrics.loc = parseInt(locMatch[1]);
-
-  return metrics;
+  return Object.keys(metrics).length > 0 ? metrics : null;
 }
 
 // Generate domain summary
@@ -141,20 +138,16 @@ function generateDomainSummary(registry) {
   };
 
   entries.forEach(([id, def]) => {
-    // Count by status
     if (def.status === 'active') summary.active++;
     if (def.status === 'deprecated') summary.deprecated++;
     if (def.status === 'experimental') summary.experimental++;
 
-    // Count by type
     const type = def.domain_type || 'unknown';
     summary.byType[type] = (summary.byType[type] || 0) + 1;
 
-    // Count by ownership
     const owner = def.ownership || 'unknown';
     summary.byOwnership[owner] = (summary.byOwnership[owner] || 0) + 1;
 
-    // Categorize - treat Platform-Infrastructure ownership as infrastructure
     const isInfrastructure = owner === 'Platform-Infrastructure' || type === 'infrastructure';
 
     if (type === 'orchestration') {
@@ -169,12 +162,34 @@ function generateDomainSummary(registry) {
   return summary;
 }
 
-// Generate the domain registry section content
-function generateDomainRegistrySection(registry) {
+// Generate the complete README
+function generateReadme(registry, preservedSections) {
+  const meta = registry.readme_metadata || {};
   const summary = generateDomainSummary(registry);
   const generatedAt = new Date().toISOString();
 
-  let section = `${START_MARKER}
+  let readme = `# ${meta.title || 'RenderX Plugins Demo'}
+
+${meta.subtitle || ''}
+
+## Overview
+
+This repository is organized as a **${meta.overview?.architecture || 'monorepo'}** that consolidates all RenderX architecture components and dependencies. This structure:
+
+${(meta.overview?.benefits || []).map(b => `- ${b}`).join('\n')}
+
+### Repository Contents
+
+${(meta.overview?.contents || []).map(c => `- ${c}`).join('\n')}
+
+For detailed monorepo development guidelines, see [${meta.overview?.monorepo_doc || 'MONOREPO.md'}](./${meta.overview?.monorepo_doc || 'MONOREPO.md'}).
+
+## Related Resources
+
+Check out these supporting projects for more detail on the underlying architecture:
+
+${(meta.related_resources || []).map(r => `- **${r.name}** — ${r.description}:
+  ${r.url}`).join('\n\n')}
 
 ## 📊 Domain Registry Overview
 
@@ -200,7 +215,7 @@ ${Object.entries(summary.byOwnership)
 ${summary.orchestration.length > 0 ?
   summary.orchestration
     .filter(d => d.status === 'active' || d.status === 'experimental')
-    .slice(0, 8) // Top 8
+    .slice(0, 8)
     .map(d => {
       const analysisPath = findLatestAnalysis(d.id);
       const metrics = extractMetrics(analysisPath);
@@ -220,7 +235,13 @@ ${summary.orchestration.length > 0 ?
   : '_No orchestration domains found_'
 }
 
-${summary.orchestration.length > 8 ? `\n<details>\n<summary>View all ${summary.orchestration.length} orchestration domains</summary>\n\n${summary.orchestration.map(d => `- **${d.id}**: ${d.description || 'No description'}`).join('\n')}\n</details>\n` : ''}
+${summary.orchestration.length > 8 ? `
+<details>
+<summary>View all ${summary.orchestration.length} orchestration domains</summary>
+
+${summary.orchestration.map(d => `- **${d.id}**: ${d.description || 'No description'}`).join('\n')}
+</details>
+` : ''}
 
 ### ⚙️ Infrastructure Domains
 
@@ -253,60 +274,163 @@ _...and ${summary.capability.length - 10} more_
 - **Latest Validation**: ${registry.meta?.last_validation || 'Never'}
 - **Analysis Reports**: [View all](.generated/analysis/)
 
-${END_MARKER}`;
+`;
 
-  return section;
-}
-
-// Update README with the new section
-function updateReadme(registry) {
-  const readmePath = path.join(process.cwd(), 'README.md');
-
-  if (!fs.existsSync(readmePath)) {
-    error('README.md not found');
-    process.exit(1);
-  }
-
-  let readme = fs.readFileSync(readmePath, 'utf8');
-  const newSection = generateDomainRegistrySection(registry);
-
-  // Check if markers already exist
-  if (readme.includes(START_MARKER) && readme.includes(END_MARKER)) {
-    // Replace existing section
-    const regex = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`, 'g');
-    readme = readme.replace(regex, newSection);
-    log('Updated existing Domain Registry Overview section');
-  } else {
-    // Insert new section after "Related Resources" and before "Governance Tooling Registry"
-    const insertionPoint = readme.indexOf('## Governance Tooling Registry');
-
-    if (insertionPoint === -1) {
-      error('Could not find insertion point in README.md');
-      error('Please ensure "## Governance Tooling Registry" section exists');
-      process.exit(1);
+  // Insert preserved sections
+  const preserveOrder = meta.preserve_sections || [];
+  preserveOrder.forEach(sectionTitle => {
+    if (preservedSections[sectionTitle]) {
+      readme += `${preservedSections[sectionTitle]}\n\n`;
     }
+  });
 
-    readme = readme.slice(0, insertionPoint) + newSection + '\n\n' + readme.slice(insertionPoint);
-    log('Inserted new Domain Registry Overview section');
+  // Add data-driven sections that aren't in preserve list
+  if (!preserveOrder.includes('Getting Started')) {
+    readme += `## 🚀 Getting Started
+
+### Prerequisites
+${(meta.getting_started?.prerequisites || []).map(p => `- ${p}`).join('\n')}
+
+### Installation
+
+\`\`\`bash
+${(meta.getting_started?.installation_steps || []).join('\n')}
+\`\`\`
+
+### Development
+
+\`\`\`bash
+${(meta.getting_started?.development_commands || []).map(cmd => `# ${cmd.description}\n${cmd.command}`).join('\n\n')}
+\`\`\`
+
+---
+
+`;
   }
 
-  fs.writeFileSync(readmePath, readme, 'utf8');
-  return readmePath;
+  if (!preserveOrder.includes('Documentation')) {
+    readme += `## 📚 Documentation
+
+### Core Documentation
+${(meta.documentation_links?.core || []).map(doc => `- [${doc.title}](${doc.path})`).join('\n')}
+
+### Governance & Tooling
+- **Governance Tooling Registry**: \`${meta.documentation_links?.governance?.registry || 'docs/governance/tools-registry.json'}\`
+- **Generated Registry Docs**: Auto-generated via \`${meta.documentation_links?.governance?.generated_docs || 'npm run generate:governance:registry'}\`
+- **Validation**: \`${meta.documentation_links?.governance?.validation || 'npm run validate:governance:registry'}\`
+
+### Related Projects
+${(meta.related_resources || []).map(r => `- [${r.name}](${r.url}) - ${r.description.charAt(0).toUpperCase() + r.description.slice(1)}`).join('\n')}
+
+---
+
+`;
+  }
+
+  if (!preserveOrder.includes('Testing & Quality')) {
+    readme += `## 🧪 Testing & Quality
+
+\`\`\`bash
+${(meta.testing_commands || []).map(cmd => `# ${cmd.description}\n${cmd.command}`).join('\n\n')}
+\`\`\`
+
+---
+
+`;
+  }
+
+  if (!preserveOrder.includes('Packages')) {
+    readme += `## 📦 Packages
+
+This monorepo contains the following packages:
+
+${(meta.packages || []).map(p => `- \`${p}\``).join('\n')}
+
+---
+
+`;
+  }
+
+  if (!preserveOrder.includes('Domain Analysis')) {
+    readme += `## 🔍 Domain Analysis
+
+To analyze a specific domain:
+
+\`\`\`bash
+${(meta.domain_analysis_commands || []).map(cmd => `# ${cmd.description}\n${cmd.command}`).join('\n\n')}
+\`\`\`
+
+---
+
+`;
+  }
+
+  if (!preserveOrder.includes('Contributing')) {
+    readme += `## 🤝 Contributing
+
+${meta.contributing?.note || 'Contribution guidelines coming soon.'}${meta.contributing?.main_repo_link ? ` For contribution guidelines, please see the main [renderx-plugins](${meta.contributing.main_repo_link}) repository.` : ''}
+
+---
+
+`;
+  }
+
+  if (!preserveOrder.includes('License')) {
+    readme += `## 📄 License
+
+${meta.license || 'See LICENSE file for details'}
+
+---
+
+`;
+  }
+
+  readme += `## 🔄 Auto-Generation
+
+This README is automatically generated from:
+- \`DOMAIN_REGISTRY.json\` - Single source of truth for all metadata
+- \`.generated/analysis/**\` - Code analysis reports
+- Domain analysis configuration
+
+**Last Generated**: ${generatedAt}
+
+To update this README, run:
+\`\`\`bash
+npm run generate:readme
+\`\`\`
+`;
+
+  return readme;
 }
 
 // Main function
 function main() {
-  log('Starting README Domain Registry section generation...');
+  log('Starting fully data-driven README generation...');
 
   try {
     const registry = loadRegistry();
     log(`Loaded registry with ${Object.keys(registry.domains || {}).length} domains`);
 
-    const readmePath = updateReadme(registry);
-    log(`✅ README.md updated successfully at ${readmePath}`, '✅');
+    const readmePath = path.join(process.cwd(), 'README.md');
+    let preservedSections = {};
+
+    // Read existing README to extract preserved sections
+    if (fs.existsSync(readmePath)) {
+      const existingReadme = fs.readFileSync(readmePath, 'utf8');
+      const preserveSections = registry.readme_metadata?.preserve_sections || [];
+      preservedSections = extractPreservedSections(existingReadme, preserveSections);
+      log(`Preserved ${Object.keys(preservedSections).length} sections from existing README`);
+    }
+
+    const readmeContent = generateReadme(registry, preservedSections);
+    fs.writeFileSync(readmePath, readmeContent, 'utf8');
+
+    log(`✅ README.md generated successfully at ${readmePath}`, '✅');
+    log(`   - Total domains: ${Object.keys(registry.domains || {}).length}`);
+    log(`   - Preserved sections: ${Object.keys(preservedSections).length}`);
 
   } catch (err) {
-    error(`Failed to update README: ${err.message}`);
+    error(`Failed to generate README: ${err.message}`);
     console.error(err);
     process.exit(1);
   }

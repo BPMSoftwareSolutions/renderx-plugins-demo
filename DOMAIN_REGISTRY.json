@@ -21,6 +21,118 @@
     "Deprecation retains record but marks domain non-linkable unless migration",
     "Handler scope/kind is immutable per beat (tracks system vs feature logic)"
   ],
+  "readme_metadata": {
+    "title": "RenderX Plugins Demo",
+    "subtitle": "A **thin-client host application** showcasing the RenderX plugin architecture. This demo provides a lightweight shell with manifest-driven plugin loading and orchestrated via the MusicalConductor engine.",
+    "overview": {
+      "architecture": "monorepo",
+      "benefits": [
+        "**Simplifies Development**: All code in one place, easier to make cross-cutting changes",
+        "**Unifies Versioning**: Coordinate releases across all packages",
+        "**Shares Tooling**: Single ESLint, TypeScript, and test configuration",
+        "**Accelerates CI/CD**: Build and test all packages together"
+      ],
+      "contents": [
+        "**Host Application**: A minimal host app that initializes the RenderX plugin system",
+        "**Packages**: Core infrastructure and plugins (see `packages/` directory)",
+        "**Example Plugins**: Sandbox for testing orchestration flows, UI extension, and manifest-driven panel slots"
+      ],
+      "monorepo_doc": "MONOREPO.md"
+    },
+    "related_resources": [
+      {
+        "name": "MusicalConductor",
+        "description": "the orchestration engine powering plugin coordination (symphonies, movements, beats)",
+        "url": "https://github.com/BPMSoftwareSolutions/MusicalConductor/blob/main/README.md"
+      },
+      {
+        "name": "renderx-plugins",
+        "description": "core utilities, base interfaces, and manifest schema for RenderX-compatible plugins",
+        "url": "https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md"
+      }
+    ],
+    "preserve_sections": [
+      "Governance Tooling Registry",
+      "� Telemetry Governance & Traceability System",
+      "�🚧 Active Refactoring Zones",
+      "Getting Started",
+      "Example Plugins",
+      "Development Workflow",
+      "Artifact Mode (External Plugins Repo)",
+      "Host SDK Surface (additions)",
+      "Artifact Integrity (Phase 2)",
+      "Environment Variables (Quick Reference)",
+      "Layout and Slots",
+      "Host SDK Migration (for external plugin authors)",
+      "License",
+      "Source Layout Refactor (#171)"
+    ],
+    "getting_started": {
+      "prerequisites": [
+        "Node.js 18+",
+        "npm 9+"
+      ],
+      "installation_steps": [
+        "git clone https://github.com/BPMSoftwareSolutions/renderx-plugins-demo.git",
+        "cd renderx-plugins-demo",
+        "npm install"
+      ],
+      "development_commands": [
+        {
+          "command": "npm run dev",
+          "description": "Start development server"
+        },
+        {
+          "command": "npm run build:all",
+          "description": "Build all packages"
+        },
+        {
+          "command": "npm run analyze:all:domains",
+          "description": "Run domain analysis"
+        },
+        {
+          "command": "npm run generate:readme",
+          "description": "Regenerate this README"
+        }
+      ]
+    },
+    "documentation_links": {
+      "core": [
+        {"title": "Monorepo Guidelines", "path": "./MONOREPO.md"},
+        {"title": "Knowledge Layers Architecture", "path": "./KNOWLEDGE_LAYERS_ARCHITECTURE.md"},
+        {"title": "Complete Knowledge System Index", "path": "./COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md"},
+        {"title": "Project Knowledge Query Guide", "path": "./PROJECT_KNOWLEDGE_QUERY_GUIDE.md"}
+      ],
+      "governance": {
+        "registry": "docs/governance/tools-registry.json",
+        "generated_docs": "npm run generate:governance:registry",
+        "validation": "npm run validate:governance:registry"
+      }
+    },
+    "testing_commands": [
+      {"command": "npm test", "description": "Run all tests"},
+      {"command": "npm run test:coverage", "description": "Generate test coverage"},
+      {"command": "npm run validate:domains", "description": "Run domain validation"},
+      {"command": "npm run audit:full", "description": "Comprehensive audit"}
+    ],
+    "packages": [
+      "@renderx/host-sdk - Host SDK for plugin integration",
+      "@renderx/musical-conductor - Orchestration engine",
+      "@renderx/components - Shared UI components",
+      "@renderx/manifest-tools - Manifest generation tools",
+      "...and more in `packages/`"
+    ],
+    "domain_analysis_commands": [
+      {"command": "node scripts/analyze-domain.cjs <domain-id>", "description": "Analyze single domain"},
+      {"command": "node scripts/analyze-all-domains.cjs", "description": "Analyze all domains"},
+      {"command": "ls .generated/analysis/", "description": "View analysis results"}
+    ],
+    "contributing": {
+      "note": "This is a demo repository showcasing the RenderX plugin architecture.",
+      "main_repo_link": "https://github.com/BPMSoftwareSolutions/renderx-plugins"
+    },
+    "license": "MIT License - See LICENSE file for details"
+  },
   "domains": {
     "orchestration-core": {
       "domain_id": "orchestration-core",
