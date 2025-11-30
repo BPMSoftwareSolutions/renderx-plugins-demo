@@ -1,0 +1,1094 @@
+{
+  "timestamp": "2025-11-30T15:55:12.173Z",
+  "summary": {
+    "totalBeats": 395,
+    "averageCoverage": 49,
+    "goodAlignment": 41,
+    "partialAlignment": 278,
+    "poorAlignment": 76
+  },
+  "worstAligned": [
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateJSONSchemaStructure"
+      },
+      "coverage": 13,
+      "acCount": 15,
+      "testCount": 1,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe"
+      ],
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateOrchestrationDomainsRegistry"
+      },
+      "coverage": 53,
+      "acCount": 15,
+      "testCount": 5,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toHaveProperty",
+        "expect(...).toContain",
+        "performance: latency/timing check",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateSymphonyFiles"
+      },
+      "coverage": 13,
+      "acCount": 15,
+      "testCount": 1,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe"
+      ],
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateSchemaSection"
+      },
+      "coverage": 13,
+      "acCount": 15,
+      "testCount": 1,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe"
+      ],
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#reportJSONValidation"
+      },
+      "coverage": 67,
+      "acCount": 15,
+      "testCount": 6,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toContain",
+        "expect(...).toHaveLength",
+        "verification: event/publication",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#startHandlerMappingVerification"
+      },
+      "coverage": 40,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: event/publication",
+        "verification: error handling"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#indexBeatsFromJSON"
+      },
+      "coverage": 27,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#verifyBeatHandlerMapping"
+      },
+      "coverage": 27,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#detectOrphanHandlers"
+      },
+      "coverage": 40,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 30 seconds",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: event/publication",
+        "verification: error handling"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#reportHandlerMapping"
+      },
+      "coverage": 40,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: event/publication",
+        "verification: error handling"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#startTestCoverageVerification"
+      },
+      "coverage": 13,
+      "acCount": 15,
+      "testCount": 1,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe"
+      ],
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#catalogBeatsFromJSON"
+      },
+      "coverage": 67,
+      "acCount": 15,
+      "testCount": 6,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toContain",
+        "expect(...).toHaveLength",
+        "verification: event/publication",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#indexTestFiles"
+      },
+      "coverage": 0,
+      "acCount": 15,
+      "testCount": 0,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [],
+      "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#analyzeTestCoverage"
+      },
+      "coverage": 53,
+      "acCount": 15,
+      "testCount": 4,
+      "acConditions": [
+        "it completes successfully within < 5 seconds",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toMatch",
+        "verification: event/publication",
+        "verification: error handling"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#identifyUncoveredBeats"
+      },
+      "coverage": 27,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 30 seconds",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#reportTestCoverage"
+      },
+      "coverage": 40,
+      "acCount": 15,
+      "testCount": 3,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toContain",
+        "performance: latency/timing check"
+      ],
+      "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#startMarkdownConsistencyCheck"
+      },
+      "coverage": 0,
+      "acCount": 15,
+      "testCount": 0,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [],
+      "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#extractFactsFromJSON"
+      },
+      "coverage": 67,
+      "acCount": 15,
+      "testCount": 6,
+      "acConditions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toContain",
+        "expect(...).toHaveLength",
+        "verification: event/publication",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#verifyFactsInMarkdown"
+      },
+      "coverage": 53,
+      "acCount": 15,
+      "testCount": 5,
+      "acConditions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "expect(...).toEqual",
+        "verification: event/publication",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts"
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#detectMarkdownContradictions"
+      },
+      "coverage": 53,
+      "acCount": 15,
+      "testCount": 5,
+      "acConditions": [
+        "it completes successfully within < 30 seconds",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "testAssertions": [
+        "expect(...).toBe",
+        "performance: latency/timing check",
+        "verification: event/publication",
+        "verification: error handling",
+        "verification: state consistency"
+      ],
+      "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts"
+    }
+  ],
+  "recommendations": [
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateJSONSchemaStructure"
+      },
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+      "missingAssertions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 500ms\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateOrchestrationDomainsRegistry"
+      },
+      "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+      "missingAssertions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 500ms\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateSymphonyFiles"
+      },
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+      "missingAssertions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 500ms\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#validateSchemaSection"
+      },
+      "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+      "missingAssertions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 500ms\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#reportJSONValidation"
+      },
+      "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+      "missingAssertions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// TODO: Add test for: it completes successfully within < 1 second",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#startHandlerMappingVerification"
+      },
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+      "missingAssertions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// TODO: Add test for: it completes successfully within < 1 second",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#indexBeatsFromJSON"
+      },
+      "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+      "missingAssertions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// TODO: Add test for: it completes successfully within < 1 second",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#verifyBeatHandlerMapping"
+      },
+      "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+      "missingAssertions": [
+        "it completes successfully within < 500ms",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 500ms\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#detectOrphanHandlers"
+      },
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+      "missingAssertions": [
+        "it completes successfully within < 30 seconds",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// Verify latency: it completes successfully within < 30 seconds\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    },
+    {
+      "symphony": "architecture-governance-enforcement-symphony",
+      "beat": "Beat undefined",
+      "handler": {
+        "name": "governance.handlers#reportHandlerMapping"
+      },
+      "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+      "missingAssertions": [
+        "it completes successfully within < 1 second",
+        "the output is valid and meets schema",
+        "any required events are published",
+        "results conform to expected schema",
+        "no errors are thrown",
+        "telemetry events are recorded with latency metrics",
+        "the error is logged with full context",
+        "appropriate recovery is attempted",
+        "the system remains stable",
+        "latency is consistently within target",
+        "throughput meets baseline requirements",
+        "resource usage stays within bounds",
+        "all governance rules are enforced",
+        "audit trails capture execution",
+        "no compliance violations occur"
+      ],
+      "suggestedTests": [
+        "// TODO: Add test for: it completes successfully within < 1 second",
+        "// Verify schema conformance: the output is valid and meets schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify event published: any required events are published\n    const eventSpy = jest.fn();\n    eventBus.subscribe('event-name', eventSpy);\n    await handler();\n    expect(eventSpy).toHaveBeenCalled();",
+        "// Verify schema conformance: results conform to expected schema\n    const result = await handler();\n    expect(result).toMatchSchema(expectedSchema);\n    expect(result).toHaveProperty('required_field');",
+        "// Verify error handling: no errors are thrown\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// Verify latency: telemetry events are recorded with latency metrics\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// Verify error handling: the error is logged with full context\n    expect(async () => {\n      await handler(invalidInput);\n    }).rejects.toThrow();",
+        "// TODO: Add test for: appropriate recovery is attempted",
+        "// TODO: Add test for: the system remains stable",
+        "// Verify latency: latency is consistently within target\n    const start = performance.now();\n    await handler();\n    const duration = performance.now() - start;\n    expect(duration).toBeLessThan(expectedLatency);",
+        "// TODO: Add test for: throughput meets baseline requirements",
+        "// TODO: Add test for: resource usage stays within bounds",
+        "// TODO: Add test for: all governance rules are enforced",
+        "// TODO: Add test for: audit trails capture execution",
+        "// TODO: Add test for: no compliance violations occur"
+      ]
+    }
+  ]
+}
