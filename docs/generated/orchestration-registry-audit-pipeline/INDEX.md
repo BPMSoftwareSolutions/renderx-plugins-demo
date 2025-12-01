@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: C:\source\repos\bpm\internal\renderx-plugins-demo\packages\orchestration\json-sequences\orchestration-registry-audit-pipeline.json -->
-<!-- Generated: 2025-12-01T02:09:27.771Z -->
+<!-- Generated: 2025-12-01T02:54:25.381Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Orchestration Registry Audit Pipeline

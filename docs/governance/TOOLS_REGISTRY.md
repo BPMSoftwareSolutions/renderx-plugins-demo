@@ -1,7 +1,7 @@
 <!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/tools-registry.json -->
 # Tools Registry
 **Version:** 1.0.0  
-**Generated:** 2025-12-01T02:08:35.157Z
+**Generated:** 2025-12-01T02:53:03.906Z
 
 > DO NOT EDIT. Run `node scripts/generate-tools-registry-docs.js` after updating tools-registry.json.
 

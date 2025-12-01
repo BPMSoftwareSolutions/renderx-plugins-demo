@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2025-12-01T02:09:42.610Z",
+  "generatedAt": "2025-12-01T02:54:48.653Z",
   "summary": {
-    "totalProcesses": 539,
+    "totalProcesses": 541,
     "symphonic": 1,
     "partialSymphonic": 41,
-    "nonSymphonic": 267,
-    "shouldBeSymphonic": 230,
+    "nonSymphonic": 268,
+    "shouldBeSymphonic": 231,
     "complianceScore": 0
   },
   "processes": [
@@ -362,6 +362,17 @@
       "complianceLevel": "partial-symphonic"
     },
     {
+      "name": "audit-renderx-web-acs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-renderx-web-acs.cjs",
+      "category": "validation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "moderate",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
       "name": "audit-symphonia-conformity.cjs",
       "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-symphonia-conformity.cjs",
       "category": "validation",
@@ -710,6 +721,17 @@
       "registered": false,
       "inNpmScript": false,
       "complexity": "complex",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "convert-acceptance-criteria-to-structured.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\convert-acceptance-criteria-to-structured.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "moderate",
       "shouldBeSymphonic": false,
       "complianceLevel": "non-symphonic"
     },
@@ -6395,6 +6417,12 @@
       "severity": "high"
     },
     {
+      "process": "audit-renderx-web-acs.cjs",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "validation",
+      "severity": "high"
+    },
+    {
       "process": "audit-symphonia-conformity.cjs",
       "reason": "Process type requires symphonic structure but none found",
       "category": "validation",
@@ -7823,6 +7851,31 @@
         "id": "audit-orchestration-symphony",
         "sequenceId": "audit-orchestration-symphony",
         "name": "audit-orchestration.js Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "audit-renderx-web-acs.cjs",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/audit-renderx-web-acs.cjs-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "audit-renderx-web-acs-symphony",
+        "sequenceId": "audit-renderx-web-acs-symphony",
+        "name": "audit-renderx-web-acs.cjs Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],
