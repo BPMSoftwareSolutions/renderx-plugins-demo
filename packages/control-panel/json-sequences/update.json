@@ -19,10 +19,11 @@
           "scenario": "Update or Modify update From Element",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["the updateFromElement operation is triggered"],
-              "when": ["the handler executes"],
-              "then": ["it completes successfully within < 100ms"],
+              "given": ["an SVG node is selected"],
+              "when": ["showSvgNodeOverlay runs"],
+              "then": ["overlay appears aligned to node bounds within ≤ 30ms"],
               "and": [
+                "telemetry includes node type and bounds",
                 "the output is valid and meets schema",
                 "any required events are published"
               ]

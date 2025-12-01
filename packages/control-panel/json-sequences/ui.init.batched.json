@@ -41,16 +41,19 @@
           "kind": "stage-crew",
           "number": 2,
           "scenario": "Initialize or Configure init Resolver",
-          "acceptanceCriteria": [
-            "Given the initResolver operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen initResolver processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen initResolver encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen initResolver executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen initResolver operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["configuration and schema definitions"],
+              "when": ["initResolver runs"],
+              "then": ["field/type resolvers register successfully within ≤ 50ms"],
+              "and": [
+                "resolver map includes required primitives and custom types"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -62,16 +65,19 @@
           "kind": "stage-crew",
           "number": 3,
           "scenario": "load Schemas",
-          "acceptanceCriteria": [
-            "Given the loadSchemas operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen loadSchemas processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen loadSchemas encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen loadSchemas executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen loadSchemas operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\config-loader.test.js",
           "testCase": "should load plugin-architecture sprite library",
-          "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["resolver initialization completes"],
+              "when": ["loadSchemas runs"],
+              "then": ["schemas load from source with P95 ≤ 200ms and validate"],
+              "and": [
+                "telemetry 'control-panel.schemas.load' includes count and duration"
+              ]
+            }
+          ]
         },
         {
           "beat": 4,
@@ -83,16 +89,19 @@
           "kind": "stage-crew",
           "number": 4,
           "scenario": "register Observers",
-          "acceptanceCriteria": [
-            "Given the registerObservers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen registerObservers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen registerObservers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen registerObservers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen registerObservers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["event bus and DOM listeners"],
+              "when": ["registerObservers runs"],
+              "then": ["observers register idempotently without duplicates"],
+              "and": [
+                "unregistration handles teardown cleanly"
+              ]
+            }
+          ]
         },
         {
           "beat": 5,
@@ -104,16 +113,19 @@
           "kind": "pure",
           "number": 5,
           "scenario": "Notify or Publish notify Ready",
-          "acceptanceCriteria": [
-            "Given the notifyReady operation is triggered\nWhen the handler executes\nThen it completes successfully within < 50ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen notifyReady processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen notifyReady encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 50ms\nWhen notifyReady executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen notifyReady operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["batched initialization completes"],
+              "when": ["notifyReady runs"],
+              "then": ["a 'control-panel.ready' event publishes within 5ms"],
+              "and": [
+                "subscribers receive the event within ≤ 20ms"
+              ]
+            }
+          ]
         },
         {
           "beat": 6,
@@ -125,16 +137,19 @@
           "kind": "pure",
           "number": 6,
           "scenario": "Initialize or Configure init Movement",
-          "acceptanceCriteria": [
-            "Given the initMovement operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen initMovement processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen initMovement encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen initMovement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen initMovement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\ui-init.batched.spec.ts",
           "testCase": "records sub-beat telemetry for the five init steps when run via iterator",
-          "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["movement context"],
+              "when": ["initMovement runs"],
+              "then": ["movement state is initialized deterministically and re-entrant"],
+              "and": [
+                "no side effects occur before first user interaction"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",

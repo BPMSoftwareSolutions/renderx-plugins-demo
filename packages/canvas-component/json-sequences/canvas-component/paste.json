@@ -19,16 +19,19 @@
           "timing": "immediate",
           "kind": "io",
           "scenario": "read From Clipboard",
-          "acceptanceCriteria": [
-            "Given the readFromClipboard operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen readFromClipboard processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen readFromClipboard encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen readFromClipboard executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen readFromClipboard operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["clipboard contains valid data"],
+              "when": ["readFromClipboard runs"],
+              "then": ["payload is read with type detection and size limits"],
+              "and": [
+                "errors are typed on unsupported formats"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -39,16 +42,19 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "deserialize Component Data",
-          "acceptanceCriteria": [
-            "Given the deserializeComponentData operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen deserializeComponentData processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen deserializeComponentData encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen deserializeComponentData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen deserializeComponentData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want deserializeComponentData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a serialized payload"],
+              "when": ["deserializeComponentData runs"],
+              "then": ["payload maps to internal model; validation passes"],
+              "and": [
+                "telemetry includes component count"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -59,16 +65,19 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "calculate Paste Position",
-          "acceptanceCriteria": [
-            "Given the calculatePastePosition operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen calculatePastePosition processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen calculatePastePosition encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen calculatePastePosition executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen calculatePastePosition operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want calculatePastePosition to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "every beat declares dynamics",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["cursor and canvas bounds"],
+              "when": ["calculatePastePosition runs"],
+              "then": ["target position computes with snap; within viewport"],
+              "and": [
+                "no overlap violations occur beyond threshold"
+              ]
+            }
+          ]
         },
         {
           "beat": 4,
@@ -79,16 +88,19 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Generate or Create create Pasted Component",
-          "acceptanceCriteria": [
-            "Given the createPastedComponent operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createPastedComponent processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createPastedComponent encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createPastedComponent executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createPastedComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want createPastedComponent to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["deserialized data"],
+              "when": ["createPastedComponent runs"],
+              "then": ["component is created atomically; undo snapshot recorded"],
+              "and": [
+                "latency ≤ 80ms P95"
+              ]
+            }
+          ]
         },
         {
           "beat": 5,
@@ -99,16 +111,19 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Notify or Publish notify Paste Complete",
-          "acceptanceCriteria": [
-            "Given the notifyPasteComplete operation is triggered\nWhen the handler executes\nThen it completes successfully within < 50ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen notifyPasteComplete processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen notifyPasteComplete encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 50ms\nWhen notifyPasteComplete executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen notifyPasteComplete operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want notifyPasteComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["paste completes"],
+              "when": ["notifyPasteComplete runs"],
+              "then": ["'paste.complete' event publishes with ids and count"],
+              "and": [
+                "subscribers receive within ≤ 20ms"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a content author, I need paste to insert components honoring hierarchy and constraints within ≤1s P95.",

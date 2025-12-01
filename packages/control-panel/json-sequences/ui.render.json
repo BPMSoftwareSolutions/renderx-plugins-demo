@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["control panel state"],
-              "when": ["renderPanel runs"],
-              "then": ["first paint ≤ 200ms P95 and UI responds within 100ms to input"],
+              "given": ["a resizable component"],
+              "when": ["startResize runs"],
+              "then": ["resize context initializes with bounds and handles visible"],
               "and": [
-                "telemetry 'control-panel.render' includes duration and components"
+                "a 'resize.start' event publishes"
               ]
             }
           ]
@@ -46,11 +46,12 @@
           "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["panel render completes"],
-              "when": ["applyCSS runs"],
-              "then": ["styles apply deterministically with no FOUC"],
+              "given": ["size changes"],
+              "when": ["forwardToControlPanel runs"],
+              "then": ["update publishes to control panel within ≤ 20ms"],
               "and": [
-                "accessibility roles/labels are present"
+                "messages are coalesced per frame",
+                "keyboard navigation remains fully functional"
               ]
             }
           ]
@@ -70,35 +71,11 @@
           "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a complete view configuration with sections, fields, and rules"],
-              "when": ["renderView is invoked"],
-              "then": ["the entire form renders within ≤ 500ms and all interactive elements respond"],
+              "given": ["cursor and canvas bounds"],
+              "when": ["calculatePastePosition runs"],
+              "then": ["target position computes with snap; within viewport"],
               "and": [
-                "no console errors or warnings are emitted"
-              ]
-            },
-            {
-              "given": ["a large view with ≥ 200 fields"],
-              "when": ["renderView processes it"],
-              "then": ["initial interaction latency is < 100ms and memory usage remains stable"],
-              "and": [
-                "rendering completes within ≤ 800ms under P95"
-              ]
-            },
-            {
-              "given": ["responsive design requirements"],
-              "when": ["renderView renders"],
-              "then": ["layout adapts across desktop/tablet/mobile with readable text"],
-              "and": [
-                "touch targets meet ≥ 44x44px on mobile"
-              ]
-            },
-            {
-              "given": ["accessibility requirements (WCAG 2.1 AA)"],
-              "when": ["renderView renders"],
-              "then": ["elements use semantic HTML and color contrast ≥ 4.5:1"],
-              "and": [
-                "keyboard navigation remains fully functional"
+                "no overlap violations occur beyond threshold"
               ]
             }
           ]

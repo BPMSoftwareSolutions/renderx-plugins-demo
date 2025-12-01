@@ -41,16 +41,19 @@
           "kind": "stage-crew",
           "number": 2,
           "scenario": "merge Errors",
-          "acceptanceCriteria": [
-            "Given the mergeErrors operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen mergeErrors processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen mergeErrors encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen mergeErrors executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen mergeErrors operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@jest\\reporters\\node_modules\\@bcoe\\v8-coverage\\src\\test\\merge.spec.ts",
           "testCase": "accepts empty arrays for `mergeProcessCovs`",
-          "userStory": "As an engineer, I need `mergeErrors` to compose error state."
+          "userStory": "As an engineer, I need `mergeErrors` to compose error state.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["existing error state and new results"],
+              "when": ["mergeErrors runs"],
+              "then": ["errors merge by path without losing unrelated entries"],
+              "and": [
+                "clearing a field removes its errors"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -62,16 +65,19 @@
           "kind": "stage-crew",
           "number": 3,
           "scenario": "Update or Modify update View",
-          "acceptanceCriteria": [
-            "Given the updateView operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen updateView processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen updateView encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen updateView executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen updateView operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As an engineer, I need `updateView` to render errors promptly."
+          "userStory": "As an engineer, I need `updateView` to render errors promptly.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["merged errors"],
+              "when": ["updateView runs"],
+              "then": ["visuals reflect validity within ≤ 30ms and announce changes (a11y)"],
+              "and": [
+                "no unnecessary re-renders occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a UI runtime engineer, I need field validation to merge errors and update views within ≤1s P95.",
