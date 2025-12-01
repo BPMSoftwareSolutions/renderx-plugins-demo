@@ -272,6 +272,12 @@
       "domain_id": "renderx-web-orchestration",
       "domain_type": "orchestration",
       "status": "active",
+      "aliases": [
+        "renderx",
+        "renderx-web",
+        "renderx-orchestration",
+        "renderx-web-orchestration"
+      ],
       "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
       "parent_refs": [
         "orchestration-core"

@@ -158,8 +158,22 @@ function renderBddPipelineAnalysis(jsonPath){
         sprint.objectives.forEach(obj=> lines.push(`- ${obj}`));
         lines.push('');
       }
-      if(sprint.acceptanceCriteria && sprint.acceptanceCriteria.length){
-        lines.push('**Acceptance Criteria**:');
+      // Prefer structured acceptance criteria if present; fallback to legacy
+      const structured = sprint.acceptanceCriteriaStructured;
+      if(Array.isArray(structured) && structured.length){
+        lines.push('**Acceptance Criteria (Structured GWT)**:');
+        structured.forEach(block=>{
+          // Each block may contain given/when/then/and arrays; render compactly
+          const parts = [];
+          if(block.given) parts.push(`Given ${block.given.join(' & ')}`);
+          if(block.when) parts.push(`When ${block.when.join(' & ')}`);
+          if(block.then) parts.push(`Then ${block.then.join(' & ')}`);
+          if(block.and) parts.push(`And ${block.and.join(' & ')}`);
+          lines.push(`- ${parts.join(' | ')}`);
+        });
+        lines.push('');
+      } else if(sprint.acceptanceCriteria && sprint.acceptanceCriteria.length){
+        lines.push('**Acceptance Criteria (Legacy)**:');
         sprint.acceptanceCriteria.forEach(ac=> lines.push(`- ${ac}`));
         lines.push('');
       }

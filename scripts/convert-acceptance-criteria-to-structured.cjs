@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 /*
-  Convert legacy acceptanceCriteria (Given/When/Then text blocks) into
-  acceptanceCriteriaStructured for all JSON sequence files under a directory.
+  Migration Utility: Legacy -> Structured Acceptance Criteria
+
+  Converts legacy `acceptanceCriteria` (array of Given/When/Then text blocks)
+  into `acceptanceCriteriaStructured` (array of compact GWT objects) for all
+  JSON sequence files under a directory.
+
+  Intent:
+    - One-way migration; legacy field is deleted post-conversion.
+    - Retained for domains still in transition; safe to re-run (idempotent).
+    - Single-item arrays remain inline via upstream formatting rules.
 
   Usage:
     node scripts/convert-acceptance-criteria-to-structured.cjs --dir packages/self-healing/json-sequences

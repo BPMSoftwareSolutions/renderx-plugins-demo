@@ -53,15 +53,29 @@ function loadDomainConfig(domainId) {
     }
     const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
     
-    // Try to find domain in registry (check both domain_id match and alias match)
+    // Try to find domain in registry (exact match, domain_id match, or aliases)
     let domainConfig = null;
-    
-    // First try exact domain_id match
+
+    // 1) Exact key match (preferred fast path)
     if (registry.domains[domainId]) {
       domainConfig = registry.domains[domainId];
-    } else {
-      // Try to find by matching domain_id field
-      domainConfig = Object.values(registry.domains).find(d => d.domain_id === domainId);
+    }
+
+    // 2) domain_id field match (robust path)
+    if (!domainConfig) {
+      domainConfig = Object.values(registry.domains).find(d => d && d.domain_id === domainId);
+    }
+
+    // 3) alias match: allow shorthand names to resolve to canonical domain
+    if (!domainConfig) {
+      domainConfig = Object.values(registry.domains).find(d => Array.isArray(d.aliases) && d.aliases.includes(domainId));
+    }
+
+    // If resolved via alias, normalize DOMAIN_ID for artifact naming consistency
+    if (domainConfig && Array.isArray(domainConfig.aliases) && domainConfig.aliases.includes(domainId)) {
+      // Update global env var so downstream paths reflect canonical domain id
+      process.env.ANALYSIS_DOMAIN_ID = domainConfig.domain_id;
+      domainId = domainConfig.domain_id;
     }
     
     // Enforce configuration existence
@@ -76,8 +90,9 @@ function loadDomainConfig(domainId) {
     // Configuration is valid, return it
     return {
       sourcePath: domainConfig.analysisConfig.analysisSourcePath,
-      analysisOutputPath: domainConfig.analysisConfig.analysisOutputPath || `.generated/analysis/${domainId}`,
-      reportOutputPath: domainConfig.analysisConfig.reportOutputPath || `docs/generated/${domainId}`
+      analysisOutputPath: domainConfig.analysisConfig.analysisOutputPath || `.generated/analysis/${domainConfig.domain_id}`,
+      reportOutputPath: domainConfig.analysisConfig.reportOutputPath || `docs/generated/${domainConfig.domain_id}`,
+      canonicalDomainId: domainConfig.domain_id
     };
   } catch (err) {
     console.error(`❌ FATAL: ${err.message}`);
@@ -86,10 +101,14 @@ function loadDomainConfig(domainId) {
 }
 
 // Support environment variables for domain-based analysis orchestration
-const DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
+let DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
 
 // Load domain configuration from registry
 const domainConfig = loadDomainConfig(DOMAIN_ID);
+// Normalize DOMAIN_ID to canonical resolved id (handles aliases)
+if (domainConfig?.canonicalDomainId && DOMAIN_ID !== domainConfig.canonicalDomainId) {
+  DOMAIN_ID = domainConfig.canonicalDomainId;
+}
 
 // Use registry paths if available, otherwise fall back to environment variables or defaults
 const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
