@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /*
 Audit renderx-web sequence files for acceptance criteria status.
-Scans known renderx-web package paths and reports beats with legacy `acceptanceCriteria`
-and missing `acceptanceCriteriaStructured`.
+Purpose:
+  1. Identify any remaining legacy `acceptanceCriteria` arrays (should be migrated).
+  2. Identify beats missing `acceptanceCriteriaStructured` (coverage gaps).
+Notes:
+  - Legacy field detection is retained intentionally for regression monitoring.
+  - Single-item arrays in structured AC should already be inlined by upstream updater.
 */
 const fs = require('fs');
 const path = require('path');
@@ -74,7 +78,7 @@ console.log('RenderX-Web AC Audit');
 console.log('====================');
 console.log(`Files scanned: ${totals.files}`);
 console.log(`Beats scanned: ${totals.beats}`);
-console.log(`Beats with legacy acceptanceCriteria: ${totals.legacyBeats}`);
+console.log(`Beats with legacy acceptanceCriteria (should be 0): ${totals.legacyBeats}`);
 console.log(`Beats missing acceptanceCriteriaStructured: ${totals.missingStructured}`);
 console.log('');
 for (const [file, items] of Object.entries(grouped)) {
