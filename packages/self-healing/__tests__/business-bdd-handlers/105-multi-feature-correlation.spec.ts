@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'fs';
+import path from 'path';
 import { startFeature, beat, endFeature } from '../../src/telemetry/emitter';
 import { installTelemetryMatcher } from '../../src/telemetry/matcher';
 import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
@@ -39,6 +41,17 @@ describe('Business BDD: multi-feature-correlation (auto-generated GREEN)', () =>
     for (let i = 0; i < 3; i++) beat(c2);
     const r2 = endFeature(c2, 'ok', { ok: true })!;
     expect(getTelemetry().length).toBe(2);
+    // Persist run artifacts so buildComposite sees current beats instead of previous cached runs
+    const telemetryRoot = path.join(process.cwd(), '.generated', 'telemetry');
+    function writeRun(feature, beats) {
+      const dir = path.join(telemetryRoot, feature);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      const file = `run-${Date.now()}-${Math.random().toString(36).slice(2,8)}.json`; // ensure uniqueness
+      const payload = { beats, batonDiffCount: 0, shapeHash: `${feature}-temp-hash` };
+      fs.writeFileSync(path.join(dir, file), JSON.stringify(payload, null, 2));
+    }
+    writeRun('multi-feature-correlation', r1.beats);
+    writeRun('shape-persistence', r2.beats);
     // Build composite
     const chainId = `chain-${Date.now()}`;
     const compositePath = buildComposite(chainId, ['multi-feature-correlation', 'shape-persistence']);

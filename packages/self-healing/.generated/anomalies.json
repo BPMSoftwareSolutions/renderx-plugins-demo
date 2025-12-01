@@ -758,14 +758,48 @@
       },
       "detectedAt": "2025-12-01T01:32:09.374Z",
       "confidence": 0.95
+    },
+    {
+      "id": "slo-breach-error_rate-1764553147674",
+      "type": "slo",
+      "severity": "medium",
+      "handler": "system",
+      "feature": "service-level-objective",
+      "correlationId": null,
+      "description": "SLO breach: error_rate (actual: 0.0958, target: 0.05)",
+      "metrics": {
+        "actual": 0.0958,
+        "target": 0.05,
+        "diff": 0.045799999999999993,
+        "percentage": "91.60%"
+      },
+      "detectedAt": "2025-12-01T01:39:07.674Z",
+      "confidence": 0.95
+    },
+    {
+      "id": "slo-breach-availability-1764553147674",
+      "type": "slo",
+      "severity": "critical",
+      "handler": "system",
+      "feature": "service-level-objective",
+      "correlationId": null,
+      "description": "SLO breach: availability (actual: 0.9042, target: 0.995)",
+      "metrics": {
+        "actual": 0.9042,
+        "target": 0.995,
+        "diff": 0.09079999999999999,
+        "percentage": "9.13%"
+      },
+      "detectedAt": "2025-12-01T01:39:07.674Z",
+      "confidence": 0.95
     }
   ],
   "summary": {
-    "count": 46,
+    "count": 48,
     "severityBreakdown": {
-      "critical": 14,
+      "critical": 15,
       "high": 6,
-      "medium": 26,
+      "medium": 27,
       "low": 0
     },
     "typeBreakdown": {
@@ -773,11 +807,11 @@
       "behavioral": 3,
       "coverage": 2,
       "error": 1,
-      "slo": 37
+      "slo": 39
     },
-    "breachesCovered": 37,
+    "breachesCovered": 39,
     "highestSeverity": "critical",
     "syntheticMarker": false,
-    "lastUpdated": "2025-12-01T01:32:09.374Z"
+    "lastUpdated": "2025-12-01T01:39:07.674Z"
   }
 }

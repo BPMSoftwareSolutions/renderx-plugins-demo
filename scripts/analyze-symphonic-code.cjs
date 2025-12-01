@@ -35,6 +35,10 @@ const {
   calculateStats,
   generateMarkdownReport: generateHandlerScopeReport
 } = require('./analyze-handler-scopes-for-pipeline.cjs');
+const {
+  validateSymphony,
+  formatValidationReport: formatACValidationReport
+} = require('./validate-ac-test-alignment.cjs');
 
 // ============================================================================
 // DOMAIN REGISTRY INTEGRATION
@@ -395,6 +399,100 @@ function validateHandlerConformity() {
   log(`Violations Found: ${conformity.violations}`);
 
   return conformity;
+}
+
+/**
+ * Validate AC-to-Test alignment for all symphonies in domain
+ */
+function validateAcceptanceCriteriaAlignment() {
+  log('Validating AC-to-test alignment...', '🔍');
+
+  try {
+    // Find all symphony JSON files for the current domain
+    const sourcePath = domainConfig?.sourcePath || process.env.ANALYSIS_SOURCE_PATH || 'packages/';
+
+    // Use git ls-files which works on all platforms
+    const gitLsPattern = `${sourcePath}**/json-sequences/**/*.json`;
+
+    let symphonyFiles = [];
+    try {
+      const output = execSync(`git ls-files "${gitLsPattern}"`, {
+        encoding: 'utf8',
+        stdio: ['pipe', 'pipe', 'ignore'],
+        cwd: process.cwd()
+      });
+      symphonyFiles = output.split('\n')
+        .filter(f => f.trim())
+        .filter(f => f.includes('json-sequences'));
+    } catch (e) {
+      log('No symphony files found or search failed', '⚠');
+      return {
+        totalSymphonies: 0,
+        averageCoverage: 0,
+        validations: [],
+        error: 'No symphony files found'
+      };
+    }
+
+    if (symphonyFiles.length === 0) {
+      log('No symphony files found in domain', '⚠');
+      return {
+        totalSymphonies: 0,
+        averageCoverage: 0,
+        validations: [],
+        error: 'No symphony files found'
+      };
+    }
+
+    log(`Found ${symphonyFiles.length} symphony files`, '✓');
+
+    // Validate each symphony
+    const validations = symphonyFiles.slice(0, 20).map(symphonyPath => {
+      try {
+        const validation = validateSymphony(symphonyPath);
+        return validation;
+      } catch (error) {
+        return {
+          symphonyPath,
+          error: error.message
+        };
+      }
+    });
+
+    // Calculate aggregate metrics
+    const validValidations = validations.filter(v => !v.error && v.summary);
+    const totalBeats = validValidations.reduce((sum, v) => sum + (v.summary?.totalBeats || 0), 0);
+    const totalGood = validValidations.reduce((sum, v) => sum + (v.summary?.goodBeats || 0), 0);
+    const totalPartial = validValidations.reduce((sum, v) => sum + (v.summary?.partialBeats || 0), 0);
+    const totalPoor = validValidations.reduce((sum, v) => sum + (v.summary?.poorBeats || 0), 0);
+    const averageCoverage = validValidations.length > 0
+      ? Math.round(validValidations.reduce((sum, v) => sum + (v.summary?.averageCoverage || 0), 0) / validValidations.length)
+      : 0;
+
+    log(`Average AC coverage: ${averageCoverage}%`, '📊');
+    log(`Good alignment: ${totalGood}/${totalBeats} beats`, '✓');
+
+    return {
+      totalSymphonies: symphonyFiles.length,
+      validatedSymphonies: validValidations.length,
+      totalBeats,
+      goodBeats: totalGood,
+      partialBeats: totalPartial,
+      poorBeats: totalPoor,
+      averageCoverage,
+      validations: validValidations,
+      timestamp: new Date().toISOString()
+    };
+
+  } catch (error) {
+    log(`AC validation error: ${error.message}`, '⚠');
+    return {
+      totalSymphonies: 0,
+      averageCoverage: 0,
+      validations: [],
+      error: error.message
+    };
+  }
 }
 
 /**
@@ -808,6 +906,26 @@ async function generateJsonArtifacts(metrics) {
     }
   } catch {}
 
+  // Save AC-to-Test validation results
+  if (metrics.acValidation && !metrics.acValidation.error) {
+    const acValidationPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-ac-validation-${TIMESTAMP}.json`);
+    fs.writeFileSync(acValidationPath, JSON.stringify(metrics.acValidation, null, 2));
+    log(`Saved: ${path.relative(process.cwd(), acValidationPath)}`, '✓');
+
+    // Also save detailed validation report for first few symphonies
+    if (metrics.acValidation.validations && metrics.acValidation.validations.length > 0) {
+      const detailedValidations = metrics.acValidation.validations.slice(0, 5);
+      detailedValidations.forEach(validation => {
+        if (validation.summary) {
+          const symphonyName = validation.summary.symphonyId || 'unknown';
+          const detailPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-${symphonyName}-ac-validation-${TIMESTAMP}.json`);
+          fs.writeFileSync(detailPath, JSON.stringify(validation, null, 2));
+        }
+      });
+      log(`Saved detailed AC validations for ${detailedValidations.length} symphonies`, '✓');
+    }
+  }
+
   return { analysisData, coverageSummary, trendData };
 }
 
@@ -1017,9 +1135,56 @@ Beat 4 (Dependencies):  55% statements, 48% branches ⚠
 - **Violations**: ${metrics.conformity.violations}
 
 ### Violation Details
-${metrics.conformity.violations_details.map(v => 
+${metrics.conformity.violations_details.map(v =>
   `- **${v.beat}** (${v.movement}): ${v.issue} [${v.severity.toUpperCase()}]`
 ).join('\n')}
+
+### Acceptance Criteria-to-Test Alignment
+
+${(() => {
+  const ac = metrics.acValidation;
+  if (!ac || ac.error) {
+    return `⚠️ AC validation unavailable: ${ac?.error || 'No data'}`;
+  }
+
+  const alignmentStatus = ac.averageCoverage >= 70 ? '✅ GOOD' : ac.averageCoverage >= 40 ? '⚠️ PARTIAL' : '❌ POOR';
+
+  return `**Purpose**: Validate that each acceptance criteria condition has a matching test assertion
+
+**Summary**:
+- **Alignment Status**: ${alignmentStatus} (${ac.averageCoverage}% average coverage)
+- **Symphonies Validated**: ${ac.validatedSymphonies || 0}/${ac.totalSymphonies || 0}
+- **Total Beats**: ${ac.totalBeats || 0}
+- **Good Alignment** (≥70%): ${ac.goodBeats || 0} beats
+- **Partial Alignment** (40-69%): ${ac.partialBeats || 0} beats
+- **Poor Alignment** (<40%): ${ac.poorBeats || 0} beats
+
+**Coverage Breakdown**:
+| Status | Beats | Percentage |
+|--------|-------|------------|
+| Good (≥70%) | ${ac.goodBeats || 0} | ${ac.totalBeats ? Math.round((ac.goodBeats || 0) / ac.totalBeats * 100) : 0}% |
+| Partial (40-69%) | ${ac.partialBeats || 0} | ${ac.totalBeats ? Math.round((ac.partialBeats || 0) / ac.totalBeats * 100) : 0}% |
+| Poor (<40%) | ${ac.poorBeats || 0} | ${ac.totalBeats ? Math.round((ac.poorBeats || 0) / ac.totalBeats * 100) : 0}% |
+
+**Top Validated Symphonies**:
+${ac.validations && ac.validations.length > 0
+  ? ac.validations.slice(0, 5).map(v => {
+      if (!v.summary) return '';
+      const status = v.summary.averageCoverage >= 70 ? '✅' : v.summary.averageCoverage >= 40 ? '⚠️' : '❌';
+      return `- ${status} **${v.summary.symphonyName}**: ${v.summary.averageCoverage}% coverage (${v.summary.goodBeats}/${v.summary.totalBeats} beats)`;
+    }).filter(s => s).join('\n')
+  : '_No symphonies validated_'
+}
+
+${ac.averageCoverage < 70 ? `
+**⚠️ Recommendations**:
+- Add test assertions for unmatched AC conditions
+- Ensure test names clearly reflect the acceptance criteria
+- Add performance/timing assertions for SLA requirements
+- Include telemetry/event verification in tests
+` : ''}
+`;
+})()}
 
 	### Fractal Architecture (Domains-as-Systems, Systems-as-Domains)
 
@@ -1258,7 +1423,8 @@ async function run() {
     // MOVEMENT 4: CONFORMITY & REPORTING
     header('MOVEMENT 4: Architecture Conformity & Reporting');
     const conformity = validateHandlerConformity();
-    
+    const acValidation = validateAcceptanceCriteriaAlignment();
+
     // Get handler mapping data before building metrics
     let handlersToBeatMapping = { mapped: 0, orphaned: [], beatsWithHandlers: [] };
     try {
@@ -1290,6 +1456,7 @@ async function run() {
 	      coverage,
 	      beatCoverage,
 	      conformity,
+	      acValidation,  // Add AC-to-test validation results
 	      // Fractal architecture metrics derived from DOMAIN_REGISTRY.json and
 	      // orchestration-domains.json capture the "domains-as-systems and
 	      // systems-as-domains" property described in ADR-0038.
