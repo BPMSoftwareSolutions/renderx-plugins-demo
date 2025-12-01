@@ -755,7 +755,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/line.manip.end.json"
+        ]
       }
     },
     "canvas-line-manip-start-symphony": {
@@ -779,7 +782,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.line.start.json"
+        ]
       }
     },
     "canvas-component-paste-symphony": {
@@ -827,7 +833,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.end.json"
+        ]
       }
     },
     "canvas-line-resize-end-symphony": {
@@ -851,7 +860,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.line.end.json"
+        ]
       }
     },
     "canvas-line-resize-move-symphony": {
@@ -875,7 +887,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.line.move.json"
+        ]
       }
     },
     "canvas-line-resize-start-symphony": {
@@ -899,7 +914,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.line.start.json"
+        ]
       }
     },
     "canvas-component-resize-move-symphony": {
@@ -923,7 +941,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.move.json"
+        ]
       }
     },
     "canvas-component-resize-start-symphony": {
@@ -947,7 +968,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/resize.line.start.json"
+        ]
       }
     },
     "canvas-component-rules-config-symphony": {
@@ -995,7 +1019,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/select.json"
+        ]
       }
     },
     "canvas-component-select-requested-symphony": {
@@ -1019,7 +1046,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/select.requested.json"
+        ]
       }
     },
     "canvas-component-select-svg-node-symphony": {
@@ -1043,7 +1073,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/select.svg-node.json"
+        ]
       }
     },
     "canvas-component-update-symphony": {
@@ -1067,7 +1100,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/update.json"
+        ]
       }
     },
     "canvas-component-update-svg-node-symphony": {
@@ -1091,7 +1127,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/update.svg-node.json"
+        ]
       }
     },
     "control-panel-classes-add-symphony": {
@@ -1115,7 +1154,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/classes.add.json"
+        ]
       }
     },
     "control-panel-classes-remove-symphony": {
@@ -1139,7 +1181,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/classes.remove.json"
+        ]
       }
     },
     "control-panel-css-create-symphony": {
@@ -1163,7 +1208,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/css.create.json"
+        ]
       }
     },
     "control-panel-css-delete-symphony": {
@@ -1187,7 +1235,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/css.delete.json"
+        ]
       }
     },
     "control-panel-css-edit-symphony": {
@@ -1211,7 +1262,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/css.edit.json"
+        ]
       }
     },
     "catalog-placeholder-2": {
@@ -1331,7 +1385,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/css.edit.json"
+        ]
       }
     },
     "control-panel-ui-init-symphony": {
@@ -1352,6 +1409,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/ui.init.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1376,6 +1436,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/ui.init.batched.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1400,6 +1463,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/ui.render.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1424,6 +1490,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/ui.field.change.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1448,6 +1517,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/control-panel/json-sequences/ui.field.validate.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1472,6 +1544,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/header/json-sequences/ui.theme.get.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1496,6 +1571,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/header/json-sequences/ui.theme.toggle.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1544,6 +1622,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/library/json-sequences/library.load.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1568,6 +1649,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/library-component/json-sequences/container.drop.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1592,6 +1676,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/library-component/json-sequences/drag.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -1616,6 +1703,9 @@
           "name": "MusicalSequence",
           "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
         },
+        "sequence_files": [
+          "packages/library-component/json-sequences/drop.json"
+        ],
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
@@ -2257,7 +2347,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-12-01T00:53:03.693Z",
+    "last_validation": "2025-12-01T01:01:46.699Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",
@@ -2358,6 +2448,9 @@
           "stability_score": 0.85
         }
       ]
-    }
+    },
+    "sequence_files": [
+      "packages/control-panel/json-sequences/selection.show.json"
+    ]
   }
 }

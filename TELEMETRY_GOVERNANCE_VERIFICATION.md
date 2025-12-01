@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: .generated/telemetry-validation-report.json -->
-<!-- Generated: 2025-12-01T00:53:49.040Z -->
+<!-- Generated: 2025-12-01T01:02:50.246Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Telemetry Governance Verification

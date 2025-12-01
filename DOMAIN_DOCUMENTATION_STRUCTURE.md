@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (documentationStructure) -->
-<!-- Generated: 2025-12-01T00:53:50.492Z -->
+<!-- Generated: 2025-12-01T01:02:51.586Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Domain Documentation Structure
