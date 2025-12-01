@@ -14,9 +14,37 @@
       "type": "string",
       "description": "Human-readable sequence name"
     },
+    "sequenceId": {
+      "type": "string",
+      "description": "Alias / duplicate identifier field used by some sequences"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title for UI / docs"
+    },
     "description": {
       "type": "string",
       "description": "Purpose and behavior description"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Business or technical purpose statement"
+    },
+    "trigger": {
+      "type": "string",
+      "description": "Triggering condition for orchestration start"
+    },
+    "packageName": {
+      "type": "string",
+      "description": "Owning NPM package or module name"
+    },
+    "kind": {
+      "type": "string",
+      "description": "Sequence kind/classification (plugin, orchestration, etc.)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status (active, experimental, deprecated, available)"
     },
     "key": {
       "type": "string",
@@ -34,6 +62,28 @@
       "type": "string",
       "description": "Sequence category (see SequenceCategory in SequenceTypes.ts)"
     },
+    "beats": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total beat count (flattened) if pre-computed"
+    },
+    "governance": {
+      "type": "object",
+      "description": "Governance policies and metrics for orchestration",
+      "additionalProperties": true,
+      "properties": {
+        "policies": { "type": "array", "items": { "type": "string" } },
+        "metrics": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Declared event names emitted by sequence",
+      "items": { "type": "string" }
+    },
+    "userStory": { "type": "string", "description": "Primary user story for the sequence" },
+    "persona": { "type": "string", "description": "Primary persona served" },
+    "businessValue": { "type": "string", "description": "Business value articulation" },
     "metadata": {
       "type": "object",
       "description": "Optional metadata for the sequence",
@@ -72,6 +122,11 @@
           "type": "string",
           "description": "Movement description"
         },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Ordinal movement number"
+        },
         "tempo": {
           "type": "number",
           "description": "Optional BPM override for this movement"
@@ -81,6 +136,10 @@
           "enum": ["continue", "abort-sequence"],
           "description": "Movement-level error handling strategy"
         },
+        "userStory": { "type": "string", "description": "Movement-level user story" },
+        "persona": { "type": "string", "description": "Movement-level persona" },
+        "businessValue": { "type": "string", "description": "Movement-level business value" },
+        "status": { "type": "string", "description": "Movement lifecycle status" },
         "beats": {
           "type": "array",
           "description": "Beats within this movement",
@@ -93,6 +152,10 @@
       "additionalProperties": true,
       "required": ["event"],
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "Beat name (human readable)"
+        },
         "beat": {
           "type": "integer",
           "minimum": 1,
@@ -138,8 +201,11 @@
           "description": "Error handling strategy for this beat"
         },
         "handler": {
-          "type": "string",
-          "description": "Name of the handler implementation invoked at this beat"
+          "description": "Handler definition (string shorthand or object with name/scope/kind)",
+          "oneOf": [
+            { "type": "string" },
+            { "$ref": "#/definitions/HandlerRef" }
+          ]
         },
         "kind": {
           "type": "string",
@@ -159,6 +225,32 @@
             "kind": { "type": "string" }
           }
         }
+        "scenario": { "type": "string", "description": "Scenario / test narrative for beat" },
+        "testFile": { "type": "string", "description": "Linked test file path" },
+        "testCase": { "type": "string", "description": "Linked test case description" },
+        "userStory": { "type": "string", "description": "Beat-level user story" },
+        "persona": { "type": "string", "description": "Beat-level persona" },
+        "businessValue": { "type": "string", "description": "Beat-level business value articulation" },
+        "acceptanceCriteria": {
+          "type": "array",
+          "description": "List of acceptance criteria statements",
+          "items": { "type": "string" }
+        },
+        "notes": {
+          "type": "array",
+          "description": "Supplemental notes for the beat",
+          "items": { "type": "string" }
+        }
+      }
+    }
+    "HandlerRef": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "description": "Handler function reference (module#export)" },
+        "scope": { "type": "string", "description": "Handler scope (plugin, orchestration, system)" },
+        "kind": { "type": "string", "description": "Handler kind classification" }
       }
     }
   }
