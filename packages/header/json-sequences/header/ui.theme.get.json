@@ -16,16 +16,25 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Retrieve Current Application Theme Configuration",
-          "acceptanceCriteria": [
-            "Given the theme system is initialized\nWhen getCurrentTheme is called\nThen current theme (dark/light) is returned within 10ms\nAnd theme preference from localStorage is respected\nAnd default theme is applied if no preference exists",
-            "Given user has theme preference saved\nWhen getCurrentTheme executes\nThen saved preference is returned\nAnd the response includes theme metadata (colors, fonts)\nAnd no API calls are made (cached lookup)",
-            "Given theme system encounters error\nWhen getCurrentTheme fails\nThen fallback default theme is returned\nAnd error is logged for monitoring\nAnd system remains functional",
-            "Given performance SLA of 10ms\nWhen getCurrentTheme completes\nThen operation time is < 10ms\nAnd memory footprint is < 100KB\nAnd no memory leaks occur on repeated calls",
-            "Given concurrent requests for theme\nWhen multiple calls occur\nThen all requests return consistent value\nAnd response time remains < 10ms per request\nAnd no race conditions exist"
-          ],
           "userStory": "As an engineer, I need `getCurrentTheme` to read persisted theme and apply classes.",
           "testCase": "should have required metadata fields",
-          "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js"
+          "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "theme storage"
+              ],
+              "when": [
+                "getTheme runs"
+              ],
+              "then": [
+                "returns current theme within ≤ 10ms and emits 'theme.get'"
+              ],
+              "and": [
+                "telemetry includes source (storage/default)"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

@@ -17,12 +17,52 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Update or Modify update From Element",
-          "acceptanceCriteria": [
-            "Given the updateFromElement operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen updateFromElement processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen updateFromElement encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen updateFromElement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen updateFromElement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["the updateFromElement operation is triggered"],
+              "when": ["the handler executes"],
+              "then": ["it completes successfully within < 100ms"],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": ["valid input parameters"],
+              "when": ["updateFromElement processes them"],
+              "then": ["results conform to expected schema"],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": ["error conditions"],
+              "when": ["updateFromElement encounters an error"],
+              "then": ["the error is logged with full context"],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": ["performance SLA of < 100ms"],
+              "when": ["updateFromElement executes"],
+              "then": ["latency is consistently within target"],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": ["compliance and governance"],
+              "when": ["updateFromElement operates"],
+              "then": ["all governance rules are enforced"],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
@@ -38,12 +78,52 @@
           "kind": "pure",
           "number": 2,
           "scenario": "Publish UI State Change Notifications to Event System",
-          "acceptanceCriteria": [
-            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
-            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
-            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
-            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
-            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a class change operation completes"],
+              "when": ["notifyUi is invoked with change details"],
+              "then": ["an event is published to the central EventRouter within 5ms"],
+              "and": [
+                "the event contains element ID, action (add/remove), and class name",
+                "the event is stamped with microsecond-precision timestamp"
+              ]
+            },
+            {
+              "given": ["multiple class operations occur in sequence"],
+              "when": ["notifyUi publishes events"],
+              "then": ["events are queued in FIFO order"],
+              "and": [
+                "subscribers receive events in the order they occurred",
+                "no events are dropped or duplicated"
+              ]
+            },
+            {
+              "given": ["a subscriber is registered for UI change events"],
+              "when": ["notifyUi publishes"],
+              "then": ["the subscriber receives the event within 20ms"],
+              "and": [
+                "the subscriber can act on the notification",
+                "multiple subscribers can consume the same event"
+              ]
+            },
+            {
+              "given": ["the event system is congested"],
+              "when": ["notifyUi attempts to publish"],
+              "then": ["the event is queued with backpressure"],
+              "and": [
+                "the operation does not block the caller",
+                "events are eventually delivered with bounded latency"
+              ]
+            },
+            {
+              "given": ["notification occurs during error conditions"],
+              "when": ["notifyUi is called"],
+              "then": ["events are still published for traceability"],
+              "and": [
+                "error context is included in event payload",
+                "the system can reconstruct the failure chain from events"
+              ]
+            }
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",

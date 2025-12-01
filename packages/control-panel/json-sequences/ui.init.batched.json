@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Initialize Control Panel with Configuration",
-          "acceptanceCriteria": [
-            "Given configuration metadata\nWhen initConfig is called\nThen configuration is loaded within 200ms\nAnd all fields are prepared for rendering\nAnd validation rules are attached",
-            "Given complex nested configuration\nWhen initConfig processes it\nThen all nested sections are initialized\nAnd dependencies between sections are resolved\nAnd no circular dependencies cause deadlock",
-            "Given configuration with 100+ fields\nWhen initConfig prepares the form\nThen initialization completes within 300ms\nAnd form is ready for user interaction\nAnd memory usage scales linearly with field count",
-            "Given configuration errors\nWhen initConfig encounters invalid config\nThen error is reported with specific issue\nAnd fallback configuration is applied\nAnd system degrades gracefully",
-            "Given performance SLA\nWhen initConfig completes\nThen Time to Interactive (TTI) is < 500ms\nAnd First Contentful Paint (FCP) is < 1 second\nAnd form is responsive immediately"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
           "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
-          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model)."
+          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "many components (≥ 100)"
+              ],
+              "when": [
+                "initPanelBatched runs"
+              ],
+              "then": [
+                "batching reduces CPU by ≥ 20% versus naive init"
+              ],
+              "and": [
+                "telemetry 'control-panel.init.batched' includes batchSize"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

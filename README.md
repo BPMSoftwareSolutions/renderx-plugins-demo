@@ -31,19 +31,19 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ## 📊 Domain Registry Overview
 
-> **Auto-generated on 2025-12-01T01:01:47.921Z**
+> **Auto-generated on 2025-12-01T02:08:34.703Z**
 > This section is automatically maintained. To update: `npm run generate:readme`
 
-**Total Domains**: 80 (77 active, 1 deprecated, 1 experimental)
+**Total Domains**: 81 (78 active, 1 deprecated, 1 experimental)
 
 ### By Type
 - **capability**: 61 domains
-- **orchestration**: 18 domains
+- **orchestration**: 19 domains
 - **workflow**: 1 domains
 
 ### By Ownership
 - **RenderX-Web**: 56 domains
-- **Platform-Orchestration**: 16 domains
+- **Platform-Orchestration**: 17 domains
 - **Platform-Infrastructure**: 4 domains
 - **Platform-Observability**: 1 domains
 - **Platform-DevEx**: 1 domains
@@ -63,7 +63,7 @@ Check out these supporting projects for more detail on the underlying architectu
 
 
 <details>
-<summary>View all 18 orchestration domains</summary>
+<summary>View all 19 orchestration domains</summary>
 
 - **orchestration-core**: No description
 - **build-pipeline-orchestration**: No description
@@ -75,6 +75,7 @@ Check out these supporting projects for more detail on the underlying architectu
 - **orchestration-audit-session**: Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
 - **orchestration-audit-system**: System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).
 - **safe-continuous-delivery-pipeline**: Master orchestrator implementing Scaled Agile Framework (SAFe) for continuous delivery. Coordinates all development team activities from idea to production.
+- **symphony-report-pipeline**: Six-movement orchestration for generating comprehensive reports from symphony pipeline executions, metrics, and conformity audits.
 - **product-owner-signoff-demo**: Gating orchestration for product owner validation and feature sign-off. Conducts guided demos in staging environment before production deployment.
 - **build-pipeline-symphony**: DEPRECATED: Superseded by build-pipeline-orchestration. Legacy multi-movement orchestration for comprehensive, traceable, auditable build process with validation, package building, host building, artifact management, and verification.
 - **symphonia-conformity-alignment-pipeline**: Three-movement orchestration for automated detection and remediation of orchestration architecture violations across domain definitions, sequences, and handlers.
@@ -119,8 +120,8 @@ _...and 47 more_
 
 ### 📈 Analysis Status
 
-- **18** orchestration domains have analysis configuration
-- **Latest Validation**: 2025-12-01T01:01:46.699Z
+- **19** orchestration domains have analysis configuration
+- **Latest Validation**: 2025-12-01T02:08:34.284Z
 - **Analysis Reports**: [View all](.generated/analysis/)
 
 ## Governance Tooling Registry
@@ -636,7 +637,7 @@ This README is automatically generated from:
 - `.generated/analysis/**` - Code analysis reports
 - Domain analysis configuration
 
-**Last Generated**: 2025-12-01T01:01:47.921Z
+**Last Generated**: 2025-12-01T02:08:34.703Z
 
 To update this README, run:
 ```bash

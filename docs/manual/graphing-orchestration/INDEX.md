@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (domainDocumentationMapping) -->
-<!-- Generated: 2025-12-01T01:02:51.842Z -->
+<!-- Generated: 2025-12-01T02:09:31.000Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run generate:domain:indexes -->
 
 # Graphing Orchestration Documentation
@@ -41,5 +41,5 @@ This domain depends on:
 
 ---
 
-**Generated**: 2025-12-01T01:02:51.842Z
+**Generated**: 2025-12-01T02:09:31.000Z
 **Regenerate with**: `npm run generate:domain:indexes`

@@ -1,0 +1,343 @@
+# Acceptance Criteria - renderx-web domain
+
+[packages/canvas-component/json-sequences/canvas-component/create.json]
+
+[packages/canvas-component/json-sequences/canvas-component/update.json]
+beat: 1 handler: updateNode
+- Given an existing canvas node
+- When updateNode applies changes
+- Then P95 latency is ≤ 500ms and node schema remains valid
+- And telemetry 'node.updated' includes changedFields and duration
+- Given invalid update payload
+- When updateNode runs
+- Then it returns 'UpdateValidationError' with invalid path
+- And no side effects occur
+- Given repeated identical updates
+- When updateNode executes twice
+- Then operation is idempotent and emits dedupe=true on second run
+
+[packages/canvas-component/json-sequences/canvas-component/import.json]
+beat: 1 handler: parseImport
+- Given a valid import file (JSON/CSV)
+- When parseImport runs
+- Then P95 latency ≤ 1s and records parsed count equals input
+- And telemetry 'import.parsed' includes format and count
+beat: 2 handler: mapToNodes
+- Given parsed records
+- When mapToNodes runs
+- Then output nodes conform to CanvasNode schema
+- And errors are logged with indexes for invalid records
+
+[packages/control-panel/json-sequences/ui.render.json]
+beat: 1 handler: renderPanel
+- Given control panel state
+- When renderPanel runs
+- Then first paint ≤ 200ms P95 and UI responds within 100ms to input
+- And telemetry 'control-panel.render' includes duration and components
+beat: 2 handler: applyCSS
+- Given panel render completes
+- When applyCSS runs
+- Then styles apply deterministically with no FOUC
+- And accessibility roles/labels are present
+
+[packages/control-panel/json-sequences/classes.add.json]
+beat: 1 handler: addClass
+- Given element and class name
+- When addClass runs
+- Then class is added once, latency ≤ 5ms
+- And telemetry 'ui.class.add' includes elementId and class
+
+[packages/control-panel/json-sequences/classes.remove.json]
+beat: 1 handler: removeClass
+- Given element with existing class
+- When removeClass runs
+- Then class is removed, latency ≤ 5ms
+- And telemetry 'ui.class.remove' includes elementId and class
+
+[packages/control-panel/json-sequences/css.create.json]
+beat: 1 handler: createRule
+- Given a valid CSS rule
+- When createRule runs
+- Then rule is inserted into stylesheet, latency ≤ 20ms
+- And telemetry 'css.rule.create' includes selector and index
+
+[packages/control-panel/json-sequences/css.edit.json]
+beat: 1 handler: editRule
+- Given existing CSS rule
+- When editRule runs
+- Then selector/properties update atomically with rollback on error
+- And telemetry 'css.rule.edit' includes diff summary
+
+[packages/control-panel/json-sequences/css.delete.json]
+beat: 1 handler: deleteRule
+- Given rule index
+- When deleteRule runs
+- Then rule is removed and reflow cost ≤ baseline
+- And telemetry 'css.rule.delete' includes index and cost
+
+[packages/control-panel/json-sequences/selection.show.json]
+beat: 1 handler: showSelection
+- Given selected element(s)
+- When showSelection runs
+- Then overlay draws within ≤ 30ms and aligns within ≤ 1px
+- And telemetry 'selection.show' includes count and bounds
+
+[packages/control-panel/json-sequences/ui.init.json]
+beat: 1 handler: initPanel
+- Given application startup
+- When initPanel runs
+- Then panel initializes within ≤ 300ms and subscribes to events
+- And telemetry 'control-panel.init' includes subscriptions
+
+[packages/control-panel/json-sequences/ui.init.batched.json]
+beat: 1 handler: initPanelBatched
+- Given many components (≥ 100)
+- When initPanelBatched runs
+- Then batching reduces CPU by ≥ 20% versus naive init
+- And telemetry 'control-panel.init.batched' includes batchSize
+
+[packages/control-panel/json-sequences/ui.field.change.json]
+beat: 1 handler: onFieldChange
+- Given a user input event
+- When onFieldChange runs
+- Then model updates debounced ≤ 50ms and validates lazily
+- And telemetry 'ui.field.change' includes field and debounce
+
+[packages/control-panel/json-sequences/ui.field.validate.json]
+beat: 1 handler: validateField
+- Given field value
+- When validateField runs
+- Then errors are reported with code and path, latency ≤ 10ms
+- And telemetry 'ui.field.validate' includes validity
+
+[packages/control-panel/json-sequences/ui.section.toggle.json]
+beat: 1 handler: toggleSection
+- Given a section
+- When toggleSection runs
+- Then expand/collapse animates ≤ 120ms and preserves focus order
+- And telemetry 'ui.section.toggle' includes state
+
+[packages/header/json-sequences/header/ui.theme.get.json]
+beat: 1 handler: getTheme
+- Given theme storage
+- When getTheme runs
+- Then returns current theme within ≤ 10ms and emits 'theme.get'
+- And telemetry includes source (storage/default)
+
+[packages/header/json-sequences/header/ui.theme.toggle.json]
+beat: 1 handler: toggleTheme
+- Given current theme
+- When toggleTheme runs
+- Then toggles between light/dark, persists setting, latency ≤ 20ms
+- And telemetry 'theme.toggle' includes prev/next
+
+[packages/library/json-sequences/library/library-load.json]
+beat: 1 handler: requestLoad
+- Given a library path
+- When requestLoad runs
+- Then emits 'library.load.requested' and validates path
+- And telemetry includes path and requestId
+beat: 2 handler: loadLibrary
+- Given request
+- When loadLibrary runs
+- Then loads assets with P95 ≤ 2s, errors typed
+- And telemetry 'library.load' includes size and duration
+
+[packages/library-component/json-sequences/library-component/index.json]
+beat: 1 handler: initLibraryComponent
+- Given library component registry
+- When initLibraryComponent runs
+- Then registers components, latency ≤ 200ms and exposes APIs
+- And telemetry 'library.component.init' includes count
+
+[packages/library-component/json-sequences/library-component/drag.json]
+beat: 1 handler: dragStart
+- Given pointer down
+- When dragStart runs
+- Then starts drag within ≤ 16ms and sets data payload
+- And telemetry 'drag.start' includes elementId
+beat: 2 handler: dragMove
+- Given pointer move
+- When dragMove runs
+- Then updates position at 60fps with ≤ 1% frame drops
+- And telemetry 'drag.move' includes delta
+beat: 3 handler: dragEnd
+- Given pointer up
+- When dragEnd runs
+- Then ends drag and snaps-to-grid ≤ 1px
+- And telemetry 'drag.end' includes finalPos
+
+[packages/library-component/json-sequences/library-component/drop.json]
+beat: 1 handler: onDrop
+- Given valid drop target
+- When onDrop runs
+- Then composes node and validates schema; latency ≤ 150ms
+- And telemetry 'drop' includes target and success
+
+[packages/library-component/json-sequences/library-component/container.drop.json]
+beat: 1 handler: onContainerDrop
+- Given container target
+- When onContainerDrop runs
+- Then inserts child at index, reflows minimal, latency ≤ 150ms
+- And telemetry includes containerId and index
+beat: 1 handler: resolveTemplate
+- Given a valid component template request
+- When resolveTemplate runs
+- Then P95 latency is ≤ 1s and P99.9 success ≥ 99.9%
+- And result conforms to schema version 'v1' with required keys (id, bindings, props)
+- And a telemetry event 'template.resolved' is emitted with duration and cacheHit flag
+- Given duplicate requests for the same template within 2s
+- When resolveTemplate runs repeatedly
+- Then remote fetches are deduped (≤ 1 network call)
+- And outputs are identical (deep-equal)
+- And telemetry 'template.deduped' increments with count
+- Given an invalid or missing template id
+- When resolveTemplate executes
+- Then it returns a typed error 'TemplateNotFound'
+- And logs context (templateId, caller, correlationId)
+- And emits telemetry 'template.error' with errorCode and retries=0
+- Given cache warm state
+- When resolveTemplate is called
+- Then memory usage stays within baseline ±10%
+- And no blocking I/O occurs (io=false)
+- And throughput ≥ baseline of 100 ops/min
+- Given governance is enforced
+- When resolveTemplate produces bindings
+- Then all bindings reference whitelisted components
+- And audit trail includes schemaHash and resolverVersion
+- And compliance violations count remains 0
+
+beat: 2 handler: registerInstance
+- Given a resolved template with component tag
+- When registerInstance executes
+- Then P95 latency is ≤ 1s and instanceId is stable across session
+- And element receives class 'rx-comp-<tag>-<id>'
+- And telemetry 'instance.registered' includes elementId and classes
+- Given an existing registration for the same node
+- When registerInstance is called again
+- Then operation is idempotent (no duplicate class or new id)
+- And emits telemetry 'instance.idempotent' with previousId=present
+- And returns 200 with unchanged payload
+- Given invalid input (missing tag or container)
+- When registerInstance runs
+- Then it returns 'InvalidRegistration' error
+- And logs context (tag, containerSelector)
+- And emits telemetry 'instance.error' with errorCode and recovery=false
+- Given multiple components imported concurrently (≥ 50/min)
+- When registerInstance processes events
+- Then ordering is FIFO per container
+- And average CPU remains within baseline ±10%
+- And drop rate is 0%
+- Given governance rules for semantic classes
+- When registerInstance assigns classes
+- Then classes follow 'rx-comp-<tag>-<id>' pattern only
+- And audit trail records registrarVersion and source
+- And violations count remains 0
+
+beat: 3 handler: createNode
+- Given resolved template and bindings
+- When createNode assembles the canvas node
+- Then P95 latency is ≤ 2s and output conforms to 'CanvasNode' schema
+- And node has stable keys and does not instantiate React
+- And telemetry 'node.created' includes schemaVersion and forwardTo='drop'
+- Given a request to render directly in React
+- When createNode runs
+- Then it rejects direct React rendering (render=false)
+- And forwards to drop symphony with action='compose'
+- And logs routing decision with correlationId
+- Given malformed bindings or props
+- When createNode executes
+- Then it returns 'NodeValidationError' with path to invalid field
+- And telemetry 'node.error' includes errorCode and count=1
+- And no side effects occur (no files, no DOM)
+- Given repeated calls with identical inputs
+- When createNode runs twice
+- Then outputs are deterministic (deep-equal)
+- And emitted telemetry includes dedupe=true on second call
+- And resource usage delta ≤ 5%
+- Given governance contracts
+- When createNode finalizes
+- Then audit trail records composerVersion and schemaHash
+- And compliance violations=0
+- And downstream receives 'drop.compose' event
+
+beat: 4 handler: renderReact
+- Given a composed node
+- When renderReact mounts
+- Then P95 latency is ≤ 200ms and frame drops ≤ 1%
+- And list items are keyed and props memoized
+- And telemetry 'react.render' includes duration and commitTime
+- Given re-render with unchanged props
+- When renderReact executes
+- Then no re-render occurs (pure)
+- And React profiler shows skipped updates
+- And telemetry 'react.skip' increments
+- Given an error in component render
+- When renderReact runs
+- Then it surfaces error to boundary and logs stack
+- And telemetry 'react.error' includes componentName and errorCode
+- And UI remains responsive (no freeze)
+- Given large lists (≥ 500 items)
+- When renderReact renders
+- Then virtualization is applied
+- And memory stays within baseline ±15%
+- And first paint ≤ 1s
+- Given governance for runtime
+- When renderReact operates
+- Then audit includes rendererVersion and bundleId
+- And violations=0
+- And accessibility checks pass for labels and roles
+
+beat: 5 handler: notifyUi
+- Given a class/state change completes
+- When notifyUi is invoked
+- Then event 'ui.change' publishes within ≤ 5ms to EventRouter
+- And payload includes elementId, action(add/remove), className, ts(usec)
+- And telemetry 'ui.notify' records publishDuration
+- Given a burst of ≥ 20 changes
+- When notifyUi publishes
+- Then events are queued FIFO and delivered in order
+- And no events are dropped or duplicated
+- And end-to-end delivery ≤ 20ms per event
+- Given multiple subscribers
+- When notifyUi broadcasts
+- Then all subscribers receive the event
+- And can act within ≤ 20ms
+- And acks are tracked; missing ack count=0
+- Given router congestion
+- When notifyUi attempts publish
+- Then backpressure is applied and caller is non-blocking
+- And events are eventually delivered within bounded latency ≤ 200ms
+- And telemetry 'ui.backpressure' increments
+- Given errors occur during notification
+- When notifyUi runs
+- Then events still publish with errorContext
+- And failure chain can be reconstructed from payload and logs
+- And system stability is preserved
+
+beat: 6 handler: enhanceLine
+- Given a canvas line node
+- When enhanceLine runs
+- Then P95 latency is ≤ 1s and geometry is validated
+- And measurements, anchors, and hit areas are added
+- And telemetry 'line.enhanced' includes counts for anchors and hits
+- Given precision requirements (snap-to-grid enabled)
+- When enhanceLine executes
+- Then anchors align to grid with ≤ 0.5px error
+- And hit areas cover segments with ≥ 95% accuracy
+- And regression tests pass for known shapes
+- Given invalid geometry (self-intersecting)
+- When enhanceLine runs
+- Then it returns 'GeometryInvalid' with segment index
+- And logs context and emits 'line.error' telemetry
+- And no mutations are applied
+- Given repeated enhancement on same node
+- When enhanceLine executes twice
+- Then operation is idempotent (no duplicate anchors)
+- And telemetry includes idempotent=true on second run
+- And memory delta ≤ 5%
+- Given governance rules for design systems
+- When enhanceLine applies augmentation
+- Then audit records rulesetVersion and feature toggles
+- And violations=0
+- And downstream tooling consumes emitted change events

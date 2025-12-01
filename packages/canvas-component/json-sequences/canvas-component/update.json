@@ -16,16 +16,51 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Attribute",
-          "acceptanceCriteria": [
-            "Given the updateAttribute operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen updateAttribute processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen updateAttribute encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen updateAttribute executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen updateAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "an existing canvas node"
+              ],
+              "when": [
+                "updateNode applies changes"
+              ],
+              "then": [
+                "P95 latency is ≤ 500ms and node schema remains valid"
+              ],
+              "and": [
+                "telemetry 'node.updated' includes changedFields and duration"
+              ]
+            },
+            {
+              "given": [
+                "invalid update payload"
+              ],
+              "when": [
+                "updateNode runs"
+              ],
+              "then": [
+                "it returns 'UpdateValidationError' with invalid path"
+              ],
+              "and": [
+                "no side effects occur"
+              ]
+            },
+            {
+              "given": [
+                "repeated identical updates"
+              ],
+              "when": [
+                "updateNode executes twice"
+              ],
+              "then": [
+                "operation is idempotent and emits dedupe=true on second run"
+              ],
+              "and": []
+            }
+          ]
         },
         {
           "beat": 2,

@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.framework.implementationReport) -->
-<!-- Generated: 2025-12-01T01:02:50.565Z -->
+<!-- Generated: 2025-12-01T02:09:29.515Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Documentation Governance Implementation Complete

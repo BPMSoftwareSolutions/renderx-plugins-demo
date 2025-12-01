@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2025-12-01T01:03:03.408Z",
+  "generatedAt": "2025-12-01T02:09:42.610Z",
   "summary": {
-    "totalProcesses": 538,
-    "symphonic": 0,
-    "partialSymphonic": 42,
-    "nonSymphonic": 266,
+    "totalProcesses": 539,
+    "symphonic": 1,
+    "partialSymphonic": 41,
+    "nonSymphonic": 267,
     "shouldBeSymphonic": 230,
     "complianceScore": 0
   },
@@ -272,6 +272,17 @@
       "complexity": "very-complex",
       "shouldBeSymphonic": false,
       "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "apply-acceptance-criteria-from-text.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\apply-acceptance-criteria-from-text.js",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "moderate",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
     },
     {
       "name": "apply-user-stories.cjs",
@@ -3653,7 +3664,7 @@
       "command": "npm run validate:domains && npm run generate:readme && npm run generate:governance:docs && npm run validate:governance:docs && npm run validate:agent:behavior && npm run generate:slo:traceability && node scripts/enrich-domain-authorities.cjs && npm run build:all && npm run regenerate:ographx",
       "category": "build",
       "symphonic": false,
-      "registered": false,
+      "registered": true,
       "inNpmScript": true,
       "complexity": "very-complex",
       "shouldBeSymphonic": false,
@@ -4108,11 +4119,11 @@
       "command": "node scripts/orchestrate-architecture-governance.js",
       "category": "utility",
       "symphonic": true,
-      "registered": false,
+      "registered": true,
       "inNpmScript": true,
       "complexity": "simple",
       "shouldBeSymphonic": false,
-      "complianceLevel": "partial-symphonic"
+      "complianceLevel": "symphonic"
     },
     {
       "name": "governance:enforce:strict",
@@ -4940,7 +4951,7 @@
       "command": "node scripts/run-governance-checks.js",
       "category": "utility",
       "symphonic": false,
-      "registered": false,
+      "registered": true,
       "inNpmScript": true,
       "complexity": "simple",
       "shouldBeSymphonic": false,

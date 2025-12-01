@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.framework.index) -->
-<!-- Generated: 2025-12-01T01:02:50.628Z -->
+<!-- Generated: 2025-12-01T02:09:29.574Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Documentation Governance Index

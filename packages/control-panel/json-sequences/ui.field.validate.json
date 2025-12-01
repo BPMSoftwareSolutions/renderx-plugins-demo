@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Validate or Verify validate Field",
-          "acceptanceCriteria": [
-            "Given the validateField operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen validateField processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen validateField encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen validateField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen validateField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an engineer, I need `validateField` to run validators and collect errors."
+          "userStory": "As an engineer, I need `validateField` to run validators and collect errors.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "field value"
+              ],
+              "when": [
+                "validateField runs"
+              ],
+              "then": [
+                "errors are reported with code and path, latency ≤ 10ms"
+              ],
+              "and": [
+                "telemetry 'ui.field.validate' includes validity"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Generate Form Fields from Configuration Metadata",
-          "acceptanceCriteria": [
-            "Given a field configuration object with type, label, validation rules\nWhen generateFields is invoked\nThen HTML form fields are created matching the config within 100ms\nAnd accessibility attributes (aria-label, aria-required) are set\nAnd the fields are ready for user interaction",
-            "Given a configuration for 50 fields\nWhen generateFields processes it\nThen all fields are generated and rendered within 200ms\nAnd the form remains responsive (60fps)\nAnd memory usage scales linearly with field count",
-            "Given field types: text, email, number, select, checkbox, radio\nWhen generateFields creates fields\nThen each type is rendered with appropriate HTML elements\nAnd type-specific validation is attached\nAnd default values are populated if provided",
-            "Given required and optional fields are mixed\nWhen generateFields marks requirements\nThen required fields have aria-required='true'\nAnd visual indicators (asterisk) are shown\nAnd form submission validation respects these flags",
-            "Given field dependencies and show/hide rules\nWhen generateFields creates the form\nThen conditional visibility logic is initialized\nAnd dependent fields are shown/hidden correctly\nAnd no orphaned validation rules exist"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema."
+          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "control panel state"
+              ],
+              "when": [
+                "renderPanel runs"
+              ],
+              "then": [
+                "first paint ≤ 200ms P95 and UI responds within 100ms to input"
+              ],
+              "and": [
+                "telemetry 'control-panel.render' includes duration and components"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -38,16 +47,25 @@
           "kind": "stage-crew",
           "number": 2,
           "scenario": "Generate Grouped Form Sections from Configuration",
-          "acceptanceCriteria": [
-            "Given a section configuration with title, description, fields\nWhen generateSections is invoked\nThen form sections are created with proper grouping within 100ms\nAnd section headers are rendered\nAnd all contained fields are correctly nested",
-            "Given 10 sections with 100 total fields\nWhen generateSections organizes them\nThen all sections are rendered within 300ms\nAnd visual hierarchy is maintained\nAnd responsive layout adapts to screen size",
-            "Given sections with collapse/expand capability\nWhen generateSections initializes\nThen collapse state is configurable\nAnd initial state can be all expanded or all collapsed\nAnd toggle handlers are attached to section headers",
-            "Given sections that depend on other sections\nWhen generateSections creates the form\nThen dependency ordering is respected\nAnd parent sections expand when child interactions occur\nAnd nested visibility rules work correctly",
-            "Given accessibility requirements\nWhen generateSections renders\nThen proper heading hierarchy (h1, h2, h3) is used\nAnd aria-expanded attributes are set on collapse toggles\nAnd keyboard navigation works between sections"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an engineer, I need `generateSections` to group fields semantically."
+          "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "panel render completes"
+              ],
+              "when": [
+                "applyCSS runs"
+              ],
+              "then": [
+                "styles apply deterministically with no FOUC"
+              ],
+              "and": [
+                "accessibility roles/labels are present"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,

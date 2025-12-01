@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "derive Selection Model",
-          "acceptanceCriteria": [
-            "Given the deriveSelectionModel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen deriveSelectionModel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen deriveSelectionModel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen deriveSelectionModel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen deriveSelectionModel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
           "testCase": "returns null selectionModel when id missing",
-          "userStory": "As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel."
+          "userStory": "As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "selected element(s)"
+              ],
+              "when": [
+                "showSelection runs"
+              ],
+              "then": [
+                "overlay draws within ≤ 30ms and aligns within ≤ 1px"
+              ],
+              "and": [
+                "telemetry 'selection.show' includes count and bounds"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

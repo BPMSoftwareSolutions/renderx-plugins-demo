@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Delete or Remove delete Css Class",
-          "acceptanceCriteria": [
-            "Given the deleteCssClass operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen deleteCssClass processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen deleteCssClass encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen deleteCssClass executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen deleteCssClass operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\delete.spec.ts",
           "testCase": "publishes canvas.component.deleted when publishDeleted is called",
-          "userStory": "As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit."
+          "userStory": "As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "rule index"
+              ],
+              "when": [
+                "deleteRule runs"
+              ],
+              "then": [
+                "rule is removed and reflow cost ≤ baseline"
+              ],
+              "and": [
+                "telemetry 'css.rule.delete' includes index and cost"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

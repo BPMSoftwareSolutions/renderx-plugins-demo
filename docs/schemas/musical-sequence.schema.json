@@ -236,6 +236,20 @@
           "description": "List of acceptance criteria statements",
           "items": { "type": "string" }
         },
+        "acceptanceCriteriaStructured": {
+          "type": "array",
+          "description": "Structured acceptance criteria grouped into Given/When/Then/And clauses",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "given": { "type": "array", "items": { "type": "string" } },
+              "when": { "type": "array", "items": { "type": "string" } },
+              "then": { "type": "array", "items": { "type": "string" } },
+              "and": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
         "notes": {
           "type": "array",
           "description": "Supplemental notes for the beat",

@@ -17,16 +17,25 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Add CSS Class to UI Element for State Representation",
-          "acceptanceCriteria": [
-            "Given an HTML element exists in the DOM\nWhen addClass is invoked with element ID and class name\nThen the class is applied to the element within 10ms\nAnd the element's classList contains the new class\nAnd a 'control.panel.class.added' event is published with class details",
-            "Given an element already has multiple classes\nWhen addClass adds a new class\nThen the existing classes are preserved\nAnd the new class is appended without duplicates\nAnd the operation completes in O(1) time complexity",
-            "Given a valid element ID and CSS class name\nWhen addClass is called\nThen the DOM reflects the change immediately\nAnd downstream components receive the notification event within 50ms\nAnd telemetry records the operation",
-            "Given an invalid element ID\nWhen addClass is invoked\nThen an error is caught and logged\nAnd the error does not propagate to UI\nAnd recovery attempt is made with fallback selector",
-            "Given a class already exists on the element\nWhen addClass is called with the same class\nThen the class is not duplicated in classList\nAnd idempotency is maintained\nAnd the operation succeeds without side effects"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
           "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
-          "userStory": "As an engineer, I need `addClass` to apply semantic classes atomically, validate specificity, and record change events."
+          "userStory": "As an engineer, I need `addClass` to apply semantic classes atomically, validate specificity, and record change events.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "element and class name"
+              ],
+              "when": [
+                "addClass runs"
+              ],
+              "then": [
+                "class is added once, latency ≤ 5ms"
+              ],
+              "and": [
+                "telemetry 'ui.class.add' includes elementId and class"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,

@@ -16,16 +16,25 @@
           "dynamics": "mf",
           "kind": "stage-crew",
           "scenario": "open Ui File",
-          "acceptanceCriteria": [
-            "Given the openUiFile operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen openUiFile processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen openUiFile encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen openUiFile executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen openUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a platform operator, I need `openUiFile` to resolve local/remote paths, validate file type, and expose stream metadata in ≤1s P95 so downstream parsing can proceed without retries.",
           "testCase": "exports CanvasPage and register()",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "a valid import file (JSON/CSV)"
+              ],
+              "when": [
+                "parseImport runs"
+              ],
+              "then": [
+                "P95 latency ≤ 1s and records parsed count equals input"
+              ],
+              "and": [
+                "telemetry 'import.parsed' includes format and count"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -36,16 +45,25 @@
           "dynamics": "mf",
           "kind": "pure",
           "scenario": "parse Ui File",
-          "acceptanceCriteria": [
-            "Given the parseUiFile operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen parseUiFile processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen parseUiFile encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen parseUiFile executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen parseUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a parser maintainer, I need `parseUiFile` to produce a normalized AST and schema in ≤1s P95, emitting parse diagnostics and source maps for accurate transformations.",
           "testCase": "exports CanvasPage and register()",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "parsed records"
+              ],
+              "when": [
+                "mapToNodes runs"
+              ],
+              "then": [
+                "output nodes conform to CanvasNode schema"
+              ],
+              "and": [
+                "errors are logged with indexes for invalid records"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
