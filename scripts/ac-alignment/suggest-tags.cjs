@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Suggest AC/BEAT tags for tests by fuzzy-matching test titles to AC text.
  *
@@ -17,6 +16,10 @@ const ROOT = process.cwd();
 const REG_FILE = path.join(ROOT, '.generated', 'acs', `${DOMAIN}.registry.json`);
 const OUT_DIR = path.join(ROOT, '.generated', 'ac-alignment');
 const OUT_FILE = path.join(OUT_DIR, 'suggestions.json');
+const rootsArg = process.argv.includes('--roots') ? process.argv[process.argv.indexOf('--roots') + 1] : '';
+const USER_ROOTS = rootsArg ? rootsArg.split(',').map((p) => path.resolve(ROOT, p.trim())).filter(Boolean) : [];
+const minScoreArg = process.argv.includes('--minScore') ? parseInt(process.argv[process.argv.indexOf('--minScore') + 1], 10) : NaN;
+const MIN_SCORE = Number.isFinite(minScoreArg) ? minScoreArg : 1;
 
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 
@@ -63,10 +66,10 @@ function scoreMatch(titleTokens, acTokens) {
 
 function extractTitles(content) {
   const titles = [];
-  const rgx = /\b(?:describe|it|test)\s*\(\s*([`'\"])\s*([^\1]*?)\s*\1/gm;
+  const rgx = /(describe|it|test)\s*\(\s*([`'\"])\s*([^'"`]*?)\s*\2/gm;
   let m;
   while ((m = rgx.exec(content))) {
-    titles.push(m[2]);
+    titles.push(m[3]);
   }
   return titles;
 }
@@ -80,7 +83,7 @@ function main() {
   }
 
   const suggestions = {};
-  const testRoots = [path.join(ROOT, 'tests'), ROOT];
+  const testRoots = USER_ROOTS.length ? USER_ROOTS : [path.join(ROOT, 'tests'), ROOT];
 
   for (const root of testRoots) {
     if (!fs.existsSync(root)) continue;
@@ -96,7 +99,7 @@ function main() {
         const s = scoreMatch(titleTokens, acTokens);
         if (!best || s > best.score) best = { item: it, score: s };
       }
-      if (best && best.score >= 2) {
+      if (best && best.score >= MIN_SCORE) {
         const { item } = best;
         suggestions[rel] = suggestions[rel] || [];
         suggestions[rel].push({

@@ -6,6 +6,10 @@ export default defineConfig({
     globals: true,
     testTimeout: 60000,
     hookTimeout: 60000,
+    reporters: ['default', 'json'],
+    outputFile: {
+      json: './test-results/unit-results.json'
+    },
     include: [
       "**/__tests__/**/*.spec.ts",
       "**/__tests__/**/*.spec.tsx",

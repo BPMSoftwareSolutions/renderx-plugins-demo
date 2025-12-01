@@ -17,7 +17,7 @@ describe('[BEAT:renderx-web-orchestration:ui-theme-toggle:1.1] React Theme Toggl
     };
   });
 
-  it('should expose EventRouter for theme toggle component', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] should expose EventRouter for theme toggle component', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,

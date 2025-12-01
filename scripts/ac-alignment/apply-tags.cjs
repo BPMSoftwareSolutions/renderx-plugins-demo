@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Apply suggested AC/BEAT tags to test titles. Defaults to dry-run producing patch files.
  *

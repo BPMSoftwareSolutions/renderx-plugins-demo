@@ -63,18 +63,43 @@
           ]
         },
         {
-          "name": "adopt-tags",
+          "name": "suggest-tags",
           "number": 2,
-          "handler": { "name": "ac-alignment/tagging#adopt", "scope": "orchestration", "kind": "orchestration" },
-          "event": "renderx-web:ac-alignment:tags-adopted",
-          "scenario": "Adopt tags in representative tests",
+          "handler": { "name": "ac-alignment/tagging#suggest", "scope": "orchestration", "kind": "orchestration" },
+          "event": "renderx-web:ac-alignment:tag-suggestions-generated",
+          "scenario": "Generate AC/BEAT tag suggestions for all tests",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["Key symphonies (Create, Select, UI, Export)"],
-              "when": ["tests are updated"],
+              "given": ["AC registry exists at .generated/acs/renderx-web-orchestration.registry.json"],
+              "when": ["the suggester runs with optional --roots overrides"],
               "then": [
-                "Each beat has at least one tagged test",
-                "AC coverage presence reaches >= 30%"
+                "Suggestions written to .generated/ac-alignment/suggestions.json",
+                "Each file entry includes best scoring AC tag and score"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "apply-tags",
+          "number": 3,
+          "handler": { "name": "ac-alignment/tagging#apply", "scope": "orchestration", "kind": "orchestration" },
+          "event": "renderx-web:ac-alignment:tags-applied",
+          "scenario": "Apply tags via dry-run patches or in-place writes",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["Tag suggestions exist"],
+              "when": ["the applier runs in dry-run mode"],
+              "then": [
+                "Unified diffs written to .generated/ac-alignment/patches",
+                "No source files modified in dry-run"
+              ]
+            },
+            {
+              "given": ["Dry-run patches reviewed"],
+              "when": ["the applier runs with --write"],
+              "then": [
+                "Test titles updated to include [AC:...] or [BEAT:...]",
+                "Commit prepared updating all affected tests"
               ]
             }
           ]
@@ -179,8 +204,8 @@
               "given": ["Computed presence and THEN coverage"],
               "when": ["reporter runs"],
               "then": [
-                "Artifacts saved under .generated/analysis/renderx-web/*ac-alignment*",
-                "Markdown section included in CODE-ANALYSIS-REPORT.md"
+                "Artifacts saved under .generated/analysis/renderx-web-orchestration/*ac-alignment*",
+                "Markdown report at docs/generated/renderx-web-orchestration/ac-alignment-report.md"
               ]
             }
           ]
@@ -234,7 +259,8 @@
   "events": [
     "renderx-web:ac-alignment:registry-generated",
     "renderx-web:ac-alignment:tagging-guide-published",
-    "renderx-web:ac-alignment:tags-adopted",
+    "renderx-web:ac-alignment:tag-suggestions-generated",
+    "renderx-web:ac-alignment:tags-applied",
     "renderx-web:ac-alignment:unit-results-collected",
     "renderx-web:ac-alignment:e2e-results-collected",
     "renderx-web:ac-alignment:presence-coverage-computed",

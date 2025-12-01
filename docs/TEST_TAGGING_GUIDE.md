@@ -1,3 +1,53 @@
+# Test Tagging Guide
+
+This guide shows how to align tests with acceptance criteria (ACs) using lightweight tags in test titles.
+
+## Tag Formats
+
+- Full AC: `[AC:<domain>:<sequence>:<beat>:<acIndex>]`
+  - Example: `[AC:renderx-web-orchestration:create:1.1:1]`
+- Beat-only: `[BEAT:<domain>:<sequence>:<beat>]`
+  - Example: `[BEAT:renderx-web-orchestration:create:1.1]`
+
+Place the tag at the beginning of a `describe()` or `it()`/`test()` title:
+
+```ts
+describe('[AC:renderx-web-orchestration:create:1.1:1] creates a component', () => {
+  it('adds to canvas');
+});
+```
+
+## Bulk Workflow
+
+1) Generate AC registry
+
+```powershell
+node scripts/generate-ac-registry.cjs --domain renderx-web-orchestration
+```
+
+2) Suggest tags for all tests (dry)
+
+```powershell
+node scripts/ac-alignment/suggest-tags.cjs --domain renderx-web-orchestration
+```
+
+3) Review patches (dry-run produces diffs under `.generated/ac-alignment/patches`)
+
+```powershell
+node scripts/ac-alignment/apply-tags.cjs
+```
+
+4) Apply tags in-place (after review)
+
+```powershell
+node scripts/ac-alignment/apply-tags.cjs --write
+```
+
+## Tips
+
+- Use AC tags for specific mapping; use BEAT tags when multiple ACs aggregate to a behavior.
+- Keep tags at the start of titles for reliable parsing.
+- If a test covers multiple ACs, prefer the most specific AC; add additional focused tests over time.
 # Test Tagging Guide — AC-to-Test Alignment
 
 ## Overview
