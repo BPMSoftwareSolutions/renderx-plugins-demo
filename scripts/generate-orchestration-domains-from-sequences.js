@@ -35,7 +35,10 @@ function generateBeatDescription(beat) {
 
   // Fallback to handler name
   if (beat.handler) {
-    const humanized = beat.handler
+    const handlerName = typeof beat.handler === 'string'
+      ? beat.handler
+      : (beat.handler.name || beat.handler.id || 'handler');
+    const humanized = handlerName
       .replace(/([A-Z])/g, ' $1')
       .replace(/([a-z])([A-Z])/g, '$1 $2')
       .trim()

@@ -1977,6 +1977,37 @@
         "symphoniesRoot": "scripts/symphonies"
       }
     },
+    "symphony-report-pipeline": {
+      "domain_id": "symphony-report-pipeline",
+      "domain_type": "orchestration",
+      "status": "active",
+      "description": "Six-movement orchestration for generating comprehensive reports from symphony pipeline executions, metrics, and conformity audits.",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "ownership": "Platform-Orchestration",
+      "deprecated": false,
+      "supersedes": [],
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/symphony-report-pipeline.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "scripts",
+        "symphoniesRoot": "scripts/symphonies"
+      }
+    },
     "product-owner-signoff-demo": {
       "domain_id": "product-owner-signoff-demo",
       "domain_type": "orchestration",
