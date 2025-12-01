@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.buildPipelineAudit.findings) -->
-<!-- Generated: 2025-11-30T23:59:13.192Z -->
+<!-- Generated: 2025-12-01T00:54:02.712Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # 🔍 Build Pipeline Audit Report

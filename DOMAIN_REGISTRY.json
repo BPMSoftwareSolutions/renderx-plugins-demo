@@ -353,7 +353,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/copy.json"
+        ]
       }
     },
     "canvas-component-create-symphony": {
@@ -377,7 +380,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/create.json"
+        ]
       }
     },
     "canvas-component-delete-symphony": {
@@ -401,7 +407,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/delete.json"
+        ]
       }
     },
     "canvas-component-delete-requested-symphony": {
@@ -425,7 +434,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/delete.requested.json"
+        ]
       }
     },
     "canvas-component-deselect-all-symphony": {
@@ -449,7 +461,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/deselect.all.json"
+        ]
       }
     },
     "canvas-component-deselect-symphony": {
@@ -473,7 +488,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/deselect.json"
+        ]
       }
     },
     "canvas-component-deselect-requested-symphony": {
@@ -2228,7 +2246,10 @@
         "registry_ref": {
           "file": "orchestration-domains.json",
           "id": "orchestration-domains-registry"
-        }
+        },
+        "sequence_files": [
+          "packages/canvas-component/json-sequences/canvas-component/deselect.requested.json"
+        ]
       }
     }
   },
@@ -2236,7 +2257,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-11-30T23:54:45.142Z",
+    "last_validation": "2025-12-01T00:53:03.693Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

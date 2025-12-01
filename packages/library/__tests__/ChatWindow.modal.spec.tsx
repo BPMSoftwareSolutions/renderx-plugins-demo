@@ -1,4 +1,5 @@
 /**
+ * @vitest-environment jsdom
  * Unit tests for ChatWindow modal behavior
  * Tests that the AI dialog displays as a centered modal with backdrop overlay
  */

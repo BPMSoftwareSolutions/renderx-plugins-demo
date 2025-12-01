@@ -1,7 +1,7 @@
 # 🎵 Orchestration Execution Flow
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-30T23:58:57.396Z
+**Last Generated:** 2025-12-01T00:53:47.494Z
 **DO NOT EDIT — GENERATED**
 
 ## Execution Flow

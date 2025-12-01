@@ -1,4 +1,5 @@
 /**
+ * @vitest-environment jsdom
  * Unit tests for Chat Utilities
  */
 

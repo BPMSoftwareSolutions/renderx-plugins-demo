@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-30T23:58:57.234Z"
+    "generated": "2025-12-01T00:53:47.348Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",

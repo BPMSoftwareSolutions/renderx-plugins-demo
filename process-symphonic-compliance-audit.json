@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-30T23:59:13.831Z",
+  "generatedAt": "2025-12-01T00:54:03.678Z",
   "summary": {
     "totalProcesses": 538,
     "symphonic": 0,
@@ -11,7 +11,7 @@
   "processes": [
     {
       "name": "advance-current-sprint.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\advance-current-sprint.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\advance-current-sprint.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -22,7 +22,7 @@
     },
     {
       "name": "agent-load-context.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\agent-load-context.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\agent-load-context.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -33,7 +33,7 @@
     },
     {
       "name": "aggregate-plugins.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\aggregate-plugins.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\aggregate-plugins.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -44,7 +44,7 @@
     },
     {
       "name": "allocate-documentation-files.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\allocate-documentation-files.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\allocate-documentation-files.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -55,7 +55,7 @@
     },
     {
       "name": "allocate-json-files.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\allocate-json-files.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\allocate-json-files.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -66,7 +66,7 @@
     },
     {
       "name": "analyze-all-domains.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-all-domains.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-all-domains.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -77,7 +77,7 @@
     },
     {
       "name": "analyze-bdd-coverage-gaps.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-bdd-coverage-gaps.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-bdd-coverage-gaps.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -88,7 +88,7 @@
     },
     {
       "name": "analyze-catalog-components.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-components.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-components.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -99,7 +99,7 @@
     },
     {
       "name": "analyze-catalog-manifests.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-manifests.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-manifests.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -110,7 +110,7 @@
     },
     {
       "name": "analyze-catalog-sequences.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-sequences.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-sequences.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -121,7 +121,7 @@
     },
     {
       "name": "analyze-catalog-topics.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-topics.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-catalog-topics.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -132,7 +132,7 @@
     },
     {
       "name": "analyze-coverage-by-handler.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-coverage-by-handler.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-coverage-by-handler.cjs",
       "category": "analysis",
       "symphonic": true,
       "registered": false,
@@ -143,7 +143,7 @@
     },
     {
       "name": "analyze-domain-volatility.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-domain-volatility.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-domain-volatility.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -154,7 +154,7 @@
     },
     {
       "name": "analyze-domain.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-domain.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-domain.cjs",
       "category": "analysis",
       "symphonic": true,
       "registered": false,
@@ -165,7 +165,7 @@
     },
     {
       "name": "analyze-drop-timing.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-drop-timing.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-drop-timing.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -176,7 +176,7 @@
     },
     {
       "name": "analyze-fractal-architecture.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-fractal-architecture.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-fractal-architecture.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -187,7 +187,7 @@
     },
     {
       "name": "analyze-handler-loc.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-loc.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-loc.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -198,7 +198,7 @@
     },
     {
       "name": "analyze-handler-metrics.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-metrics.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-metrics.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -209,7 +209,7 @@
     },
     {
       "name": "analyze-handler-scopes-for-pipeline.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-scopes-for-pipeline.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handler-scopes-for-pipeline.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -220,7 +220,7 @@
     },
     {
       "name": "analyze-handlers-by-scope.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handlers-by-scope.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-handlers-by-scope.cjs",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -231,7 +231,7 @@
     },
     {
       "name": "analyze-logs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-logs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-logs.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -242,7 +242,7 @@
     },
     {
       "name": "analyze-pipeline-codebase.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-pipeline-codebase.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-pipeline-codebase.cjs",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -253,7 +253,7 @@
     },
     {
       "name": "analyze-symphonic-code.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-symphonic-code.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-symphonic-code.cjs",
       "category": "analysis",
       "symphonic": true,
       "registered": false,
@@ -264,7 +264,7 @@
     },
     {
       "name": "analyze-symphonic-code.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-symphonic-code.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-symphonic-code.js",
       "category": "analysis",
       "symphonic": true,
       "registered": false,
@@ -275,7 +275,7 @@
     },
     {
       "name": "apply-user-stories.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\apply-user-stories.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\apply-user-stories.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -286,7 +286,7 @@
     },
     {
       "name": "architecture-governance-handlers.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\architecture-governance-handlers.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\architecture-governance-handlers.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -297,7 +297,7 @@
     },
     {
       "name": "archive-orphaned-documents.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\archive-orphaned-documents.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\archive-orphaned-documents.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -308,7 +308,7 @@
     },
     {
       "name": "ascii-sketch-renderers.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\ascii-sketch-renderers.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\ascii-sketch-renderers.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -319,7 +319,7 @@
     },
     {
       "name": "audit-orchestration-status.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-orchestration-status.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-orchestration-status.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -330,7 +330,7 @@
     },
     {
       "name": "audit-orchestration.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-orchestration.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-orchestration.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -341,7 +341,7 @@
     },
     {
       "name": "audit-process-symphonic-compliance.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-process-symphonic-compliance.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-process-symphonic-compliance.cjs",
       "category": "validation",
       "symphonic": true,
       "registered": false,
@@ -352,7 +352,7 @@
     },
     {
       "name": "audit-symphonia-conformity.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-symphonia-conformity.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-symphonia-conformity.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -363,7 +363,7 @@
     },
     {
       "name": "audit-user-stories.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-user-stories.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\audit-user-stories.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -374,7 +374,7 @@
     },
     {
       "name": "auto-recovery-7-layer.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\auto-recovery-7-layer.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\auto-recovery-7-layer.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -385,7 +385,7 @@
     },
     {
       "name": "auto-recovery.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\auto-recovery.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\auto-recovery.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -396,7 +396,7 @@
     },
     {
       "name": "beat-telemetry-collector.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\beat-telemetry-collector.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\beat-telemetry-collector.cjs",
       "category": "utility",
       "symphonic": true,
       "registered": false,
@@ -407,7 +407,7 @@
     },
     {
       "name": "build-artifacts.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-artifacts.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-artifacts.js",
       "category": "build",
       "symphonic": false,
       "registered": false,
@@ -418,7 +418,7 @@
     },
     {
       "name": "build-composite-shapes.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-composite-shapes.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-composite-shapes.js",
       "category": "build",
       "symphonic": false,
       "registered": false,
@@ -429,7 +429,7 @@
     },
     {
       "name": "build-symphony-handlers.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-symphony-handlers.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-symphony-handlers.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -440,7 +440,7 @@
     },
     {
       "name": "build-symphony-telemetry-integration.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-symphony-telemetry-integration.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-symphony-telemetry-integration.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -451,7 +451,7 @@
     },
     {
       "name": "build-telemetry-console-formatter.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-telemetry-console-formatter.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\build-telemetry-console-formatter.cjs",
       "category": "build",
       "symphonic": false,
       "registered": false,
@@ -462,7 +462,7 @@
     },
     {
       "name": "cag-context-engine.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-context-engine.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-context-engine.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -473,7 +473,7 @@
     },
     {
       "name": "cag-context-tree-mapper.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-context-tree-mapper.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-context-tree-mapper.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -484,7 +484,7 @@
     },
     {
       "name": "cag-feedback-loop.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-feedback-loop.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cag-feedback-loop.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -495,7 +495,7 @@
     },
     {
       "name": "calculate-error-budgets.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\calculate-error-budgets.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\calculate-error-budgets.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -506,7 +506,7 @@
     },
     {
       "name": "calculate-sli-metrics.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\calculate-sli-metrics.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\calculate-sli-metrics.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -517,7 +517,7 @@
     },
     {
       "name": "canvas-verification.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\canvas-verification.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\canvas-verification.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -528,7 +528,7 @@
     },
     {
       "name": "capture-demo-telemetry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\capture-demo-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\capture-demo-telemetry.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -539,7 +539,7 @@
     },
     {
       "name": "check-browser-version.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-browser-version.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-browser-version.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -550,7 +550,7 @@
     },
     {
       "name": "check-canvas-contents-multiport.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-canvas-contents-multiport.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-canvas-contents-multiport.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -561,7 +561,7 @@
     },
     {
       "name": "check-canvas-contents.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-canvas-contents.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-canvas-contents.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -572,7 +572,7 @@
     },
     {
       "name": "check-drop-handler-registered.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-drop-handler-registered.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-drop-handler-registered.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -583,7 +583,7 @@
     },
     {
       "name": "check-mount-errors.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-mount-errors.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-mount-errors.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -594,7 +594,7 @@
     },
     {
       "name": "check-pipeline-compliance-7layer.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-pipeline-compliance-7layer.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-pipeline-compliance-7layer.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -605,7 +605,7 @@
     },
     {
       "name": "check-pipeline-compliance.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-pipeline-compliance.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-pipeline-compliance.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -616,7 +616,7 @@
     },
     {
       "name": "check-sequence-registry.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-sequence-registry.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\check-sequence-registry.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -627,7 +627,7 @@
     },
     {
       "name": "ci-precheck.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\ci-precheck.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\ci-precheck.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -638,7 +638,7 @@
     },
     {
       "name": "clean-all-caches.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\clean-all-caches.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\clean-all-caches.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -649,7 +649,7 @@
     },
     {
       "name": "cleanup-final.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cleanup-final.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cleanup-final.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -660,7 +660,7 @@
     },
     {
       "name": "cli-play-and-watch-logs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cli-play-and-watch-logs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\cli-play-and-watch-logs.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -671,7 +671,7 @@
     },
     {
       "name": "compare-catalog-vs-ir.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compare-catalog-vs-ir.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compare-catalog-vs-ir.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -682,7 +682,7 @@
     },
     {
       "name": "compute-benefit-scores.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compute-benefit-scores.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compute-benefit-scores.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -693,7 +693,7 @@
     },
     {
       "name": "context-remount-algorithm.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\context-remount-algorithm.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\context-remount-algorithm.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -704,7 +704,7 @@
     },
     {
       "name": "copy-artifacts-to-public.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\copy-artifacts-to-public.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\copy-artifacts-to-public.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -715,7 +715,7 @@
     },
     {
       "name": "create-and-verify.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-and-verify.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-and-verify.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -726,7 +726,7 @@
     },
     {
       "name": "create-cool-svg.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-cool-svg.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-cool-svg.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -737,7 +737,7 @@
     },
     {
       "name": "create-svg-from-template.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-svg-from-template.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\create-svg-from-template.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -748,7 +748,7 @@
     },
     {
       "name": "debug-sourcemaps.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\debug-sourcemaps.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\debug-sourcemaps.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -759,7 +759,7 @@
     },
     {
       "name": "define-slo-targets.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\define-slo-targets.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\define-slo-targets.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -770,7 +770,7 @@
     },
     {
       "name": "demo-orchestration-domain-workflow.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-orchestration-domain-workflow.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-orchestration-domain-workflow.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -781,7 +781,7 @@
     },
     {
       "name": "demo-output-enhanced.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-output-enhanced.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-output-enhanced.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -792,7 +792,7 @@
     },
     {
       "name": "demo-renderx-web-analysis.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-renderx-web-analysis.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-renderx-web-analysis.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -803,7 +803,7 @@
     },
     {
       "name": "demo-renderx-web-symphony-reports.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-renderx-web-symphony-reports.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-renderx-web-symphony-reports.cjs",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -814,7 +814,7 @@
     },
     {
       "name": "demo-slo-sli-sla.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-slo-sli-sla.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-slo-sli-sla.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -825,7 +825,7 @@
     },
     {
       "name": "demo-symphony-report-pipeline.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-symphony-report-pipeline.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-symphony-report-pipeline.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -836,7 +836,7 @@
     },
     {
       "name": "demo-telemetry-e2e-test.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-telemetry-e2e-test.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-telemetry-e2e-test.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -847,7 +847,7 @@
     },
     {
       "name": "demo-telemetry-sample.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-telemetry-sample.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-telemetry-sample.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -858,7 +858,7 @@
     },
     {
       "name": "demo-traceability.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-traceability.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\demo-traceability.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -869,7 +869,7 @@
     },
     {
       "name": "derive-external-topics.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\derive-external-topics.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\derive-external-topics.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -880,7 +880,7 @@
     },
     {
       "name": "detect-missing-domain-overlays.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\detect-missing-domain-overlays.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\detect-missing-domain-overlays.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -891,7 +891,7 @@
     },
     {
       "name": "diagnose-plugin-mount.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\diagnose-plugin-mount.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\diagnose-plugin-mount.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -902,7 +902,7 @@
     },
     {
       "name": "domain-risk-assessment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\domain-risk-assessment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\domain-risk-assessment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -913,7 +913,7 @@
     },
     {
       "name": "drop-from-library-and-verify.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-from-library-and-verify.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-from-library-and-verify.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -924,7 +924,7 @@
     },
     {
       "name": "drop-from-library-cli.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-from-library-cli.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-from-library-cli.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -935,7 +935,7 @@
     },
     {
       "name": "drop-json-button-fixed.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-json-button-fixed.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-json-button-fixed.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -946,7 +946,7 @@
     },
     {
       "name": "drop-json-button.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-json-button.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\drop-json-button.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -957,7 +957,7 @@
     },
     {
       "name": "enforce-bdd-telemetry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-bdd-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-bdd-telemetry.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -968,7 +968,7 @@
     },
     {
       "name": "enforce-delivery-pipeline-7layer.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-delivery-pipeline-7layer.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-delivery-pipeline-7layer.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -979,7 +979,7 @@
     },
     {
       "name": "enforce-delivery-pipeline.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-delivery-pipeline.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enforce-delivery-pipeline.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -990,7 +990,7 @@
     },
     {
       "name": "enhance-handlers-with-scope.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enhance-handlers-with-scope.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enhance-handlers-with-scope.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1001,7 +1001,7 @@
     },
     {
       "name": "enrich-domain-authorities.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enrich-domain-authorities.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\enrich-domain-authorities.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1012,7 +1012,7 @@
     },
     {
       "name": "evaluate-slos.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\evaluate-slos.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\evaluate-slos.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1023,7 +1023,7 @@
     },
     {
       "name": "exact-log-replication-test.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\exact-log-replication-test.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\exact-log-replication-test.cjs",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -1034,7 +1034,7 @@
     },
     {
       "name": "execute-safe-pipeline.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\execute-safe-pipeline.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\execute-safe-pipeline.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1045,7 +1045,7 @@
     },
     {
       "name": "execute-symphonia-pipeline.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\execute-symphonia-pipeline.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\execute-symphonia-pipeline.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1056,7 +1056,7 @@
     },
     {
       "name": "export-domain-link-graph.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-domain-link-graph.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-domain-link-graph.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1067,7 +1067,7 @@
     },
     {
       "name": "export-server.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-server.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-server.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1078,7 +1078,7 @@
     },
     {
       "name": "export-svg-to-gif.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-svg-to-gif.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\export-svg-to-gif.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1089,7 +1089,7 @@
     },
     {
       "name": "extract-extraction-spec.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-extraction-spec.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-extraction-spec.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -1100,7 +1100,7 @@
     },
     {
       "name": "extract-handler-tests.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-handler-tests.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-handler-tests.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -1111,7 +1111,7 @@
     },
     {
       "name": "extract-ir-handlers.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-ir-handlers.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-ir-handlers.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -1122,7 +1122,7 @@
     },
     {
       "name": "extract-ir-sequences.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-ir-sequences.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\extract-ir-sequences.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -1133,7 +1133,7 @@
     },
     {
       "name": "fix-all-symphonia-sequences.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-all-symphonia-sequences.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-all-symphonia-sequences.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1144,7 +1144,7 @@
     },
     {
       "name": "fix-bdd-spec.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-bdd-spec.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-bdd-spec.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1155,7 +1155,7 @@
     },
     {
       "name": "fix-critical-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-critical-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-critical-beats.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1166,7 +1166,7 @@
     },
     {
       "name": "fix-handler-spec.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-handler-spec.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-handler-spec.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1177,7 +1177,7 @@
     },
     {
       "name": "fix-phase-1-domain-alignment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1-domain-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1-domain-alignment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1188,7 +1188,7 @@
     },
     {
       "name": "fix-phase-1-orchestration-alignment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1-orchestration-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1-orchestration-alignment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1199,7 +1199,7 @@
     },
     {
       "name": "fix-phase-1b-domain-phase-alignment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1b-domain-phase-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1b-domain-phase-alignment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1210,7 +1210,7 @@
     },
     {
       "name": "fix-phase-1b-redundant-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1b-redundant-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-1b-redundant-beats.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1221,7 +1221,7 @@
     },
     {
       "name": "fix-phase-2-sequence-alignment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-2-sequence-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-2-sequence-alignment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1232,7 +1232,7 @@
     },
     {
       "name": "fix-phase-3-handler-alignment.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-3-handler-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-3-handler-alignment.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1243,7 +1243,7 @@
     },
     {
       "name": "fix-phase-4-process-symphonic-remediation.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-4-process-symphonic-remediation.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-phase-4-process-symphonic-remediation.cjs",
       "category": "utility",
       "symphonic": true,
       "registered": false,
@@ -1254,7 +1254,7 @@
     },
     {
       "name": "fix-self-healing-tempo.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-self-healing-tempo.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-self-healing-tempo.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1265,7 +1265,7 @@
     },
     {
       "name": "fix-sequence-tempo.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-sequence-tempo.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-sequence-tempo.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1276,7 +1276,7 @@
     },
     {
       "name": "fix-symphonia-bdd-specs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-bdd-specs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-bdd-specs.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1287,7 +1287,7 @@
     },
     {
       "name": "fix-symphonia-contracts.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-contracts.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-contracts.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1298,7 +1298,7 @@
     },
     {
       "name": "fix-symphonia-critical-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-critical-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-critical-beats.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1309,7 +1309,7 @@
     },
     {
       "name": "fix-symphonia-final-critical.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-final-critical.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-final-critical.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1320,7 +1320,7 @@
     },
     {
       "name": "fix-symphonia-handler-context.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-handler-context.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-handler-context.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1331,7 +1331,7 @@
     },
     {
       "name": "fix-symphonia-json-sequences.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-json-sequences.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-json-sequences.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1342,7 +1342,7 @@
     },
     {
       "name": "fix-symphonia-phase-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-phase-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-phase-beats.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1353,7 +1353,7 @@
     },
     {
       "name": "fix-symphonia-sequence-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-sequence-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-symphonia-sequence-beats.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1364,7 +1364,7 @@
     },
     {
       "name": "fix-unused-vars.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-unused-vars.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fix-unused-vars.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1375,7 +1375,7 @@
     },
     {
       "name": "full-workflow-test.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\full-workflow-test.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\full-workflow-test.cjs",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -1386,7 +1386,7 @@
     },
     {
       "name": "fuse-slo-breaches.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fuse-slo-breaches.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\fuse-slo-breaches.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -1397,7 +1397,7 @@
     },
     {
       "name": "gen-context-session-docs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-context-session-docs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-context-session-docs.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1408,7 +1408,7 @@
     },
     {
       "name": "gen-context-session-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-context-session-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-context-session-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1419,7 +1419,7 @@
     },
     {
       "name": "gen-docs-from-json.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-docs-from-json.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-docs-from-json.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1430,7 +1430,7 @@
     },
     {
       "name": "gen-orchestration-diagram.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-diagram.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-diagram.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1441,7 +1441,7 @@
     },
     {
       "name": "gen-orchestration-diff.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-diff.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-diff.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1452,7 +1452,7 @@
     },
     {
       "name": "gen-orchestration-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1463,7 +1463,7 @@
     },
     {
       "name": "gen-orchestration-project-plan.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-project-plan.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-project-plan.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1474,7 +1474,7 @@
     },
     {
       "name": "gen-orchestration-registry-audit-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-registry-audit-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-orchestration-registry-audit-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1485,7 +1485,7 @@
     },
     {
       "name": "gen-structure-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-structure-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-structure-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1496,7 +1496,7 @@
     },
     {
       "name": "gen-symphonic-code-analysis-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-symphonic-code-analysis-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\gen-symphonic-code-analysis-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1507,7 +1507,7 @@
     },
     {
       "name": "generate-advanced-documentation.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-advanced-documentation.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-advanced-documentation.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1518,7 +1518,7 @@
     },
     {
       "name": "generate-architecture-diagram.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-architecture-diagram.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-architecture-diagram.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1529,7 +1529,7 @@
     },
     {
       "name": "generate-archive-search-index.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-archive-search-index.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-archive-search-index.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1540,7 +1540,7 @@
     },
     {
       "name": "generate-bdd-feature-stubs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-feature-stubs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-feature-stubs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1551,7 +1551,7 @@
     },
     {
       "name": "generate-bdd-spec-scaffolds.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-spec-scaffolds.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-spec-scaffolds.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1562,7 +1562,7 @@
     },
     {
       "name": "generate-bdd-specs-from-plan.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-specs-from-plan.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-specs-from-plan.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1573,7 +1573,7 @@
     },
     {
       "name": "generate-bdd-stubs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-stubs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-bdd-stubs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1584,7 +1584,7 @@
     },
     {
       "name": "generate-build-pipeline-audit-action-plan.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-action-plan.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-action-plan.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1595,7 +1595,7 @@
     },
     {
       "name": "generate-build-pipeline-audit-index.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-index.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-index.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1606,7 +1606,7 @@
     },
     {
       "name": "generate-build-pipeline-audit-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-audit-report.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -1617,7 +1617,7 @@
     },
     {
       "name": "generate-build-pipeline-scripts-inventory.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-scripts-inventory.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-build-pipeline-scripts-inventory.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1628,7 +1628,7 @@
     },
     {
       "name": "generate-business-bdd-specs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-business-bdd-specs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-business-bdd-specs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1639,7 +1639,7 @@
     },
     {
       "name": "generate-business-bdd-test-files.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-business-bdd-test-files.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-business-bdd-test-files.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1650,7 +1650,7 @@
     },
     {
       "name": "generate-canonical-hash-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-canonical-hash-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-canonical-hash-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1661,7 +1661,7 @@
     },
     {
       "name": "generate-compliance-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-compliance-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-compliance-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1672,7 +1672,7 @@
     },
     {
       "name": "generate-comprehensive-audit.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-comprehensive-audit.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-comprehensive-audit.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1683,7 +1683,7 @@
     },
     {
       "name": "generate-comprehensive-business-bdd-specs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-comprehensive-business-bdd-specs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-comprehensive-business-bdd-specs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1694,7 +1694,7 @@
     },
     {
       "name": "generate-delivery-pipeline-report.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-delivery-pipeline-report.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-delivery-pipeline-report.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1705,7 +1705,7 @@
     },
     {
       "name": "generate-demo-readiness.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-demo-readiness.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-demo-readiness.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1716,7 +1716,7 @@
     },
     {
       "name": "generate-document-drift-audit.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-document-drift-audit.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-document-drift-audit.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1727,7 +1727,7 @@
     },
     {
       "name": "generate-documentation-governance-framework.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-documentation-governance-framework.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-documentation-governance-framework.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1738,7 +1738,7 @@
     },
     {
       "name": "generate-documentation-governance-index.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-documentation-governance-index.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-documentation-governance-index.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1749,7 +1749,7 @@
     },
     {
       "name": "generate-domain-doc.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-doc.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-doc.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1760,7 +1760,7 @@
     },
     {
       "name": "generate-domain-documentation-indexes.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-documentation-indexes.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-documentation-indexes.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1771,7 +1771,7 @@
     },
     {
       "name": "generate-domain-documentation-structure.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-documentation-structure.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-domain-documentation-structure.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1782,7 +1782,7 @@
     },
     {
       "name": "generate-external-interactions-audit.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-external-interactions-audit.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-external-interactions-audit.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1793,7 +1793,7 @@
     },
     {
       "name": "generate-global-traceability-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-global-traceability-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-global-traceability-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1804,7 +1804,7 @@
     },
     {
       "name": "generate-governance-docs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governance-docs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governance-docs.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1815,7 +1815,7 @@
     },
     {
       "name": "generate-governance-implementation-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governance-implementation-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governance-implementation-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1826,7 +1826,7 @@
     },
     {
       "name": "generate-governed-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governed-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-governed-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1837,7 +1837,7 @@
     },
     {
       "name": "generate-handler-business-bdd-tests.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-handler-business-bdd-tests.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-handler-business-bdd-tests.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1848,7 +1848,7 @@
     },
     {
       "name": "generate-handler-coverage.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-handler-coverage.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-handler-coverage.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1859,7 +1859,7 @@
     },
     {
       "name": "generate-inject-test-coverage.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-inject-test-coverage.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-inject-test-coverage.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1870,7 +1870,7 @@
     },
     {
       "name": "generate-interaction-manifest.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-interaction-manifest.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-interaction-manifest.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1881,7 +1881,7 @@
     },
     {
       "name": "generate-json-interactions-from-plugins.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-json-interactions-from-plugins.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-json-interactions-from-plugins.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1892,7 +1892,7 @@
     },
     {
       "name": "generate-layout-manifest.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-layout-manifest.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-layout-manifest.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1903,7 +1903,7 @@
     },
     {
       "name": "generate-md-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-md-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-md-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1914,7 +1914,7 @@
     },
     {
       "name": "generate-musical-conductor-orchestration-doc.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-musical-conductor-orchestration-doc.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-musical-conductor-orchestration-doc.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1925,7 +1925,7 @@
     },
     {
       "name": "generate-orchestration-domains-from-sequences.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-domains-from-sequences.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-domains-from-sequences.js",
       "category": "generation",
       "symphonic": true,
       "registered": false,
@@ -1936,7 +1936,7 @@
     },
     {
       "name": "generate-orchestration-domains.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-domains.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-domains.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1947,7 +1947,7 @@
     },
     {
       "name": "generate-orchestration-sequence-proposals.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-sequence-proposals.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-orchestration-sequence-proposals.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1958,7 +1958,7 @@
     },
     {
       "name": "generate-overlay-input-specs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-overlay-input-specs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-overlay-input-specs.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1969,7 +1969,7 @@
     },
     {
       "name": "generate-pattern-recognition-achievement.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-pattern-recognition-achievement.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-pattern-recognition-achievement.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -1980,7 +1980,7 @@
     },
     {
       "name": "generate-pipeline-docs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-pipeline-docs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-pipeline-docs.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -1991,7 +1991,7 @@
     },
     {
       "name": "generate-process-symphonic-compliance-report.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-process-symphonic-compliance-report.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-process-symphonic-compliance-report.cjs",
       "category": "generation",
       "symphonic": true,
       "registered": false,
@@ -2002,7 +2002,7 @@
     },
     {
       "name": "generate-project-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-project-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-project-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2013,7 +2013,7 @@
     },
     {
       "name": "generate-proposed-tests.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-proposed-tests.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-proposed-tests.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2024,7 +2024,7 @@
     },
     {
       "name": "generate-provenance-index.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-provenance-index.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-provenance-index.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2035,7 +2035,7 @@
     },
     {
       "name": "generate-readme.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-readme.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-readme.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2046,7 +2046,7 @@
     },
     {
       "name": "generate-refactor-suggestions.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-refactor-suggestions.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-refactor-suggestions.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2057,7 +2057,7 @@
     },
     {
       "name": "generate-release-notes.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-release-notes.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-release-notes.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2068,7 +2068,7 @@
     },
     {
       "name": "generate-sequence-interpretation.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sequence-interpretation.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sequence-interpretation.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2079,7 +2079,7 @@
     },
     {
       "name": "generate-shape-history.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-shape-history.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-shape-history.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2090,7 +2090,7 @@
     },
     {
       "name": "generate-sli-framework.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sli-framework.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sli-framework.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2101,7 +2101,7 @@
     },
     {
       "name": "generate-slo-dashboard-traceability-doc.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-slo-dashboard-traceability-doc.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-slo-dashboard-traceability-doc.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2112,7 +2112,7 @@
     },
     {
       "name": "generate-slo-traceability-manifest.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-slo-traceability-manifest.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-slo-traceability-manifest.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2123,7 +2123,7 @@
     },
     {
       "name": "generate-sprint-deltas.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-deltas.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-deltas.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2134,7 +2134,7 @@
     },
     {
       "name": "generate-sprint-integrity-snapshots.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-integrity-snapshots.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-integrity-snapshots.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2145,7 +2145,7 @@
     },
     {
       "name": "generate-sprint-reports.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-reports.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-reports.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2156,7 +2156,7 @@
     },
     {
       "name": "generate-sprint-telemetry-snapshots.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-telemetry-snapshots.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-sprint-telemetry-snapshots.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2167,7 +2167,7 @@
     },
     {
       "name": "generate-symphonic-remediation-definitions.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-symphonic-remediation-definitions.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-symphonic-remediation-definitions.cjs",
       "category": "generation",
       "symphonic": true,
       "registered": false,
@@ -2178,7 +2178,7 @@
     },
     {
       "name": "generate-symphonic-report.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-symphonic-report.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-symphonic-report.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2189,7 +2189,7 @@
     },
     {
       "name": "generate-system-documentation.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-system-documentation.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-system-documentation.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2200,7 +2200,7 @@
     },
     {
       "name": "generate-telemetry-complete.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-complete.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-complete.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2211,7 +2211,7 @@
     },
     {
       "name": "generate-telemetry-instrumentation.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-instrumentation.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-instrumentation.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2222,7 +2222,7 @@
     },
     {
       "name": "generate-telemetry-map.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-map.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-map.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2233,7 +2233,7 @@
     },
     {
       "name": "generate-telemetry-matrix.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-matrix.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-matrix.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2244,7 +2244,7 @@
     },
     {
       "name": "generate-telemetry-quickstart.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-quickstart.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-quickstart.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2255,7 +2255,7 @@
     },
     {
       "name": "generate-telemetry-validation-report.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-validation-report.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-validation-report.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2266,7 +2266,7 @@
     },
     {
       "name": "generate-telemetry-verification.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-verification.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-telemetry-verification.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2277,7 +2277,7 @@
     },
     {
       "name": "generate-test-stubs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-test-stubs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-test-stubs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2288,7 +2288,7 @@
     },
     {
       "name": "generate-tools-registry-docs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-tools-registry-docs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-tools-registry-docs.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2299,7 +2299,7 @@
     },
     {
       "name": "generate-topic-telemetry-signatures.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-topic-telemetry-signatures.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-topic-telemetry-signatures.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2310,7 +2310,7 @@
     },
     {
       "name": "generate-topics-manifest.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-topics-manifest.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-topics-manifest.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2321,7 +2321,7 @@
     },
     {
       "name": "generate-versions-manifest.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-versions-manifest.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-versions-manifest.js",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -2332,7 +2332,7 @@
     },
     {
       "name": "get-component-position.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\get-component-position.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\get-component-position.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2343,7 +2343,7 @@
     },
     {
       "name": "get-console-errors.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\get-console-errors.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\get-console-errors.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2354,7 +2354,7 @@
     },
     {
       "name": "governance-auto-recovery.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\governance-auto-recovery.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\governance-auto-recovery.js",
       "category": "utility",
       "symphonic": true,
       "registered": false,
@@ -2365,7 +2365,7 @@
     },
     {
       "name": "hash-artifacts.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-artifacts.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-artifacts.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2376,7 +2376,7 @@
     },
     {
       "name": "hash-file.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-file.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-file.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2387,7 +2387,7 @@
     },
     {
       "name": "hash-public-api.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-public-api.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\hash-public-api.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2398,7 +2398,7 @@
     },
     {
       "name": "import-policy-check.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\import-policy-check.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\import-policy-check.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -2409,7 +2409,7 @@
     },
     {
       "name": "inspect-canvas-structure.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\inspect-canvas-structure.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\inspect-canvas-structure.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2420,7 +2420,7 @@
     },
     {
       "name": "integrate-lint-quality-gate.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\integrate-lint-quality-gate.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\integrate-lint-quality-gate.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2431,7 +2431,7 @@
     },
     {
       "name": "interactive-bdd-wizard.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\interactive-bdd-wizard.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\interactive-bdd-wizard.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2442,7 +2442,7 @@
     },
     {
       "name": "lightning-fast-button-drop.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\lightning-fast-button-drop.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\lightning-fast-button-drop.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2453,7 +2453,7 @@
     },
     {
       "name": "lint-quality-gate.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\lint-quality-gate.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\lint-quality-gate.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2464,7 +2464,7 @@
     },
     {
       "name": "locate-json-button.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\locate-json-button.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\locate-json-button.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2475,7 +2475,7 @@
     },
     {
       "name": "manage-json-authority.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\manage-json-authority.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\manage-json-authority.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2486,7 +2486,7 @@
     },
     {
       "name": "map-handlers-to-beats.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\map-handlers-to-beats.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\map-handlers-to-beats.cjs",
       "category": "utility",
       "symphonic": true,
       "registered": false,
@@ -2497,7 +2497,7 @@
     },
     {
       "name": "meta-analyze-pipeline.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\meta-analyze-pipeline.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\meta-analyze-pipeline.cjs",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -2508,7 +2508,7 @@
     },
     {
       "name": "move-button-via-drag-interaction.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-button-via-drag-interaction.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-button-via-drag-interaction.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2519,7 +2519,7 @@
     },
     {
       "name": "move-component-via-cli.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-component-via-cli.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-component-via-cli.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2530,7 +2530,7 @@
     },
     {
       "name": "move-svg-to-visible-area.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-svg-to-visible-area.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\move-svg-to-visible-area.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2541,7 +2541,7 @@
     },
     {
       "name": "orchestrate-architecture-governance.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-architecture-governance.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-architecture-governance.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -2552,7 +2552,7 @@
     },
     {
       "name": "orchestrate-build-symphony-with-telemetry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony-with-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony-with-telemetry.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -2563,7 +2563,7 @@
     },
     {
       "name": "orchestrate-build-symphony.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\orchestrate-build-symphony.js",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -2574,7 +2574,7 @@
     },
     {
       "name": "pack-artifacts.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pack-artifacts.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pack-artifacts.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2585,7 +2585,7 @@
     },
     {
       "name": "pipeline-recovery.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pipeline-recovery.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pipeline-recovery.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -2596,7 +2596,7 @@
     },
     {
       "name": "pre-build-pipeline-check.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pre-build-pipeline-check.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\pre-build-pipeline-check.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -2607,7 +2607,7 @@
     },
     {
       "name": "project-help.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\project-help.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\project-help.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2618,7 +2618,7 @@
     },
     {
       "name": "query-domains.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-domains.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-domains.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -2629,7 +2629,7 @@
     },
     {
       "name": "query-lineage.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-lineage.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-lineage.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -2640,7 +2640,7 @@
     },
     {
       "name": "query-project-knowledge.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-project-knowledge.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\query-project-knowledge.js",
       "category": "analysis",
       "symphonic": false,
       "registered": false,
@@ -2651,7 +2651,7 @@
     },
     {
       "name": "register-infrastructure-orchestrations.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\register-infrastructure-orchestrations.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\register-infrastructure-orchestrations.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2662,7 +2662,7 @@
     },
     {
       "name": "reload-and-capture-errors.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\reload-and-capture-errors.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\reload-and-capture-errors.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2673,7 +2673,7 @@
     },
     {
       "name": "reload-page.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\reload-page.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\reload-page.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2684,7 +2684,7 @@
     },
     {
       "name": "relocate-documentation-files.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\relocate-documentation-files.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\relocate-documentation-files.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2695,7 +2695,7 @@
     },
     {
       "name": "relocate-json-files.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\relocate-json-files.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\relocate-json-files.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2706,7 +2706,7 @@
     },
     {
       "name": "renderx-web-diagnostics.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\renderx-web-diagnostics.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\renderx-web-diagnostics.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2717,7 +2717,7 @@
     },
     {
       "name": "run-full-audit.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-full-audit.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-full-audit.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -2728,7 +2728,7 @@
     },
     {
       "name": "run-governance-checks.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-governance-checks.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-governance-checks.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -2739,7 +2739,7 @@
     },
     {
       "name": "run-python.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-python.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-python.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2750,7 +2750,7 @@
     },
     {
       "name": "run-self-healing-demo.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-self-healing-demo.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\run-self-healing-demo.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2761,7 +2761,7 @@
     },
     {
       "name": "scan-duplication.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-duplication.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-duplication.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2772,7 +2772,7 @@
     },
     {
       "name": "scan-handler-functions.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-handler-functions.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-handler-functions.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2783,7 +2783,7 @@
     },
     {
       "name": "scan-handlers.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-handlers.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scan-handlers.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2794,7 +2794,7 @@
     },
     {
       "name": "scope-guard.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scope-guard.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\scope-guard.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2805,7 +2805,7 @@
     },
     {
       "name": "screenshot-canvas.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\screenshot-canvas.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\screenshot-canvas.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2816,7 +2816,7 @@
     },
     {
       "name": "search-archive.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\search-archive.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\search-archive.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2827,7 +2827,7 @@
     },
     {
       "name": "sequence-log-utils.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sequence-log-utils.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sequence-log-utils.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2838,7 +2838,7 @@
     },
     {
       "name": "shape-diff-check.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\shape-diff-check.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\shape-diff-check.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -2849,7 +2849,7 @@
     },
     {
       "name": "simple-canvas-check.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\simple-canvas-check.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\simple-canvas-check.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -2860,7 +2860,7 @@
     },
     {
       "name": "simple-timing-analysis.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\simple-timing-analysis.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\simple-timing-analysis.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2871,7 +2871,7 @@
     },
     {
       "name": "skip-bdd-placeholders.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\skip-bdd-placeholders.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\skip-bdd-placeholders.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2882,7 +2882,7 @@
     },
     {
       "name": "source-metadata-guardrail.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\source-metadata-guardrail.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\source-metadata-guardrail.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2893,7 +2893,7 @@
     },
     {
       "name": "speed-comparison.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\speed-comparison.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\speed-comparison.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2904,7 +2904,7 @@
     },
     {
       "name": "symphonia-overview.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonia-overview.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonia-overview.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2915,7 +2915,7 @@
     },
     {
       "name": "symphonic-metrics-classifier.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonic-metrics-classifier.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonic-metrics-classifier.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2926,7 +2926,7 @@
     },
     {
       "name": "symphonic-metrics-envelope.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonic-metrics-envelope.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\symphonic-metrics-envelope.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2937,7 +2937,7 @@
     },
     {
       "name": "sync-control-panel-config.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-control-panel-config.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-control-panel-config.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2948,7 +2948,7 @@
     },
     {
       "name": "sync-domain-registry-from-orchestration-domains.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-domain-registry-from-orchestration-domains.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-domain-registry-from-orchestration-domains.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2959,7 +2959,7 @@
     },
     {
       "name": "sync-json-components.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-components.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-components.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2970,7 +2970,7 @@
     },
     {
       "name": "sync-json-sequences.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-sequences.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-sequences.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2981,7 +2981,7 @@
     },
     {
       "name": "sync-json-sources.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-sources.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-json-sources.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -2992,7 +2992,7 @@
     },
     {
       "name": "sync-plugins.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-plugins.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\sync-plugins.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3003,7 +3003,7 @@
     },
     {
       "name": "telemetry-test-mapper.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\telemetry-test-mapper.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\telemetry-test-mapper.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3014,7 +3014,7 @@
     },
     {
       "name": "test-cli-connection.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-cli-connection.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-cli-connection.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3025,7 +3025,7 @@
     },
     {
       "name": "test-eval-simple.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-eval-simple.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-eval-simple.cjs",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3036,7 +3036,7 @@
     },
     {
       "name": "test-full-workflow.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-full-workflow.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-full-workflow.cjs",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3047,7 +3047,7 @@
     },
     {
       "name": "test-operational-filter.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-operational-filter.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-operational-filter.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3058,7 +3058,7 @@
     },
     {
       "name": "test-timeline-adapter.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-timeline-adapter.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\test-timeline-adapter.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3069,7 +3069,7 @@
     },
     {
       "name": "trace-event.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-event.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-event.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3080,7 +3080,7 @@
     },
     {
       "name": "trace-execution-paths.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-execution-paths.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-execution-paths.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3091,7 +3091,7 @@
     },
     {
       "name": "trace-logs-to-telemetry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-logs-to-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-logs-to-telemetry.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3102,7 +3102,7 @@
     },
     {
       "name": "trace-telemetry-to-logs.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-telemetry-to-logs.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trace-telemetry-to-logs.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3113,7 +3113,7 @@
     },
     {
       "name": "traceability-pipeline.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\traceability-pipeline.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\traceability-pipeline.js",
       "category": "orchestration",
       "symphonic": false,
       "registered": false,
@@ -3124,7 +3124,7 @@
     },
     {
       "name": "track-historical-trends.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\track-historical-trends.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\track-historical-trends.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3135,7 +3135,7 @@
     },
     {
       "name": "trigger-canvas-create-via-fetch.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trigger-canvas-create-via-fetch.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trigger-canvas-create-via-fetch.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3146,7 +3146,7 @@
     },
     {
       "name": "trigger-canvas-create.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trigger-canvas-create.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\trigger-canvas-create.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3157,7 +3157,7 @@
     },
     {
       "name": "validate-agent-behavior.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-agent-behavior.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-agent-behavior.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3168,7 +3168,7 @@
     },
     {
       "name": "validate-artifacts.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-artifacts.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-artifacts.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3179,7 +3179,7 @@
     },
     {
       "name": "validate-domain-authorities.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-domain-authorities.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-domain-authorities.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3190,7 +3190,7 @@
     },
     {
       "name": "validate-domain-authorities.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-domain-authorities.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-domain-authorities.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3201,7 +3201,7 @@
     },
     {
       "name": "validate-generated-docs.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-generated-docs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-generated-docs.cjs",
       "category": "generation",
       "symphonic": false,
       "registered": false,
@@ -3212,7 +3212,7 @@
     },
     {
       "name": "validate-lint-vs-mount.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-lint-vs-mount.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-lint-vs-mount.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3223,7 +3223,7 @@
     },
     {
       "name": "validate-orchestration-registry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-orchestration-registry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-orchestration-registry.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3234,7 +3234,7 @@
     },
     {
       "name": "validate-plan-integrity.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-plan-integrity.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-plan-integrity.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3245,7 +3245,7 @@
     },
     {
       "name": "validate-public-api.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-public-api.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-public-api.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3256,7 +3256,7 @@
     },
     {
       "name": "validate-root-goal-alignment.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-root-goal-alignment.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-root-goal-alignment.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3267,7 +3267,7 @@
     },
     {
       "name": "validate-semantic-transformation.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-semantic-transformation.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-semantic-transformation.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3278,7 +3278,7 @@
     },
     {
       "name": "validate-shape-contracts.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-shape-contracts.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-shape-contracts.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3289,7 +3289,7 @@
     },
     {
       "name": "validate-symphonic-implementation.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-symphonic-implementation.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-symphonic-implementation.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3300,7 +3300,7 @@
     },
     {
       "name": "validate-tools-registry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-tools-registry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-tools-registry.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3311,7 +3311,7 @@
     },
     {
       "name": "validate-topic-telemetry-signatures.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-topic-telemetry-signatures.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-topic-telemetry-signatures.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3322,7 +3322,7 @@
     },
     {
       "name": "validate-workspace-orchestration-alignment.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-workspace-orchestration-alignment.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-workspace-orchestration-alignment.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3333,7 +3333,7 @@
     },
     {
       "name": "verify-artifact-signature.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-artifact-signature.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-artifact-signature.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3344,7 +3344,7 @@
     },
     {
       "name": "verify-bdd-assertion-completeness.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-bdd-assertion-completeness.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-bdd-assertion-completeness.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3355,7 +3355,7 @@
     },
     {
       "name": "verify-bdd-spec.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-bdd-spec.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-bdd-spec.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3366,7 +3366,7 @@
     },
     {
       "name": "verify-cli-drop-worked.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-cli-drop-worked.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-cli-drop-worked.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3377,7 +3377,7 @@
     },
     {
       "name": "verify-demo-spec.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-demo-spec.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-demo-spec.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3388,7 +3388,7 @@
     },
     {
       "name": "verify-doc-provenance.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-doc-provenance.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-doc-provenance.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3399,7 +3399,7 @@
     },
     {
       "name": "verify-docs-governance.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-docs-governance.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-docs-governance.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3410,7 +3410,7 @@
     },
     {
       "name": "verify-library-component-fix.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-library-component-fix.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-library-component-fix.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3421,7 +3421,7 @@
     },
     {
       "name": "verify-no-drift.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-no-drift.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-no-drift.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3432,7 +3432,7 @@
     },
     {
       "name": "verify-orchestration-governance.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-orchestration-governance.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-orchestration-governance.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3443,7 +3443,7 @@
     },
     {
       "name": "verify-process-symphonic-compliance.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-process-symphonic-compliance.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-process-symphonic-compliance.cjs",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3454,7 +3454,7 @@
     },
     {
       "name": "verify-root-cleanliness.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-root-cleanliness.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-root-cleanliness.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3465,7 +3465,7 @@
     },
     {
       "name": "verify-shape-bdd-alignment.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-shape-bdd-alignment.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-shape-bdd-alignment.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3476,7 +3476,7 @@
     },
     {
       "name": "verify-slo-dashboard-project-plan.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-slo-dashboard-project-plan.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-slo-dashboard-project-plan.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3487,7 +3487,7 @@
     },
     {
       "name": "verify-synthetic-telemetry.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-synthetic-telemetry.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\verify-synthetic-telemetry.js",
       "category": "validation",
       "symphonic": false,
       "registered": false,
@@ -3498,7 +3498,7 @@
     },
     {
       "name": "visual-component-test.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\visual-component-test.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\visual-component-test.cjs",
       "category": "testing",
       "symphonic": false,
       "registered": false,
@@ -3509,7 +3509,7 @@
     },
     {
       "name": "visualize-domains.js",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\visualize-domains.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\visualize-domains.js",
       "category": "utility",
       "symphonic": false,
       "registered": false,
@@ -3520,7 +3520,7 @@
     },
     {
       "name": "websocket-diagnostics.cjs",
-      "path": "c:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\websocket-diagnostics.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\websocket-diagnostics.cjs",
       "category": "utility",
       "symphonic": false,
       "registered": false,
