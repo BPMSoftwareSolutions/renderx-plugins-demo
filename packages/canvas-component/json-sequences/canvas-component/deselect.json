@@ -14,7 +14,18 @@
           "dynamics": "mf",
           "handler": "deselectComponent",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "deselect Component",
+          "acceptanceCriteria": [
+            "Given the deselectComponent operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deselectComponent processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deselectComponent encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen deselectComponent executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deselectComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 2,
@@ -23,10 +34,27 @@
           "dynamics": "mf",
           "handler": "publishDeselectionChanged",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Deselection Changed",
+          "acceptanceCriteria": [
+            "Given the publishDeselectionChanged operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen publishDeselectionChanged processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen publishDeselectionChanged encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen publishDeselectionChanged executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen publishDeselectionChanged operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want publishDeselectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

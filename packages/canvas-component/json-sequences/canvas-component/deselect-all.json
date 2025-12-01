@@ -14,7 +14,18 @@
           "dynamics": "mf",
           "handler": "hideAllOverlays",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "hide All Overlays",
+          "acceptanceCriteria": [
+            "Given the hideAllOverlays operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen hideAllOverlays processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen hideAllOverlays encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen hideAllOverlays executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen hideAllOverlays operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want hideAllOverlays to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         },
         {
           "beat": 2,
@@ -23,10 +34,27 @@
           "dynamics": "mf",
           "handler": "publishSelectionsCleared",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Selections Cleared",
+          "acceptanceCriteria": [
+            "Given the publishSelectionsCleared operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen publishSelectionsCleared processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen publishSelectionsCleared encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen publishSelectionsCleared executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen publishSelectionsCleared operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want publishSelectionsCleared to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an interaction designer, I need deselect-all to clear all overlays and selection state within ≤100ms P95.",
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As an interaction designer, I need deselect-all to clear all overlays and selection state within ≤100ms P95.",
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

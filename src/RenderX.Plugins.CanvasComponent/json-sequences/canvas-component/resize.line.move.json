@@ -19,9 +19,26 @@
             "id": "canvas-line-resize-move-symphony.updateline.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "Update or Modify update Line",
+          "acceptanceCriteria": [
+            "Given the updateLine operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen updateLine processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen updateLine encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen updateLine executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen updateLine operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "should update-line",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

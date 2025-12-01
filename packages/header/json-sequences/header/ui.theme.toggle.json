@@ -14,10 +14,27 @@
           "dynamics": "mf",
           "handler": "toggleTheme",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "Switch Between Light and Dark Theme",
+          "acceptanceCriteria": [
+            "Given the current theme\nWhen toggleTheme is invoked\nThen theme switches to opposite value within 50ms\nAnd new preference is saved to localStorage\nAnd 'theme:changed' event is published",
+            "Given animation requirements\nWhen theme toggles\nThen CSS transitions are applied smoothly\nAnd no layout shift occurs (CLS < 0.1)\nAnd visual change appears within 100ms total",
+            "Given DOM elements with theme-dependent styling\nWhen toggleTheme executes\nThen all styled elements update immediately\nAnd CSS variables are recalculated\nAnd no flickering or flashing occurs",
+            "Given accessibility requirements\nWhen theme changes\nThen color contrast remains >= 4.5:1 for all text\nAnd prefers-color-scheme media query is respected\nAnd system respects 'no-preference' setting",
+            "Given performance budget\nWhen toggleTheme completes\nThen theme switch completes within 100ms\nAnd no frame drops occur (maintain 60fps)\nAnd memory usage stays within baseline (no leaks)"
+          ],
+          "userStory": "As an engineer, I need `toggleTheme` to switch theme and persist preference.",
+          "testCase": "should render theme toggle component with light mode by default",
+          "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.",
+      "persona": "UI runtime engineer",
+      "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.",
+  "persona": "UI runtime engineer",
+  "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
 }

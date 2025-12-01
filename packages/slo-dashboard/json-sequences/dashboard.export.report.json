@@ -9,17 +9,47 @@
         {
           "beat": 1,
           "handler": "serializeDashboardState",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "serialize Dashboard State",
+          "acceptanceCriteria": [
+            "Given the serializeDashboardState operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen serializeDashboardState processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen serializeDashboardState encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen serializeDashboardState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen serializeDashboardState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts",
+          "testCase": "Scenario: Prepare export payload containing compliance snapshot.",
+          "userStory": "As an SRE, I need `serializeDashboardState` to produce a stable report."
         },
         {
           "beat": 2,
           "handler": "triggerExportDownload",
-          "kind": "io"
+          "kind": "io",
+          "number": 2,
+          "scenario": "trigger Export Download",
+          "acceptanceCriteria": [
+            "Given the triggerExportDownload operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen triggerExportDownload processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen triggerExportDownload encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen triggerExportDownload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen triggerExportDownload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts",
+          "testCase": "Scenario: Initiate download of signed export artifacts.",
+          "userStory": "As an SRE, I need `triggerExportDownload` to initiate download reliably."
         }
-      ]
+      ],
+      "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+      "persona": "SRE",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "name": "Dashboard.export.report",
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+  "persona": "SRE",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

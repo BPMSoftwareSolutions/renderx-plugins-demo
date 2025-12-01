@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "removeClass",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Remove CSS Class from UI Element for State Cleanup",
+          "acceptanceCriteria": [
+            "Given an element has a specific CSS class applied\nWhen removeClass is invoked with element ID and class name\nThen the class is removed from the element within 10ms\nAnd the element's classList no longer contains the class\nAnd a 'control.panel.class.removed' event is published",
+            "Given an element has multiple classes\nWhen removeClass removes one class\nThen all other classes are preserved\nAnd only the specified class is removed\nAnd no unrelated DOM mutations occur",
+            "Given a class does not exist on the element\nWhen removeClass is called\nThen no error is thrown\nAnd the operation completes successfully (idempotent)\nAnd event is still published to maintain consistency",
+            "Given the last class is being removed from an element\nWhen removeClass executes\nThen the element retains valid DOM state\nAnd subsequent class operations work correctly\nAnd the element remains accessible",
+            "Given performance monitoring is active\nWhen removeClass processes a batch of 100 elements\nThen all removals complete within 200ms\nAnd memory usage does not exceed baseline\nAnd garbage collection is not triggered unexpectedly"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
+          "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
+          "userStory": "As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events."
         },
         {
           "beat": 2,
@@ -23,11 +35,29 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 2,
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "acceptanceCriteria": [
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
+          "userStory": "As an orchestrator, I need `notifyUi` to publish class-remove events with <20ms delivery and backpressure."
         }
-      ]
+      ],
+      "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+      "persona": "Design systems engineer",
+      "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
     }
   ],
   "beats": 2,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+  "persona": "Design systems engineer",
+  "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
 }

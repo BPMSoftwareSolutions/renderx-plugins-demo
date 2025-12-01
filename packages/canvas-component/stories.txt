@@ -1,0 +1,126 @@
+# Domain: canvas-component
+
+[symphony:import]
+role: Frontend platform integrator
+movementStory: As a frontend platform integrator, I need the import symphony to open, parse, and map UI assets deterministically with beat SLAs (open ≤1s, parse ≤1s, injectCss ≤1s, createSequential ≤2s, hierarchy ≤1s) and 99.9% success so imported components render predictably.
+beat: openUiFile -> As a platform operator, I need `openUiFile` to resolve local/remote paths, validate file type, and expose stream metadata in ≤1s P95 so downstream parsing can proceed without retries.
+beat: parseUiFile -> As a parser maintainer, I need `parseUiFile` to produce a normalized AST and schema in ≤1s P95, emitting parse diagnostics and source maps for accurate transformations.
+beat: injectCssClasses -> As a design systems engineer, I need `injectCssClasses` to collect and inject semantic classes from templates in ≤1s P95, deduping and ordering for deterministic styling across pages.
+beat: createComponentsSequentially -> As a composition service owner, I need `createComponentsSequentially` to construct nodes from templates in ≤2s P95, honoring dependencies and avoiding direct rendering, forwarding to the drop symphony.
+beat: applyHierarchyAndOrder -> As an information architect, I need `applyHierarchyAndOrder` to compute parent/child relationships and z-order in ≤1s P95, with stable sorting and deterministic IDs.
+
+[symphony:update]
+role: Platform reliability engineer
+movementStory: As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.
+beat: resolveTemplate -> As an engineer, I need `resolveTemplate` to fetch and validate the target template in ≤1s P95, deduping and emitting audit events.
+beat: registerInstance -> As a platform integrator, I need `registerInstance` to maintain stable IDs/classes across updates in ≤1s P95.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish ordered UI change events with <20ms delivery and backpressure.
+
+[symphony:delete]
+role: Security-conscious operator
+movementStory: As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.
+beat: registerInstance -> As an integrator, I need `registerInstance` to mark instance as retiring and update selectors in ≤1s P95.
+beat: createNode -> As a composition service, I need `createNode` to stage deletion artifacts without rendering in ≤2s P95.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish removal events in <20ms with failure context.
+
+[symphony:drag.start]
+role: Interaction designer
+movementStory: As an interaction designer, I need drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate.
+beat: startDrag -> As an engineer, I need `startDrag` to capture source element, compute ghost offsets, and emit telemetry in ≤100ms P95.
+
+[symphony:drag.move]
+role: Interaction designer
+movementStory: As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.
+beat: updatePosition -> As a UI runtime engineer, I need `updatePosition` to update DOM transform with throttling in ≤100ms P95 and emit selection updates.
+beat: forwardToControlPanel -> As an orchestrator, I need `forwardToControlPanel` to publish selection change events within ≤1s P95.
+
+[symphony:drag.end]
+role: Interaction designer
+movementStory: As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.
+beat: endDrag -> As an engineer, I need `endDrag` to finalize position, snap to grid, and publish outcome telemetry.
+
+[symphony:resize.start]
+role: Interaction designer
+movementStory: As an interaction designer, I need resize start to attach handles and compute constraints within ≤100ms P95 so resizing feels responsive.
+beat: startResize -> As an engineer, I need `startResize` to calculate bounds, lock aspect ratio (if set), and prepare overlay in ≤100ms P95.
+
+[symphony:resize.move]
+role: Interaction designer
+movementStory: As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.
+beat: updateSize -> As a UI runtime engineer, I need `updateSize` to update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications.
+
+[symphony:resize.end]
+role: Interaction designer
+movementStory: As an interaction designer, I need resize end to commit dimensions, apply constraints, and notify subscribers within ≤100ms P95.
+beat: endResize -> As an engineer, I need `endResize` to commit changes, recompute hierarchy, and publish events.
+
+[symphony:resize.line.start]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need line-resize start to expose precise handles and geometry for lines within ≤100ms P95.
+beat: startLineResize -> As an engineer, I need `startLineResize` to compute segment anchors and prepare overlay.
+
+[symphony:resize.line.move]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need line-resize move to adjust endpoints and measure lengths at ≤100ms P95.
+beat: moveLineResize -> As an engineer, I need `moveLineResize` to update line geometry and constraints deterministically.
+
+[symphony:resize.line.end]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need line-resize end to commit new geometry and trigger reflow safely.
+beat: endLineResize -> As an engineer, I need `endLineResize` to commit endpoints and publish geometry change events.
+
+[symphony:select]
+role: Interaction designer
+movementStory: As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.
+beat: showSelectionOverlay -> As a runtime engineer, I need `showSelectionOverlay` to render selection affordances and register handlers.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish selection events with <20ms delivery.
+
+[symphony:select.requested]
+role: Interaction designer
+movementStory: As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.
+beat: routeSelectionRequest -> As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.
+
+[symphony:select.svg-node]
+role: Design systems engineer
+movementStory: As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.
+beat: ensureLineOverlayFor -> As an engineer, I need `ensureLineOverlayFor` to compute overlay geometry and attach handlers.
+
+[symphony:deselect]
+role: Interaction designer
+movementStory: As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.
+beat: hideSelectionOverlay -> As a runtime engineer, I need `hideSelectionOverlay` to remove affordances and detach handlers.
+
+[symphony:deselect.requested]
+role: Interaction designer
+movementStory: As an interaction designer, I need requested deselect to route to base and clear selection consistently.
+beat: routeDeselectionRequest -> As an engineer, I need `routeDeselectionRequest` to identify current selection and clear state.
+
+[symphony:deselect-all]
+role: Interaction designer
+movementStory: As an interaction designer, I need deselect-all to clear all overlays and selection state within ≤100ms P95.
+beat: clearAllSelection -> As an engineer, I need `clearAllSelection` to remove overlays and publish state change.
+
+[symphony:copy]
+role: Content author
+movementStory: As a content author, I need copy to duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy.
+beat: copyNode -> As an engineer, I need `copyNode` to clone schema and rebind IDs deterministically.
+
+[symphony:paste]
+role: Content author
+movementStory: As a content author, I need paste to insert components honoring hierarchy and constraints within ≤1s P95.
+beat: pasteNode -> As an engineer, I need `pasteNode` to insert at target, reflow, and notify.
+
+[symphony:export]
+role: Platform operator
+movementStory: As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.
+beat: exportCanvas -> As an engineer, I need `exportCanvas` to serialize DOM/SVG and bundle assets.
+
+[symphony:export-gif]
+role: Platform operator
+movementStory: As a platform operator, I need GIF export to render frames and encode deterministically within ≤2s P95.
+beat: exportSvgToGif -> As an engineer, I need `exportSvgToGif` to rasterize frames and encode GIF with telemetry.
+
+[symphony:export-mp4]
+role: Platform operator
+movementStory: As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.
+beat: exportSvgToMp4 -> As an engineer, I need `exportSvgToMp4` to rasterize frames and encode MP4 with telemetry.

@@ -14,7 +14,18 @@
           "dynamics": "mf",
           "handler": "setAllRulesConfig",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "set All Rules Config",
+          "acceptanceCriteria": [
+            "Given the setAllRulesConfig operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen setAllRulesConfig processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen setAllRulesConfig encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen setAllRulesConfig executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen setAllRulesConfig operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         },
         {
           "beat": 2,
@@ -23,7 +34,18 @@
           "dynamics": "mf",
           "handler": "loadAllRulesFromWindow",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "load All Rules From Window",
+          "acceptanceCriteria": [
+            "Given the loadAllRulesFromWindow operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadAllRulesFromWindow processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadAllRulesFromWindow encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadAllRulesFromWindow executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadAllRulesFromWindow operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want loadAllRulesFromWindow to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         },
         {
           "beat": 3,
@@ -32,10 +54,27 @@
           "dynamics": "mf",
           "handler": "getAllRulesConfig",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "get All Rules Config",
+          "acceptanceCriteria": [
+            "Given the getAllRulesConfig operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen getAllRulesConfig processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen getAllRulesConfig encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen getAllRulesConfig executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen getAllRulesConfig operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want getAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 3
+  "beats": 3,
+  "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

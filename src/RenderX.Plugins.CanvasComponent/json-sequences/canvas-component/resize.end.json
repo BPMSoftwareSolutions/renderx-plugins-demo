@@ -19,9 +19,26 @@
             "id": "canvas-component-resize-end-symphony.endresize.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "end Resize",
+          "acceptanceCriteria": [
+            "Given the endResize operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen endResize processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen endResize encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen endResize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen endResize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want endResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want endResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want endResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

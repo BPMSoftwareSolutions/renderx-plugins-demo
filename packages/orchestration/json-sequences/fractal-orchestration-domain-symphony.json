@@ -12,17 +12,55 @@
           "name": "fractal-domain-identified",
           "event": "fractal.domain.identified",
           "beat": 1,
-          "handler": { "name": "fractal.narration#fractalNarrator" },
-          "notes": ["Recognize domain boundaries and intent"]
+          "handler": {
+            "name": "fractal.narration#fractalNarrator"
+          },
+          "notes": [
+            "Recognize domain boundaries and intent"
+          ],
+          "number": 1,
+          "scenario": "fractal Narrator",
+          "acceptanceCriteria": [
+            "Given the fractalNarrator operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen fractalNarrator processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen fractalNarrator encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
+          "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
+          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "name": "fractal-domain-orchestrated",
           "event": "fractal.domain.orchestrated",
           "beat": 2,
-          "handler": { "name": "fractal.narration#fractalNarrator" },
-          "notes": ["Bind domain to MusicalSequence"]
+          "handler": {
+            "name": "fractal.narration#fractalNarrator"
+          },
+          "notes": [
+            "Bind domain to MusicalSequence"
+          ],
+          "number": 2,
+          "scenario": "fractal Narrator",
+          "acceptanceCriteria": [
+            "Given the fractalNarrator operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen fractalNarrator processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen fractalNarrator encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
+          "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
+          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

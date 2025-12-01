@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "generateFields",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Generate Form Fields from Configuration Metadata",
+          "acceptanceCriteria": [
+            "Given a field configuration object with type, label, validation rules\nWhen generateFields is invoked\nThen HTML form fields are created matching the config within 100ms\nAnd accessibility attributes (aria-label, aria-required) are set\nAnd the fields are ready for user interaction",
+            "Given a configuration for 50 fields\nWhen generateFields processes it\nThen all fields are generated and rendered within 200ms\nAnd the form remains responsive (60fps)\nAnd memory usage scales linearly with field count",
+            "Given field types: text, email, number, select, checkbox, radio\nWhen generateFields creates fields\nThen each type is rendered with appropriate HTML elements\nAnd type-specific validation is attached\nAnd default values are populated if provided",
+            "Given required and optional fields are mixed\nWhen generateFields marks requirements\nThen required fields have aria-required='true'\nAnd visual indicators (asterisk) are shown\nAnd form submission validation respects these flags",
+            "Given field dependencies and show/hide rules\nWhen generateFields creates the form\nThen conditional visibility logic is initialized\nAnd dependent fields are shown/hidden correctly\nAnd no orphaned validation rules exist"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema."
         },
         {
           "beat": 2,
@@ -23,7 +35,19 @@
           "dynamics": "mf",
           "handler": "generateSections",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "Generate Grouped Form Sections from Configuration",
+          "acceptanceCriteria": [
+            "Given a section configuration with title, description, fields\nWhen generateSections is invoked\nThen form sections are created with proper grouping within 100ms\nAnd section headers are rendered\nAnd all contained fields are correctly nested",
+            "Given 10 sections with 100 total fields\nWhen generateSections organizes them\nThen all sections are rendered within 300ms\nAnd visual hierarchy is maintained\nAnd responsive layout adapts to screen size",
+            "Given sections with collapse/expand capability\nWhen generateSections initializes\nThen collapse state is configurable\nAnd initial state can be all expanded or all collapsed\nAnd toggle handlers are attached to section headers",
+            "Given sections that depend on other sections\nWhen generateSections creates the form\nThen dependency ordering is respected\nAnd parent sections expand when child interactions occur\nAnd nested visibility rules work correctly",
+            "Given accessibility requirements\nWhen generateSections renders\nThen proper heading hierarchy (h1, h2, h3) is used\nAnd aria-expanded attributes are set on collapse toggles\nAnd keyboard navigation works between sections"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an engineer, I need `generateSections` to group fields semantically."
         },
         {
           "beat": 3,
@@ -32,11 +56,29 @@
           "dynamics": "mf",
           "handler": "renderView",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "Render Complete Dynamic View with All Components",
+          "acceptanceCriteria": [
+            "Given a complete view configuration with sections, fields, rules\nWhen renderView is invoked\nThen the entire form is rendered within 500ms\nAnd all interactive elements are functional\nAnd no rendering errors or warnings appear in console",
+            "Given a large view with 200+ fields\nWhen renderView processes it\nThen rendering completes within 800ms\nAnd initial interaction latency is < 100ms\nAnd memory footprint is optimized (no memory leaks)",
+            "Given responsive design requirements\nWhen renderView renders\nThen layout adapts to viewport (desktop, tablet, mobile)\nAnd touch targets are minimum 44x44px on mobile\nAnd text is readable at all zoom levels",
+            "Given accessibility requirements (WCAG 2.1 AA)\nWhen renderView renders\nThen all elements have proper semantic HTML\nAnd color contrast is >= 4.5:1 for text\nAnd keyboard navigation is fully functional",
+            "Given performance budgets\nWhen renderView completes\nThen First Contentful Paint (FCP) is < 1 second\nAnd Largest Contentful Paint (LCP) is < 2.5 seconds\nAnd Cumulative Layout Shift (CLS) is < 0.1"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
+          "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
+          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization."
         }
-      ]
+      ],
+      "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
     }
   ],
   "beats": 3,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
 }

@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (domainDocumentationMapping) -->
-<!-- Generated: 2025-11-27T04:08:48.087Z -->
+<!-- Generated: 2025-12-01T01:02:51.841Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run generate:domain:indexes -->
 
 # CAG Agent Workflow Documentation
@@ -40,5 +40,5 @@ None defined yet. All documentation for this domain is auto-generated.
 
 ---
 
-**Generated**: 2025-11-27T04:08:48.087Z
+**Generated**: 2025-12-01T01:02:51.841Z
 **Regenerate with**: `npm run generate:domain:indexes`

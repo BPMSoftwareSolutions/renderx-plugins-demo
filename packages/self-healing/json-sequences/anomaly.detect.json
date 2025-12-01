@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "detectAnomaliesRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "Detect or Identify detect Anomalies Requested",
+          "acceptanceCriteria": [
+            "Given the detectAnomaliesRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectAnomaliesRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectAnomaliesRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectAnomaliesRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectAnomaliesRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\8-detect-anomalies-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadTelemetryData",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "load Telemetry Data",
+          "acceptanceCriteria": [
+            "Given the loadTelemetryData operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadTelemetryData processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadTelemetryData encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadTelemetryData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadTelemetryData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\9-load-telemetry-data.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want loadTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "detectPerformanceAnomalies",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 3,
+          "scenario": "Detect or Identify detect Performance Anomalies",
+          "acceptanceCriteria": [
+            "Given the detectPerformanceAnomalies operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectPerformanceAnomalies processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectPerformanceAnomalies encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectPerformanceAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectPerformanceAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectPerformanceAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "detectBehavioralAnomalies",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "Detect or Identify detect Behavioral Anomalies",
+          "acceptanceCriteria": [
+            "Given the detectBehavioralAnomalies operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectBehavioralAnomalies processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectBehavioralAnomalies encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectBehavioralAnomalies executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectBehavioralAnomalies operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\11-detect-behavioral-anomalies.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectBehavioralAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "detectCoverageGaps",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "Detect or Identify detect Coverage Gaps",
+          "acceptanceCriteria": [
+            "Given the detectCoverageGaps operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectCoverageGaps processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectCoverageGaps encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectCoverageGaps executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectCoverageGaps operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\12-detect-coverage-gaps.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectCoverageGaps to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "detectErrorPatterns",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 6,
+          "scenario": "Detect or Identify detect Error Patterns",
+          "acceptanceCriteria": [
+            "Given the detectErrorPatterns operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectErrorPatterns processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectErrorPatterns encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectErrorPatterns executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectErrorPatterns operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\13-detect-error-patterns.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectErrorPatterns to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -77,7 +149,19 @@
           "dynamics": "mf",
           "handler": "aggregateAnomalyResults",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "aggregate Anomaly Results",
+          "acceptanceCriteria": [
+            "Given the aggregateAnomalyResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen aggregateAnomalyResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen aggregateAnomalyResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen aggregateAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen aggregateAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want aggregateAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 8,
@@ -87,7 +171,19 @@
           "dynamics": "mf",
           "handler": "storeAnomalyResults",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 8,
+          "scenario": "store Anomaly Results",
+          "acceptanceCriteria": [
+            "Given the storeAnomalyResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storeAnomalyResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storeAnomalyResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storeAnomalyResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storeAnomalyResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\15-store-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want storeAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 9,
@@ -97,11 +193,29 @@
           "dynamics": "mf",
           "handler": "detectAnomaliesCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 9,
+          "scenario": "Detect or Identify detect Anomalies Completed",
+          "acceptanceCriteria": [
+            "Given the detectAnomaliesCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectAnomaliesCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectAnomaliesCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectAnomaliesCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectAnomaliesCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\16-detect-anomalies-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+      "persona": "SRE",
+      "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
     }
   ],
   "beats": 9,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+  "persona": "SRE",
+  "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
 }

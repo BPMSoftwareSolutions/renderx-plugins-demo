@@ -14,10 +14,27 @@
           "dynamics": "mf",
           "handler": "showSvgNodeOverlay",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "Render or Display show Svg Node Overlay",
+          "acceptanceCriteria": [
+            "Given the showSvgNodeOverlay operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen showSvgNodeOverlay processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen showSvgNodeOverlay encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 200ms\nWhen showSvgNodeOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen showSvgNodeOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "positions overlay over the target sub-element given a child-index path (e.g., ",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.",
+      "persona": "Design systems engineer",
+      "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.",
+  "persona": "Design systems engineer",
+  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
 }

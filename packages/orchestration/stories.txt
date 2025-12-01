@@ -1,0 +1,50 @@
+# Domain: orchestration
+
+[symphony:build-pipeline-orchestration]
+role: DevOps engineer
+movementStory: As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.
+beat: orchestration-core -> As an engineer, I need `orchestration-core` to schedule and monitor tasks with backpressure and retries.
+
+[symphony:architecture-governance-enforcement-symphony]
+role: Governance lead
+movementStory: As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.
+beat: orchestration-audit-system -> As a lead, I need `orchestration-audit-system` to collect evidence and publish summaries deterministically.
+
+[symphony:renderx-web-orchestration]
+role: Product owner
+movementStory: As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.
+beat: header/ui#getCurrentTheme -> As a runtime engineer, I need `getCurrentTheme` to initialize theme without blocking.
+beat: header/ui#toggleTheme -> As a runtime engineer, I need `toggleTheme` to persist and notify quickly.
+beat: control-panel/ui#initConfig -> As a runtime engineer, I need `initConfig` to load config reliably.
+beat: control-panel/ui#initResolver -> As a runtime engineer, I need `initResolver` to prepare schema resolution.
+beat: control-panel/ui#registerObservers -> As a runtime engineer, I need `registerObservers` to attach listeners deterministically.
+beat: control-panel/ui#notifyReady -> As a runtime engineer, I need `notifyReady` to publish readiness.
+beat: canvas-component/update#updateAttribute -> As a UI runtime engineer, I need `updateAttribute` to apply updates safely.
+beat: canvas-component/update#refreshControlPanel -> As a UI runtime engineer, I need `refreshControlPanel` to sync UI state.
+beat: canvas-component/select#showSelectionOverlay -> As an interaction engineer, I need `showSelectionOverlay` to display affordances.
+beat: canvas-component/select#hideSelectionOverlay -> As an interaction engineer, I need `hideSelectionOverlay` to clear affordances.
+beat: canvas-component/select.overlay.line-resize#attachLineResizeHandlers -> As a design systems engineer, I need `attachLineResizeHandlers` to enable precise line manipulation.
+beat: canvas-component/select.overlay.line-resize#ensureLineOverlayFor -> As a design systems engineer, I need `ensureLineOverlayFor` to compute overlays.
+beat: canvas-component/select#notifyUi -> As an orchestrator, I need `notifyUi` to publish selection events.
+beat: canvas-component/export.export.gif#exportSvgToGif -> As a platform operator, I need `exportSvgToGif` to encode reliably.
+beat: canvas-component/export.export.mp4#exportSvgToMp4 -> As a platform operator, I need `exportSvgToMp4` to encode reliably.
+beat: library-component/drag.preview#ensurePayload -> As a runtime engineer, I need `ensurePayload` to prepare drag payload.
+beat: library-component/drag.preview#computeGhostSize -> As a runtime engineer, I need `computeGhostSize` to size preview.
+beat: library-component/drag.preview#createGhostContainer -> As a runtime engineer, I need `createGhostContainer` to host preview.
+beat: library-component/drag.preview#renderTemplatePreview -> As a runtime engineer, I need `renderTemplatePreview` to draw preview.
+beat: library-component/drag.preview#applyTemplateStyles -> As a runtime engineer, I need `applyTemplateStyles` to style preview.
+beat: library-component/drag.preview#computeCursorOffsets -> As a runtime engineer, I need `computeCursorOffsets` to align cursor.
+beat: library-component/drag.preview#installDragImage -> As a runtime engineer, I need `installDragImage` to set drag image.
+beat: self-healing/baseline#establish -> As an SRE, I need `baseline.establish` to set baselines for later anomaly detection.
+
+[symphony:orchestration-core]
+role: DevOps engineer
+movementStory: As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.
+beat: analysis.discovery#scanOrchestrationFiles -> As an engineer, I need `scanOrchestrationFiles` to index orchestration definitions with telemetry.
+
+[symphony:orchestration-registry-audit-pipeline]
+role: Governance lead
+movementStory: As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.
+beat: analysis.conformity#validateHandlerMapping -> As a lead, I need `validateHandlerMapping` to ensure beats map to implementations.
+beat: analysis.conformity#calculateConformityScore -> As a lead, I need `calculateConformityScore` to quantify alignment.
+beat: analysis.conformity#generateAnalysisReport -> As a lead, I need `generateAnalysisReport` to publish results.

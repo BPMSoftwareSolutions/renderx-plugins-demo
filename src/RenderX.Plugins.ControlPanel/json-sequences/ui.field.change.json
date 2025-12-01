@@ -19,7 +19,19 @@
             "id": "control-panel-ui-field-change-symphony.preparefield.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "prepare Field",
+          "acceptanceCriteria": [
+            "Given the prepareField operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen prepareField processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen prepareField encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen prepareField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen prepareField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": "As an operations system, I want prepareField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -33,7 +45,19 @@
             "id": "control-panel-ui-field-change-symphony.dispatchfield.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "dispatch Field",
+          "acceptanceCriteria": [
+            "Given the dispatchField operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen dispatchField processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen dispatchField encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen dispatchField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen dispatchField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": "As an operations system, I want dispatchField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -47,7 +71,19 @@
             "id": "control-panel-ui-field-change-symphony.setdirty.2",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 3,
+          "scenario": "set Dirty",
+          "acceptanceCriteria": [
+            "Given the setDirty operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen setDirty processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen setDirty encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen setDirty executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen setDirty operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "tests\\digital-assets.spec.ts",
+          "testCase": "resolves and exposes correct package name",
+          "userStory": "As an operations system, I want setDirty to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -61,9 +97,27 @@
             "id": "control-panel-ui-field-change-symphony.awaitrefresh.3",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 4,
+          "scenario": "await Refresh",
+          "acceptanceCriteria": [
+            "Given the awaitRefresh operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen awaitRefresh processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen awaitRefresh encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen awaitRefresh executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen awaitRefresh operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "testCase": "setDirty marks isDirty with timestamp",
+          "userStory": "As an operations system, I want awaitRefresh to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want prepareField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want prepareField to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

@@ -61,21 +61,36 @@
         {
           "number": 1,
           "event": "movement-1:json-validation:started",
-          "handler": { "name": "governance.handlers#validateJSONSchemaStructure" },
+          "handler": {
+            "name": "governance.handlers#validateJSONSchemaStructure"
+          },
           "kind": "validation",
           "timing": "immediate",
-	          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
-	          "reference": "docs/schemas/musical-sequence.schema.json, orchestration-domains.json, all json-sequences/*.json",
+          "description": "Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas",
+          "reference": "docs/schemas/musical-sequence.schema.json, orchestration-domains.json, all json-sequences/*.json",
           "handlerDef": {
             "id": "architecture-governance-enforcement-symphony.validatejsonschemastructure.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify validate J S O N Schema Structure",
+          "acceptanceCriteria": [
+            "Given the validateJSONSchemaStructure operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateJSONSchemaStructure processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateJSONSchemaStructure encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateJSONSchemaStructure executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateJSONSchemaStructure operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-1:orchestration-domains:validated",
-          "handler": { "name": "governance.handlers#validateOrchestrationDomainsRegistry" },
+          "handler": {
+            "name": "governance.handlers#validateOrchestrationDomainsRegistry"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate orchestration-domains.json has all required fields and correct structure",
@@ -83,12 +98,25 @@
             "id": "architecture-governance-enforcement-symphony.validateorchestrationdomainsregistry.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify validate Orchestration Domains Registry",
+          "acceptanceCriteria": [
+            "Given the validateOrchestrationDomainsRegistry operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateOrchestrationDomainsRegistry processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateOrchestrationDomainsRegistry encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateOrchestrationDomainsRegistry executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateOrchestrationDomainsRegistry operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
+          "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-1:symphony-files:validated",
-          "handler": { "name": "governance.handlers#validateSymphonyFiles" },
+          "handler": {
+            "name": "governance.handlers#validateSymphonyFiles"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate each symphony JSON file (build-pipeline, conformity, etc.)",
@@ -96,12 +124,25 @@
             "id": "architecture-governance-enforcement-symphony.validatesymphonyfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify validate Symphony Files",
+          "acceptanceCriteria": [
+            "Given the validateSymphonyFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateSymphonyFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateSymphonyFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateSymphonyFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateSymphonyFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-1:schema-section:validated",
-          "handler": { "name": "governance.handlers#validateSchemaSection" },
+          "handler": {
+            "name": "governance.handlers#validateSchemaSection"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Validate schema section exists and defines movement/beat/event requirements",
@@ -109,12 +150,25 @@
             "id": "architecture-governance-enforcement-symphony.validateschemasection.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify validate Schema Section",
+          "acceptanceCriteria": [
+            "Given the validateSchemaSection operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateSchemaSection processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateSchemaSection encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateSchemaSection executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateSchemaSection operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-1:json-validation:complete",
-          "handler": { "name": "governance.handlers#reportJSONValidation" },
+          "handler": {
+            "name": "governance.handlers#reportJSONValidation"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report validation results; fail if schema invalid",
@@ -122,9 +176,23 @@
             "id": "architecture-governance-enforcement-symphony.reportjsonvalidation.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "report J S O N Validation",
+          "acceptanceCriteria": [
+            "Given the reportJSONValidation operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen reportJSONValidation processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen reportJSONValidation encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen reportJSONValidation executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen reportJSONValidation operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     },
     {
       "name": "Handler-to-Beat Mapping Verification",
@@ -135,7 +203,9 @@
         {
           "number": 1,
           "event": "movement-2:handler-mapping:started",
-          "handler": { "name": "governance.handlers#startHandlerMappingVerification" },
+          "handler": {
+            "name": "governance.handlers#startHandlerMappingVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin handler-to-beat mapping verification process",
@@ -143,12 +213,25 @@
             "id": "architecture-governance-enforcement-symphony.starthandlermappingverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "start Handler Mapping Verification",
+          "acceptanceCriteria": [
+            "Given the startHandlerMappingVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startHandlerMappingVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startHandlerMappingVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startHandlerMappingVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startHandlerMappingVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
+          "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-2:handlers:loaded",
-          "handler": { "name": "governance.handlers#loadHandlerImplementations" },
+          "handler": {
+            "name": "governance.handlers#loadHandlerImplementations"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all handler implementations from scripts/build-symphony-handlers.js",
@@ -156,12 +239,25 @@
             "id": "architecture-governance-enforcement-symphony.loadhandlerimplementations.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "load Handler Implementations",
+          "acceptanceCriteria": [
+            "Given the loadHandlerImplementations operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadHandlerImplementations processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadHandlerImplementations encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadHandlerImplementations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadHandlerImplementations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
+          "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
+          "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-2:beats-indexed",
-          "handler": { "name": "governance.handlers#indexBeatsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#indexBeatsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all beats and their handler references from symphony JSON files",
@@ -169,12 +265,25 @@
             "id": "architecture-governance-enforcement-symphony.indexbeatsfromjson.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "index Beats From J S O N",
+          "acceptanceCriteria": [
+            "Given the indexBeatsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen indexBeatsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen indexBeatsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen indexBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen indexBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
+          "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-2:mapping-verified",
-          "handler": { "name": "governance.handlers#verifyBeatHandlerMapping" },
+          "handler": {
+            "name": "governance.handlers#verifyBeatHandlerMapping"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify every beat has corresponding handler; collect mapping violations",
@@ -182,12 +291,25 @@
             "id": "architecture-governance-enforcement-symphony.verifybeathandlermapping.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify verify Beat Handler Mapping",
+          "acceptanceCriteria": [
+            "Given the verifyBeatHandlerMapping operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen verifyBeatHandlerMapping processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen verifyBeatHandlerMapping encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen verifyBeatHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen verifyBeatHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
+          "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-2:orphans-detected",
-          "handler": { "name": "governance.handlers#detectOrphanHandlers" },
+          "handler": {
+            "name": "governance.handlers#detectOrphanHandlers"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find handlers in code that are not referenced by any beat",
@@ -195,12 +317,25 @@
             "id": "architecture-governance-enforcement-symphony.detectorphanhandlers.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Detect or Identify detect Orphan Handlers",
+          "acceptanceCriteria": [
+            "Given the detectOrphanHandlers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectOrphanHandlers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectOrphanHandlers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectOrphanHandlers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectOrphanHandlers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
+          "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 6,
           "event": "movement-2:handler-mapping:complete",
-          "handler": { "name": "governance.handlers#reportHandlerMapping" },
+          "handler": {
+            "name": "governance.handlers#reportHandlerMapping"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report handler mapping status; fail if violations found",
@@ -208,9 +343,23 @@
             "id": "architecture-governance-enforcement-symphony.reporthandlermapping.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "report Handler Mapping",
+          "acceptanceCriteria": [
+            "Given the reportHandlerMapping operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen reportHandlerMapping processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen reportHandlerMapping encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen reportHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen reportHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "testCase": "placeholder passes",
+          "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Test Coverage Verification",
@@ -221,7 +370,9 @@
         {
           "number": 1,
           "event": "movement-3:test-coverage:started",
-          "handler": { "name": "governance.handlers#startTestCoverageVerification" },
+          "handler": {
+            "name": "governance.handlers#startTestCoverageVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin test coverage verification process",
@@ -229,12 +380,25 @@
             "id": "architecture-governance-enforcement-symphony.starttestcoverageverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "start Test Coverage Verification",
+          "acceptanceCriteria": [
+            "Given the startTestCoverageVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startTestCoverageVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startTestCoverageVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startTestCoverageVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startTestCoverageVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-3:beats-catalogued",
-          "handler": { "name": "governance.handlers#catalogBeatsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#catalogBeatsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create exhaustive catalog of all beats and events in symphony JSON",
@@ -242,12 +406,25 @@
             "id": "architecture-governance-enforcement-symphony.catalogbeatsfromjson.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "catalog Beats From J S O N",
+          "acceptanceCriteria": [
+            "Given the catalogBeatsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen catalogBeatsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen catalogBeatsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen catalogBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen catalogBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-3:tests-indexed",
-          "handler": { "name": "governance.handlers#indexTestFiles" },
+          "handler": {
+            "name": "governance.handlers#indexTestFiles"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Index all test files and their test descriptions (from .spec.ts)",
@@ -255,12 +432,25 @@
             "id": "architecture-governance-enforcement-symphony.indextestfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "index Test Files",
+          "acceptanceCriteria": [
+            "Given the indexTestFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen indexTestFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen indexTestFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen indexTestFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen indexTestFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js",
+          "testCase": "should index-test-files",
+          "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-3:coverage-analyzed",
-          "handler": { "name": "governance.handlers#analyzeTestCoverage" },
+          "handler": {
+            "name": "governance.handlers#analyzeTestCoverage"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Analyze coverage: which beats have tests, which don't",
@@ -268,12 +458,25 @@
             "id": "architecture-governance-enforcement-symphony.analyzetestcoverage.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Scan, Discover, or Analyze analyze Test Coverage",
+          "acceptanceCriteria": [
+            "Given the analyzeTestCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen analyzeTestCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen analyzeTestCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 5 seconds\nWhen analyzeTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen analyzeTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
+          "testCase": "Scenario: Analyze coverage gaps to identify untested code",
+          "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-3:uncovered-beats-identified",
-          "handler": { "name": "governance.handlers#identifyUncoveredBeats" },
+          "handler": {
+            "name": "governance.handlers#identifyUncoveredBeats"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Identify beats lacking test coverage; collect list",
@@ -281,12 +484,25 @@
             "id": "architecture-governance-enforcement-symphony.identifyuncoveredbeats.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Detect or Identify identify Uncovered Beats",
+          "acceptanceCriteria": [
+            "Given the identifyUncoveredBeats operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen identifyUncoveredBeats processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen identifyUncoveredBeats encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen identifyUncoveredBeats executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen identifyUncoveredBeats operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
+          "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 6,
           "event": "movement-3:test-coverage:complete",
-          "handler": { "name": "governance.handlers#reportTestCoverage" },
+          "handler": {
+            "name": "governance.handlers#reportTestCoverage"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report test coverage percentage and violations",
@@ -294,9 +510,23 @@
             "id": "architecture-governance-enforcement-symphony.reporttestcoverage.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "report Test Coverage",
+          "acceptanceCriteria": [
+            "Given the reportTestCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen reportTestCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen reportTestCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen reportTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen reportTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts",
+          "testCase": "should calculate duration reduction",
+          "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Markdown Consistency Verification",
@@ -307,7 +537,9 @@
         {
           "number": 1,
           "event": "movement-4:markdown-consistency:started",
-          "handler": { "name": "governance.handlers#startMarkdownConsistencyCheck" },
+          "handler": {
+            "name": "governance.handlers#startMarkdownConsistencyCheck"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin markdown consistency verification process",
@@ -315,12 +547,25 @@
             "id": "architecture-governance-enforcement-symphony.startmarkdownconsistencycheck.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "start Markdown Consistency Check",
+          "acceptanceCriteria": [
+            "Given the startMarkdownConsistencyCheck operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startMarkdownConsistencyCheck processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startMarkdownConsistencyCheck encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startMarkdownConsistencyCheck executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startMarkdownConsistencyCheck operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts",
+          "testCase": "should governance.handlers#startMarkdownConsistencyCheck when event published",
+          "userStory": "As an operations system, I want startMarkdownConsistencyCheck to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-4:facts-extracted",
-          "handler": { "name": "governance.handlers#extractFactsFromJSON" },
+          "handler": {
+            "name": "governance.handlers#extractFactsFromJSON"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Extract key facts from JSON: movement count, beat count, event count, handler names",
@@ -328,12 +573,25 @@
             "id": "architecture-governance-enforcement-symphony.extractfactsfromjson.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "extract Facts From J S O N",
+          "acceptanceCriteria": [
+            "Given the extractFactsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen extractFactsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen extractFactsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen extractFactsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen extractFactsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-4:markdown-files:identified",
-          "handler": { "name": "governance.handlers#identifyMarkdownFiles" },
+          "handler": {
+            "name": "governance.handlers#identifyMarkdownFiles"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Find all markdown files that reference symphonia",
@@ -341,12 +599,25 @@
             "id": "architecture-governance-enforcement-symphony.identifymarkdownfiles.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Detect or Identify identify Markdown Files",
+          "acceptanceCriteria": [
+            "Given the identifyMarkdownFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen identifyMarkdownFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen identifyMarkdownFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen identifyMarkdownFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen identifyMarkdownFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
+          "testCase": "should load valid logs and skip corrupted ones, reporting progress",
+          "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-4:facts-verified",
-          "handler": { "name": "governance.handlers#verifyFactsInMarkdown" },
+          "handler": {
+            "name": "governance.handlers#verifyFactsInMarkdown"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Check if JSON facts are mentioned in markdown correctly",
@@ -354,12 +625,25 @@
             "id": "architecture-governance-enforcement-symphony.verifyfactsinmarkdown.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify verify Facts In Markdown",
+          "acceptanceCriteria": [
+            "Given the verifyFactsInMarkdown operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen verifyFactsInMarkdown processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen verifyFactsInMarkdown encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen verifyFactsInMarkdown executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen verifyFactsInMarkdown operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "testCase": "should verify-facts-in-markdown",
+          "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-4:contradictions-detected",
-          "handler": { "name": "governance.handlers#detectMarkdownContradictions" },
+          "handler": {
+            "name": "governance.handlers#detectMarkdownContradictions"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Find statements in markdown that contradict JSON",
@@ -367,12 +651,25 @@
             "id": "architecture-governance-enforcement-symphony.detectmarkdowncontradictions.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Detect or Identify detect Markdown Contradictions",
+          "acceptanceCriteria": [
+            "Given the detectMarkdownContradictions operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen detectMarkdownContradictions processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen detectMarkdownContradictions encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 30 seconds\nWhen detectMarkdownContradictions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen detectMarkdownContradictions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
+          "testCase": "detectAnomaliesRequested - happy path",
+          "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 6,
           "event": "movement-4:markdown-consistency:complete",
-          "handler": { "name": "governance.handlers#reportMarkdownConsistency" },
+          "handler": {
+            "name": "governance.handlers#reportMarkdownConsistency"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report markdown consistency score and contradictions",
@@ -380,9 +677,23 @@
             "id": "architecture-governance-enforcement-symphony.reportmarkdownconsistency.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "report Markdown Consistency",
+          "acceptanceCriteria": [
+            "Given the reportMarkdownConsistency operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen reportMarkdownConsistency processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen reportMarkdownConsistency encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen reportMarkdownConsistency executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen reportMarkdownConsistency operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Auditability Chain Verification",
@@ -393,7 +704,9 @@
         {
           "number": 1,
           "event": "movement-5:auditability:started",
-          "handler": { "name": "governance.handlers#startAuditabilityVerification" },
+          "handler": {
+            "name": "governance.handlers#startAuditabilityVerification"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Begin auditability chain verification process",
@@ -401,12 +714,25 @@
             "id": "architecture-governance-enforcement-symphony.startauditabilityverification.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "start Auditability Verification",
+          "acceptanceCriteria": [
+            "Given the startAuditabilityVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startAuditabilityVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startAuditabilityVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startAuditabilityVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startAuditabilityVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "packages/orchestration/test/governance.handlers#startAuditabilityVerification.spec.ts",
+          "testCase": "should governance.handlers#startAuditabilityVerification when event published",
+          "userStory": "As an operations system, I want startAuditabilityVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-5:json-definitions:loaded",
-          "handler": { "name": "governance.handlers#loadJSONDefinitions" },
+          "handler": {
+            "name": "governance.handlers#loadJSONDefinitions"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Load all JSON definitions as the starting point",
@@ -414,12 +740,25 @@
             "id": "architecture-governance-enforcement-symphony.loadjsondefinitions.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Initialize or Configure load J S O N Definitions",
+          "acceptanceCriteria": [
+            "Given the loadJSONDefinitions operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadJSONDefinitions processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadJSONDefinitions encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen loadJSONDefinitions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadJSONDefinitions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-5:code-mappings:created",
-          "handler": { "name": "governance.handlers#createCodeMappings" },
+          "handler": {
+            "name": "governance.handlers#createCodeMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Code handler",
@@ -427,12 +766,25 @@
             "id": "architecture-governance-enforcement-symphony.createcodemappings.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Generate or Create create Code Mappings",
+          "acceptanceCriteria": [
+            "Given the createCodeMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createCodeMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createCodeMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createCodeMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createCodeMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-5:test-mappings:created",
-          "handler": { "name": "governance.handlers#createTestMappings" },
+          "handler": {
+            "name": "governance.handlers#createTestMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON beat → Test coverage",
@@ -440,12 +792,25 @@
             "id": "architecture-governance-enforcement-symphony.createtestmappings.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Generate or Create create Test Mappings",
+          "acceptanceCriteria": [
+            "Given the createTestMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createTestMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createTestMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createTestMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createTestMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-5:markdown-mappings:created",
-          "handler": { "name": "governance.handlers#createMarkdownMappings" },
+          "handler": {
+            "name": "governance.handlers#createMarkdownMappings"
+          },
           "kind": "data-gathering",
           "timing": "immediate",
           "description": "Create mapping: JSON fact → Markdown mention",
@@ -453,12 +818,25 @@
             "id": "architecture-governance-enforcement-symphony.createmarkdownmappings.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Generate or Create create Markdown Mappings",
+          "acceptanceCriteria": [
+            "Given the createMarkdownMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createMarkdownMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createMarkdownMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createMarkdownMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createMarkdownMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 6,
           "event": "movement-5:chain-completeness:verified",
-          "handler": { "name": "governance.handlers#verifyChainCompleteness" },
+          "handler": {
+            "name": "governance.handlers#verifyChainCompleteness"
+          },
           "kind": "validation",
           "timing": "immediate",
           "description": "Verify complete traceability for all definitions",
@@ -466,12 +844,25 @@
             "id": "architecture-governance-enforcement-symphony.verifychaincompleteness.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Validate or Verify verify Chain Completeness",
+          "acceptanceCriteria": [
+            "Given the verifyChainCompleteness operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen verifyChainCompleteness processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen verifyChainCompleteness encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen verifyChainCompleteness executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen verifyChainCompleteness operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
+          "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 7,
           "event": "movement-5:auditability:complete",
-          "handler": { "name": "governance.handlers#reportAuditability" },
+          "handler": {
+            "name": "governance.handlers#reportAuditability"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Report auditability score: % of JSON with complete chain",
@@ -479,9 +870,23 @@
             "id": "architecture-governance-enforcement-symphony.reportauditability.6",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "report Auditability",
+          "acceptanceCriteria": [
+            "Given the reportAuditability operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen reportAuditability processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen reportAuditability encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen reportAuditability executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen reportAuditability operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Overall Governance Conformity",
@@ -492,7 +897,9 @@
         {
           "number": 1,
           "event": "movement-6:conformity:started",
-          "handler": { "name": "governance.handlers#startConformityAnalysis" },
+          "handler": {
+            "name": "governance.handlers#startConformityAnalysis"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Begin overall conformity analysis",
@@ -500,12 +907,25 @@
             "id": "architecture-governance-enforcement-symphony.startconformityanalysis.0",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "start Conformity Analysis",
+          "acceptanceCriteria": [
+            "Given the startConformityAnalysis operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startConformityAnalysis processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startConformityAnalysis encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startConformityAnalysis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startConformityAnalysis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
+          "testCase": "should analyze a property and return opportunity score",
+          "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 2,
           "event": "movement-6:results:aggregated",
-          "handler": { "name": "governance.handlers#aggregateGovernanceResults" },
+          "handler": {
+            "name": "governance.handlers#aggregateGovernanceResults"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Aggregate results from all 5 movements",
@@ -513,12 +933,25 @@
             "id": "architecture-governance-enforcement-symphony.aggregategovernanceresults.1",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "aggregate Governance Results",
+          "acceptanceCriteria": [
+            "Given the aggregateGovernanceResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen aggregateGovernanceResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen aggregateGovernanceResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen aggregateGovernanceResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen aggregateGovernanceResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 3,
           "event": "movement-6:conformity-score:calculated",
-          "handler": { "name": "governance.handlers#calculateConformityScore" },
+          "handler": {
+            "name": "governance.handlers#calculateConformityScore"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Calculate overall conformity score (0-100%)",
@@ -526,12 +959,25 @@
             "id": "architecture-governance-enforcement-symphony.calculateconformityscore.2",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "calculate Conformity Score",
+          "acceptanceCriteria": [
+            "Given the calculateConformityScore operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen calculateConformityScore processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen calculateConformityScore encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen calculateConformityScore executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen calculateConformityScore operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 4,
           "event": "movement-6:violations:summarized",
-          "handler": { "name": "governance.handlers#summarizeViolations" },
+          "handler": {
+            "name": "governance.handlers#summarizeViolations"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Summarize all governance violations found",
@@ -539,12 +985,25 @@
             "id": "architecture-governance-enforcement-symphony.summarizeviolations.3",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "summarize Violations",
+          "acceptanceCriteria": [
+            "Given the summarizeViolations operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen summarizeViolations processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen summarizeViolations encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen summarizeViolations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen summarizeViolations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\spa-validator.stage-crew-violations.test.ts",
+          "testCase": "stage:cue",
+          "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 5,
           "event": "movement-6:decision:made",
-          "handler": { "name": "governance.handlers#makeGovernanceDecision" },
+          "handler": {
+            "name": "governance.handlers#makeGovernanceDecision"
+          },
           "kind": "synthesis",
           "timing": "immediate",
           "description": "Decide: PASS (allow changes) or FAIL (reject changes)",
@@ -552,12 +1011,25 @@
             "id": "architecture-governance-enforcement-symphony.makegovernancedecision.4",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "make Governance Decision",
+          "acceptanceCriteria": [
+            "Given the makeGovernanceDecision operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen makeGovernanceDecision processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen makeGovernanceDecision encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen makeGovernanceDecision executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen makeGovernanceDecision operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
+          "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 6,
           "event": "movement-6:report:generated",
-          "handler": { "name": "governance.handlers#generateGovernanceReport" },
+          "handler": {
+            "name": "governance.handlers#generateGovernanceReport"
+          },
           "kind": "reporting",
           "timing": "immediate",
           "description": "Generate comprehensive governance report with recommendations",
@@ -565,12 +1037,25 @@
             "id": "architecture-governance-enforcement-symphony.generategovernancereport.5",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "Generate or Create generate Governance Report",
+          "acceptanceCriteria": [
+            "Given the generateGovernanceReport operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateGovernanceReport processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateGovernanceReport encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateGovernanceReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateGovernanceReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "number": 7,
           "event": "governance:complete",
-          "handler": { "name": "governance.handlers#concludeGovernanceEnforcement" },
+          "handler": {
+            "name": "governance.handlers#concludeGovernanceEnforcement"
+          },
           "kind": "conclusion",
           "timing": "immediate",
           "description": "Conclude governance enforcement; exit with appropriate status code",
@@ -578,9 +1063,26 @@
             "id": "architecture-governance-enforcement-symphony.concludegovernanceenforcement.6",
             "scope": "orchestration",
             "kind": "orchestration"
-          }
+          },
+          "scenario": "conclude Governance Enforcement",
+          "acceptanceCriteria": [
+            "Given the concludeGovernanceEnforcement operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen concludeGovernanceEnforcement processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen concludeGovernanceEnforcement encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen concludeGovernanceEnforcement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen concludeGovernanceEnforcement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
+          "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
+          "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "persona": "Governance lead",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
-  ]
+  ],
+  "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+  "persona": "Governance lead",
+  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
 }

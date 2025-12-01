@@ -14,7 +14,18 @@
           "dynamics": "mf",
           "handler": "loadComponents",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Load and Initialize Application Components",
+          "acceptanceCriteria": [
+            "Given component initialization request\nWhen loadComponents executes\nThen all required components are loaded\nAnd components initialize within 500ms\nAnd initialization order respects dependencies",
+            "Given components with external dependencies\nWhen loadComponents processes them\nThen async dependencies are resolved\nAnd circular dependencies are detected and prevented\nAnd all components reach ready state",
+            "Given initialization with configuration\nWhen loadComponents applies config\nThen all components receive proper configuration\nAnd config errors prevent initialization with clear messaging\nAnd system state is consistent post-initialization",
+            "Given performance requirement\nWhen loadComponents completes\nThen total load time is < 500ms\nAnd memory footprint scales linearly\nAnd DOM time is < 200ms",
+            "Given component initialization failure\nWhen a component fails to load\nThen error is propagated with context\nAnd remaining components continue loading\nAnd system can recover with fallback components"
+          ],
+          "userStory": "As an application initializer, I want to load all components with proper dependency resolution in <500ms so that the app becomes interactive quickly (target: <1s Time to Interactive).",
+          "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
+          "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts"
         },
         {
           "beat": 2,
@@ -23,10 +34,27 @@
           "dynamics": "mf",
           "handler": "notifyUi",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "acceptanceCriteria": [
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
+          ],
+          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+      "persona": "Library curator",
+      "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+  "persona": "Library curator",
+  "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
 }

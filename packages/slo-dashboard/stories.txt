@@ -1,0 +1,20 @@
+# Domain: slo-dashboard
+
+[symphony:dashboard.load]
+role: SRE
+movementStory: As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.
+beat: loadBudgets -> As an SRE, I need `loadBudgets` to fetch and validate budget data.
+beat: loadMetrics -> As an SRE, I need `loadMetrics` to fetch recent metrics reliably.
+beat: computeCompliance -> As an SRE, I need `computeCompliance` to calculate status and thresholds deterministically.
+
+[symphony:dashboard.refresh.metrics]
+role: SRE
+movementStory: As an SRE, I need dashboard refresh to reload metrics and update compliance quickly.
+beat: loadMetrics -> As an SRE, I need `loadMetrics` to fetch updated metrics.
+beat: computeCompliance -> As an SRE, I need `computeCompliance` to recompute status.
+
+[symphony:dashboard.export.report]
+role: SRE
+movementStory: As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.
+beat: serializeDashboardState -> As an SRE, I need `serializeDashboardState` to produce a stable report.
+beat: triggerExportDownload -> As an SRE, I need `triggerExportDownload` to initiate download reliably.

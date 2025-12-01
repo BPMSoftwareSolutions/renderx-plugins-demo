@@ -19,7 +19,19 @@
             "id": "control-panel-css-delete-symphony.deletecssclass.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 1,
+          "scenario": "Delete or Remove delete Css Class",
+          "acceptanceCriteria": [
+            "Given the deleteCssClass operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deleteCssClass processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deleteCssClass encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen deleteCssClass executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deleteCssClass operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\delete.spec.ts",
+          "testCase": "publishes canvas.component.deleted when publishDeleted is called",
+          "userStory": "As an operations system, I want deleteCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -33,9 +45,27 @@
             "id": "control-panel-css-delete-symphony.notifyui.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "number": 2,
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "acceptanceCriteria": [
+            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
+            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
+            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
+            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
+            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
+          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want deleteCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want deleteCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
 }

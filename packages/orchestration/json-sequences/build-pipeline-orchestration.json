@@ -11,31 +11,267 @@
     {
       "name": "Validation & Verification",
       "beats": [
-        { "name": "load-context", "handler": { "name": "orchestration/build-pipeline.build.validation#loadBuildContext" } },
-        { "name": "validate-domains", "handler": { "name": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains" } },
-        { "name": "validate-governance", "handler": { "name": "orchestration/build-pipeline.build.validation#validateGovernanceRules" } },
-        { "name": "validate-agent", "handler": { "name": "orchestration/build-pipeline.build.validation#validateAgentBehavior" } },
-        { "name": "record-validation", "handler": { "name": "orchestration/build-pipeline.build.validation#recordValidationResults" } }
-      ]
+        {
+          "name": "load-context",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#loadBuildContext"
+          },
+          "scenario": "load Build Context",
+          "acceptanceCriteria": [
+            "Given the loadBuildContext operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadBuildContext processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadBuildContext encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadBuildContext executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadBuildContext operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
+          "testCase": "should build context for symbol generation",
+          "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "validate-domains",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateOrchestrationDomains"
+          },
+          "scenario": "Validate or Verify validate Orchestration Domains",
+          "acceptanceCriteria": [
+            "Given the validateOrchestrationDomains operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateOrchestrationDomains processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateOrchestrationDomains encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateOrchestrationDomains executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateOrchestrationDomains operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateOrchestrationDomains to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "validate-governance",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateGovernanceRules"
+          },
+          "scenario": "Validate or Verify validate Governance Rules",
+          "acceptanceCriteria": [
+            "Given the validateGovernanceRules operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateGovernanceRules processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateGovernanceRules encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateGovernanceRules executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateGovernanceRules operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateGovernanceRules to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "validate-agent",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#validateAgentBehavior"
+          },
+          "scenario": "Validate or Verify validate Agent Behavior",
+          "acceptanceCriteria": [
+            "Given the validateAgentBehavior operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateAgentBehavior processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateAgentBehavior encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateAgentBehavior executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateAgentBehavior operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateAgentBehavior to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "record-validation",
+          "handler": {
+            "name": "orchestration/build-pipeline.build.validation#recordValidationResults"
+          },
+          "scenario": "record Validation Results",
+          "acceptanceCriteria": [
+            "Given the recordValidationResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen recordValidationResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen recordValidationResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen recordValidationResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen recordValidationResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want recordValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        }
+      ],
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
     {
       "name": "Manifest Preparation",
       "beats": [
-        { "name": "regenerate-domains", "handler": { "name": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains" } },
-        { "name": "sync-json-sources", "handler": { "name": "orchestration/build-pipeline.manifests#syncJsonSources" } },
-        { "name": "generate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#generateManifests" } },
-        { "name": "validate-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#validateManifestIntegrity" } },
-        { "name": "record-manifests", "handler": { "name": "orchestration/build-pipeline.manifests#recordManifestState" } }
-      ]
+        {
+          "name": "regenerate-domains",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#regenerateOrchestrationDomains"
+          },
+          "scenario": "Generate or Create regenerate Orchestration Domains",
+          "acceptanceCriteria": [
+            "Given the regenerateOrchestrationDomains operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen regenerateOrchestrationDomains processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen regenerateOrchestrationDomains encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen regenerateOrchestrationDomains executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen regenerateOrchestrationDomains operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
+          "testCase": "should have SAFe Continuous Delivery Pipeline registered",
+          "userStory": "As an operations system, I want regenerateOrchestrationDomains to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "sync-json-sources",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#syncJsonSources"
+          },
+          "scenario": "sync Json Sources",
+          "acceptanceCriteria": [
+            "Given the syncJsonSources operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen syncJsonSources processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen syncJsonSources encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen syncJsonSources executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen syncJsonSources operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "userStory": "As an operations system, I want syncJsonSources to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "generate-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#generateManifests"
+          },
+          "scenario": "Generate or Create generate Manifests",
+          "acceptanceCriteria": [
+            "Given the generateManifests operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen generateManifests processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen generateManifests encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen generateManifests executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen generateManifests operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want generateManifests to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "validate-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#validateManifestIntegrity"
+          },
+          "scenario": "Validate or Verify validate Manifest Integrity",
+          "acceptanceCriteria": [
+            "Given the validateManifestIntegrity operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen validateManifestIntegrity processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen validateManifestIntegrity encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen validateManifestIntegrity executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen validateManifestIntegrity operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want validateManifestIntegrity to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "record-manifests",
+          "handler": {
+            "name": "orchestration/build-pipeline.manifests#recordManifestState"
+          },
+          "scenario": "record Manifest State",
+          "acceptanceCriteria": [
+            "Given the recordManifestState operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen recordManifestState processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen recordManifestState encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen recordManifestState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen recordManifestState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
+          "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
+          "userStory": "As an operations system, I want recordManifestState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        }
+      ],
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
+      "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     },
     {
       "name": "Package Building",
       "beats": [
-        { "name": "initialize", "handler": { "name": "orchestration/build-pipeline.packages.build#initializePackageBuild" } },
-        { "name": "build-components", "handler": { "name": "orchestration/build-pipeline.packages.build#buildComponentsPackage" } },
-        { "name": "build-musical-conductor", "handler": { "name": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage" } },
-        { "name": "build-host-sdk", "handler": { "name": "orchestration/build-pipeline.packages.build#buildHostSdkPackage" } }
-      ]
+        {
+          "name": "initialize",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#initializePackageBuild"
+          },
+          "scenario": "Initialize or Configure initialize Package Build",
+          "acceptanceCriteria": [
+            "Given the initializePackageBuild operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen initializePackageBuild processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen initializePackageBuild encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 500ms\nWhen initializePackageBuild executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen initializePackageBuild operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
+          "testCase": "exposes handlers and a register(conductor) function",
+          "userStory": "As an operations system, I want initializePackageBuild to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "build-components",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildComponentsPackage"
+          },
+          "scenario": "Generate or Create build Components Package",
+          "acceptanceCriteria": [
+            "Given the buildComponentsPackage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen buildComponentsPackage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen buildComponentsPackage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen buildComponentsPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen buildComponentsPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
+          "testCase": "exposes handlers and a register(conductor) function",
+          "userStory": "As an operations system, I want buildComponentsPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "build-musical-conductor",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildMusicalConductorPackage"
+          },
+          "scenario": "Generate or Create build Musical Conductor Package",
+          "acceptanceCriteria": [
+            "Given the buildMusicalConductorPackage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen buildMusicalConductorPackage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen buildMusicalConductorPackage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen buildMusicalConductorPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen buildMusicalConductorPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\sequences\\MusicalConductor.minimal.test.ts",
+          "testCase": "should create a MusicalConductor instance",
+          "userStory": "As an operations system, I want buildMusicalConductorPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        },
+        {
+          "name": "build-host-sdk",
+          "handler": {
+            "name": "orchestration/build-pipeline.packages.build#buildHostSdkPackage"
+          },
+          "scenario": "Generate or Create build Host Sdk Package",
+          "acceptanceCriteria": [
+            "Given the buildHostSdkPackage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen buildHostSdkPackage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen buildHostSdkPackage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen buildHostSdkPackage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen buildHostSdkPackage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
+          "testCase": "should detect incompatible major versions",
+          "userStory": "As an operations system, I want buildHostSdkPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+        }
+      ],
+      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "persona": "DevOps engineer",
+      "businessValue": "Accelerates onboarding; reduces setup time by 50%; enables self-service configuration; improves first-time success"
     }
-  ]
+  ],
+  "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+  "persona": "DevOps engineer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

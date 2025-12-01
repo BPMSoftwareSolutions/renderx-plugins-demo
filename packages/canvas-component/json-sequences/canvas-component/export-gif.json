@@ -14,10 +14,27 @@
           "dynamics": "mf",
           "handler": "exportSvgToGif",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "export Svg To Gif",
+          "acceptanceCriteria": [
+            "Given the exportSvgToGif operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen exportSvgToGif processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen exportSvgToGif encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen exportSvgToGif executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen exportSvgToGif operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an engineer, I need `exportSvgToGif` to rasterize frames and encode GIF with telemetry.",
+          "testCase": "success minimal export triggers download without error",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a platform operator, I need GIF export to render frames and encode deterministically within ≤2s P95.",
+      "persona": "Platform operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a platform operator, I need GIF export to render frames and encode deterministically within ≤2s P95.",
+  "persona": "Platform operator",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

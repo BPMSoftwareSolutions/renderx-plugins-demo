@@ -19,7 +19,18 @@
             "id": "canvas-component-import-symphony.openuifile.0",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "open Ui File",
+          "acceptanceCriteria": [
+            "Given the openUiFile operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen openUiFile processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen openUiFile encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen openUiFile executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen openUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want openUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 2,
@@ -33,7 +44,18 @@
             "id": "canvas-component-import-symphony.parseuifile.1",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "parse Ui File",
+          "acceptanceCriteria": [
+            "Given the parseUiFile operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen parseUiFile processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen parseUiFile encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen parseUiFile executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen parseUiFile operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want parseUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
         },
         {
           "beat": 3,
@@ -47,7 +69,18 @@
             "id": "canvas-component-import-symphony.injectcssclasses.2",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "inject Css Classes",
+          "acceptanceCriteria": [
+            "Given the injectCssClasses operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen injectCssClasses processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen injectCssClasses encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen injectCssClasses executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen injectCssClasses operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want injectCssClasses to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "collects CSS from components with template.classRefs (current export format)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts"
         },
         {
           "beat": 4,
@@ -61,7 +94,18 @@
             "id": "canvas-component-import-symphony.createcomponentssequentially.3",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "Generate or Create create Components Sequentially",
+          "acceptanceCriteria": [
+            "Given the createComponentsSequentially operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen createComponentsSequentially processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen createComponentsSequentially encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 2 seconds\nWhen createComponentsSequentially executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen createComponentsSequentially operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want createComponentsSequentially to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts"
         },
         {
           "beat": 5,
@@ -75,9 +119,26 @@
             "id": "canvas-component-import-symphony.applyhierarchyandorder.4",
             "scope": "plugin",
             "kind": "plugin"
-          }
+          },
+          "scenario": "apply Hierarchy And Order",
+          "acceptanceCriteria": [
+            "Given the applyHierarchyAndOrder operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen applyHierarchyAndOrder processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen applyHierarchyAndOrder encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen applyHierarchyAndOrder executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen applyHierarchyAndOrder operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want applyHierarchyAndOrder to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "placeholder passes",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want openUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
-  ]
+  ],
+  "userStory": "As an operations system, I want openUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

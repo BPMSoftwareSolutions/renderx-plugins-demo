@@ -14,7 +14,19 @@
           "dynamics": "mf",
           "handler": "prepareField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "prepare Field",
+          "acceptanceCriteria": [
+            "Given the prepareField operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen prepareField processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen prepareField encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen prepareField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen prepareField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": "As an engineer, I need `prepareField` to normalize input and validate."
         },
         {
           "beat": 2,
@@ -23,7 +35,19 @@
           "dynamics": "mf",
           "handler": "dispatchField",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "dispatch Field",
+          "acceptanceCriteria": [
+            "Given the dispatchField operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen dispatchField processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen dispatchField encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen dispatchField executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen dispatchField operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": "As an engineer, I need `dispatchField` to route changes to the canvas component."
         },
         {
           "beat": 3,
@@ -32,7 +56,19 @@
           "dynamics": "mf",
           "handler": "setDirty",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "set Dirty",
+          "acceptanceCriteria": [
+            "Given the setDirty operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen setDirty processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen setDirty encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen setDirty executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen setDirty operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "tests\\digital-assets.spec.ts",
+          "testCase": "resolves and exposes correct package name",
+          "userStory": "As an engineer, I need `setDirty` to mark state and enable save."
         },
         {
           "beat": 4,
@@ -41,11 +77,29 @@
           "dynamics": "mf",
           "handler": "awaitRefresh",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "await Refresh",
+          "acceptanceCriteria": [
+            "Given the awaitRefresh operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen awaitRefresh processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen awaitRefresh encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen awaitRefresh executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen awaitRefresh operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "testCase": "setDirty marks isDirty with timestamp",
+          "userStory": "As an engineer, I need `awaitRefresh` to synchronize view updates."
         }
-      ]
+      ],
+      "userStory": "As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.",
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 4,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.",
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

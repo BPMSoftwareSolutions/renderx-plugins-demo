@@ -31,13 +31,13 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ## 📊 Domain Registry Overview
 
-> **Auto-generated on 2025-11-30T09:40:52.853Z**
+> **Auto-generated on 2025-12-01T01:01:47.921Z**
 > This section is automatically maintained. To update: `npm run generate:readme`
 
-**Total Domains**: 78 (75 active, 1 deprecated, 1 experimental)
+**Total Domains**: 80 (77 active, 1 deprecated, 1 experimental)
 
 ### By Type
-- **capability**: 59 domains
+- **capability**: 61 domains
 - **orchestration**: 18 domains
 - **workflow**: 1 domains
 
@@ -47,17 +47,19 @@ Check out these supporting projects for more detail on the underlying architectu
 - **Platform-Infrastructure**: 4 domains
 - **Platform-Observability**: 1 domains
 - **Platform-DevEx**: 1 domains
+- **Platform Reliability**: 1 domains
+- **Platform Observability**: 1 domains
 
 ### 🎼 Key Orchestration Domains
 
-- **[orchestration-core](.generated/analysis/orchestration-core/orchestration-core-rich-markdown-2025-11-30T09-14-54-209Z.md)** (69 handlers, 76.51% coverage, 87.5% conformity)
-- **[build-pipeline-orchestration](.generated/analysis/build-pipeline-orchestration-rich-markdown-2025-11-28T20-04-20-338Z.md)** (403 handlers, 73.94% coverage, 87.5% conformity)
+- **[orchestration-core](#)**
+- **[build-pipeline-orchestration](#)**
 - **[renderx-web-orchestration](#)**
-- **[graphing-orchestration](.generated/analysis/graphing-orchestration/graphing-orchestration-rich-markdown-2025-11-30T09-15-04-809Z.md)** (69 handlers, 80.49% coverage, 87.5% conformity): Orchestration domain: graphing-orchestration
-- **[self_sequences](.generated/analysis/self_sequences/self_sequences-rich-markdown-2025-11-30T09-15-07-839Z.md)** (69 handlers, 81.26% coverage, 87.5% conformity): Orchestration domain: self_sequences
-- **[musical-conductor-orchestration](.generated/analysis/musical-conductor-orchestration/musical-conductor-orchestration-rich-markdown-2025-11-30T09-15-14-101Z.md)** (69 handlers, 83.02% coverage, 87.5% conformity): High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
-- **[cag-agent-workflow](.generated/analysis/cag-agent-workflow/cag-agent-workflow-rich-markdown-2025-11-30T09-15-17-300Z.md)** (69 handlers, 76.64% coverage, 87.5% conformity): Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.
-- **[orchestration-audit-session](.generated/analysis/orchestration-audit-session/orchestration-audit-session-rich-markdown-2025-11-30T09-15-20-481Z.md)** (69 handlers, 84.48% coverage, 87.5% conformity): Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
+- **[graphing-orchestration](#)**: Orchestration domain: graphing-orchestration
+- **[self_sequences](#)**: Orchestration domain: self_sequences
+- **[musical-conductor-orchestration](#)**: High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
+- **[cag-agent-workflow](#)**: Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.
+- **[orchestration-audit-session](#)**: Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
 
 
 <details>
@@ -93,13 +95,15 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ### 🔧 Capability Domains
 
-**55 capability domains** providing UI features, plugin sequences, and user interactions.
+**57 capability domains** providing UI features, plugin sequences, and user interactions.
 
 
 <details>
 <summary>View capability domains</summary>
 
 Top capabilities:
+- **self-healing**: Self-Healing capability domain
+- **slo-dashboard**: SLO Dashboard capability domain
 - **canvas-component-copy-symphony**: Plugin sequence: Canvas Component Copy
 - **canvas-component-create-symphony**: Plugin sequence: Canvas Component Create
 - **canvas-component-delete-symphony**: Plugin sequence: Canvas Component Delete
@@ -108,17 +112,15 @@ Top capabilities:
 - **canvas-component-deselect-symphony**: Plugin sequence: Canvas Component Deselect
 - **canvas-component-deselect-requested-symphony**: Plugin sequence: Canvas Component Deselect Requested
 - **canvas-component-drag-end-symphony**: Plugin sequence: Canvas Component Drag End
-- **canvas-component-drag-move-symphony**: Plugin sequence: Canvas Component Drag Move
-- **canvas-component-drag-start-symphony**: Plugin sequence: Canvas Component Drag Start
 
-_...and 45 more_
+_...and 47 more_
 </details>
 
 
 ### 📈 Analysis Status
 
 - **18** orchestration domains have analysis configuration
-- **Latest Validation**: 2025-11-27T04:07:56.011Z
+- **Latest Validation**: 2025-12-01T01:01:46.699Z
 - **Analysis Reports**: [View all](.generated/analysis/)
 
 ## Governance Tooling Registry
@@ -634,7 +636,7 @@ This README is automatically generated from:
 - `.generated/analysis/**` - Code analysis reports
 - Domain analysis configuration
 
-**Last Generated**: 2025-11-30T09:40:52.853Z
+**Last Generated**: 2025-12-01T01:01:47.921Z
 
 To update this README, run:
 ```bash

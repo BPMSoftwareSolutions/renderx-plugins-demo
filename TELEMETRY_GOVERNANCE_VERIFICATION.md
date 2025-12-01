@@ -1,13 +1,13 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: .generated/telemetry-validation-report.json -->
-<!-- Generated: 2025-11-27T04:08:46.573Z -->
+<!-- Generated: 2025-12-01T01:02:50.246Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Telemetry Governance Verification
 
-**Date**: 11/26/2025  
+**Date**: 11/30/2025  
 **Version**: 1.3.0  
-**Status**: UNKNOWN
+**Status**: PENDING
 
 ---
 
@@ -15,10 +15,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Sprints | 2 |
+| Total Sprints | 0 |
 | Completed Sprints | 0 |
-| PASS Status | 0/2 |
-| Overall Status | **UNKNOWN** |
+| PASS Status | 0/0 |
+| Overall Status | **PENDING** |
 
 ## Sprint Coverage Details
 
@@ -36,9 +36,9 @@
 
 ## Readiness Assessment
 
-⚠️ **COVERAGE INCOMPLETE**
+⏳ **PENDING TELEMETRY CAPTURES**
 
-2 sprint(s) have incomplete coverage. Review missing signatures above.
+No telemetry captures yet. Run demo and execute capture script to populate validation data.
 
 
 

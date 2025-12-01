@@ -14,10 +14,27 @@
           "dynamics": "mf",
           "handler": "startLineResize",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "start Line Resize",
+          "acceptanceCriteria": [
+            "Given the startLineResize operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen startLineResize processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen startLineResize encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen startLineResize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen startLineResize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an engineer, I need `startLineResize` to compute segment anchors and prepare overlay.",
+          "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a design systems engineer, I need line-resize start to expose precise handles and geometry for lines within ≤100ms P95.",
+      "persona": "Design systems engineer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a design systems engineer, I need line-resize start to expose precise handles and geometry for lines within ≤100ms P95.",
+  "persona": "Design systems engineer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

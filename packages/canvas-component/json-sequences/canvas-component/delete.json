@@ -14,7 +14,18 @@
           "dynamics": "mf",
           "handler": "deleteComponent",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "Delete or Remove delete Component",
+          "acceptanceCriteria": [
+            "Given the deleteComponent operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen deleteComponent processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen deleteComponent encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 100ms\nWhen deleteComponent executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen deleteComponent operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
         },
         {
           "beat": 2,
@@ -23,10 +34,27 @@
           "dynamics": "mf",
           "handler": "publishDeleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Deleted",
+          "acceptanceCriteria": [
+            "Given the publishDeleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 minute\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen publishDeleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen publishDeleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 minute\nWhen publishDeleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen publishDeleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an operations system, I want publishDeleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+      "persona": "Security-conscious operator",
+      "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
     }
   ],
-  "beats": 2
+  "beats": 2,
+  "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+  "persona": "Security-conscious operator",
+  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
 }

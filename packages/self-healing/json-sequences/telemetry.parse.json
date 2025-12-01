@@ -17,7 +17,19 @@
           "dynamics": "mf",
           "handler": "parseTelemetryRequested",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "scenario": "parse Telemetry Requested",
+          "acceptanceCriteria": [
+            "Given the parseTelemetryRequested operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen parseTelemetryRequested processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen parseTelemetryRequested encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen parseTelemetryRequested executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen parseTelemetryRequested operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\1-parse-telemetry-requested.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want parseTelemetryRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 2,
@@ -27,7 +39,19 @@
           "dynamics": "mf",
           "handler": "loadLogFiles",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "load Log Files",
+          "acceptanceCriteria": [
+            "Given the loadLogFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen loadLogFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen loadLogFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen loadLogFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen loadLogFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
+          "testCase": "should load valid logs and skip corrupted ones, reporting progress",
+          "userStory": "As an operations system, I want loadLogFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 3,
@@ -37,7 +61,19 @@
           "dynamics": "mf",
           "handler": "extractTelemetryEvents",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "extract Telemetry Events",
+          "acceptanceCriteria": [
+            "Given the extractTelemetryEvents operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen extractTelemetryEvents processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen extractTelemetryEvents encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen extractTelemetryEvents executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen extractTelemetryEvents operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\3-extract-telemetry-events.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want extractTelemetryEvents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 4,
@@ -47,7 +83,19 @@
           "dynamics": "mf",
           "handler": "normalizeTelemetryData",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 4,
+          "scenario": "normalize Telemetry Data",
+          "acceptanceCriteria": [
+            "Given the normalizeTelemetryData operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen normalizeTelemetryData processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen normalizeTelemetryData encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen normalizeTelemetryData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen normalizeTelemetryData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\4-normalize-telemetry-data.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want normalizeTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 5,
@@ -57,7 +105,19 @@
           "dynamics": "mf",
           "handler": "aggregateTelemetryMetrics",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 5,
+          "scenario": "aggregate Telemetry Metrics",
+          "acceptanceCriteria": [
+            "Given the aggregateTelemetryMetrics operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen aggregateTelemetryMetrics processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen aggregateTelemetryMetrics encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen aggregateTelemetryMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen aggregateTelemetryMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\5-aggregate-telemetry-metrics.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want aggregateTelemetryMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 6,
@@ -67,7 +127,19 @@
           "dynamics": "mf",
           "handler": "storeTelemetryDatabase",
           "timing": "async",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 6,
+          "scenario": "store Telemetry Database",
+          "acceptanceCriteria": [
+            "Given the storeTelemetryDatabase operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen storeTelemetryDatabase processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen storeTelemetryDatabase encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen storeTelemetryDatabase executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen storeTelemetryDatabase operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\6-store-telemetry-database.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want storeTelemetryDatabase to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         },
         {
           "beat": 7,
@@ -77,11 +149,29 @@
           "dynamics": "mf",
           "handler": "parseTelemetryCompleted",
           "timing": "immediate",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 7,
+          "scenario": "parse Telemetry Completed",
+          "acceptanceCriteria": [
+            "Given the parseTelemetryCompleted operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen parseTelemetryCompleted processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen parseTelemetryCompleted encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen parseTelemetryCompleted executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen parseTelemetryCompleted operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\7-parse-telemetry-completed.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": "As an operations system, I want parseTelemetryCompleted to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
-      ]
+      ],
+      "userStory": "As an operations system, I want parseTelemetryRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 7,
-  "tempo": 120
+  "tempo": 120,
+  "userStory": "As an operations system, I want parseTelemetryRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

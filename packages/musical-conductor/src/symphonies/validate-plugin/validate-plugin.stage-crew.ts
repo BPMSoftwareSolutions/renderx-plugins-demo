@@ -17,35 +17,45 @@ export const validatePluginShape = (data: any, ctx: any) => {
   if (!plugin) {
     throw new Error("Plugin cannot be null or undefined");
   }
-  
-  if (!plugin.name) {
-    throw new Error("Plugin must have a name");
+  const pluginName = plugin.metadata?.id ?? "unknown-plugin";
+  const pluginVersion = plugin.metadata?.version;
+  if (!plugin.metadata?.id) {
+    throw new Error("Plugin must have a metadata.id");
   }
-  
-  if (!plugin.version) {
-    (globalThis as any).__MC_WARN(`⚠️ Plugin "${plugin.name}" missing version field`);
+  if (!pluginVersion) {
+    (globalThis as any).__MC_WARN(`⚠️ Plugin "${pluginName}" missing version field`);
   }
   
   ctx.payload.shapeValid = true;
-  (globalThis as any).__MC_LOG(`✅ Plugin shape validated: "${plugin.name}"`);
+  (globalThis as any).__MC_LOG(`✅ Plugin shape validated: "${pluginName}"`);
 };
 
 /** Movement 1, Beat 2: Check plugin manifest */
 export const checkManifest = (data: any, ctx: any) => {
   const plugin: SPAPlugin = ctx.payload.plugin;
+  const pluginName = plugin.metadata?.id ?? "unknown-plugin";
   
-  const manifestFields = ['name', 'version', 'type', 'sequences'];
+  const manifestFields = ['metadata.id', 'metadata.version', 'sequence'];
   const missingFields: string[] = [];
   
   manifestFields.forEach(field => {
-    if (!(field in plugin)) {
-      missingFields.push(field);
+    if (field === 'metadata.id' && !plugin.metadata?.id) {
+      missingFields.push('metadata.id');
+      return;
+    }
+    if (field === 'metadata.version' && !plugin.metadata?.version) {
+      missingFields.push('metadata.version');
+      return;
+    }
+    if (field === 'sequence' && !plugin.sequence) {
+      missingFields.push('sequence');
+      return;
     }
   });
   
   if (missingFields.length > 0) {
     (globalThis as any).__MC_WARN(
-      `⚠️ Plugin "${plugin.name}" missing manifest fields: ${missingFields.join(', ')}`
+      `⚠️ Plugin "${pluginName}" missing manifest fields: ${missingFields.join(', ')}`
     );
     ctx.payload.manifestComplete = false;
     ctx.payload.missingFields = missingFields;
@@ -53,93 +63,74 @@ export const checkManifest = (data: any, ctx: any) => {
     ctx.payload.manifestComplete = true;
   }
   
-  (globalThis as any).__MC_LOG(`✅ Manifest checked: "${plugin.name}"`);
+  (globalThis as any).__MC_LOG(`✅ Manifest checked: "${pluginName}"`);
 };
 
 /** Movement 1, Beat 3: Verify exported sequences */
 export const verifyExports = (data: any, ctx: any) => {
   const plugin: SPAPlugin = ctx.payload.plugin;
+  const pluginName = plugin.metadata?.id ?? "unknown-plugin";
   
-  if (!plugin.sequences || !Array.isArray(plugin.sequences)) {
-    throw new Error(`Plugin "${plugin.name}" must export sequences array`);
+  if (!plugin.sequence) {
+    throw new Error(`Plugin "${pluginName}" must export a sequence`);
   }
   
-  if (plugin.sequences.length === 0) {
-    (globalThis as any).__MC_WARN(`⚠️ Plugin "${plugin.name}" exports empty sequences array`);
-  }
-  
-  ctx.payload.sequenceCount = plugin.sequences.length;
+  ctx.payload.sequenceCount = 1;
   ctx.payload.exportsValid = true;
   
   (globalThis as any).__MC_LOG(
-    `✅ Exports verified: "${plugin.name}" provides ${plugin.sequences.length} sequences`
+    `✅ Exports verified: "${pluginName}" provides 1 sequence`
   );
 };
 
 /** Movement 2, Beat 1: Check SPA compliance */
 export const checkSPACompliance = (data: any, ctx: any) => {
   const plugin: SPAPlugin = ctx.payload.plugin;
+  const pluginName = plugin.metadata?.id ?? "unknown-plugin";
   const violations: string[] = [];
   
-  // Check for SPA compliance markers
-  if (!plugin.type || !['symphony', 'orchestration', 'utility'].includes(plugin.type)) {
-    violations.push('Plugin type must be symphony, orchestration, or utility');
+  if (!plugin.sequence) {
+    violations.push('Plugin must provide a sequence');
   }
-  
-  // Check for proper handler structure
-  plugin.sequences?.forEach((seq: any, idx: number) => {
-    if (!seq.movements || !Array.isArray(seq.movements)) {
-      violations.push(`Sequence ${idx + 1} missing movements array`);
-    }
-    
-    seq.movements?.forEach((mov: any, movIdx: number) => {
+  const seq = (plugin.sequence as any) || {};
+  if (!seq.movements || !Array.isArray(seq.movements)) {
+    violations.push(`Sequence missing movements array`);
+  } else {
+    seq.movements.forEach((mov: any, movIdx: number) => {
       if (!mov.beats || !Array.isArray(mov.beats)) {
-        violations.push(`Sequence ${idx + 1}, Movement ${movIdx + 1} missing beats array`);
+        violations.push(`Movement ${movIdx + 1} missing beats array`);
       }
     });
-  });
+  }
   
   if (violations.length > 0) {
     ctx.payload.spaCompliant = false;
     ctx.payload.spaViolations = violations;
     (globalThis as any).__MC_WARN(
-      `⚠️ SPA compliance violations in "${plugin.name}": ${violations.join('; ')}`
+      `⚠️ SPA compliance violations in "${pluginName}": ${violations.join('; ')}`
     );
   } else {
     ctx.payload.spaCompliant = true;
-    (globalThis as any).__MC_LOG(`✅ SPA compliance verified: "${plugin.name}"`);
+    (globalThis as any).__MC_LOG(`✅ SPA compliance verified: "${pluginName}"`);
   }
 };
 
 /** Movement 2, Beat 2: Validate handler contracts */
 export const validateHandlerContracts = (data: any, ctx: any) => {
   const plugin: SPAPlugin = ctx.payload.plugin;
+  const pluginName = plugin.metadata?.id ?? "unknown-plugin";
   const contractErrors: string[] = [];
   
-  plugin.sequences?.forEach((seq: any, seqIdx: number) => {
-    seq.movements?.forEach((mov: any, movIdx: number) => {
-      mov.beats?.forEach((beat: any, beatIdx: number) => {
-        // Check handler signature
-        if (!beat.handler && !beat.handlerName) {
-          contractErrors.push(
-            `Seq ${seqIdx + 1}, Mov ${movIdx + 1}, Beat ${beatIdx + 1}: Missing handler`
-          );
-        }
-        
-        // Check beat ID
-        if (!beat.id) {
-          contractErrors.push(
-            `Seq ${seqIdx + 1}, Mov ${movIdx + 1}, Beat ${beatIdx + 1}: Missing beat ID`
-          );
-        }
-        
-        // Validate handler is callable
-        if (beat.handler && typeof beat.handler !== 'function') {
-          contractErrors.push(
-            `Seq ${seqIdx + 1}, Mov ${movIdx + 1}, Beat ${beatIdx + 1}: Handler not a function`
-          );
-        }
-      });
+  const seq = plugin.sequence as any;
+  seq.movements?.forEach((mov: any, movIdx: number) => {
+    mov.beats?.forEach((beat: any, beatIdx: number) => {
+      // Validate beat structure per SequenceTypes
+      if (beat.beat === undefined || beat.beat === null) {
+        contractErrors.push(`Mov ${movIdx + 1}, Beat ${beatIdx + 1}: Missing beat number`);
+      }
+      if (!beat.event || typeof beat.event !== 'string') {
+        contractErrors.push(`Mov ${movIdx + 1}, Beat ${beatIdx + 1}: Missing event type`);
+      }
     });
   });
   
@@ -149,7 +140,7 @@ export const validateHandlerContracts = (data: any, ctx: any) => {
     throw new Error(`Handler contract violations: ${contractErrors.join('; ')}`);
   } else {
     ctx.payload.contractsValid = true;
-    (globalThis as any).__MC_LOG(`✅ Handler contracts validated: "${plugin.name}"`);
+    (globalThis as any).__MC_LOG(`✅ Handler contracts validated: "${pluginName}"`);
   }
 };
 
@@ -159,14 +150,13 @@ export const verifyBeatMapping = (data: any, ctx: any) => {
   let totalBeats = 0;
   let mappedHandlers = 0;
   
-  plugin.sequences?.forEach((seq: any) => {
-    seq.movements?.forEach((mov: any) => {
-      mov.beats?.forEach((beat: any) => {
-        totalBeats++;
-        if (beat.handler || beat.handlerName) {
-          mappedHandlers++;
-        }
-      });
+  const seq = plugin.sequence as any;
+  seq.movements?.forEach((mov: any) => {
+    mov.beats?.forEach((beat: any) => {
+      totalBeats++;
+      if (beat.event) {
+        mappedHandlers++;
+      }
     });
   });
   
@@ -189,17 +179,13 @@ export const verifyBeatMapping = (data: any, ctx: any) => {
 export const checkResourceRequirements = (data: any, ctx: any) => {
   const plugin: SPAPlugin = ctx.payload.plugin;
   
-  // Check for resource declarations in sequences
   const resourceDeclarations: string[] = [];
-  
-  plugin.sequences?.forEach((seq: any) => {
-    if (seq.resources && Array.isArray(seq.resources)) {
-      resourceDeclarations.push(...seq.resources);
-    }
-  });
+  const seq = plugin.sequence as any;
+  if (seq.resources && Array.isArray(seq.resources)) {
+    resourceDeclarations.push(...seq.resources);
+  }
   
   ctx.payload.requiredResources = [...new Set(resourceDeclarations)];
-  
   (globalThis as any).__MC_LOG(
     `✅ Resource requirements: ${ctx.payload.requiredResources.length} unique resources`
   );
@@ -211,11 +197,10 @@ export const validatePriorities = (data: any, ctx: any) => {
   const validPriorities = ['HIGH', 'NORMAL', 'CHAINED'];
   const invalidPriorities: string[] = [];
   
-  plugin.sequences?.forEach((seq: any, idx: number) => {
-    if (seq.priority && !validPriorities.includes(seq.priority)) {
-      invalidPriorities.push(`Sequence ${idx + 1}: "${seq.priority}"`);
-    }
-  });
+  const seq = plugin.sequence as any;
+  if (seq.priority && !validPriorities.includes(seq.priority)) {
+    invalidPriorities.push(`Sequence: "${seq.priority}"`);
+  }
   
   if (invalidPriorities.length > 0) {
     (globalThis as any).__MC_WARN(
@@ -234,8 +219,8 @@ export const generateValidationReport = (data: any, ctx: any) => {
           contractsValid, totalBeats, mappedHandlers, requiredResources, prioritiesValid } = ctx.payload;
   
   const report = {
-    pluginName: plugin.name,
-    pluginVersion: plugin.version,
+    pluginName: plugin.metadata?.id ?? "unknown-plugin",
+    pluginVersion: plugin.metadata?.version ?? "unknown",
     timestamp: Date.now(),
     validation: {
       shape: shapeValid,
@@ -262,7 +247,7 @@ export const generateValidationReport = (data: any, ctx: any) => {
   ctx.payload.validationReport = report;
   ctx.payload.isValid = shapeValid && exportsValid && spaCompliant && contractsValid;
   
-  (globalThis as any).__MC_LOG(`📋 Validation report generated for "${plugin.name}"`);
+  (globalThis as any).__MC_LOG(`📋 Validation report generated for "${report.pluginName}"`);
 };
 
 /** Movement 4, Beat 2: Log validation results */

@@ -14,10 +14,27 @@
           "dynamics": "mf",
           "handler": "exportSvgToMp4",
           "timing": "immediate",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "scenario": "export Svg To Mp4",
+          "acceptanceCriteria": [
+            "Given the exportSvgToMp4 operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
+            "Given valid input parameters\nWhen exportSvgToMp4 processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
+            "Given error conditions\nWhen exportSvgToMp4 encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
+            "Given performance SLA of < 1 second\nWhen exportSvgToMp4 executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
+            "Given compliance and governance\nWhen exportSvgToMp4 operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
+          ],
+          "userStory": "As an engineer, I need `exportSvgToMp4` to rasterize frames and encode MP4 with telemetry.",
+          "testCase": "exports CSS classes from registry in the UI file",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts"
         }
-      ]
+      ],
+      "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+      "persona": "Platform operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 1
+  "beats": 1,
+  "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+  "persona": "Platform operator",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }
