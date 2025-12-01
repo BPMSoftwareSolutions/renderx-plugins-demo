@@ -2287,6 +2287,90 @@
           }
         ]
       }
+    },
+    {
+      "id": "renderx-web-orchestration",
+      "name": "RenderX Web Orchestration",
+      "emoji": "🎼",
+      "description": "Master orchestration pipeline coordinating build, test, validation, delivery, telemetry, and recovery phases for RenderX Web.",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages/orchestration/json-sequences/renderx-web-orchestration.json",
+      "movements": 6,
+      "beats": 30,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "RenderX Web Orchestration",
+        "sequence": {
+          "id": "renderx-web-orchestration",
+          "name": "RenderX Web Orchestration",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "safe-continuous-delivery-pipeline",
+      "name": "SAFe Continuous Delivery Pipeline",
+      "emoji": "🎼",
+      "description": "Scaled Agile Framework continuous delivery pipeline orchestration domain.",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 100,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "SAFe Continuous Delivery Pipeline",
+        "sequence": {
+          "id": "safe-continuous-delivery-pipeline",
+          "name": "SAFe Continuous Delivery Pipeline",
+          "tempo": 100,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "fractal-orchestration-domain-symphony",
+      "name": "fractal-orchestration-domain-symphony",
+      "emoji": "🎼",
+      "description": "Fractal architecture governance and domain narration orchestration.",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "experimental",
+      "sequenceFile": "packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Fractal Orchestration Domain Symphony",
+        "sequence": {
+          "id": "fractal-orchestration-domain-symphony",
+          "name": "Fractal Orchestration Domain Symphony",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": []
+      }
     }
   ]
 }
