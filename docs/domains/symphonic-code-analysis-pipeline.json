@@ -1,0 +1,109 @@
+{
+  "domain_id": "symphonic-code-analysis-pipeline",
+  "domain_type": "orchestration",
+  "title": "Symphonic Code Analysis Pipeline Domain",
+  "summary": "Pipeline that performs multi-dimensional code analysis and now persistently links user story enhancement & audit tooling for narrative quality governance.",
+  "root_context_ref": "UNIFIED_GOVERNANCE_AUTHORITY.json",
+  "parent_context_refs": [
+    "architecture-governance-enforcement-symphony"
+  ],
+  "context_lineage": [
+    "UNIFIED_GOVERNANCE_AUTHORITY.json",
+    "architecture-governance-enforcement-symphony",
+    "symphonic-code-analysis-pipeline"
+  ],
+  "bounded_context": {
+    "in_scope": [
+      "Static sequence JSON inspection",
+      "Beat-level metric extraction",
+      "User story coverage audit",
+      "Test linkage discovery"
+    ],
+    "out_of_scope": [
+      "Runtime performance profiling",
+      "Security scanning"
+    ],
+    "interfaces": [
+      "renderx-web-orchestration",
+      "documentation-governance",
+      "self-healing"
+    ]
+  },
+  "lifecycle": {
+    "stage": "active",
+    "introduced": "2025-11-01",
+    "last_review": "2025-11-30",
+    "next_review_due": "2025-12-30"
+  },
+  "stability": {
+    "score": 0.7,
+    "volatility_factors": [
+      "expanding analysis dimensions",
+      "story governance refinements"
+    ]
+  },
+  "ownership": {
+    "team": "Platform-Orchestration",
+    "primary_contact": "platform-orchestration@example.com",
+    "accountable_role": "Orchestration Lead"
+  },
+  "governance": {
+    "inherited_rules": [
+      "JSON-first authority",
+      "Auto-generated markdown reflections"
+    ],
+    "overrides": [],
+    "non_overridable": [
+      "integrity_checksum validation",
+      "lineage_hash verification"
+    ]
+  },
+  "artifacts": {
+    "json_sources": [
+      "packages/orchestration/json-sequences/symphonic-code-analysis-pipeline.json"
+    ],
+    "generated_markdown": [
+      "docs/generated/symphonic-code-analysis-pipeline/renderx-web-CODE-ANALYSIS-REPORT.md"
+    ],
+    "user_story_tooling": [
+      "scripts/apply-user-stories.cjs",
+      "scripts/audit-user-stories.cjs",
+      "discover-and-link-tests.cjs",
+      "enhance-symphonies-gherkin.cjs",
+      "enhance-symphonies-measurable.cjs",
+      "enhance-symphonies-po.cjs"
+    ]
+  },
+  "cross_domain_links": [
+    {
+      "link_id": "code-analysis-to-renderx-web-orchestration",
+      "target_domain_id": "renderx-web-orchestration",
+      "relation_type": "provides",
+      "strength": "strong",
+      "rationale": "Analysis pipeline provides story coverage & handler scope metrics consumed by renderx-web orchestration."
+    }
+  ],
+  "metrics": {
+    "kpis": [
+      "story_coverage_pct",
+      "enhanced_beats_pct",
+      "beats_with_tests_pct"
+    ],
+    "quality_gates": [
+      "min_story_coverage_pct >= 90",
+      "min_enhanced_beats_pct >= 75"
+    ]
+  },
+  "validation_rules": [
+    "All user_story_tooling scripts must exist",
+    "Story coverage audit must produce JSON report",
+    "No sequence JSON may lack userStory or persona at root after apply-user-stories run"
+  ],
+  "decision_log_refs": [],
+  "provenance": {
+    "created_by": "Augment Agent",
+    "created_at": "2025-11-30T00:00:00.000Z",
+    "lineage_hash": "e4589175698077ceda95d867cdf45d93385373cb966f6533f0b3a0d84420e4fc",
+    "integrity_checksum": "17825e34aa9a4de8ddfff93ca97c334bfa41a81a4ff9b63f36fe84e28d56809c"
+  }
+}

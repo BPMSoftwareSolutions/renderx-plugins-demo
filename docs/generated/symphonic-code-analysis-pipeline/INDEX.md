@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
-<!-- Source: C:\source\repos\bpm\internal\renderx-plugins-demo\packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json -->
-<!-- Generated: 2025-11-30T23:41:38.859Z -->
+<!-- Source: c:\source\repos\bpm\internal\renderx-plugins-demo\packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json -->
+<!-- Generated: 2025-11-30T23:58:57.510Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Symphonic Code Analysis Pipeline

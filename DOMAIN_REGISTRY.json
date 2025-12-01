@@ -2009,6 +2009,7 @@
       "ownership": "Platform-Orchestration",
       "deprecated": false,
       "supersedes": [],
+      "authority_ref": "docs/domains/symphonic-code-analysis-pipeline.json",
       "orchestration": {
         "schema_ref": "docs/schemas/musical-sequence.schema.json",
         "interface": {
@@ -2029,7 +2030,8 @@
         "analysisOutputPath": ".generated/analysis/symphonic-code-analysis-pipeline/",
         "reportOutputPath": "docs/generated/symphonic-code-analysis-pipeline/",
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
-      }
+      },
+      "checksum": "17825e34aa9a4de8ddfff93ca97c334bfa41a81a4ff9b63f36fe84e28d56809c"
     },
     "fractal-orchestration-domain-symphony": {
       "domain_id": "fractal-orchestration-domain-symphony",
@@ -2234,7 +2236,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-11-30T23:41:05.829Z",
+    "last_validation": "2025-11-30T23:54:45.142Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

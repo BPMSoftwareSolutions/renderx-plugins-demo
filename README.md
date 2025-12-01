@@ -31,7 +31,7 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ## 📊 Domain Registry Overview
 
-> **Auto-generated on 2025-11-30T23:41:06.196Z**
+> **Auto-generated on 2025-11-30T23:54:45.936Z**
 > This section is automatically maintained. To update: `npm run generate:readme`
 
 **Total Domains**: 80 (77 active, 1 deprecated, 1 experimental)
@@ -120,7 +120,7 @@ _...and 47 more_
 ### 📈 Analysis Status
 
 - **18** orchestration domains have analysis configuration
-- **Latest Validation**: 2025-11-30T23:41:05.829Z
+- **Latest Validation**: 2025-11-30T23:54:45.142Z
 - **Analysis Reports**: [View all](.generated/analysis/)
 
 ## Governance Tooling Registry
@@ -636,7 +636,7 @@ This README is automatically generated from:
 - `.generated/analysis/**` - Code analysis reports
 - Domain analysis configuration
 
-**Last Generated**: 2025-11-30T23:41:06.196Z
+**Last Generated**: 2025-11-30T23:54:45.936Z
 
 To update this README, run:
 ```bash
