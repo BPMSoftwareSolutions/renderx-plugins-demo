@@ -298,7 +298,8 @@
           "domain_id": "renderx-web-orchestration"
         },
         "sequence_files": [
-          "packages/orchestration/json-sequences/renderx-web-orchestration.json"
+          "packages/orchestration/json-sequences/renderx-web-orchestration.json",
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json"
         ]
       },
       "analysisConfig": {

@@ -3,7 +3,7 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-describe('React Theme Toggle Component', () => {
+describe('[BEAT:renderx-web-orchestration:ui-theme-toggle:1.1] React Theme Toggle Component', () => {
   let mockConductor: any;
   let publishedEvents: any[] = [];
 
@@ -33,7 +33,7 @@ describe('React Theme Toggle Component', () => {
     expect((window as any).RenderX.publish).toBeDefined();
   });
 
-  it('should publish theme.toggled event when switching to dark mode', () => {
+  it('[AC:renderx-web-orchestration:ui-theme-toggle:1.1:1] should publish theme.toggled event when switching to dark mode', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,

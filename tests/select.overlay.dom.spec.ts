@@ -2,8 +2,8 @@
 import { describe, it, expect } from "vitest";
 import { createOverlayStructure } from "../packages/canvas-component/src/symphonies/select/select.overlay.helpers";
 
-describe("createOverlayStructure", () => {
-  it("creates overlay and handles when missing", () => {
+describe("[BEAT:renderx-web-orchestration:select:1.1] createOverlayStructure", () => {
+  it("[AC:renderx-web-orchestration:select:1.1:1] creates overlay and handles when missing", () => {
     const canvas = document.createElement("div");
     canvas.id = "test-canvas";
     document.body.appendChild(canvas);
