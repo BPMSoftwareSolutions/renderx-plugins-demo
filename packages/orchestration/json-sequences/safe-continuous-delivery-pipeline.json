@@ -1,6 +1,6 @@
 {
   "$schema": "../../../docs/schemas/musical-sequence.schema.json",
-  "name": "safe-continuous-delivery-pipeline",
+  "name": "SAFe Continuous Delivery Pipeline",
   "version": "0.1.0",
   "movements": [
     {
