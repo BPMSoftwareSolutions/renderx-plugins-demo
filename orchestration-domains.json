@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-12-01T01:29:11.722Z"
+    "generated": "2025-12-01T02:54:25.019Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -2753,7 +2753,7 @@
       "id": "safe-continuous-delivery-pipeline",
       "name": "SAFe Continuous Delivery Pipeline",
       "emoji": "🎼",
-      "description": "SAFe Continuous Delivery Pipeline orchestration domain",
+      "description": "Orchestration domain: SAFe Continuous Delivery Pipeline",
       "category": "orchestration",
       "purpose": "System orchestration",
       "relatedDomains": [],

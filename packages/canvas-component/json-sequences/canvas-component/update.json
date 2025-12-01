@@ -16,16 +16,19 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Attribute",
-          "acceptanceCriteria": [
-            "Given the updateAttribute operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen updateAttribute processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen updateAttribute encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen updateAttribute executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen updateAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["selected component"],
+              "when": ["serializeSelectedComponent runs"],
+              "then": ["component serializes deterministically; payload validates; latency ≤ 20ms"],
+              "and": [
+                "telemetry 'copy.serialize' includes bytes and fields"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -36,16 +39,19 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "refresh Control Panel",
-          "acceptanceCriteria": [
-            "Given the refreshControlPanel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen refreshControlPanel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen refreshControlPanel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen refreshControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen refreshControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "setDirty marks isDirty with timestamp",
-          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a node update completes"],
+              "when": ["refreshControlPanel runs"],
+              "then": ["control panel reflects new state within ≤ 50ms"],
+              "and": [
+                "publish a 'control-panel.refresh' event idempotently"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.",

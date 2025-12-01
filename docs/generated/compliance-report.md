@@ -1,10 +1,10 @@
 # Compliance Report
 
-> Generated 2025-12-01T01:02:49.423Z
+> Generated 2025-12-01T02:54:26.081Z
 > Status: PASS
 
 ## Registry Summary
-- Domains: 60
+- Domains: 74
 - Required Fields: id, name, tempo, key, timeSignature, category
 
 ## Plan Sequence Coverage

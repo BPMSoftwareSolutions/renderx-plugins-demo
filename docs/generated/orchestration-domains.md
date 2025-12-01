@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-12-01T01:02:48.770Z
+**Last Generated:** 2025-12-01T02:54:25.214Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
@@ -13,7 +13,7 @@ Complete registry of all orchestration domains and plugin sequences
 
 ---
 
-## The 60 Orchestration Domains
+## The 74 Orchestration Domains
 
 ### 1. 🔌 Canvas Component Copy
 
@@ -2152,6 +2152,686 @@ System-level evolution sequence capturing anti-drift governance workflow for the
 **Purpose:** System orchestration
 
 **Movements:** 8
+
+**Status:** active
+
+---
+
+### 61. 🎼 Architecture Governance Enforcement Symphony
+
+**ID:** `architecture-governance-enforcement-symphony`
+
+Multi-movement orchestration that enforces JSON as single source of truth through systematic validation, implementation verification, and auditability across the entire Symphonia system.
+
+```
+    ┌──────────────────────────────────────────────────────────────────────────────────────────┐
+    │ 🎼 Architecture Governance Enforcement Symphony                                          │
+    ├──────────────────────────────────────────────────────────────────────────────────────────┤
+    │                                                                                          │
+    │ 🎵 Sequence: architecture-governance-enforcement-symphony                                │
+    │ ├─ Tempo: 120 BPM                                                                        │
+    │ ├─ Key: C Major                                                                          │
+    │ └─ Category: orchestration                                                               │
+    │                                                                                          │
+    │ Movement 1: JSON Schema Validation                                                       │
+    │   ├─ Load all symphony JSON files and validate against the canonical MusicalSequence schema where applicable, plus supporting JSON schemas│
+    │   ├─ Validate orchestration-domains.json has all required fields and correct structure   │
+    │   ├─ Validate each symphony JSON file (build-pipeline, conformity, etc.)                 │
+    │   ├─ Validate schema section exists and defines movement/beat/event requirements         │
+    │   └─ Report validation results; fail if schema invalid                                   │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 2: Handler-to-Beat Mapping Verification                                         │
+    │   ├─ Begin handler-to-beat mapping verification process                                  │
+    │   ├─ Load all handler implementations from scripts/build-symphony-handlers.js            │
+    │   ├─ Index all beats and their handler references from symphony JSON files               │
+    │   ├─ Verify every beat has corresponding handler; collect mapping violations             │
+    │   ├─ Find handlers in code that are not referenced by any beat                           │
+    │   └─ Report handler mapping status; fail if violations found                             │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 3: Test Coverage Verification                                                   │
+    │   ├─ Begin test coverage verification process                                            │
+    │   ├─ Create exhaustive catalog of all beats and events in symphony JSON                  │
+    │   ├─ Index all test files and their test descriptions (from .spec.ts)                    │
+    │   ├─ Analyze coverage: which beats have tests, which don't                               │
+    │   ├─ Identify beats lacking test coverage; collect list                                  │
+    │   └─ Report test coverage percentage and violations                                      │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 4: Markdown Consistency Verification                                            │
+    │   ├─ Begin markdown consistency verification process                                     │
+    │   ├─ Extract key facts from JSON: movement count, beat count, event count, handler names │
+    │   ├─ Find all markdown files that reference symphonia                                    │
+    │   ├─ Check if JSON facts are mentioned in markdown correctly                             │
+    │   ├─ Find statements in markdown that contradict JSON                                    │
+    │   └─ Report markdown consistency score and contradictions                                │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 5: Auditability Chain Verification                                              │
+    │   ├─ Begin auditability chain verification process                                       │
+    │   ├─ Load all JSON definitions as the starting point                                     │
+    │   ├─ Create mapping: JSON beat → Code handler                                            │
+    │   ├─ Create mapping: JSON beat → Test coverage                                           │
+    │   ├─ Create mapping: JSON fact → Markdown mention                                        │
+    │   ├─ Verify complete traceability for all definitions                                    │
+    │   └─ Report auditability score: % of JSON with complete chain                            │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 6: Overall Governance Conformity                                                │
+    │   ├─ Begin overall conformity analysis                                                   │
+    │   ├─ Aggregate results from all 5 movements                                              │
+    │   ├─ Calculate overall conformity score (0-100%)                                         │
+    │   ├─ Summarize all governance violations found                                           │
+    │   ├─ Decide: PASS (allow changes) or FAIL (reject changes)                               │
+    │   ├─ Generate comprehensive governance report with recommendations                       │
+    │   └─ Conclude governance enforcement; exit with appropriate status code                  │
+    │                                                                                          │
+    └──────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/architecture-governance-enforcement-symphony.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 6
+
+**Beats:** 37
+
+**Status:** active
+
+---
+
+### 62. 🎼 Build Pipeline Orchestration
+
+**ID:** `build-pipeline-orchestration`
+
+Compliant orchestration with explicit handler mappings
+
+```
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │ 🎼 Build Pipeline Orchestration                                                 │
+    ├─────────────────────────────────────────────────────────────────────────────────┤
+    │                                                                                 │
+    │ 🎵 Sequence: build-pipeline-orchestration                                       │
+    │ ├─ Tempo: 120 BPM                                                               │
+    │ ├─ Key: C Major                                                                 │
+    │ └─ Category: orchestration                                                      │
+    │                                                                                 │
+    │ Movement 1: Validation & Verification                                           │
+    │   ├─ Orchestration/build-pipeline.build.validation#load Build Context           │
+    │   ├─ Orchestration/build-pipeline.build.validation#validate Orchestration Domains│
+    │   ├─ Orchestration/build-pipeline.build.validation#validate Governance Rules    │
+    │   ├─ Orchestration/build-pipeline.build.validation#validate Agent Behavior      │
+    │   └─ Orchestration/build-pipeline.build.validation#record Validation Results    │
+    │                                                                                 │
+    │           ▼                                                                     │
+    │                                                                                 │
+    │ Movement 2: Manifest Preparation                                                │
+    │   ├─ Orchestration/build-pipeline.manifests#regenerate Orchestration Domains    │
+    │   ├─ Orchestration/build-pipeline.manifests#sync Json Sources                   │
+    │   ├─ Orchestration/build-pipeline.manifests#generate Manifests                  │
+    │   ├─ Orchestration/build-pipeline.manifests#validate Manifest Integrity         │
+    │   └─ Orchestration/build-pipeline.manifests#record Manifest State               │
+    │                                                                                 │
+    │           ▼                                                                     │
+    │                                                                                 │
+    │ Movement 3: Package Building                                                    │
+    │   ├─ Orchestration/build-pipeline.packages.build#initialize Package Build       │
+    │   ├─ Orchestration/build-pipeline.packages.build#build Components Package       │
+    │   ├─ Orchestration/build-pipeline.packages.build#build Musical Conductor Package│
+    │   └─ Orchestration/build-pipeline.packages.build#build Host Sdk Package         │
+    │                                                                                 │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/build-pipeline-orchestration.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 3
+
+**Beats:** 14
+
+**Status:** active
+
+---
+
+### 63. 🎼 Build Pipeline Symphony (Legacy)
+
+**ID:** `build-pipeline-symphony`
+
+Minimal legacy sequence to retain registry compliance for deprecated domain. Provides a valid movements array and beat mapping for validator conformance.
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 Build Pipeline Symphony (Legacy)                     │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: build-pipeline-symphony                    │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: Validation Bootstrap                        │
+    │   └─ Reuse discovery scan to provide a resolvable handler│
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/build-pipeline-symphony.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** deprecated
+
+---
+
+### 64. 🎼 fractal-orchestration-domain-symphony
+
+**ID:** `fractal-orchestration-domain-symphony`
+
+Orchestration domain: fractal-orchestration-domain-symphony
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 fractal-orchestration-domain-symphony                │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: fractal-orchestration-domain-symphony      │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   ├─ Fractal.domain.identified                          │
+    │   └─ Fractal.domain.orchestrated                        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/fractal-orchestration-domain-symphony.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** experimental
+
+---
+
+### 65. 🎼 musical-conductor-orchestration
+
+**ID:** `musical-conductor-orchestration`
+
+Orchestration domain: musical-conductor-orchestration
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 musical-conductor-orchestration                      │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: musical-conductor-orchestration            │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/musical-conductor-orchestration.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 66. 🎼 orchestration-core
+
+**ID:** `orchestration-core`
+
+Orchestration domain: orchestration-core
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 orchestration-core                                   │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: orchestration-core                         │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/orchestration-core.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 67. 🎼 Orchestration Registry Audit Pipeline
+
+**ID:** `orchestration-registry-audit-pipeline`
+
+Audit the orchestration registry for sequence file completeness, npm script bindings, linkage validity, and governance compliance.
+
+```
+    ┌────────────────────────────────────────────────────────────┐
+    │ 🎼 Orchestration Registry Audit Pipeline                   │
+    ├────────────────────────────────────────────────────────────┤
+    │                                                            │
+    │ 🎵 Sequence: orchestration-registry-audit-pipeline         │
+    │ ├─ Tempo: 120 BPM                                          │
+    │ ├─ Key: C Major                                            │
+    │ └─ Category: orchestration                                 │
+    │                                                            │
+    │ Movement 1: Registry Discovery                             │
+    │   └─ Load orchestration-domains.json and prepare statistics│
+    │                                                            │
+    │           ▼                                                │
+    │                                                            │
+    │ Movement 2: Validation                                     │
+    │   ├─ Check that each domain has an existing sequenceFile   │
+    │   ├─ Check that npmScripts exist and reference valid scripts│
+    │   └─ Compute completeness and compliance scores            │
+    │                                                            │
+    │           ▼                                                │
+    │                                                            │
+    │ Movement 3: Reporting                                      │
+    │   └─ Produce markdown and JSON audit reports               │
+    │                                                            │
+    └────────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/orchestration-registry-audit-pipeline.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 3
+
+**Beats:** 5
+
+**Status:** active
+
+---
+
+### 68. 🎼 product-owner-signoff-demo
+
+**ID:** `product-owner-signoff-demo`
+
+Orchestration domain: product-owner-signoff-demo
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 product-owner-signoff-demo                           │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: product-owner-signoff-demo                 │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/product-owner-signoff-demo.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 69. 🎼 RenderX Web Orchestration
+
+**ID:** `renderx-web-orchestration`
+
+Six-movement orchestration managing the complete RenderX Web lifecycle: initialization, building, testing, validation, delivery, and monitoring. Coordinates build system, test execution (E2E Cypress), compliance validation, deployment pipeline, telemetry instrumentation, and recovery operations.
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 RenderX Web Orchestration                            │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: renderx-web-orchestration                  │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: Initialization                              │
+    │   ├─ Theme-resolved                                     │
+    │   ├─ Theme-applied                                      │
+    │   ├─ Control-panel-ready                                │
+    │   ├─ Resolver-ready                                     │
+    │   ├─ Observers-registered                               │
+    │   └─ Complete                                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 2: Build                                       │
+    │   ├─ Attribute-updated                                  │
+    │   └─ Complete                                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 3: Test & Validation                           │
+    │   ├─ Selection-overlay-shown                            │
+    │   ├─ Selection-overlay-hidden                           │
+    │   ├─ Line-resize-attached                               │
+    │   ├─ Line-overlay-ensured                               │
+    │   └─ Complete                                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 4: Delivery                                    │
+    │   ├─ Gif-exported                                       │
+    │   └─ Complete                                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 5: Telemetry & Monitoring                      │
+    │   ├─ Payload-ensured                                    │
+    │   ├─ Ghost-size-computed                                │
+    │   ├─ Ghost-container-created                            │
+    │   ├─ Template-preview-rendered                          │
+    │   ├─ Template-styles-applied                            │
+    │   ├─ Cursor-offsets-computed                            │
+    │   └─ Complete                                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 6: Recovery & Resilience                       │
+    │   └─ Enabled                                            │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/renderx-web-orchestration.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 6
+
+**Beats:** 23
+
+**Status:** active
+
+---
+
+### 70. 🎼 SAFe Continuous Delivery Pipeline
+
+**ID:** `safe-continuous-delivery-pipeline`
+
+Orchestration domain: SAFe Continuous Delivery Pipeline
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 SAFe Continuous Delivery Pipeline                    │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: safe-continuous-delivery-pipeline          │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/safe-continuous-delivery-pipeline.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 71. 🎼 symphonia-conformity-alignment-pipeline
+
+**ID:** `symphonia-conformity-alignment-pipeline`
+
+Orchestration domain: symphonia-conformity-alignment-pipeline
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 symphonia-conformity-alignment-pipeline              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: symphonia-conformity-alignment-pipeline    │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 72. 🎼 symphonic-code-analysis-demo
+
+**ID:** `symphonic-code-analysis-demo`
+
+Orchestration domain: symphonic-code-analysis-demo
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 symphonic-code-analysis-demo                         │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: symphonic-code-analysis-demo               │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: bootstrap                                   │
+    │   └─ Analysis.discovery#scan Orchestration Files        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/symphonic-code-analysis-demo.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 73. 🎼 Symphonic Code Analysis Pipeline
+
+**ID:** `symphonic-code-analysis-pipeline`
+
+Multi-movement orchestration for comprehensive code analysis of symphonic orchestration codebases, measuring code metrics per beat, test coverage, complexity, and architectural conformity.
+
+```
+    ┌──────────────────────────────────────────────────────────────────────────────────────────┐
+    │ 🎼 Symphonic Code Analysis Pipeline                                                      │
+    ├──────────────────────────────────────────────────────────────────────────────────────────┤
+    │                                                                                          │
+    │ 🎵 Sequence: symphonic-code-analysis-pipeline                                            │
+    │ ├─ Tempo: 120 BPM                                                                        │
+    │ ├─ Key: C Major                                                                          │
+    │ └─ Category: orchestration                                                               │
+    │                                                                                          │
+    │ Movement 1: Code Discovery & Beat Mapping                                                │
+    │   ├─ Scan JSON sequences and identify beat definitions, handlers, and event mappings     │
+    │   ├─ Discover all TypeScript/JavaScript implementation files matching beat handlers      │
+    │   ├─ Create beat-to-handler-to-source-file mapping for correlation                       │
+    │   └─ Establish baseline metrics for comparison and trend analysis                        │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 2: Code Metrics Analysis                                                        │
+    │   ├─ Calculate LOC per beat, per movement, and per orchestration domain                  │
+    │   ├─ Calculate cyclomatic complexity, cognitive complexity per beat handler              │
+    │   ├─ Identify code duplication patterns and calculate duplication percentage             │
+    │   └─ Compute maintainability index and technical debt score per module                   │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 3: Test Coverage Analysis                                                       │
+    │   ├─ Identify test files and calculate statement coverage with beat correlation          │
+    │   ├─ Calculate branch coverage (if/else, switch paths) per beat                          │
+    │   ├─ Calculate function call coverage and handler execution coverage                     │
+    │   └─ Identify uncovered code and test gaps aligned with beats                            │
+    │                                                                                          │
+    │           ▼                                                                              │
+    │                                                                                          │
+    │ Movement 4: Architecture Conformity & Reporting                                          │
+    │   ├─ Verify all beats have handlers and handlers have corresponding implementation       │
+    │   ├─ Synthesize all metrics into orchestration conformity and fractal architecture score (0-1)│
+    │   ├─ Compare current metrics to historical baselines and project trends                  │
+    │   └─ Produce final markdown report with all metrics, diagrams, and recommendations       │
+    │                                                                                          │
+    └──────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/symphonic-code-analysis-pipeline.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 4
+
+**Beats:** 16
+
+**Status:** active
+
+---
+
+### 74. 🎼 symphony report pipeline
+
+**ID:** `symphony-report-pipeline`
+
+Six-movement orchestration for generating comprehensive reports from symphony pipeline executions, metrics, and conformity audits.
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 symphony report pipeline                             │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: symphony-report-pipeline                   │
+    │ ├─ Tempo: 120 BPM                                       │
+    │ ├─ Key: C Major                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: Data Collection & Aggregation               │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 2: Executive Summary Synthesis                 │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 3: Detailed Analysis & Recommendations         │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 4: Report Generation (Multi-Format)            │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 5: Lineage & Audit Trail Construction          │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 6: Report Delivery & Distribution              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/orchestration/json-sequences/symphony-report-pipeline.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 6
 
 **Status:** active
 

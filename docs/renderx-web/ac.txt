@@ -1,0 +1,1008 @@
+# Acceptance Criteria - renderx-web domain
+
+[packages/canvas-component/json-sequences/canvas-component/create.json]
+
+[packages/canvas-component/json-sequences/canvas-component/update.json]
+beat: 1 handler: updateNode
+beat: 1 handler: serializeSelectedComponent
+- Given selected component
+- When serializeSelectedComponent runs
+- Then component serializes deterministically; payload validates; latency ≤ 20ms
+- And telemetry 'copy.serialize' includes bytes and fields
+beat: 2 handler: copyToClipboard
+- Given a serialized payload
+- When copyToClipboard runs
+- Then payload is placed on clipboard; user receives confirmation
+- And operation retries once on transient failure
+beat: 3 handler: notifyCopyComplete
+- Given a successful copy
+- When notifyCopyComplete runs
+- Then event publishes within 5ms with item metadata
+- And subscribers receive within ≤ 20ms
+
+[packages/canvas-component/json-sequences/canvas-component/import.json]
+beat: 1 handler: deleteComponent
+- Given a deletable component
+- When deleteComponent runs
+- Then component is removed atomically and references are cleaned; ≤ 50ms
+- And undo snapshot is captured
+beat: 2 handler: publishDeleted
+- Given deletion completes
+- When publishDeleted runs
+- Then a 'component.deleted' event publishes with id and parent
+- And no duplicate events are emitted
+beat: 1 handler: parseImport
+- Given a valid import file (JSON/CSV)
+beat: 1 handler: routeDeleteRequest
+- Given a delete UI action
+- When routeDeleteRequest runs
+- Then request routes to orchestrator with correlation id and authz checked
+- And invalid targets are rejected with typed error
+- When parseImport runs
+- Then P95 latency ≤ 1s and records parsed count equals input
+beat: 1 handler: hideAllOverlays
+- Given multiple selections
+- When hideAllOverlays runs
+- Then overlays clear within ≤ 30ms and no residual highlights remain
+- And telemetry 'selection.clear' includes clearedCount
+beat: 2 handler: publishSelectionsCleared
+- Given deselection completes
+- When publishSelectionsCleared runs
+- Then 'selection.cleared' publishes once with before snapshot
+- And subscribers update within ≤ 20ms
+- And telemetry 'import.parsed' includes format and count
+beat: 2 handler: mapToNodes
+beat: 1 handler: deselectComponent
+- Given a selected component
+- When deselectComponent runs
+- Then the component becomes unselected and overlay removed within ≤ 20ms
+- And idempotent calls have no effect
+beat: 2 handler: publishDeselectionChanged
+- Given deselection occurs
+- When publishDeselectionChanged runs
+- Then event publishes with previous and current selection
+- And ordering remains FIFO
+- Given parsed records
+- When mapToNodes runs
+beat: 1 handler: routeDeselectionRequest
+- Given a user deselect action
+- When routeDeselectionRequest runs
+- Then request routes to orchestrator with correlation id
+- And invalid state is rejected with typed error
+- Then output nodes conform to CanvasNode schema
+- And errors are logged with indexes for invalid records
+beat: 1 handler: startDrag
+- Given pointer down on draggable
+- When startDrag runs
+- Then drag context initializes within ≤ 16ms and ghost preview appears
+- And telemetry 'drag.start' includes elementId and origin
+
+[packages/control-panel/json-sequences/ui.render.json]
+beat: 1 handler: updatePosition
+- Given an active drag
+- When updatePosition runs
+- Then position updates at 60fps target; jitter ≤ 2px
+- And constraints (grid/snap) apply deterministically
+beat: 2 handler: forwardToControlPanel
+- Given position changes
+- When forwardToControlPanel runs
+- Then update publishes to control panel within ≤ 20ms
+- And messages are coalesced per frame
+beat: 1 handler: renderPanel
+- Given control panel state
+beat: 1 handler: endDrag
+- Given drag ends
+- When endDrag runs
+- Then final position commits and context clears; latency ≤ 16ms
+- And a 'drag.ended' event publishes
+- When renderPanel runs
+- Then first paint ≤ 200ms P95 and UI responds within 100ms to input
+beat: 1 handler: exportSvgToGif
+- Given a valid scene
+- When exportSvgToGif runs
+- Then GIF exports with expected frames and palette; progress reported
+- And P95 export ≤ target for 1080p baseline
+- And telemetry 'control-panel.render' includes duration and components
+beat: 2 handler: applyCSS
+beat: 1 handler: exportSvgToMp4
+- Given a valid scene
+- When exportSvgToMp4 runs
+- Then MP4 exports H.264/AAC with expected duration and fps; progress reported
+- And failures surface typed errors with recovery steps
+- Given panel render completes
+- When applyCSS runs
+beat: 1 handler: queryAllComponents
+- Given a canvas
+- When queryAllComponents runs
+- Then components enumerate deterministically with stable ordering
+- And telemetry includes count
+beat: 2 handler: discoverComponentsFromDom
+- Given DOM tree
+- When discoverComponentsFromDom runs
+- Then elements map to model nodes 1:1; latency ≤ 100ms
+- And invalid nodes are logged with reason
+beat: 3 handler: collectCssClasses
+- Given discovered components
+- When collectCssClasses runs
+- Then classes deduplicate and normalize; mapping is complete
+- And telemetry includes unique class count
+beat: 4 handler: collectLayoutData
+- Given discovered components
+- When collectLayoutData runs
+- Then bounds/transform collected with precision ≤ 1px/0.5°
+- And units normalize (px)
+beat: 5 handler: buildUiFileContent
+- Given collected data
+- When buildUiFileContent runs
+- Then a valid export JSON is built; size within baseline
+- And schema validation passes
+beat: 6 handler: downloadUiFile
+- Given file content
+- When downloadUiFile runs
+- Then browser downloads with correct filename and MIME
+- And user receives completion signal
+- Then styles apply deterministically with no FOUC
+- And accessibility roles/labels are present
+beat: 1 handler: endLineManip
+- Given a line manipulation
+- When endLineManip runs
+- Then final path/anchors persist and hit-testing updates
+- And latency ≤ 16ms
+beat: 3 handler: renderView
+- Given a complete view configuration with sections, fields, and rules
+beat: 1 handler: moveLineManip
+- Given an active line manipulation
+- When moveLineManip runs
+- Then anchors move smoothly at 60fps target; constraints apply
+- And telemetry includes delta
+- When renderView is invoked
+- Then the entire form renders within ≤ 500ms and all interactive elements respond
+beat: 1 handler: startLineManip
+- Given a movable line
+- When startLineManip runs
+- Then manipulation context initializes; selection expands to anchors
+- And a 'line.manip.start' event publishes
+- And no console errors or warnings are emitted
+- Given a large view with ≥ 200 fields
+beat: 1 handler: readFromClipboard
+- Given clipboard contains valid data
+- When readFromClipboard runs
+- Then payload is read with type detection and size limits
+- And errors are typed on unsupported formats
+beat: 2 handler: deserializeComponentData
+- Given a serialized payload
+- When deserializeComponentData runs
+- Then payload maps to internal model; validation passes
+- And telemetry includes component count
+beat: 3 handler: calculatePastePosition
+- Given cursor and canvas bounds
+- When calculatePastePosition runs
+- Then target position computes with snap; within viewport
+- And no overlap violations occur beyond threshold
+beat: 4 handler: createPastedComponent
+- Given deserialized data
+- When createPastedComponent runs
+- Then component is created atomically; undo snapshot recorded
+- And latency ≤ 80ms P95
+beat: 5 handler: notifyPasteComplete
+- Given paste completes
+- When notifyPasteComplete runs
+- Then 'paste.complete' event publishes with ids and count
+- And subscribers receive within ≤ 20ms
+- When renderView processes it
+- Then initial interaction latency is < 100ms and memory usage remains stable
+beat: 1 handler: endResize
+- Given a resize interaction
+- When endResize runs
+- Then final size/transform commits; constraints validated
+- And a 'resize.ended' event publishes
+- And rendering completes within ≤ 800ms under P95
+- Given responsive design requirements
+beat: 1 handler: endLineResize
+- Given a line resize interaction
+- When endLineResize runs
+- Then final line dimensions/anchors persist; hit-testing updates
+- And latency ≤ 16ms
+- When renderView renders
+- Then layout adapts across desktop/tablet/mobile with readable text
+beat: 1 handler: updateLine
+- Given an active line resize
+- When updateLine runs
+- Then line size updates at 60fps; constraints apply
+- And telemetry includes new length/angle
+- And touch targets meet ≥ 44x44px on mobile
+- Given accessibility requirements (WCAG 2.1 AA)
+beat: 1 handler: startLineResize
+- Given a resizable line
+- When startLineResize runs
+- Then resize context initializes and selection updates
+- And a 'resize.line.start' event publishes
+- When renderView renders
+- Then elements use semantic HTML and color contrast ≥ 4.5:1
+beat: 1 handler: updateSize
+- Given an active resize
+- When updateSize runs
+- Then component resizes at 60fps target; constraints apply
+- And reflow/jank minimized
+beat: 2 handler: forwardToControlPanel
+- Given size changes
+- When forwardToControlPanel runs
+- Then update publishes to control panel within ≤ 20ms
+- And messages are coalesced per frame
+- And keyboard navigation remains fully functional
+
+beat: 1 handler: startResize
+- Given a resizable component
+- When startResize runs
+- Then resize context initializes with bounds and handles visible
+- And a 'resize.start' event publishes
+
+[packages/control-panel/json-sequences/update.json]
+beat: 1 handler: setAllRulesConfig
+- Given a rule set
+- When setAllRulesConfig runs
+- Then rules apply atomically and persist; validation passes
+- And telemetry includes rule count
+beat: 2 handler: loadAllRulesFromWindow
+- Given a window-bound rule store
+- When loadAllRulesFromWindow runs
+- Then rules load with defaults for missing entries; typed errors on invalid
+- And P95 ≤ 100ms
+beat: 3 handler: getAllRulesConfig
+- Given rules are loaded
+- When getAllRulesConfig runs
+- Then a normalized rules snapshot returns; consumers receive consistent view
+- And calls are idempotent and cached
+beat: 1 handler: updateFromElement
+- Given the updateFromElement operation is triggered
+beat: 1 handler: routeSelectionRequest
+- Given a user selection action
+- When routeSelectionRequest runs
+- Then selection criteria routes to orchestrator with correlation id
+- And invalid targets are rejected with typed error
+- When the handler executes
+- Then it completes successfully within < 100ms
+beat: 1 handler: showSvgNodeOverlay
+- Given an SVG node is selected
+- When showSvgNodeOverlay runs
+- Then overlay appears aligned to node bounds within ≤ 30ms
+- And telemetry includes node type and bounds
+- And the output is valid and meets schema
+- And any required events are published
+- Given valid input parameters
+- When updateFromElement processes them
+- Then results conform to expected schema
+- And no errors are thrown
+- And telemetry events are recorded with latency metrics
+- Given error conditions
+- When updateFromElement encounters an error
+- Then the error is logged with full context
+- And appropriate recovery is attempted
+- And the system remains stable
+- Given performance SLA of < 100ms
+- When updateFromElement executes
+- Then latency is consistently within target
+- And throughput meets baseline requirements
+- And resource usage stays within bounds
+- Given compliance and governance
+- When updateFromElement operates
+- Then all governance rules are enforced
+- And audit trails capture execution
+- And no compliance violations occur
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/classes.add.json]
+beat: 1 handler: addClass
+- Given element and class name
+- When addClass runs
+- Then class is added once, latency ≤ 5ms
+- And telemetry 'ui.class.add' includes elementId and class
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/classes.remove.json]
+beat: 1 handler: removeClass
+- Given element with existing class
+- When removeClass runs
+- Then class is removed, latency ≤ 5ms
+- And telemetry 'ui.class.remove' includes elementId and class
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/css.create.json]
+beat: 1 handler: createRule
+- Given a valid CSS rule
+- When createRule runs
+- Then rule is inserted into stylesheet, latency ≤ 20ms
+- And telemetry 'css.rule.create' includes selector and index
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/css.edit.json]
+beat: 1 handler: editRule
+- Given existing CSS rule
+- When editRule runs
+- Then selector/properties update atomically with rollback on error
+- And telemetry 'css.rule.edit' includes diff summary
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/css.delete.json]
+beat: 1 handler: deleteRule
+- Given rule index
+- When deleteRule runs
+- Then rule is removed and reflow cost ≤ baseline
+- And telemetry 'css.rule.delete' includes index and cost
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/selection.show.json]
+beat: 1 handler: showSelection
+- Given selected element(s)
+- When showSelection runs
+- Then overlay draws within ≤ 30ms and aligns within ≤ 1px
+- And telemetry 'selection.show' includes count and bounds
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
+
+[packages/control-panel/json-sequences/ui.init.json]
+beat: 1 handler: initPanel
+- Given application startup
+- When initPanel runs
+- Then panel initializes within ≤ 300ms and subscribes to events
+- And telemetry 'control-panel.init' includes subscriptions
+beat: 2 handler: initResolver
+- Given configuration and schema definitions
+- When initResolver runs
+- Then field/type resolvers register successfully within ≤ 50ms
+- And resolver map includes required primitives and custom types
+beat: 3 handler: loadSchemas
+- Given resolver initialization completes
+- When loadSchemas runs
+- Then schemas load from source with P95 ≤ 200ms and validate
+- And telemetry 'control-panel.schemas.load' includes count and duration
+beat: 4 handler: registerObservers
+- Given event bus and DOM listeners
+- When registerObservers runs
+- Then observers register idempotently without duplicates
+- And unregistration handles teardown cleanly
+beat: 5 handler: notifyReady
+- Given initialization sequence completes
+- When notifyReady runs
+- Then a 'control-panel.ready' event publishes within 5ms
+- And subscribers receive the event within ≤ 20ms
+beat: 6 handler: initMovement
+- Given movement context
+- When initMovement runs
+- Then movement state is initialized deterministically and re-entrant
+- And no side effects occur before first user interaction
+
+[packages/control-panel/json-sequences/ui.init.batched.json]
+beat: 1 handler: initPanelBatched
+- Given many components (≥ 100)
+- When initPanelBatched runs
+- Then batching reduces CPU by ≥ 20% versus naive init
+- And telemetry 'control-panel.init.batched' includes batchSize
+beat: 2 handler: initResolver
+- Given configuration and schema definitions
+- When initResolver runs
+- Then field/type resolvers register successfully within ≤ 50ms
+- And resolver map includes required primitives and custom types
+beat: 3 handler: loadSchemas
+- Given resolver initialization completes
+- When loadSchemas runs
+- Then schemas load from source with P95 ≤ 200ms and validate
+- And telemetry 'control-panel.schemas.load' includes count and duration
+beat: 4 handler: registerObservers
+- Given event bus and DOM listeners
+- When registerObservers runs
+- Then observers register idempotently without duplicates
+- And unregistration handles teardown cleanly
+beat: 5 handler: notifyReady
+- Given batched initialization completes
+- When notifyReady runs
+- Then a 'control-panel.ready' event publishes within 5ms
+- And subscribers receive the event within ≤ 20ms
+beat: 6 handler: initMovement
+- Given movement context
+- When initMovement runs
+- Then movement state is initialized deterministically and re-entrant
+- And no side effects occur before first user interaction
+
+[packages/control-panel/json-sequences/ui.field.change.json]
+beat: 1 handler: onFieldChange
+- Given a user input event
+- When onFieldChange runs
+- Then model updates debounced ≤ 50ms and validates lazily
+- And telemetry 'ui.field.change' includes field and debounce
+beat: 2 handler: dispatchField
+- Given a normalized change payload
+- When dispatchField runs
+- Then change routes to the correct handler with latency ≤ 5ms
+- And no duplicate dispatch occurs for the same tick
+beat: 3 handler: setDirty
+- Given the model updates
+- When setDirty runs
+- Then the form state flips to dirty and tracks changed fields
+- And idempotent calls do not re-emit
+beat: 4 handler: awaitRefresh
+- Given UI depends on derived state
+- When awaitRefresh runs
+- Then view refresh completes within ≤ 50ms P95
+- And no layout thrash occurs (≤ 1 reflow)
+
+[packages/control-panel/json-sequences/ui.field.validate.json]
+beat: 1 handler: validateField
+- Given field value
+- When validateField runs
+- Then errors are reported with code and path, latency ≤ 10ms
+- And telemetry 'ui.field.validate' includes validity
+beat: 2 handler: mergeErrors
+- Given existing error state and new results
+- When mergeErrors runs
+- Then errors merge by path without losing unrelated entries
+- And clearing a field removes its errors
+beat: 3 handler: updateView
+- Given merged errors
+- When updateView runs
+- Then visuals reflect validity within ≤ 30ms and announce changes (a11y)
+- And no unnecessary re-renders occur
+
+[packages/canvas-component/json-sequences/canvas-component/select.json]
+beat: 1 handler: showSelectionOverlay
+- Given selected element(s)
+- When showSelectionOverlay runs
+- Then overlay appears within ≤ 30ms and aligns within ≤ 1px
+- And telemetry 'selection.overlay' includes bounds and count
+beat: 2 handler: notifyUi
+- Given a selection change occurs
+- When notifyUi publishes
+- Then an event is sent to EventRouter within 5ms with item IDs
+- And delivery is FIFO with no drops or duplicates
+beat: 3 handler: publishSelectionChanged
+- Given a selection change is finalized
+- When publishSelectionChanged runs
+- Then a domain event with before/after snapshots is emitted
+- And subscribers receive it within ≤ 20ms
+
+[packages/canvas-component/json-sequences/canvas-component/update.json]
+beat: 2 handler: refreshControlPanel
+- Given a node update completes
+- When refreshControlPanel runs
+- Then control panel reflects new state within ≤ 50ms
+- And publish a 'control-panel.refresh' event idempotently
+
+[packages/canvas-component/json-sequences/canvas-component/update.svg-node.json]
+beat: 1 handler: updateSvgNodeAttribute
+- Given a valid SVG attribute update
+- When updateSvgNodeAttribute runs
+- Then attribute is applied atomically and validated; latency ≤ 16ms
+- And telemetry 'svg.attr.update' includes name and duration
+beat: 2 handler: refreshControlPanel
+- Given an SVG node update
+- When refreshControlPanel runs
+- Then control panel reflects new SVG state within ≤ 50ms
+- And publish a 'control-panel.refresh' event idempotently
+
+[packages/canvas-component/json-sequences/canvas-component/import.json]
+beat: 3 handler: injectCssClasses
+- Given parsed records with classes
+- When injectCssClasses runs
+- Then classes are created/updated without duplicates and applied correctly
+- And telemetry 'import.css.inject' includes created/updated counts
+beat: 4 handler: createComponentsSequentially
+- Given mapped nodes
+- When createComponentsSequentially runs
+- Then components are created in order with retries on transient errors
+- And P95 per component ≤ 80ms
+beat: 5 handler: applyHierarchyAndOrder
+- Given created components
+- When applyHierarchyAndOrder runs
+- Then parent/child links and z-order match input; validation passes
+- And telemetry 'import.hierarchy' includes link count and duration
+
+[packages/control-panel/json-sequences/ui.section.toggle.json]
+beat: 1 handler: toggleSection
+- Given a section
+- When toggleSection runs
+- Then expand/collapse animates ≤ 120ms and preserves focus order
+- And telemetry 'ui.section.toggle' includes state
+
+[packages/header/json-sequences/header/ui.theme.get.json]
+beat: 1 handler: getTheme
+- Given theme storage
+- When getTheme runs
+- Then returns current theme within ≤ 10ms and emits 'theme.get'
+- And telemetry includes source (storage/default)
+beat: 2 handler: notifyUi
+- Given a theme fetch completes
+- When notifyUi is invoked
+- Then an event is published to the EventRouter within 5ms
+- And the event contains theme value and source
+- And the event is timestamped and trace-linked
+
+[packages/header/json-sequences/header/ui.theme.toggle.json]
+beat: 1 handler: toggleTheme
+- Given current theme
+- When toggleTheme runs
+- Then toggles between light/dark, persists setting, latency ≤ 20ms
+- And telemetry 'theme.toggle' includes prev/next
+
+[packages/library/json-sequences/library/library-load.json]
+beat: 1 handler: requestLoad
+- Given a library path
+- When requestLoad runs
+- Then emits 'library.load.requested' and validates path
+- And telemetry includes path and requestId
+beat: 2 handler: loadLibrary
+- Given request
+- When loadLibrary runs
+- Then loads assets with P95 ≤ 2s, errors typed
+- And telemetry 'library.load' includes size and duration
+
+[packages/library-component/json-sequences/library-component/index.json]
+beat: 1 handler: initLibraryComponent
+- Given library component registry
+- When initLibraryComponent runs
+- Then registers components, latency ≤ 200ms and exposes APIs
+- And telemetry 'library.component.init' includes count
+
+[packages/library-component/json-sequences/library-component/drag.json]
+beat: 1 handler: dragStart
+- Given pointer down
+- When dragStart runs
+- Then starts drag within ≤ 16ms and sets data payload
+- And telemetry 'drag.start' includes elementId
+
+[packages/library-component/json-sequences/library-component/drop.json]
+beat: 1 handler: onDrop
+- Given valid drop target
+- When onDrop runs
+- Then composes node and validates schema; latency ≤ 150ms
+- And telemetry 'drop' includes target and success
+
+[packages/library-component/json-sequences/library-component/container.drop.json]
+beat: 1 handler: onContainerDrop
+- Given container target
+- When onContainerDrop runs
+- Then inserts child at index, reflows minimal, latency ≤ 150ms
+- And telemetry includes containerId and index
+
+[packages/canvas-component/json-sequences/canvas-component/copy.json]
+beat: 1 handler: serializeSelectedComponent
+- Given selected component
+- When serializeSelectedComponent runs
+- Then component serializes deterministically; payload validates; latency ≤ 20ms
+- And telemetry 'copy.serialize' includes bytes and fields
+beat: 2 handler: copyToClipboard
+- Given a serialized payload
+- When copyToClipboard runs
+- Then payload is placed on clipboard; user receives confirmation
+- And operation retries once on transient failure
+beat: 3 handler: notifyCopyComplete
+- Given a successful copy
+- When notifyCopyComplete runs
+- Then event publishes within 5ms with item metadata
+- And subscribers receive within ≤ 20ms
+
+[packages/canvas-component/json-sequences/canvas-component/delete.json]
+beat: 1 handler: deleteComponent
+- Given a deletable component
+- When deleteComponent runs
+- Then component is removed atomically and references are cleaned; ≤ 50ms
+- And undo snapshot is captured
+beat: 2 handler: publishDeleted
+- Given deletion completes
+- When publishDeleted runs
+- Then a 'component.deleted' event publishes with id and parent
+- And no duplicate events are emitted
+
+[packages/canvas-component/json-sequences/canvas-component/delete.requested.json]
+beat: 1 handler: routeDeleteRequest
+- Given a delete UI action
+- When routeDeleteRequest runs
+- Then request routes to orchestrator with correlation id and authz checked
+- And invalid targets are rejected with typed error
+
+[packages/canvas-component/json-sequences/canvas-component/deselect-all.json]
+beat: 1 handler: hideAllOverlays
+- Given multiple selections
+- When hideAllOverlays runs
+- Then overlays clear within ≤ 30ms and no residual highlights remain
+- And telemetry 'selection.clear' includes clearedCount
+beat: 2 handler: publishSelectionsCleared
+- Given deselection completes
+- When publishSelectionsCleared runs
+- Then 'selection.cleared' publishes once with before snapshot
+- And subscribers update within ≤ 20ms
+
+[packages/canvas-component/json-sequences/canvas-component/deselect.json]
+beat: 1 handler: deselectComponent
+- Given a selected component
+- When deselectComponent runs
+- Then the component becomes unselected and overlay removed within ≤ 20ms
+- And idempotent calls have no effect
+beat: 2 handler: publishDeselectionChanged
+- Given deselection occurs
+- When publishDeselectionChanged runs
+- Then event publishes with previous and current selection
+- And ordering remains FIFO
+
+[packages/canvas-component/json-sequences/canvas-component/deselect.requested.json]
+beat: 1 handler: routeDeselectionRequest
+- Given a user deselect action
+- When routeDeselectionRequest runs
+- Then request routes to orchestrator with correlation id
+- And invalid state is rejected with typed error
+
+[packages/canvas-component/json-sequences/canvas-component/drag.start.json]
+beat: 1 handler: startDrag
+- Given pointer down on draggable
+- When startDrag runs
+- Then drag context initializes within ≤ 16ms and ghost preview appears
+- And telemetry 'drag.start' includes elementId and origin
+
+[packages/canvas-component/json-sequences/canvas-component/drag.move.json]
+beat: 1 handler: updatePosition
+- Given an active drag
+- When updatePosition runs
+- Then position updates at 60fps target; jitter ≤ 2px
+- And constraints (grid/snap) apply deterministically
+beat: 2 handler: forwardToControlPanel
+- Given position changes
+- When forwardToControlPanel runs
+- Then update publishes to control panel within ≤ 20ms
+- And messages are coalesced per frame
+
+[packages/canvas-component/json-sequences/canvas-component/drag.end.json]
+beat: 1 handler: endDrag
+- Given drag ends
+- When endDrag runs
+- Then final position commits and context clears; latency ≤ 16ms
+- And a 'drag.ended' event publishes
+
+[packages/canvas-component/json-sequences/canvas-component/export-gif.json]
+beat: 1 handler: exportSvgToGif
+- Given a valid scene
+- When exportSvgToGif runs
+- Then GIF exports with expected frames and palette; progress reported
+- And P95 export ≤ target for 1080p baseline
+
+[packages/canvas-component/json-sequences/canvas-component/export-mp4.json]
+beat: 1 handler: exportSvgToMp4
+- Given a valid scene
+- When exportSvgToMp4 runs
+- Then MP4 exports H.264/AAC with expected duration and fps; progress reported
+- And failures surface typed errors with recovery steps
+
+[packages/canvas-component/json-sequences/canvas-component/export.json]
+beat: 3 handler: collectLayoutData
+- Given discovered components
+- When collectLayoutData runs
+- Then bounds/transform collected with precision ≤ 1px/0.5°
+- And units normalize (px)
+beat: 1 handler: queryAllComponents
+- Given a canvas
+- When queryAllComponents runs
+- Then components enumerate deterministically with stable ordering
+- And telemetry includes count
+beat: 2 handler: discoverComponentsFromDom
+- Given DOM tree
+- When discoverComponentsFromDom runs
+- Then elements map to model nodes 1:1; latency ≤ 100ms
+- And invalid nodes are logged with reason
+beat: 3 handler: collectCssClasses
+- Given discovered components
+- When collectCssClasses runs
+- Then classes deduplicate and normalize; mapping is complete
+- And telemetry includes unique class count
+beat: 4 handler: collectLayoutData
+- Given discovered components
+- When collectLayoutData runs
+- Then bounds/transform collected with precision ≤ 1px/0.5°
+- And units normalize (px)
+beat: 5 handler: buildUiFileContent
+- Given collected data
+- When buildUiFileContent runs
+- Then a valid export JSON is built; size within baseline
+- And schema validation passes
+beat: 6 handler: downloadUiFile
+- Given file content
+- When downloadUiFile runs
+- Then browser downloads with correct filename and MIME
+- And user receives completion signal
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.end.json]
+beat: 1 handler: endLineManip
+- Given a line manipulation
+- When endLineManip runs
+- Then final path/anchors persist and hit-testing updates
+- And latency ≤ 16ms
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.move.json]
+beat: 1 handler: moveLineManip
+- Given an active line manipulation
+- When moveLineManip runs
+- Then anchors move smoothly at 60fps target; constraints apply
+- And telemetry includes delta
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.start.json]
+beat: 1 handler: startLineManip
+- Given a movable line
+- When startLineManip runs
+- Then manipulation context initializes; selection expands to anchors
+- And a 'line.manip.start' event publishes
+
+[packages/canvas-component/json-sequences/canvas-component/paste.json]
+beat: 1 handler: readFromClipboard
+- Given clipboard contains valid data
+- When readFromClipboard runs
+- Then payload is read with type detection and size limits
+- And errors are typed on unsupported formats
+beat: 2 handler: deserializeComponentData
+- Given a serialized payload
+- When deserializeComponentData runs
+- Then payload maps to internal model; validation passes
+- And telemetry includes component count
+beat: 3 handler: calculatePastePosition
+- Given cursor and canvas bounds
+- When calculatePastePosition runs
+- Then target position computes with snap; within viewport
+- And no overlap violations occur beyond threshold
+beat: 4 handler: createPastedComponent
+- Given deserialized data
+- When createPastedComponent runs
+- Then component is created atomically; undo snapshot recorded
+- And latency ≤ 80ms P95
+beat: 5 handler: notifyPasteComplete
+- Given paste completes
+- When notifyPasteComplete runs
+- Then 'paste.complete' event publishes with ids and count
+- And subscribers receive within ≤ 20ms
+
+[packages/canvas-component/json-sequences/canvas-component/resize.end.json]
+beat: 1 handler: endResize
+- Given a resize interaction
+- When endResize runs
+- Then final size/transform commits; constraints validated
+- And a 'resize.ended' event publishes
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.end.json]
+beat: 1 handler: endLineResize
+- Given a line resize interaction
+- When endLineResize runs
+- Then final line dimensions/anchors persist; hit-testing updates
+- And latency ≤ 16ms
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.move.json]
+beat: 1 handler: updateLine
+- Given an active line resize
+- When updateLine runs
+- Then line size updates at 60fps; constraints apply
+- And telemetry includes new length/angle
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.start.json]
+beat: 1 handler: startLineResize
+- Given a resizable line
+- When startLineResize runs
+- Then resize context initializes and selection updates
+- And a 'resize.line.start' event publishes
+
+[packages/canvas-component/json-sequences/canvas-component/resize.move.json]
+beat: 1 handler: updateSize
+- Given an active resize
+- When updateSize runs
+- Then component resizes at 60fps target; constraints apply
+- And reflow/jank minimized
+beat: 2 handler: forwardToControlPanel
+- Given size changes
+- When forwardToControlPanel runs
+- Then update publishes to control panel within ≤ 20ms
+- And messages are coalesced per frame
+
+[packages/canvas-component/json-sequences/canvas-component/resize.start.json]
+beat: 1 handler: startResize
+- Given a resizable component
+- When startResize runs
+- Then resize context initializes with bounds and handles visible
+- And a 'resize.start' event publishes
+
+[packages/canvas-component/json-sequences/canvas-component/rules.config.json]
+beat: 1 handler: setAllRulesConfig
+- Given a rule set
+- When setAllRulesConfig runs
+- Then rules apply atomically and persist; validation passes
+- And telemetry includes rule count
+beat: 2 handler: loadAllRulesFromWindow
+- Given a window-bound rule store
+- When loadAllRulesFromWindow runs
+- Then rules load with defaults for missing entries; typed errors on invalid
+- And P95 ≤ 100ms
+beat: 3 handler: getAllRulesConfig
+- Given rules are loaded
+- When getAllRulesConfig runs
+- Then a normalized rules snapshot returns; consumers receive consistent view
+- And calls are idempotent and cached
+
+[packages/canvas-component/json-sequences/canvas-component/select.requested.json]
+beat: 1 handler: routeSelectionRequest
+- Given a user selection action
+- When routeSelectionRequest runs
+- Then selection criteria routes to orchestrator with correlation id
+- And invalid targets are rejected with typed error
+
+[packages/canvas-component/json-sequences/canvas-component/select.svg-node.json]
+beat: 1 handler: showSvgNodeOverlay
+- Given an SVG node is selected
+- When showSvgNodeOverlay runs
+- Then overlay appears aligned to node bounds within ≤ 30ms
+- And telemetry includes node type and bounds

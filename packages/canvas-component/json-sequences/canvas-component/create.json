@@ -16,16 +16,56 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "resolve Template",
-          "acceptanceCriteria": [
-            "Given the resolveTemplate operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen resolveTemplate processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen resolveTemplate encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen resolveTemplate executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen resolveTemplate operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a platform reliability engineer, I need `resolveTemplate` to deterministically resolve component schemas and bindings within 1s P95 (99.9% success), deduping remote fetches and emitting telemetry so downstream renderers can build pages without retries.",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a valid component template request"],
+              "when": ["resolveTemplate runs"],
+              "then": ["P95 latency is ≤ 1s and P99.9 success ≥ 99.9%"],
+              "and": [
+                "result conforms to schema version 'v1' with required keys (id, bindings, props)",
+                "a telemetry event 'template.resolved' is emitted with duration and cacheHit flag"
+              ]
+            },
+            {
+              "given": ["duplicate requests for the same template within 2s"],
+              "when": ["resolveTemplate runs repeatedly"],
+              "then": ["remote fetches are deduped (≤ 1 network call)"],
+              "and": [
+                "outputs are identical (deep-equal)",
+                "telemetry 'template.deduped' increments with count"
+              ]
+            },
+            {
+              "given": ["an invalid or missing template id"],
+              "when": ["resolveTemplate executes"],
+              "then": ["it returns a typed error 'TemplateNotFound'"],
+              "and": [
+                "logs context (templateId, caller, correlationId)",
+                "emits telemetry 'template.error' with errorCode and retries=0"
+              ]
+            },
+            {
+              "given": ["cache warm state"],
+              "when": ["resolveTemplate is called"],
+              "then": ["memory usage stays within baseline ±10%"],
+              "and": [
+                "no blocking I/O occurs (io=false)",
+                "throughput ≥ baseline of 100 ops/min"
+              ]
+            },
+            {
+              "given": ["governance is enforced"],
+              "when": ["resolveTemplate produces bindings"],
+              "then": ["all bindings reference whitelisted components"],
+              "and": [
+                "audit trail includes schemaHash and resolverVersion",
+                "compliance violations count remains 0"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -36,16 +76,56 @@
           "timing": "immediate",
           "kind": "io",
           "scenario": "register Instance",
-          "acceptanceCriteria": [
-            "Given the registerInstance operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen registerInstance processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen registerInstance encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen registerInstance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen registerInstance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a frontend platform integrator, I need `registerInstance` to assign stable IDs and semantic classes to imported components within 1s P95 and persist registration events so style hooks and analytics can target instances consistently across sessions.",
           "testCase": "adds rx-comp-<tag>-<id> class for imported components",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a resolved template with component tag"],
+              "when": ["registerInstance executes"],
+              "then": ["P95 latency is ≤ 1s and instanceId is stable across session"],
+              "and": [
+                "element receives class 'rx-comp-<tag>-<id>'",
+                "telemetry 'instance.registered' includes elementId and classes"
+              ]
+            },
+            {
+              "given": ["an existing registration for the same node"],
+              "when": ["registerInstance is called again"],
+              "then": ["operation is idempotent (no duplicate class or new id)"],
+              "and": [
+                "emits telemetry 'instance.idempotent' with previousId=present",
+                "returns 200 with unchanged payload"
+              ]
+            },
+            {
+              "given": ["invalid input (missing tag or container)"],
+              "when": ["registerInstance runs"],
+              "then": ["it returns 'InvalidRegistration' error"],
+              "and": [
+                "logs context (tag, containerSelector)",
+                "emits telemetry 'instance.error' with errorCode and recovery=false"
+              ]
+            },
+            {
+              "given": ["multiple components imported concurrently (≥ 50/min)"],
+              "when": ["registerInstance processes events"],
+              "then": ["ordering is FIFO per container"],
+              "and": [
+                "average CPU remains within baseline ±10%",
+                "drop rate is 0%"
+              ]
+            },
+            {
+              "given": ["governance rules for semantic classes"],
+              "when": ["registerInstance assigns classes"],
+              "then": ["classes follow 'rx-comp-<tag>-<id>' pattern only"],
+              "and": [
+                "audit trail records registrarVersion and source",
+                "violations count remains 0"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -56,16 +136,56 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Generate or Create create Node",
-          "acceptanceCriteria": [
-            "Given the createNode operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createNode processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createNode encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createNode executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createNode operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a page composition service, I need `createNode` to assemble a canvas node from resolved templates within 2s P95 without directly rendering React, forwarding to the drop symphony and validating schema to keep the composition pipeline decoupled and safe.",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["resolved template and bindings"],
+              "when": ["createNode assembles the canvas node"],
+              "then": ["P95 latency is ≤ 2s and output conforms to 'CanvasNode' schema"],
+              "and": [
+                "node has stable keys and does not instantiate React",
+                "telemetry 'node.created' includes schemaVersion and forwardTo='drop'"
+              ]
+            },
+            {
+              "given": ["a request to render directly in React"],
+              "when": ["createNode runs"],
+              "then": ["it rejects direct React rendering (render=false)"],
+              "and": [
+                "forwards to drop symphony with action='compose'",
+                "logs routing decision with correlationId"
+              ]
+            },
+            {
+              "given": ["malformed bindings or props"],
+              "when": ["createNode executes"],
+              "then": ["it returns 'NodeValidationError' with path to invalid field"],
+              "and": [
+                "telemetry 'node.error' includes errorCode and count=1",
+                "no side effects occur (no files, no DOM)"
+              ]
+            },
+            {
+              "given": ["repeated calls with identical inputs"],
+              "when": ["createNode runs twice"],
+              "then": ["outputs are deterministic (deep-equal)"],
+              "and": [
+                "emitted telemetry includes dedupe=true on second call",
+                "resource usage delta ≤ 5%"
+              ]
+            },
+            {
+              "given": ["governance contracts"],
+              "when": ["createNode finalizes"],
+              "then": ["audit trail records composerVersion and schemaHash"],
+              "and": [
+                "compliance violations=0",
+                "downstream receives 'drop.compose' event"
+              ]
+            }
+          ]
         },
         {
           "beat": 4,
@@ -76,16 +196,56 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Render or Display render React",
-          "acceptanceCriteria": [
-            "Given the renderReact operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen renderReact processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen renderReact encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 200ms\nWhen renderReact executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen renderReact operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a UI runtime engineer, I need `renderReact` to instantiate React components from composed nodes in <200ms P95, with memoized props and keyed lists, emitting perf telemetry so UI remains responsive on median devices.",
           "testCase": "creates a React component through the complete create sequence",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a composed node"],
+              "when": ["renderReact mounts"],
+              "then": ["P95 latency is ≤ 200ms and frame drops ≤ 1%"],
+              "and": [
+                "list items are keyed and props memoized",
+                "telemetry 'react.render' includes duration and commitTime"
+              ]
+            },
+            {
+              "given": ["re-render with unchanged props"],
+              "when": ["renderReact executes"],
+              "then": ["no re-render occurs (pure)"],
+              "and": [
+                "React profiler shows skipped updates",
+                "telemetry 'react.skip' increments"
+              ]
+            },
+            {
+              "given": ["an error in component render"],
+              "when": ["renderReact runs"],
+              "then": ["it surfaces error to boundary and logs stack"],
+              "and": [
+                "telemetry 'react.error' includes componentName and errorCode",
+                "UI remains responsive (no freeze)"
+              ]
+            },
+            {
+              "given": ["large lists (≥ 500 items)"],
+              "when": ["renderReact renders"],
+              "then": ["virtualization is applied"],
+              "and": [
+                "memory stays within baseline ±15%",
+                "first paint ≤ 1s"
+              ]
+            },
+            {
+              "given": ["governance for runtime"],
+              "when": ["renderReact operates"],
+              "then": ["audit includes rendererVersion and bundleId"],
+              "and": [
+                "violations=0",
+                "accessibility checks pass for labels and roles"
+              ]
+            }
+          ]
         },
         {
           "beat": 5,
@@ -96,16 +256,56 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "acceptanceCriteria": [
-            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
-            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
-            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
-            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
-            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
-          ],
           "userStory": "As an event-driven UI orchestrator, I need UI class/state changes published with <20ms end-to-end delivery, ordered FIFO with backpressure, so subscribers (controls, analytics, accessibility) react consistently without missed transitions.",
           "testCase": "exports CanvasPage and register()",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a class/state change completes"],
+              "when": ["notifyUi is invoked"],
+              "then": ["event 'ui.change' publishes within ≤ 5ms to EventRouter"],
+              "and": [
+                "payload includes elementId, action(add/remove), className, ts(usec)",
+                "telemetry 'ui.notify' records publishDuration"
+              ]
+            },
+            {
+              "given": ["a burst of ≥ 20 changes"],
+              "when": ["notifyUi publishes"],
+              "then": ["events are queued FIFO and delivered in order"],
+              "and": [
+                "no events are dropped or duplicated",
+                "end-to-end delivery ≤ 20ms per event"
+              ]
+            },
+            {
+              "given": ["multiple subscribers"],
+              "when": ["notifyUi broadcasts"],
+              "then": ["all subscribers receive the event"],
+              "and": [
+                "can act within ≤ 20ms",
+                "acks are tracked; missing ack count=0"
+              ]
+            },
+            {
+              "given": ["router congestion"],
+              "when": ["notifyUi attempts publish"],
+              "then": ["backpressure is applied and caller is non-blocking"],
+              "and": [
+                "events are eventually delivered within bounded latency ≤ 200ms",
+                "telemetry 'ui.backpressure' increments"
+              ]
+            },
+            {
+              "given": ["errors occur during notification"],
+              "when": ["notifyUi runs"],
+              "then": ["events still publish with errorContext"],
+              "and": [
+                "failure chain can be reconstructed from payload and logs",
+                "system stability is preserved"
+              ]
+            }
+          ]
         },
         {
           "beat": 6,
@@ -116,16 +316,56 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "enhance Line",
-          "acceptanceCriteria": [
-            "Given the enhanceLine operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen enhanceLine processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen enhanceLine encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen enhanceLine executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen enhanceLine operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
           "testCase": "should enhance-line",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a canvas line node"],
+              "when": ["enhanceLine runs"],
+              "then": ["P95 latency is ≤ 1s and geometry is validated"],
+              "and": [
+                "measurements, anchors, and hit areas are added",
+                "telemetry 'line.enhanced' includes counts for anchors and hits"
+              ]
+            },
+            {
+              "given": ["precision requirements (snap-to-grid enabled)"],
+              "when": ["enhanceLine executes"],
+              "then": ["anchors align to grid with ≤ 0.5px error"],
+              "and": [
+                "hit areas cover segments with ≥ 95% accuracy",
+                "regression tests pass for known shapes"
+              ]
+            },
+            {
+              "given": ["invalid geometry (self-intersecting)"],
+              "when": ["enhanceLine runs"],
+              "then": ["it returns 'GeometryInvalid' with segment index"],
+              "and": [
+                "logs context and emits 'line.error' telemetry",
+                "no mutations are applied"
+              ]
+            },
+            {
+              "given": ["repeated enhancement on same node"],
+              "when": ["enhanceLine executes twice"],
+              "then": ["operation is idempotent (no duplicate anchors)"],
+              "and": [
+                "telemetry includes idempotent=true on second run",
+                "memory delta ≤ 5%"
+              ]
+            },
+            {
+              "given": ["governance rules for design systems"],
+              "when": ["enhanceLine applies augmentation"],
+              "then": ["audit records rulesetVersion and feature toggles"],
+              "and": [
+                "violations=0",
+                "downstream tooling consumes emitted change events"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a platform reliability engineer, I need the create symphony to produce a fully composed, registered, and render-ready canvas component sequence with P95 latencies per beat (resolveTemplate ≤1s, registerInstance ≤1s, createNode ≤2s, renderReact ≤200ms, notifyUi ≤20ms, enhanceLine ≤1s) and 99.9% success, so downstream experiences render predictably.",

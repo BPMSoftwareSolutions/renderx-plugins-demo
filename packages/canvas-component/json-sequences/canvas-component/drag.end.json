@@ -16,16 +16,19 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "end Drag",
-          "acceptanceCriteria": [
-            "Given the endDrag operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen endDrag processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen endDrag encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen endDrag executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen endDrag operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an engineer, I need `endDrag` to finalize position, snap to grid, and publish outcome telemetry.",
           "testCase": "should end-drag",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["drag ends"],
+              "when": ["endDrag runs"],
+              "then": ["final position commits and context clears; latency ≤ 16ms"],
+              "and": [
+                "a 'drag.ended' event publishes"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",

@@ -16,16 +16,19 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "route Selection Request",
-          "acceptanceCriteria": [
-            "Given the routeSelectionRequest operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen routeSelectionRequest processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen routeSelectionRequest encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen routeSelectionRequest executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen routeSelectionRequest operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.",
           "testCase": "should route-selection-request",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a user selection action"],
+              "when": ["routeSelectionRequest runs"],
+              "then": ["selection criteria routes to orchestrator with correlation id"],
+              "and": [
+                "invalid targets are rejected with typed error"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
