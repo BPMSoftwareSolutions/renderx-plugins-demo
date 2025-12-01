@@ -22,7 +22,7 @@ Generated: 2025-12-01
    - Generate a normalized AC registry from `acceptanceCriteriaStructured` including:
      - Keys: `domainId`, `sequenceId`, `beatId`, `acIndex`, stable `acId` (`<domain>:<sequence>:<beat>:<ac>`), and normalized text (Given/When/Then/And).
    - Store at `.generated/acs/renderx-web-orchestration.registry.json` for analyzer and tests.
-  - Workflow reference: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json` (Movement 1 / Beat 1)
+  - Workflow reference: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json` (Movement 1 / Beat 1)
 
 2. Lightweight Test Tagging (Phase 1)
    - Introduce a concise, copy-pastable tag convention in test titles or `describe/it` blocks:

@@ -43,7 +43,7 @@ Structured acceptance criteria (GWT) are now the canonical source of truth acros
 - [ ] CI Gate: add thresholds (warn <70%, fail <50% on critical beats) and a job to run alignment in PRs.
 
 ## Workflow Reference
-- Sequence JSON: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json`
+- Sequence JSON: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json`
 - Registry: added under `renderx-web-orchestration` in `DOMAIN_REGISTRY.json` → `orchestration.sequence_files`
 - Movements overview:
   - M1 AC Registry → generate normalized AC registry
@@ -73,7 +73,7 @@ Works in `describe()` or `it()` titles for both unit/integration and Cypress tes
 
 ## References
 - Strategic plan: `docs/AC_TO_TEST_ALIGNMENT_PLAN.md`
-- Workflow sequence: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json`
+- Workflow sequence: `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json`
 - Current report: `docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md`
 - Domain registry: `DOMAIN_REGISTRY.json` (aliases enabled)
 

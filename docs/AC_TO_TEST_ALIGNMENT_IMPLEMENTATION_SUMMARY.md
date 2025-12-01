@@ -301,7 +301,7 @@ const alignmentSection = formatAlignmentSectionForAnalysisReport(domainId);
 
 - **GitHub Issue:** [#420](https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/420)
 - **Documentation:** [TEST_TAGGING_GUIDE.md](./TEST_TAGGING_GUIDE.md)
-- **Workflow Sequence:** `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json`
+- **Workflow Sequence:** `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json`
 
 ---
 

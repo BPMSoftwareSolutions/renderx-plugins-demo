@@ -39,6 +39,10 @@ const {
   validateSymphony,
   formatValidationReport: formatACValidationReport
 } = require('./validate-ac-test-alignment.cjs');
+const {
+  getAlignmentSummary,
+  formatAlignmentSectionForAnalysisReport
+} = require('./validate-ac-alignment.cjs');
 
 // ============================================================================
 // DOMAIN REGISTRY INTEGRATION
@@ -105,7 +109,7 @@ function loadDomainConfig(domainId) {
 }
 
 // Support environment variables for domain-based analysis orchestration
-let DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
+let DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'renderx-web-orchestration';
 
 // Load domain configuration from registry
 const domainConfig = loadDomainConfig(DOMAIN_ID);
@@ -1142,6 +1146,17 @@ ${metrics.conformity.violations_details.map(v =>
 ### Acceptance Criteria-to-Test Alignment
 
 ${(() => {
+  // Try new AC alignment system first
+  try {
+    const newAlignment = formatAlignmentSectionForAnalysisReport(DOMAIN_ID);
+    if (newAlignment && !newAlignment.includes('unavailable')) {
+      return newAlignment;
+    }
+  } catch (err) {
+    // Fall back to old system
+  }
+
+  // Fallback to old AC validation system
   const ac = metrics.acValidation;
   if (!ac || ac.error) {
     return `⚠️ AC validation unavailable: ${ac?.error || 'No data'}`;
