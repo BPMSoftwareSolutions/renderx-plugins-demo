@@ -23,18 +23,18 @@
             "Given performance SLA of < 1 second\nWhen endLineResize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen endLineResize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want endLineResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `endLineResize` to commit endpoints and publish geometry change events.",
           "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want endLineResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a design systems engineer, I need line-resize end to commit new geometry and trigger reflow safely.",
+      "persona": "Design systems engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want endLineResize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a design systems engineer, I need line-resize end to commit new geometry and trigger reflow safely.",
+  "persona": "Design systems engineer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

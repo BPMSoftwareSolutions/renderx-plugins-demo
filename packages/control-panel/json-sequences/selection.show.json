@@ -26,7 +26,7 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
           "testCase": "returns null selectionModel when id missing",
-          "userStory": "As an operations system, I want deriveSelectionModel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel."
         },
         {
           "beat": 2,
@@ -47,17 +47,17 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
+          "userStory": "As an orchestrator, I need `notifyUi` to publish selection model events within <20ms."
         }
       ],
-      "userStory": "As an operations system, I want deriveSelectionModel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As an operations system, I want deriveSelectionModel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

@@ -208,14 +208,14 @@
           "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+      "persona": "SRE",
       "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+  "persona": "SRE",
   "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
 }

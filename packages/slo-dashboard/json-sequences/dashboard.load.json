@@ -21,7 +21,7 @@
           ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\01-load-budgets.spec.ts",
           "testCase": "Scenario: Load initial SLO budgets for compliance baseline.",
-          "userStory": "As an operations system, I want loadBudgets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an SRE, I need `loadBudgets` to fetch and validate budget data."
         },
         {
           "beat": 2,
@@ -38,7 +38,7 @@
           ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\02-load-metrics.spec.ts",
           "testCase": "Scenario: Retrieve latest SLI metrics for compliance calculation.",
-          "userStory": "As an operations system, I want loadMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an SRE, I need `loadMetrics` to fetch recent metrics reliably."
         },
         {
           "beat": 3,
@@ -55,18 +55,18 @@
           ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\03-compute-compliance.spec.ts",
           "testCase": "Scenario: Aggregate weighted compliance across loaded SLO budgets and metrics.",
-          "userStory": "As an operations system, I want computeCompliance to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an SRE, I need `computeCompliance` to calculate status and thresholds deterministically."
         }
       ],
-      "userStory": "As an operations system, I want loadBudgets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.",
+      "persona": "SRE",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "name": "Dashboard.load",
   "beats": 3,
   "tempo": 120,
-  "userStory": "As an operations system, I want loadBudgets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.",
+  "persona": "SRE",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

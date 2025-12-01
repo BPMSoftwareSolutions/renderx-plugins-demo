@@ -26,15 +26,6 @@ export default defineConfig({
       "tests/test-plugin-loader.spec.tsx",
     ],
     setupFiles: [],
-    environmentMatchGlobs: [
-      ["packages/library/__tests__/**", "jsdom"],
-      ["packages/control-panel/__tests__/**/*.tsx", "jsdom"],
-      ["packages/canvas-component/__tests__/**", "jsdom"],
-      ["tests/react-component-communication.spec.ts", "jsdom"],
-      ["tests/react-component-e2e.spec.ts", "jsdom"],
-      ["tests/react-component-theme-toggle.spec.ts", "jsdom"],
-      ["tests/react-component-theme-toggle-e2e.spec.ts", "jsdom"],
-    ],
     coverage: {
       provider: "v8",
       reporter: ["text", "html", "lcov"],

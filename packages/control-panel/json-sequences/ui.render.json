@@ -26,7 +26,7 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As a form builder, I want to generate form fields from configuration in <100ms so that form loading is imperceptible (target: instantaneous at 60fps)."
+          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema."
         },
         {
           "beat": 2,
@@ -47,7 +47,7 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As a form designer, I want to generate organized form sections in <100ms so that complex multi-section forms load quickly and users can find relevant fields (target: cognitive load reduction)."
+          "userStory": "As an engineer, I need `generateSections` to group fields semantically."
         },
         {
           "beat": 3,
@@ -68,17 +68,17 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As an end user, I want forms to render completely in <500ms so that I can start interacting with the application immediately (target: <1 second total load time per RAIL model)."
+          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization."
         }
       ],
-      "userStory": "As a form builder, I want to generate form fields from configuration in <100ms so that form loading is imperceptible (target: instantaneous at 60fps).",
-      "persona": "System Operator",
+      "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+      "persona": "UI runtime engineer",
       "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
     }
   ],
   "beats": 3,
   "tempo": 120,
-  "userStory": "As a form builder, I want to generate form fields from configuration in <100ms so that form loading is imperceptible (target: instantaneous at 60fps).",
-  "persona": "Product Owner",
+  "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+  "persona": "UI runtime engineer",
   "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
 }

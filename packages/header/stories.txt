@@ -1,0 +1,18 @@
+# Domain: header
+
+[symphony:index]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need the header to render and handle theme toggles with <200ms P95 render and ≤20ms event handling so navigation feels instant.
+beat: ui.theme.toggle -> As an engineer, I need `ui.theme.toggle` to persist preference, update classes, and notify UI within <20ms.
+beat: ui.theme.get -> As an engineer, I need `ui.theme.get` to read and apply current theme in ≤1s P95 without blocking.
+
+[symphony:ui.theme.get]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).
+beat: getCurrentTheme -> As an engineer, I need `getCurrentTheme` to read persisted theme and apply classes.
+beat: notifyUi -> As an orchestrator, I need `notifyUi` to publish theme state in <20ms.
+
+[symphony:ui.theme.toggle]
+role: UI runtime engineer
+movementStory: As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.
+beat: toggleTheme -> As an engineer, I need `toggleTheme` to switch theme and persist preference.

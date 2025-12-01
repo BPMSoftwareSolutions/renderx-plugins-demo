@@ -28,13 +28,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a design systems engineer, I need line-resize move to adjust endpoints and measure lengths at ≤100ms P95.",
+      "persona": "Design systems engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a design systems engineer, I need line-resize move to adjust endpoints and measure lengths at ≤100ms P95.",
+  "persona": "Design systems engineer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

@@ -134,14 +134,14 @@
           "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
-      "persona": "System Operator",
+      "userStory": "As a UI runtime engineer, I need the control panel to initialize views and data sources with <200ms render and ≤1s data fetch P95, emitting telemetry so operators can track responsiveness.",
+      "persona": "UI runtime engineer",
       "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
     }
   ],
   "beats": 6,
   "tempo": 120,
-  "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
-  "persona": "Product Owner",
+  "userStory": "As a UI runtime engineer, I need the control panel to initialize views and data sources with <200ms render and ≤1s data fetch P95, emitting telemetry so operators can track responsiveness.",
+  "persona": "UI runtime engineer",
   "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
 }

@@ -208,14 +208,14 @@
           "userStory": "As an operations system, I want generateFixCompleted to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
         }
       ],
-      "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an SRE, I need fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails.",
+      "persona": "SRE",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an SRE, I need fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails.",
+  "persona": "SRE",
   "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
 }

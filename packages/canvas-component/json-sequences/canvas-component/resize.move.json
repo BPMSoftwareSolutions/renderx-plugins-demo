@@ -26,7 +26,7 @@
             "Given performance SLA of < 100ms\nWhen updateSize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen updateSize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As a UI runtime engineer, I need `updateSize` to update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications.",
           "testCase": "forwards drag position updates to Control Panel",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts"
         },
@@ -51,13 +51,13 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.",
+      "persona": "Interaction designer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want updateSize to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.",
+  "persona": "Interaction designer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
-<!-- Source: C:\source\repos\bpm\Internal\renderx-plugins-demo\packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json -->
-<!-- Generated: 2025-11-30T09:11:46.627Z -->
+<!-- Source: C:\source\repos\bpm\internal\renderx-plugins-demo\packages\orchestration\json-sequences\symphonic-code-analysis-pipeline.json -->
+<!-- Generated: 2025-12-01T01:02:48.837Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Symphonic Code Analysis Pipeline
@@ -159,6 +159,13 @@ npm run analyze:symphonic:code [--domain=<id>] [--baseline] [--trends]
 - **Impact**: medium
 
 
+#### fractal Architecture
+
+- **Description**: Fractal architecture alignment across orchestration domains and sequences
+- **Benchmark**: >= 0.85
+- **Impact**: high
+
+
 #### architecture Conformity
 
 - **Description**: Alignment with orchestration and fractal architecture
@@ -307,6 +314,7 @@ The pipeline emits the following orchestration events:
 - `analysis.coverage.completed`
 - `analysis.conformity.completed`
 - `analysis.reporting.completed`
+- `movement-4:fractal-architecture-analyzed`
 
 ---
 

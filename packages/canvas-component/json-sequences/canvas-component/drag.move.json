@@ -26,7 +26,7 @@
             "Given performance SLA of < 100ms\nWhen updatePosition executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen updatePosition operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want updatePosition to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As a UI runtime engineer, I need `updatePosition` to update DOM transform with throttling in ≤100ms P95 and emit selection updates.",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts"
         },
@@ -46,18 +46,18 @@
             "Given performance SLA of < 1 second\nWhen forwardToControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen forwardToControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want forwardToControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an orchestrator, I need `forwardToControlPanel` to publish selection change events within ≤1s P95.",
           "testCase": "addClass adds class and populates payload",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want updatePosition to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.",
+      "persona": "Interaction designer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want updatePosition to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.",
+  "persona": "Interaction designer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

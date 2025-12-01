@@ -48,13 +48,13 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

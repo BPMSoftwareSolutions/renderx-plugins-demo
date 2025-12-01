@@ -23,18 +23,18 @@
             "Given performance SLA of < 1 second\nWhen routeSelectionRequest executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen routeSelectionRequest operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want routeSelectionRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.",
           "testCase": "should route-selection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want routeSelectionRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+      "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want routeSelectionRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+  "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

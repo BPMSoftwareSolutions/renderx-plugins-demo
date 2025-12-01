@@ -1,0 +1,20 @@
+# Domain: library-component
+
+[symphony:container.drop]
+role: Orchestration integrator
+movementStory: As an integrator, I need container drop to publish create requests deterministically with ≤1s P95 and route to canvas create.
+beat: publishCreateRequested -> As an orchestrator, I need `publishCreateRequested` to route drop events to canvas create.
+
+[symphony:drag]
+role: Interaction designer
+movementStory: As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.
+beat: onDragStart -> As an engineer, I need `onDragStart` to prepare drag payload and emit telemetry.
+
+[symphony:drop]
+role: Interaction designer
+movementStory: As an interaction designer, I need drop to publish create requests deterministically and clear preview state.
+beat: publishCreateRequested -> As an orchestrator, I need `publishCreateRequested` to forward to canvas-component create.
+
+[symphony:index]
+role: Platform operator
+movementStory: As an operator, I need the library-component index to summarize available components and interactions with clear roles and telemetry.

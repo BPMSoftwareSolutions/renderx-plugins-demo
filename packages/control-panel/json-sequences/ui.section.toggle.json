@@ -26,17 +26,17 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
           "testCase": "applies rx-button--<variant> from content.variant even if classRefs lacked it",
-          "userStory": "As an operations system, I want toggleSection to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an engineer, I need `toggleSection` to apply state and notify UI."
         }
       ],
-      "userStory": "As an operations system, I want toggleSection to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a UI runtime engineer, I need section toggles to update visibility and persist preference within ≤1s P95.",
+      "persona": "UI runtime engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
   "tempo": 120,
-  "userStory": "As an operations system, I want toggleSection to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a UI runtime engineer, I need section toggles to update visibility and persist preference within ≤1s P95.",
+  "persona": "UI runtime engineer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }

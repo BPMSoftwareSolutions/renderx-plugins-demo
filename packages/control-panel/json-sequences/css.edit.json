@@ -26,7 +26,7 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "userStory": "As an operations system, I want updateCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an engineer, I need `updateCssClass` to modify rules atomically and register change events."
         },
         {
           "beat": 2,
@@ -47,17 +47,17 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
+          "userStory": "As an orchestrator, I need `notifyUi` to publish style-change events within <20ms."
         }
       ],
-      "userStory": "As an operations system, I want updateCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.",
+      "persona": "Design systems engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As an operations system, I want updateCssClass to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.",
+  "persona": "Design systems engineer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

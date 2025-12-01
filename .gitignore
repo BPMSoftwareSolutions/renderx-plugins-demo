@@ -224,8 +224,10 @@ venv.bak/
 /derived-external-topics.json
 
 # Generated and archived files are ephemeral - never track in source control
-.generated/
+
 .archived/
+# Exception: Session context file is required for build pipeline
+!.generated/context-tree-orchestration-audit-session.json
 /catalog/json-interactions/.generated/app.json
 /catalog/json-interactions/.generated/canvas.json
 /catalog/json-interactions/.generated/control.json

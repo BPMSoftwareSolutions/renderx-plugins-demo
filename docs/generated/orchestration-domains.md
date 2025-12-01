@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-30T09:11:46.562Z
+**Last Generated:** 2025-12-01T01:02:48.770Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
@@ -13,7 +13,7 @@ Complete registry of all orchestration domains and plugin sequences
 
 ---
 
-## The 61 Orchestration Domains
+## The 60 Orchestration Domains
 
 ### 1. 🔌 Canvas Component Copy
 
@@ -1974,92 +1974,7 @@ Orchestration domain: self_sequences
 
 ---
 
-### 58. 🎼 Musical Conductor Orchestration Sequence
-
-**ID:** `musical-conductor-orchestration`
-
-High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
-
-```
-    ┌─────────────────────────────────────────────────────────┐
-    │ 🎼 Musical Conductor Orchestration Sequence             │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │ 🎵 Sequence: musical-conductor-orchestration            │
-    │ ├─ Tempo: 112 BPM                                       │
-    │ ├─ Key: C Minor                                         │
-    │ └─ Category: orchestration                              │
-    │                                                         │
-    │ Movement 1: Movement 1: Initialization                  │
-    │   ├─ Load conductor configuration                       │
-    │   ├─ Register communication channels                    │
-    │   ├─ Allocate event bus                                 │
-    │   ├─ Bootstrap telemetry hooks                          │
-    │   └─ Create session envelope                            │
-    │                                                         │
-    │           ▼                                             │
-    │                                                         │
-    │ Movement 2: Movement 2: Score Loading                   │
-    │   ├─ Resolve score index                                │
-    │   ├─ Fetch sequence definitions                         │
-    │   ├─ Validate structural signature                      │
-    │   ├─ Normalize movement metadata                        │
-    │   └─ Publish score loaded event                         │
-    │                                                         │
-    │           ▼                                             │
-    │                                                         │
-    │ Movement 3: Movement 3: Session Start                   │
-    │   ├─ Initialize timeline                                │
-    │   ├─ Register performance metrics                       │
-    │   ├─ Activate dynamic evaluation                        │
-    │   ├─ Broadcast session start                            │
-    │   └─ Record provenance snapshot                         │
-    │                                                         │
-    │           ▼                                             │
-    │                                                         │
-    │ Movement 4: Movement 4: Movement Execution              │
-    │   ├─ Iterate movements                                  │
-    │   ├─ Dispatch beat handlers                             │
-    │   ├─ Capture performance samples                        │
-    │   ├─ Apply scheduled dynamics                           │
-    │   └─ Accumulate execution log                           │
-    │                                                         │
-    │           ▼                                             │
-    │                                                         │
-    │ Movement 5: Movement 5: Adaptive Adjustment             │
-    │   ├─ Evaluate tempo variance                            │
-    │   ├─ Apply dynamic level changes                        │
-    │   ├─ Rebalance resource usage                           │
-    │   ├─ Update execution state                             │
-    │   └─ Emit adjustment event                              │
-    │                                                         │
-    │           ▼                                             │
-    │                                                         │
-    │ Movement 6: Movement 6: Finalization                    │
-    │   ├─ Flush telemetry buffers                            │
-    │   ├─ Persist session summary                            │
-    │   ├─ Emit completion event                              │
-    │   ├─ Release orchestration resources                    │
-    │   └─ Publish integrity hash                             │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-```
-
-**Sequence File:** `packages\musical-conductor\.ographx\sequences\musical-conductor-orchestration.json`
-
-**Category:** `orchestration`
-
-**Purpose:** System orchestration
-
-**Movements:** 6
-
-**Beats:** 30
-
-**Status:** active
-
----
-
-### 59. 🎼 CAG Agent Workflow - 8 Phase Sequence
+### 58. 🎼 CAG Agent Workflow - 8 Phase Sequence
 
 **ID:** `cag-agent-workflow`
 
@@ -2120,7 +2035,7 @@ Complete workflow for an agent operating within the Context-Augmented Generation
 
 ---
 
-### 60. 🎼 Orchestration Audit System Implementation Session
+### 59. 🎼 Orchestration Audit System Implementation Session
 
 **ID:** `orchestration-audit-session`
 
@@ -2181,7 +2096,7 @@ Complete workflow for building JSON-first orchestration audit system with auto-g
 
 ---
 
-### 61. 🎼 Orchestration Audit System Domain Sequence
+### 60. 🎼 Orchestration Audit System Domain Sequence
 
 **ID:** `orchestration-audit-system`
 

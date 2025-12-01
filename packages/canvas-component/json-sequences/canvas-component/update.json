@@ -48,13 +48,13 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.",
+      "persona": "Platform reliability engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.",
+  "persona": "Platform reliability engineer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
 }

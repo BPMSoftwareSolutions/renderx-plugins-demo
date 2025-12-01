@@ -23,18 +23,18 @@
             "Given performance SLA of < 1 second\nWhen exportSvgToGif executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
             "Given compliance and governance\nWhen exportSvgToGif operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
           ],
-          "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": "As an engineer, I need `exportSvgToGif` to rasterize frames and encode GIF with telemetry.",
           "testCase": "success minimal export triggers download without error",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts"
         }
       ],
-      "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-      "persona": "System Operator",
+      "userStory": "As a platform operator, I need GIF export to render frames and encode deterministically within ≤2s P95.",
+      "persona": "Platform operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-  "persona": "Product Owner",
+  "userStory": "As a platform operator, I need GIF export to render frames and encode deterministically within ≤2s P95.",
+  "persona": "Platform operator",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
 }
