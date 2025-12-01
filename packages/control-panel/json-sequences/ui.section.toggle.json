@@ -22,15 +22,9 @@
           "userStory": "As an engineer, I need `toggleSection` to apply state and notify UI.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "a section"
-              ],
-              "when": [
-                "toggleSection runs"
-              ],
-              "then": [
-                "expand/collapse animates ≤ 120ms and preserves focus order"
-              ],
+              "given": ["a section"],
+              "when": ["toggleSection runs"],
+              "then": ["expand/collapse animates ≤ 120ms and preserves focus order"],
               "and": [
                 "telemetry 'ui.section.toggle' includes state"
               ]

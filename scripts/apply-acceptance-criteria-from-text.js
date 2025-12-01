@@ -121,7 +121,19 @@ function applyToJson(rootDir, section) {
     commit();
     target.acceptanceCriteriaStructured = structured;
   }
-  fs.writeFileSync(jsonPath, JSON.stringify(obj, null, 2) + '\n', 'utf8');
+  // Pretty-print JSON but keep small clause arrays inline for readability
+  const pretty = JSON.stringify(obj, null, 2);
+    const makeInlinePattern = k => new RegExp(
+      `("${k}"\\s*:\\s*)\\[\\s*(?:\\r?\\n)+\\s*"([^"\\r\\n]+)"\\s*(?:\\r?\\n)+\\s*\\]`,
+      'gm'
+    );
+  // Inline single-item arrays for GWT clauses
+  let formatted = pretty
+      .replace(makeInlinePattern('given'), '$1["$2"]')
+      .replace(makeInlinePattern('when'), '$1["$2"]')
+      .replace(makeInlinePattern('then'), '$1["$2"]');
+    // Do not inline 'and' arrays if they have multiple items; keep as-is.
+  fs.writeFileSync(jsonPath, formatted + '\n', 'utf8');
   console.log('[OK] Updated', section.file);
   return true;
 }

@@ -21,15 +21,9 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "pointer down"
-              ],
-              "when": [
-                "dragStart runs"
-              ],
-              "then": [
-                "starts drag within ≤ 16ms and sets data payload"
-              ],
+              "given": ["pointer down"],
+              "when": ["dragStart runs"],
+              "then": ["starts drag within ≤ 16ms and sets data payload"],
               "and": [
                 "telemetry 'drag.start' includes elementId"
               ]

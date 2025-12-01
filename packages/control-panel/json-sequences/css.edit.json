@@ -22,15 +22,9 @@
           "userStory": "As an engineer, I need `updateCssClass` to modify rules atomically and register change events.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "existing CSS rule"
-              ],
-              "when": [
-                "editRule runs"
-              ],
-              "then": [
-                "selector/properties update atomically with rollback on error"
-              ],
+              "given": ["existing CSS rule"],
+              "when": ["editRule runs"],
+              "then": ["selector/properties update atomically with rollback on error"],
               "and": [
                 "telemetry 'css.rule.edit' includes diff summary"
               ]
@@ -47,16 +41,56 @@
           "kind": "pure",
           "number": 2,
           "scenario": "Publish UI State Change Notifications to Event System",
-          "acceptanceCriteria": [
-            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
-            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
-            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
-            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
-            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish style-change events within <20ms."
+          "userStory": "As an orchestrator, I need `notifyUi` to publish style-change events within <20ms.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a class change operation completes"],
+              "when": ["notifyUi is invoked with change details"],
+              "then": ["an event is published to the central EventRouter within 5ms"],
+              "and": [
+                "the event contains element ID, action (add/remove), and class name",
+                "the event is stamped with microsecond-precision timestamp"
+              ]
+            },
+            {
+              "given": ["multiple class operations occur in sequence"],
+              "when": ["notifyUi publishes events"],
+              "then": ["events are queued in FIFO order"],
+              "and": [
+                "subscribers receive events in the order they occurred",
+                "no events are dropped or duplicated"
+              ]
+            },
+            {
+              "given": ["a subscriber is registered for UI change events"],
+              "when": ["notifyUi publishes"],
+              "then": ["the subscriber receives the event within 20ms"],
+              "and": [
+                "the subscriber can act on the notification",
+                "multiple subscribers can consume the same event"
+              ]
+            },
+            {
+              "given": ["the event system is congested"],
+              "when": ["notifyUi attempts to publish"],
+              "then": ["the event is queued with backpressure"],
+              "and": [
+                "the operation does not block the caller",
+                "events are eventually delivered with bounded latency"
+              ]
+            },
+            {
+              "given": ["notification occurs during error conditions"],
+              "when": ["notifyUi is called"],
+              "then": ["events are still published for traceability"],
+              "and": [
+                "error context is included in event payload",
+                "the system can reconstruct the failure chain from events"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.",

@@ -21,15 +21,9 @@
           "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "a library path"
-              ],
-              "when": [
-                "requestLoad runs"
-              ],
-              "then": [
-                "emits 'library.load.requested' and validates path"
-              ],
+              "given": ["a library path"],
+              "when": ["requestLoad runs"],
+              "then": ["emits 'library.load.requested' and validates path"],
               "and": [
                 "telemetry includes path and requestId"
               ]
@@ -50,15 +44,9 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "request"
-              ],
-              "when": [
-                "loadLibrary runs"
-              ],
-              "then": [
-                "loads assets with P95 ≤ 2s, errors typed"
-              ],
+              "given": ["request"],
+              "when": ["loadLibrary runs"],
+              "then": ["loads assets with P95 ≤ 2s, errors typed"],
               "and": [
                 "telemetry 'library.load' includes size and duration"
               ]

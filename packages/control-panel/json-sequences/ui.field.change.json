@@ -22,15 +22,9 @@
           "userStory": "As an engineer, I need `prepareField` to normalize input and validate.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "a user input event"
-              ],
-              "when": [
-                "onFieldChange runs"
-              ],
-              "then": [
-                "model updates debounced ≤ 50ms and validates lazily"
-              ],
+              "given": ["a user input event"],
+              "when": ["onFieldChange runs"],
+              "then": ["model updates debounced ≤ 50ms and validates lazily"],
               "and": [
                 "telemetry 'ui.field.change' includes field and debounce"
               ]

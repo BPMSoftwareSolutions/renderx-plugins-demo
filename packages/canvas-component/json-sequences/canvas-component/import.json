@@ -21,15 +21,9 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "a valid import file (JSON/CSV)"
-              ],
-              "when": [
-                "parseImport runs"
-              ],
-              "then": [
-                "P95 latency ≤ 1s and records parsed count equals input"
-              ],
+              "given": ["a valid import file (JSON/CSV)"],
+              "when": ["parseImport runs"],
+              "then": ["P95 latency ≤ 1s and records parsed count equals input"],
               "and": [
                 "telemetry 'import.parsed' includes format and count"
               ]
@@ -50,15 +44,9 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "parsed records"
-              ],
-              "when": [
-                "mapToNodes runs"
-              ],
-              "then": [
-                "output nodes conform to CanvasNode schema"
-              ],
+              "given": ["parsed records"],
+              "when": ["mapToNodes runs"],
+              "then": ["output nodes conform to CanvasNode schema"],
               "and": [
                 "errors are logged with indexes for invalid records"
               ]

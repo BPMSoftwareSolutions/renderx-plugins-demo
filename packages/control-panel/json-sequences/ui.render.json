@@ -22,15 +22,9 @@
           "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "control panel state"
-              ],
-              "when": [
-                "renderPanel runs"
-              ],
-              "then": [
-                "first paint ≤ 200ms P95 and UI responds within 100ms to input"
-              ],
+              "given": ["control panel state"],
+              "when": ["renderPanel runs"],
+              "then": ["first paint ≤ 200ms P95 and UI responds within 100ms to input"],
               "and": [
                 "telemetry 'control-panel.render' includes duration and components"
               ]
@@ -52,15 +46,9 @@
           "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "panel render completes"
-              ],
-              "when": [
-                "applyCSS runs"
-              ],
-              "then": [
-                "styles apply deterministically with no FOUC"
-              ],
+              "given": ["panel render completes"],
+              "when": ["applyCSS runs"],
+              "then": ["styles apply deterministically with no FOUC"],
               "and": [
                 "accessibility roles/labels are present"
               ]
@@ -77,16 +65,43 @@
           "kind": "stage-crew",
           "number": 3,
           "scenario": "Render Complete Dynamic View with All Components",
-          "acceptanceCriteria": [
-            "Given a complete view configuration with sections, fields, rules\nWhen renderView is invoked\nThen the entire form is rendered within 500ms\nAnd all interactive elements are functional\nAnd no rendering errors or warnings appear in console",
-            "Given a large view with 200+ fields\nWhen renderView processes it\nThen rendering completes within 800ms\nAnd initial interaction latency is < 100ms\nAnd memory footprint is optimized (no memory leaks)",
-            "Given responsive design requirements\nWhen renderView renders\nThen layout adapts to viewport (desktop, tablet, mobile)\nAnd touch targets are minimum 44x44px on mobile\nAnd text is readable at all zoom levels",
-            "Given accessibility requirements (WCAG 2.1 AA)\nWhen renderView renders\nThen all elements have proper semantic HTML\nAnd color contrast is >= 4.5:1 for text\nAnd keyboard navigation is fully functional",
-            "Given performance budgets\nWhen renderView completes\nThen First Contentful Paint (FCP) is < 1 second\nAnd Largest Contentful Paint (LCP) is < 2.5 seconds\nAnd Cumulative Layout Shift (CLS) is < 0.1"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization."
+          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": ["a complete view configuration with sections, fields, and rules"],
+              "when": ["renderView is invoked"],
+              "then": ["the entire form renders within ≤ 500ms and all interactive elements respond"],
+              "and": [
+                "no console errors or warnings are emitted"
+              ]
+            },
+            {
+              "given": ["a large view with ≥ 200 fields"],
+              "when": ["renderView processes it"],
+              "then": ["initial interaction latency is < 100ms and memory usage remains stable"],
+              "and": [
+                "rendering completes within ≤ 800ms under P95"
+              ]
+            },
+            {
+              "given": ["responsive design requirements"],
+              "when": ["renderView renders"],
+              "then": ["layout adapts across desktop/tablet/mobile with readable text"],
+              "and": [
+                "touch targets meet ≥ 44x44px on mobile"
+              ]
+            },
+            {
+              "given": ["accessibility requirements (WCAG 2.1 AA)"],
+              "when": ["renderView renders"],
+              "then": ["elements use semantic HTML and color contrast ≥ 4.5:1"],
+              "and": [
+                "keyboard navigation remains fully functional"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",

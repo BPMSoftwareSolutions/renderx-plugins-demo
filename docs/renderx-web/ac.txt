@@ -39,6 +39,78 @@ beat: 2 handler: applyCSS
 - When applyCSS runs
 - Then styles apply deterministically with no FOUC
 - And accessibility roles/labels are present
+beat: 3 handler: renderView
+- Given a complete view configuration with sections, fields, and rules
+- When renderView is invoked
+- Then the entire form renders within ≤ 500ms and all interactive elements respond
+- And no console errors or warnings are emitted
+- Given a large view with ≥ 200 fields
+- When renderView processes it
+- Then initial interaction latency is < 100ms and memory usage remains stable
+- And rendering completes within ≤ 800ms under P95
+- Given responsive design requirements
+- When renderView renders
+- Then layout adapts across desktop/tablet/mobile with readable text
+- And touch targets meet ≥ 44x44px on mobile
+- Given accessibility requirements (WCAG 2.1 AA)
+- When renderView renders
+- Then elements use semantic HTML and color contrast ≥ 4.5:1
+- And keyboard navigation remains fully functional
+
+
+[packages/control-panel/json-sequences/update.json]
+beat: 1 handler: updateFromElement
+- Given the updateFromElement operation is triggered
+- When the handler executes
+- Then it completes successfully within < 100ms
+- And the output is valid and meets schema
+- And any required events are published
+- Given valid input parameters
+- When updateFromElement processes them
+- Then results conform to expected schema
+- And no errors are thrown
+- And telemetry events are recorded with latency metrics
+- Given error conditions
+- When updateFromElement encounters an error
+- Then the error is logged with full context
+- And appropriate recovery is attempted
+- And the system remains stable
+- Given performance SLA of < 100ms
+- When updateFromElement executes
+- Then latency is consistently within target
+- And throughput meets baseline requirements
+- And resource usage stays within bounds
+- Given compliance and governance
+- When updateFromElement operates
+- Then all governance rules are enforced
+- And audit trails capture execution
+- And no compliance violations occur
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/classes.add.json]
 beat: 1 handler: addClass
@@ -46,6 +118,32 @@ beat: 1 handler: addClass
 - When addClass runs
 - Then class is added once, latency ≤ 5ms
 - And telemetry 'ui.class.add' includes elementId and class
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/classes.remove.json]
 beat: 1 handler: removeClass
@@ -53,6 +151,32 @@ beat: 1 handler: removeClass
 - When removeClass runs
 - Then class is removed, latency ≤ 5ms
 - And telemetry 'ui.class.remove' includes elementId and class
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/css.create.json]
 beat: 1 handler: createRule
@@ -60,6 +184,32 @@ beat: 1 handler: createRule
 - When createRule runs
 - Then rule is inserted into stylesheet, latency ≤ 20ms
 - And telemetry 'css.rule.create' includes selector and index
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/css.edit.json]
 beat: 1 handler: editRule
@@ -67,6 +217,32 @@ beat: 1 handler: editRule
 - When editRule runs
 - Then selector/properties update atomically with rollback on error
 - And telemetry 'css.rule.edit' includes diff summary
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/css.delete.json]
 beat: 1 handler: deleteRule
@@ -74,6 +250,32 @@ beat: 1 handler: deleteRule
 - When deleteRule runs
 - Then rule is removed and reflow cost ≤ baseline
 - And telemetry 'css.rule.delete' includes index and cost
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/selection.show.json]
 beat: 1 handler: showSelection
@@ -81,6 +283,32 @@ beat: 1 handler: showSelection
 - When showSelection runs
 - Then overlay draws within ≤ 30ms and aligns within ≤ 1px
 - And telemetry 'selection.show' includes count and bounds
+beat: 2 handler: notifyUi
+- Given a class change operation completes
+- When notifyUi is invoked with change details
+- Then an event is published to the central EventRouter within 5ms
+- And the event contains element ID, action (add/remove), and class name
+- And the event is stamped with microsecond-precision timestamp
+- Given multiple class operations occur in sequence
+- When notifyUi publishes events
+- Then events are queued in FIFO order
+- And subscribers receive events in the order they occurred
+- And no events are dropped or duplicated
+- Given a subscriber is registered for UI change events
+- When notifyUi publishes
+- Then the subscriber receives the event within 20ms
+- And the subscriber can act on the notification
+- And multiple subscribers can consume the same event
+- Given the event system is congested
+- When notifyUi attempts to publish
+- Then the event is queued with backpressure
+- And the operation does not block the caller
+- And events are eventually delivered with bounded latency
+- Given notification occurs during error conditions
+- When notifyUi is called
+- Then events are still published for traceability
+- And error context is included in event payload
+- And the system can reconstruct the failure chain from events
 
 [packages/control-panel/json-sequences/ui.init.json]
 beat: 1 handler: initPanel
@@ -123,6 +351,12 @@ beat: 1 handler: getTheme
 - When getTheme runs
 - Then returns current theme within ≤ 10ms and emits 'theme.get'
 - And telemetry includes source (storage/default)
+beat: 2 handler: notifyUi
+- Given a theme fetch completes
+- When notifyUi is invoked
+- Then an event is published to the EventRouter within 5ms
+- And the event contains theme value and source
+- And the event is timestamped and trace-linked
 
 [packages/header/json-sequences/header/ui.theme.toggle.json]
 beat: 1 handler: toggleTheme
@@ -156,16 +390,6 @@ beat: 1 handler: dragStart
 - When dragStart runs
 - Then starts drag within ≤ 16ms and sets data payload
 - And telemetry 'drag.start' includes elementId
-beat: 2 handler: dragMove
-- Given pointer move
-- When dragMove runs
-- Then updates position at 60fps with ≤ 1% frame drops
-- And telemetry 'drag.move' includes delta
-beat: 3 handler: dragEnd
-- Given pointer up
-- When dragEnd runs
-- Then ends drag and snaps-to-grid ≤ 1px
-- And telemetry 'drag.end' includes finalPos
 
 [packages/library-component/json-sequences/library-component/drop.json]
 beat: 1 handler: onDrop
@@ -180,164 +404,3 @@ beat: 1 handler: onContainerDrop
 - When onContainerDrop runs
 - Then inserts child at index, reflows minimal, latency ≤ 150ms
 - And telemetry includes containerId and index
-beat: 1 handler: resolveTemplate
-- Given a valid component template request
-- When resolveTemplate runs
-- Then P95 latency is ≤ 1s and P99.9 success ≥ 99.9%
-- And result conforms to schema version 'v1' with required keys (id, bindings, props)
-- And a telemetry event 'template.resolved' is emitted with duration and cacheHit flag
-- Given duplicate requests for the same template within 2s
-- When resolveTemplate runs repeatedly
-- Then remote fetches are deduped (≤ 1 network call)
-- And outputs are identical (deep-equal)
-- And telemetry 'template.deduped' increments with count
-- Given an invalid or missing template id
-- When resolveTemplate executes
-- Then it returns a typed error 'TemplateNotFound'
-- And logs context (templateId, caller, correlationId)
-- And emits telemetry 'template.error' with errorCode and retries=0
-- Given cache warm state
-- When resolveTemplate is called
-- Then memory usage stays within baseline ±10%
-- And no blocking I/O occurs (io=false)
-- And throughput ≥ baseline of 100 ops/min
-- Given governance is enforced
-- When resolveTemplate produces bindings
-- Then all bindings reference whitelisted components
-- And audit trail includes schemaHash and resolverVersion
-- And compliance violations count remains 0
-
-beat: 2 handler: registerInstance
-- Given a resolved template with component tag
-- When registerInstance executes
-- Then P95 latency is ≤ 1s and instanceId is stable across session
-- And element receives class 'rx-comp-<tag>-<id>'
-- And telemetry 'instance.registered' includes elementId and classes
-- Given an existing registration for the same node
-- When registerInstance is called again
-- Then operation is idempotent (no duplicate class or new id)
-- And emits telemetry 'instance.idempotent' with previousId=present
-- And returns 200 with unchanged payload
-- Given invalid input (missing tag or container)
-- When registerInstance runs
-- Then it returns 'InvalidRegistration' error
-- And logs context (tag, containerSelector)
-- And emits telemetry 'instance.error' with errorCode and recovery=false
-- Given multiple components imported concurrently (≥ 50/min)
-- When registerInstance processes events
-- Then ordering is FIFO per container
-- And average CPU remains within baseline ±10%
-- And drop rate is 0%
-- Given governance rules for semantic classes
-- When registerInstance assigns classes
-- Then classes follow 'rx-comp-<tag>-<id>' pattern only
-- And audit trail records registrarVersion and source
-- And violations count remains 0
-
-beat: 3 handler: createNode
-- Given resolved template and bindings
-- When createNode assembles the canvas node
-- Then P95 latency is ≤ 2s and output conforms to 'CanvasNode' schema
-- And node has stable keys and does not instantiate React
-- And telemetry 'node.created' includes schemaVersion and forwardTo='drop'
-- Given a request to render directly in React
-- When createNode runs
-- Then it rejects direct React rendering (render=false)
-- And forwards to drop symphony with action='compose'
-- And logs routing decision with correlationId
-- Given malformed bindings or props
-- When createNode executes
-- Then it returns 'NodeValidationError' with path to invalid field
-- And telemetry 'node.error' includes errorCode and count=1
-- And no side effects occur (no files, no DOM)
-- Given repeated calls with identical inputs
-- When createNode runs twice
-- Then outputs are deterministic (deep-equal)
-- And emitted telemetry includes dedupe=true on second call
-- And resource usage delta ≤ 5%
-- Given governance contracts
-- When createNode finalizes
-- Then audit trail records composerVersion and schemaHash
-- And compliance violations=0
-- And downstream receives 'drop.compose' event
-
-beat: 4 handler: renderReact
-- Given a composed node
-- When renderReact mounts
-- Then P95 latency is ≤ 200ms and frame drops ≤ 1%
-- And list items are keyed and props memoized
-- And telemetry 'react.render' includes duration and commitTime
-- Given re-render with unchanged props
-- When renderReact executes
-- Then no re-render occurs (pure)
-- And React profiler shows skipped updates
-- And telemetry 'react.skip' increments
-- Given an error in component render
-- When renderReact runs
-- Then it surfaces error to boundary and logs stack
-- And telemetry 'react.error' includes componentName and errorCode
-- And UI remains responsive (no freeze)
-- Given large lists (≥ 500 items)
-- When renderReact renders
-- Then virtualization is applied
-- And memory stays within baseline ±15%
-- And first paint ≤ 1s
-- Given governance for runtime
-- When renderReact operates
-- Then audit includes rendererVersion and bundleId
-- And violations=0
-- And accessibility checks pass for labels and roles
-
-beat: 5 handler: notifyUi
-- Given a class/state change completes
-- When notifyUi is invoked
-- Then event 'ui.change' publishes within ≤ 5ms to EventRouter
-- And payload includes elementId, action(add/remove), className, ts(usec)
-- And telemetry 'ui.notify' records publishDuration
-- Given a burst of ≥ 20 changes
-- When notifyUi publishes
-- Then events are queued FIFO and delivered in order
-- And no events are dropped or duplicated
-- And end-to-end delivery ≤ 20ms per event
-- Given multiple subscribers
-- When notifyUi broadcasts
-- Then all subscribers receive the event
-- And can act within ≤ 20ms
-- And acks are tracked; missing ack count=0
-- Given router congestion
-- When notifyUi attempts publish
-- Then backpressure is applied and caller is non-blocking
-- And events are eventually delivered within bounded latency ≤ 200ms
-- And telemetry 'ui.backpressure' increments
-- Given errors occur during notification
-- When notifyUi runs
-- Then events still publish with errorContext
-- And failure chain can be reconstructed from payload and logs
-- And system stability is preserved
-
-beat: 6 handler: enhanceLine
-- Given a canvas line node
-- When enhanceLine runs
-- Then P95 latency is ≤ 1s and geometry is validated
-- And measurements, anchors, and hit areas are added
-- And telemetry 'line.enhanced' includes counts for anchors and hits
-- Given precision requirements (snap-to-grid enabled)
-- When enhanceLine executes
-- Then anchors align to grid with ≤ 0.5px error
-- And hit areas cover segments with ≥ 95% accuracy
-- And regression tests pass for known shapes
-- Given invalid geometry (self-intersecting)
-- When enhanceLine runs
-- Then it returns 'GeometryInvalid' with segment index
-- And logs context and emits 'line.error' telemetry
-- And no mutations are applied
-- Given repeated enhancement on same node
-- When enhanceLine executes twice
-- Then operation is idempotent (no duplicate anchors)
-- And telemetry includes idempotent=true on second run
-- And memory delta ≤ 5%
-- Given governance rules for design systems
-- When enhanceLine applies augmentation
-- Then audit records rulesetVersion and feature toggles
-- And violations=0
-- And downstream tooling consumes emitted change events

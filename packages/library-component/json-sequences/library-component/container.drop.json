@@ -21,78 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "a valid component template request"
-              ],
-              "when": [
-                "resolveTemplate runs"
-              ],
-              "then": [
-                "P95 latency is ≤ 1s and P99.9 success ≥ 99.9%"
-              ],
+              "given": ["container target"],
+              "when": ["onContainerDrop runs"],
+              "then": ["inserts child at index, reflows minimal, latency ≤ 150ms"],
               "and": [
-                "result conforms to schema version 'v1' with required keys (id, bindings, props)",
-                "a telemetry event 'template.resolved' is emitted with duration and cacheHit flag"
-              ]
-            },
-            {
-              "given": [
-                "duplicate requests for the same template within 2s"
-              ],
-              "when": [
-                "resolveTemplate runs repeatedly"
-              ],
-              "then": [
-                "remote fetches are deduped (≤ 1 network call)"
-              ],
-              "and": [
-                "outputs are identical (deep-equal)",
-                "telemetry 'template.deduped' increments with count"
-              ]
-            },
-            {
-              "given": [
-                "an invalid or missing template id"
-              ],
-              "when": [
-                "resolveTemplate executes"
-              ],
-              "then": [
-                "it returns a typed error 'TemplateNotFound'"
-              ],
-              "and": [
-                "logs context (templateId, caller, correlationId)",
-                "emits telemetry 'template.error' with errorCode and retries=0"
-              ]
-            },
-            {
-              "given": [
-                "cache warm state"
-              ],
-              "when": [
-                "resolveTemplate is called"
-              ],
-              "then": [
-                "memory usage stays within baseline ±10%"
-              ],
-              "and": [
-                "no blocking I/O occurs (io=false)",
-                "throughput ≥ baseline of 100 ops/min"
-              ]
-            },
-            {
-              "given": [
-                "governance is enforced"
-              ],
-              "when": [
-                "resolveTemplate produces bindings"
-              ],
-              "then": [
-                "all bindings reference whitelisted components"
-              ],
-              "and": [
-                "audit trail includes schemaHash and resolverVersion",
-                "compliance violations count remains 0"
+                "telemetry includes containerId and index"
               ]
             }
           ]

@@ -21,15 +21,9 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "valid drop target"
-              ],
-              "when": [
-                "onDrop runs"
-              ],
-              "then": [
-                "composes node and validates schema; latency ≤ 150ms"
-              ],
+              "given": ["valid drop target"],
+              "when": ["onDrop runs"],
+              "then": ["composes node and validates schema; latency ≤ 150ms"],
               "and": [
                 "telemetry 'drop' includes target and success"
               ]

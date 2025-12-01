@@ -22,15 +22,9 @@
           "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "many components (≥ 100)"
-              ],
-              "when": [
-                "initPanelBatched runs"
-              ],
-              "then": [
-                "batching reduces CPU by ≥ 20% versus naive init"
-              ],
+              "given": ["many components (≥ 100)"],
+              "when": ["initPanelBatched runs"],
+              "then": ["batching reduces CPU by ≥ 20% versus naive init"],
               "and": [
                 "telemetry 'control-panel.init.batched' includes batchSize"
               ]

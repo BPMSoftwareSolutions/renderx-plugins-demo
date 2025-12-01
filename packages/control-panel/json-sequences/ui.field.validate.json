@@ -22,15 +22,9 @@
           "userStory": "As an engineer, I need `validateField` to run validators and collect errors.",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "field value"
-              ],
-              "when": [
-                "validateField runs"
-              ],
-              "then": [
-                "errors are reported with code and path, latency ≤ 10ms"
-              ],
+              "given": ["field value"],
+              "when": ["validateField runs"],
+              "then": ["errors are reported with code and path, latency ≤ 10ms"],
               "and": [
                 "telemetry 'ui.field.validate' includes validity"
               ]

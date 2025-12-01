@@ -21,43 +21,25 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": [
-                "an existing canvas node"
-              ],
-              "when": [
-                "updateNode applies changes"
-              ],
-              "then": [
-                "P95 latency is ≤ 500ms and node schema remains valid"
-              ],
+              "given": ["an existing canvas node"],
+              "when": ["updateNode applies changes"],
+              "then": ["P95 latency is ≤ 500ms and node schema remains valid"],
               "and": [
                 "telemetry 'node.updated' includes changedFields and duration"
               ]
             },
             {
-              "given": [
-                "invalid update payload"
-              ],
-              "when": [
-                "updateNode runs"
-              ],
-              "then": [
-                "it returns 'UpdateValidationError' with invalid path"
-              ],
+              "given": ["invalid update payload"],
+              "when": ["updateNode runs"],
+              "then": ["it returns 'UpdateValidationError' with invalid path"],
               "and": [
                 "no side effects occur"
               ]
             },
             {
-              "given": [
-                "repeated identical updates"
-              ],
-              "when": [
-                "updateNode executes twice"
-              ],
-              "then": [
-                "operation is idempotent and emits dedupe=true on second run"
-              ],
+              "given": ["repeated identical updates"],
+              "when": ["updateNode executes twice"],
+              "then": ["operation is idempotent and emits dedupe=true on second run"],
               "and": []
             }
           ]
