@@ -244,6 +244,59 @@ async function generateOrchestrationDomains() {
     });
   });
 
+  // Explicitly add orchestration sequences from packages/orchestration/json-sequences
+  // These are not under ographx paths and were previously missed by auto-detection.
+  const orchestrationJsonDir = path.join(rootDir, 'packages', 'orchestration', 'json-sequences');
+  if (fs.existsSync(orchestrationJsonDir)) {
+    fs.readdirSync(orchestrationJsonDir)
+      .filter(f => f.endsWith('.json'))
+      .forEach(file => {
+        try {
+          const content = JSON.parse(fs.readFileSync(path.join(orchestrationJsonDir, file), 'utf-8'));
+          const id = content.id || content.sequenceId || file.replace('.json', '');
+          // Skip if already present (e.g., manually added earlier or discovered elsewhere)
+          if (domains.some(d => d.id === id)) return;
+          const movements = content.movements || [];
+          const beats = movements.reduce((sum, m) => sum + (m.beats?.length || 0), 0);
+          const sketch = {
+            title: content.name || id,
+            sequence: {
+              id: id,
+              name: content.name || id,
+              tempo: content.tempo || 120,
+              key: content.key || 'C Major',
+              timeSignature: content.timeSignature || '4/4',
+              category: 'orchestration'
+            },
+            phases: movements.map((m, idx) => ({
+              name: `Movement ${idx + 1}: ${m.name || 'Unnamed'}`,
+              items: m.beats?.map(b => generateBeatDescription(b)) || []
+            }))
+          };
+          domains.push({
+            id: id,
+            name: content.name || id,
+            emoji: '🎼',
+            description: content.description || `Orchestration domain: ${content.name || id}`,
+            category: 'orchestration',
+            purpose: 'System orchestration',
+            relatedDomains: [],
+            status: content.status || (id === 'fractal-orchestration-domain-symphony' ? 'experimental' : 'active'),
+            sequenceFile: `packages/orchestration/json-sequences/${file}`,
+            movements: movements.length,
+            beats: beats,
+            tempo: content.tempo || 120,
+            key: content.key || 'C Major',
+            timeSignature: content.timeSignature || '4/4',
+            sketch: sketch
+          });
+          console.log(`✅ Explicit orchestration added: ${id} (${movements.length} movements, ${beats} beats)`);
+        } catch (err) {
+          console.warn(`⚠️  Could not parse orchestration json-sequence ${file}: ${err.message}`);
+        }
+      });
+  }
+
   const registry = {
     metadata: {
       description: 'Complete registry of all orchestration domains and plugin sequences',

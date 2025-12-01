@@ -224,7 +224,7 @@
             "scope": { "type": "string" },
             "kind": { "type": "string" }
           }
-        }
+        },
         "scenario": { "type": "string", "description": "Scenario / test narrative for beat" },
         "testFile": { "type": "string", "description": "Linked test file path" },
         "testCase": { "type": "string", "description": "Linked test case description" },
@@ -242,7 +242,7 @@
           "items": { "type": "string" }
         }
       }
-    }
+    },
     "HandlerRef": {
       "type": "object",
       "additionalProperties": true,
