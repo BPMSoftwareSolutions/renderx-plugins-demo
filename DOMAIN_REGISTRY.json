@@ -303,6 +303,7 @@
           "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json",
           "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v3.json",
           "packages/orchestration/json-sequences/ac-alignment-remediation.workflow.v1.json"
+          ,"packages/orchestration/json-sequences/ac-test-hardening.workflow.v1.json"
         ]
       },
       "analysisConfig": {

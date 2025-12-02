@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "musicalSequence": {
+    "id": "ac-test-hardening-v1",
+    "domainId": "renderx-web-orchestration",
+    "title": "RenderX Web Test Hardening & AC Compliance (v1)",
+    "version": "1.0.0",
+    "description": "Workflow to transform static tag/string checks into fully compliant Given/When/Then runtime tests with timing, telemetry, tag integrity, AST validation, and hygiene enforcement.",
+    "movements": [
+      {
+        "id": "movement-1",
+        "title": "Baseline Audit",
+        "beats": [
+          {
+            "id": "beat-1.1",
+            "title": "Scan Current Test Issues",
+            "handlers": [
+              { "script": "scripts/ac-alignment/scan-existing-tags.cjs" },
+              { "script": "scripts/ac-alignment/validate-test-implementations.cjs", "args": ["--strict", "--dedupe"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["existing renderx-web test suite"],
+                "when": ["scan tags and run strict validator"],
+                "then": ["emit summary of static-only, missing GWT, timing gaps, telemetry gaps, invalid tags"],
+                "and": ["produce machine-readable JSON for downstream beats"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-2",
+        "title": "Runtime GWT Refactor",
+        "beats": [
+          {
+            "id": "beat-2.1",
+            "title": "Inject Given/When Scaffolds",
+            "handlers": [
+              { "script": "scripts/test-hardening/identify-missing-given-when.cjs" },
+              { "script": "scripts/test-hardening/generate-gwt-scaffolds.cjs", "args": ["--write"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["validator results listing missing Given/When"],
+                "when": ["generate scaffold code blocks"],
+                "then": ["tests contain executable Given setup and When actions"],
+                "and": ["placeholder warnings minimized (<5 remain)"]
+              }
+            ]
+          },
+          {
+            "id": "beat-2.2",
+            "title": "Implement THEN Assertions",
+            "handlers": [
+              { "script": "scripts/test-hardening/map-thens-to-assertions.cjs" },
+              { "script": "scripts/test-hardening/apply-then-assertions.cjs", "args": ["--write"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["AC registry THEN clauses"],
+                "when": ["map THEN text to assertion helpers"],
+                "then": ["all targeted tests have concrete expect/assert calls"],
+                "and": ["no test relies solely on string contains"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-3",
+        "title": "Timing & Performance",
+        "beats": [
+          {
+            "id": "beat-3.1",
+            "title": "Instrument SLA Measurements",
+            "handlers": [
+              { "script": "scripts/test-hardening/instrument-timing.cjs", "args": ["--targetAC", "renderx-web-orchestration:1.1:1"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["ACs specifying timing (10ms theme retrieval SLA)"] ,
+                "when": ["wrap target functions with performance.now()"],
+                "then": ["tests assert elapsed <= SLA threshold"],
+                "and": ["timing failures flagged with explicit message"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-4",
+        "title": "Telemetry Verification",
+        "beats": [
+          {
+            "id": "beat-4.1",
+            "title": "Spy & Assert Telemetry Payloads",
+            "handlers": [
+              { "script": "scripts/test-hardening/inject-telemetry-spies.cjs" },
+              { "script": "scripts/test-hardening/assert-telemetry.cjs", "args": ["--event", "react.component.theme.toggled"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["tests referencing telemetry events"],
+                "when": ["inject spies and run component actions"],
+                "then": ["assert publish called with expected event name and metadata"],
+                "and": ["fail tests on missing or malformed telemetry"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-5",
+        "title": "Tag Integrity & Hygiene",
+        "beats": [
+          {
+            "id": "beat-5.1",
+            "title": "Audit & Correct Invalid Tags",
+            "handlers": [
+              { "script": "scripts/ac-alignment/scan-existing-tags.cjs" },
+              { "script": "scripts/ac-alignment/apply-tags.cjs", "args": ["--fixInvalid"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["list of invalid AC tags (1.1:2, 1.1:3)"],
+                "when": ["auto-correct or remove invalid tags"],
+                "then": ["rescan yields zero invalid tags"],
+                "and": ["tag formatting matches canonical pattern"]
+              }
+            ]
+          },
+          {
+            "id": "beat-5.2",
+            "title": "Remove Dead Code & Arbitrary Delays",
+            "handlers": [
+              { "script": "scripts/test-hardening/remove-dead-code.cjs" }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["test files contain unused imports, unused variables, arbitrary setTimeout waits"],
+                "when": ["dead code remover runs"],
+                "then": ["_spawn import and unused process vars removed"],
+                "and": ["beforeAll uses readiness check instead of static delay"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-6",
+        "title": "AST Syntax Validation",
+        "beats": [
+          {
+            "id": "beat-6.1",
+            "title": "Replace Heuristics with Parser",
+            "handlers": [
+              { "script": "scripts/test-hardening/parse-react-code.cjs", "args": ["--parser", "@babel/parser"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["reactCode blocks in context JSON"],
+                "when": ["parse with Babel parser"],
+                "then": ["syntax errors surfaced with line/column"],
+                "and": ["heuristic brace/backtick counts removed from tests"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-7",
+        "title": "Compliance Gate & Reporting",
+        "beats": [
+          {
+            "id": "beat-7.1",
+            "title": "Re-run Strict Validator (Post Refactor)",
+            "handlers": [
+              { "script": "scripts/ac-alignment/validate-test-implementations.cjs", "args": ["--strict", "--dedupe", "--ast", "--gate", "0.50"] },
+              { "script": "scripts/ac-alignment/format-alignment-report.cjs", "args": ["--domain", "renderx-web-orchestration", "--includeTopOffenders"] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["refactored tests with runtime GWT, timing, telemetry, AST parsing"],
+                "when": ["validator runs in AST strict mode"] ,
+                "then": ["compliance >= 50% gate or fail with actionable list"],
+                "and": ["report shows delta from baseline for each category"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-8",
+        "title": "Integration: Code Analysis Linkage",
+        "beats": [
+          {
+            "id": "beat-8.1",
+            "title": "Register Hardening Tools with Code Analysis Domain",
+            "handlers": [
+              { "script": "scripts/test-hardening/register-tools-with-code-analysis.cjs", "args": [
+                "--domain", "symphonic-code-analysis-pipeline",
+                "--tools", "scripts/test-hardening/identify-missing-given-when.cjs",
+                "--tools", "scripts/test-hardening/generate-gwt-scaffolds.cjs",
+                "--tools", "scripts/test-hardening/map-thens-to-assertions.cjs",
+                "--tools", "scripts/test-hardening/apply-then-assertions.cjs",
+                "--tools", "scripts/test-hardening/instrument-timing.cjs",
+                "--tools", "scripts/test-hardening/inject-telemetry-spies.cjs",
+                "--tools", "scripts/test-hardening/assert-telemetry.cjs",
+                "--tools", "scripts/test-hardening/remove-dead-code.cjs",
+                "--tools", "scripts/test-hardening/parse-react-code.cjs",
+                "--out", ".generated/analysis/symphonic-code-analysis-pipeline/hardening-tools.manifest.json"
+              ] }
+            ],
+            "acceptanceCriteriaStructured": [
+              {
+                "given": ["hardening scripts enumerated by this workflow"],
+                "when": ["tools are registered against the symphonic-code-analysis-pipeline domain"],
+                "then": ["a manifest is written linking tools to the domain"],
+                "and": ["code analysis pipeline can reference these tools for cross-domain reports"]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "events": {
+      "onStart": ["sequence:start"],
+      "onComplete": ["sequence:complete", "artifacts:ready"],
+      "onFailure": ["sequence:failed"]
+    },
+    "artifacts": {
+      "reports": [
+        ".generated/ac-alignment/validation-summary.json",
+        "docs/generated/renderx-web-orchestration/ac-validation-report.md",
+        ".generated/ac-alignment/baseline-issues.json",
+        ".generated/ac-alignment/refactor-delta.json",
+        ".generated/analysis/symphonic-code-analysis-pipeline/hardening-tools.manifest.json"
+      ]
+    }
+  }
+}

@@ -4,8 +4,8 @@ Domain: renderx-web-orchestration
 
 ## Summary
 
-- Total tagged tests: 63
-- Compliant (≥75% score): 63
+- Total tagged tests: 66
+- Compliant (≥75% score): 66
 - Partial (40-74% score): 0
 - Non-compliant (<40% score): 0
 - Invalid tags: 0
@@ -13,7 +13,7 @@ Domain: renderx-web-orchestration
 
 ## Compliance Categories
 
-### ✅ Compliant Tests (63)
+### ✅ Compliant Tests (66)
 
 - **tests\ui-event-wiring.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] (100%)
   - Given condition referenced: "the renderTemplatePreview operation is triggered"
@@ -307,6 +307,27 @@ Domain: renderx-web-orchestration
   - And clause referenced: "the response includes theme metadata (colors, fonts)"
   - And clause referenced: "no API calls are made (cached lookup)"
 
+- **tests\react-component-theme-toggle-proper.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] (100%)
+  - Given condition referenced: "the theme system is initialized"
+  - When action referenced: "getCurrentTheme is called"
+  - Then assertion referenced: "current theme (dark/light) is returned within 10ms"
+  - And clause referenced: "theme preference from localStorage is respected"
+  - And clause referenced: "default theme is applied if no preference exists"
+
+- **tests\react-component-theme-toggle-proper.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] (100%)
+  - Given condition referenced: "user has theme preference saved"
+  - When action referenced: "getCurrentTheme executes"
+  - Then assertion referenced: "saved preference is returned"
+  - And clause referenced: "the response includes theme metadata (colors, fonts)"
+  - And clause referenced: "no API calls are made (cached lookup)"
+
+- **tests\react-component-theme-toggle-proper.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] (100%)
+  - Given condition referenced: "theme system encounters error"
+  - When action referenced: "getCurrentTheme fails"
+  - Then assertion referenced: "fallback default theme is returned"
+  - And clause referenced: "error is logged for monitoring"
+  - And clause referenced: "system remains functional"
+
 - **tests\react-component-theme-toggle-e2e.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] (100%)
   - Given condition referenced: "the theme system is initialized"
   - When action referenced: "getCurrentTheme is called"
@@ -479,4 +500,4 @@ No quick wins identified.
 1. **Quick Wins**: Fix tests missing 1-2 requirements (0 tests)
 2. **Top Offenders**: Focus on ACs with multiple non-compliant tests
 3. **Partial Compliance**: Address 0 partial tests
-4. **Generate New Tests**: Cover 74 uncovered ACs
+4. **Generate New Tests**: Cover 71 uncovered ACs
