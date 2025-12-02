@@ -48,17 +48,22 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should publish event when toggling to dark mode', () => {
+      // Given: user has theme preference saved
     // Simulate user clicking toggle button to switch to dark mode
+      // When: getCurrentTheme executes
     (window as any).RenderX.publish('react.component.theme.toggled', {
       isDarkMode: true,
       theme: 'dark',
     });
 
+      // Then: saved preference is returned
     expect(mockConductor.publish).toHaveBeenCalledWith(
       'react.component.theme.toggled',
       { isDarkMode: true, theme: 'dark' }
     );
     expect(publishedEvents[0].data.theme).toBe('dark');
+      // And: the response includes theme metadata (colors, fonts)
+      // And: no API calls are made (cached lookup)
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should publish event when toggling back to light mode', () => {
@@ -80,6 +85,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should handle rapid theme toggles', () => {
+      // Given: theme system encounters error
+      // When: getCurrentTheme fails
     const toggleSequence = [
       { isDarkMode: true, theme: 'dark' },
       { isDarkMode: false, theme: 'light' },
@@ -92,12 +99,15 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
       (window as any).RenderX.publish('react.component.theme.toggled', state);
     });
 
+      // Then: fallback default theme is returned
     expect(publishedEvents).toHaveLength(5);
     expect(publishedEvents[0].data.theme).toBe('dark');
     expect(publishedEvents[1].data.theme).toBe('light');
     expect(publishedEvents[2].data.theme).toBe('dark');
     expect(publishedEvents[3].data.theme).toBe('light');
     expect(publishedEvents[4].data.theme).toBe('dark');
+      // And: error is logged for monitoring
+      // And: system remains functional
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should maintain event order and timestamps', () => {

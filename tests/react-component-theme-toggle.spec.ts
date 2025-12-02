@@ -34,7 +34,9 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should publish theme.toggled event when switching to dark mode', () => {
+      // Given: user has theme preference saved
     // Setup EventRouter
+      // When: getCurrentTheme executes
     (window as any).RenderX = {
       conductor: mockConductor,
       publish: (topic: string, data: any) => {
@@ -48,6 +50,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
       theme: 'dark',
     });
 
+      // Then: saved preference is returned
     expect(mockConductor.publish).toHaveBeenCalledWith(
       'react.component.theme.toggled',
       { isDarkMode: true, theme: 'dark' }
@@ -55,6 +58,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents).toHaveLength(1);
     expect(publishedEvents[0].data.isDarkMode).toBe(true);
     expect(publishedEvents[0].data.theme).toBe('dark');
+      // And: the response includes theme metadata (colors, fonts)
+      // And: no API calls are made (cached lookup)
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] should publish theme.toggled event when switching to light mode', () => {

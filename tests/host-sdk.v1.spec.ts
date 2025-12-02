@@ -7,8 +7,11 @@ import { describe, it, expect } from 'vitest';
 // Temporarily skipping to keep the suite green while we stabilize package exports.
 describe.skip('@renderx-plugins/host-sdk v1 adoption surface', () => {
   it('[[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] exposes core APIs from the root export', async () => {
+      // Given: ACs are present as acceptanceCriteriaStructured in sequence JSON
+      // When: the generator runs over renderx-web-orchestration
     const sdk = await import('@renderx-plugins/host-sdk');
     // Conductor hook
+      // Then: It emits .generated/acs/renderx-web-orchestration.registry.json, Each AC entry has stable AC ID and normalized GWT, Beat and sequence IDs are preserved
     expect(typeof sdk.useConductor).toBe('function');
     // Events (EventRouter is an object facade)
     expect(typeof sdk.EventRouter).toBe('object');

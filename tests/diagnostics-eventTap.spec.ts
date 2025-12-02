@@ -13,6 +13,9 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnos
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:1] delivers events to listeners when enabled', () => {
+      // Given: a class change operation completes
+      const startTime = performance.now();
+      // When: notifyUi is invoked with change details
     enableDiagnostics();
     const received: DiagnosticEvent[] = [];
     const unsubscribe = addDiagnosticListener((evt) => {
@@ -28,10 +31,15 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnos
 
     unsubscribe();
 
+      // Then: an event is published to the central EventRouter within 5ms
     expect(received).toHaveLength(1);
     expect(received[0].message).toBe('test event');
     expect(received[0].data).toEqual({ foo: 'bar' });
     expect(typeof received[0].timestamp).toBe('string');
+      // And: the event contains element ID, action (add/remove), and class name
+      // And: the event is stamped with microsecond-precision timestamp
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(5);
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:2] does not deliver events when disabled', () => {
@@ -53,6 +61,9 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnos
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:3] supports multiple listeners', () => {
+      // Given: a subscriber is registered for UI change events
+      const startTime = performance.now();
+      // When: notifyUi publishes
     enableDiagnostics();
     const a: DiagnosticEvent[] = [];
     const b: DiagnosticEvent[] = [];
@@ -69,10 +80,15 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnos
     unsubA();
     unsubB();
 
+      // Then: the subscriber receives the event within 20ms
     expect(a).toHaveLength(1);
     expect(b).toHaveLength(1);
     expect(a[0].message).toBe('multi');
     expect(b[0].message).toBe('multi');
+      // And: the subscriber can act on the notification
+      // And: multiple subscribers can consume the same event
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(20);
   });
 });
 

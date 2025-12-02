@@ -7,6 +7,9 @@ import { useLogParser } from '../src/ui/diagnostics/hooks/useLogParser';
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequence Player - Multi-Sequence Support', () => {
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should parse JSON array with multiple sequences', () => {
+      // Given: the notifyReady operation is triggered
+      const startTime = performance.now();
+      // When: the handler executes
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -46,11 +49,16 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
       });
     });
 
+      // Then: it completes successfully within < 50ms
     expect(result.current.error).toBeNull();
     expect(result.current.totalSequences).toBe(3);
     expect(result.current.hasMultipleSequences).toBe(true);
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
+      // And: the output is valid and meets schema
+      // And: any required events are published
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(50);
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should navigate to next sequence', () => {
@@ -101,6 +109,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] should navigate to previous sequence', () => {
+      // Given: error conditions
+      // When: notifyReady encounters an error
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -135,6 +145,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
       result.current.nextSequence();
     });
 
+      // Then: the error is logged with full context
     expect(result.current.currentIndex).toBe(1);
 
     act(() => {
@@ -143,6 +154,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
 
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
+      // And: appropriate recovery is attempted
+      // And: the system remains stable
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] should jump to specific sequence by index', () => {

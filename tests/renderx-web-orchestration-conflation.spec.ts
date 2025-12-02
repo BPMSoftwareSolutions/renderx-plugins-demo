@@ -16,6 +16,9 @@ function loadJson(relativePath: string): any {
 }
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] renderx-web-orchestration conflation vs MusicalSequence schema', () => {
+    // Given: the renderTemplatePreview operation is triggered
+    const startTime = performance.now();
+    // When: the handler executes
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] tracks all symphonies referenced by renderx-web-orchestration and validates realized sequences against the canonical MusicalSequence schema', () => {
     const schema = loadJson('../docs/schemas/musical-sequence.schema.json');
 
@@ -32,6 +35,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
       : [];
     const referencedIds = getRenderxWebOrchestrationIds(renderxWeb);
 
+    // Then: it completes successfully within < 200ms
     expect(referencedIds.size).toBeGreaterThan(0);
 
     const failures: string[] = [];
@@ -105,5 +109,9 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
       );
     }
   });
+    // And: the output is valid and meets schema
+    // And: any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
 });
 

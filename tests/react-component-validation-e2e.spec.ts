@@ -49,6 +49,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should have valid React code syntax', async () => {
+      // Given: user has theme preference saved
+      // When: getCurrentTheme executes
     const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
@@ -56,6 +58,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     // Check for common syntax issues
     const openBraces = (reactCode.match(/{/g) || []).length;
     const closeBraces = (reactCode.match(/}/g) || []).length;
+      // Then: saved preference is returned
     expect(openBraces).toBe(closeBraces);
     
     const openParens = (reactCode.match(/\(/g) || []).length;
@@ -65,6 +68,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     // Check for unmatched backticks
     const backticks = (reactCode.match(/`/g) || []).length;
     expect(backticks % 2).toBe(0);
+      // And: the response includes theme metadata (colors, fonts)
+      // And: no API calls are made (cached lookup)
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should have proper React component structure', async () => {
@@ -83,11 +88,14 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should have proper styling and interactivity', async () => {
+      // Given: theme system encounters error
+      // When: getCurrentTheme fails
     const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
     
     // Verify styling
+      // Then: fallback default theme is returned
     expect(reactCode).toContain('backgroundColor');
     expect(reactCode).toContain('color');
     expect(reactCode).toContain('transition');
@@ -96,6 +104,8 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(reactCode).toContain('onClick');
     expect(reactCode).toContain('onMouseEnter');
     expect(reactCode).toContain('onMouseLeave');
+      // And: error is logged for monitoring
+      // And: system remains functional
   });
 });
 

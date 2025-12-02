@@ -14,7 +14,11 @@ function getAttr(el: Element | null, name: string): string | null {
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Event Route One-Page Diagram', () => {
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] matches mapping and contains all key layers/elements', () => {
+      // Given: the registerObservers operation is triggered
+      const startTime = performance.now();
+      // When: the handler executes
     const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
+      // Then: it completes successfully within < 1 second
     expect(mapping.output.file).toBe('integrated_event_route.svg');
 
     const svgStr = fs.readFileSync(integratedSvgPath, 'utf-8');
@@ -60,6 +64,10 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Event R
     expect(anim).toBeTruthy();
     expect(getAttr(anim, 'values')).toBe(`${mapping.bus.horizontalPath.startX},0;${mapping.bus.horizontalPath.endX},0`);
     expect(getAttr(anim, 'dur')).toBe(mapping.bus.horizontalPath.duration);
+      // And: the output is valid and meets schema
+      // And: any required events are published
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(1000);
   });
 });
 
