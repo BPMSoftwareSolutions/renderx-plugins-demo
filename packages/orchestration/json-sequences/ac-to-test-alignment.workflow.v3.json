@@ -4,13 +4,21 @@
     "id": "ac-to-test-alignment-v3",
     "domainId": "renderx-web-orchestration",
     "title": "AC-to-Test Alignment: Analysis, Validation, and Conversion (v3)",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "description": "Compute actual test counts, canonical AC-derived test counts, quality differences, and post-conversion projections; suggest and apply tags; validate test implementations match AC specifications; generate fixes for non-compliant tests.",
     "movements": [
       {
         "id": "movement-1",
         "title": "Discover & Normalize",
         "beats": [
+          {
+            "id": "beat-0",
+            "title": "Generate Canonical Sequence Index",
+            "handlers": [{ "script": "scripts/renderx-web/generate-canonical-sequence-index.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["DOMAIN_REGISTRY.json"], "when": ["collect renderx-web and child domain sequences"], "then": ["emit canonical-sequences.manifest.json"], "and": ["include markdown summary under docs/generated/renderx-web-orchestration/"] }
+            ]
+          },
           {
             "id": "beat-1",
             "title": "Generate AC Registry",
@@ -130,7 +138,16 @@
             "title": "Emit Analysis Artifacts",
             "handlers": [{ "script": "scripts/ac-alignment/format-alignment-report.cjs", "args": ["--domain", "renderx-web-orchestration"] }],
             "acceptanceCriteriaStructured": [
-              { "given": ["registry", "suggestions"], "when": ["format report"], "then": ["write markdown + summary.json"], "and": ["include counts for existing, canonical, differences, projection"] }
+              {
+                "given": ["registry", "suggestions"],
+                "when": ["format report"],
+                "then": ["write markdown + summary.json"],
+                "and": [
+                  "include counts for existing, canonical, differences, projection",
+                  "merge enhanced AC validator coverage from .generated/ac-alignment/validation-summary.json",
+                  "ensure symphonic code analysis report reflects validator-based AC presence and THEN coverage"
+                ]
+              }
             ]
           },
           {
@@ -158,8 +175,91 @@
         "docs/generated/renderx-web-orchestration/test-analysis.md",
         "docs/generated/renderx-web-orchestration/ac-validation-report.md",
         ".generated/ac-alignment/validation-summary.json",
-        "tests/**/*.fixes.txt"
+        "tests/**/*.fixes.txt",
+        ".generated/analysis/renderx-web-orchestration/canonical-sequences.manifest.json",
+        "docs/generated/renderx-web-orchestration/canonical-sequences.md"
       ]
-    }
+    },
+    "recommendedActions": [
+      {
+        "id": "rec-1",
+        "title": "Confirm Handler Census (529 via code analysis)",
+        "description": "Identify all 529 handlers in renderx-web orchestration via the symphonic code analysis pipeline; refine discovery tools if counts diverge.",
+        "acceptanceCriteria": [
+          "handler-exports.json (or equivalent) lists 529 handlers",
+          "differences from prior counts are explained or tooling updated"
+        ],
+        "related": {
+          "scripts": ["scripts/analyze-symphonic-code.cjs"],
+          "artifacts": ["docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"]
+        }
+      },
+      {
+        "id": "rec-2",
+        "title": "Raise Coverage on HIGH-risk beats to ≥75%",
+        "description": "Add runtime GWT assertions and telemetry timing checks to tests covering HIGH-risk beats until average coverage per beat is ≥75%.",
+        "acceptanceCriteria": [
+          "all beats marked HIGH-risk in Handler Symphonies reach ≥75% coverage",
+          "tests include runtime Given/When/Then assertions and timing telemetry",
+          "updated coverage reflected in code analysis report"
+        ],
+        "related": {
+          "artifacts": [
+            "docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"
+          ]
+        }
+      },
+      {
+        "id": "rec-3",
+        "title": "Wire missing/aliased sequence files from canonical manifest",
+        "description": "Resolve  missing or aliased sequence files listed by the canonical manifest to lift mapped handler coverage and beat counts.",
+        "acceptanceCriteria": [
+          "canonical-sequences.manifest.json shows 0 missing sequences or annotated deprecations",
+          "mapped handler coverage increases and aligns with handler census"
+        ],
+        "related": {
+          "artifacts": [
+            ".generated/analysis/renderx-web-orchestration/canonical-sequences.manifest.json",
+            "docs/generated/renderx-web-orchestration/canonical-sequences.md"
+          ],
+          "files": [
+            "DOMAIN_REGISTRY.json",
+            "orchestration-domains.json"
+          ]
+        }
+      },
+      {
+        "id": "rec-4",
+        "title": "Feed enhanced AC validator output into Movement 4",
+        "description": "Ensure Movement 4 merges enhanced AC validator outputs so AC coverage in the published report reflects real status (presence and THEN checks).",
+        "acceptanceCriteria": [
+          "ac-alignment-report.md and summary.json include validator-based AC coverage",
+          "symphonic report surfaces validator metrics for AC presence and THEN compliance"
+        ],
+        "related": {
+          "artifacts": [
+            "docs/generated/renderx-web-orchestration/ac-alignment-report.md",
+            ".generated/ac-alignment/summary.json",
+            ".generated/ac-alignment/validation-summary.json",
+            "docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"
+          ]
+        }
+      },
+      {
+        "id": "rec-5",
+        "title": "Reduce duplication hotspots (78.3%) via shared utilities",
+        "description": "Extract shared DOM and encoder utilities to reduce duplication and lift maintainability index while lowering risk across symphonies.",
+        "acceptanceCriteria": [
+          "top duplication hotspots identified and refactored into shared modules",
+          "measurable reduction in duplication and improvement in maintainability",
+          "no regression in handler coverage or conformity"
+        ],
+        "related": {
+          "artifacts": [
+            "docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"
+          ]
+        }
+      }
+    ]
   }
 }

@@ -84,7 +84,7 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Map 6 movements → BDD scenarios with orchestration phase integration
 - Validate governance compliance (verify:orchestration:governance)
 
-**Acceptance Criteria**:
+**Acceptance Criteria (Legacy)**:
 - Feature file contains exactly 11 scenarios mapping 6 movements
 - Each scenario includes Given-When-Then steps with orchestration context
 - All scenarios reference actual movement names and event types
@@ -100,7 +100,7 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Execute full BDD suite against orchestration engine
 - Establish baseline coverage metrics
 
-**Acceptance Criteria**:
+**Acceptance Criteria (Legacy)**:
 - ≥80% of step definitions implemented and passing
 - All orchestration interface calls properly mocked/stubbed
 - Test suite executes without errors
@@ -115,7 +115,7 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Establish baseline feature coverage across all domains
 - Validate cross-domain orchestration patterns
 
-**Acceptance Criteria**:
+**Acceptance Criteria (Legacy)**:
 - All 6 domains have feature files registered in BDD manifest
 - Each domain has ≥1 scenario with Given-When-Then steps
 - Step definitions cover common orchestration patterns
@@ -130,7 +130,7 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Auto-generate markdown documentation from JSON authority
 - Validate end-to-end governance compliance
 
-**Acceptance Criteria**:
+**Acceptance Criteria (Legacy)**:
 - Both JSON authority files created and well-formed
 - Manifest entries include proper hash_strategy and generator references
 - Auto-generated markdown files created with AUTO-GENERATED headers
