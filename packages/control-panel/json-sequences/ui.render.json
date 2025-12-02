@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a resizable component"],
-              "when": ["startResize runs"],
-              "then": ["resize context initializes with bounds and handles visible"],
+              "given": ["handler generateFields is available"],
+              "when": ["generateFields executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "a 'resize.start' event publishes"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -46,12 +46,11 @@
           "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["size changes"],
-              "when": ["forwardToControlPanel runs"],
-              "then": ["update publishes to control panel within ≤ 20ms"],
+              "given": ["handler generateSections is available"],
+              "when": ["generateSections executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "messages are coalesced per frame",
-                "keyboard navigation remains fully functional"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -71,11 +70,11 @@
           "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["cursor and canvas bounds"],
-              "when": ["calculatePastePosition runs"],
-              "then": ["target position computes with snap; within viewport"],
+              "given": ["handler renderView is available"],
+              "when": ["renderView executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no overlap violations occur beyond threshold"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

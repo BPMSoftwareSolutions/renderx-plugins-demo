@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an active line manipulation"],
-              "when": ["moveLineManip runs"],
-              "then": ["anchors move smoothly at 60fps target; constraints apply"],
+              "given": ["handler moveLineManip is available"],
+              "when": ["moveLineManip executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes delta"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

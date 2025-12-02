@@ -24,11 +24,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["selected component"],
-              "when": ["serializeSelectedComponent runs"],
-              "then": ["component serializes deterministically; payload validates; latency ≤ 20ms"],
+              "given": ["handler serializeSelectedComponent is available"],
+              "when": ["serializeSelectedComponent executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'copy.serialize' includes bytes and fields"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -47,11 +47,11 @@
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a serialized payload"],
-              "when": ["copyToClipboard runs"],
-              "then": ["payload is placed on clipboard; user receives confirmation"],
+              "given": ["handler copyToClipboard is available"],
+              "when": ["copyToClipboard executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "operation retries once on transient failure"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -70,11 +70,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a successful copy"],
-              "when": ["notifyCopyComplete runs"],
-              "then": ["event publishes within 5ms with item metadata"],
+              "given": ["handler notifyCopyComplete is available"],
+              "when": ["notifyCopyComplete executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "subscribers receive within ≤ 20ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

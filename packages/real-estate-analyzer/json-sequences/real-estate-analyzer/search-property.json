@@ -16,16 +16,86 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "fetch Property Data",
-          "acceptanceCriteria": [
-            "Given the fetchPropertyData operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen fetchPropertyData processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen fetchPropertyData encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen fetchPropertyData executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen fetchPropertyData operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the fetchPropertyData operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "fetchPropertyData processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "fetchPropertyData encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "fetchPropertyData executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "fetchPropertyData operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -35,16 +105,86 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "Scan, Discover, or Analyze analyze",
-          "acceptanceCriteria": [
-            "Given the analyze operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen analyze processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen analyze encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 5 seconds\nWhen analyze executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen analyze operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want analyze to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
-          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts"
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the analyze operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 5 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "analyze processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "analyze encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 5 seconds"
+              ],
+              "when": [
+                "analyze executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "analyze operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -54,16 +194,86 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "format",
-          "acceptanceCriteria": [
-            "Given the format operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen format processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen format encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen format executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen format operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "userStory": "As an operations system, I want format to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "should format",
-          "testFile": "TBD"
+          "testFile": "TBD",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the format operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "format processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "format encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "format executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "format operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

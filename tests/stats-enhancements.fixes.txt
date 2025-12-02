@@ -1,0 +1,174 @@
+# Test Implementation Fixes for stats-enhancements.spec.ts
+
+This file contains suggested test implementations to fix AC compliance issues.
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: configuration metadata
+- When: initConfig is called
+- Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+
+**Issues Found:**
+- Missing Given setup: "configuration metadata"
+- Missing When action: "initConfig is called"
+- Missing Then assertion: "configuration is loaded within 200ms"
+- Missing Then assertion: "validation rules are attached"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] initConfig is called → configuration is loaded within 200ms', async () => {
+    // Given: configuration metadata
+    const config = { /* mock configuration */ };
+
+    // When: initConfig is called
+    const result = await initConfig(/* params */);
+
+    // Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: configuration metadata
+- When: initConfig is called
+- Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+
+**Issues Found:**
+- Missing Given setup: "configuration metadata"
+- Missing When action: "initConfig is called"
+- Missing Then assertion: "configuration is loaded within 200ms"
+- Missing Then assertion: "validation rules are attached"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] initConfig is called → configuration is loaded within 200ms', async () => {
+    // Given: configuration metadata
+    const config = { /* mock configuration */ };
+
+    // When: initConfig is called
+    const result = await initConfig(/* params */);
+
+    // Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: complex nested configuration
+- When: initConfig processes it
+- Then: all nested sections are initialized, dependencies between sections are resolved, no circular dependencies cause deadlock
+
+**Issues Found:**
+- Missing Given setup: "complex nested configuration"
+- Missing When action: "initConfig processes it"
+- Missing Then assertion: "dependencies between sections are resolved"
+- Missing Then assertion: "no circular dependencies cause deadlock"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] initConfig processes it → all nested sections are initialized', async () => {
+    // Given: complex nested configuration
+    const config = { /* mock configuration */ };
+
+    // When: initConfig processes it
+    const result = await initConfig(input);
+
+    // Then: all nested sections are initialized, dependencies between sections are resolved, no circular dependencies cause deadlock
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: complex nested configuration
+- When: initConfig processes it
+- Then: all nested sections are initialized, dependencies between sections are resolved, no circular dependencies cause deadlock
+
+**Issues Found:**
+- Missing Given setup: "complex nested configuration"
+- Missing When action: "initConfig processes it"
+- Missing Then assertion: "dependencies between sections are resolved"
+- Missing Then assertion: "no circular dependencies cause deadlock"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] initConfig processes it → all nested sections are initialized', async () => {
+    // Given: complex nested configuration
+    const config = { /* mock configuration */ };
+
+    // When: initConfig processes it
+    const result = await initConfig(input);
+
+    // Then: all nested sections are initialized, dependencies between sections are resolved, no circular dependencies cause deadlock
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:3]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: configuration with 100+ fields
+- When: initConfig prepares the form
+- Then: initialization completes within 300ms, form is ready for user interaction, memory usage scales linearly with field count
+
+**Issues Found:**
+- Missing Given setup: "configuration with 100+ fields"
+- Missing When action: "initConfig prepares the form"
+- Missing Then assertion: "initialization completes within 300ms"
+- Missing Then assertion: "form is ready for user interaction"
+- Missing Then assertion: "memory usage scales linearly with field count"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:3] initConfig prepares the form → initialization completes within 300ms', async () => {
+    // Given: configuration with 100+ fields
+    const config = { /* mock configuration */ };
+
+    // When: initConfig prepares the form
+    // Action: initConfig prepares the form
+    const result = await performAction();
+
+    // Then: initialization completes within 300ms, form is ready for user interaction, memory usage scales linearly with field count
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(300);
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+

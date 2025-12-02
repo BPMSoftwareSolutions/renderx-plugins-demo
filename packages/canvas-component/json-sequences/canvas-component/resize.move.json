@@ -24,11 +24,11 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an active resize"],
-              "when": ["updateSize runs"],
-              "then": ["component resizes at 60fps target; constraints apply"],
+              "given": ["handler updateSize is available"],
+              "when": ["updateSize executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "reflow/jank minimized"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

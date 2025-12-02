@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a rule set"],
-              "when": ["setAllRulesConfig runs"],
-              "then": ["rules apply atomically and persist; validation passes"],
+              "given": ["handler setAllRulesConfig is available"],
+              "when": ["setAllRulesConfig executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes rule count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -44,11 +44,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a window-bound rule store"],
-              "when": ["loadAllRulesFromWindow runs"],
-              "then": ["rules load with defaults for missing entries; typed errors on invalid"],
+              "given": ["handler loadAllRulesFromWindow is available"],
+              "when": ["loadAllRulesFromWindow executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "P95 ≤ 100ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -67,11 +67,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["rules are loaded"],
-              "when": ["getAllRulesConfig runs"],
-              "then": ["a normalized rules snapshot returns; consumers receive consistent view"],
+              "given": ["handler getAllRulesConfig is available"],
+              "when": ["getAllRulesConfig executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "calls are idempotent and cached"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

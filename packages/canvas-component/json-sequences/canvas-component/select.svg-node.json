@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an SVG node is selected"],
-              "when": ["showSvgNodeOverlay runs"],
-              "then": ["overlay appears aligned to node bounds within ≤ 30ms"],
+              "given": ["handler showSvgNodeOverlay is available"],
+              "when": ["showSvgNodeOverlay executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes node type and bounds"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

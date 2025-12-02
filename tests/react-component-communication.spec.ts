@@ -17,7 +17,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     };
   });
 
-  it('should expose EventRouter to React components', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] should expose EventRouter to React components', () => {
     // Simulate exposing EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -34,7 +34,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect((window as any).RenderX.subscribe).toBeDefined();
   });
 
-  it('should allow React components to publish events back to conductor', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should allow React components to publish events back to conductor', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -56,7 +56,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect(publishedEvents[0].data.count).toBe(1);
   });
 
-  it('should handle multiple events from React component', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should handle multiple events from React component', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,

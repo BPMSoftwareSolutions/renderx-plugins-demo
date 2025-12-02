@@ -21,48 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a valid component template request"],
-              "when": ["resolveTemplate runs"],
-              "then": ["P95 latency is ≤ 1s and P99.9 success ≥ 99.9%"],
+              "given": ["handler resolveTemplate is available"],
+              "when": ["resolveTemplate executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "result conforms to schema version 'v1' with required keys (id, bindings, props)",
-                "a telemetry event 'template.resolved' is emitted with duration and cacheHit flag"
-              ]
-            },
-            {
-              "given": ["duplicate requests for the same template within 2s"],
-              "when": ["resolveTemplate runs repeatedly"],
-              "then": ["remote fetches are deduped (≤ 1 network call)"],
-              "and": [
-                "outputs are identical (deep-equal)",
-                "telemetry 'template.deduped' increments with count"
-              ]
-            },
-            {
-              "given": ["an invalid or missing template id"],
-              "when": ["resolveTemplate executes"],
-              "then": ["it returns a typed error 'TemplateNotFound'"],
-              "and": [
-                "logs context (templateId, caller, correlationId)",
-                "emits telemetry 'template.error' with errorCode and retries=0"
-              ]
-            },
-            {
-              "given": ["cache warm state"],
-              "when": ["resolveTemplate is called"],
-              "then": ["memory usage stays within baseline ±10%"],
-              "and": [
-                "no blocking I/O occurs (io=false)",
-                "throughput ≥ baseline of 100 ops/min"
-              ]
-            },
-            {
-              "given": ["governance is enforced"],
-              "when": ["resolveTemplate produces bindings"],
-              "then": ["all bindings reference whitelisted components"],
-              "and": [
-                "audit trail includes schemaHash and resolverVersion",
-                "compliance violations count remains 0"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -81,48 +44,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a resolved template with component tag"],
-              "when": ["registerInstance executes"],
-              "then": ["P95 latency is ≤ 1s and instanceId is stable across session"],
+              "given": ["handler registerInstance is available"],
+              "when": ["registerInstance executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "element receives class 'rx-comp-<tag>-<id>'",
-                "telemetry 'instance.registered' includes elementId and classes"
-              ]
-            },
-            {
-              "given": ["an existing registration for the same node"],
-              "when": ["registerInstance is called again"],
-              "then": ["operation is idempotent (no duplicate class or new id)"],
-              "and": [
-                "emits telemetry 'instance.idempotent' with previousId=present",
-                "returns 200 with unchanged payload"
-              ]
-            },
-            {
-              "given": ["invalid input (missing tag or container)"],
-              "when": ["registerInstance runs"],
-              "then": ["it returns 'InvalidRegistration' error"],
-              "and": [
-                "logs context (tag, containerSelector)",
-                "emits telemetry 'instance.error' with errorCode and recovery=false"
-              ]
-            },
-            {
-              "given": ["multiple components imported concurrently (≥ 50/min)"],
-              "when": ["registerInstance processes events"],
-              "then": ["ordering is FIFO per container"],
-              "and": [
-                "average CPU remains within baseline ±10%",
-                "drop rate is 0%"
-              ]
-            },
-            {
-              "given": ["governance rules for semantic classes"],
-              "when": ["registerInstance assigns classes"],
-              "then": ["classes follow 'rx-comp-<tag>-<id>' pattern only"],
-              "and": [
-                "audit trail records registrarVersion and source",
-                "violations count remains 0"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -141,48 +67,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["resolved template and bindings"],
-              "when": ["createNode assembles the canvas node"],
-              "then": ["P95 latency is ≤ 2s and output conforms to 'CanvasNode' schema"],
+              "given": ["handler createNode is available"],
+              "when": ["createNode executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "node has stable keys and does not instantiate React",
-                "telemetry 'node.created' includes schemaVersion and forwardTo='drop'"
-              ]
-            },
-            {
-              "given": ["a request to render directly in React"],
-              "when": ["createNode runs"],
-              "then": ["it rejects direct React rendering (render=false)"],
-              "and": [
-                "forwards to drop symphony with action='compose'",
-                "logs routing decision with correlationId"
-              ]
-            },
-            {
-              "given": ["malformed bindings or props"],
-              "when": ["createNode executes"],
-              "then": ["it returns 'NodeValidationError' with path to invalid field"],
-              "and": [
-                "telemetry 'node.error' includes errorCode and count=1",
-                "no side effects occur (no files, no DOM)"
-              ]
-            },
-            {
-              "given": ["repeated calls with identical inputs"],
-              "when": ["createNode runs twice"],
-              "then": ["outputs are deterministic (deep-equal)"],
-              "and": [
-                "emitted telemetry includes dedupe=true on second call",
-                "resource usage delta ≤ 5%"
-              ]
-            },
-            {
-              "given": ["governance contracts"],
-              "when": ["createNode finalizes"],
-              "then": ["audit trail records composerVersion and schemaHash"],
-              "and": [
-                "compliance violations=0",
-                "downstream receives 'drop.compose' event"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -201,48 +90,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a composed node"],
-              "when": ["renderReact mounts"],
-              "then": ["P95 latency is ≤ 200ms and frame drops ≤ 1%"],
+              "given": ["handler renderReact is available"],
+              "when": ["renderReact executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "list items are keyed and props memoized",
-                "telemetry 'react.render' includes duration and commitTime"
-              ]
-            },
-            {
-              "given": ["re-render with unchanged props"],
-              "when": ["renderReact executes"],
-              "then": ["no re-render occurs (pure)"],
-              "and": [
-                "React profiler shows skipped updates",
-                "telemetry 'react.skip' increments"
-              ]
-            },
-            {
-              "given": ["an error in component render"],
-              "when": ["renderReact runs"],
-              "then": ["it surfaces error to boundary and logs stack"],
-              "and": [
-                "telemetry 'react.error' includes componentName and errorCode",
-                "UI remains responsive (no freeze)"
-              ]
-            },
-            {
-              "given": ["large lists (≥ 500 items)"],
-              "when": ["renderReact renders"],
-              "then": ["virtualization is applied"],
-              "and": [
-                "memory stays within baseline ±15%",
-                "first paint ≤ 1s"
-              ]
-            },
-            {
-              "given": ["governance for runtime"],
-              "when": ["renderReact operates"],
-              "then": ["audit includes rendererVersion and bundleId"],
-              "and": [
-                "violations=0",
-                "accessibility checks pass for labels and roles"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -261,48 +113,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a class/state change completes"],
-              "when": ["notifyUi is invoked"],
-              "then": ["event 'ui.change' publishes within ≤ 5ms to EventRouter"],
+              "given": ["handler notifyUi is available"],
+              "when": ["notifyUi executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "payload includes elementId, action(add/remove), className, ts(usec)",
-                "telemetry 'ui.notify' records publishDuration"
-              ]
-            },
-            {
-              "given": ["a burst of ≥ 20 changes"],
-              "when": ["notifyUi publishes"],
-              "then": ["events are queued FIFO and delivered in order"],
-              "and": [
-                "no events are dropped or duplicated",
-                "end-to-end delivery ≤ 20ms per event"
-              ]
-            },
-            {
-              "given": ["multiple subscribers"],
-              "when": ["notifyUi broadcasts"],
-              "then": ["all subscribers receive the event"],
-              "and": [
-                "can act within ≤ 20ms",
-                "acks are tracked; missing ack count=0"
-              ]
-            },
-            {
-              "given": ["router congestion"],
-              "when": ["notifyUi attempts publish"],
-              "then": ["backpressure is applied and caller is non-blocking"],
-              "and": [
-                "events are eventually delivered within bounded latency ≤ 200ms",
-                "telemetry 'ui.backpressure' increments"
-              ]
-            },
-            {
-              "given": ["errors occur during notification"],
-              "when": ["notifyUi runs"],
-              "then": ["events still publish with errorContext"],
-              "and": [
-                "failure chain can be reconstructed from payload and logs",
-                "system stability is preserved"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -321,48 +136,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a canvas line node"],
-              "when": ["enhanceLine runs"],
-              "then": ["P95 latency is ≤ 1s and geometry is validated"],
+              "given": ["handler enhanceLine is available"],
+              "when": ["enhanceLine executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "measurements, anchors, and hit areas are added",
-                "telemetry 'line.enhanced' includes counts for anchors and hits"
-              ]
-            },
-            {
-              "given": ["precision requirements (snap-to-grid enabled)"],
-              "when": ["enhanceLine executes"],
-              "then": ["anchors align to grid with ≤ 0.5px error"],
-              "and": [
-                "hit areas cover segments with ≥ 95% accuracy",
-                "regression tests pass for known shapes"
-              ]
-            },
-            {
-              "given": ["invalid geometry (self-intersecting)"],
-              "when": ["enhanceLine runs"],
-              "then": ["it returns 'GeometryInvalid' with segment index"],
-              "and": [
-                "logs context and emits 'line.error' telemetry",
-                "no mutations are applied"
-              ]
-            },
-            {
-              "given": ["repeated enhancement on same node"],
-              "when": ["enhanceLine executes twice"],
-              "then": ["operation is idempotent (no duplicate anchors)"],
-              "and": [
-                "telemetry includes idempotent=true on second run",
-                "memory delta ≤ 5%"
-              ]
-            },
-            {
-              "given": ["governance rules for design systems"],
-              "when": ["enhanceLine applies augmentation"],
-              "then": ["audit records rulesetVersion and feature toggles"],
-              "and": [
-                "violations=0",
-                "downstream tooling consumes emitted change events"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

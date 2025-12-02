@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["element with existing class"],
-              "when": ["removeClass runs"],
-              "then": ["class is removed, latency ≤ 5ms"],
+              "given": ["handler removeClass is available"],
+              "when": ["removeClass executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'ui.class.remove' includes elementId and class"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

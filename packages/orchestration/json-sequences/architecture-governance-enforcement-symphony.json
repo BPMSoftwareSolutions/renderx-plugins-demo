@@ -74,16 +74,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify validate J S O N Schema Structure",
-          "acceptanceCriteria": [
-            "Given the validateJSONSchemaStructure operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen validateJSONSchemaStructure processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen validateJSONSchemaStructure encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen validateJSONSchemaStructure executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen validateJSONSchemaStructure operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the validateJSONSchemaStructure operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "validateJSONSchemaStructure processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "validateJSONSchemaStructure encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "validateJSONSchemaStructure executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "validateJSONSchemaStructure operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -100,16 +170,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify validate Orchestration Domains Registry",
-          "acceptanceCriteria": [
-            "Given the validateOrchestrationDomainsRegistry operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen validateOrchestrationDomainsRegistry processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen validateOrchestrationDomainsRegistry encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen validateOrchestrationDomainsRegistry executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen validateOrchestrationDomainsRegistry operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
-          "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the validateOrchestrationDomainsRegistry operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "validateOrchestrationDomainsRegistry processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "validateOrchestrationDomainsRegistry encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "validateOrchestrationDomainsRegistry executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "validateOrchestrationDomainsRegistry operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -126,16 +266,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify validate Symphony Files",
-          "acceptanceCriteria": [
-            "Given the validateSymphonyFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen validateSymphonyFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen validateSymphonyFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen validateSymphonyFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen validateSymphonyFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the validateSymphonyFiles operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "validateSymphonyFiles processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "validateSymphonyFiles encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "validateSymphonyFiles executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "validateSymphonyFiles operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -152,16 +362,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify validate Schema Section",
-          "acceptanceCriteria": [
-            "Given the validateSchemaSection operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen validateSchemaSection processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen validateSchemaSection encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen validateSchemaSection executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen validateSchemaSection operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the validateSchemaSection operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "validateSchemaSection processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "validateSchemaSection encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "validateSchemaSection executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "validateSchemaSection operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -178,16 +458,86 @@
             "kind": "orchestration"
           },
           "scenario": "report J S O N Validation",
-          "acceptanceCriteria": [
-            "Given the reportJSONValidation operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen reportJSONValidation processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen reportJSONValidation encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen reportJSONValidation executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen reportJSONValidation operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the reportJSONValidation operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "reportJSONValidation processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "reportJSONValidation encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "reportJSONValidation executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "reportJSONValidation operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
@@ -215,16 +565,86 @@
             "kind": "orchestration"
           },
           "scenario": "start Handler Mapping Verification",
-          "acceptanceCriteria": [
-            "Given the startHandlerMappingVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen startHandlerMappingVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen startHandlerMappingVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen startHandlerMappingVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen startHandlerMappingVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the startHandlerMappingVerification operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "startHandlerMappingVerification processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "startHandlerMappingVerification encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "startHandlerMappingVerification executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "startHandlerMappingVerification operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -241,16 +661,86 @@
             "kind": "orchestration"
           },
           "scenario": "load Handler Implementations",
-          "acceptanceCriteria": [
-            "Given the loadHandlerImplementations operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen loadHandlerImplementations processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen loadHandlerImplementations encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen loadHandlerImplementations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen loadHandlerImplementations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
           "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
-          "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the loadHandlerImplementations operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "loadHandlerImplementations processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "loadHandlerImplementations encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "loadHandlerImplementations executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "loadHandlerImplementations operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -267,16 +757,86 @@
             "kind": "orchestration"
           },
           "scenario": "index Beats From J S O N",
-          "acceptanceCriteria": [
-            "Given the indexBeatsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen indexBeatsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen indexBeatsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen indexBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen indexBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the indexBeatsFromJSON operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "indexBeatsFromJSON processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "indexBeatsFromJSON encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "indexBeatsFromJSON executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "indexBeatsFromJSON operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -293,16 +853,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify verify Beat Handler Mapping",
-          "acceptanceCriteria": [
-            "Given the verifyBeatHandlerMapping operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen verifyBeatHandlerMapping processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen verifyBeatHandlerMapping encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen verifyBeatHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen verifyBeatHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the verifyBeatHandlerMapping operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "verifyBeatHandlerMapping processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "verifyBeatHandlerMapping encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "verifyBeatHandlerMapping executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "verifyBeatHandlerMapping operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -319,16 +949,86 @@
             "kind": "orchestration"
           },
           "scenario": "Detect or Identify detect Orphan Handlers",
-          "acceptanceCriteria": [
-            "Given the detectOrphanHandlers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen detectOrphanHandlers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen detectOrphanHandlers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 30 seconds\nWhen detectOrphanHandlers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen detectOrphanHandlers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the detectOrphanHandlers operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 30 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "detectOrphanHandlers processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "detectOrphanHandlers encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 30 seconds"
+              ],
+              "when": [
+                "detectOrphanHandlers executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "detectOrphanHandlers operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 6,
@@ -345,16 +1045,86 @@
             "kind": "orchestration"
           },
           "scenario": "report Handler Mapping",
-          "acceptanceCriteria": [
-            "Given the reportHandlerMapping operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen reportHandlerMapping processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen reportHandlerMapping encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen reportHandlerMapping executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen reportHandlerMapping operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the reportHandlerMapping operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "reportHandlerMapping processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "reportHandlerMapping encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "reportHandlerMapping executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "reportHandlerMapping operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
@@ -382,16 +1152,86 @@
             "kind": "orchestration"
           },
           "scenario": "start Test Coverage Verification",
-          "acceptanceCriteria": [
-            "Given the startTestCoverageVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen startTestCoverageVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen startTestCoverageVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen startTestCoverageVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen startTestCoverageVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the startTestCoverageVerification operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "startTestCoverageVerification processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "startTestCoverageVerification encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "startTestCoverageVerification executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "startTestCoverageVerification operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -408,16 +1248,86 @@
             "kind": "orchestration"
           },
           "scenario": "catalog Beats From J S O N",
-          "acceptanceCriteria": [
-            "Given the catalogBeatsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen catalogBeatsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen catalogBeatsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen catalogBeatsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen catalogBeatsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the catalogBeatsFromJSON operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "catalogBeatsFromJSON processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "catalogBeatsFromJSON encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "catalogBeatsFromJSON executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "catalogBeatsFromJSON operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -434,16 +1344,86 @@
             "kind": "orchestration"
           },
           "scenario": "index Test Files",
-          "acceptanceCriteria": [
-            "Given the indexTestFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen indexTestFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen indexTestFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen indexTestFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen indexTestFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js",
           "testCase": "should index-test-files",
-          "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the indexTestFiles operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "indexTestFiles processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "indexTestFiles encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "indexTestFiles executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "indexTestFiles operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -460,16 +1440,86 @@
             "kind": "orchestration"
           },
           "scenario": "Scan, Discover, or Analyze analyze Test Coverage",
-          "acceptanceCriteria": [
-            "Given the analyzeTestCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 5 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen analyzeTestCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen analyzeTestCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 5 seconds\nWhen analyzeTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen analyzeTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
           "testCase": "Scenario: Analyze coverage gaps to identify untested code",
-          "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the analyzeTestCoverage operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 5 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "analyzeTestCoverage processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "analyzeTestCoverage encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 5 seconds"
+              ],
+              "when": [
+                "analyzeTestCoverage executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "analyzeTestCoverage operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -486,16 +1536,86 @@
             "kind": "orchestration"
           },
           "scenario": "Detect or Identify identify Uncovered Beats",
-          "acceptanceCriteria": [
-            "Given the identifyUncoveredBeats operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen identifyUncoveredBeats processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen identifyUncoveredBeats encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 30 seconds\nWhen identifyUncoveredBeats executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen identifyUncoveredBeats operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the identifyUncoveredBeats operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 30 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "identifyUncoveredBeats processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "identifyUncoveredBeats encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 30 seconds"
+              ],
+              "when": [
+                "identifyUncoveredBeats executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "identifyUncoveredBeats operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 6,
@@ -512,16 +1632,86 @@
             "kind": "orchestration"
           },
           "scenario": "report Test Coverage",
-          "acceptanceCriteria": [
-            "Given the reportTestCoverage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen reportTestCoverage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen reportTestCoverage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen reportTestCoverage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen reportTestCoverage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts",
           "testCase": "should calculate duration reduction",
-          "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the reportTestCoverage operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "reportTestCoverage processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "reportTestCoverage encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "reportTestCoverage executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "reportTestCoverage operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
@@ -549,16 +1739,86 @@
             "kind": "orchestration"
           },
           "scenario": "start Markdown Consistency Check",
-          "acceptanceCriteria": [
-            "Given the startMarkdownConsistencyCheck operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen startMarkdownConsistencyCheck processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen startMarkdownConsistencyCheck encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen startMarkdownConsistencyCheck executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen startMarkdownConsistencyCheck operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts",
           "testCase": "should governance.handlers#startMarkdownConsistencyCheck when event published",
-          "userStory": "As an operations system, I want startMarkdownConsistencyCheck to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want startMarkdownConsistencyCheck to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the startMarkdownConsistencyCheck operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "startMarkdownConsistencyCheck processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "startMarkdownConsistencyCheck encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "startMarkdownConsistencyCheck executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "startMarkdownConsistencyCheck operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -575,16 +1835,86 @@
             "kind": "orchestration"
           },
           "scenario": "extract Facts From J S O N",
-          "acceptanceCriteria": [
-            "Given the extractFactsFromJSON operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen extractFactsFromJSON processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen extractFactsFromJSON encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen extractFactsFromJSON executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen extractFactsFromJSON operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the extractFactsFromJSON operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "extractFactsFromJSON processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "extractFactsFromJSON encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "extractFactsFromJSON executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "extractFactsFromJSON operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -601,16 +1931,86 @@
             "kind": "orchestration"
           },
           "scenario": "Detect or Identify identify Markdown Files",
-          "acceptanceCriteria": [
-            "Given the identifyMarkdownFiles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen identifyMarkdownFiles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen identifyMarkdownFiles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 30 seconds\nWhen identifyMarkdownFiles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen identifyMarkdownFiles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
           "testCase": "should load valid logs and skip corrupted ones, reporting progress",
-          "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the identifyMarkdownFiles operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 30 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "identifyMarkdownFiles processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "identifyMarkdownFiles encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 30 seconds"
+              ],
+              "when": [
+                "identifyMarkdownFiles executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "identifyMarkdownFiles operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -627,16 +2027,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify verify Facts In Markdown",
-          "acceptanceCriteria": [
-            "Given the verifyFactsInMarkdown operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen verifyFactsInMarkdown processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen verifyFactsInMarkdown encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen verifyFactsInMarkdown executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen verifyFactsInMarkdown operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "testCase": "should verify-facts-in-markdown",
-          "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the verifyFactsInMarkdown operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "verifyFactsInMarkdown processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "verifyFactsInMarkdown encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "verifyFactsInMarkdown executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "verifyFactsInMarkdown operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -653,16 +2123,86 @@
             "kind": "orchestration"
           },
           "scenario": "Detect or Identify detect Markdown Contradictions",
-          "acceptanceCriteria": [
-            "Given the detectMarkdownContradictions operation is triggered\nWhen the handler executes\nThen it completes successfully within < 30 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen detectMarkdownContradictions processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen detectMarkdownContradictions encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 30 seconds\nWhen detectMarkdownContradictions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen detectMarkdownContradictions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
           "testCase": "detectAnomaliesRequested - happy path",
-          "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the detectMarkdownContradictions operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 30 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "detectMarkdownContradictions processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "detectMarkdownContradictions encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 30 seconds"
+              ],
+              "when": [
+                "detectMarkdownContradictions executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "detectMarkdownContradictions operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 6,
@@ -679,16 +2219,86 @@
             "kind": "orchestration"
           },
           "scenario": "report Markdown Consistency",
-          "acceptanceCriteria": [
-            "Given the reportMarkdownConsistency operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen reportMarkdownConsistency processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen reportMarkdownConsistency encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen reportMarkdownConsistency executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen reportMarkdownConsistency operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the reportMarkdownConsistency operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "reportMarkdownConsistency processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "reportMarkdownConsistency encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "reportMarkdownConsistency executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "reportMarkdownConsistency operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
@@ -716,16 +2326,86 @@
             "kind": "orchestration"
           },
           "scenario": "start Auditability Verification",
-          "acceptanceCriteria": [
-            "Given the startAuditabilityVerification operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen startAuditabilityVerification processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen startAuditabilityVerification encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen startAuditabilityVerification executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen startAuditabilityVerification operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "packages/orchestration/test/governance.handlers#startAuditabilityVerification.spec.ts",
           "testCase": "should governance.handlers#startAuditabilityVerification when event published",
-          "userStory": "As an operations system, I want startAuditabilityVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want startAuditabilityVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the startAuditabilityVerification operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "startAuditabilityVerification processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "startAuditabilityVerification encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "startAuditabilityVerification executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "startAuditabilityVerification operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -742,16 +2422,86 @@
             "kind": "orchestration"
           },
           "scenario": "Initialize or Configure load J S O N Definitions",
-          "acceptanceCriteria": [
-            "Given the loadJSONDefinitions operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen loadJSONDefinitions processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen loadJSONDefinitions encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen loadJSONDefinitions executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen loadJSONDefinitions operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the loadJSONDefinitions operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "loadJSONDefinitions processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "loadJSONDefinitions encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "loadJSONDefinitions executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "loadJSONDefinitions operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -768,16 +2518,86 @@
             "kind": "orchestration"
           },
           "scenario": "Generate or Create create Code Mappings",
-          "acceptanceCriteria": [
-            "Given the createCodeMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createCodeMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createCodeMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createCodeMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createCodeMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the createCodeMappings operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 2 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "createCodeMappings processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "createCodeMappings encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 2 seconds"
+              ],
+              "when": [
+                "createCodeMappings executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "createCodeMappings operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -794,16 +2614,86 @@
             "kind": "orchestration"
           },
           "scenario": "Generate or Create create Test Mappings",
-          "acceptanceCriteria": [
-            "Given the createTestMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createTestMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createTestMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createTestMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createTestMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the createTestMappings operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 2 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "createTestMappings processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "createTestMappings encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 2 seconds"
+              ],
+              "when": [
+                "createTestMappings executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "createTestMappings operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -820,16 +2710,86 @@
             "kind": "orchestration"
           },
           "scenario": "Generate or Create create Markdown Mappings",
-          "acceptanceCriteria": [
-            "Given the createMarkdownMappings operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createMarkdownMappings processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createMarkdownMappings encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createMarkdownMappings executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createMarkdownMappings operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the createMarkdownMappings operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 2 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "createMarkdownMappings processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "createMarkdownMappings encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 2 seconds"
+              ],
+              "when": [
+                "createMarkdownMappings executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "createMarkdownMappings operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 6,
@@ -846,16 +2806,86 @@
             "kind": "orchestration"
           },
           "scenario": "Validate or Verify verify Chain Completeness",
-          "acceptanceCriteria": [
-            "Given the verifyChainCompleteness operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen verifyChainCompleteness processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen verifyChainCompleteness encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen verifyChainCompleteness executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen verifyChainCompleteness operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
-          "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the verifyChainCompleteness operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "verifyChainCompleteness processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "verifyChainCompleteness encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "verifyChainCompleteness executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "verifyChainCompleteness operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 7,
@@ -872,16 +2902,86 @@
             "kind": "orchestration"
           },
           "scenario": "report Auditability",
-          "acceptanceCriteria": [
-            "Given the reportAuditability operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen reportAuditability processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen reportAuditability encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen reportAuditability executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen reportAuditability operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the reportAuditability operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "reportAuditability processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "reportAuditability encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "reportAuditability executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "reportAuditability operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
@@ -909,16 +3009,86 @@
             "kind": "orchestration"
           },
           "scenario": "start Conformity Analysis",
-          "acceptanceCriteria": [
-            "Given the startConformityAnalysis operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen startConformityAnalysis processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen startConformityAnalysis encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen startConformityAnalysis executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen startConformityAnalysis operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
           "testCase": "should analyze a property and return opportunity score",
-          "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the startConformityAnalysis operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "startConformityAnalysis processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "startConformityAnalysis encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "startConformityAnalysis executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "startConformityAnalysis operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 2,
@@ -935,16 +3105,86 @@
             "kind": "orchestration"
           },
           "scenario": "aggregate Governance Results",
-          "acceptanceCriteria": [
-            "Given the aggregateGovernanceResults operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen aggregateGovernanceResults processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen aggregateGovernanceResults encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen aggregateGovernanceResults executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen aggregateGovernanceResults operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the aggregateGovernanceResults operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "aggregateGovernanceResults processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "aggregateGovernanceResults encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "aggregateGovernanceResults executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "aggregateGovernanceResults operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 3,
@@ -961,16 +3201,86 @@
             "kind": "orchestration"
           },
           "scenario": "calculate Conformity Score",
-          "acceptanceCriteria": [
-            "Given the calculateConformityScore operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen calculateConformityScore processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen calculateConformityScore encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen calculateConformityScore executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen calculateConformityScore operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the calculateConformityScore operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "calculateConformityScore processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "calculateConformityScore encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "calculateConformityScore executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "calculateConformityScore operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 4,
@@ -987,16 +3297,86 @@
             "kind": "orchestration"
           },
           "scenario": "summarize Violations",
-          "acceptanceCriteria": [
-            "Given the summarizeViolations operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen summarizeViolations processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen summarizeViolations encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen summarizeViolations executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen summarizeViolations operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\spa-validator.stage-crew-violations.test.ts",
           "testCase": "stage:cue",
-          "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the summarizeViolations operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "summarizeViolations processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "summarizeViolations encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "summarizeViolations executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "summarizeViolations operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 5,
@@ -1013,16 +3393,86 @@
             "kind": "orchestration"
           },
           "scenario": "make Governance Decision",
-          "acceptanceCriteria": [
-            "Given the makeGovernanceDecision operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen makeGovernanceDecision processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen makeGovernanceDecision encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen makeGovernanceDecision executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen makeGovernanceDecision operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the makeGovernanceDecision operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "makeGovernanceDecision processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "makeGovernanceDecision encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "makeGovernanceDecision executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "makeGovernanceDecision operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 6,
@@ -1039,16 +3489,86 @@
             "kind": "orchestration"
           },
           "scenario": "Generate or Create generate Governance Report",
-          "acceptanceCriteria": [
-            "Given the generateGovernanceReport operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen generateGovernanceReport processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen generateGovernanceReport encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen generateGovernanceReport executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen generateGovernanceReport operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the generateGovernanceReport operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 2 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "generateGovernanceReport processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "generateGovernanceReport encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 2 seconds"
+              ],
+              "when": [
+                "generateGovernanceReport executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "generateGovernanceReport operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "number": 7,
@@ -1065,16 +3585,86 @@
             "kind": "orchestration"
           },
           "scenario": "conclude Governance Enforcement",
-          "acceptanceCriteria": [
-            "Given the concludeGovernanceEnforcement operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen concludeGovernanceEnforcement processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen concludeGovernanceEnforcement encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen concludeGovernanceEnforcement executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen concludeGovernanceEnforcement operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the concludeGovernanceEnforcement operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "concludeGovernanceEnforcement processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "concludeGovernanceEnforcement encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "concludeGovernanceEnforcement executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "concludeGovernanceEnforcement operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",

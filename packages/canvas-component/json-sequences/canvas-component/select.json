@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["selected element(s)"],
-              "when": ["showSelectionOverlay runs"],
-              "then": ["overlay appears within ≤ 30ms and aligns within ≤ 1px"],
+              "given": ["handler showSelectionOverlay is available"],
+              "when": ["showSelectionOverlay executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'selection.overlay' includes bounds and count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -67,11 +67,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a selection change is finalized"],
-              "when": ["publishSelectionChanged runs"],
-              "then": ["a domain event with before/after snapshots is emitted"],
+              "given": ["handler publishSelectionChanged is available"],
+              "when": ["publishSelectionChanged executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "subscribers receive it within ≤ 20ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

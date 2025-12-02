@@ -20,16 +20,86 @@
           ],
           "number": 1,
           "scenario": "fractal Narrator",
-          "acceptanceCriteria": [
-            "Given the fractalNarrator operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen fractalNarrator processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen fractalNarrator encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
-          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the fractalNarrator operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "fractalNarrator processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "fractalNarrator encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "fractalNarrator executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "fractalNarrator operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "fractal-domain-orchestrated",
@@ -43,16 +113,86 @@
           ],
           "number": 2,
           "scenario": "fractal Narrator",
-          "acceptanceCriteria": [
-            "Given the fractalNarrator operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen fractalNarrator processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen fractalNarrator encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen fractalNarrator executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen fractalNarrator operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
-          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the fractalNarrator operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "fractalNarrator processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "fractalNarrator encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "fractalNarrator executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "fractalNarrator operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",

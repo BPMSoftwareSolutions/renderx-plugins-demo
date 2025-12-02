@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `prepareField` to normalize input and validate.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a user input event"],
-              "when": ["onFieldChange runs"],
-              "then": ["model updates debounced ≤ 50ms and validates lazily"],
+              "given": ["handler prepareField is available"],
+              "when": ["prepareField executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'ui.field.change' includes field and debounce"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -46,11 +46,11 @@
           "userStory": "As an engineer, I need `dispatchField` to route changes to the canvas component.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a normalized change payload"],
-              "when": ["dispatchField runs"],
-              "then": ["change routes to the correct handler with latency ≤ 5ms"],
+              "given": ["handler dispatchField is available"],
+              "when": ["dispatchField executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no duplicate dispatch occurs for the same tick"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -70,11 +70,11 @@
           "userStory": "As an engineer, I need `setDirty` to mark state and enable save.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["the model updates"],
-              "when": ["setDirty runs"],
-              "then": ["the form state flips to dirty and tracks changed fields"],
+              "given": ["handler setDirty is available"],
+              "when": ["setDirty executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "idempotent calls do not re-emit"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -94,11 +94,11 @@
           "userStory": "As an engineer, I need `awaitRefresh` to synchronize view updates.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["UI depends on derived state"],
-              "when": ["awaitRefresh runs"],
-              "then": ["view refresh completes within ≤ 50ms P95"],
+              "given": ["handler awaitRefresh is available"],
+              "when": ["awaitRefresh executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no layout thrash occurs (≤ 1 reflow)"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

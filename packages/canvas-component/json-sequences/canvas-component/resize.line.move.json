@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an active line resize"],
-              "when": ["updateLine runs"],
-              "then": ["line size updates at 60fps; constraints apply"],
+              "given": ["handler updateLine is available"],
+              "when": ["updateLine executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes new length/angle"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

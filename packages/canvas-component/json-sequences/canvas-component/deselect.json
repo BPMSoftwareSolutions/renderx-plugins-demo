@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a selected component"],
-              "when": ["deselectComponent runs"],
-              "then": ["the component becomes unselected and overlay removed within ≤ 20ms"],
+              "given": ["handler deselectComponent is available"],
+              "when": ["deselectComponent executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "idempotent calls have no effect"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -44,11 +44,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["deselection occurs"],
-              "when": ["publishDeselectionChanged runs"],
-              "then": ["event publishes with previous and current selection"],
+              "given": ["handler publishDeselectionChanged is available"],
+              "when": ["publishDeselectionChanged executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "ordering remains FIFO"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

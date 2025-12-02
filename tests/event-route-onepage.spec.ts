@@ -12,8 +12,8 @@ function getAttr(el: Element | null, name: string): string | null {
   return el ? el.getAttribute(name) : null;
 }
 
-describe('Event Route One-Page Diagram', () => {
-  it('matches mapping and contains all key layers/elements', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Event Route One-Page Diagram', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] matches mapping and contains all key layers/elements', () => {
     const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
     expect(mapping.output.file).toBe('integrated_event_route.svg');
 

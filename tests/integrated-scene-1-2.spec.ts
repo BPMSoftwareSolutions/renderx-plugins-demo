@@ -7,8 +7,8 @@ const root = path.resolve('.');
 const assetsDir = path.join(root, 'docs', 'digital-assets');
 const integratedSvgPath = path.join(assetsDir, 'integrated_scene_1_2.svg');
 
-describe('Integrated Scene 1+2 SVG', () => {
-  it('exists and contains key elements/text from both scenes', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Integrated Scene 1+2 SVG', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] exists and contains key elements/text from both scenes', () => {
     const svgStr = fs.readFileSync(integratedSvgPath, 'utf-8');
     const dom = new JSDOM(svgStr, { contentType: 'image/svg+xml' });
     const doc = dom.window.document;

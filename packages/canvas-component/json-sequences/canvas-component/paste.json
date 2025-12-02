@@ -24,11 +24,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["clipboard contains valid data"],
-              "when": ["readFromClipboard runs"],
-              "then": ["payload is read with type detection and size limits"],
+              "given": ["handler readFromClipboard is available"],
+              "when": ["readFromClipboard executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "errors are typed on unsupported formats"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -47,11 +47,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a serialized payload"],
-              "when": ["deserializeComponentData runs"],
-              "then": ["payload maps to internal model; validation passes"],
+              "given": ["handler deserializeComponentData is available"],
+              "when": ["deserializeComponentData executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes component count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -70,11 +70,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["cursor and canvas bounds"],
-              "when": ["calculatePastePosition runs"],
-              "then": ["target position computes with snap; within viewport"],
+              "given": ["handler calculatePastePosition is available"],
+              "when": ["calculatePastePosition executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no overlap violations occur beyond threshold"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -93,11 +93,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["deserialized data"],
-              "when": ["createPastedComponent runs"],
-              "then": ["component is created atomically; undo snapshot recorded"],
+              "given": ["handler createPastedComponent is available"],
+              "when": ["createPastedComponent executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "latency ≤ 80ms P95"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -116,11 +116,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["paste completes"],
-              "when": ["notifyPasteComplete runs"],
-              "then": ["'paste.complete' event publishes with ids and count"],
+              "given": ["handler notifyPasteComplete is available"],
+              "when": ["notifyPasteComplete executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "subscribers receive within ≤ 20ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

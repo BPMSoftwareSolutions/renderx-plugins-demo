@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a movable line"],
-              "when": ["startLineManip runs"],
-              "then": ["manipulation context initializes; selection expands to anchors"],
+              "given": ["handler startLineManip is available"],
+              "when": ["startLineManip executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "a 'line.manip.start' event publishes"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

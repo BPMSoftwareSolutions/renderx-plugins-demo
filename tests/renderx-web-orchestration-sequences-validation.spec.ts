@@ -69,7 +69,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
    * populated in orchestration-domains.json, this test will validate them against
    * the canonical MusicalSequence schema.
    */
-  it('validates any realized sequences referenced by renderx-web-orchestration against MusicalSequence schema', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] validates any realized sequences referenced by renderx-web-orchestration against MusicalSequence schema', () => {
     const validate = createValidator();
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
@@ -134,7 +134,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
    * Template fallback test: validates that sequences not yet realized as concrete files
    * have templates with minimal MusicalSequence-like structure.
    */
-  it('ensures all non-realized orchestration references have template fallbacks with MusicalSequence structure', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] ensures all non-realized orchestration references have template fallbacks with MusicalSequence structure', () => {
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
     );
@@ -222,7 +222,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
    * Schema conformance assertions: validates that the MusicalSequence schema
    * itself defines the core properties expected by this validation test.
    */
-  it('confirms MusicalSequence schema defines core properties for renderx-web orchestration', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] confirms MusicalSequence schema defines core properties for renderx-web orchestration', () => {
     const schema = loadJson('../docs/schemas/musical-sequence.schema.json');
 
     // Schema should have properties defined
@@ -251,7 +251,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
    * Registry consistency: documents which orchestration references from renderx-web
    * are currently in orchestration-domains.json vs using templates.
    */
-  it('documents orchestration references from renderx-web by registry status', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:3] documents orchestration references from renderx-web by registry status', () => {
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
     );

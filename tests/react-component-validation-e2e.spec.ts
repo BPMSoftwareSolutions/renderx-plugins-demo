@@ -26,7 +26,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     }
   });
 
-  it('should create theme toggle component with validation', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] should create theme toggle component with validation', async () => {
     const contextFile = resolveContextFile();
     
     // Verify context file exists
@@ -48,7 +48,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     _componentCreated = true;
   });
 
-  it('should have valid React code syntax', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should have valid React code syntax', async () => {
     const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
@@ -67,7 +67,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(backticks % 2).toBe(0);
   });
 
-  it('should have proper React component structure', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should have proper React component structure', async () => {
     const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
@@ -82,7 +82,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(reactCode).toContain('react.component.theme.toggled');
   });
 
-  it('should have proper styling and interactivity', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should have proper styling and interactivity', async () => {
     const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;

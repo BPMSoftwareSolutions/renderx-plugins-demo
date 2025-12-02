@@ -5,8 +5,8 @@ import { describe, it, expect } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useLogParser } from '../src/ui/diagnostics/hooks/useLogParser';
 
-describe('Sequence Player - Multi-Sequence Support', () => {
-  it('should parse JSON array with multiple sequences', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequence Player - Multi-Sequence Support', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should parse JSON array with multiple sequences', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -53,7 +53,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-1');
   });
 
-  it('should navigate to next sequence', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should navigate to next sequence', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -95,7 +95,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-2');
   });
 
-  it('should navigate to previous sequence', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] should navigate to previous sequence', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -140,7 +140,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-1');
   });
 
-  it('should jump to specific sequence by index', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] should jump to specific sequence by index', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -188,7 +188,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-3');
   });
 
-  it('should not navigate beyond bounds', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] should not navigate beyond bounds', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -241,7 +241,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.currentIndex).toBe(1);
   });
 
-  it('should handle single sequence (no multi-sequence UI)', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should handle single sequence (no multi-sequence UI)', () => {
     const { result } = renderHook(() => useLogParser());
 
     const singleSequenceJson = JSON.stringify({
@@ -266,7 +266,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-1');
   });
 
-  it('should provide all executions for aggregate stats', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should provide all executions for aggregate stats', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([

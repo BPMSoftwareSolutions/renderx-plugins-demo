@@ -11,10 +11,10 @@ import type { LogInput } from '../src/ui/diagnostics/types';
  * Part of Issue #305.
  */
 
-describe('Sequence Player Integration', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequence Player Integration', () => {
   const sampleLogPath = resolve(__dirname, 'fixtures', 'sample-execution.json');
 
-  it('should parse sample execution log file', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should parse sample execution log file', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -27,7 +27,7 @@ describe('Sequence Player Integration', () => {
     expect(result.execution).toBeDefined();
   });
 
-  it('should extract correct metadata from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should extract correct metadata from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -43,7 +43,7 @@ describe('Sequence Player Integration', () => {
     expect(result.execution?.status).toBe('success');
   });
 
-  it('should parse all movements from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] should parse all movements from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -58,7 +58,7 @@ describe('Sequence Player Integration', () => {
     expect(result.execution?.movements[2].name).toBe('publish');
   });
 
-  it('should parse all beats from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] should parse all beats from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -72,7 +72,7 @@ describe('Sequence Player Integration', () => {
     expect(result.execution?.movements[2].beats).toHaveLength(1);
   });
 
-  it('should calculate correct statistics from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] should calculate correct statistics from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -91,7 +91,7 @@ describe('Sequence Player Integration', () => {
     expect(stats.failedBeats).toBe(0);
   });
 
-  it('should identify slowest beat from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should identify slowest beat from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -109,7 +109,7 @@ describe('Sequence Player Integration', () => {
     expect(stats.slowestBeat?.duration).toBe(20);
   });
 
-  it('should preserve data baton from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should preserve data baton from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,
@@ -127,7 +127,7 @@ describe('Sequence Player Integration', () => {
     expect(firstBeat?.dataBaton.y).toBe(100);
   });
 
-  it('should handle timing information from sample log', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] should handle timing information from sample log', () => {
     const content = readFileSync(sampleLogPath, 'utf8');
     const input: LogInput = {
       content,

@@ -13,7 +13,7 @@ const pipelinePath = path.join(
 const pipeline = JSON.parse(fs.readFileSync(pipelinePath, 'utf-8'));
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:3.4:1]] Symphonic Code Analysis Pipeline - Fractal Architecture Encoding', () => {
-  it('declares fractal architecture as a conformity metric', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.4:1] declares fractal architecture as a conformity metric', () => {
     const fractalMetric =
       pipeline.analysisMetrics?.conformityMetrics?.fractalArchitecture;
 
@@ -23,7 +23,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.4] [[AC:re
     expect(fractalMetric.impact).toBeTypeOf('string');
   });
 
-  it('emits an event when fractal architecture is analyzed', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.4:2] emits an event when fractal architecture is analyzed', () => {
     const events: string[] = pipeline.events ?? [];
     const hasFractalEvent = events.some(event =>
       event.toLowerCase().includes('movement-4:fractal'),
@@ -32,7 +32,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.4] [[AC:re
     expect(hasFractalEvent).toBe(true);
   });
 
-  it('describes fractal architecture work in movement 4 beats', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.4:2] describes fractal architecture work in movement 4 beats', () => {
     const beat = (pipeline.beatDetails ?? []).find(
       (b: any) => b.movement === 4 && b.number === 2,
     );

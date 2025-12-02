@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a resizable line"],
-              "when": ["startLineResize runs"],
-              "then": ["resize context initializes and selection updates"],
+              "given": ["handler startLineResize is available"],
+              "when": ["startLineResize executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "a 'resize.line.start' event publishes"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

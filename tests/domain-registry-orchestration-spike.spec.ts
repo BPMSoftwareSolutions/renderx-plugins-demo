@@ -18,7 +18,7 @@ function loadJson(p: string): any {
 describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] DOMAIN_REGISTRY 4 orchestration-domains spike invariants', () => {
   const SPIKE_SEQUENCE_DOMAIN = 'renderx-web-orchestration';
 
-  it('declares orchestration interface/schema linkage on orchestration-core', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] declares orchestration interface/schema linkage on orchestration-core', () => {
     const registry = loadJson(domainRegistryPath);
     const core = registry.domains?.['orchestration-core'];
 
@@ -38,7 +38,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     expect(orch.registry_ref?.id).toBe('orchestration-domains-registry');
   });
 
-  it('links a spike orchestration-sequence domain to orchestration-domains registry', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] links a spike orchestration-sequence domain to orchestration-domains registry', () => {
     const registry = loadJson(domainRegistryPath);
     const orchestrationDomains = loadJson(orchestrationRegistryPath);
 

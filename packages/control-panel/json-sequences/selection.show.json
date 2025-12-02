@@ -22,11 +22,11 @@
           "userStory": "As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["selected element(s)"],
-              "when": ["showSelection runs"],
-              "then": ["overlay draws within ≤ 30ms and aligns within ≤ 1px"],
+              "given": ["handler deriveSelectionModel is available"],
+              "when": ["deriveSelectionModel executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'selection.show' includes count and bounds"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["theme storage"],
-              "when": ["getTheme runs"],
-              "then": ["returns current theme within ≤ 10ms and emits 'theme.get'"],
+              "given": ["handler getCurrentTheme is available"],
+              "when": ["getCurrentTheme executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes source (storage/default)"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

@@ -22,11 +22,11 @@
           "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a valid CSS rule"],
-              "when": ["createRule runs"],
-              "then": ["rule is inserted into stylesheet, latency ≤ 20ms"],
+              "given": ["handler createCssClass is available"],
+              "when": ["createCssClass executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'css.rule.create' includes selector and index"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

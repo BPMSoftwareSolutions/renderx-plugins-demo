@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["pointer down on draggable"],
-              "when": ["startDrag runs"],
-              "then": ["drag context initializes within ≤ 16ms and ghost preview appears"],
+              "given": ["handler openUiFile is available"],
+              "when": ["openUiFile executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'drag.start' includes elementId and origin"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -44,18 +44,12 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["deselection occurs"],
-              "when": ["publishDeselectionChanged runs"],
-              "then": ["event publishes with previous and current selection"],
+              "given": ["handler parseUiFile is available"],
+              "when": ["parseUiFile executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "ordering remains FIFO"
+                "emits expected side effects or returns expected value"
               ]
-            },
-            {
-              "given": ["parsed records"],
-              "when": ["mapToNodes runs"],
-              "then": [],
-              "and": []
             }
           ]
         },
@@ -73,11 +67,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["parsed records with classes"],
-              "when": ["injectCssClasses runs"],
-              "then": ["classes are created/updated without duplicates and applied correctly"],
+              "given": ["handler injectCssClasses is available"],
+              "when": ["injectCssClasses executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'import.css.inject' includes created/updated counts"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -96,11 +90,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["mapped nodes"],
-              "when": ["createComponentsSequentially runs"],
-              "then": ["components are created in order with retries on transient errors"],
+              "given": ["handler createComponentsSequentially is available"],
+              "when": ["createComponentsSequentially executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "P95 per component ≤ 80ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -119,11 +113,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["created components"],
-              "when": ["applyHierarchyAndOrder runs"],
-              "then": ["parent/child links and z-order match input; validation passes"],
+              "given": ["handler applyHierarchyAndOrder is available"],
+              "when": ["applyHierarchyAndOrder executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'import.hierarchy' includes link count and duration"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

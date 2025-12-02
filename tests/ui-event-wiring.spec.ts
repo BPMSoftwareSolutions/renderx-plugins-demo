@@ -54,7 +54,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     },
   ];
 
-  it('publishes deselect when clicking on canvas (outside component)', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] publishes deselect when clicking on canvas (outside component)', async () => {
     const canvas = document.createElement('div');
     canvas.id = 'rx-canvas';
     document.body.appendChild(canvas);
@@ -69,7 +69,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect(topic).toBe('canvas.component.deselect.requested');
   });
 
-  it('publishes deselect on Escape key', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] publishes deselect on Escape key', async () => {
     cleanup = wireUiEvents(defs);
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
@@ -80,7 +80,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect(topic).toBe('canvas.component.deselect.requested');
   });
 
-  it('publishes delete on Delete key', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] publishes delete on Delete key', async () => {
     cleanup = wireUiEvents(defs);
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Delete', bubbles: true }));

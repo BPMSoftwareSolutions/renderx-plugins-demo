@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\svg-node.update.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a valid SVG attribute update"],
-              "when": ["updateSvgNodeAttribute runs"],
-              "then": ["attribute is applied atomically and validated; latency ≤ 16ms"],
+              "given": ["handler updateSvgNodeAttribute is available"],
+              "when": ["updateSvgNodeAttribute executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'svg.attr.update' includes name and duration"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

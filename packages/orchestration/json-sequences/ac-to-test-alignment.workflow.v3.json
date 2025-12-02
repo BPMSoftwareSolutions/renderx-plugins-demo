@@ -3,9 +3,9 @@
   "musicalSequence": {
     "id": "ac-to-test-alignment-v3",
     "domainId": "renderx-web-orchestration",
-    "title": "AC-to-Test Alignment: Analysis and Conversion (v3)",
-    "version": "3.0.0",
-    "description": "Compute actual test counts, canonical AC-derived test counts, quality differences, and post-conversion projections; then suggest and optionally apply tags.",
+    "title": "AC-to-Test Alignment: Analysis, Validation, and Conversion (v3)",
+    "version": "3.1.0",
+    "description": "Compute actual test counts, canonical AC-derived test counts, quality differences, and post-conversion projections; suggest and apply tags; validate test implementations match AC specifications; generate fixes for non-compliant tests.",
     "movements": [
       {
         "id": "movement-1",
@@ -102,6 +102,22 @@
             "acceptanceCriteriaStructured": [
               { "given": ["all test files"], "when": ["scan for AC/BEAT tags"], "then": ["count tagged tests and coverage"], "and": ["report actual coverage percentage"] }
             ]
+          },
+          {
+            "id": "beat-8b",
+            "title": "Validate Test Implementations",
+            "handlers": [{ "script": "scripts/ac-alignment/validate-test-implementations.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["tagged tests", "AC registry"], "when": ["analyze test implementations"], "then": ["verify Given/When/Then conditions are properly implemented"], "and": ["report compliance rate and identify non-compliant tests"] }
+            ]
+          },
+          {
+            "id": "beat-8c",
+            "title": "Generate Test Implementation Fixes",
+            "handlers": [{ "script": "scripts/ac-alignment/fix-test-implementations.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["validation results", "AC registry"], "when": ["process non-compliant tests"], "then": ["generate suggested test implementations for each AC"], "and": ["output .fixes.txt files with Given/When/Then test code"] }
+            ]
           }
         ]
       },
@@ -139,7 +155,10 @@
         ".generated/ac-alignment/summary.json",
         ".generated/ac-alignment/suggestions.json",
         ".generated/ac-alignment/patches.diff",
-        "docs/generated/renderx-web-orchestration/test-analysis.md"
+        "docs/generated/renderx-web-orchestration/test-analysis.md",
+        "docs/generated/renderx-web-orchestration/ac-validation-report.md",
+        ".generated/ac-alignment/validation-summary.json",
+        "tests/**/*.fixes.txt"
       ]
     }
   }

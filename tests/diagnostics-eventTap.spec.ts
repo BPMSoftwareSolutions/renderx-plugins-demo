@@ -7,12 +7,12 @@ import {
 } from '../src/ui/diagnostics/eventTap';
 import type { DiagnosticEvent } from '../src/ui/diagnostics/types';
 
-describe('diagnostics event tap', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnostics event tap', () => {
   beforeEach(() => {
     disableDiagnostics();
   });
 
-  it('delivers events to listeners when enabled', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:1] delivers events to listeners when enabled', () => {
     enableDiagnostics();
     const received: DiagnosticEvent[] = [];
     const unsubscribe = addDiagnosticListener((evt) => {
@@ -34,7 +34,7 @@ describe('diagnostics event tap', () => {
     expect(typeof received[0].timestamp).toBe('string');
   });
 
-  it('does not deliver events when disabled', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:2] does not deliver events when disabled', () => {
     disableDiagnostics();
     const received: DiagnosticEvent[] = [];
     const unsubscribe = addDiagnosticListener((evt) => {
@@ -52,7 +52,7 @@ describe('diagnostics event tap', () => {
     expect(received).toHaveLength(0);
   });
 
-  it('supports multiple listeners', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:3] supports multiple listeners', () => {
     enableDiagnostics();
     const a: DiagnosticEvent[] = [];
     const b: DiagnosticEvent[] = [];

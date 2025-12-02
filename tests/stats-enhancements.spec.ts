@@ -12,14 +12,14 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.3] [[AC:re
   const loaderPath = resolve(process.cwd(), 'src', 'test-plugin-loader.tsx');
   const cssPath = resolve(process.cwd(), 'src', 'global.css');
 
-  it('adds a .stats-enhanced wrapper around the stats grid in test-plugin-loader.tsx', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] adds a .stats-enhanced wrapper around the stats grid in test-plugin-loader.tsx', () => {
     const src = readFileSync(loaderPath, 'utf8');
     // Basic presence check – we dont parse JSX here due to node test env
     expect(src.includes('className="control-panel"')).toBe(true);
     expect(src.includes('className="stats-enhanced')).toBe(true);
   });
 
-  it('defines base styles for .stats-enhanced in global.css', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] defines base styles for .stats-enhanced in global.css', () => {
     const css = readFileSync(cssPath, 'utf8');
     // Minimal style guard: class exists and sets a background/border enhancements
     expect(css.includes('.stats-enhanced')).toBe(true);
@@ -27,13 +27,13 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.3] [[AC:re
     expect(/\.stats-enhanced[\s\S]*background/i.test(css)).toBe(true);
   });
 
-  it('replaces text stats with visual dashboard elements (progress rings/cards)', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] replaces text stats with visual dashboard elements (progress rings/cards)', () => {
     const src = readFileSync(loaderPath, 'utf8');
     expect(src.includes('className="stats-dashboard"')).toBe(true);
     expect(src.includes('className="progress-ring"')).toBe(true);
   });
 
-  it('defines base styles for the new dashboard selectors in global.css', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:3] defines base styles for the new dashboard selectors in global.css', () => {
     const css = readFileSync(cssPath, 'utf8');
     expect(css.includes('.stats-dashboard')).toBe(true);
     expect(css.includes('.metric-card')).toBe(true);

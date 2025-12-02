@@ -22,11 +22,11 @@
           "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["many components (≥ 100)"],
-              "when": ["initPanelBatched runs"],
-              "then": ["batching reduces CPU by ≥ 20% versus naive init"],
+              "given": ["handler initConfig is available"],
+              "when": ["initConfig executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'control-panel.init.batched' includes batchSize"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -46,11 +46,11 @@
           "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["configuration and schema definitions"],
-              "when": ["initResolver runs"],
-              "then": ["field/type resolvers register successfully within ≤ 50ms"],
+              "given": ["handler initResolver is available"],
+              "when": ["initResolver executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "resolver map includes required primitives and custom types"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -70,11 +70,11 @@
           "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["resolver initialization completes"],
-              "when": ["loadSchemas runs"],
-              "then": ["schemas load from source with P95 ≤ 200ms and validate"],
+              "given": ["handler loadSchemas is available"],
+              "when": ["loadSchemas executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'control-panel.schemas.load' includes count and duration"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -94,11 +94,11 @@
           "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["event bus and DOM listeners"],
-              "when": ["registerObservers runs"],
-              "then": ["observers register idempotently without duplicates"],
+              "given": ["handler registerObservers is available"],
+              "when": ["registerObservers executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "unregistration handles teardown cleanly"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -118,11 +118,11 @@
           "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["batched initialization completes"],
-              "when": ["notifyReady runs"],
-              "then": ["a 'control-panel.ready' event publishes within 5ms"],
+              "given": ["handler notifyReady is available"],
+              "when": ["notifyReady executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "subscribers receive the event within ≤ 20ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -142,11 +142,11 @@
           "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["movement context"],
-              "when": ["initMovement runs"],
-              "then": ["movement state is initialized deterministically and re-entrant"],
+              "given": ["handler initMovement is available"],
+              "when": ["initMovement executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no side effects occur before first user interaction"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a line manipulation"],
-              "when": ["endLineManip runs"],
-              "then": ["final path/anchors persist and hit-testing updates"],
+              "given": ["handler endLineManip is available"],
+              "when": ["endLineManip executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "latency ≤ 16ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

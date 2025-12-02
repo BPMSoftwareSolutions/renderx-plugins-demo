@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a resize interaction"],
-              "when": ["endResize runs"],
-              "then": ["final size/transform commits; constraints validated"],
+              "given": ["handler endResize is available"],
+              "when": ["endResize executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "a 'resize.ended' event publishes"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

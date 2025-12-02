@@ -12,16 +12,86 @@
           "kind": "io",
           "number": 1,
           "scenario": "load Budgets",
-          "acceptanceCriteria": [
-            "Given the loadBudgets operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen loadBudgets processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen loadBudgets encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen loadBudgets executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen loadBudgets operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\01-load-budgets.spec.ts",
           "testCase": "Scenario: Load initial SLO budgets for compliance baseline.",
-          "userStory": "As an SRE, I need `loadBudgets` to fetch and validate budget data."
+          "userStory": "As an SRE, I need `loadBudgets` to fetch and validate budget data.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the loadBudgets operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "loadBudgets processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "loadBudgets encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "loadBudgets executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "loadBudgets operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -29,16 +99,86 @@
           "kind": "io",
           "number": 2,
           "scenario": "load Metrics",
-          "acceptanceCriteria": [
-            "Given the loadMetrics operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen loadMetrics processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen loadMetrics encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen loadMetrics executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen loadMetrics operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\02-load-metrics.spec.ts",
           "testCase": "Scenario: Retrieve latest SLI metrics for compliance calculation.",
-          "userStory": "As an SRE, I need `loadMetrics` to fetch recent metrics reliably."
+          "userStory": "As an SRE, I need `loadMetrics` to fetch recent metrics reliably.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the loadMetrics operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "loadMetrics processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "loadMetrics encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "loadMetrics executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "loadMetrics operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "beat": 3,
@@ -46,16 +186,86 @@
           "kind": "pure",
           "number": 3,
           "scenario": "compute Compliance",
-          "acceptanceCriteria": [
-            "Given the computeCompliance operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen computeCompliance processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen computeCompliance encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen computeCompliance executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen computeCompliance operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\03-compute-compliance.spec.ts",
           "testCase": "Scenario: Aggregate weighted compliance across loaded SLO budgets and metrics.",
-          "userStory": "As an SRE, I need `computeCompliance` to calculate status and thresholds deterministically."
+          "userStory": "As an SRE, I need `computeCompliance` to calculate status and thresholds deterministically.",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "the computeCompliance operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "computeCompliance processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "computeCompliance encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "computeCompliance executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "computeCompliance operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
       "userStory": "As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.",

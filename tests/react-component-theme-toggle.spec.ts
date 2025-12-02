@@ -57,7 +57,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[0].data.theme).toBe('dark');
   });
 
-  it('should publish theme.toggled event when switching to light mode', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] should publish theme.toggled event when switching to light mode', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -80,7 +80,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[0].data.theme).toBe('light');
   });
 
-  it('should handle multiple theme toggles', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should handle multiple theme toggles', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,

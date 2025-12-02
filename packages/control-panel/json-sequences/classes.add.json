@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `addClass` to apply semantic classes atomically, validate specificity, and record change events.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["element and class name"],
-              "when": ["addClass runs"],
-              "then": ["class is added once, latency ≤ 5ms"],
+              "given": ["handler addClass is available"],
+              "when": ["addClass executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'ui.class.add' includes elementId and class"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

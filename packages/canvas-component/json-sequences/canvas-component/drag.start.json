@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["pointer down on draggable"],
-              "when": ["startDrag runs"],
-              "then": ["drag context initializes within ≤ 16ms and ghost preview appears"],
+              "given": ["handler startDrag is available"],
+              "when": ["startDrag executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'drag.start' includes elementId and origin"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

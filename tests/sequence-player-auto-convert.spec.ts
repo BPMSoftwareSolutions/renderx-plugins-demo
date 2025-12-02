@@ -10,7 +10,7 @@ import { useLogParser } from '../src/ui/diagnostics/hooks/useLogParser';
  * Part of Issue #305.
  */
 
-describe('Sequence Player Auto-Conversion', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.5] Sequence Player Auto-Conversion', () => {
   const sampleConsoleLog = `
 PluginInterfaceFacade.ts:67 🎼 PluginInterfaceFacade.play(): TestPlugin -> test-sequence
 SequenceOrchestrator.ts:464 🎼 SequenceOrchestrator: Recording sequence execution: exec-123
@@ -26,7 +26,7 @@ PerformanceTracker.ts:189 ⏱️ PerformanceTracker: Movement completed in 8.00m
 SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed in 9ms
   `;
 
-  it('should auto-convert console logs when JSON parsing fails', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:1] should auto-convert console logs when JSON parsing fails', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -44,7 +44,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.error).toBeNull();
   });
 
-  it('should auto-convert console logs when text parsing fails', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] should auto-convert console logs when text parsing fails', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -60,7 +60,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.autoConverted).toBe(true);
   });
 
-  it('should set autoConverted flag to true when conversion happens', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:3] should set autoConverted flag to true when conversion happens', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -73,7 +73,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.autoConverted).toBe(true);
   });
 
-  it('should not set autoConverted flag for valid JSON', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:4] should not set autoConverted flag for valid JSON', () => {
     const { result } = renderHook(() => useLogParser());
 
     const validJson = JSON.stringify({
@@ -111,7 +111,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.autoConverted).toBe(false);
   });
 
-  it('should extract movements and beats from auto-converted logs', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:5] should extract movements and beats from auto-converted logs', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -131,7 +131,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(movement?.beats[1].event).toBe('test:beat:two');
   });
 
-  it('should calculate stats for auto-converted logs', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:1] should calculate stats for auto-converted logs', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -146,7 +146,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.stats?.totalBeats).toBeGreaterThan(0);
   });
 
-  it('should reset autoConverted flag when clearing', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] should reset autoConverted flag when clearing', () => {
     const { result } = renderHook(() => useLogParser());
 
     act(() => {
@@ -166,7 +166,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.execution).toBeNull();
   });
 
-  it('should show error if both parsing and conversion fail', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:3] should show error if both parsing and conversion fail', () => {
     const { result } = renderHook(() => useLogParser());
 
     const invalidContent = 'This is completely invalid content that cannot be parsed';
@@ -183,7 +183,7 @@ SequenceExecutor.ts:145 ✅ SequenceExecutor: Sequence "Test Sequence" completed
     expect(result.current.autoConverted).toBe(false);
   });
 
-  it('should handle multiple sequences in auto-converted logs', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:4] should handle multiple sequences in auto-converted logs', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceLog = `

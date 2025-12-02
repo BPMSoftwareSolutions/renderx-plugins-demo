@@ -33,7 +33,7 @@ function loadFractalSequence(): any {
 }
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] Canonical MusicalSequence JSON Schema', () => {
-  it('schema file should exist and be valid JSON', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] schema file should exist and be valid JSON', () => {
     expect(fs.existsSync(schemaPath)).toBe(true);
 
     const raw = fs.readFileSync(schemaPath, 'utf-8');
@@ -44,7 +44,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     expect(schema).toHaveProperty('type', 'object');
   });
 
-  it('defines core MusicalSequence properties aligned with SequenceTypes', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] defines core MusicalSequence properties aligned with SequenceTypes', () => {
     const schema = loadSchema();
     const props = schema.properties ?? {};
 
@@ -69,7 +69,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     expect(movements.type).toBe('array');
   });
 
-  it('describes movements and beats with event/timing metadata', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] describes movements and beats with event/timing metadata', () => {
     const schema = loadSchema();
 
     const movementProps =
@@ -90,7 +90,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     expect(beatProps).toHaveProperty('timing');
   });
 
-  it('accepts the example data-driven MusicalSequence core shape', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] accepts the example data-driven MusicalSequence core shape', () => {
     const schema = loadSchema();
     const seq = loadExampleSequence();
 
@@ -127,7 +127,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     });
   });
 
-  it('accepts the fractal orchestration domain MusicalSequence core shape', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] accepts the fractal orchestration domain MusicalSequence core shape', () => {
     const seq = loadFractalSequence();
 
     expect(typeof seq.id).toBe('string');

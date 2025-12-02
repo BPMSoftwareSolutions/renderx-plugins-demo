@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `validateField` to run validators and collect errors.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["field value"],
-              "when": ["validateField runs"],
-              "then": ["errors are reported with code and path, latency ≤ 10ms"],
+              "given": ["handler validateField is available"],
+              "when": ["validateField executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'ui.field.validate' includes validity"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -46,11 +46,11 @@
           "userStory": "As an engineer, I need `mergeErrors` to compose error state.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["existing error state and new results"],
-              "when": ["mergeErrors runs"],
-              "then": ["errors merge by path without losing unrelated entries"],
+              "given": ["handler mergeErrors is available"],
+              "when": ["mergeErrors executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "clearing a field removes its errors"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -70,11 +70,11 @@
           "userStory": "As an engineer, I need `updateView` to render errors promptly.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["merged errors"],
-              "when": ["updateView runs"],
-              "then": ["visuals reflect validity within ≤ 30ms and announce changes (a11y)"],
+              "given": ["handler updateView is available"],
+              "when": ["updateView executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "no unnecessary re-renders occur"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

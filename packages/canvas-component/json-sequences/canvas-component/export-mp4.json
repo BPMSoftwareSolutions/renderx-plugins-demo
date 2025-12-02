@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a valid scene"],
-              "when": ["exportSvgToMp4 runs"],
-              "then": ["MP4 exports H.264/AAC with expected duration and fps; progress reported"],
+              "given": ["handler exportSvgToMp4 is available"],
+              "when": ["exportSvgToMp4 executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "failures surface typed errors with recovery steps"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

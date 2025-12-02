@@ -5,7 +5,7 @@
   "packageName": "orchestration",
   "title": "AC-to-Test Alignment — Implementation Orchestration",
   "description": "Fractal workflow to implement and operationalize alignment between structured acceptance criteria (GWT) and automated tests for the renderx-web-orchestration domain.",
-  "purpose": "Increase Average AC coverage from 0% to 970%+ by generating an AC registry, tagging tests, parsing results, computing alignment, reporting, and gating CI.",
+  "purpose": "Increase Average AC coverage from 0% to 70%+ by generating an AC registry, tagging tests, parsing results, computing alignment, reporting, and gating CI.",
   "trigger": "Engineering initiative kickoff or CI pipeline task",
   "kind": "governance-workflow",
   "status": "active",
@@ -86,7 +86,7 @@
               "when": "tests are updated",
               "then": [
                 "Each beat has at least one tagged test",
-                "AC coverage presence reaches 30%+"
+                "AC coverage presence reaches 30%+"
               ]
             }
           ]
@@ -261,7 +261,7 @@
               "given": "Initial adoption across key symphonies",
               "when": "rollout expands to full domain",
               "then": [
-                "Average AC coverage 270% is sustained",
+                "Average AC coverage 70% is sustained",
                 "Documentation and helpers remain up-to-date",
                 "Regression alerts fire on drops"
               ]

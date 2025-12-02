@@ -7,8 +7,8 @@ const root = path.resolve('.');
 const assetsDir = path.join(root, 'docs', 'digital-assets');
 const mappingPath = path.join(assetsDir, 'scene3_subscribers.mapping.json');
 
-describe('Scene 3: Subscribers at Stops', () => {
-  it('matches mapping and contains bus + subscriber stops (new vs replay)', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Scene 3: Subscribers at Stops', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] matches mapping and contains bus + subscriber stops (new vs replay)', () => {
     const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
     expect(mapping.scene.name).toBe('scene3_subscribers');
     expect(mapping.output.file).toBe('integrated_scene_3.svg');

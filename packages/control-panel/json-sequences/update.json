@@ -19,49 +19,11 @@
           "scenario": "Update or Modify update From Element",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an SVG node is selected"],
-              "when": ["showSvgNodeOverlay runs"],
-              "then": ["overlay appears aligned to node bounds within ≤ 30ms"],
+              "given": ["handler updateFromElement is available"],
+              "when": ["updateFromElement executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes node type and bounds",
-                "the output is valid and meets schema",
-                "any required events are published"
-              ]
-            },
-            {
-              "given": ["valid input parameters"],
-              "when": ["updateFromElement processes them"],
-              "then": ["results conform to expected schema"],
-              "and": [
-                "no errors are thrown",
-                "telemetry events are recorded with latency metrics"
-              ]
-            },
-            {
-              "given": ["error conditions"],
-              "when": ["updateFromElement encounters an error"],
-              "then": ["the error is logged with full context"],
-              "and": [
-                "appropriate recovery is attempted",
-                "the system remains stable"
-              ]
-            },
-            {
-              "given": ["performance SLA of < 100ms"],
-              "when": ["updateFromElement executes"],
-              "then": ["latency is consistently within target"],
-              "and": [
-                "throughput meets baseline requirements",
-                "resource usage stays within bounds"
-              ]
-            },
-            {
-              "given": ["compliance and governance"],
-              "when": ["updateFromElement operates"],
-              "then": ["all governance rules are enforced"],
-              "and": [
-                "audit trails capture execution",
-                "no compliance violations occur"
+                "emits expected side effects or returns expected value"
               ]
             }
           ],

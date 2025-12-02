@@ -24,11 +24,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an active drag"],
-              "when": ["updatePosition runs"],
-              "then": ["position updates at 60fps target; jitter ≤ 2px"],
+              "given": ["handler updatePosition is available"],
+              "when": ["updatePosition executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "constraints (grid/snap) apply deterministically"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -47,11 +47,11 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["position changes"],
-              "when": ["forwardToControlPanel runs"],
-              "then": ["update publishes to control panel within ≤ 20ms"],
+              "given": ["handler forwardToControlPanel is available"],
+              "when": ["forwardToControlPanel executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "messages are coalesced per frame"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

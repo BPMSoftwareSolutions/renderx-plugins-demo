@@ -16,7 +16,7 @@ function loadJson(relativePath: string): any {
 }
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] renderx-web-orchestration conflation vs MusicalSequence schema', () => {
-  it('tracks all symphonies referenced by renderx-web-orchestration and validates realized sequences against the canonical MusicalSequence schema', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] tracks all symphonies referenced by renderx-web-orchestration and validates realized sequences against the canonical MusicalSequence schema', () => {
     const schema = loadJson('../docs/schemas/musical-sequence.schema.json');
 
     const ajv = new Ajv({ allErrors: true, strict: false });

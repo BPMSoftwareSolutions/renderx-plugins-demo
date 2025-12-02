@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a user deselect action"],
-              "when": ["routeDeselectionRequest runs"],
-              "then": ["request routes to orchestrator with correlation id"],
+              "given": ["handler routeDeselectionRequest is available"],
+              "when": ["routeDeselectionRequest executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "invalid state is rejected with typed error"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

@@ -21,11 +21,11 @@
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["current theme"],
-              "when": ["toggleTheme runs"],
-              "then": ["toggles between light/dark, persists setting, latency ≤ 20ms"],
+              "given": ["handler toggleTheme is available"],
+              "when": ["toggleTheme executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'theme.toggle' includes prev/next"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

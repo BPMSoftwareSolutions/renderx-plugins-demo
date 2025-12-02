@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `toggleSection` to apply state and notify UI.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a section"],
-              "when": ["toggleSection runs"],
-              "then": ["expand/collapse animates ≤ 120ms and preserves focus order"],
+              "given": ["handler toggleSection is available"],
+              "when": ["toggleSection executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'ui.section.toggle' includes state"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

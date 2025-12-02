@@ -7,7 +7,7 @@ import { join } from 'path';
  */
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.3] [[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]] hygiene: no local control-panel json-sequences in host', () => {
-  it('catalog/json-sequences/control-panel should not contain .json files', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] catalog/json-sequences/control-panel should not contain .json files', async () => {
     const base = join(process.cwd(), 'catalog', 'json-sequences', 'control-panel');
     const exists = await stat(base).then(s => s.isDirectory()).catch(() => false);
     if (!exists) {

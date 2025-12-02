@@ -50,7 +50,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect((window as any).RenderX.subscribe).toBeDefined();
   });
 
-  it('should allow React component to publish counter.incremented event', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] should allow React component to publish counter.incremented event', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -72,7 +72,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect(publishedEvents[0].data.count).toBe(1);
   });
 
-  it('should allow React component to publish counter.reset event', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should allow React component to publish counter.reset event', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -94,7 +94,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:re
     expect(publishedEvents[0].data.count).toBe(0);
   });
 
-  it('should handle bidirectional communication between React component and conductor', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should handle bidirectional communication between React component and conductor', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,

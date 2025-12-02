@@ -33,7 +33,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     document.body.appendChild(container);
   });
 
-  it('should render theme toggle component with light mode by default', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1] should render theme toggle component with light mode by default', () => {
     expect((window as any).RenderX).toBeDefined();
     expect((window as any).RenderX.publish).toBeDefined();
     
@@ -47,7 +47,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[0].data.theme).toBe('light');
   });
 
-  it('should publish event when toggling to dark mode', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should publish event when toggling to dark mode', () => {
     // Simulate user clicking toggle button to switch to dark mode
     (window as any).RenderX.publish('react.component.theme.toggled', {
       isDarkMode: true,
@@ -61,7 +61,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[0].data.theme).toBe('dark');
   });
 
-  it('should publish event when toggling back to light mode', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:2] should publish event when toggling back to light mode', () => {
     // First toggle to dark
     (window as any).RenderX.publish('react.component.theme.toggled', {
       isDarkMode: true,
@@ -79,7 +79,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[1].data.theme).toBe('light');
   });
 
-  it('should handle rapid theme toggles', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should handle rapid theme toggles', () => {
     const toggleSequence = [
       { isDarkMode: true, theme: 'dark' },
       { isDarkMode: false, theme: 'light' },
@@ -100,7 +100,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:re
     expect(publishedEvents[4].data.theme).toBe('dark');
   });
 
-  it('should maintain event order and timestamps', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:3] should maintain event order and timestamps', () => {
     (window as any).RenderX.publish('react.component.theme.toggled', {
       isDarkMode: true,
       theme: 'dark',

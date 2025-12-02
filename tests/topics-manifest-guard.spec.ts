@@ -8,7 +8,7 @@ function loadJson(p: string) {
   return JSON.parse(raw);
 }
 
-describe('Topics manifest guardrails', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:5.1] Topics manifest guardrails', () => {
   const root = process.cwd();
   const topicsPath = path.join(root, 'topics-manifest.json');
   const pluginManifestPath = path.join(root, 'public', 'plugins', 'plugin-manifest.json');
@@ -102,7 +102,7 @@ describe('Topics manifest guardrails', () => {
     // Alias should be marked as such in notes
     expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('compatibility alias');
   });
-  it('treats canvas.component.selections.cleared as notify-only to avoid deselect loops', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:5.1:1] treats canvas.component.selections.cleared as notify-only to avoid deselect loops', () => {
     const topicKey = 'canvas.component.selections.cleared';
     expect(keys).toContain(topicKey);
     const routes = Array.isArray(topics[topicKey]?.routes) ? topics[topicKey].routes : [];

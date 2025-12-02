@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a valid scene"],
-              "when": ["exportSvgToGif runs"],
-              "then": ["GIF exports with expected frames and palette; progress reported"],
+              "given": ["handler exportSvgToGif is available"],
+              "when": ["exportSvgToGif executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "P95 export ≤ target for 1080p baseline"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

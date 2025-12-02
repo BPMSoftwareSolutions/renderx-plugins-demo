@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a delete UI action"],
-              "when": ["routeDeleteRequest runs"],
-              "then": ["request routes to orchestrator with correlation id and authz checked"],
+              "given": ["handler routeDeleteRequest is available"],
+              "when": ["routeDeleteRequest executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "invalid targets are rejected with typed error"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

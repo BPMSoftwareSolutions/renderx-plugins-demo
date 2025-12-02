@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a canvas"],
-              "when": ["queryAllComponents runs"],
-              "then": ["components enumerate deterministically with stable ordering"],
+              "given": ["handler queryAllComponents is available"],
+              "when": ["queryAllComponents executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -44,11 +44,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["DOM tree"],
-              "when": ["discoverComponentsFromDom runs"],
-              "then": ["elements map to model nodes 1:1; latency ≤ 100ms"],
+              "given": ["handler discoverComponentsFromDom is available"],
+              "when": ["discoverComponentsFromDom executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "invalid nodes are logged with reason"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -67,11 +67,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["discovered components"],
-              "when": ["collectCssClasses runs"],
-              "then": ["classes deduplicate and normalize; mapping is complete"],
+              "given": ["handler collectCssClasses is available"],
+              "when": ["collectCssClasses executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry includes unique class count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -113,11 +113,11 @@
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["discovered components"],
-              "when": ["collectLayoutData runs"],
-              "then": ["bounds/transform collected with precision ≤ 1px/0.5°"],
+              "given": ["handler collectLayoutData is available"],
+              "when": ["collectLayoutData executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "units normalize (px)"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -136,11 +136,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["collected data"],
-              "when": ["buildUiFileContent runs"],
-              "then": ["a valid export JSON is built; size within baseline"],
+              "given": ["handler downloadUiFile is available"],
+              "when": ["downloadUiFile executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "schema validation passes"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

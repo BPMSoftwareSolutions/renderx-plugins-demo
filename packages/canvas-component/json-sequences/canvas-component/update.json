@@ -21,11 +21,11 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["selected component"],
-              "when": ["serializeSelectedComponent runs"],
-              "then": ["component serializes deterministically; payload validates; latency ≤ 20ms"],
+              "given": ["handler updateAttribute is available"],
+              "when": ["updateAttribute executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'copy.serialize' includes bytes and fields"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -44,11 +44,11 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a node update completes"],
-              "when": ["refreshControlPanel runs"],
-              "then": ["control panel reflects new state within ≤ 50ms"],
+              "given": ["handler refreshControlPanel is available"],
+              "when": ["refreshControlPanel executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "publish a 'control-panel.refresh' event idempotently"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

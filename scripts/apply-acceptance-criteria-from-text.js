@@ -80,12 +80,27 @@ function applyToJson(rootDir, section) {
   }
   const beats = obj.movements[0].beats;
   for (const b of section.beats) {
-    const target = beats.find(x => Number(x.beat) === b.index);
+    // Try by explicit number property first
+    let target = beats.find(x => Number(x.number) === b.index || Number(x.beat) === b.index);
+    // Fallback to positional index (1-based)
+    if (!target && b.index >= 1 && b.index <= beats.length) {
+      target = beats[b.index - 1];
+    }
+    // Fallback to handler-name match if available
+    if (!target && b.handler) {
+      const want = String(b.handler).toLowerCase();
+      target = beats.find(x => {
+        const h = x && x.handler;
+        const name = typeof h === 'string' ? h : (h && h.name);
+        return name && String(name).toLowerCase() === want;
+      });
+    }
     if (!target) {
       console.warn(`[WARN] Beat ${b.index} not found in ${section.file}`);
       continue;
     }
-    if (b.handler && target.handler && b.handler !== target.handler) {
+    const targetHandler = typeof target.handler === 'string' ? target.handler : (target.handler && target.handler.name);
+    if (b.handler && targetHandler && b.handler !== targetHandler) {
       console.warn(`[INFO] Handler mismatch at beat ${b.index} (${target.handler} vs ${b.handler}) — applying criteria by index.`);
     }
     // Ensure we only keep structured ACs per schema preference

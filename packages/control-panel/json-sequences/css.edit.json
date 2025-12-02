@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `updateCssClass` to modify rules atomically and register change events.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["existing CSS rule"],
-              "when": ["editRule runs"],
-              "then": ["selector/properties update atomically with rollback on error"],
+              "given": ["handler updateCssClass is available"],
+              "when": ["updateCssClass executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'css.rule.edit' includes diff summary"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

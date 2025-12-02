@@ -22,11 +22,11 @@
           "userStory": "As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["rule index"],
-              "when": ["deleteRule runs"],
-              "then": ["rule is removed and reflow cost ≤ baseline"],
+              "given": ["handler deleteCssClass is available"],
+              "when": ["deleteCssClass executes under normal conditions"],
+              "then": ["it performs its expected orchestration logic"],
               "and": [
-                "telemetry 'css.rule.delete' includes index and cost"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]

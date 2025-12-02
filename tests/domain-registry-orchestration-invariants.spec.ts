@@ -73,7 +73,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     };
   }
 
-  it('orchestration-domains ids are a subset of DOMAIN_REGISTRY.domain_ids', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] orchestration-domains ids are a subset of DOMAIN_REGISTRY.domain_ids', () => {
     const registryDomainIds = new Set(Object.keys(registry.domains ?? {}));
     const missing: string[] = [];
 
@@ -92,7 +92,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     expect(missing).toEqual([]);
   });
 
-  it('registry orchestration blocks for orchestration domains reference canonical schema and projection', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] registry orchestration blocks for orchestration domains reference canonical schema and projection', () => {
     const orchestrationIds = new Set(
       (orchestrationRegistry.domains ?? []).map(d => d.id),
     );
@@ -113,7 +113,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1
     }
   });
 
-  it('context tree domain counts stay aligned with orchestration-domains.json', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] context tree domain counts stay aligned with orchestration-domains.json', () => {
     const orchestrationCount = (orchestrationRegistry.domains ?? []).length;
 
     const sourceOfTruth = contextIndex.sourceArtifacts?.sourceOfTruth;
