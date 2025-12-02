@@ -38,7 +38,7 @@ interface OrchestrationRegistryFile {
   domains: OrchestrationRegistryDomain[];
 }
 
-describe('DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
   const registryPath = path.join(__dirname, '../DOMAIN_REGISTRY.json');
   const orchestrationRegistryPath = path.join(
     __dirname,

@@ -236,8 +236,11 @@ const alignmentSection = formatAlignmentSectionForAnalysisReport(domainId);
 ```
 .
 ├── docs/
+Active Workflows: 
+- `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json`
+- `packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v3.json` (adds analysis beats: test discovery, canonical count, quality diff, projection)
 │   ├── TEST_TAGGING_GUIDE.md                    ← Developer guide
-│   ├── AC_TO_TEST_ALIGNMENT_PLAN.md             ← Strategic plan
+Outputs: Registry, test analysis, canonical count, quality-diff report, projection summary, tag suggestions, dry-run patches, AC alignment report.
 │   ├── ISSUE_DRAFT_AC_TO_TEST_ALIGNMENT.md      ← GitHub issue draft
 │   └── generated/
 │       └── renderx-web-orchestration/

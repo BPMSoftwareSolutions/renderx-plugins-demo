@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { CoordinateConverter } from "../packages/canvas-component/src/symphonies/select/select.overlay.helpers";
 
-describe("CoordinateConverter (integration)", () => {
+describe("[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.1] [[AC:renderx-web-orchestration:renderx-web-orchestration:3.1:1]] CoordinateConverter (integration)", () => {
   it("converts svg->pixel and back for default viewBox", () => {
     const rect = { width: 200, height: 100 } as DOMRect;
     const conv = new CoordinateConverter("0 0 100 100", rect);

@@ -15,7 +15,7 @@ function loadJson(p: string): any {
   return JSON.parse(raw);
 }
 
-describe('DOMAIN_REGISTRY 4 orchestration-domains spike invariants', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] DOMAIN_REGISTRY 4 orchestration-domains spike invariants', () => {
   const SPIKE_SEQUENCE_DOMAIN = 'renderx-web-orchestration';
 
   it('declares orchestration interface/schema linkage on orchestration-core', () => {

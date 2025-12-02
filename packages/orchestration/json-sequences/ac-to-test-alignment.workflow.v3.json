@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "musicalSequence": {
+    "id": "ac-to-test-alignment-v3",
+    "domainId": "renderx-web-orchestration",
+    "title": "AC-to-Test Alignment: Analysis and Conversion (v3)",
+    "version": "3.0.0",
+    "description": "Compute actual test counts, canonical AC-derived test counts, quality differences, and post-conversion projections; then suggest and optionally apply tags.",
+    "movements": [
+      {
+        "id": "movement-1",
+        "title": "Discover & Normalize",
+        "beats": [
+          {
+            "id": "beat-1",
+            "title": "Generate AC Registry",
+            "handlers": [{ "script": "scripts/generate-ac-registry.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["domain registry is available"], "when": ["registry is processed"], "then": ["AC registry JSON is generated"], "and": ["invalid sequences are skipped gracefully"] }
+            ]
+          },
+          {
+            "id": "beat-2",
+            "title": "Discover Existing Tests",
+            "handlers": [{ "script": "scripts/analyze-tests.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["workspace root"], "when": ["glob search for spec/test files"], "then": ["return total count and per-package breakdown"], "and": ["exclude vendor and build outputs"] }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-2",
+        "title": "Canonical Mapping",
+        "beats": [
+          {
+            "id": "beat-3",
+            "title": "Compute Canonical Test Count",
+            "handlers": [{ "script": "scripts/ac-alignment/compute-canonical.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["AC registry"], "when": ["count ACs per beat"], "then": ["canonical minimum tests equals AC count"], "and": ["report total ACs and beats"] }
+            ]
+          },
+          {
+            "id": "beat-4",
+            "title": "Quality Difference Report",
+            "handlers": [{ "script": "scripts/ac-alignment/quality-diff.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["existing tests", "AC registry"], "when": ["compare GWT structure and tags"], "then": ["list gaps: missing AC tags, missing THEN assertions, title mismatch"], "and": ["summarize per-domain and per-package"] }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-3",
+        "title": "Projection & Conversion",
+        "beats": [
+          {
+            "id": "beat-5",
+            "title": "Post-Conversion Projection",
+            "handlers": [{ "script": "scripts/ac-alignment/projection.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["existing test count", "canonical count"], "when": ["apply tagging plan"], "then": ["estimate AC presence and THEN coverage"], "and": ["estimate number of tests after conversion"] }
+            ]
+          },
+          {
+            "id": "beat-6a",
+            "title": "Extract Handler Usage from Tests",
+            "handlers": [{ "script": "scripts/ac-alignment/extract-handler-usage.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["all test files"], "when": ["parse test content for handler imports and invocations"], "then": ["map each test to handlers it uses"], "and": ["output handler-to-test mapping"] }
+            ]
+          },
+          {
+            "id": "beat-6b",
+            "title": "Map Handlers to ACs",
+            "handlers": [{ "script": "scripts/ac-alignment/map-handlers-to-acs.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["AC registry with handlers", "handler-to-test mapping"], "when": ["correlate handlers"], "then": ["generate comprehensive test-to-AC suggestions"], "and": ["every handler AC has at least one test"] }
+            ]
+          },
+          {
+            "id": "beat-6c",
+            "title": "Suggest Tags (Comprehensive)",
+            "handlers": [{ "script": "scripts/ac-alignment/suggest-tags-comprehensive.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["handler mapping", "fuzzy matching", "file patterns"], "when": ["combine all strategies"], "then": ["produce comprehensive suggestions.json"], "and": ["target 70%+ AC coverage"] }
+            ]
+          },
+          {
+            "id": "beat-7",
+            "title": "Apply Tags (Write to All Files)",
+            "handlers": [{ "script": "scripts/ac-alignment/apply-tags.cjs", "args": ["--write"] }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["comprehensive suggestions.json"], "when": ["apply tags in write mode"], "then": ["modify all relevant test files with AC/BEAT tags"], "and": ["all 127 AC handlers have tagged tests"] }
+            ]
+          },
+          {
+            "id": "beat-8a",
+            "title": "Verify Coverage (Scan Tags)",
+            "handlers": [{ "script": "scripts/ac-alignment/scan-existing-tags.cjs" }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["all test files"], "when": ["scan for AC/BEAT tags"], "then": ["count tagged tests and coverage"], "and": ["report actual coverage percentage"] }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-4",
+        "title": "Artifacts & Thresholds",
+        "beats": [
+          {
+            "id": "beat-8",
+            "title": "Emit Analysis Artifacts",
+            "handlers": [{ "script": "scripts/ac-alignment/format-alignment-report.cjs", "args": ["--domain", "renderx-web-orchestration"] }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["registry", "suggestions"], "when": ["format report"], "then": ["write markdown + summary.json"], "and": ["include counts for existing, canonical, differences, projection"] }
+            ]
+          },
+          {
+            "id": "beat-9",
+            "title": "Gate with Thresholds",
+            "handlers": [{ "script": "scripts/ac-alignment/enforce-thresholds.cjs", "args": ["--presence", "0.3", "--then", "0.2"] }],
+            "acceptanceCriteriaStructured": [
+              { "given": ["coverage metrics"], "when": ["check thresholds"], "then": ["emit pass/fail event"], "and": ["include actionable next steps"] }
+            ]
+          }
+        ]
+      }
+    ],
+    "events": {
+      "onStart": ["sequence:start"],
+      "onComplete": ["sequence:complete", "artifacts:ready"],
+      "onFailure": ["sequence:failed"]
+    },
+    "artifacts": {
+      "reports": [
+        "docs/generated/renderx-web-orchestration/ac-alignment-report.md",
+        ".generated/ac-alignment/summary.json",
+        ".generated/ac-alignment/suggestions.json",
+        ".generated/ac-alignment/patches.diff",
+        "docs/generated/renderx-web-orchestration/test-analysis.md"
+      ]
+    }
+  }
+}

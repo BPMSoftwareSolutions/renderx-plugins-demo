@@ -300,7 +300,8 @@
         "sequence_files": [
           "packages/orchestration/json-sequences/renderx-web-orchestration.json",
           "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json",
-          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json"
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json",
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v3.json"
         ]
       },
       "analysisConfig": {

@@ -3,7 +3,7 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-describe('React Component Communication', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] React Component Communication', () => {
   let mockConductor: any;
   let publishedEvents: any[] = [];
 

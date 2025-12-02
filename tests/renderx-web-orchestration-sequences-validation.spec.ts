@@ -60,7 +60,7 @@ function formatValidationErrors(errors: any[] | null | undefined): string {
 // TESTS
 // ============================================================================
 
-describe('renderx-web-orchestration sequences validation', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] renderx-web-orchestration sequences validation', () => {
   /**
    * Core test: validates all realized sequences referenced by renderx-web-orchestration
    * against the canonical MusicalSequence schema using Ajv.

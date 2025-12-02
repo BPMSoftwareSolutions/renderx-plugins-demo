@@ -8,7 +8,7 @@ import { resolve } from 'node:path';
  * and matching CSS in global styles. Initially fails until implementation is added.
  */
 
-describe('UI: test-plugin-loader stats enhancements', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.3] [[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]] UI: test-plugin-loader stats enhancements', () => {
   const loaderPath = resolve(process.cwd(), 'src', 'test-plugin-loader.tsx');
   const cssPath = resolve(process.cwd(), 'src', 'global.css');
 

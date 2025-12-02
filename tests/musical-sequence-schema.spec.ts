@@ -32,7 +32,7 @@ function loadFractalSequence(): any {
   return JSON.parse(raw);
 }
 
-describe('Canonical MusicalSequence JSON Schema', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] Canonical MusicalSequence JSON Schema', () => {
   it('schema file should exist and be valid JSON', () => {
     expect(fs.existsSync(schemaPath)).toBe(true);
 

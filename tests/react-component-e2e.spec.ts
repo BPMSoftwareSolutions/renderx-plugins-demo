@@ -12,7 +12,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
  * 3. The EventRouter is properly exposed to React components
  * 4. Events published by React components are routed through the conductor
  */
-describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.1] React Component E2E Communication', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] [BEAT:renderx-web-orchestration:renderx-web-orchestration:3.1] React Component E2E Communication', () => {
   let mockConductor: any;
   let publishedEvents: any[] = [];
 

@@ -11,7 +11,7 @@ function resolveContextFile() {
   throw new Error('react-component-theme-toggle.json not found in root or docs/react/.');
 }
 
-describe('React Component Validation E2E', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1]] React Component Validation E2E', () => {
   let conductorProcess: any;
   let _componentCreated = false;
 

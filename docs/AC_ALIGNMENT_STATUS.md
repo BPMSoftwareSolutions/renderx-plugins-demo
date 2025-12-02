@@ -15,10 +15,13 @@ The AC-to-Test Alignment system is **fully implemented and integrated** into the
 
 | Metric | Value | Target | Status |
 |--------|-------|--------|--------|
-| Total ACs | 115 | - | ✅ |
-| AC Coverage | 0% | ≥70% | 🔄 Adoption Phase |
-| Beats Registered | 23 | - | ✅ |
-| Tests Tagged | 2 examples | - | 🔄 In Progress |
+| Total ACs | 127 | - | ✅ |
+| AC Coverage | 2% | ≥70% | 🔄 Adoption Phase |
+| Beats Registered | 34 | - | ✅ |
+| Test Files | 47 | - | ✅ |
+| Test Cases | 240 | - | ✅ |
+| Tests Tagged | 4 manual | - | 🔄 In Progress |
+| Automated Suggestions | 6 (low conf) | - | ✅ |
 | Pipeline Integration | 100% | 100% | ✅ |
 | Documentation | 100% | 100% | ✅ |
 
@@ -53,6 +56,17 @@ The AC-to-Test Alignment system is **fully implemented and integrated** into the
   - Exit code based on coverage thresholds
   - CI-ready integration
 
+- ✅ **Tag Suggester** — `scripts/ac-alignment/suggest-tags.cjs`
+  - Fuzzy matching algorithm for automated tag suggestions
+  - Confidence scoring (high/medium/low)
+  - Processes 240+ test cases against 127 ACs
+  - Outputs suggestions.json for review
+
+- ✅ **Tag Applicator** — `scripts/ac-alignment/apply-tags.cjs`
+  - Dry-run mode (generates .diff patches)
+  - Write mode (applies tags in-place)
+  - Prevents duplicate tagging
+
 ### 2. Integration (100%)
 
 - ✅ **Symphonic Analysis Integration**
@@ -61,11 +75,14 @@ The AC-to-Test Alignment system is **fully implemented and integrated** into the
   - Fallback to legacy system
 
 - ✅ **NPM Scripts**
-  - `npm run validate:ac-alignment`
-  - `npm run generate:ac-registry`
-  - `npm run collect:test-results`
-  - `npm run compute:ac-alignment`
-  - `npm run format:ac-report`
+  - `npm run validate:ac-alignment` — Complete workflow
+  - `npm run generate:ac-registry` — Generate AC registry
+  - `npm run collect:test-results` — Collect test results
+  - `npm run compute:ac-alignment` — Compute coverage metrics
+  - `npm run format:ac-report` — Generate markdown reports
+  - `npm run suggest:ac-tags` — Generate tag suggestions
+  - `npm run apply:ac-tags` — Preview tag changes (dry-run)
+  - `npm run apply:ac-tags:write` — Apply tags to files
 
 - ✅ **Domain Registry**
   - Workflow sequences registered
@@ -135,7 +152,29 @@ docs/generated/renderx-web-orchestration/
 
 ## 🚀 Usage
 
-### Quick Start
+### Quick Start (Automated)
+
+```bash
+# 1. Generate tag suggestions
+npm run suggest:ac-tags
+
+# 2. Preview changes (dry-run)
+npm run apply:ac-tags
+
+# 3. Apply tags to files
+npm run apply:ac-tags:write
+
+# 4. Run tests to generate JSON results
+npm test
+
+# 5. Validate alignment
+npm run validate:ac-alignment
+
+# 6. View reports
+cat docs/generated/renderx-web-orchestration/ac-alignment-report.md
+```
+
+### Quick Start (Manual)
 
 ```bash
 # 1. Tag your tests (see TEST_TAGGING_GUIDE.md)

@@ -3,7 +3,7 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-describe('[BEAT:renderx-web-orchestration:ui-theme-toggle:1.1] React Theme Toggle Component', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] [[AC:renderx-web-orchestration:renderx-web-orchestration:1.1:1]] [BEAT:renderx-web-orchestration:ui-theme-toggle:1.1] React Theme Toggle Component', () => {
   let mockConductor: any;
   let publishedEvents: any[] = [];
 

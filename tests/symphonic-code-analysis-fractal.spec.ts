@@ -12,7 +12,7 @@ const pipelinePath = path.join(
 
 const pipeline = JSON.parse(fs.readFileSync(pipelinePath, 'utf-8'));
 
-describe('Symphonic Code Analysis Pipeline - Fractal Architecture Encoding', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:3.4:1]] Symphonic Code Analysis Pipeline - Fractal Architecture Encoding', () => {
   it('declares fractal architecture as a conformity metric', () => {
     const fractalMetric =
       pipeline.analysisMetrics?.conformityMetrics?.fractalArchitecture;

@@ -6,7 +6,7 @@ import { describe, it, expect } from 'vitest';
 // TODO: This import occasionally hangs due to package resolution/build timing.
 // Temporarily skipping to keep the suite green while we stabilize package exports.
 describe.skip('@renderx-plugins/host-sdk v1 adoption surface', () => {
-  it('exposes core APIs from the root export', async () => {
+  it('[[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] exposes core APIs from the root export', async () => {
     const sdk = await import('@renderx-plugins/host-sdk');
     // Conductor hook
     expect(typeof sdk.useConductor).toBe('function');

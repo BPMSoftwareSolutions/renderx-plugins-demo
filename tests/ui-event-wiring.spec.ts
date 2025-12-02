@@ -11,7 +11,7 @@ import { wireUiEvents, type UiEventDef } from '../src/ui/events/wiring';
 
 let publishMock: any;
 
-describe('UI Event Wiring (data-driven)', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] UI Event Wiring (data-driven)', () => {
   let cleanup: (() => void) | null = null;
 
   beforeEach(async () => {

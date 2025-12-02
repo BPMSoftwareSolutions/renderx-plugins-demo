@@ -30,7 +30,7 @@ interface Registry {
   domains: RegistryDomain[];
 }
 
-describe('Orchestration Registry - Domain Completeness', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] Orchestration Registry - Domain Completeness', () => {
   let registry: Registry;
   let discoveredSequences: DiscoveredSequence[];
 
