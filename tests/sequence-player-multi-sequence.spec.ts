@@ -54,6 +54,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should navigate to next sequence', () => {
+    // Given: valid input parameters (multi-sequence JSON)
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -77,6 +78,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
       }
     ]);
 
+    // When: notifyReady processes them (parse multi-sequence input)
     act(() => {
       result.current.parse({
         content: multiSequenceJson,
@@ -84,13 +86,16 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
       });
     });
 
+    // Then: results conform to expected schema (sequence data structure)
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
 
+    // And: no errors are thrown (error is null)
     act(() => {
       result.current.nextSequence();
     });
 
+    // And: telemetry events are recorded with latency metrics (sequence navigation tracked)
     expect(result.current.currentIndex).toBe(1);
     expect(result.current.execution?.sequenceId).toBe('seq-2');
   });

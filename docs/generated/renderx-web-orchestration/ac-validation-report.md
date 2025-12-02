@@ -4,22 +4,41 @@ Domain: renderx-web-orchestration
 
 ## Summary
 
-- Total tagged tests: 65
-- Compliant (≥75% score): 12
-- Partial (40-74% score): 39
-- Non-compliant (<40% score): 12
-- Invalid tags: 2
-- Compliance rate: 18%
+- Total tagged tests: 63
+- Compliant (≥75% score): 16
+- Partial (40-74% score): 36
+- Non-compliant (<40% score): 11
+- Invalid tags: 0
+- Compliance rate: 25%
 
 ## Compliance Categories
 
-### ✅ Compliant Tests (12)
+### ✅ Compliant Tests (16)
 
 - **tests\topics-manifest-guard.spec.ts** → [AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:5.1:1] (100%)
   - Given condition referenced: "Computed presence and THEN coverage"
   - When action referenced: "reporter runs"
   - Then assertion referenced: "Artifacts saved under .generated/analysis/renderx-web-orchestration/*ac-alignment*"
   - Then assertion referenced: "Markdown report at docs/generated/renderx-web-orchestration/ac-alignment-report.md"
+
+- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] (100%)
+  - Given condition referenced: "valid input parameters"
+  - When action referenced: "notifyReady processes them"
+  - Then assertion referenced: "results conform to expected schema"
+  - And clause referenced: "no errors are thrown"
+  - And clause referenced: "telemetry events are recorded with latency metrics"
+
+- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] (80%)
+  - Given condition referenced: "performance SLA of < 50ms"
+  - When action referenced: "notifyReady executes"
+  - Then assertion referenced: "latency is consistently within target"
+  - And clause referenced: "resource usage stays within bounds"
+
+- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] (80%)
+  - Given condition referenced: "compliance and governance"
+  - When action referenced: "notifyReady operates"
+  - Then assertion referenced: "all governance rules are enforced"
+  - And clause referenced: "audit trails capture execution"
 
 - **tests\sequence-player-auto-convert.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] (80%)
   - Given condition referenced: "valid input parameters"
@@ -32,6 +51,13 @@ Domain: renderx-web-orchestration
   - Then assertion referenced: "results conform to expected schema"
   - And clause referenced: "no errors are thrown"
   - And clause referenced: "telemetry events are recorded with latency metrics"
+
+- **tests\scene-3-subscribers.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] (100%)
+  - Given condition referenced: "the registerObservers operation is triggered"
+  - When action referenced: "the handler executes"
+  - Then assertion referenced: "it completes successfully within < 1 second"
+  - And clause referenced: "the output is valid and meets schema"
+  - And clause referenced: "any required events are published"
 
 - **tests\renderx-web-orchestration-sequences-validation.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] (100%)
   - Given condition referenced: "valid input parameters"
@@ -95,7 +121,7 @@ Domain: renderx-web-orchestration
   - And clause referenced: "subscribers receive events in the order they occurred"
   - And clause referenced: "no events are dropped or duplicated"
 
-### ⚠️ Partial Compliance (39)
+### ⚠️ Partial Compliance (36)
 
 - **tests\ui-event-wiring.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] (40%)
   - Issues:
@@ -121,25 +147,15 @@ Domain: renderx-web-orchestration
     - Missing When action: "ensureLineOverlayFor processes them"
     - Missing And clause: "no errors are thrown"
 
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] (60%)
+- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] (60%)
   - Issues:
-    - Missing Given setup: "valid input parameters"
-    - Missing When action: "notifyReady processes them"
+    - Missing When action: "the handler executes"
+    - Missing Then assertion: "it completes successfully within < 50ms"
 
 - **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] (60%)
   - Issues:
     - Missing And clause: "appropriate recovery is attempted"
     - Missing And clause: "the system remains stable"
-
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] (60%)
-  - Issues:
-    - Missing When action: "notifyReady executes"
-    - Missing And clause: "throughput meets baseline requirements"
-
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] (60%)
-  - Issues:
-    - Missing When action: "notifyReady operates"
-    - Missing And clause: "no compliance violations occur"
 
 - **tests\sequence-player-integration.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] (40%)
   - Issues:
@@ -211,11 +227,6 @@ Domain: renderx-web-orchestration
     - Missing Then assertion: "it completes successfully within < 1 second"
 
 - **tests\scene-4-transfer-hub.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] (60%)
-  - Issues:
-    - Missing When action: "the handler executes"
-    - Missing Then assertion: "it completes successfully within < 1 second"
-
-- **tests\scene-3-subscribers.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] (60%)
   - Issues:
     - Missing When action: "the handler executes"
     - Missing Then assertion: "it completes successfully within < 1 second"
@@ -299,7 +310,7 @@ Domain: renderx-web-orchestration
     - Missing When action: "notifyUi publishes"
     - Missing And clause: "the subscriber can act on the notification"
 
-### ❌ Non-Compliant Tests (12)
+### ❌ Non-Compliant Tests (11)
 
 - **tests\stats-enhancements.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] (20%)
   - Issues:
@@ -321,13 +332,6 @@ Domain: renderx-web-orchestration
     - Missing Then assertion: "initialization completes within 300ms"
     - Missing And clause: "form is ready for user interaction"
     - Missing And clause: "memory usage scales linearly with field count"
-
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] (20%)
-  - Issues:
-    - Missing Given setup: "the notifyReady operation is triggered"
-    - Missing When action: "the handler executes"
-    - Missing Then assertion: "it completes successfully within < 50ms"
-    - Missing And clause: "any required events are published"
 
 - **tests\sequence-player-integration.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] (0%)
   - Issues:
@@ -388,34 +392,29 @@ Domain: renderx-web-orchestration
     - Missing Then assertion: "it completes successfully within < 2 seconds"
     - Missing And clause: "any required events are published"
 
-### 🚫 Invalid Tags (2)
+### 🚫 Invalid Tags (0)
 
-- **tests\select.overlay.dom.spec.ts** → [AC:renderx-web-orchestration:select:1.1:1]: AC not found in registry
-- **tests\react-component-theme-toggle.spec.ts** → [AC:renderx-web-orchestration:ui-theme-toggle:1.1:1]: AC not found in registry
+No invalid tags.
 
 ## 🎯 Top Offenders (ACs with Most Non-Compliant Tests)
 
 - **renderx-web-orchestration:renderx-web-orchestration:5.4:1**: 5 non-compliant/partial tests
-- **renderx-web-orchestration:renderx-web-orchestration:1.5:1**: 5 non-compliant/partial tests
-- **renderx-web-orchestration:renderx-web-orchestration:1.6:1**: 3 non-compliant/partial tests
+- **renderx-web-orchestration:renderx-web-orchestration:1.5:1**: 4 non-compliant/partial tests
 - **renderx-web-orchestration:renderx-web-orchestration:1.6:3**: 3 non-compliant/partial tests
 - **renderx-web-orchestration:renderx-web-orchestration:3.1:1**: 3 non-compliant/partial tests
 - **renderx-web-orchestration:renderx-web-orchestration:5.4:2**: 3 non-compliant/partial tests
-- **renderx-web-orchestration:renderx-web-orchestration:1.6:4**: 3 non-compliant/partial tests
-- **renderx-web-orchestration:renderx-web-orchestration:1.6:5**: 3 non-compliant/partial tests
+- **renderx-web-orchestration:renderx-web-orchestration:1.6:1**: 3 non-compliant/partial tests
 - **renderx-web-orchestration:renderx-web-orchestration:1.1:2**: 3 non-compliant/partial tests
 - **renderx-web-orchestration:renderx-web-orchestration:1.3:1**: 2 non-compliant/partial tests
+- **renderx-web-orchestration:renderx-web-orchestration:1.6:4**: 2 non-compliant/partial tests
+- **renderx-web-orchestration:renderx-web-orchestration:1.6:5**: 2 non-compliant/partial tests
 
 ## ⚡ Quick Wins (Tests Missing 1-2 Requirements)
 
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] (60%)
-  - Missing: Missing Given setup: "valid input parameters"; Missing When action: "notifyReady processes them"
+- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] (60%)
+  - Missing: Missing When action: "the handler executes"; Missing Then assertion: "it completes successfully within < 50ms"
 - **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] (60%)
   - Missing: Missing And clause: "appropriate recovery is attempted"; Missing And clause: "the system remains stable"
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] (60%)
-  - Missing: Missing When action: "notifyReady executes"; Missing And clause: "throughput meets baseline requirements"
-- **tests\sequence-player-multi-sequence.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] (60%)
-  - Missing: Missing When action: "notifyReady operates"; Missing And clause: "no compliance violations occur"
 - **tests\sequence-player-integration.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] (60%)
   - Missing: Missing When action: "notifyReady processes them"; Missing And clause: "no errors are thrown"
 - **tests\sequence-player-integration.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] (60%)
@@ -436,12 +435,16 @@ Domain: renderx-web-orchestration
   - Missing: Missing When action: "the handler executes"; Missing Then assertion: "it completes successfully within < 1 second"
 - **tests\scene-4-transfer-hub.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] (60%)
   - Missing: Missing When action: "the handler executes"; Missing Then assertion: "it completes successfully within < 1 second"
-- **tests\scene-3-subscribers.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] (60%)
-  - Missing: Missing When action: "the handler executes"; Missing Then assertion: "it completes successfully within < 1 second"
+- **tests\renderx-web-orchestration-sequences-validation.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] (60%)
+  - Missing: Missing Given setup: "the renderTemplatePreview operation is triggered"; Missing Then assertion: "it completes successfully within < 200ms"
+- **tests\renderx-web-orchestration-sequences-validation.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:3] (60%)
+  - Missing: Missing And clause: "appropriate recovery is attempted"; Missing And clause: "the system remains stable"
+- **tests\renderx-web-orchestration-conflation.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] (60%)
+  - Missing: Missing Given setup: "the renderTemplatePreview operation is triggered"; Missing Then assertion: "it completes successfully within < 200ms"
 
 ## Next Steps
 
 1. **Quick Wins**: Fix tests missing 1-2 requirements (15 tests)
 2. **Top Offenders**: Focus on ACs with multiple non-compliant tests
-3. **Partial Compliance**: Address 39 partial tests
-4. **Generate New Tests**: Cover 72 uncovered ACs
+3. **Partial Compliance**: Address 36 partial tests
+4. **Generate New Tests**: Cover 74 uncovered ACs

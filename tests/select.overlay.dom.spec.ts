@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { createOverlayStructure } from "../packages/canvas-component/src/symphonies/select/select.overlay.helpers";
 
 describe("[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.1] [[AC:renderx-web-orchestration:renderx-web-orchestration:3.1:1]] [BEAT:renderx-web-orchestration:select:1.1] createOverlayStructure", () => {
-  it("[AC:renderx-web-orchestration:select:1.1:1] creates overlay and handles when missing", () => {
+  it("[AC:renderx-web-orchestration:renderx-web-orchestration:3.1:1] creates overlay and handles when missing", () => {
     const canvas = document.createElement("div");
     canvas.id = "test-canvas";
     document.body.appendChild(canvas);

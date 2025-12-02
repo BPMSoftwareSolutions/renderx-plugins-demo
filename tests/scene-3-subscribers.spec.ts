@@ -9,10 +9,13 @@ const mappingPath = path.join(assetsDir, 'scene3_subscribers.mapping.json');
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Scene 3: Subscribers at Stops', () => {
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] matches mapping and contains bus + subscriber stops (new vs replay)', () => {
+    // Given: the registerObservers operation is triggered (scene visualization setup)
+    const startTime = performance.now();
     const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
     expect(mapping.scene.name).toBe('scene3_subscribers');
     expect(mapping.output.file).toBe('integrated_scene_3.svg');
 
+    // When: the handler executes (scene rendering and validation)
     const svgStr = fs.readFileSync(path.join(assetsDir, mapping.output.file), 'utf-8');
     const dom = new JSDOM(svgStr, { contentType: 'image/svg+xml' });
     const doc = dom.window.document;
@@ -40,6 +43,10 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Scene 3
     const textContent = doc.documentElement.textContent || '';
     expect(textContent).toMatch(/NEW SUBSCRIBER/);
     expect(textContent).toMatch(/REPLAY SUBSCRIBER/);
+
+    // Then: it completes successfully within < 1 second
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(1000);
   });
 });
 
