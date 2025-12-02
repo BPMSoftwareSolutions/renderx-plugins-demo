@@ -1,0 +1,258 @@
+handler,symphony,file path,sub-domain,Movement,Beat
+serializeDashboardState,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,export,1
+triggerExportDownload,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,export,2
+loadBudgets,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,initialize,1
+loadMetrics,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,initialize,2
+computeCompliance,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,initialize,3
+loadMetrics,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,refresh,1
+computeCompliance,unknown,packages/slo-dashboard/src/handlers/metrics.ts,slo-dashboard,refresh,2
+detectAnomaliesRequested,unknown,packages/self-healing/src/handlers/anomaly/detect.requested.ts,self-healing,Detect Anomalies,1
+loadTelemetryData,unknown,packages/self-healing/src/handlers/anomaly/load.telemetry.ts,self-healing,Detect Anomalies,2
+detectPerformanceAnomalies,unknown,packages/self-healing/src/handlers/anomaly/detect.performance.ts,self-healing,Detect Anomalies,3
+detectBehavioralAnomalies,unknown,packages/self-healing/src/handlers/anomaly/detect.behavioral.ts,self-healing,Detect Anomalies,4
+detectCoverageGaps,unknown,unknown,unknown,Detect Anomalies,5
+detectErrorPatterns,unknown,unknown,unknown,Detect Anomalies,6
+aggregateAnomalyResults,unknown,unknown,unknown,Detect Anomalies,7
+storeAnomalyResults,unknown,unknown,unknown,Detect Anomalies,8
+detectAnomaliesCompleted,unknown,packages/self-healing/src/handlers/anomaly/detect.completed.ts,self-healing,Detect Anomalies,9
+deployRequested,unknown,unknown,unknown,Deploy Fix,1
+loadValidationResults,unknown,unknown,unknown,Deploy Fix,2
+checkApproval,unknown,unknown,unknown,Deploy Fix,3
+createBranch,unknown,unknown,unknown,Deploy Fix,4
+applyChanges,unknown,unknown,unknown,Deploy Fix,5
+createPullRequest,unknown,unknown,unknown,Deploy Fix,6
+runCIChecks,unknown,unknown,unknown,Deploy Fix,7
+autoMergePR,unknown,unknown,unknown,Deploy Fix,8
+deployToProduction,unknown,unknown,unknown,Deploy Fix,9
+verifyDeployment,unknown,unknown,unknown,Deploy Fix,10
+deployCompleted,unknown,unknown,unknown,Deploy Fix,11
+analyzeRequested,unknown,packages/self-healing/src/handlers/diagnosis/analyze.requested.ts,self-healing,Analyze Root Cause,1
+loadAnomalies,unknown,packages/self-healing/src/handlers/diagnosis/load.anomalies.ts,self-healing,Analyze Root Cause,2
+loadCodebaseInfo,unknown,packages/self-healing/src/handlers/diagnosis/load.codebase.info.ts,self-healing,Analyze Root Cause,3
+analyzePerformanceIssues,unknown,packages/self-healing/src/handlers/diagnosis/analyze.performance.issues.ts,self-healing,Analyze Root Cause,4
+analyzeBehavioralIssues,unknown,packages/self-healing/src/handlers/diagnosis/analyze.behavioral.issues.ts,self-healing,Analyze Root Cause,5
+analyzeCoverageIssues,unknown,packages/self-healing/src/handlers/diagnosis/analyze.coverage.issues.ts,self-healing,Analyze Root Cause,6
+analyzeErrorIssues,unknown,packages/self-healing/src/handlers/diagnosis/analyze.error.issues.ts,self-healing,Analyze Root Cause,7
+assessImpact,unknown,packages/self-healing/src/handlers/diagnosis/assess.impact.ts,self-healing,Analyze Root Cause,8
+recommendFixes,unknown,packages/self-healing/src/handlers/diagnosis/recommend.fixes.ts,self-healing,Analyze Root Cause,9
+storeDiagnosis,unknown,packages/self-healing/src/handlers/diagnosis/store.diagnosis.ts,self-healing,Analyze Root Cause,10
+analyzeCompleted,unknown,packages/self-healing/src/handlers/diagnosis/analyze.completed.ts,self-healing,Analyze Root Cause,11
+generateFixRequested,unknown,unknown,unknown,Generate Fix,1
+loadDiagnosis,unknown,unknown,unknown,Generate Fix,2
+generateCodeFix,unknown,unknown,unknown,Generate Fix,3
+generateTestFix,unknown,unknown,unknown,Generate Fix,4
+generateDocumentationFix,unknown,unknown,unknown,Generate Fix,5
+createPatch,unknown,unknown,unknown,Generate Fix,6
+validateSyntax,unknown,unknown,unknown,Generate Fix,7
+storePatch,unknown,unknown,unknown,Generate Fix,8
+generateFixCompleted,unknown,unknown,unknown,Generate Fix,9
+trackRequested,unknown,unknown,unknown,Track Effectiveness,1
+loadDeploymentInfo,unknown,unknown,unknown,Track Effectiveness,2
+collectPostDeploymentMetrics,unknown,unknown,unknown,Track Effectiveness,3
+compareMetrics,unknown,unknown,unknown,Track Effectiveness,4
+calculateImprovement,unknown,unknown,unknown,Track Effectiveness,5
+assessSuccess,unknown,unknown,unknown,Track Effectiveness,6
+updateLearningModels,unknown,unknown,unknown,Track Effectiveness,7
+generateInsights,unknown,unknown,unknown,Track Effectiveness,8
+storeEffectiveness,unknown,unknown,unknown,Track Effectiveness,9
+trackCompleted,unknown,unknown,unknown,Track Effectiveness,10
+parseTelemetryRequested,unknown,packages/self-healing/src/handlers/telemetry/parse.requested.ts,self-healing,Parse Telemetry,1
+loadLogFiles,unknown,packages/self-healing/src/handlers/telemetry/load.logs.ts,self-healing,Parse Telemetry,2
+extractTelemetryEvents,unknown,packages/self-healing/src/handlers/telemetry/extract.events.ts,self-healing,Parse Telemetry,3
+normalizeTelemetryData,unknown,packages/self-healing/src/handlers/telemetry/normalize.data.ts,self-healing,Parse Telemetry,4
+aggregateTelemetryMetrics,unknown,packages/self-healing/src/handlers/telemetry/aggregate.metrics.ts,self-healing,Parse Telemetry,5
+storeTelemetryDatabase,unknown,packages/self-healing/src/handlers/telemetry/store.database.ts,self-healing,Parse Telemetry,6
+parseTelemetryCompleted,unknown,packages/self-healing/src/handlers/telemetry/parse.completed.ts,self-healing,Parse Telemetry,7
+validateRequested,unknown,unknown,unknown,Validate Fix,1
+loadPatch,unknown,unknown,unknown,Validate Fix,2
+applyPatch,unknown,unknown,unknown,Validate Fix,3
+runTests,unknown,unknown,unknown,Validate Fix,4
+checkCoverage,unknown,unknown,unknown,Validate Fix,5
+verifyPerformance,unknown,unknown,unknown,Validate Fix,6
+validateDocumentation,unknown,unknown,unknown,Validate Fix,7
+aggregateValidationResults,unknown,unknown,unknown,Validate Fix,8
+storeValidationResults,unknown,unknown,unknown,Validate Fix,9
+validateCompleted,unknown,unknown,unknown,Validate Fix,10
+unknown,unknown,unknown,unknown,movement-immediate,fix-quick-wins
+unknown,unknown,unknown,unknown,movement-medium,fix-top-offenders
+unknown,unknown,unknown,unknown,movement-medium,address-partials
+unknown,unknown,unknown,unknown,movement-medium,fix-invalid-tags
+unknown,unknown,unknown,unknown,movement-long,align-unmatched-handlers
+unknown,unknown,unknown,unknown,movement-long,enable-ast-validation
+unknown,unknown,unknown,unknown,movement-long,cover-uncovered-acs
+unknown,unknown,unknown,unknown,movement-1,beat-1.1
+unknown,unknown,unknown,unknown,movement-2,beat-2.1
+unknown,unknown,unknown,unknown,movement-2,beat-2.2
+unknown,unknown,unknown,unknown,movement-3,beat-3.1
+unknown,unknown,unknown,unknown,movement-4,beat-4.1
+unknown,unknown,unknown,unknown,movement-5,beat-5.1
+unknown,unknown,unknown,unknown,movement-5,beat-5.2
+unknown,unknown,unknown,unknown,movement-6,beat-6.1
+unknown,unknown,unknown,unknown,movement-7,beat-7.1
+unknown,unknown,unknown,unknown,movement-8,beat-8.1
+ac-alignment/generate-registry#generate,unknown,unknown,unknown,AC Registry,generate-ac-registry
+ac-alignment/tagging#publishGuide,unknown,unknown,unknown,Tagging Enablement,publish-tagging-guide
+ac-alignment/tagging#adopt,unknown,unknown,unknown,Tagging Enablement,adopt-tags
+ac-alignment/results#collectUnit,unknown,unknown,unknown,Result Collection,collect-vitest-jest
+ac-alignment/results#collectE2E,unknown,unknown,unknown,Result Collection,collect-cypress
+ac-alignment/compute#presence,unknown,unknown,unknown,Alignment Computation,compute-presence-coverage
+ac-alignment/compute#thenHeuristics,unknown,unknown,unknown,Alignment Computation,compute-then-heuristics
+ac-alignment/report#emitArtifacts,unknown,unknown,unknown,Reporting,emit-artifacts
+ac-alignment/ci#enforceThresholds,unknown,unknown,unknown,CI Gate & Rollout,enforce-thresholds
+ac-alignment/ci#rollout,unknown,unknown,unknown,CI Gate & Rollout,rollout
+ac-alignment/tagging#suggest,unknown,unknown,unknown,Tagging Enablement,suggest-tags
+ac-alignment/tagging#apply,unknown,unknown,unknown,Tagging Enablement,apply-tags
+unknown,unknown,unknown,unknown,movement-1,beat-0
+unknown,unknown,unknown,unknown,movement-1,beat-1
+unknown,unknown,unknown,unknown,movement-1,beat-2
+unknown,unknown,unknown,unknown,movement-2,beat-3
+unknown,unknown,unknown,unknown,movement-2,beat-4
+unknown,unknown,unknown,unknown,movement-3,beat-5
+unknown,unknown,unknown,unknown,movement-3,beat-6a
+unknown,unknown,unknown,unknown,movement-3,beat-6b
+unknown,unknown,unknown,unknown,movement-3,beat-6c
+unknown,unknown,unknown,unknown,movement-3,beat-7
+unknown,unknown,unknown,unknown,movement-3,beat-8a
+unknown,unknown,unknown,unknown,movement-3,beat-8b
+unknown,unknown,unknown,unknown,movement-3,beat-8c
+unknown,unknown,unknown,unknown,movement-4,beat-8
+unknown,unknown,unknown,unknown,movement-4,beat-9
+governance.handlers#validateJSONSchemaStructure,unknown,unknown,unknown,JSON Schema Validation,1
+governance.handlers#validateOrchestrationDomainsRegistry,unknown,unknown,unknown,JSON Schema Validation,2
+governance.handlers#validateSymphonyFiles,unknown,unknown,unknown,JSON Schema Validation,3
+governance.handlers#validateSchemaSection,unknown,unknown,unknown,JSON Schema Validation,4
+governance.handlers#reportJSONValidation,unknown,unknown,unknown,JSON Schema Validation,5
+governance.handlers#startHandlerMappingVerification,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,1
+governance.handlers#loadHandlerImplementations,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,2
+governance.handlers#indexBeatsFromJSON,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,3
+governance.handlers#verifyBeatHandlerMapping,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,4
+governance.handlers#detectOrphanHandlers,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,5
+governance.handlers#reportHandlerMapping,unknown,unknown,unknown,Handler-to-Beat Mapping Verification,6
+governance.handlers#startTestCoverageVerification,unknown,unknown,unknown,Test Coverage Verification,1
+governance.handlers#catalogBeatsFromJSON,unknown,unknown,unknown,Test Coverage Verification,2
+governance.handlers#indexTestFiles,unknown,unknown,unknown,Test Coverage Verification,3
+governance.handlers#analyzeTestCoverage,unknown,unknown,unknown,Test Coverage Verification,4
+governance.handlers#identifyUncoveredBeats,unknown,unknown,unknown,Test Coverage Verification,5
+governance.handlers#reportTestCoverage,unknown,unknown,unknown,Test Coverage Verification,6
+governance.handlers#startMarkdownConsistencyCheck,unknown,unknown,unknown,Markdown Consistency Verification,1
+governance.handlers#extractFactsFromJSON,unknown,unknown,unknown,Markdown Consistency Verification,2
+governance.handlers#identifyMarkdownFiles,unknown,unknown,unknown,Markdown Consistency Verification,3
+governance.handlers#verifyFactsInMarkdown,unknown,unknown,unknown,Markdown Consistency Verification,4
+governance.handlers#detectMarkdownContradictions,unknown,unknown,unknown,Markdown Consistency Verification,5
+governance.handlers#reportMarkdownConsistency,unknown,unknown,unknown,Markdown Consistency Verification,6
+governance.handlers#startAuditabilityVerification,unknown,unknown,unknown,Auditability Chain Verification,1
+governance.handlers#loadJSONDefinitions,unknown,unknown,unknown,Auditability Chain Verification,2
+governance.handlers#createCodeMappings,unknown,unknown,unknown,Auditability Chain Verification,3
+governance.handlers#createTestMappings,unknown,unknown,unknown,Auditability Chain Verification,4
+governance.handlers#createMarkdownMappings,unknown,unknown,unknown,Auditability Chain Verification,5
+governance.handlers#verifyChainCompleteness,unknown,unknown,unknown,Auditability Chain Verification,6
+governance.handlers#reportAuditability,unknown,unknown,unknown,Auditability Chain Verification,7
+governance.handlers#startConformityAnalysis,unknown,unknown,unknown,Overall Governance Conformity,1
+governance.handlers#aggregateGovernanceResults,unknown,unknown,unknown,Overall Governance Conformity,2
+governance.handlers#calculateConformityScore,unknown,unknown,unknown,Overall Governance Conformity,3
+governance.handlers#summarizeViolations,unknown,unknown,unknown,Overall Governance Conformity,4
+governance.handlers#makeGovernanceDecision,unknown,unknown,unknown,Overall Governance Conformity,5
+governance.handlers#generateGovernanceReport,unknown,unknown,unknown,Overall Governance Conformity,6
+governance.handlers#concludeGovernanceEnforcement,unknown,unknown,unknown,Overall Governance Conformity,7
+orchestration/build-pipeline.build.validation#loadBuildContext,unknown,unknown,unknown,Validation & Verification,load-context
+orchestration/build-pipeline.build.validation#validateOrchestrationDomains,unknown,unknown,unknown,Validation & Verification,validate-domains
+orchestration/build-pipeline.build.validation#validateGovernanceRules,unknown,unknown,unknown,Validation & Verification,validate-governance
+orchestration/build-pipeline.build.validation#validateAgentBehavior,unknown,unknown,unknown,Validation & Verification,validate-agent
+orchestration/build-pipeline.build.validation#recordValidationResults,unknown,unknown,unknown,Validation & Verification,record-validation
+orchestration/build-pipeline.manifests#regenerateOrchestrationDomains,unknown,unknown,unknown,Manifest Preparation,regenerate-domains
+orchestration/build-pipeline.manifests#syncJsonSources,unknown,unknown,unknown,Manifest Preparation,sync-json-sources
+orchestration/build-pipeline.manifests#generateManifests,unknown,unknown,unknown,Manifest Preparation,generate-manifests
+orchestration/build-pipeline.manifests#validateManifestIntegrity,unknown,unknown,unknown,Manifest Preparation,validate-manifests
+orchestration/build-pipeline.manifests#recordManifestState,unknown,unknown,unknown,Manifest Preparation,record-manifests
+orchestration/build-pipeline.packages.build#initializePackageBuild,unknown,unknown,unknown,Package Building,initialize
+orchestration/build-pipeline.packages.build#buildComponentsPackage,unknown,unknown,unknown,Package Building,build-components
+orchestration/build-pipeline.packages.build#buildMusicalConductorPackage,unknown,unknown,unknown,Package Building,build-musical-conductor
+orchestration/build-pipeline.packages.build#buildHostSdkPackage,unknown,unknown,unknown,Package Building,build-host-sdk
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,Validation Bootstrap,bootstrap-scan
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-cag-workflow
+fractal.narration#fractalNarrator,unknown,unknown,unknown,bootstrap,fractal-domain-identified
+fractal.narration#fractalNarrator,unknown,unknown,unknown,bootstrap,fractal-domain-orchestrated
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-orchestration-files
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-conductor-symphonies
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-audit-session
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-audit-system
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,Registry Discovery,scan-registry
+analysis.conformity#validateHandlerMapping,unknown,unknown,unknown,Validation,validate-sequence-files
+analysis.conformity#validateHandlerMapping,unknown,unknown,unknown,Validation,validate-npm-scripts
+analysis.conformity#calculateConformityScore,unknown,unknown,unknown,Validation,compute-compliance-score
+analysis.conformity#generateAnalysisReport,unknown,unknown,unknown,Reporting,generate-audit-report
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,stage-demo-for-po
+header/ui#getCurrentTheme,unknown,unknown,unknown,Initialization,resolve-theme
+header/ui#toggleTheme,unknown,unknown,unknown,Initialization,apply-theme
+control-panel/ui#initConfig,unknown,unknown,unknown,Initialization,init-control-panel
+control-panel/ui#initResolver,unknown,unknown,unknown,Initialization,init-resolver
+control-panel/ui#registerObservers,unknown,unknown,unknown,Initialization,register-observers
+control-panel/ui#notifyReady,unknown,unknown,unknown,Initialization,notify-ready
+canvas-component/update#updateAttribute,unknown,unknown,unknown,Build,update-attribute
+canvas-component/update#refreshControlPanel,unknown,unknown,unknown,Build,refresh-control-panel
+canvas-component/select#showSelectionOverlay,unknown,unknown,unknown,Test & Validation,show-selection-overlay
+canvas-component/select#hideSelectionOverlay,unknown,unknown,unknown,Test & Validation,hide-selection-overlay
+canvas-component/select.overlay.line-resize#attachLineResizeHandlers,unknown,unknown,unknown,Test & Validation,attach-line-resize
+canvas-component/select.overlay.line-resize#ensureLineOverlayFor,unknown,unknown,unknown,Test & Validation,ensure-line-overlay
+canvas-component/select#notifyUi,unknown,unknown,unknown,Test & Validation,notify-ui
+canvas-component/export.export.gif#exportSvgToGif,unknown,unknown,unknown,Delivery,export-gif
+canvas-component/export.export.mp4#exportSvgToMp4,unknown,unknown,unknown,Delivery,export-mp4
+library-component/drag.preview#ensurePayload,unknown,unknown,unknown,Telemetry & Monitoring,ensure-payload
+library-component/drag.preview#computeGhostSize,unknown,unknown,unknown,Telemetry & Monitoring,compute-ghost-size
+library-component/drag.preview#createGhostContainer,unknown,unknown,unknown,Telemetry & Monitoring,create-ghost-container
+library-component/drag.preview#renderTemplatePreview,unknown,unknown,unknown,Telemetry & Monitoring,render-template-preview
+library-component/drag.preview#applyTemplateStyles,unknown,unknown,unknown,Telemetry & Monitoring,apply-template-styles
+library-component/drag.preview#computeCursorOffsets,unknown,unknown,unknown,Telemetry & Monitoring,compute-cursor-offsets
+library-component/drag.preview#installDragImage,unknown,unknown,unknown,Telemetry & Monitoring,install-drag-image
+self-healing/baseline#establish,unknown,unknown,unknown,Recovery & Resilience,establish-recovery-checkpoint
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-pipeline
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-self-sequences
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,scan-conformity
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,bootstrap,present-analysis
+analysis.discovery#scanOrchestrationFiles,unknown,unknown,unknown,Code Discovery & Beat Mapping,scan-orchestration-files
+analysis.discovery#discoverSourceCode,unknown,unknown,unknown,Code Discovery & Beat Mapping,discover-source-code
+analysis.discovery#mapBeatsToCode,unknown,unknown,unknown,Code Discovery & Beat Mapping,map-beats-to-code
+analysis.discovery#collectBaseline,unknown,unknown,unknown,Code Discovery & Beat Mapping,collect-baseline
+analysis.metrics#countLinesOfCode,unknown,unknown,unknown,Code Metrics Analysis,count-lines-of-code
+analysis.metrics#analyzeComplexity,unknown,unknown,unknown,Code Metrics Analysis,analyze-complexity
+analysis.metrics#detectDuplication,unknown,unknown,unknown,Code Metrics Analysis,detect-duplication
+analysis.metrics#calculateMaintainability,unknown,unknown,unknown,Code Metrics Analysis,calculate-maintainability
+analysis.coverage#measureStatementCoverage,unknown,unknown,unknown,Test Coverage Analysis,measure-statement-coverage
+analysis.coverage#measureBranchCoverage,unknown,unknown,unknown,Test Coverage Analysis,measure-branch-coverage
+analysis.coverage#measureFunctionCoverage,unknown,unknown,unknown,Test Coverage Analysis,measure-function-coverage
+analysis.coverage#calculateGapAnalysis,unknown,unknown,unknown,Test Coverage Analysis,calculate-gap-analysis
+analysis.conformity#validateHandlerMapping,unknown,unknown,unknown,Architecture Conformity & Reporting,validate-handler-mapping
+analysis.conformity#calculateConformityScore,unknown,unknown,unknown,Architecture Conformity & Reporting,calculate-conformity-score
+analysis.conformity#generateTrendReport,unknown,unknown,unknown,Architecture Conformity & Reporting,generate-trend-report
+analysis.conformity#generateAnalysisReport,unknown,unknown,unknown,Architecture Conformity & Reporting,generate-analysis-report
+addClass,unknown,packages/control-panel/src/symphonies/classes/classes.stage-crew.ts,control-panel,Add Class,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Add Class,2
+removeClass,unknown,packages/control-panel/src/symphonies/classes/classes.stage-crew.ts,control-panel,Remove Class,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Remove Class,2
+createCssClass,unknown,packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts,control-panel,Create CSS Class,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Create CSS Class,2
+deleteCssClass,unknown,packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts,control-panel,Delete CSS Class,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Delete CSS Class,2
+updateCssClass,unknown,packages/control-panel/src/symphonies/css-management/css-management.stage-crew.ts,control-panel,Update CSS Class,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Update CSS Class,2
+deriveSelectionModel,unknown,packages/control-panel/src/symphonies/selection/selection.stage-crew.ts,control-panel,Selection,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Selection,2
+prepareField,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Change,1
+dispatchField,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Change,2
+setDirty,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Change,3
+awaitRefresh,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Change,4
+validateField,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Validate,1
+mergeErrors,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Validate,2
+updateView,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Field Validate,3
+initConfig,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,1
+initResolver,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,2
+loadSchemas,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,3
+registerObservers,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,4
+notifyReady,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,5
+initMovement,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Init,6
+generateFields,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Render,1
+generateSections,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Render,2
+renderView,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Render,3
+toggleSection,unknown,packages/control-panel/src/symphonies/ui/ui.stage-crew.ts,control-panel,Section Toggle,1
+updateFromElement,unknown,packages/control-panel/src/symphonies/update/update.stage-crew.ts,control-panel,Update,1
+notifyUi,unknown,packages/canvas-component/src/symphonies/create/create.notify.ts,canvas-component,Update,2
