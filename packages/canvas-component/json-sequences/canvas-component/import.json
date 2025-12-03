@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler openUiFile is available"],
-              "when": ["openUiFile executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler openUiFile is available"
+              ],
+              "when": [
+                "openUiFile executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler parseUiFile is available"],
-              "when": ["parseUiFile executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler parseUiFile is available"
+              ],
+              "when": [
+                "parseUiFile executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -67,9 +79,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler injectCssClasses is available"],
-              "when": ["injectCssClasses executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler injectCssClasses is available"
+              ],
+              "when": [
+                "injectCssClasses executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -90,9 +108,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler createComponentsSequentially is available"],
-              "when": ["createComponentsSequentially executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler createComponentsSequentially is available"
+              ],
+              "when": [
+                "createComponentsSequentially executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -113,9 +137,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler applyHierarchyAndOrder is available"],
-              "when": ["applyHierarchyAndOrder executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler applyHierarchyAndOrder is available"
+              ],
+              "when": [
+                "applyHierarchyAndOrder executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -131,5 +161,6 @@
   "beats": 5,
   "userStory": "As a frontend platform integrator, I need the import symphony to open, parse, and map UI assets deterministically with beat SLAs (open ≤1s, parse ≤1s, injectCss ≤1s, createSequential ≤2s, hierarchy ≤1s) and 99.9% success so imported components render predictably.",
   "persona": "Frontend platform integrator",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

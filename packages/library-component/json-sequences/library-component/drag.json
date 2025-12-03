@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["pointer down"],
-              "when": ["dragStart runs"],
-              "then": ["starts drag within ≤ 16ms and sets data payload"],
+              "given": [
+                "pointer down"
+              ],
+              "when": [
+                "dragStart runs"
+              ],
+              "then": [
+                "starts drag within ≤ 16ms and sets data payload"
+              ],
               "and": [
                 "telemetry 'drag.start' includes elementId"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.",
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

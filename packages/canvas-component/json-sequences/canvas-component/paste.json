@@ -24,9 +24,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler readFromClipboard is available"],
-              "when": ["readFromClipboard executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler readFromClipboard is available"
+              ],
+              "when": [
+                "readFromClipboard executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -47,9 +53,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler deserializeComponentData is available"],
-              "when": ["deserializeComponentData executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler deserializeComponentData is available"
+              ],
+              "when": [
+                "deserializeComponentData executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -70,9 +82,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler calculatePastePosition is available"],
-              "when": ["calculatePastePosition executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler calculatePastePosition is available"
+              ],
+              "when": [
+                "calculatePastePosition executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -93,9 +111,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler createPastedComponent is available"],
-              "when": ["createPastedComponent executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler createPastedComponent is available"
+              ],
+              "when": [
+                "createPastedComponent executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -116,9 +140,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler notifyPasteComplete is available"],
-              "when": ["notifyPasteComplete executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler notifyPasteComplete is available"
+              ],
+              "when": [
+                "notifyPasteComplete executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -134,5 +164,6 @@
   "beats": 5,
   "userStory": "As a content author, I need paste to insert components honoring hierarchy and constraints within ≤1s P95.",
   "persona": "Content author",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

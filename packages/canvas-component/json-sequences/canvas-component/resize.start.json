@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler startResize is available"],
-              "when": ["startResize executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler startResize is available"
+              ],
+              "when": [
+                "startResize executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As an interaction designer, I need resize start to attach handles and compute constraints within ≤100ms P95 so resizing feels responsive.",
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

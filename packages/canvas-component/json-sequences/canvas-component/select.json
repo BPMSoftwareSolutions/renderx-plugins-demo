@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler showSelectionOverlay is available"],
-              "when": ["showSelectionOverlay executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler showSelectionOverlay is available"
+              ],
+              "when": [
+                "showSelectionOverlay executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a selection change occurs"],
-              "when": ["notifyUi publishes"],
-              "then": ["an event is sent to EventRouter within 5ms with item IDs"],
+              "given": [
+                "a selection change occurs"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "an event is sent to EventRouter within 5ms with item IDs"
+              ],
               "and": [
                 "delivery is FIFO with no drops or duplicates"
               ]
@@ -67,9 +79,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler publishSelectionChanged is available"],
-              "when": ["publishSelectionChanged executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler publishSelectionChanged is available"
+              ],
+              "when": [
+                "publishSelectionChanged executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -85,5 +103,6 @@
   "beats": 3,
   "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
   "persona": "Interaction designer",
-  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
+  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
+  "domainId": "renderx-web-orchestration"
 }

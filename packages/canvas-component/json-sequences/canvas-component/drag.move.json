@@ -24,9 +24,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler updatePosition is available"],
-              "when": ["updatePosition executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler updatePosition is available"
+              ],
+              "when": [
+                "updatePosition executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -47,9 +53,15 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler forwardToControlPanel is available"],
-              "when": ["forwardToControlPanel executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler forwardToControlPanel is available"
+              ],
+              "when": [
+                "forwardToControlPanel executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -65,5 +77,6 @@
   "beats": 2,
   "userStory": "As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.",
   "persona": "Interaction designer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

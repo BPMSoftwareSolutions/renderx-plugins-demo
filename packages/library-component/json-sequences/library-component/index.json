@@ -15,5 +15,6 @@
     }
   ],
   "userStory": "As an operator, I need the library-component index to summarize available components and interactions with clear roles and telemetry.",
-  "persona": "Platform operator"
+  "persona": "Platform operator",
+  "domainId": "renderx-web-orchestration"
 }

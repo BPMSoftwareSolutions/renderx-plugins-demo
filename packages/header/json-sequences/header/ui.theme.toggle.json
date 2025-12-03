@@ -21,9 +21,15 @@
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler toggleTheme is available"],
-              "when": ["toggleTheme executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler toggleTheme is available"
+              ],
+              "when": [
+                "toggleTheme executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.",
   "persona": "UI runtime engineer",
-  "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
+  "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience",
+  "domainId": "renderx-web-orchestration"
 }

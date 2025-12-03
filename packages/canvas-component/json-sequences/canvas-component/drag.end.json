@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler endDrag is available"],
-              "when": ["endDrag executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler endDrag is available"
+              ],
+              "when": [
+                "endDrag executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -42,5 +48,6 @@
   "beats": 1,
   "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

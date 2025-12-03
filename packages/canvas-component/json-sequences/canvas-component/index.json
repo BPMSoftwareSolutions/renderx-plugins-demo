@@ -117,5 +117,6 @@
       "file": "paste.json",
       "handlersPath": "@renderx-plugins/canvas-component"
     }
-  ]
+  ],
+  "domainId": "renderx-web-orchestration"
 }

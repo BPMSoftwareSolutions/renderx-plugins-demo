@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler resolveTemplate is available"],
-              "when": ["resolveTemplate executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler resolveTemplate is available"
+              ],
+              "when": [
+                "resolveTemplate executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler registerInstance is available"],
-              "when": ["registerInstance executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler registerInstance is available"
+              ],
+              "when": [
+                "registerInstance executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -67,9 +79,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler createNode is available"],
-              "when": ["createNode executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler createNode is available"
+              ],
+              "when": [
+                "createNode executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -90,9 +108,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler renderReact is available"],
-              "when": ["renderReact executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler renderReact is available"
+              ],
+              "when": [
+                "renderReact executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -113,9 +137,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler notifyUi is available"],
-              "when": ["notifyUi executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler notifyUi is available"
+              ],
+              "when": [
+                "notifyUi executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -136,9 +166,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler enhanceLine is available"],
-              "when": ["enhanceLine executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler enhanceLine is available"
+              ],
+              "when": [
+                "enhanceLine executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -154,5 +190,6 @@
   "beats": 6,
   "userStory": "As a product owner, I need the canvas component create flow to reliably transform templates into interactive UI with clear telemetry, strict schemas, and beat-specific SLAs (≤1s/≤2s/≤200ms/≤20ms as defined), achieving 99.9% success so we meet customer performance commitments.",
   "persona": "Product Owner",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

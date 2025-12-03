@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["valid drop target"],
-              "when": ["onDrop runs"],
-              "then": ["composes node and validates schema; latency ≤ 150ms"],
+              "given": [
+                "valid drop target"
+              ],
+              "when": [
+                "onDrop runs"
+              ],
+              "then": [
+                "composes node and validates schema; latency ≤ 150ms"
+              ],
               "and": [
                 "telemetry 'drop' includes target and success"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As an interaction designer, I need drop to publish create requests deterministically and clear preview state.",
   "persona": "Interaction designer",
-  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
+  "domainId": "renderx-web-orchestration"
 }

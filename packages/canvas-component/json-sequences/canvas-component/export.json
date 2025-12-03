@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler queryAllComponents is available"],
-              "when": ["queryAllComponents executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler queryAllComponents is available"
+              ],
+              "when": [
+                "queryAllComponents executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler discoverComponentsFromDom is available"],
-              "when": ["discoverComponentsFromDom executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler discoverComponentsFromDom is available"
+              ],
+              "when": [
+                "discoverComponentsFromDom executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -67,9 +79,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler collectCssClasses is available"],
-              "when": ["collectCssClasses executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler collectCssClasses is available"
+              ],
+              "when": [
+                "collectCssClasses executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -87,9 +105,15 @@
           "scenario": "collect Layout Data",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["discovered components"],
-              "when": ["collectLayoutData runs"],
-              "then": ["bounds/transform collected with precision ≤ 1px/0.5°"],
+              "given": [
+                "discovered components"
+              ],
+              "when": [
+                "collectLayoutData runs"
+              ],
+              "then": [
+                "bounds/transform collected with precision ≤ 1px/0.5°"
+              ],
               "and": [
                 "units normalize (px)"
               ]
@@ -113,9 +137,15 @@
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler collectLayoutData is available"],
-              "when": ["collectLayoutData executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler collectLayoutData is available"
+              ],
+              "when": [
+                "collectLayoutData executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -136,9 +166,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler downloadUiFile is available"],
-              "when": ["downloadUiFile executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler downloadUiFile is available"
+              ],
+              "when": [
+                "downloadUiFile executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -154,5 +190,6 @@
   "beats": 6,
   "userStory": "As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.",
   "persona": "Platform operator",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

@@ -24,9 +24,15 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler updateSize is available"],
-              "when": ["updateSize executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler updateSize is available"
+              ],
+              "when": [
+                "updateSize executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -47,9 +53,15 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["size changes"],
-              "when": ["forwardToControlPanel runs"],
-              "then": ["update publishes to control panel within ≤ 20ms"],
+              "given": [
+                "size changes"
+              ],
+              "when": [
+                "forwardToControlPanel runs"
+              ],
+              "then": [
+                "update publishes to control panel within ≤ 20ms"
+              ],
               "and": [
                 "messages are coalesced per frame"
               ]
@@ -65,5 +77,6 @@
   "beats": 2,
   "userStory": "As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.",
   "persona": "Interaction designer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

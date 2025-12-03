@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler showSvgNodeOverlay is available"],
-              "when": ["showSvgNodeOverlay executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler showSvgNodeOverlay is available"
+              ],
+              "when": [
+                "showSvgNodeOverlay executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As a design systems engineer, I need SVG node selection to compute path bounds and attach line resize overlays deterministically.",
   "persona": "Design systems engineer",
-  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
+  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
+  "domainId": "renderx-web-orchestration"
 }

@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler getCurrentTheme is available"],
-              "when": ["getCurrentTheme executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler getCurrentTheme is available"
+              ],
+              "when": [
+                "getCurrentTheme executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a theme fetch completes"],
-              "when": ["notifyUi is invoked"],
-              "then": ["an event is published to the EventRouter within 5ms"],
+              "given": [
+                "a theme fetch completes"
+              ],
+              "when": [
+                "notifyUi is invoked"
+              ],
+              "then": [
+                "an event is published to the EventRouter within 5ms"
+              ],
               "and": [
                 "the event contains theme value and source",
                 "the event is timestamped and trace-linked"
@@ -63,5 +75,6 @@
   "beats": 2,
   "userStory": "As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).",
   "persona": "UI runtime engineer",
-  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
+  "domainId": "renderx-web-orchestration"
 }

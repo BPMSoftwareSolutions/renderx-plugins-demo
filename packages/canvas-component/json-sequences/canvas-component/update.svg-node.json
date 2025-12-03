@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\svg-node.update.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler updateSvgNodeAttribute is available"],
-              "when": ["updateSvgNodeAttribute executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler updateSvgNodeAttribute is available"
+              ],
+              "when": [
+                "updateSvgNodeAttribute executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["an SVG node update"],
-              "when": ["refreshControlPanel runs"],
-              "then": ["control panel reflects new SVG state within ≤ 50ms"],
+              "given": [
+                "an SVG node update"
+              ],
+              "when": [
+                "refreshControlPanel runs"
+              ],
+              "then": [
+                "control panel reflects new SVG state within ≤ 50ms"
+              ],
               "and": [
                 "publish a 'control-panel.refresh' event idempotently"
               ]
@@ -62,5 +74,6 @@
   "beats": 2,
   "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

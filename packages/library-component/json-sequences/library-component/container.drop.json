@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["container target"],
-              "when": ["onContainerDrop runs"],
-              "then": ["inserts child at index, reflows minimal, latency ≤ 150ms"],
+              "given": [
+                "container target"
+              ],
+              "when": [
+                "onContainerDrop runs"
+              ],
+              "then": [
+                "inserts child at index, reflows minimal, latency ≤ 150ms"
+              ],
               "and": [
                 "telemetry includes containerId and index"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As an integrator, I need container drop to publish create requests deterministically with ≤1s P95 and route to canvas create.",
   "persona": "Orchestration integrator",
-  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
+  "domainId": "renderx-web-orchestration"
 }

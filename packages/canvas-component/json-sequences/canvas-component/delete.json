@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler deleteComponent is available"],
-              "when": ["deleteComponent executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler deleteComponent is available"
+              ],
+              "when": [
+                "deleteComponent executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler publishDeleted is available"],
-              "when": ["publishDeleted executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler publishDeleted is available"
+              ],
+              "when": [
+                "publishDeleted executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -62,5 +74,6 @@
   "beats": 2,
   "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
   "persona": "Security-conscious operator",
-  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
+  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)",
+  "domainId": "renderx-web-orchestration"
 }

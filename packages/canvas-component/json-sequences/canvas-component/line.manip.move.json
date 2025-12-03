@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler moveLineManip is available"],
-              "when": ["moveLineManip executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler moveLineManip is available"
+              ],
+              "when": [
+                "moveLineManip executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -39,5 +45,6 @@
   "beats": 1,
   "userStory": "As an operations system, I want moveLineManip to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

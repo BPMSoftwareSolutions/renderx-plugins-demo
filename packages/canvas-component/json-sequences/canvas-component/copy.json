@@ -24,9 +24,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler serializeSelectedComponent is available"],
-              "when": ["serializeSelectedComponent executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler serializeSelectedComponent is available"
+              ],
+              "when": [
+                "serializeSelectedComponent executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -47,9 +53,15 @@
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler copyToClipboard is available"],
-              "when": ["copyToClipboard executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler copyToClipboard is available"
+              ],
+              "when": [
+                "copyToClipboard executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -70,9 +82,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler notifyCopyComplete is available"],
-              "when": ["notifyCopyComplete executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler notifyCopyComplete is available"
+              ],
+              "when": [
+                "notifyCopyComplete executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -88,5 +106,6 @@
   "beats": 3,
   "userStory": "As a content author, I need copy to duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy.",
   "persona": "Content author",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

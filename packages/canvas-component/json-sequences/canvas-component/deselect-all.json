@@ -21,9 +21,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler hideAllOverlays is available"],
-              "when": ["hideAllOverlays executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler hideAllOverlays is available"
+              ],
+              "when": [
+                "hideAllOverlays executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -44,9 +50,15 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler publishSelectionsCleared is available"],
-              "when": ["publishSelectionsCleared executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler publishSelectionsCleared is available"
+              ],
+              "when": [
+                "publishSelectionsCleared executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -62,5 +74,6 @@
   "beats": 2,
   "userStory": "As an interaction designer, I need deselect-all to clear all overlays and selection state within ≤100ms P95.",
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }
