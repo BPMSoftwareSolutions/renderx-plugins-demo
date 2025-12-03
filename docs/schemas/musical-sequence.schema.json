@@ -4,7 +4,7 @@
   "description": "Canonical MusicalSequence JSON Schema used for orchestration sequences and registry projections.",
   "type": "object",
   "additionalProperties": true,
-  "required": ["id", "name", "movements"],
+  "required": ["domainId", "id", "name", "movements"],
   "properties": {
     "id": {
       "type": "string",

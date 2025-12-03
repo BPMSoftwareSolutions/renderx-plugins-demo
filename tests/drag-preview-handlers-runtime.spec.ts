@@ -40,7 +40,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
   });
 
   describe('AC-1: Operation completes within < 1 second', () => {
-    it('should complete successfully within < 1 second', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:1] should complete successfully within < 1 second', () => {
       // Given: the computeCursorOffsets operation is triggered
       const width = 200;
       const height = 100;
@@ -63,7 +63,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
   });
 
   describe('AC-2: Valid input parameters', () => {
-    it('should process valid inputs and conform to schema', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:2] should process valid inputs and conform to schema', () => {
       // Given: valid input parameters
       const width = 250;
       const height = 150;
@@ -84,7 +84,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
       expect(endTime - startTime).toBeGreaterThanOrEqual(0);
     });
 
-    it('should handle edge case with null targetEl', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:2] should handle edge case with null targetEl', () => {
       // Given: null target element (fallback case)
       const width = 200;
       const height = 100;
@@ -97,7 +97,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
       expect(result.offsetY).toBe(50);  // height / 2
     });
 
-    it('should handle missing event coordinates', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:2] should handle missing event coordinates', () => {
       // Given: event without coordinates
       const eventWithoutCoords = {};
 
@@ -111,7 +111,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
   });
 
   describe('AC-3: Error conditions', () => {
-    it('should handle getBoundingClientRect errors gracefully', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:3] should handle getBoundingClientRect errors gracefully', () => {
       // Given: element that throws on getBoundingClientRect
       const errorElement = document.createElement('div');
       Object.defineProperty(errorElement, 'getBoundingClientRect', {
@@ -135,7 +135,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
   });
 
   describe('AC-4: Performance SLA of < 1 second', () => {
-    it('should maintain latency consistently within target', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:4] should maintain latency consistently within target', () => {
       // Given: performance SLA of < 1 second
       const iterations = 1000;
       const durations: number[] = [];
@@ -163,7 +163,7 @@ describe('computeCursorOffsets - Runtime Validation', () => {
   });
 
   describe('AC-5: Compliance and governance', () => {
-    it('should enforce all governance rules', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:5] should enforce all governance rules', () => {
       // Given: compliance and governance
       const width = 200;
       const height = 100;
@@ -199,7 +199,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
   });
 
   describe('AC-1: Operation completes within < 1 second', () => {
-    it('should complete successfully within < 1 second', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:1] should complete successfully within < 1 second', () => {
       // Given: template with styles
       const template = {
         css: '.preview { color: red; }',
@@ -221,7 +221,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
   });
 
   describe('AC-2: Valid input parameters', () => {
-    it('should process valid template and apply styles', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] should process valid template and apply styles', () => {
       // Given: valid input parameters
       const template = {
         css: 'body { background: blue; }',
@@ -246,7 +246,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
       // And: no errors are thrown
     });
 
-    it('should handle CSS variable names without -- prefix', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] should handle CSS variable names without -- prefix', () => {
       // Given: variables without -- prefix
       const template = {
         cssVariables: {
@@ -265,7 +265,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
   });
 
   describe('AC-3: Error conditions', () => {
-    it('should handle null/undefined template gracefully', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:3] should handle null/undefined template gracefully', () => {
       // Given: error conditions
       const nullTemplate = null;
       const undefinedTemplate = undefined;
@@ -280,7 +280,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
       // And: the system remains stable
     });
 
-    it('should handle malformed CSS variables gracefully', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:3] should handle malformed CSS variables gracefully', () => {
       // Given: template with problematic variables
       const template = {
         cssVariables: {
@@ -301,7 +301,7 @@ describe('applyTemplateStyles - Runtime Validation', () => {
   });
 
   describe('AC-4: Performance SLA', () => {
-    it('should apply complex styles within performance budget', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.5:4] should apply complex styles within performance budget', () => {
       // Given: complex template with many variables
       const complexTemplate = {
         css: Array.from({ length: 50 }, (_, i) => `.class-${i} { color: red; }`).join('\n'),
@@ -346,7 +346,7 @@ describe('installDragImage - Runtime Validation', () => {
   });
 
   describe('AC-1: Operation completes within < 1 second', () => {
-    it('should complete successfully within < 1 second', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.6:1] should complete successfully within < 1 second', () => {
       // Given: drag operation is triggered
       const offsetX = 100;
       const offsetY = 50;
@@ -365,7 +365,7 @@ describe('installDragImage - Runtime Validation', () => {
   });
 
   describe('AC-2: Valid input parameters', () => {
-    it('should process valid inputs correctly', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.7:2] should process valid inputs correctly', () => {
       // Given: valid input parameters
       const offsetX = 75;
       const offsetY = 25;
@@ -386,7 +386,7 @@ describe('installDragImage - Runtime Validation', () => {
   });
 
   describe('AC-3: Error conditions', () => {
-    it('should handle setDragImage errors with cleanup', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.7:3] should handle setDragImage errors with cleanup', () => {
       // Given: DataTransfer that throws on setDragImage
       const errorDt = {
         setDragImage: vi.fn(() => {
@@ -409,7 +409,7 @@ describe('installDragImage - Runtime Validation', () => {
   });
 
   describe('AC-4: Performance SLA', () => {
-    it('should maintain performance under repeated operations', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.7:4] should maintain performance under repeated operations', () => {
       // Given: performance SLA of < 1 second
       const durations: number[] = [];
 
@@ -435,7 +435,7 @@ describe('installDragImage - Runtime Validation', () => {
   });
 
   describe('AC-5: Cleanup and resource management', () => {
-    it('should clean up ghost element after drag starts', async () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.7:5] should clean up ghost element after drag starts', async () => {
       // Given: drag image installation
       const ghost = createGhostContainer(150, 75);
 
@@ -453,7 +453,7 @@ describe('installDragImage - Runtime Validation', () => {
       expect(ghost.parentElement).toBeNull();
     });
 
-    it('should use setTimeout fallback when requestAnimationFrame unavailable', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.7:5] should use setTimeout fallback when requestAnimationFrame unavailable', () => {
       // Given: environment without requestAnimationFrame
       const originalRAF = global.requestAnimationFrame;
       (global as any).requestAnimationFrame = undefined;

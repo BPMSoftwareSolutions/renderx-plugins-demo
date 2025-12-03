@@ -602,12 +602,40 @@ Verify scan-duplication.cjs is accessible and git repository is initialized.`;
 async function generateHandlerMappingMetrics() {
   try {
     const handlerResults = await scanHandlerExports();
-    
+
     if (!handlerResults.handlers || handlerResults.handlers.length === 0) {
       return `⚠ **No handlers to map** - Handler discovery must complete first.`;
     }
-    
+
     const mappingResults = mapHandlersToBeat(handlerResults.handlers);
+
+    // Read accurate handler count from classification if available
+    let accurateHandlerCount = handlerResults.handlers.length;
+    try {
+      const classificationPaths = [
+        path.join(ANALYSIS_DIR, 'handler-classification.json'),
+        path.join(ANALYSIS_DIR, '..', DOMAIN_ID, 'handler-classification.json'),
+        path.join(process.cwd(), '.generated', 'analysis', DOMAIN_ID, 'handler-classification.json')
+      ];
+
+      for (const tryPath of classificationPaths) {
+        if (fs.existsSync(tryPath)) {
+          const classification = JSON.parse(fs.readFileSync(tryPath, 'utf8'));
+          if (classification.summary && classification.summary.total) {
+            accurateHandlerCount = classification.summary.total;
+            break;
+          }
+        }
+      }
+    } catch (err) {
+      // Use scanned count as fallback
+    }
+
+    // Override totalHandlers and mappedCount with accurate count
+    // The scanner may find duplicate exports, so we use the classification count
+    mappingResults.totalHandlers = accurateHandlerCount;
+    mappingResults.mappedCount = accurateHandlerCount - mappingResults.orphanedCount;
+
     const healthScore = calculateSympahonicHealthScore(mappingResults);
     
     const orphansList = mappingResults.orphaned.length > 0
@@ -1458,10 +1486,40 @@ async function run() {
       log(`Warning: Could not capture handler mapping: ${err.message}`, '⚠');
     }
 
+    // Read accurate handler count from handler-classification.json if available
+    // This provides the true count from symphony beat portfolios (not inflated by duplicates/exports)
+    let accurateHandlerCount = handlersToBeatMapping.allHandlers?.length || 0;
+    try {
+      // Try both analysis output paths (renderx-web and renderx-web-orchestration)
+      const classificationPaths = [
+        path.join(ANALYSIS_DIR, 'handler-classification.json'),
+        path.join(ANALYSIS_DIR, '..', `${DOMAIN_ID}`, 'handler-classification.json'),
+        path.join(process.cwd(), '.generated', 'analysis', DOMAIN_ID, 'handler-classification.json')
+      ];
+
+      let classificationPath = null;
+      for (const tryPath of classificationPaths) {
+        if (fs.existsSync(tryPath)) {
+          classificationPath = tryPath;
+          break;
+        }
+      }
+
+      if (classificationPath) {
+        const classification = JSON.parse(fs.readFileSync(classificationPath, 'utf8'));
+        if (classification.summary && classification.summary.total) {
+          accurateHandlerCount = classification.summary.total;
+          log(`Using accurate handler count from classification: ${accurateHandlerCount}`, '✓');
+        }
+      }
+    } catch (err) {
+      log(`Warning: Could not read handler classification for accurate count: ${err.message}`, '⚠');
+    }
+
 	    // Collect metrics - ENHANCED WITH ENVELOPE
 	    const baseMetrics = {
 	      discoveredFiles: sourceFiles.length,
-	      discoveredCount: handlersToBeatMapping.allHandlers?.length || 0,
+	      discoveredCount: accurateHandlerCount,
 	      beatMapping,
 	      handlersToBeatMapping,  // Wire mapping data to envelope
 	      loc,

@@ -4,8 +4,8 @@ Domain: renderx-web-orchestration
 
 ## Summary
 
-- Total tagged tests: 66
-- Compliant (≥75% score): 66
+- Total tagged tests: 83
+- Compliant (≥75% score): 83
 - Partial (40-74% score): 0
 - Non-compliant (<40% score): 0
 - Invalid tags: 0
@@ -13,7 +13,7 @@ Domain: renderx-web-orchestration
 
 ## Compliance Categories
 
-### ✅ Compliant Tests (66)
+### ✅ Compliant Tests (83)
 
 - **tests\ui-event-wiring.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] (100%)
   - Given condition referenced: "the renderTemplatePreview operation is triggered"
@@ -433,6 +433,90 @@ Domain: renderx-web-orchestration
   - And clause referenced: "the output is valid and meets schema"
   - And clause referenced: "any required events are published"
 
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.6:1] (100%)
+  - Given condition referenced: "the computeCursorOffsets operation is triggered"
+  - When action referenced: "the handler executes"
+  - Then assertion referenced: "it completes successfully within < 1 second"
+  - And clause referenced: "the output is valid and meets schema"
+  - And clause referenced: "any required events are published"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.6:2] (100%)
+  - Given condition referenced: "valid input parameters"
+  - When action referenced: "computeCursorOffsets processes them"
+  - Then assertion referenced: "results conform to expected schema"
+  - And clause referenced: "no errors are thrown"
+  - And clause referenced: "telemetry events are recorded with latency metrics"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.6:3] (100%)
+  - Given condition referenced: "error conditions"
+  - When action referenced: "computeCursorOffsets encounters an error"
+  - Then assertion referenced: "the error is logged with full context"
+  - And clause referenced: "appropriate recovery is attempted"
+  - And clause referenced: "the system remains stable"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.6:4] (100%)
+  - Given condition referenced: "performance SLA of < 1 second"
+  - When action referenced: "computeCursorOffsets executes"
+  - Then assertion referenced: "latency is consistently within target"
+  - And clause referenced: "throughput meets baseline requirements"
+  - And clause referenced: "resource usage stays within bounds"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.6:5] (100%)
+  - Given condition referenced: "compliance and governance"
+  - When action referenced: "computeCursorOffsets operates"
+  - Then assertion referenced: "all governance rules are enforced"
+  - And clause referenced: "audit trails capture execution"
+  - And clause referenced: "no compliance violations occur"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.5:2] (100%)
+  - Given condition referenced: "valid input parameters"
+  - When action referenced: "applyTemplateStyles processes them"
+  - Then assertion referenced: "results conform to expected schema"
+  - And clause referenced: "no errors are thrown"
+  - And clause referenced: "telemetry events are recorded with latency metrics"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.5:3] (100%)
+  - Given condition referenced: "error conditions"
+  - When action referenced: "applyTemplateStyles encounters an error"
+  - Then assertion referenced: "the error is logged with full context"
+  - And clause referenced: "appropriate recovery is attempted"
+  - And clause referenced: "the system remains stable"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.5:4] (100%)
+  - Given condition referenced: "performance SLA of < 1 second"
+  - When action referenced: "applyTemplateStyles executes"
+  - Then assertion referenced: "latency is consistently within target"
+  - And clause referenced: "throughput meets baseline requirements"
+  - And clause referenced: "resource usage stays within bounds"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.7:2] (100%)
+  - Given condition referenced: "valid input parameters"
+  - When action referenced: "installDragImage processes them"
+  - Then assertion referenced: "results conform to expected schema"
+  - And clause referenced: "no errors are thrown"
+  - And clause referenced: "telemetry events are recorded with latency metrics"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.7:3] (100%)
+  - Given condition referenced: "error conditions"
+  - When action referenced: "installDragImage encounters an error"
+  - Then assertion referenced: "the error is logged with full context"
+  - And clause referenced: "appropriate recovery is attempted"
+  - And clause referenced: "the system remains stable"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.7:4] (100%)
+  - Given condition referenced: "performance SLA of < 1 second"
+  - When action referenced: "installDragImage executes"
+  - Then assertion referenced: "latency is consistently within target"
+  - And clause referenced: "throughput meets baseline requirements"
+  - And clause referenced: "resource usage stays within bounds"
+
+- **tests\drag-preview-handlers-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:5.7:5] (100%)
+  - Given condition referenced: "compliance and governance"
+  - When action referenced: "installDragImage operates"
+  - Then assertion referenced: "all governance rules are enforced"
+  - And clause referenced: "audit trails capture execution"
+  - And clause referenced: "no compliance violations occur"
+
 - **tests\domain-registry-orchestration-spike.spec.ts** → [AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] (100%)
   - Given condition referenced: "ACs are present as acceptanceCriteriaStructured in sequence JSON"
   - When action referenced: "the generator runs over renderx-web-orchestration"
@@ -475,6 +559,41 @@ Domain: renderx-web-orchestration
   - And clause referenced: "the subscriber can act on the notification"
   - And clause referenced: "multiple subscribers can consume the same event"
 
+- **tests\control-panel-init-config-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] (100%)
+  - Given condition referenced: "configuration metadata"
+  - When action referenced: "initConfig is called"
+  - Then assertion referenced: "configuration is loaded within 200ms"
+  - And clause referenced: "all fields are prepared for rendering"
+  - And clause referenced: "validation rules are attached"
+
+- **tests\control-panel-init-config-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] (100%)
+  - Given condition referenced: "complex nested configuration"
+  - When action referenced: "initConfig processes it"
+  - Then assertion referenced: "all nested sections are initialized"
+  - And clause referenced: "dependencies between sections are resolved"
+  - And clause referenced: "no circular dependencies cause deadlock"
+
+- **tests\control-panel-init-config-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:3] (100%)
+  - Given condition referenced: "configuration with 100+ fields"
+  - When action referenced: "initConfig prepares the form"
+  - Then assertion referenced: "initialization completes within 300ms"
+  - And clause referenced: "form is ready for user interaction"
+  - And clause referenced: "memory usage scales linearly with field count"
+
+- **tests\control-panel-init-config-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:4] (100%)
+  - Given condition referenced: "configuration errors"
+  - When action referenced: "initConfig encounters invalid config"
+  - Then assertion referenced: "error is reported with specific issue"
+  - And clause referenced: "fallback configuration is applied"
+  - And clause referenced: "system degrades gracefully"
+
+- **tests\control-panel-init-config-runtime.spec.ts** → [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:5] (100%)
+  - Given condition referenced: "performance SLA"
+  - When action referenced: "initConfig completes"
+  - Then assertion referenced: "Time to Interactive (TTI) is < 500ms"
+  - And clause referenced: "First Contentful Paint (FCP) is < 1 second"
+  - And clause referenced: "form is responsive immediately"
+
 ### ⚠️ Partial Compliance (0)
 
 No partially compliant tests.
@@ -500,4 +619,4 @@ No quick wins identified.
 1. **Quick Wins**: Fix tests missing 1-2 requirements (0 tests)
 2. **Top Offenders**: Focus on ACs with multiple non-compliant tests
 3. **Partial Compliance**: Address 0 partial tests
-4. **Generate New Tests**: Cover 71 uncovered ACs
+4. **Generate New Tests**: Cover 54 uncovered ACs

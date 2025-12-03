@@ -30,7 +30,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('AC-1: Configuration loading with 200ms SLA', () => {
-    it('should load configuration within 200ms', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] should load configuration within 200ms', () => {
       // Given: configuration metadata
       const configData = {
         config: {
@@ -58,7 +58,7 @@ describe('initConfig - Runtime Validation', () => {
       expect(mockLogger.info).toHaveBeenCalledWith('Control Panel config initialized');
     });
 
-    it('should handle configuration with minimal overhead', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] should handle configuration with minimal overhead', () => {
       // Given: minimal configuration
       const minimalConfig = { config: {} };
 
@@ -77,7 +77,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('AC-2: Complex nested configuration', () => {
-    it('should process complex nested configuration', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] should process complex nested configuration', () => {
       // Given: complex nested configuration
       const complexConfig = {
         config: {
@@ -117,7 +117,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('AC-3: Configuration with 100+ fields', () => {
-    it('should initialize configuration with 100+ fields within 300ms', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:3] should initialize configuration with 100+ fields within 300ms', () => {
       // Given: configuration with 100+ fields
       const largeConfig = {
         config: {
@@ -161,7 +161,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('AC-4: Configuration errors', () => {
-    it('should handle configuration errors gracefully', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:4] should handle configuration errors gracefully', () => {
       // Given: configuration with normal input
       const config = { config: { fields: [] } };
 
@@ -178,7 +178,7 @@ describe('initConfig - Runtime Validation', () => {
       // but doesn't expose error-triggering paths. This test verifies normal operation.
     });
 
-    it('should apply fallback configuration on error', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:4] should apply fallback configuration on error', () => {
       // Given: edge case with empty config
       const emptyConfig = {};
 
@@ -198,7 +198,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('AC-5: Performance SLA - Time to Interactive', () => {
-    it('should achieve TTI < 500ms for typical configuration', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:5] should achieve TTI < 500ms for typical configuration', () => {
       // Given: typical production configuration
       const typicalConfig = {
         config: {
@@ -227,7 +227,7 @@ describe('initConfig - Runtime Validation', () => {
       expect(mockCtx.payload.configLoaded).toBe(true);
     });
 
-    it('should maintain performance under load', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:5] should maintain performance under load', () => {
       // Given: performance SLA
       const config = {
         config: {
@@ -257,7 +257,7 @@ describe('initConfig - Runtime Validation', () => {
   });
 
   describe('Telemetry and Observability', () => {
-    it('should emit telemetry events with latency metrics', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:2] should emit telemetry events with latency metrics', () => {
       // Given: valid input parameters
       const config = { config: { fields: [{ id: 'test' }] } };
 
@@ -274,7 +274,7 @@ describe('initConfig - Runtime Validation', () => {
       expect(actualDuration).toBeGreaterThanOrEqual(0);
     });
 
-    it('should log with full context on success', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] should log with full context on success', () => {
       // Given: configuration
       const config = { config: { name: 'test-config' } };
 

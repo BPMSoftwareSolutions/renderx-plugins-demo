@@ -83,4 +83,7 @@ function main() {
   console.log(`[format-alignment-report] Wrote summary → ${path.relative(ROOT, outJson)}`);
 }
 
-main();
+// Only run main if executed directly, not when required as a module
+if (require.main === module) {
+  main();
+}
