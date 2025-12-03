@@ -476,21 +476,22 @@ function renderCleanSymphonyHandler(data) {
 
   // Handler Portfolio Section
   output += '╠' + '═'.repeat(24) + ' BEAT / HANDLER PORTFOLIO ' + '═'.repeat(boxWidth - 50) + '╣\n';
-  output += `║ ${padString('Beat Mov Handler                      LOC  Sz  Cov  Risk  Baton', boxWidth)}║\n`;
+  output += `║ ${padString('Beat Mov Handler                    LOC  Sz  Cov  Risk AC  Baton', boxWidth)}║\n`;
   output += `║ ${padString('─'.repeat(boxWidth - 1), boxWidth)}║\n`;
 
   // Handler rows
   handlers.forEach((handler, idx) => {
     const beat = padString(handler.beat, 4);
     const mov = padString(handler.movement, 3);
-    const name = padString(handler.handler, 29);
+    const name = padString(handler.handler, 27);
     const loc = padString(String(handler.loc), 3, true);
     const sz = padString(handler.sizeBand, 2);
     const cov = padString(handler.coverage + '%', 4, true);
-    const risk = padString(handler.risk, 5);
+    const risk = padString(handler.risk, 4);
+    const ac = padString(handler.hasAcGwt ? 'Y' : 'N', 2);
     const baton = padString(handler.baton, 8);
-    
-    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${baton} ║\n`;
+
+    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${ac} ${baton} ║\n`;
     
     // Add data baton handoff after movement boundaries
     if (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload') {

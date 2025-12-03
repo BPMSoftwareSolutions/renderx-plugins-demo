@@ -255,6 +255,9 @@ Run \`npm run validate:ac-alignment\` to generate alignment data.
   const status = summary.presenceCoverage >= 70 ? '✅ GOOD' :
                  summary.presenceCoverage >= 40 ? '⚠️ PARTIAL' : '❌ POOR';
 
+  // Calculate covered ACs from presence coverage percentage
+  const coveredACs = Math.round(summary.totalACs * summary.presenceCoverage / 100);
+
   let md = `### Acceptance Criteria-to-Test Alignment
 
 **Status**: ${status}
@@ -262,7 +265,7 @@ Run \`npm run validate:ac-alignment\` to generate alignment data.
 | Metric | Value |
 |--------|-------|
 | Average AC Coverage | **${summary.presenceCoverage}%** |
-| Covered ACs | ${summary.totalACs - summary.uncoveredACs}/${summary.totalACs} |
+| Covered ACs | ${coveredACs}/${summary.totalACs} |
 | Beats with Tests | ${summary.beatsWithTests}/${summary.totalBeats} |
 | Total Tests | ${summary.totalTests} |
 | Tests with AC Tags | ${summary.testsWithAcTags} |

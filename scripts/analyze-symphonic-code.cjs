@@ -143,6 +143,74 @@ const { generateDiagram } = require('./generate-architecture-diagram.cjs');
 const { renderCleanSymphonyHandler } = require('./ascii-sketch-renderers.cjs');
 
 // ============================================================================
+// AC/GWT ALIGNMENT HELPER
+// ============================================================================
+
+/**
+ * Load handlers that have AC-tagged tests from collected results and AC registry
+ * @returns {{ beatIds: Set<string>, handlerNames: Set<string> }} Sets of beat IDs and handler names with AC tests
+ */
+function loadAcCoveredHandlers() {
+  const result = { beatIds: new Set(), handlerNames: new Set() };
+  try {
+    // Load AC-tagged test results to get covered beat IDs
+    const resultsPath = path.join(process.cwd(), '.generated/ac-alignment/results/collected-results.json');
+    if (fs.existsSync(resultsPath)) {
+      const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+      (results.uniqueACs || []).forEach(acId => {
+        // AC ID format: domain:sequence:beat:acIndex (e.g., "renderx-web-orchestration:renderx-web-orchestration:1.3:1")
+        const parts = acId.split(':');
+        if (parts.length >= 3) {
+          result.beatIds.add(parts[2]); // beat ID like "1.3"
+        }
+      });
+    }
+
+    // Load AC registry to map beat IDs to handler names
+    const registryPath = path.join(process.cwd(), '.generated/acs/renderx-web-orchestration.registry.json');
+    if (fs.existsSync(registryPath)) {
+      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+      (registry.acs || []).forEach(ac => {
+        if (result.beatIds.has(ac.beatId) && ac.handler) {
+          // Extract handler function name (e.g., "control-panel/ui#initConfig" -> "initConfig")
+          const handlerParts = ac.handler.split('#');
+          const handlerFn = handlerParts.length > 1 ? handlerParts[1] : handlerParts[0];
+          result.handlerNames.add(handlerFn.toLowerCase());
+        }
+      });
+    }
+
+    return result;
+  } catch (e) {
+    return result;
+  }
+}
+
+// Global cache for AC-covered handlers
+let acCoveredHandlersCache = null;
+
+/**
+ * Check if a handler has AC-tagged tests (by handler name or beat ID)
+ * @param {string} handlerName - Handler function name (e.g., "initConfig")
+ * @param {string} [beatId] - Optional beat ID (e.g., "1.3") for fallback check
+ * @returns {boolean} Whether the handler has AC-tagged tests
+ */
+function handlerHasAcGwt(handlerName, beatId) {
+  if (acCoveredHandlersCache === null) {
+    acCoveredHandlersCache = loadAcCoveredHandlers();
+  }
+  // Check by handler name first (normalized to lowercase)
+  if (acCoveredHandlersCache.handlerNames.has(handlerName.toLowerCase())) {
+    return true;
+  }
+  // Fallback to beat ID check (for global orchestration beats)
+  if (beatId && acCoveredHandlersCache.beatIds.has(beatId)) {
+    return true;
+  }
+  return false;
+}
+
+// ============================================================================
 // MOVEMENT 1: CODE DISCOVERY & BEAT MAPPING
 // ============================================================================
 
@@ -1171,8 +1239,6 @@ ${metrics.conformity.violations_details.map(v =>
   `- **${v.beat}** (${v.movement}): ${v.issue} [${v.severity.toUpperCase()}]`
 ).join('\n')}
 
-### Acceptance Criteria-to-Test Alignment
-
 ${(() => {
   // Try new AC alignment system first
   try {
@@ -1381,15 +1447,17 @@ ${(() => {
           (m.beats || []).forEach((b, bi) => {
             if (b?.handler?.name) {
               const fn = b.handler.name.split('#')[1] || b.handler.name;
+              const beatId = `${mi + 1}.${bi + 1}`;
               handlers.push({
-                beat: `${mi + 1}.${bi + 1}`,
+                beat: beatId,
                 movement: `${mi + 1}`,
                 handler: fn,
                 loc: 0,
                 sizeBand: 'tiny',
                 coverage: 0,
                 risk: 'low',
-                baton: ''
+                baton: '',
+                hasAcGwt: handlerHasAcGwt(fn, beatId)
               });
             }
           });
