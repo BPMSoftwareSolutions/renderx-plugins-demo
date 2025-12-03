@@ -102,6 +102,7 @@ describe("import flow injects instance class on DOM elements", () => {
    *      style hooks and analytics can target instance consistently
    */
   it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.2:1] adds rx-comp-<tag>-<id> class for imported components", async () => {
+    // Given: valid nodeId and template exist in context.payload
     const ctx = makeCtx();
     const ui = {
       version: "1.0.0",
@@ -143,6 +144,7 @@ describe("import flow injects instance class on DOM elements", () => {
 
     ctx.payload.uiFileContent = ui;
 
+    // When: registerInstance executes (via import flow)
     await handlers.parseUiFile({}, ctx);
     await handlers.injectCssClasses({}, ctx);
 

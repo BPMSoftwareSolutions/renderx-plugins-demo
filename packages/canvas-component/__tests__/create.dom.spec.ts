@@ -59,8 +59,10 @@ describe("canvas-component create beat (DOM-only)", () => {
    *      schema is validated before applying
    */
   it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.3:1] creates a single element under #rx-canvas with text, position and dimensions", () => {
+    // Given: valid template and nodeId exist in context.payload
     const template = makeTemplate();
 
+    // When: createNode executes
     handlers.resolveTemplate({ component: { template } } as any, ctx);
     handlers.createNode({ position: { x: 50, y: 80 } } as any, ctx);
 

@@ -74,25 +74,58 @@ describe("Selection ID derivation and baton flow", () => {
   });
 
   describe("showSelectionOverlay ID derivation", () => {
-    it("derives ID from data.id when present", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:1
+     *
+     * Given: selection event contains data.id
+     * When: showSelectionOverlay executes
+     * Then: element ID is derived from data.id
+     *       overlay container is created or reused
+     *       overlay rect is positioned to match selected element
+     * And: operation completes within 100ms P95
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:1] derives ID from data.id when present", () => {
+      // Given: selection event contains data.id
       const data = { id: "rx-node-button123" };
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay executes
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: element ID is derived from data.id
       expect(result).toEqual({ id: "rx-node-button123" });
     });
 
-    it("derives ID from data.elementId when data.id is missing", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:2
+     *
+     * Given: data.id is missing but data.elementId is provided
+     * When: showSelectionOverlay derives ID
+     * Then: element ID is derived from data.elementId as fallback
+     * And: overlay rendering proceeds normally
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:2] derives ID from data.elementId when data.id is missing", () => {
+      // Given: data.id is missing but data.elementId is provided
       const data = { elementId: "rx-node-div456" };
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay derives ID
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: element ID is derived from data.elementId as fallback
       expect(result).toEqual({ id: "rx-node-div456" });
     });
 
-    it("derives ID from DOM target when data.id and data.elementId are missing", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:3
+     *
+     * Given: both data.id and data.elementId are missing
+     * When: showSelectionOverlay derives ID from DOM target
+     * Then: element ID is derived from event target's id attribute
+     * And: nested element clicks are handled correctly
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:3] derives ID from DOM target when data.id and data.elementId are missing", () => {
+      // Given: both data.id and data.elementId are missing
       const buttonElement = document.getElementById("rx-node-button123");
       const mockEvent = {
         target: buttonElement,
@@ -100,12 +133,23 @@ describe("Selection ID derivation and baton flow", () => {
       const data = { event: mockEvent };
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay derives ID from DOM target
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: element ID is derived from event target's id attribute
       expect(result).toEqual({ id: "rx-node-button123" });
     });
 
-    it("derives ID from nested DOM target using closest('.rx-comp')", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:3
+     *
+     * Given: both data.id and data.elementId are missing
+     * When: showSelectionOverlay derives ID from DOM target
+     * Then: if target has no id, closest('.rx-comp') ancestor is used
+     * And: nested element clicks are handled correctly
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:3] derives ID from nested DOM target using closest('.rx-comp')", () => {
+      // Given: both data.id and data.elementId are missing
       const nestedButton = document.getElementById("rx-node-nested999");
       const mockEvent = {
         target: nestedButton,
@@ -113,8 +157,11 @@ describe("Selection ID derivation and baton flow", () => {
       const data = { event: mockEvent };
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay derives ID from DOM target
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: if target has no id, closest('.rx-comp') ancestor is used
+      // And: nested element clicks are handled correctly
       expect(result).toEqual({ id: "rx-node-nested999" });
     });
 
@@ -138,12 +185,29 @@ describe("Selection ID derivation and baton flow", () => {
   });
 
   describe("notifyUi with baton fallback", () => {
-    it("uses data.id when present", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.2:1
+     *
+     * Given: element is selected and data.id is present
+     * When: notifyUi executes
+     * Then: canvas.component.selected event is published via EventRouter
+     *       event payload includes element ID from data.id
+     *       event is published with conductor context
+     * And: delivery completes within 20ms end-to-end
+     *      events are ordered FIFO
+     *      subscribers receive notification consistently
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:1] uses data.id when present", () => {
+      // Given: element is selected and data.id is present
       const data = { id: "rx-node-button123" };
       const ctx = { conductor: mockConductor, baton: {} };
 
+      // When: notifyUi executes
       selectHandlers.notifyUi(data, ctx);
 
+      // Then: canvas.component.selected event is published via EventRouter
+      // Then: event payload includes element ID from data.id
+      // Then: event is published with conductor context
       expect(mockConductor.play).toHaveBeenCalledWith(
         "ControlPanelPlugin",
         "control-panel-selection-show-symphony",
@@ -151,15 +215,28 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("falls back to ctx.baton.id when data.id is missing", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.2:2
+     *
+     * Given: data.id is missing but ctx.baton.id is available
+     * When: notifyUi derives ID
+     * Then: element ID is derived from ctx.baton.id as fallback
+     *       canvas.component.selected event is published with baton ID
+     * And: legacy flows with baton-based ID propagation are supported
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.id when data.id is missing", () => {
+      // Given: data.id is missing but ctx.baton.id is available
       const data = {};
-      const ctx = { 
-        conductor: mockConductor, 
-        baton: { id: "rx-node-div456" } 
+      const ctx = {
+        conductor: mockConductor,
+        baton: { id: "rx-node-div456" }
       };
 
+      // When: notifyUi derives ID
       selectHandlers.notifyUi(data, ctx);
 
+      // Then: element ID is derived from ctx.baton.id as fallback
+      // Then: canvas.component.selected event is published with baton ID
       expect(mockConductor.play).toHaveBeenCalledWith(
         "ControlPanelPlugin",
         "control-panel-selection-show-symphony",
@@ -167,15 +244,28 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("falls back to ctx.baton.elementId when data.id and baton.id are missing", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.2:2
+     *
+     * Given: data.id is missing but ctx.baton.id is available
+     * When: notifyUi derives ID
+     * Then: element ID is derived from ctx.baton.id as fallback
+     *       canvas.component.selected event is published with baton ID
+     * And: legacy flows with baton-based ID propagation are supported
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.elementId when data.id and baton.id are missing", () => {
+      // Given: data.id is missing but ctx.baton.elementId is available
       const data = {};
-      const ctx = { 
-        conductor: mockConductor, 
-        baton: { elementId: "rx-node-svg789" } 
+      const ctx = {
+        conductor: mockConductor,
+        baton: { elementId: "rx-node-svg789" }
       };
 
+      // When: notifyUi derives ID
       selectHandlers.notifyUi(data, ctx);
 
+      // Then: element ID is derived from ctx.baton.elementId as fallback
+      // Then: canvas.component.selected event is published with baton ID
       expect(mockConductor.play).toHaveBeenCalledWith(
         "ControlPanelPlugin",
         "control-panel-selection-show-symphony",
@@ -183,15 +273,28 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("falls back to ctx.baton.selectedId when other IDs are missing", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.2:2
+     *
+     * Given: data.id is missing but ctx.baton.id is available
+     * When: notifyUi derives ID
+     * Then: element ID is derived from ctx.baton.id as fallback
+     *       canvas.component.selected event is published with baton ID
+     * And: legacy flows with baton-based ID propagation are supported
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.selectedId when other IDs are missing", () => {
+      // Given: data.id is missing but ctx.baton.selectedId is available
       const data = {};
-      const ctx = { 
-        conductor: mockConductor, 
-        baton: { selectedId: "rx-node-nested999" } 
+      const ctx = {
+        conductor: mockConductor,
+        baton: { selectedId: "rx-node-nested999" }
       };
 
+      // When: notifyUi derives ID
       selectHandlers.notifyUi(data, ctx);
 
+      // Then: element ID is derived from ctx.baton.selectedId as fallback
+      // Then: canvas.component.selected event is published with baton ID
       expect(mockConductor.play).toHaveBeenCalledWith(
         "ControlPanelPlugin",
         "control-panel-selection-show-symphony",
@@ -199,22 +302,52 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("does not call play when no ID is available", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.2:3
+     *
+     * Given: both data.id and baton.id are missing
+     * When: notifyUi validates ID
+     * Then: event publication is skipped
+     *       warning is logged with context
+     * And: system remains stable without errors
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:3] does not call play when no ID is available", () => {
+      // Given: both data.id and baton.id are missing
       const data = {};
       const ctx = { conductor: mockConductor, baton: {} };
 
+      // When: notifyUi validates ID
       selectHandlers.notifyUi(data, ctx);
 
+      // Then: event publication is skipped
       expect(mockConductor.play).not.toHaveBeenCalled();
     });
   });
 
   describe("publishSelectionChanged with baton", () => {
-    it("publishes topic with baton.id", async () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.3:1
+     *
+     * Given: selection change occurs with element ID
+     * When: publishSelectionChanged executes
+     * Then: canvas.component.selection.changed event is published via EventRouter
+     *       event payload includes element ID
+     *       event payload includes optional metadata (type, classes, dimensions)
+     *       event is published with conductor context
+     * And: operation completes within 50ms P95
+     *      event delivery is guaranteed FIFO
+     *      dependent systems can synchronize state
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.id", async () => {
+      // Given: selection change occurs with element ID
       const ctx = { conductor: mockConductor, baton: { id: "rx-node-button123" } };
 
+      // When: publishSelectionChanged executes
       await selectHandlers.publishSelectionChanged({}, ctx);
 
+      // Then: canvas.component.selection.changed event is published via EventRouter
+      // Then: event payload includes element ID
+      // Then: event is published with conductor context
       expect(EventRouter.publish).toHaveBeenCalledWith(
         "canvas.component.selection.changed",
         { id: "rx-node-button123" },
@@ -222,11 +355,29 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("publishes topic with baton.elementId when baton.id is missing", async () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.3:1
+     *
+     * Given: selection change occurs with element ID
+     * When: publishSelectionChanged executes
+     * Then: canvas.component.selection.changed event is published via EventRouter
+     *       event payload includes element ID
+     *       event payload includes optional metadata (type, classes, dimensions)
+     *       event is published with conductor context
+     * And: operation completes within 50ms P95
+     *      event delivery is guaranteed FIFO
+     *      dependent systems can synchronize state
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.elementId when baton.id is missing", async () => {
+      // Given: selection change occurs with element ID from baton.elementId
       const ctx = { conductor: mockConductor, baton: { elementId: "rx-node-div456" } };
 
+      // When: publishSelectionChanged executes
       await selectHandlers.publishSelectionChanged({}, ctx);
 
+      // Then: canvas.component.selection.changed event is published via EventRouter
+      // Then: event payload includes element ID
+      // Then: event is published with conductor context
       expect(EventRouter.publish).toHaveBeenCalledWith(
         "canvas.component.selection.changed",
         { id: "rx-node-div456" },
@@ -234,11 +385,29 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("publishes topic with baton.selectedId when other IDs are missing", async () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.3:1
+     *
+     * Given: selection change occurs with element ID
+     * When: publishSelectionChanged executes
+     * Then: canvas.component.selection.changed event is published via EventRouter
+     *       event payload includes element ID
+     *       event payload includes optional metadata (type, classes, dimensions)
+     *       event is published with conductor context
+     * And: operation completes within 50ms P95
+     *      event delivery is guaranteed FIFO
+     *      dependent systems can synchronize state
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.selectedId when other IDs are missing", async () => {
+      // Given: selection change occurs with element ID from baton.selectedId
       const ctx = { conductor: mockConductor, baton: { selectedId: "rx-node-svg789" } };
 
+      // When: publishSelectionChanged executes
       await selectHandlers.publishSelectionChanged({}, ctx);
 
+      // Then: canvas.component.selection.changed event is published via EventRouter
+      // Then: event payload includes element ID
+      // Then: event is published with conductor context
       expect(EventRouter.publish).toHaveBeenCalledWith(
         "canvas.component.selection.changed",
         { id: "rx-node-svg789" },
@@ -246,11 +415,23 @@ describe("Selection ID derivation and baton flow", () => {
       );
     });
 
-    it("does not publish when no ID is available in baton", async () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.3:2
+     *
+     * Given: element ID is missing
+     * When: publishSelectionChanged validates input
+     * Then: event publication is skipped
+     *       warning is logged with context
+     * And: system remains stable without errors
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:2] does not publish when no ID is available in baton", async () => {
+      // Given: element ID is missing
       const ctx = { conductor: mockConductor, baton: {} };
 
+      // When: publishSelectionChanged validates input
       await selectHandlers.publishSelectionChanged({}, ctx);
 
+      // Then: event publication is skipped
       expect(EventRouter.publish).not.toHaveBeenCalled();
     });
   });

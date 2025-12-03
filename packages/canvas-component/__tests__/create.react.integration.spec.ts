@@ -120,6 +120,7 @@ describe("React Component Integration Tests", () => {
    *      context.payload.reactRendered is set to true
    */
   it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:1] creates a React component through the complete create sequence", async () => {
+    // Given: context.payload.kind is 'react' with valid reactCode
     const ctx = makeCtx();
     const template = makeReactComponentTemplate();
     const data = {
@@ -127,7 +128,7 @@ describe("React Component Integration Tests", () => {
       position: { x: 50, y: 80 }
     };
 
-    // Execute the complete create sequence
+    // When: renderReact executes (via complete create sequence)
     await createHandlers.resolveTemplate(data, ctx);
     await createHandlers.registerInstance(data, ctx);
     await createHandlers.createNode(data, ctx);
@@ -147,7 +148,6 @@ describe("React Component Integration Tests", () => {
     expect(container).toBeTruthy();
     expect(container?.classList.contains("rx-react")).toBe(true);
 
-    // Then: React component is compiled and mounted using createRoot
     expect(mockCreateRoot).toHaveBeenCalledWith(container);
     expect(mockRender).toHaveBeenCalled();
 
@@ -164,6 +164,7 @@ describe("React Component Integration Tests", () => {
    * And: non-React components are not affected
    */
   it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:5] handles regular (non-React) components without React rendering", async () => {
+    // Given: context.payload.kind is not 'react'
     const ctx = makeCtx();
     const template = makeRegularComponentTemplate();
     const data = {
@@ -171,7 +172,7 @@ describe("React Component Integration Tests", () => {
       position: { x: 50, y: 80 }
     };
 
-    // Execute the complete create sequence
+    // When: renderReact is invoked (via complete create sequence)
     await createHandlers.resolveTemplate(data, ctx);
     await createHandlers.registerInstance(data, ctx);
     await createHandlers.createNode(data, ctx);
