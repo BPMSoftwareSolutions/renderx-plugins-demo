@@ -22,16 +22,50 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler resolveTemplate is available"
+                "valid component data with template is provided"
               ],
               "when": [
-                "resolveTemplate executes under normal conditions"
+                "resolveTemplate processes the input"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "template is extracted and stored in context.payload.template",
+                "a unique node ID is generated or override ID is used",
+                "React rendering strategy is detected when render.strategy === 'react'"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "operation completes within 1s P95",
+                "schema fetches are deduped across calls and instances",
+                "telemetry includes latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "component data is missing template"
+              ],
+              "when": [
+                "resolveTemplate processes invalid input"
+              ],
+              "then": [
+                "error is thrown with message 'Missing component template.'"
+              ],
+              "and": [
+                "error context is logged",
+                "system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "import scenario with _overrideNodeId provided"
+              ],
+              "when": [
+                "resolveTemplate processes import data"
+              ],
+              "then": [
+                "override ID is used instead of generating new ID",
+                "template resolution proceeds normally"
+              ],
+              "and": [
+                "imported nodes have stable, predictable IDs"
               ]
             }
           ]
@@ -51,16 +85,49 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler registerInstance is available"
+                "valid nodeId and template exist in context.payload"
               ],
               "when": [
-                "registerInstance executes under normal conditions"
+                "registerInstance executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "instance metadata is persisted to KV store with stable ID",
+                "semantic class rx-comp-<tag>-<id> is assigned for imported components",
+                "registration includes type, classes, style, content, and createdAt timestamp"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "operation completes within 1s P95",
+                "registration event is emitted for analytics",
+                "style hooks and analytics can target instance consistently"
+              ]
+            },
+            {
+              "given": [
+                "nodeId or template is missing from payload"
+              ],
+              "when": [
+                "registerInstance executes with invalid state"
+              ],
+              "then": [
+                "error is thrown with message 'Missing nodeId/template in payload for IO registration'"
+              ],
+              "and": [
+                "error is logged with context",
+                "system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "template includes content properties"
+              ],
+              "when": [
+                "registerInstance persists metadata"
+              ],
+              "then": [
+                "content properties are included in KV data"
+              ],
+              "and": [
+                "instance can be rehydrated with full state"
               ]
             }
           ]
@@ -80,16 +147,67 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler createNode is available"
+                "valid template and nodeId exist in context.payload"
               ],
               "when": [
-                "createNode executes under normal conditions"
+                "createNode executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "DOM element is created with specified tag and ID",
+                "CSS styles and variables are injected and applied",
+                "element is appended to canvas or target container",
+                "interactions (selection, drag) are attached",
+                "created node metadata is stored in context.payload.createdNode"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "operation completes within 2s P95",
+                "React rendering is NOT performed directly (deferred to renderReact beat)",
+                "schema is validated before applying"
+              ]
+            },
+            {
+              "given": [
+                "template specifies SVG with rx-line class"
+              ],
+              "when": [
+                "createNode processes SVG line component"
+              ],
+              "then": [
+                "SVG element is created with viewBox and preserveAspectRatio",
+                "child <line> element with segment class is appended",
+                "line attributes (x1, y1, x2, y2) are set"
+              ],
+              "and": [
+                "vector-effect='non-scaling-stroke' is applied"
+              ]
+            },
+            {
+              "given": [
+                "template includes data-role='container'"
+              ],
+              "when": [
+                "createNode processes container element"
+              ],
+              "then": [
+                "data-role attribute is set to 'container'",
+                "position: relative is applied"
+              ],
+              "and": [
+                "element can host child components"
+              ]
+            },
+            {
+              "given": [
+                "import scenario with containerId specified"
+              ],
+              "when": [
+                "createNode appends element"
+              ],
+              "then": [
+                "element is appended to specified container instead of canvas"
+              ],
+              "and": [
+                "nested component structure is preserved"
               ]
             }
           ]
@@ -109,16 +227,84 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler renderReact is available"
+                "context.payload.kind is 'react' with valid reactCode"
               ],
               "when": [
-                "renderReact executes under normal conditions"
+                "renderReact executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "React code is validated before compilation",
+                "JSX is transformed to JavaScript using Babel",
+                "React component is compiled and mounted using createRoot",
+                "rendering uses startTransition for non-blocking UI",
+                "react.component.mounted event is published"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "operation completes within 200ms P95",
+                "validation, compile, and render metrics are emitted",
+                "context.payload.reactRendered is set to true"
+              ]
+            },
+            {
+              "given": [
+                "React code validation fails"
+              ],
+              "when": [
+                "renderReact validates code"
+              ],
+              "then": [
+                "error message lists validation failures",
+                "react.component.error event is published",
+                "error is displayed in container with user-friendly styling"
+              ],
+              "and": [
+                "context.payload.reactError contains error message",
+                "system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "JSX compilation fails"
+              ],
+              "when": [
+                "Babel transforms code"
+              ],
+              "then": [
+                "compilation error is captured",
+                "ErrorComponent is rendered showing error details",
+                "react.component.error event is published"
+              ],
+              "and": [
+                "HTML is escaped to prevent XSS",
+                "diagnostics emitter records error"
+              ]
+            },
+            {
+              "given": [
+                "existing React root exists for nodeId"
+              ],
+              "when": [
+                "renderReact is called again"
+              ],
+              "then": [
+                "existing root is unmounted before creating new root"
+              ],
+              "and": [
+                "memory leaks are prevented"
+              ]
+            },
+            {
+              "given": [
+                "context.payload.kind is not 'react'"
+              ],
+              "when": [
+                "renderReact is invoked"
+              ],
+              "then": [
+                "handler returns early without processing"
+              ],
+              "and": [
+                "non-React components are not affected"
               ]
             }
           ]
@@ -138,16 +324,49 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler notifyUi is available"
+                "component has been created with id and correlationId"
               ],
               "when": [
-                "notifyUi executes under normal conditions"
+                "notifyUi executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "canvas.component.created event is published via EventRouter",
+                "event includes id and correlationId",
+                "legacy onComponentCreated callback is invoked if provided"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "delivery completes within 20ms end-to-end",
+                "events are ordered FIFO",
+                "subscribers receive notifications consistently"
+              ]
+            },
+            {
+              "given": [
+                "id or correlationId is missing"
+              ],
+              "when": [
+                "notifyUi executes"
+              ],
+              "then": [
+                "event publication is skipped",
+                "callback is still invoked if provided"
+              ],
+              "and": [
+                "system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "multiple components are created rapidly"
+              ],
+              "when": [
+                "notifyUi handles concurrent notifications"
+              ],
+              "then": [
+                "events are delivered in order without missed transitions"
+              ],
+              "and": [
+                "backpressure mechanisms prevent queue overflow"
               ]
             }
           ]
@@ -167,16 +386,64 @@
           "acceptanceCriteriaStructured": [
             {
               "given": [
-                "handler enhanceLine is available"
+                "lineAdvanced feature flag is enabled and SVG element with rx-line class exists"
               ],
               "when": [
-                "enhanceLine executes under normal conditions"
+                "enhanceLine executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "SVG base attributes are set (width, height, viewBox, preserveAspectRatio)",
+                "line markers defs are created with rx-arrow-end marker",
+                "marker includes arrow path with currentColor fill",
+                "augmentation is idempotent (safe to call multiple times)"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "operation completes within 1s P95",
+                "geometry is validated",
+                "markers enable precise line anchors and hit areas"
+              ]
+            },
+            {
+              "given": [
+                "lineAdvanced feature flag is disabled"
+              ],
+              "when": [
+                "enhanceLine executes"
+              ],
+              "then": [
+                "handler returns early without processing"
+              ],
+              "and": [
+                "feature flag controls advanced line features"
+              ]
+            },
+            {
+              "given": [
+                "element is not SVG or does not have rx-line class"
+              ],
+              "when": [
+                "enhanceLine validates element"
+              ],
+              "then": [
+                "handler returns early without augmentation"
+              ],
+              "and": [
+                "non-line elements are not affected"
+              ]
+            },
+            {
+              "given": [
+                "markers already exist in SVG defs"
+              ],
+              "when": [
+                "enhanceLine runs"
+              ],
+              "then": [
+                "existing markers are preserved",
+                "no duplicate markers are created"
+              ],
+              "and": [
+                "operation is idempotent"
               ]
             }
           ]
