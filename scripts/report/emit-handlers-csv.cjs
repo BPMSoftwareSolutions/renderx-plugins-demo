@@ -135,6 +135,7 @@ function collectBeatHandlersFromJsonSequences(){
             beatIndex += 1;
             const beatName = b.name || b.id || beatIndex;
             const handlers = [];
+            const acLines = [];
             // Common shapes: b.handlers, b.execution.handlers, b.actions, Given/When/Then handlers
             if (Array.isArray(b.handlers)) handlers.push(...b.handlers);
             if (b.execution && Array.isArray(b.execution.handlers)) handlers.push(...b.execution.handlers);
@@ -148,6 +149,9 @@ function collectBeatHandlersFromJsonSequences(){
                   else if (step && step.action) handlers.push(step.action);
                   else if (step && step.name) handlers.push(step.name);
                   else if (typeof step === 'string') handlers.push(step);
+                  // Capture AC/GWT text lines for CSV
+                  const txt = (typeof step === 'string') ? step : (step.text || step.description || step.title || step.ac || step.gwt);
+                  if (txt) acLines.push(`${k}: ${txt}`);
                 }
               }
             }
@@ -165,7 +169,8 @@ function collectBeatHandlersFromJsonSequences(){
                 // Path/package can be resolved later via exports list
                 filePath: undefined,
                 package: pkg,
-                symphony: 'unknown'
+                symphony: 'unknown',
+                ac: acLines.join('\n')
               });
             }
           }
@@ -210,7 +215,8 @@ for (const bh of beatHandlers){
     filePath,
     subDomain,
     Movement: bh.movement,
-    Beat: bh.beat
+    Beat: bh.beat,
+    AC: bh.ac || ''
   });
 }
 // Do NOT include export-only handlers; emit beat handlers exclusively
@@ -226,10 +232,10 @@ function toCsvValue(v){
   return s;
 }
 
-const header = ['handler','symphony','file path','sub-domain','Movement','Beat'];
+const header = ['handler','symphony','file path','sub-domain','Movement','Beat','AC'];
 const lines = [header.join(',')];
 for (const r of rows){
-  lines.push([r.handler, r.symphony, r.filePath, r.subDomain, r.Movement, r.Beat].map(toCsvValue).join(','));
+  lines.push([r.handler, r.symphony, r.filePath, r.subDomain, r.Movement, r.Beat, r.AC].map(toCsvValue).join(','));
 }
 fs.writeFileSync(outPath, lines.join('\n'));
 console.log('Wrote CSV:', outPath, 'rows=', rows.length);
