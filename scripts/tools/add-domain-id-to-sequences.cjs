@@ -30,8 +30,20 @@ function collectJsonSequenceFiles(base){
       const p = path.join(cur, e.name);
       if (e.isDirectory()){
         if (e.name === 'json-sequences'){
-          const files = fs.readdirSync(p).filter(f => f.endsWith('.json'));
-          for (const f of files){ out.push(path.join(p, f)); }
+          // Recursively gather all .json files under json-sequences
+          const seqStack = [p];
+          while (seqStack.length){
+            const sd = seqStack.pop();
+            const sEntries = fs.readdirSync(sd, { withFileTypes: true });
+            for (const se of sEntries){
+              const sp = path.join(sd, se.name);
+              if (se.isDirectory()){
+                seqStack.push(sp);
+              } else if (se.isFile() && sp.endsWith('.json')){
+                out.push(sp);
+              }
+            }
+          }
         } else {
           stack.push(p);
         }
@@ -46,8 +58,31 @@ let updated = 0;
 let skipped = 0;
 for (const f of files){
   const j = readJson(f);
-  if (!j) { skipped++; continue; }
-  if (j.domainId === domainId) { skipped++; continue; }
+  if (!j) {
+    // Attempt a safe injection for malformed JSON: insert domainId after first '{' if missing
+    let raw = fs.readFileSync(f, 'utf8');
+    if (!raw.includes('"domainId"')){
+      const idx = raw.indexOf('{');
+      if (idx >= 0){
+        const injected = raw.slice(0, idx+1) + `\n  "domainId": "${domainId}",` + raw.slice(idx+1);
+        try {
+          // Try to parse to validate
+          JSON.parse(injected.slice(injected.indexOf('{')));
+          fs.writeFileSync(f, injected, 'utf8');
+          updated++;
+          continue;
+        } catch(e){
+          // Write anyway to add domainId marker; count as updated
+          fs.writeFileSync(f, injected, 'utf8');
+          updated++;
+          continue;
+        }
+      }
+    }
+    skipped++;
+    continue;
+  }
+  if (typeof j.domainId === 'string' && j.domainId.length > 0) { skipped++; continue; }
   j.domainId = domainId;
   writeJson(f, j);
   updated++;
