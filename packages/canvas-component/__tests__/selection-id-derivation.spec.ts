@@ -165,21 +165,91 @@ describe("Selection ID derivation and baton flow", () => {
       expect(result).toEqual({ id: "rx-node-nested999" });
     });
 
-    it("returns empty object when no ID can be derived", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:4
+     *
+     * Given: all ID sources are exhausted and baton contains ID
+     * When: showSelectionOverlay uses baton fallback
+     * Then: element ID is derived from ctx.baton.id or ctx.baton.elementId
+     * And: baton provides last-resort ID for legacy flows
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:4] derives ID from ctx.baton when all other sources are missing", () => {
+      // Given: all ID sources are exhausted and baton contains ID
+      const data = {}; // no data.id, data.elementId, or event.target
+      const ctx = {
+        conductor: mockConductor,
+        baton: { id: "rx-node-button123" }
+      };
+
+      // When: showSelectionOverlay uses baton fallback
+      const result = selectHandlers.showSelectionOverlay(data, ctx);
+
+      // Then: element ID is derived from ctx.baton.id
+      expect(result).toEqual({ id: "rx-node-button123" });
+    });
+
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:4
+     *
+     * Given: all ID sources are exhausted and baton contains ID
+     * When: showSelectionOverlay uses baton fallback
+     * Then: element ID is derived from ctx.baton.id or ctx.baton.elementId
+     * And: baton provides last-resort ID for legacy flows
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:4] derives ID from ctx.baton.elementId when baton.id is missing", () => {
+      // Given: all ID sources are exhausted and baton contains elementId
+      const data = {}; // no data.id, data.elementId, or event.target
+      const ctx = {
+        conductor: mockConductor,
+        baton: { elementId: "rx-node-div456" }
+      };
+
+      // When: showSelectionOverlay uses baton fallback
+      const result = selectHandlers.showSelectionOverlay(data, ctx);
+
+      // Then: element ID is derived from ctx.baton.elementId
+      expect(result).toEqual({ id: "rx-node-div456" });
+    });
+
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:5
+     *
+     * Given: no valid ID can be derived from any source
+     * When: showSelectionOverlay validates ID
+     * Then: handler returns early without rendering overlay
+     *       warning is logged with context
+     * And: system remains stable without errors
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:5] returns empty object when no ID can be derived", () => {
+      // Given: no valid ID can be derived from any source
       const data = { event: { target: document.body } }; // body has no rx-comp class
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay validates ID
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: handler returns early without rendering overlay
       expect(result).toEqual({});
     });
 
-    it("returns empty object when element with derived ID doesn't exist in DOM", () => {
+    /**
+     * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:5
+     *
+     * Given: no valid ID can be derived from any source
+     * When: showSelectionOverlay validates ID
+     * Then: handler returns early without rendering overlay
+     *       warning is logged with context
+     * And: system remains stable without errors
+     */
+    it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:5] returns empty object when element with derived ID doesn't exist in DOM", () => {
+      // Given: no valid ID can be derived from any source (element doesn't exist)
       const data = { id: "rx-node-nonexistent" };
       const ctx = { conductor: mockConductor };
 
+      // When: showSelectionOverlay validates ID
       const result = selectHandlers.showSelectionOverlay(data, ctx);
 
+      // Then: handler returns early without rendering overlay
       expect(result).toEqual({});
     });
   });
