@@ -22,9 +22,15 @@
           "userStory": "As an engineer, I need `validateField` to run validators and collect errors.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler validateField is available"],
-              "when": ["validateField executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler validateField is available"
+              ],
+              "when": [
+                "validateField executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -46,9 +52,15 @@
           "userStory": "As an engineer, I need `mergeErrors` to compose error state.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler mergeErrors is available"],
-              "when": ["mergeErrors executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler mergeErrors is available"
+              ],
+              "when": [
+                "mergeErrors executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -70,9 +82,15 @@
           "userStory": "As an engineer, I need `updateView` to render errors promptly.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler updateView is available"],
-              "when": ["updateView executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler updateView is available"
+              ],
+              "when": [
+                "updateView executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -89,5 +107,6 @@
   "tempo": 120,
   "userStory": "As a UI runtime engineer, I need field validation to merge errors and update views within ≤1s P95.",
   "persona": "UI runtime engineer",
-  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
+  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements",
+  "domainId": "renderx-web-orchestration"
 }

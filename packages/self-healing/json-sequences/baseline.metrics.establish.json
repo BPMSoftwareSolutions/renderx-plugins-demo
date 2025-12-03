@@ -61,5 +61,6 @@
   "tempo": 120,
   "userStory": "As a product stakeholder, I want the baseline-metrics-establish process to execute with measurable, auditable results and quantifiable KPIs so that business outcomes are predictable and verifiable (target SLA: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Enables measurable business value with SLA compliance and performance tracking; supports data-driven optimization"
+  "businessValue": "Enables measurable business value with SLA compliance and performance tracking; supports data-driven optimization",
+  "domainId": "renderx-web-orchestration"
 }

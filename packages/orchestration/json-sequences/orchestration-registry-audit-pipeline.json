@@ -579,5 +579,6 @@
   ],
   "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
   "persona": "Governance lead",
-  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
+  "domainId": "renderx-web-orchestration"
 }

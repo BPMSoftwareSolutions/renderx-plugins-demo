@@ -19,9 +19,15 @@
           "scenario": "Update or Modify update From Element",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler updateFromElement is available"],
-              "when": ["updateFromElement executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler updateFromElement is available"
+              ],
+              "when": [
+                "updateFromElement executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -43,45 +49,75 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["a class change operation completes"],
-              "when": ["notifyUi is invoked with change details"],
-              "then": ["an event is published to the central EventRouter within 5ms"],
+              "given": [
+                "a class change operation completes"
+              ],
+              "when": [
+                "notifyUi is invoked with change details"
+              ],
+              "then": [
+                "an event is published to the central EventRouter within 5ms"
+              ],
               "and": [
                 "the event contains element ID, action (add/remove), and class name",
                 "the event is stamped with microsecond-precision timestamp"
               ]
             },
             {
-              "given": ["multiple class operations occur in sequence"],
-              "when": ["notifyUi publishes events"],
-              "then": ["events are queued in FIFO order"],
+              "given": [
+                "multiple class operations occur in sequence"
+              ],
+              "when": [
+                "notifyUi publishes events"
+              ],
+              "then": [
+                "events are queued in FIFO order"
+              ],
               "and": [
                 "subscribers receive events in the order they occurred",
                 "no events are dropped or duplicated"
               ]
             },
             {
-              "given": ["a subscriber is registered for UI change events"],
-              "when": ["notifyUi publishes"],
-              "then": ["the subscriber receives the event within 20ms"],
+              "given": [
+                "a subscriber is registered for UI change events"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "the subscriber receives the event within 20ms"
+              ],
               "and": [
                 "the subscriber can act on the notification",
                 "multiple subscribers can consume the same event"
               ]
             },
             {
-              "given": ["the event system is congested"],
-              "when": ["notifyUi attempts to publish"],
-              "then": ["the event is queued with backpressure"],
+              "given": [
+                "the event system is congested"
+              ],
+              "when": [
+                "notifyUi attempts to publish"
+              ],
+              "then": [
+                "the event is queued with backpressure"
+              ],
               "and": [
                 "the operation does not block the caller",
                 "events are eventually delivered with bounded latency"
               ]
             },
             {
-              "given": ["notification occurs during error conditions"],
-              "when": ["notifyUi is called"],
-              "then": ["events are still published for traceability"],
+              "given": [
+                "notification occurs during error conditions"
+              ],
+              "when": [
+                "notifyUi is called"
+              ],
+              "then": [
+                "events are still published for traceability"
+              ],
               "and": [
                 "error context is included in event payload",
                 "the system can reconstruct the failure chain from events"
@@ -102,5 +138,6 @@
   "tempo": 120,
   "userStory": "As a UI runtime engineer, I need updates from canvas components to refresh control panel state deterministically with <20ms notifications.",
   "persona": "UI runtime engineer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

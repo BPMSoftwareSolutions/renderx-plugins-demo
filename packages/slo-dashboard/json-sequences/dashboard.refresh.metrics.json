@@ -191,5 +191,6 @@
   "tempo": 120,
   "userStory": "As an SRE, I need dashboard refresh to reload metrics and update compliance quickly.",
   "persona": "SRE",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

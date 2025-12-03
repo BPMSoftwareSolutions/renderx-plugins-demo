@@ -847,5 +847,6 @@
   "tempo": 120,
   "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
   "persona": "SRE",
-  "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
+  "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%",
+  "domainId": "renderx-web-orchestration"
 }

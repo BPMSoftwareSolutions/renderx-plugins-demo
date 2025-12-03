@@ -109,5 +109,6 @@
   ],
   "userStory": "As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.",
   "persona": "DevOps engineer",
-  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
+  "domainId": "renderx-web-orchestration"
 }

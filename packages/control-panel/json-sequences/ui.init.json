@@ -22,9 +22,15 @@
           "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["application startup"],
-              "when": ["initPanel runs"],
-              "then": ["panel initializes within ≤ 300ms and subscribes to events"],
+              "given": [
+                "application startup"
+              ],
+              "when": [
+                "initPanel runs"
+              ],
+              "then": [
+                "panel initializes within ≤ 300ms and subscribes to events"
+              ],
               "and": [
                 "telemetry 'control-panel.init' includes subscriptions"
               ]
@@ -46,9 +52,15 @@
           "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["configuration and schema definitions"],
-              "when": ["initResolver runs"],
-              "then": ["field/type resolvers register successfully within ≤ 50ms"],
+              "given": [
+                "configuration and schema definitions"
+              ],
+              "when": [
+                "initResolver runs"
+              ],
+              "then": [
+                "field/type resolvers register successfully within ≤ 50ms"
+              ],
               "and": [
                 "resolver map includes required primitives and custom types"
               ]
@@ -70,9 +82,15 @@
           "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["resolver initialization completes"],
-              "when": ["loadSchemas runs"],
-              "then": ["schemas load from source with P95 ≤ 200ms and validate"],
+              "given": [
+                "resolver initialization completes"
+              ],
+              "when": [
+                "loadSchemas runs"
+              ],
+              "then": [
+                "schemas load from source with P95 ≤ 200ms and validate"
+              ],
               "and": [
                 "telemetry 'control-panel.schemas.load' includes count and duration"
               ]
@@ -94,9 +112,15 @@
           "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["event bus and DOM listeners"],
-              "when": ["registerObservers runs"],
-              "then": ["observers register idempotently without duplicates"],
+              "given": [
+                "event bus and DOM listeners"
+              ],
+              "when": [
+                "registerObservers runs"
+              ],
+              "then": [
+                "observers register idempotently without duplicates"
+              ],
               "and": [
                 "unregistration handles teardown cleanly"
               ]
@@ -118,9 +142,15 @@
           "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["initialization sequence completes"],
-              "when": ["notifyReady runs"],
-              "then": ["a 'control-panel.ready' event publishes within 5ms"],
+              "given": [
+                "initialization sequence completes"
+              ],
+              "when": [
+                "notifyReady runs"
+              ],
+              "then": [
+                "a 'control-panel.ready' event publishes within 5ms"
+              ],
               "and": [
                 "subscribers receive the event within ≤ 20ms"
               ]
@@ -142,9 +172,15 @@
           "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["movement context"],
-              "when": ["initMovement runs"],
-              "then": ["movement state is initialized deterministically and re-entrant"],
+              "given": [
+                "movement context"
+              ],
+              "when": [
+                "initMovement runs"
+              ],
+              "then": [
+                "movement state is initialized deterministically and re-entrant"
+              ],
               "and": [
                 "no side effects occur before first user interaction"
               ]
@@ -161,5 +197,6 @@
   "tempo": 120,
   "userStory": "As a UI runtime engineer, I need the control panel to initialize views and data sources with <200ms render and ≤1s data fetch P95, emitting telemetry so operators can track responsiveness.",
   "persona": "UI runtime engineer",
-  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
+  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization",
+  "domainId": "renderx-web-orchestration"
 }

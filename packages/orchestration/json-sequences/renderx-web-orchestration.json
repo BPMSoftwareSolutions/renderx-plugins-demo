@@ -2256,5 +2256,6 @@
   },
   "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
   "persona": "Product owner",
-  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
+  "domainId": "renderx-web-orchestration"
 }

@@ -1031,5 +1031,6 @@
   "tempo": 120,
   "userStory": "As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.",
   "persona": "Release manager",
-  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
+  "domainId": "renderx-web-orchestration"
 }

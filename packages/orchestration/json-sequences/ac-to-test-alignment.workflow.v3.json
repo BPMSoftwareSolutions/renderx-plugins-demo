@@ -14,25 +14,76 @@
           {
             "id": "beat-0",
             "title": "Generate Canonical Sequence Index",
-            "handlers": [{ "script": "scripts/renderx-web/generate-canonical-sequence-index.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/renderx-web/generate-canonical-sequence-index.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["DOMAIN_REGISTRY.json"], "when": ["collect renderx-web and child domain sequences"], "then": ["emit canonical-sequences.manifest.json"], "and": ["include markdown summary under docs/generated/renderx-web-orchestration/"] }
+              {
+                "given": [
+                  "DOMAIN_REGISTRY.json"
+                ],
+                "when": [
+                  "collect renderx-web and child domain sequences"
+                ],
+                "then": [
+                  "emit canonical-sequences.manifest.json"
+                ],
+                "and": [
+                  "include markdown summary under docs/generated/renderx-web-orchestration/"
+                ]
+              }
             ]
           },
           {
             "id": "beat-1",
             "title": "Generate AC Registry",
-            "handlers": [{ "script": "scripts/generate-ac-registry.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/generate-ac-registry.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["domain registry is available"], "when": ["registry is processed"], "then": ["AC registry JSON is generated"], "and": ["invalid sequences are skipped gracefully"] }
+              {
+                "given": [
+                  "domain registry is available"
+                ],
+                "when": [
+                  "registry is processed"
+                ],
+                "then": [
+                  "AC registry JSON is generated"
+                ],
+                "and": [
+                  "invalid sequences are skipped gracefully"
+                ]
+              }
             ]
           },
           {
             "id": "beat-2",
             "title": "Discover Existing Tests",
-            "handlers": [{ "script": "scripts/analyze-tests.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/analyze-tests.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["workspace root"], "when": ["glob search for spec/test files"], "then": ["return total count and per-package breakdown"], "and": ["exclude vendor and build outputs"] }
+              {
+                "given": [
+                  "workspace root"
+                ],
+                "when": [
+                  "glob search for spec/test files"
+                ],
+                "then": [
+                  "return total count and per-package breakdown"
+                ],
+                "and": [
+                  "exclude vendor and build outputs"
+                ]
+              }
             ]
           }
         ]
@@ -44,17 +95,52 @@
           {
             "id": "beat-3",
             "title": "Compute Canonical Test Count",
-            "handlers": [{ "script": "scripts/ac-alignment/compute-canonical.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/compute-canonical.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["AC registry"], "when": ["count ACs per beat"], "then": ["canonical minimum tests equals AC count"], "and": ["report total ACs and beats"] }
+              {
+                "given": [
+                  "AC registry"
+                ],
+                "when": [
+                  "count ACs per beat"
+                ],
+                "then": [
+                  "canonical minimum tests equals AC count"
+                ],
+                "and": [
+                  "report total ACs and beats"
+                ]
+              }
             ]
           },
           {
             "id": "beat-4",
             "title": "Quality Difference Report",
-            "handlers": [{ "script": "scripts/ac-alignment/quality-diff.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/quality-diff.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["existing tests", "AC registry"], "when": ["compare GWT structure and tags"], "then": ["list gaps: missing AC tags, missing THEN assertions, title mismatch"], "and": ["summarize per-domain and per-package"] }
+              {
+                "given": [
+                  "existing tests",
+                  "AC registry"
+                ],
+                "when": [
+                  "compare GWT structure and tags"
+                ],
+                "then": [
+                  "list gaps: missing AC tags, missing THEN assertions, title mismatch"
+                ],
+                "and": [
+                  "summarize per-domain and per-package"
+                ]
+              }
             ]
           }
         ]
@@ -66,65 +152,210 @@
           {
             "id": "beat-5",
             "title": "Post-Conversion Projection",
-            "handlers": [{ "script": "scripts/ac-alignment/projection.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/projection.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["existing test count", "canonical count"], "when": ["apply tagging plan"], "then": ["estimate AC presence and THEN coverage"], "and": ["estimate number of tests after conversion"] }
+              {
+                "given": [
+                  "existing test count",
+                  "canonical count"
+                ],
+                "when": [
+                  "apply tagging plan"
+                ],
+                "then": [
+                  "estimate AC presence and THEN coverage"
+                ],
+                "and": [
+                  "estimate number of tests after conversion"
+                ]
+              }
             ]
           },
           {
             "id": "beat-6a",
             "title": "Extract Handler Usage from Tests",
-            "handlers": [{ "script": "scripts/ac-alignment/extract-handler-usage.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/extract-handler-usage.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["all test files"], "when": ["parse test content for handler imports and invocations"], "then": ["map each test to handlers it uses"], "and": ["output handler-to-test mapping"] }
+              {
+                "given": [
+                  "all test files"
+                ],
+                "when": [
+                  "parse test content for handler imports and invocations"
+                ],
+                "then": [
+                  "map each test to handlers it uses"
+                ],
+                "and": [
+                  "output handler-to-test mapping"
+                ]
+              }
             ]
           },
           {
             "id": "beat-6b",
             "title": "Map Handlers to ACs",
-            "handlers": [{ "script": "scripts/ac-alignment/map-handlers-to-acs.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/map-handlers-to-acs.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["AC registry with handlers", "handler-to-test mapping"], "when": ["correlate handlers"], "then": ["generate comprehensive test-to-AC suggestions"], "and": ["every handler AC has at least one test"] }
+              {
+                "given": [
+                  "AC registry with handlers",
+                  "handler-to-test mapping"
+                ],
+                "when": [
+                  "correlate handlers"
+                ],
+                "then": [
+                  "generate comprehensive test-to-AC suggestions"
+                ],
+                "and": [
+                  "every handler AC has at least one test"
+                ]
+              }
             ]
           },
           {
             "id": "beat-6c",
             "title": "Suggest Tags (Comprehensive)",
-            "handlers": [{ "script": "scripts/ac-alignment/suggest-tags-comprehensive.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/suggest-tags-comprehensive.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["handler mapping", "fuzzy matching", "file patterns"], "when": ["combine all strategies"], "then": ["produce comprehensive suggestions.json"], "and": ["target 70%+ AC coverage"] }
+              {
+                "given": [
+                  "handler mapping",
+                  "fuzzy matching",
+                  "file patterns"
+                ],
+                "when": [
+                  "combine all strategies"
+                ],
+                "then": [
+                  "produce comprehensive suggestions.json"
+                ],
+                "and": [
+                  "target 70%+ AC coverage"
+                ]
+              }
             ]
           },
           {
             "id": "beat-7",
             "title": "Apply Tags (Write to All Files)",
-            "handlers": [{ "script": "scripts/ac-alignment/apply-tags.cjs", "args": ["--write"] }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/apply-tags.cjs",
+                "args": [
+                  "--write"
+                ]
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["comprehensive suggestions.json"], "when": ["apply tags in write mode"], "then": ["modify all relevant test files with AC/BEAT tags"], "and": ["all 127 AC handlers have tagged tests"] }
+              {
+                "given": [
+                  "comprehensive suggestions.json"
+                ],
+                "when": [
+                  "apply tags in write mode"
+                ],
+                "then": [
+                  "modify all relevant test files with AC/BEAT tags"
+                ],
+                "and": [
+                  "all 127 AC handlers have tagged tests"
+                ]
+              }
             ]
           },
           {
             "id": "beat-8a",
             "title": "Verify Coverage (Scan Tags)",
-            "handlers": [{ "script": "scripts/ac-alignment/scan-existing-tags.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/scan-existing-tags.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["all test files"], "when": ["scan for AC/BEAT tags"], "then": ["count tagged tests and coverage"], "and": ["report actual coverage percentage"] }
+              {
+                "given": [
+                  "all test files"
+                ],
+                "when": [
+                  "scan for AC/BEAT tags"
+                ],
+                "then": [
+                  "count tagged tests and coverage"
+                ],
+                "and": [
+                  "report actual coverage percentage"
+                ]
+              }
             ]
           },
           {
             "id": "beat-8b",
             "title": "Validate Test Implementations",
-            "handlers": [{ "script": "scripts/ac-alignment/validate-test-implementations.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/validate-test-implementations.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["tagged tests", "AC registry"], "when": ["analyze test implementations"], "then": ["verify Given/When/Then conditions are properly implemented"], "and": ["report compliance rate and identify non-compliant tests"] }
+              {
+                "given": [
+                  "tagged tests",
+                  "AC registry"
+                ],
+                "when": [
+                  "analyze test implementations"
+                ],
+                "then": [
+                  "verify Given/When/Then conditions are properly implemented"
+                ],
+                "and": [
+                  "report compliance rate and identify non-compliant tests"
+                ]
+              }
             ]
           },
           {
             "id": "beat-8c",
             "title": "Generate Test Implementation Fixes",
-            "handlers": [{ "script": "scripts/ac-alignment/fix-test-implementations.cjs" }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/fix-test-implementations.cjs"
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["validation results", "AC registry"], "when": ["process non-compliant tests"], "then": ["generate suggested test implementations for each AC"], "and": ["output .fixes.txt files with Given/When/Then test code"] }
+              {
+                "given": [
+                  "validation results",
+                  "AC registry"
+                ],
+                "when": [
+                  "process non-compliant tests"
+                ],
+                "then": [
+                  "generate suggested test implementations for each AC"
+                ],
+                "and": [
+                  "output .fixes.txt files with Given/When/Then test code"
+                ]
+              }
             ]
           }
         ]
@@ -136,12 +367,27 @@
           {
             "id": "beat-8",
             "title": "Emit Analysis Artifacts",
-            "handlers": [{ "script": "scripts/ac-alignment/format-alignment-report.cjs", "args": ["--domain", "renderx-web-orchestration"] }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/format-alignment-report.cjs",
+                "args": [
+                  "--domain",
+                  "renderx-web-orchestration"
+                ]
+              }
+            ],
             "acceptanceCriteriaStructured": [
               {
-                "given": ["registry", "suggestions"],
-                "when": ["format report"],
-                "then": ["write markdown + summary.json"],
+                "given": [
+                  "registry",
+                  "suggestions"
+                ],
+                "when": [
+                  "format report"
+                ],
+                "then": [
+                  "write markdown + summary.json"
+                ],
                 "and": [
                   "include counts for existing, canonical, differences, projection",
                   "merge enhanced AC validator coverage from .generated/ac-alignment/validation-summary.json",
@@ -153,18 +399,48 @@
           {
             "id": "beat-9",
             "title": "Gate with Thresholds",
-            "handlers": [{ "script": "scripts/ac-alignment/enforce-thresholds.cjs", "args": ["--presence", "0.3", "--then", "0.2"] }],
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/enforce-thresholds.cjs",
+                "args": [
+                  "--presence",
+                  "0.3",
+                  "--then",
+                  "0.2"
+                ]
+              }
+            ],
             "acceptanceCriteriaStructured": [
-              { "given": ["coverage metrics"], "when": ["check thresholds"], "then": ["emit pass/fail event"], "and": ["include actionable next steps"] }
+              {
+                "given": [
+                  "coverage metrics"
+                ],
+                "when": [
+                  "check thresholds"
+                ],
+                "then": [
+                  "emit pass/fail event"
+                ],
+                "and": [
+                  "include actionable next steps"
+                ]
+              }
             ]
           }
         ]
       }
     ],
     "events": {
-      "onStart": ["sequence:start"],
-      "onComplete": ["sequence:complete", "artifacts:ready"],
-      "onFailure": ["sequence:failed"]
+      "onStart": [
+        "sequence:start"
+      ],
+      "onComplete": [
+        "sequence:complete",
+        "artifacts:ready"
+      ],
+      "onFailure": [
+        "sequence:failed"
+      ]
     },
     "artifacts": {
       "reports": [
@@ -190,8 +466,12 @@
           "differences from prior counts are explained or tooling updated"
         ],
         "related": {
-          "scripts": ["scripts/analyze-symphonic-code.cjs"],
-          "artifacts": ["docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"]
+          "scripts": [
+            "scripts/analyze-symphonic-code.cjs"
+          ],
+          "artifacts": [
+            "docs/generated/renderx-web/renderx-web-orchestration-CODE-ANALYSIS-REPORT.md"
+          ]
         }
       },
       {
@@ -261,5 +541,6 @@
         }
       }
     ]
-  }
+  },
+  "domainId": "renderx-web-orchestration"
 }

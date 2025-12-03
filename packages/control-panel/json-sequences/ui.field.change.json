@@ -22,9 +22,15 @@
           "userStory": "As an engineer, I need `prepareField` to normalize input and validate.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler prepareField is available"],
-              "when": ["prepareField executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler prepareField is available"
+              ],
+              "when": [
+                "prepareField executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -46,9 +52,15 @@
           "userStory": "As an engineer, I need `dispatchField` to route changes to the canvas component.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler dispatchField is available"],
-              "when": ["dispatchField executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler dispatchField is available"
+              ],
+              "when": [
+                "dispatchField executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -70,9 +82,15 @@
           "userStory": "As an engineer, I need `setDirty` to mark state and enable save.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler setDirty is available"],
-              "when": ["setDirty executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler setDirty is available"
+              ],
+              "when": [
+                "setDirty executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -94,9 +112,15 @@
           "userStory": "As an engineer, I need `awaitRefresh` to synchronize view updates.",
           "acceptanceCriteriaStructured": [
             {
-              "given": ["handler awaitRefresh is available"],
-              "when": ["awaitRefresh executes under normal conditions"],
-              "then": ["it performs its expected orchestration logic"],
+              "given": [
+                "handler awaitRefresh is available"
+              ],
+              "when": [
+                "awaitRefresh executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
                 "emits expected side effects or returns expected value"
               ]
@@ -113,5 +137,6 @@
   "tempo": 120,
   "userStory": "As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.",
   "persona": "UI runtime engineer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

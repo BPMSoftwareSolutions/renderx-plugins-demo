@@ -940,5 +940,6 @@
   "tempo": 120,
   "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
+  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements",
+  "domainId": "renderx-web-orchestration"
 }

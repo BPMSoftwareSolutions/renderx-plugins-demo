@@ -109,5 +109,6 @@
   ],
   "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
+  "domainId": "renderx-web-orchestration"
 }
