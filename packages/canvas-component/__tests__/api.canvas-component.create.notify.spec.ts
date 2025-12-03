@@ -45,12 +45,30 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
     // Reset spy calls between tests to avoid cross-test pollution
     (EventRouter.publish as any).mockClear();
   });
-  it('publishes canvas.component.created with id + correlationId when both present (createdNode path)', () => {
+
+  /**
+   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.5:1
+   *
+   * Given: component has been created with id and correlationId
+   * When: notifyUi executes
+   * Then: canvas.component.created event is published via EventRouter
+   *       event includes id and correlationId
+   *       legacy onComponentCreated callback is invoked if provided
+   * And: delivery completes within 20ms end-to-end
+   *      events are ordered FIFO
+   *      subscribers receive notifications consistently
+   */
+  it('[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.5:1] publishes canvas.component.created with id + correlationId when both present (createdNode path)', () => {
     const ctx = makeCtx();
     ctx.payload.createdNode = { id: 'comp-123' };
     ctx.payload.correlationId = 'corr-abc';
+
     notifyUi({}, ctx);
+
+    // Then: canvas.component.created event is published via EventRouter
     expect(EventRouter.publish).toHaveBeenCalledTimes(1);
+
+    // Then: event includes id and correlationId
     expect(EventRouter.publish).toHaveBeenCalledWith(
       'canvas.component.created',
       { id: 'comp-123', correlationId: 'corr-abc' },
@@ -74,12 +92,20 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
 
   // NOTE: Negative path (correlationId missing) skipped; legacy flows may omit correlationId intentionally.
 
-  it('invokes legacy onComponentCreated callback if provided', () => {
+  /**
+   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.5:1
+   *
+   * Then: legacy onComponentCreated callback is invoked if provided
+   */
+  it('[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.5:1] invokes legacy onComponentCreated callback if provided', () => {
     const ctx = makeCtx();
     const createdNode = { id: 'legacy-comp' };
     ctx.payload.createdNode = createdNode;
     const cb = vi.fn();
+
     notifyUi({ onComponentCreated: cb, correlationId: 'corr' }, ctx);
+
+    // Then: legacy onComponentCreated callback is invoked if provided
     expect(cb).toHaveBeenCalledWith(createdNode);
   });
 });

@@ -18,7 +18,7 @@
           "scenario": "resolve Template",
           "userStory": "As a platform reliability engineer, I need `resolveTemplate` to deterministically resolve component schemas and bindings within 1s P95 (99.9% success), deduping remote fetches and emitting telemetry so downstream renderers can build pages without retries.",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
+          "testFile": "__tests__\\create.from-data.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [
@@ -81,7 +81,7 @@
           "scenario": "register Instance",
           "userStory": "As a frontend platform integrator, I need `registerInstance` to assign stable IDs and semantic classes to imported components within 1s P95 and persist registration events so style hooks and analytics can target instances consistently across sessions.",
           "testCase": "adds rx-comp-<tag>-<id> class for imported components",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.instance-class.spec.ts",
+          "testFile": "__tests__\\import.instance-class.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [
@@ -143,7 +143,7 @@
           "scenario": "Generate or Create create Node",
           "userStory": "As a page composition service, I need `createNode` to assemble a canvas node from resolved templates within 2s P95 without directly rendering React, forwarding to the drop symphony and validating schema to keep the composition pipeline decoupled and safe.",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "testFile": "__tests__\\create.dom.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [
@@ -223,7 +223,7 @@
           "scenario": "Render or Display render React",
           "userStory": "As a UI runtime engineer, I need `renderReact` to instantiate React components from composed nodes in <200ms P95, with memoized props and keyed lists, emitting perf telemetry so UI remains responsive on median devices.",
           "testCase": "creates a React component through the complete create sequence",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.react.integration.spec.ts",
+          "testFile": "__tests__\\create.react.integration.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [
@@ -320,7 +320,7 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "userStory": "As an event-driven UI orchestrator, I need UI class/state changes published with <20ms end-to-end delivery, ordered FIFO with backpressure, so subscribers (controls, analytics, accessibility) react consistently without missed transitions.",
           "testCase": "exports CanvasPage and register()",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testFile": "__tests__\\exports.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [
@@ -382,7 +382,7 @@
           "scenario": "enhance Line",
           "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
           "testCase": "should enhance-line",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "testFile": "__tests__\\advanced-line.augment.spec.ts",
           "acceptanceCriteriaStructured": [
             {
               "given": [

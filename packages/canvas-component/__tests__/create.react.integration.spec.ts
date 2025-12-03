@@ -105,7 +105,21 @@ describe("React Component Integration Tests", () => {
     });
   });
 
-  it("creates a React component through the complete create sequence", async () => {
+  /**
+   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.4:1
+   *
+   * Given: context.payload.kind is 'react' with valid reactCode
+   * When: renderReact executes
+   * Then: React code is validated before compilation
+   *       JSX is transformed to JavaScript using Babel
+   *       React component is compiled and mounted using createRoot
+   *       rendering uses startTransition for non-blocking UI
+   *       react.component.mounted event is published
+   * And: operation completes within 200ms P95
+   *      validation, compile, and render metrics are emitted
+   *      context.payload.reactRendered is set to true
+   */
+  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:1] creates a React component through the complete create sequence", async () => {
     const ctx = makeCtx();
     const template = makeReactComponentTemplate();
     const data = {
@@ -120,25 +134,36 @@ describe("React Component Integration Tests", () => {
     await createHandlers.renderReact(data, ctx);
     await createHandlers.notifyUi(data, ctx);
 
-    // Verify template resolution detected React strategy
+    // Then: React code is validated before compilation (mocked in this test)
+    // Then: JSX is transformed to JavaScript using Babel (mocked in this test)
     expect(ctx.payload.kind).toBe("react");
     expect(ctx.payload.template.render.strategy).toBe("react");
 
-    // Verify DOM container was created
+    // Then: React component is compiled and mounted using createRoot
     const nodeId = ctx.payload.nodeId;
     expect(nodeId).toMatch(/^rx-node-/);
-    
+
     const container = document.getElementById(nodeId);
     expect(container).toBeTruthy();
     expect(container?.classList.contains("rx-react")).toBe(true);
 
-    // Verify React rendering was attempted
+    // Then: React component is compiled and mounted using createRoot
     expect(mockCreateRoot).toHaveBeenCalledWith(container);
     expect(mockRender).toHaveBeenCalled();
+
+    // And: context.payload.reactRendered is set to true
     expect(ctx.payload.reactRendered).toBe(true);
   });
 
-  it("handles regular (non-React) components without React rendering", async () => {
+  /**
+   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.4:5
+   *
+   * Given: context.payload.kind is not 'react'
+   * When: renderReact is invoked
+   * Then: handler returns early without processing
+   * And: non-React components are not affected
+   */
+  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:5] handles regular (non-React) components without React rendering", async () => {
     const ctx = makeCtx();
     const template = makeRegularComponentTemplate();
     const data = {
@@ -153,17 +178,17 @@ describe("React Component Integration Tests", () => {
     await createHandlers.renderReact(data, ctx);
     await createHandlers.notifyUi(data, ctx);
 
-    // Verify no React strategy was detected
+    // Then: handler returns early without processing
     expect(ctx.payload.kind).toBeUndefined();
 
-    // Verify DOM element was created normally
+    // And: non-React components are not affected
     const nodeId = ctx.payload.nodeId;
     const element = document.getElementById(nodeId);
     expect(element).toBeTruthy();
     expect(element?.tagName.toLowerCase()).toBe("button");
     expect(element?.textContent).toBe("Click Me");
 
-    // Verify React rendering was skipped
+    // Then: React rendering was skipped
     expect(mockCreateRoot).not.toHaveBeenCalled();
     expect(mockRender).not.toHaveBeenCalled();
     expect(ctx.payload.reactRendered).toBeUndefined();

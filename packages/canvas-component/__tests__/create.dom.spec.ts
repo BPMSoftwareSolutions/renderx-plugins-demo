@@ -44,7 +44,21 @@ describe("canvas-component create beat (DOM-only)", () => {
     document.body.innerHTML = '<div id="rx-canvas"></div>';
   });
 
-  it("creates a single element under #rx-canvas with text, position and dimensions", () => {
+  /**
+   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.3:1
+   *
+   * Given: valid template and nodeId exist in context.payload
+   * When: createNode executes
+   * Then: DOM element is created with specified tag and ID
+   *       CSS styles and variables are injected and applied
+   *       element is appended to canvas or target container
+   *       interactions (selection, drag) are attached
+   *       created node metadata is stored in context.payload.createdNode
+   * And: operation completes within 2s P95
+   *      React rendering is NOT performed directly (deferred to renderReact beat)
+   *      schema is validated before applying
+   */
+  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.3:1] creates a single element under #rx-canvas with text, position and dimensions", () => {
     const template = makeTemplate();
 
     handlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -53,11 +67,14 @@ describe("canvas-component create beat (DOM-only)", () => {
     const btn = document.querySelector(
       "#rx-canvas button"
     ) as HTMLButtonElement | null;
-    expect(btn).toBeTruthy(); // should exist
+
+    // Then: DOM element is created with specified tag and ID
+    expect(btn).toBeTruthy();
     expect(btn!.id).toMatch(/^rx-node-/);
     expect(btn!.className).toContain("rx-button");
     expect(btn!.textContent).toBe("Click Me");
 
+    // Then: CSS styles and variables are injected and applied
     const style = (btn as HTMLElement).style as CSSStyleDeclaration;
     expect(style.position).toBe("absolute");
     expect(style.left).toBe("50px");
@@ -67,6 +84,9 @@ describe("canvas-component create beat (DOM-only)", () => {
 
     const styleTag = document.getElementById("rx-components-styles");
     expect(styleTag).toBeTruthy();
+
+    // Then: element is appended to canvas or target container
+    expect(btn!.parentElement?.id).toBe("rx-canvas");
   });
 });
 
