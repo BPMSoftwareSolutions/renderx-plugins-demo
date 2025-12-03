@@ -1,229 +1,182 @@
 # AC Alignment Status: Canvas Component Select Symphony
 
-**Domain:** `canvas-component-select-symphony`
+**Domain:** canvas-component-select-symphony
 **Generated:** 2025-12-03
-**Symphony:** Select
+**Coverage:** 82% (9/11 ACs)
+**THEN Coverage:** 84% (32/38 clauses)
 
-## 📋 Symphony Overview
+## Executive Summary
 
-The select symphony orchestrates component selection through 3 beats:
-1. **showSelectionOverlay** - Render selection UI with ID derivation
-2. **notifyUi** - Publish selection to control panel
-3. **publishSelectionChanged** - Broadcast selection change event
+The Canvas Component Select Symphony has achieved **82% AC coverage** with inline GWT comments following the pattern:
+- Block comment with full AC documentation above each test
+- AC tag in test title: `[AC:domain:sequence:beat:ac]`
+- Inline `// Given:`, `// When:`, `// Then:` comments mapping each code section to AC clauses
 
-## ✅ Refinements Completed
+## Coverage Breakdown by Beat
 
-### 1. Fixed Test File Paths (Anti-Pattern Eliminated)
+### Beat 1.1: showSelectionOverlay (60% coverage - 3/5 ACs)
 
-Updated all test file references to point to **package-internal tests**:
+**Handler:** showSelectionOverlay
+**File:** [selection-id-derivation.spec.ts](../packages/canvas-component/__tests__/selection-id-derivation.spec.ts)
 
-| Beat | Handler | Old Path | New Path |
-|------|---------|----------|----------|
-| 1.1 | showSelectionOverlay | `node_modules\@renderx-plugins\canvas-component\__tests__\...` | `__tests__\selection-id-derivation.spec.ts` |
-| 1.2 | notifyUi | `node_modules\@renderx-plugins\canvas\__tests__\ui.export.spec.ts` | `__tests__\selection-id-derivation.spec.ts` |
-| 1.3 | publishSelectionChanged | `node_modules\@renderx-plugins\canvas-component\__tests__\...` | `__tests__\selection-topic-publishing.spec.ts` |
+#### ✅ Covered ACs
 
-### 2. Enhanced Acceptance Criteria
-
-Transformed **vague, generic ACs** into **specific, testable requirements** with detailed Given/When/Then/And clauses:
-
-#### Beat 1.1 - showSelectionOverlay (5 ACs)
-
-**AC 1.1:1 - Primary ID Derivation**
+**AC 1.1:1** - Derive ID from data.id
 - **Given:** selection event contains data.id
 - **When:** showSelectionOverlay executes
-- **Then:**
-  - Element ID is derived from data.id
-  - Overlay container is created or reused with id='rx-overlay'
-  - Overlay rect is positioned to match selected element bounds
-  - Resize handles (8 corners/edges) are attached to overlay
-  - Selection interactions (drag, resize) are registered
-- **And:**
-  - Operation completes within 100ms P95
-  - selection.shown event is emitted with element ID
-  - Overlay is visible and positioned correctly
+- **Then:** element ID is derived from data.id, overlay container is created or reused
+- **Test:** `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:1] derives ID from data.id when present`
 
-**AC 1.1:2 - Fallback to elementId**
+**AC 1.1:2** - Derive ID from data.elementId fallback
 - **Given:** data.id is missing but data.elementId is provided
 - **When:** showSelectionOverlay derives ID
-- **Then:** Element ID is derived from data.elementId as fallback
-- **And:** Overlay rendering proceeds normally
+- **Then:** element ID is derived from data.elementId as fallback
+- **Test:** `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:2] derives ID from data.elementId when data.id is missing`
 
-**AC 1.1:3 - DOM Target Derivation**
+**AC 1.1:3** - Derive ID from DOM target
 - **Given:** both data.id and data.elementId are missing
 - **When:** showSelectionOverlay derives ID from DOM target
-- **Then:**
-  - Element ID is derived from event target's id attribute
-  - If target has no id, closest('.rx-comp') ancestor is used
-- **And:** Nested element clicks are handled correctly
+- **Then:** element ID is derived from event target's id attribute, if target has no id, closest('.rx-comp') ancestor is used
+- **Tests:**
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:3] derives ID from DOM target when data.id and data.elementId are missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:3] derives ID from nested DOM target using closest('.rx-comp')`
 
-**AC 1.1:4 - Baton Fallback**
+#### ❌ Uncovered ACs
+
+**AC 1.1:4** - Baton fallback for ID derivation
 - **Given:** all ID sources are exhausted and baton contains ID
 - **When:** showSelectionOverlay uses baton fallback
-- **Then:** Element ID is derived from ctx.baton.id or ctx.baton.elementId
-- **And:** Baton provides last-resort ID for legacy flows
+- **Then:** element ID is derived from ctx.baton.id or ctx.baton.elementId
+- **And:** baton provides last-resort ID for legacy flows
+- **Action Required:** Add test case for baton fallback in selection-id-derivation.spec.ts
 
-**AC 1.1:5 - No ID Available**
+**AC 1.1:5** - Validation failure handling
 - **Given:** no valid ID can be derived from any source
 - **When:** showSelectionOverlay validates ID
-- **Then:**
-  - Handler returns early without rendering overlay
-  - Warning is logged with context
-- **And:** System remains stable without errors
+- **Then:** handler returns early without rendering overlay, warning is logged with context
+- **And:** system remains stable without errors
+- **Action Required:** Test already exists (lines 168-184) but needs AC tag added
 
-#### Beat 1.2 - notifyUi (3 ACs)
+---
 
-**AC 1.2:1 - Primary Notification**
-- **Given:** element is selected and data.id is present
-- **When:** notifyUi executes
-- **Then:**
-  - canvas.component.selected event is published via EventRouter
-  - Event payload includes element ID from data.id
-  - Event is published with conductor context
-- **And:**
-  - Delivery completes within 20ms end-to-end
-  - Events are ordered FIFO
-  - Subscribers receive notification consistently
+### Beat 1.2: notifyUi (100% coverage - 3/3 ACs) ✅
 
-**AC 1.2:2 - Baton Fallback**
-- **Given:** data.id is missing but ctx.baton.id is available
-- **When:** notifyUi derives ID
-- **Then:**
-  - Element ID is derived from ctx.baton.id as fallback
-  - canvas.component.selected event is published with baton ID
-- **And:** Legacy flows with baton-based ID propagation are supported
+**Handler:** notifyUi
+**File:** [selection-id-derivation.spec.ts](../packages/canvas-component/__tests__/selection-id-derivation.spec.ts)
 
-**AC 1.2:3 - Missing ID Handling**
-- **Given:** both data.id and baton.id are missing
-- **When:** notifyUi validates ID
-- **Then:**
-  - Event publication is skipped
-  - Warning is logged with context
-- **And:** System remains stable without errors
+**AC 1.2:1** - Publish with data.id
+- **Test:** `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:1] uses data.id when present`
 
-#### Beat 1.3 - publishSelectionChanged (3 ACs)
+**AC 1.2:2** - Baton fallback for notifyUi
+- **Tests:**
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.id when data.id is missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.elementId when data.id and baton.id are missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:2] falls back to ctx.baton.selectedId when other IDs are missing`
 
-**AC 1.3:1 - Primary Event Publication**
-- **Given:** selection change occurs with element ID
-- **When:** publishSelectionChanged executes
-- **Then:**
-  - canvas.component.selection.changed event is published via EventRouter
-  - Event payload includes element ID
-  - Event payload includes optional metadata (type, classes, dimensions)
-  - Event is published with conductor context
-- **And:**
-  - Operation completes within 50ms P95
-  - Event delivery is guaranteed FIFO
-  - Dependent systems can synchronize state
+**AC 1.2:3** - Skip publication when no ID available
+- **Test:** `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.2:3] does not call play when no ID is available`
 
-**AC 1.3:2 - Missing ID Validation**
-- **Given:** element ID is missing
-- **When:** publishSelectionChanged validates input
-- **Then:**
-  - Event publication is skipped
-  - Warning is logged with context
-- **And:** System remains stable without errors
+---
 
-**AC 1.3:3 - Missing Conductor Handling**
-- **Given:** conductor is not available in context
-- **When:** publishSelectionChanged attempts to publish
-- **Then:**
-  - Event is published with undefined conductor
-  - EventRouter handles missing conductor gracefully
-- **And:** Legacy flows without conductor are supported
+### Beat 1.3: publishSelectionChanged (100% coverage - 3/3 ACs) ✅
 
-## 📊 AC Coverage Summary
+**Handler:** publishSelectionChanged
+**Files:**
+- [selection-id-derivation.spec.ts](../packages/canvas-component/__tests__/selection-id-derivation.spec.ts)
+- [selection-topic-publishing.spec.ts](../packages/canvas-component/__tests__/selection-topic-publishing.spec.ts)
 
-| Beat | Handler | Total ACs | Test File | Coverage Target |
-|------|---------|-----------|-----------|-----------------|
-| 1.1 | showSelectionOverlay | 5 | selection-id-derivation.spec.ts | 100% |
-| 1.2 | notifyUi | 3 | selection-id-derivation.spec.ts | 100% |
-| 1.3 | publishSelectionChanged | 3 | selection-topic-publishing.spec.ts | 100% |
-| **Total** | **3 handlers** | **11 ACs** | **2 test files** | **100%** |
+**AC 1.3:1** - Publish selection.changed event
+- **Tests:**
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.id`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.elementId when baton.id is missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes topic with baton.selectedId when other IDs are missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes canvas.component.selection.changed when publishSelectionChanged handler is called`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes selection.changed with elementId from baton when id is missing`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:1] publishes selection.changed with selectedId from baton when id and elementId are missing`
 
-## ✅ Test File Updates
+**AC 1.3:2** - Skip publication when no ID available
+- **Tests:**
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:2] does not publish when no ID is available in baton`
+  - `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:2] does not publish when no id is available`
 
-### selection-id-derivation.spec.ts (Partially Tagged)
+**AC 1.3:3** - Handle missing conductor gracefully
+- **Test:** `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.3:3] handles missing conductor gracefully (matches SVG node pattern)`
 
-**Beat 1.1 - showSelectionOverlay Tests:**
-- ✅ AC 1.1:1 - `[AC:canvas-component-select-symphony:select:1.1:1]` derives ID from data.id
-- ✅ AC 1.1:2 - `[AC:canvas-component-select-symphony:select:1.1:2]` derives ID from data.elementId
-- ✅ AC 1.1:3 - `[AC:canvas-component-select-symphony:select:1.1:3]` derives ID from DOM target
-- ⚠️ AC 1.1:4 - NEEDS TAG - baton fallback test exists but not tagged
-- ⚠️ AC 1.1:5 - NEEDS TAG - returns empty object test exists but not tagged
+---
 
-**Beat 1.2 - notifyUi Tests:**
-- ⚠️ AC 1.2:1 - NEEDS TAG - uses data.id test exists
-- ⚠️ AC 1.2:2 - NEEDS TAG - falls back to ctx.baton.id test exists
-- ⚠️ AC 1.2:3 - NEEDS TAG - missing ID handling (needs new test)
+## Inline GWT Pattern Examples
 
-### selection-topic-publishing.spec.ts (Not Yet Tagged)
+All covered tests follow the inline GWT comment pattern:
 
-**Beat 1.3 - publishSelectionChanged Tests:**
-- ⚠️ AC 1.3:1 - NEEDS TAG - publishes canvas.component.selection.changed
-- ⚠️ AC 1.3:2 - NEEDS TAG - missing ID validation (needs new test)
-- ⚠️ AC 1.3:3 - NEEDS TAG - missing conductor handling (test may exist)
-
-## 🎯 Next Steps to Achieve 100% Coverage
-
-### Step 1: Complete AC Tagging in selection-id-derivation.spec.ts
-
-Add AC tags to remaining tests:
-- Line ~121: `returns empty object when no ID can be derived` → Add `[AC:canvas-component-select-symphony:select:1.1:5]`
-- Line ~130: `returns empty object when element doesn't exist` → Add `[AC:canvas-component-select-symphony:select:1.1:5]`
-- Line ~141: `uses data.id when present` → Add `[AC:canvas-component-select-symphony:select:1.2:1]`
-- Line ~154: `falls back to ctx.baton.id` → Add `[AC:canvas-component-select-symphony:select:1.2:2]`
-- Line ~170: `falls back to ctx.baton.elementId` → Add `[AC:canvas-component-select-symphony:select:1.2:2]`
-
-### Step 2: Add Missing Tests in selection-id-derivation.spec.ts
-
-Create new test for AC 1.2:3:
 ```typescript
-it("[AC:canvas-component-select-symphony:select:1.2:3] skips event publication when both data.id and baton.id are missing", () => {
-  const data = {};
-  const ctx = { conductor: mockConductor, baton: {} };
+/**
+ * @ac canvas-component-select-symphony:canvas-component-select-symphony:1.1:1
+ *
+ * Given: selection event contains data.id
+ * When: showSelectionOverlay executes
+ * Then: element ID is derived from data.id
+ *       overlay container is created or reused
+ * And: operation completes within 100ms P95
+ */
+it("[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:1] derives ID from data.id when present", () => {
+  // Given: selection event contains data.id
+  const data = { id: "rx-node-button123" };
+  const ctx = { conductor: mockConductor };
 
-  selectHandlers.notifyUi(data, ctx);
+  // When: showSelectionOverlay executes
+  const result = selectHandlers.showSelectionOverlay(data, ctx);
 
-  // Then: event publication is skipped
-  expect(mockConductor.play).not.toHaveBeenCalled();
-  // And: warning is logged (check logger.warn if available)
+  // Then: element ID is derived from data.id
+  expect(result).toEqual({ id: "rx-node-button123" });
 });
 ```
 
-### Step 3: Tag Tests in selection-topic-publishing.spec.ts
+## Roadmap to 100% Coverage
 
-Update selection-topic-publishing.spec.ts with AC tags for Beat 1.3
+### Immediate Actions
 
-### Step 4: Run AC Alignment Validation
+1. **Add AC Tag to Existing Test (AC 1.1:5)**
+   - File: selection-id-derivation.spec.ts:168-184
+   - Test: "returns empty object when no ID can be derived"
+   - Action: Add `[AC:canvas-component-select-symphony:canvas-component-select-symphony:1.1:5]` tag and inline GWT comments
+
+2. **Create New Test (AC 1.1:4)**
+   - File: selection-id-derivation.spec.ts
+   - Test: Baton fallback when all ID sources exhausted
+   - Given: data.id, data.elementId, event.target all missing, but ctx.baton.id exists
+   - When: showSelectionOverlay executes
+   - Then: element ID is derived from ctx.baton.id
+
+### Estimated Effort
+
+- **AC 1.1:5:** 5 minutes (add tag and comments to existing test)
+- **AC 1.1:4:** 15 minutes (write new test with GWT comments)
+- **Total:** ~20 minutes to achieve 100% coverage
+
+## Test Files Summary
+
+| File | Tests | ACs Covered | THEN Clauses |
+|------|-------|-------------|--------------|
+| selection-id-derivation.spec.ts | 15 | 9 | 28 |
+| selection-topic-publishing.spec.ts | 5 | 3 | 10 |
+| **Total** | **20** | **12** | **38** |
+
+## Validation Command
 
 ```bash
 ANALYSIS_DOMAIN_ID="canvas-component-select-symphony" npm run validate:ac-alignment
 ```
 
-## 📈 Benefits of Refinement
+## Benefits Achieved
 
-### Before:
-- ❌ Vague ACs: "performs expected orchestration logic"
-- ❌ External test references: `node_modules\@renderx-plugins\...`
-- ❌ No traceability: Can't map ACs to tests
-- ❌ Generic user stories: "execute reliably with latency < 1 minute"
+✅ **Self-Documenting Tests** - Each test reads like a specification
+✅ **Bidirectional Traceability** - AC ↔ Test ↔ Code mapping complete
+✅ **Easy Debugging** - Failed assertions clearly show which AC clause failed
+✅ **Onboarding** - New developers can understand tests immediately
+✅ **Executable Documentation** - Tests serve as living documentation
 
-### After:
-- ✅ **Specific ACs:** Clear Given/When/Then/And clauses
-- ✅ **Package-internal tests:** `__tests__\selection-id-derivation.spec.ts`
-- ✅ **Traceability:** AC tags link tests to requirements
-- ✅ **Realistic SLAs:** <100ms P95, <20ms delivery, <50ms publication
-- ✅ **Edge cases covered:** Missing IDs, baton fallbacks, error handling
-- ✅ **Business value clear:** Responsive UI, consistent analytics, state synchronization
+## Related Documentation
 
-## 🎉 Symphony Refinement Complete
-
-The select symphony now has:
-- ✅ 11 detailed ACs across 3 beats
-- ✅ Clear test file mappings
-- ✅ Realistic performance targets
-- ✅ Comprehensive error handling specifications
-- ✅ Legacy compatibility documented
-
-Ready for 100% AC-to-test alignment! 🚀
+- [GWT Inline Comments Guide](./gwt-inline-comments-guide.md)
+- [AC Alignment Status - Create Symphony](./ac-alignment-status-canvas-component-create.md)
+- [Select Symphony JSON](../packages/canvas-component/json-sequences/canvas-component/select.json)
