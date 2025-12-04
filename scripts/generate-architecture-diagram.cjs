@@ -27,42 +27,108 @@ const {
 // ============================================================================
 
 /**
- * Load handlers that have AC-tagged tests from collected results and AC registry
- * @returns {{ beatIds: Set<string>, handlerNames: Set<string> }} Sets of beat IDs and handler names with AC tests
+ * Load handlers that have AC-tagged tests by directly reading test file AC tags
+ * Uses existing test telemetry: [AC:domain:sequence:beat:acIndex] tags in test titles
+ * No redundant AC registry lookup needed - test files are the source of truth
+ * @returns {{ beatIds: Set<string>, handlerNames: Set<string> }}
  */
 function loadAcCoveredHandlers() {
   const result = { beatIds: new Set(), handlerNames: new Set() };
   try {
-    // Load AC-tagged test results to get covered beat IDs
+    // Load AC-tagged test results (already parsed from test files)
     const resultsPath = path.join(process.cwd(), '.generated/ac-alignment/results/collected-results.json');
-    if (fs.existsSync(resultsPath)) {
-      const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
-      (results.uniqueACs || []).forEach(acId => {
-        // AC ID format: domain:sequence:beat:acIndex (e.g., "renderx-web-orchestration:renderx-web-orchestration:1.3:1")
-        const parts = acId.split(':');
-        if (parts.length >= 3) {
-          result.beatIds.add(parts[2]); // beat ID like "1.3"
-        }
-      });
+    if (!fs.existsSync(resultsPath)) {
+      return result;
     }
 
-    // Load AC registry to map beat IDs to handler names
-    const registryPath = path.join(process.cwd(), '.generated/acs/renderx-web-orchestration.registry.json');
-    if (fs.existsSync(registryPath)) {
-      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-      (registry.acs || []).forEach(ac => {
-        if (result.beatIds.has(ac.beatId) && ac.handler) {
-          // Extract handler function name (e.g., "control-panel/ui#initConfig" -> "initConfig")
-          const handlerParts = ac.handler.split('#');
-          const handlerFn = handlerParts.length > 1 ? handlerParts[1] : handlerParts[0];
-          result.handlerNames.add(handlerFn.toLowerCase());
-        }
-      });
-    }
+    const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+
+    // Extract handler names directly from AC tags in tests
+    (results.tests || []).forEach(test => {
+      if (test.acTags && test.acTags.length > 0) {
+        test.acTags.forEach(acTag => {
+          const beatId = acTag.beat; // e.g., "1.3"
+          const sequenceId = acTag.sequence; // e.g., "canvas-component-select-symphony"
+
+          if (beatId) {
+            result.beatIds.add(beatId);
+          }
+
+          // Look up handler from sequence JSON based on sequence:beat
+          if (sequenceId && beatId) {
+            const handler = findHandlerFromSequence(sequenceId, beatId);
+            if (handler) {
+              result.handlerNames.add(handler.toLowerCase());
+            }
+          }
+        });
+      }
+    });
 
     return result;
   } catch (e) {
     return result;
+  }
+}
+
+/**
+ * Find handler name from sequence JSON file for given sequence and beat
+ * @param {string} sequenceId - Sequence identifier
+ * @param {string} beatId - Beat identifier (e.g., "1.3")
+ * @returns {string|null} Handler name or null
+ */
+function findHandlerFromSequence(sequenceId, beatId) {
+  try {
+    // Common sequence file locations
+    const searchPaths = [
+      `packages/orchestration/json-sequences/${sequenceId}.json`,
+      `packages/canvas-component/json-sequences/canvas-component/${sequenceId.replace('canvas-component-', '').replace('-symphony', '')}.json`,
+      `packages/*/json-sequences/**/${sequenceId}.json`
+    ];
+
+    const [movementNum, beatNum] = beatId.split('.').map(Number);
+
+    // Try to find and parse the sequence file
+    for (const searchPattern of searchPaths) {
+      const files = require('glob').sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+
+          if (seqId !== sequenceId) continue;
+
+          // Find movement and beat
+          if (!sequence.movements) continue;
+
+          // Use 0-based index to find movement by position (beat "1.3" = first movement, third beat)
+          const movement = sequence.movements[movementNum - 1];
+
+          if (!movement || !movement.beats) continue;
+
+          // Use 0-based index to find beat by position
+          const beat = movement.beats[beatNum - 1];
+
+          if (beat && beat.handler) {
+            const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+            if (handlerStr) {
+              const parts = handlerStr.split('#');
+              return parts.length > 1 ? parts[1] : parts[0];
+            }
+          }
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
   }
 }
 
@@ -146,6 +212,151 @@ function generateGenericSummary(metrics) {
 }
 
 /**
+ * Load sequence JSON file and extract handler names defined in beats
+ * @param {string} sequenceId - Sequence identifier (e.g., "canvas-component-create-symphony")
+ * @returns {Set<string>} Set of handler names defined in this sequence
+ */
+function loadSequenceHandlers(sequenceId) {
+  const handlerNames = new Set();
+
+  try {
+    // Common sequence file locations
+    const searchPaths = [
+      `packages/orchestration/json-sequences/${sequenceId}.json`,
+      `packages/canvas-component/json-sequences/canvas-component/${sequenceId.replace('canvas-component-', '').replace('-symphony', '')}.json`,
+      `packages/*/json-sequences/**/${sequenceId}.json`
+    ];
+
+    const glob = require('glob');
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+
+          if (seqId !== sequenceId) continue;
+
+          // Extract all handler names from all beats
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+                    if (handlerStr) {
+                      // Extract handler name (handle both "handlerName" and "path/to#handlerName" formats)
+                      const parts = handlerStr.split('#');
+                      const handlerName = parts.length > 1 ? parts[1] : parts[0];
+                      handlerNames.add(handlerName.toLowerCase());
+                    }
+                  }
+                });
+              }
+            });
+          }
+
+          // Found and processed the sequence, return
+          return handlerNames;
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty set on error
+  }
+
+  return handlerNames;
+}
+
+/**
+ * Discover all sequence JSON files and load their metadata
+ * @param {string} domainId - Domain identifier to filter sequences
+ * @returns {Array<{sequenceId: string, name: string, packageName: string, filePath: string, handlers: Set<string>}>}
+ */
+function discoverSequences(domainId) {
+  const sequences = [];
+  const glob = require('glob');
+
+  try {
+    // Find all sequence JSON files
+    const searchPaths = [
+      'packages/*/json-sequences/**/*.json',
+      'packages/orchestration/json-sequences/*.json'
+    ];
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+          const seqDomainId = sequence.domainId;
+
+          // Skip if domain doesn't match (if domain filtering is used)
+          if (domainId && seqDomainId && seqDomainId !== domainId) {
+            continue;
+          }
+
+          // Extract package name from file path
+          const pathParts = file.split('/');
+          const packagesIndex = pathParts.indexOf('packages');
+          let packageName = 'unknown';
+          if (packagesIndex >= 0 && packagesIndex + 1 < pathParts.length) {
+            packageName = pathParts[packagesIndex + 1];
+          }
+
+          // Extract handler names
+          const handlers = new Set();
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+                    if (handlerStr) {
+                      const parts = handlerStr.split('#');
+                      const handlerName = parts.length > 1 ? parts[1] : parts[0];
+                      handlers.add(handlerName.toLowerCase());
+                    }
+                  }
+                });
+              }
+            });
+          }
+
+          sequences.push({
+            sequenceId: seqId,
+            name: sequence.name || seqId,
+            packageName,
+            filePath: file,
+            handlers,
+            beatCount: sequence.beats || 0
+          });
+        } catch (err) {
+          // Skip invalid JSON files
+          continue;
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty array on error
+  }
+
+  return sequences;
+}
+
+/**
  * Generate detailed handler summary with symphony groupings
  * Groups handlers by package/feature and shows LOC, coverage, and risk metrics
  */
@@ -179,57 +390,52 @@ function generateHandlerSummary(handlerData) {
     });
   }
   
-  // Group handlers by actual symphony name (extract from /symphonies/NAME/)
+  // SEQUENCE-DRIVEN GROUPING: Build symphony groups from sequence JSON files
+  // This ensures sequence JSON is the single source of truth for symphony composition
+  const sequences = discoverSequences(domainId);
   const symphonyGroups = {};
-  const symphonyHandlers = [];
-  const utilityHandlers = [];
-  
+  const unmatchedHandlers = [];
+
+  // Create a lookup map of handler name -> handler object
+  const handlerLookup = new Map();
   handlers.forEach(handler => {
-    // Separate symphony handlers from utility/infrastructure code
-    if (handler.file.includes('/symphonies/')) {
-      symphonyHandlers.push(handler);
-    } else {
-      utilityHandlers.push(handler);
+    // Extract handler name from file or use handler.name
+    let handlerName = handler.name;
+    if (!handlerName || handlerName === 'handlers' || handlerName === 'handler') {
+      const pathParts = handler.file.split('/');
+      const fileName = pathParts[pathParts.length - 1].replace(/.(ts|tsx|js|jsx)$/, '');
+      handlerName = fileName.replace('.stage-crew', '').replace(/-/g, '_');
     }
+    handlerLookup.set(handlerName.toLowerCase(), handler);
   });
-  
-  // Group symphony handlers by actual symphony name from path
-  symphonyHandlers.forEach(handler => {
-    const pathParts = handler.file.split('/');
-    let symphonyName = 'Other';
 
-    // Extract symphony name: packages/*/src/symphonies/FOLDER/ or symphonies/file.symphony.ts
-    const symphoniesIndex = pathParts.indexOf('symphonies');
-    if (symphoniesIndex >= 0 && symphoniesIndex + 1 < pathParts.length) {
-      let symphonyIdentifier = pathParts[symphoniesIndex + 1];
-      
-      // Check if this is a file (has extension) or a folder
-      if (symphonyIdentifier.match(/\.(ts|js|tsx|jsx)$/)) {
-        // It's a file directly under symphonies: symphonies/drop.symphony.ts
-        // Extract name from filename
-        symphonyIdentifier = symphonyIdentifier
-          .replace(/\.(ts|js|tsx|jsx)$/, '')    // Remove file extensions
-          .replace(/\.symphony$/, '')            // Remove .symphony suffix  
-          .replace(/\.stage-crew$/, '')          // Remove .stage-crew suffix
-          .replace(/^_/, '');                    // Remove leading underscore
+  // Build symphony groups from sequences
+  sequences.forEach(sequence => {
+    const symphonyHandlers = [];
+
+    // Match handlers by name (regardless of folder location)
+    sequence.handlers.forEach(handlerName => {
+      const handler = handlerLookup.get(handlerName.toLowerCase());
+      if (handler) {
+        symphonyHandlers.push(handler);
+        // NOTE: Do NOT delete from lookup - handlers can be shared by multiple sequences
       }
-      // else: it's a folder name, use as-is
-      
-      symphonyName = symphonyIdentifier
-        .split('-')
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' ') + ' Symphony';
-    } else if (pathParts[0] === 'scripts') {
-      symphonyName = 'Build Scripts';
-    }
+    });
 
-    if (!symphonyGroups[symphonyName]) {
-      symphonyGroups[symphonyName] = [];
+    // Only create symphony group if we found matching handlers
+    if (symphonyHandlers.length > 0) {
+      // Use sequence name for symphony grouping
+      const symphonyName = sequence.name || sequence.sequenceId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      symphonyGroups[symphonyName] = symphonyHandlers;
     }
-    symphonyGroups[symphonyName].push(handler);
+  });
+
+  // Any remaining handlers are unmatched (not in any sequence)
+  handlerLookup.forEach(handler => {
+    unmatchedHandlers.push(handler);
   });
   
-  // Estimate LOC per handler (avg if not available)
+    // Estimate LOC per handler (avg if not available)
   const estimatedLocPerHandler = avgLocPerHandler > 0 ? avgLocPerHandler : 30;
   
   // Build clean symphony sections using new renderer
@@ -249,7 +455,7 @@ function generateHandlerSummary(handlerData) {
         packageName = 'build-scripts';
       }
     }
-    
+
     // Calculate metrics for this symphony
     const symphonyLoc = Math.round(estimatedLocPerHandler * symphonyHandlers.length);
     const symphonyCoverage = Math.round(overallCoverage);

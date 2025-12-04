@@ -106,7 +106,7 @@ describe("React Component Integration Tests", () => {
   });
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.4:1
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.4:1
    *
    * Given: context.payload.kind is 'react' with valid reactCode
    * When: renderReact executes
@@ -156,7 +156,7 @@ describe("React Component Integration Tests", () => {
   });
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.4:5
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.4:5
    *
    * Given: context.payload.kind is not 'react'
    * When: renderReact is invoked

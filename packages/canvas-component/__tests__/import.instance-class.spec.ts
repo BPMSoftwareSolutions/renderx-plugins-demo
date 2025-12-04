@@ -90,7 +90,7 @@ describe("import flow injects instance class on DOM elements", () => {
   beforeEach(() => setupCanvas());
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.2:1
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.2:1
    *
    * Given: valid nodeId and template exist in context.payload
    * When: registerInstance executes

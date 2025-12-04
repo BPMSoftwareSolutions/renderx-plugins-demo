@@ -57,8 +57,8 @@ describe("Advanced Line augmentation (Phase 1)", () => {
   });
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.6:1
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.6:4
+   * @ac renderx-web-orchestration:canvas-component-augment-symphony:1.1:1
+   * @ac renderx-web-orchestration:canvas-component-augment-symphony:1.1:4
    *
    * Given: lineAdvanced feature flag is enabled and SVG element with rx-line class exists
    *        markers already exist in SVG defs (for idempotency test)
@@ -74,7 +74,7 @@ describe("Advanced Line augmentation (Phase 1)", () => {
    *      markers enable precise line anchors and hit areas
    *      operation is idempotent
    */
-  it.skip("[AC:renderx-web-orchestration:canvas-component-create-symphony:1.6:1][AC:renderx-web-orchestration:canvas-component-create-symphony:1.6:4] adds defs with markers exactly once (idempotent)", () => {
+  it.skip("[AC:renderx-web-orchestration:canvas-component-augment-symphony:1.1:1][AC:renderx-web-orchestration:canvas-component-augment-symphony:1.1:4] adds defs with markers exactly once (idempotent)", () => {
     // TODO(#139 follow-up): In jsdom, instanceof SVGSVGElement check may differ across realms;
     // revisit enhanceLine guard or test harness to assert marker defs reliably.
     const _ctx: any = makeCtx();

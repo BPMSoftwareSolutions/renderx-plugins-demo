@@ -1,0 +1,98 @@
+{
+  "pluginId": "CanvasComponentPlugin",
+  "id": "canvas-component-augment-symphony",
+  "name": "Canvas Component Augment",
+  "movements": [
+    {
+      "id": "augment",
+      "name": "Augment",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:augment:line",
+          "title": "Enhance Line (Advanced)",
+          "dynamics": "mf",
+          "handler": "enhanceLine",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "enhance Line",
+          "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
+          "testCase": "should enhance-line",
+          "testFile": "__tests__\\advanced-line.augment.spec.ts",
+          "acceptanceCriteriaStructured": [
+            {
+              "given": [
+                "lineAdvanced feature flag is enabled and SVG element with rx-line class exists"
+              ],
+              "when": [
+                "enhanceLine executes"
+              ],
+              "then": [
+                "SVG base attributes are set (width, height, viewBox, preserveAspectRatio)",
+                "line markers defs are created with rx-arrow-end marker",
+                "marker includes arrow path with currentColor fill",
+                "augmentation is idempotent (safe to call multiple times)"
+              ],
+              "and": [
+                "operation completes within 1s P95",
+                "geometry is validated",
+                "markers enable precise line anchors and hit areas"
+              ]
+            },
+            {
+              "given": [
+                "lineAdvanced feature flag is disabled"
+              ],
+              "when": [
+                "enhanceLine executes"
+              ],
+              "then": [
+                "handler returns early without processing"
+              ],
+              "and": [
+                "feature flag controls advanced line features"
+              ]
+            },
+            {
+              "given": [
+                "element is not SVG or does not have rx-line class"
+              ],
+              "when": [
+                "enhanceLine validates element"
+              ],
+              "then": [
+                "handler returns early without augmentation"
+              ],
+              "and": [
+                "non-line elements are not affected"
+              ]
+            },
+            {
+              "given": [
+                "markers already exist in SVG defs"
+              ],
+              "when": [
+                "enhanceLine runs"
+              ],
+              "then": [
+                "existing markers are preserved",
+                "no duplicate markers are created"
+              ],
+              "and": [
+                "operation is idempotent"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": "As a design systems engineer, I need the augment symphony to apply advanced visual enhancements to canvas components (line markers, measurements, anchors, hit areas) with ≤1s P95 latency and idempotent application, so interactive tooling remains precise and responsive.",
+      "persona": "Design Systems Engineer",
+      "businessValue": "Enables advanced design tooling features; improves precision and interactivity; supports professional design workflows"
+    }
+  ],
+  "beats": 1,
+  "userStory": "As a design systems engineer, I need the augment symphony to enhance canvas components with advanced visual features and interaction affordances, meeting strict latency targets (≤1s P95) with idempotent operations, so design tools remain precise and responsive.",
+  "persona": "Design Systems Engineer",
+  "businessValue": "Enables advanced design tooling features; improves precision and interactivity; supports professional design workflows",
+  "domainId": "renderx-web-orchestration"
+}

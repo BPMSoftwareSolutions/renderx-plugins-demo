@@ -47,7 +47,7 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
   });
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.5:1
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.5:1
    *
    * Given: component has been created with id and correlationId
    * When: notifyUi executes
@@ -95,7 +95,7 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
   // NOTE: Negative path (correlationId missing) skipped; legacy flows may omit correlationId intentionally.
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.5:1
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.5:1
    *
    * Then: legacy onComponentCreated callback is invoked if provided
    */

@@ -370,91 +370,14 @@
               ]
             }
           ]
-        },
-        {
-          "beat": 6,
-          "event": "canvas:component:augment:line",
-          "title": "Enhance Line (Advanced)",
-          "dynamics": "mf",
-          "handler": "enhanceLine",
-          "timing": "immediate",
-          "kind": "stage-crew",
-          "scenario": "enhance Line",
-          "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
-          "testCase": "should enhance-line",
-          "testFile": "__tests__\\advanced-line.augment.spec.ts",
-          "acceptanceCriteriaStructured": [
-            {
-              "given": [
-                "lineAdvanced feature flag is enabled and SVG element with rx-line class exists"
-              ],
-              "when": [
-                "enhanceLine executes"
-              ],
-              "then": [
-                "SVG base attributes are set (width, height, viewBox, preserveAspectRatio)",
-                "line markers defs are created with rx-arrow-end marker",
-                "marker includes arrow path with currentColor fill",
-                "augmentation is idempotent (safe to call multiple times)"
-              ],
-              "and": [
-                "operation completes within 1s P95",
-                "geometry is validated",
-                "markers enable precise line anchors and hit areas"
-              ]
-            },
-            {
-              "given": [
-                "lineAdvanced feature flag is disabled"
-              ],
-              "when": [
-                "enhanceLine executes"
-              ],
-              "then": [
-                "handler returns early without processing"
-              ],
-              "and": [
-                "feature flag controls advanced line features"
-              ]
-            },
-            {
-              "given": [
-                "element is not SVG or does not have rx-line class"
-              ],
-              "when": [
-                "enhanceLine validates element"
-              ],
-              "then": [
-                "handler returns early without augmentation"
-              ],
-              "and": [
-                "non-line elements are not affected"
-              ]
-            },
-            {
-              "given": [
-                "markers already exist in SVG defs"
-              ],
-              "when": [
-                "enhanceLine runs"
-              ],
-              "then": [
-                "existing markers are preserved",
-                "no duplicate markers are created"
-              ],
-              "and": [
-                "operation is idempotent"
-              ]
-            }
-          ]
         }
       ],
-      "userStory": "As a platform reliability engineer, I need the create symphony to produce a fully composed, registered, and render-ready canvas component sequence with P95 latencies per beat (resolveTemplate ≤1s, registerInstance ≤1s, createNode ≤2s, renderReact ≤200ms, notifyUi ≤20ms, enhanceLine ≤1s) and 99.9% success, so downstream experiences render predictably.",
+      "userStory": "As a platform reliability engineer, I need the create symphony to produce a fully composed, registered, and render-ready canvas component sequence with P95 latencies per beat (resolveTemplate ≤1s, registerInstance ≤1s, createNode ≤2s, renderReact ≤200ms, notifyUi ≤20ms) and 99.9% success, so downstream experiences render predictably.",
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "beats": 6,
+  "beats": 5,
   "userStory": "As a product owner, I need the canvas component create flow to reliably transform templates into interactive UI with clear telemetry, strict schemas, and beat-specific SLAs (≤1s/≤2s/≤200ms/≤20ms as defined), achieving 99.9% success so we meet customer performance commitments.",
   "persona": "Product Owner",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",

@@ -45,7 +45,7 @@ describe("canvas-component create beat (DOM-only)", () => {
   });
 
   /**
-   * @ac canvas-component-create-symphony:canvas-component-create-symphony:1.3:1
+   * @ac renderx-web-orchestration:canvas-component-create-symphony:1.3:1
    *
    * Given: valid template and nodeId exist in context.payload
    * When: createNode executes

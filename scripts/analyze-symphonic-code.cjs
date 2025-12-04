@@ -174,42 +174,109 @@ const { renderCleanSymphonyHandler } = require('./ascii-sketch-renderers.cjs');
 // ============================================================================
 
 /**
- * Load handlers that have AC-tagged tests from collected results and AC registry
- * @returns {{ beatIds: Set<string>, handlerNames: Set<string> }} Sets of beat IDs and handler names with AC tests
+ * Load handlers that have AC-tagged tests by directly parsing test file AC tags
+ * Uses existing test telemetry: [AC:domain:sequence:beat:acIndex] tags in test titles
+ * @returns {{ beatIds: Set<string>, handlerNames: Set<string>, sequenceHandlers: Map<string, Set<string>> }}
  */
 function loadAcCoveredHandlers() {
-  const result = { beatIds: new Set(), handlerNames: new Set() };
+  const result = {
+    beatIds: new Set(),
+    handlerNames: new Set(),
+    sequenceHandlers: new Map() // Map of sequence:beat -> Set of handler names
+  };
+
   try {
-    // Load AC-tagged test results to get covered beat IDs
+    // Load AC-tagged test results (already parsed from test files by collect-test-results.cjs)
     const resultsPath = path.join(process.cwd(), '.generated/ac-alignment/results/collected-results.json');
-    if (fs.existsSync(resultsPath)) {
-      const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
-      (results.uniqueACs || []).forEach(acId => {
-        // AC ID format: domain:sequence:beat:acIndex (e.g., "renderx-web-orchestration:renderx-web-orchestration:1.3:1")
-        const parts = acId.split(':');
-        if (parts.length >= 3) {
-          result.beatIds.add(parts[2]); // beat ID like "1.3"
-        }
-      });
+    if (!fs.existsSync(resultsPath)) {
+      return result;
     }
 
-    // Load AC registry to map beat IDs to handler names
-    const registryPath = path.join(process.cwd(), '.generated/acs/renderx-web-orchestration.registry.json');
-    if (fs.existsSync(registryPath)) {
-      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-      (registry.acs || []).forEach(ac => {
-        if (result.beatIds.has(ac.beatId) && ac.handler) {
-          // Extract handler function name (e.g., "control-panel/ui#initConfig" -> "initConfig")
-          const handlerParts = ac.handler.split('#');
-          const handlerFn = handlerParts.length > 1 ? handlerParts[1] : handlerParts[0];
-          result.handlerNames.add(handlerFn.toLowerCase());
+    const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+
+    // Process each AC tag found in tests
+    (results.uniqueACs || []).forEach(acId => {
+      // AC ID format: domain:sequence:beat:acIndex
+      // Example: "renderx-web-orchestration:canvas-component-select-symphony:1.3:1"
+      const parts = acId.split(':');
+      if (parts.length >= 3) {
+        const beatId = parts[2]; // e.g., "1.3"
+        const sequenceId = parts[1]; // e.g., "canvas-component-select-symphony"
+
+        result.beatIds.add(beatId);
+
+        // Load sequence JSON to get handler name for this beat
+        const sequenceKey = `${sequenceId}:${beatId}`;
+        if (!result.sequenceHandlers.has(sequenceKey)) {
+          const handler = findHandlerForSequenceBeat(sequenceId, beatId);
+          if (handler) {
+            result.handlerNames.add(handler.toLowerCase());
+
+            if (!result.sequenceHandlers.has(sequenceKey)) {
+              result.sequenceHandlers.set(sequenceKey, new Set());
+            }
+            result.sequenceHandlers.get(sequenceKey).add(handler.toLowerCase());
+          }
         }
-      });
-    }
+      }
+    });
 
     return result;
   } catch (e) {
+    console.error(`⚠️  Error loading AC-covered handlers: ${e.message}`);
     return result;
+  }
+}
+
+/**
+ * Find handler name for a given sequence and beat by parsing sequence JSON files
+ * @param {string} sequenceId - Sequence identifier
+ * @param {string} beatId - Beat identifier (e.g., "1.3")
+ * @returns {string|null} Handler name or null
+ */
+function findHandlerForSequenceBeat(sequenceId, beatId) {
+  try {
+    // Load domain config to get sequence files
+    const sequenceFiles = domainConfig?.sequenceFiles || [];
+
+    // Parse beat ID into movement and beat numbers
+    const [movementNum, beatNum] = beatId.split('.').map(Number);
+
+    // Search through sequence files
+    for (const seqFile of sequenceFiles) {
+      const fullPath = path.join(process.cwd(), seqFile);
+      if (!fs.existsSync(fullPath)) continue;
+
+      const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+      // Check if this is the right sequence
+      const seqId = sequence.sequenceId || sequence.id;
+      if (seqId !== sequenceId) continue;
+
+      // Find the beat
+      if (!sequence.movements || !Array.isArray(sequence.movements)) continue;
+
+      // Use 0-based index to find movement by position (beat "1.3" = first movement, third beat)
+      const movement = sequence.movements[movementNum - 1];
+
+      if (!movement || !movement.beats) continue;
+
+      // Use 0-based index to find beat by position
+      const beat = movement.beats[beatNum - 1];
+
+      if (beat && beat.handler) {
+        // Extract handler name (handle both "handlerName" and "path/to#handlerName" formats)
+        const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+        if (handlerStr) {
+          const parts = handlerStr.split('#');
+          return parts.length > 1 ? parts[1] : parts[0];
+        }
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
   }
 }
 
