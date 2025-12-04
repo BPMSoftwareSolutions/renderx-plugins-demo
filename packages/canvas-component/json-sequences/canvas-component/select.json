@@ -12,7 +12,10 @@
           "event": "canvas:component:select",
           "title": "Show Selection",
           "dynamics": "mf",
-          "handler": "showSelectionOverlay",
+          "handler": {
+            "name": "showSelectionOverlay",
+            "sourcePath": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Render or Display show Selection Overlay",
@@ -105,7 +108,10 @@
           "event": "canvas:component:select:notify",
           "title": "Notify UI",
           "dynamics": "mf",
-          "handler": "notifyUi",
+          "handler": {
+            "name": "notifyUi",
+            "sourcePath": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
@@ -168,7 +174,10 @@
           "event": "canvas:component:selection:changed",
           "title": "Publish Selection Changed",
           "dynamics": "mf",
-          "handler": "publishSelectionChanged",
+          "handler": {
+            "name": "publishSelectionChanged",
+            "sourcePath": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Selection Changed",

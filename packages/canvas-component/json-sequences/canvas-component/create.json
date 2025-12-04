@@ -12,7 +12,10 @@
           "event": "canvas:component:resolve-template",
           "title": "Resolve Template",
           "dynamics": "mf",
-          "handler": "resolveTemplate",
+          "handler": {
+            "name": "resolveTemplate",
+            "sourcePath": "packages/canvas-component/src/symphonies/create/create.arrangement.ts"
+          },
           "timing": "immediate",
           "kind": "pure",
           "scenario": "resolve Template",
@@ -75,7 +78,10 @@
           "event": "canvas:component:register-instance",
           "title": "Register Instance",
           "dynamics": "mf",
-          "handler": "registerInstance",
+          "handler": {
+            "name": "registerInstance",
+            "sourcePath": "packages/canvas-component/src/symphonies/create/create.io.ts"
+          },
           "timing": "immediate",
           "kind": "io",
           "scenario": "register Instance",
@@ -137,7 +143,10 @@
           "event": "canvas:component:create",
           "title": "Create Node",
           "dynamics": "mf",
-          "handler": "createNode",
+          "handler": {
+            "name": "createNode",
+            "sourcePath": "packages/canvas-component/src/symphonies/create/create.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Generate or Create create Node",
@@ -217,7 +226,10 @@
           "event": "canvas:component:render-react",
           "title": "Render React Component",
           "dynamics": "mf",
-          "handler": "renderReact",
+          "handler": {
+            "name": "renderReact",
+            "sourcePath": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Render or Display render React",
@@ -314,7 +326,10 @@
           "event": "canvas:component:notify-ui",
           "title": "Notify UI",
           "dynamics": "mf",
-          "handler": "notifyUi",
+          "handler": {
+            "name": "notifyUi",
+            "sourcePath": "packages/canvas-component/src/symphonies/create/create.notify.ts"
+          },
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",

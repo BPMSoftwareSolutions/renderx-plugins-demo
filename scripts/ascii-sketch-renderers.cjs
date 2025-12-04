@@ -476,7 +476,7 @@ function renderCleanSymphonyHandler(data) {
 
   // Handler Portfolio Section
   output += '╠' + '═'.repeat(24) + ' BEAT / HANDLER PORTFOLIO ' + '═'.repeat(boxWidth - 50) + '╣\n';
-  output += `║ ${padString('Beat Mov Handler                    LOC  Sz  Cov  Risk AC  Baton', boxWidth)}║\n`;
+  output += `║ ${padString('Beat Mov Handler                    LOC  Sz  Cov  Risk AC  Src Baton', boxWidth)}║\n`;
   output += `║ ${padString('─'.repeat(boxWidth - 1), boxWidth)}║\n`;
 
   // Handler rows
@@ -489,9 +489,10 @@ function renderCleanSymphonyHandler(data) {
     const cov = padString(handler.coverage + '%', 4, true);
     const risk = padString(handler.risk, 4);
     const ac = padString(handler.hasAcGwt ? 'Y' : 'N', 2);
+    const src = padString(handler.hasSourcePath ? 'Y' : 'N', 3);
     const baton = padString(handler.baton, 8);
 
-    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${ac} ${baton} ║\n`;
+    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${ac}  ${src} ${baton} ║\n`;
     
     // Add data baton handoff after movement boundaries
     if (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload') {

@@ -218,6 +218,8 @@
                     "analyze:domains:all": "node scripts/analyze-all-domains.cjs",
                     "gen:symphonic:code:docs":  "node scripts/gen-symphonic-code-analysis-docs.js",
                     "validate:ac-alignment": "node scripts/validate-ac-alignment.cjs",
+                    "validate:handler-sourcepath": "node scripts/validate-handler-source-paths.cjs",
+                    "report:sourcepath-compliance": "node scripts/report-sourcepath-compliance.cjs",
                     "generate:ac-registry": "node scripts/generate-ac-registry.cjs",
                     "collect:test-results": "node scripts/ac-alignment/collect-test-results.cjs --all",
                     "compute:ac-alignment": "node scripts/ac-alignment/compute-alignment.cjs",

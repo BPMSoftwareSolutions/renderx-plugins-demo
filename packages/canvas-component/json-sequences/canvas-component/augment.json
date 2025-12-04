@@ -12,7 +12,10 @@
           "event": "canvas:component:augment:line",
           "title": "Enhance Line (Advanced)",
           "dynamics": "mf",
-          "handler": "enhanceLine",
+          "handler": {
+            "name": "enhanceLine",
+            "sourcePath": "packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts"
+          },
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "enhance Line",

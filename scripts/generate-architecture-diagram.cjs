@@ -156,6 +156,75 @@ function handlerHasAcGwt(handlerName, beatId) {
   return false;
 }
 
+// Global cache for handlers with sourcePath
+let sourcePathHandlersCache = null;
+
+/**
+ * Load all handlers that have sourcePath defined in sequences
+ * @returns {Set<string>} Set of handler names with valid sourcePath
+ */
+function loadSourcePathHandlers() {
+  const glob = require('glob');
+  const handlersWithSource = new Set();
+
+  try {
+    const searchPaths = [
+      'packages/*/json-sequences/**/*.json',
+      'packages/orchestration/json-sequences/*.json'
+    ];
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    // Handler can be string or object with name and sourcePath
+                    if (typeof beat.handler === 'object' && beat.handler.name && beat.handler.sourcePath) {
+                      // Validate sourcePath exists
+                      const sourcePath = path.join(process.cwd(), beat.handler.sourcePath);
+                      if (fs.existsSync(sourcePath)) {
+                        handlersWithSource.add(beat.handler.name.toLowerCase());
+                      }
+                    }
+                  }
+                });
+              }
+            });
+          }
+        } catch (err) {
+          // Skip invalid JSON files
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty set on error
+  }
+
+  return handlersWithSource;
+}
+
+/**
+ * Check if a handler has a valid sourcePath defined in sequence JSON
+ * @param {string} handlerName - Handler function name (e.g., "resolveTemplate")
+ * @returns {boolean} Whether the handler has a valid sourcePath
+ */
+function handlerHasSourcePath(handlerName) {
+  if (sourcePathHandlersCache === null) {
+    sourcePathHandlersCache = loadSourcePathHandlers();
+  }
+  return sourcePathHandlersCache.has(handlerName.toLowerCase());
+}
+
 /**
  * Generate a generic summary when detailed handler data isn't available
  */
@@ -530,7 +599,8 @@ function generateHandlerSummary(handlerData) {
         coverage: handlerCov,
         risk: hRisk,
         baton: baton,
-        hasAcGwt: handlerHasAcGwt(displayName)
+        hasAcGwt: handlerHasAcGwt(displayName),
+        hasSourcePath: handlerHasSourcePath(displayName)
       };
     });
     
