@@ -447,7 +447,43 @@ function renderCleanSymphonyHandler(data) {
     metrics
   } = data;
 
-  const boxWidth = 68;
+  // ========================================================================
+  // TABLE COLUMN CONFIGURATION
+  // Define columns here - adding/removing columns automatically adjusts layout
+  // ========================================================================
+  const TABLE_COLUMNS = [
+    { key: 'beat', header: 'Beat', width: 4, align: 'left', getValue: h => h.beat },
+    { key: 'movement', header: 'Mov', width: 3, align: 'left', getValue: h => h.movement },
+    { key: 'handler', header: 'Handler', width: 27, align: 'left', getValue: h => h.handler },
+    { key: 'loc', header: 'LOC', width: 3, align: 'right', getValue: h => String(h.loc) },
+    { key: 'sizeBand', header: 'Sz', width: 2, align: 'left', getValue: h => h.sizeBand },
+    { key: 'coverage', header: 'Cov', width: 4, align: 'right', getValue: h => h.coverage + '%' },
+    { key: 'risk', header: 'Risk', width: 4, align: 'left', getValue: h => h.risk },
+    { key: 'hasAcGwt', header: 'AC', width: 2, align: 'left', getValue: h => h.hasAcGwt ? 'Y' : 'N' },
+    { key: 'hasSourcePath', header: 'Src', width: 3, align: 'left', getValue: h => h.hasSourcePath ? 'Y' : 'N' },
+    { key: 'baton', header: 'Baton', width: 8, align: 'left', getValue: h => h.baton }
+  ];
+
+  // Spacing between columns (one entry per gap between columns)
+  // Length should be TABLE_COLUMNS.length - 1
+  const COLUMN_SPACING = [1, 1, 1, 2, 2, 1, 1, 2, 1];
+
+  // Calculate table content width dynamically
+  const tableContentWidth = TABLE_COLUMNS.reduce((sum, col) => sum + col.width, 0) +
+                            COLUMN_SPACING.reduce((sum, space) => sum + space, 0);
+
+  // Box width is the maximum of content width and minimum width (68 for legacy compatibility)
+  const boxWidth = Math.max(68, tableContentWidth);
+
+  // Build table header line dynamically
+  let tableHeader = '';
+  TABLE_COLUMNS.forEach((col, idx) => {
+    tableHeader += padString(col.header, col.width, col.align === 'right');
+    if (idx < TABLE_COLUMNS.length - 1) {
+      tableHeader += ' '.repeat(COLUMN_SPACING[idx]);
+    }
+  });
+
   let output = '';
 
   // Header
@@ -461,38 +497,36 @@ function renderCleanSymphonyHandler(data) {
   // Movement Map
   output += '╠' + '═'.repeat(boxWidth) + '╣\n';
   output += `║ ${padString('MOVEMENT MAP', boxWidth)}║\n`;
-  
+
   // Build movement flow line
   const movementLine = movements.map(m => m.name).join('   →   ');
   output += `║ ${padString('  ' + movementLine, boxWidth)}║\n`;
-  
+
   // Build beats line
   const beatsLine = movements.map(m => m.beats).join('      ');
   output += `║ ${padString('  ' + beatsLine, boxWidth)}║\n`;
-  
+
   // Build focus line
   const focusLine = movements.map(m => m.description).join('     ');
   output += `║ ${padString('  ' + focusLine, boxWidth)}║\n`;
 
   // Handler Portfolio Section
   output += '╠' + '═'.repeat(24) + ' BEAT / HANDLER PORTFOLIO ' + '═'.repeat(boxWidth - 50) + '╣\n';
-  output += `║ ${padString('Beat Mov Handler                    LOC  Sz  Cov  Risk AC  Src Baton', boxWidth)}║\n`;
+  output += `║ ${padString(tableHeader, boxWidth)}║\n`;
   output += `║ ${padString('─'.repeat(boxWidth - 1), boxWidth)}║\n`;
 
-  // Handler rows
+  // Handler rows - built dynamically from column configuration
   handlers.forEach((handler, idx) => {
-    const beat = padString(handler.beat, 4);
-    const mov = padString(handler.movement, 3);
-    const name = padString(handler.handler, 27);
-    const loc = padString(String(handler.loc), 3, true);
-    const sz = padString(handler.sizeBand, 2);
-    const cov = padString(handler.coverage + '%', 4, true);
-    const risk = padString(handler.risk, 4);
-    const ac = padString(handler.hasAcGwt ? 'Y' : 'N', 2);
-    const src = padString(handler.hasSourcePath ? 'Y' : 'N', 3);
-    const baton = padString(handler.baton, 8);
+    let row = '';
+    TABLE_COLUMNS.forEach((col, colIdx) => {
+      const value = col.getValue(handler);
+      row += padString(value, col.width, col.align === 'right');
+      if (colIdx < TABLE_COLUMNS.length - 1) {
+        row += ' '.repeat(COLUMN_SPACING[colIdx]);
+      }
+    });
 
-    output += `║ ${beat} ${mov} ${name} ${loc}  ${sz}  ${cov} ${risk} ${ac}  ${src} ${baton} ║\n`;
+    output += `║ ${row} ║\n`;
     
     // Add data baton handoff after movement boundaries
     if (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload') {
