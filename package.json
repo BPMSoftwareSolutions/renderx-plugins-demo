@@ -213,7 +213,7 @@
                     "analyze:symphonic:code":  "node scripts/analyze-symphonic-code.cjs",
                     "analyze:symphonic:code:baseline":  "node scripts/analyze-symphonic-code.cjs --baseline",
                     "analyze:symphonic:code:trends":  "node scripts/analyze-symphonic-code.cjs --trends",
-                    "analyze:symphonic:code:renderx":  "set ANALYSIS_DOMAIN_ID=renderx-web-orchestration && node scripts/analyze-symphonic-code.cjs",
+                    "analyze:symphonic:code:renderx":  "node scripts/analyze-symphonic-code.cjs --domain renderx-web-orchestration",
                     "analyze:symphonic:code:domain":  "node scripts/analyze-domain.cjs",
                     "analyze:domains:all": "node scripts/analyze-all-domains.cjs",
                     "gen:symphonic:code:docs":  "node scripts/gen-symphonic-code-analysis-docs.js",

@@ -53,7 +53,7 @@ const {
  * @param {string} domainId - Domain identifier
  * @returns {object} Domain configuration with paths
  */
-function loadDomainConfig(domainId) {
+function loadDomainConfig(domainId, options = { strict: true }) {
   try {
     const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
     if (!fs.existsSync(registryPath)) {
@@ -103,19 +103,46 @@ function loadDomainConfig(domainId) {
       canonicalDomainId: domainConfig.domain_id
     };
   } catch (err) {
-    console.error(`❌ FATAL: ${err.message}`);
-    process.exit(1);
+    if (options.strict) {
+      console.error(`❌ FATAL: ${err.message}`);
+      process.exit(1);
+    } else {
+      console.error(`⚠ Skipping domain '${domainId}': ${err.message}`);
+      return null;
+    }
   }
 }
 
-// Support environment variables for domain-based analysis orchestration
-let DOMAIN_ID = (process.env.ANALYSIS_DOMAIN_ID || 'renderx-web-orchestration').trim();
+// Support CLI args for domain selection; fallback to env; default: ALL domains
+// Usage:
+//   node scripts/analyze-symphonic-code.cjs --domain renderx-web-orchestration
+//   node scripts/analyze-symphonic-code.cjs              (analyze ALL domains)
+//   node scripts/analyze-symphonic-code.cjs --all        (explicit ALL)
+function parseCliDomainArgs() {
+  const argv = process.argv.slice(2);
+  let domainArg = null;
+  let allFlag = false;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--all') allFlag = true;
+    else if (a === '--domain' && argv[i + 1]) domainArg = argv[i + 1];
+    else if (a.startsWith('--domain=')) domainArg = a.split('=')[1];
+  }
+  return { domainArg: domainArg ? domainArg.trim() : null, allFlag };
+}
 
-// Load domain configuration from registry
-const domainConfig = loadDomainConfig(DOMAIN_ID);
-// Normalize DOMAIN_ID to canonical resolved id (handles aliases)
-if (domainConfig?.canonicalDomainId && DOMAIN_ID !== domainConfig.canonicalDomainId) {
-  DOMAIN_ID = domainConfig.canonicalDomainId;
+const { domainArg, allFlag } = parseCliDomainArgs();
+let DOMAIN_ID = (domainArg || process.env.ANALYSIS_DOMAIN_ID || '').trim();
+const RUN_ALL = allFlag || !DOMAIN_ID;
+
+// Load domain configuration if running single domain; in ALL mode we'll iterate later
+let domainConfig = null;
+if (!RUN_ALL) {
+  domainConfig = loadDomainConfig(DOMAIN_ID);
+  // Normalize DOMAIN_ID to canonical resolved id (handles aliases)
+  if (domainConfig?.canonicalDomainId && DOMAIN_ID !== domainConfig.canonicalDomainId) {
+    DOMAIN_ID = domainConfig.canonicalDomainId;
+  }
 }
 
 // Use registry paths if available, otherwise fall back to environment variables or defaults
@@ -1510,8 +1537,19 @@ ${(() => {
 // MAIN EXECUTION
 // ============================================================================
 
-async function run() {
-  header(`SYMPHONIC CODE ANALYSIS PIPELINE - ${DOMAIN_ID.toUpperCase()}`);
+async function runForDomain(selectedDomainId) {
+  // Recompute domain configuration for the selected domain
+  let localDomainId = selectedDomainId;
+  let localConfig = loadDomainConfig(localDomainId, { strict: true });
+  if (localConfig?.canonicalDomainId && localDomainId !== localConfig.canonicalDomainId) {
+    localDomainId = localConfig.canonicalDomainId;
+  }
+
+  // Override globals used downstream where safe
+  DOMAIN_ID = localDomainId;
+  domainConfig = localConfig;
+
+  header(`SYMPHONIC CODE ANALYSIS PIPELINE - ${localDomainId.toUpperCase()}`);
 
   try {
     // MOVEMENT 1: DISCOVERY
@@ -1641,6 +1679,34 @@ async function run() {
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     process.exit(1);
+  }
+}
+
+async function run() {
+  if (RUN_ALL) {
+    // Iterate all domains from registry and spawn per-domain analysis sequentially
+    const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    if (!fs.existsSync(registryPath)) {
+      console.error('❌ FATAL: DOMAIN_REGISTRY.json not found for ALL mode.');
+      process.exit(1);
+    }
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+    const domainIds = Object.values(registry.domains || {})
+      .map(d => d.domain_id)
+      .filter(Boolean);
+
+    if (domainIds.length === 0) {
+      console.error('⚠ No domains found in registry.');
+      process.exit(1);
+    }
+
+    for (const did of domainIds) {
+      const cfg = loadDomainConfig(did, { strict: false });
+      if (!cfg) continue; // skip domains without required config
+      await runForDomain(did);
+    }
+  } else {
+    await runForDomain(DOMAIN_ID);
   }
 }
 
