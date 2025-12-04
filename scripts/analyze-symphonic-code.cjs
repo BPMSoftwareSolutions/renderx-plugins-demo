@@ -109,7 +109,7 @@ function loadDomainConfig(domainId) {
 }
 
 // Support environment variables for domain-based analysis orchestration
-let DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'renderx-web-orchestration';
+let DOMAIN_ID = (process.env.ANALYSIS_DOMAIN_ID || 'renderx-web-orchestration').trim();
 
 // Load domain configuration from registry
 const domainConfig = loadDomainConfig(DOMAIN_ID);

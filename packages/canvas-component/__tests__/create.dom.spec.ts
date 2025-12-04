@@ -58,7 +58,7 @@ describe("canvas-component create beat (DOM-only)", () => {
    *      React rendering is NOT performed directly (deferred to renderReact beat)
    *      schema is validated before applying
    */
-  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.3:1] creates a single element under #rx-canvas with text, position and dimensions", () => {
+  it("[AC:renderx-web-orchestration:canvas-component-create-symphony:1.3:1] creates a single element under #rx-canvas with text, position and dimensions", () => {
     // Given: valid template and nodeId exist in context.payload
     const template = makeTemplate();
 

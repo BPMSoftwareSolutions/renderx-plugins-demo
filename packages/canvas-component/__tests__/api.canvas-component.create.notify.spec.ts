@@ -58,7 +58,7 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
    *      events are ordered FIFO
    *      subscribers receive notifications consistently
    */
-  it('[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.5:1] publishes canvas.component.created with id + correlationId when both present (createdNode path)', () => {
+  it('[AC:renderx-web-orchestration:canvas-component-create-symphony:1.5:1] publishes canvas.component.created with id + correlationId when both present (createdNode path)', () => {
     // Given: component has been created with id and correlationId
     const ctx = makeCtx();
     ctx.payload.createdNode = { id: 'comp-123' };
@@ -99,7 +99,7 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
    *
    * Then: legacy onComponentCreated callback is invoked if provided
    */
-  it('[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.5:1] invokes legacy onComponentCreated callback if provided', () => {
+  it('[AC:renderx-web-orchestration:canvas-component-create-symphony:1.5:1] invokes legacy onComponentCreated callback if provided', () => {
     // Given: component has been created with callback provided
     const ctx = makeCtx();
     const createdNode = { id: 'legacy-comp' };

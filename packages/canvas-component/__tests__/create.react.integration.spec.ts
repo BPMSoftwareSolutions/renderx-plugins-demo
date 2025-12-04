@@ -119,7 +119,7 @@ describe("React Component Integration Tests", () => {
    *      validation, compile, and render metrics are emitted
    *      context.payload.reactRendered is set to true
    */
-  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:1] creates a React component through the complete create sequence", async () => {
+  it("[AC:renderx-web-orchestration:canvas-component-create-symphony:1.4:1] creates a React component through the complete create sequence", async () => {
     // Given: context.payload.kind is 'react' with valid reactCode
     const ctx = makeCtx();
     const template = makeReactComponentTemplate();
@@ -163,7 +163,7 @@ describe("React Component Integration Tests", () => {
    * Then: handler returns early without processing
    * And: non-React components are not affected
    */
-  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.4:5] handles regular (non-React) components without React rendering", async () => {
+  it("[AC:renderx-web-orchestration:canvas-component-create-symphony:1.4:5] handles regular (non-React) components without React rendering", async () => {
     // Given: context.payload.kind is not 'react'
     const ctx = makeCtx();
     const template = makeRegularComponentTemplate();

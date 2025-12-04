@@ -101,7 +101,7 @@ describe("import flow injects instance class on DOM elements", () => {
    *      registration event is emitted for analytics
    *      style hooks and analytics can target instance consistently
    */
-  it("[AC:canvas-component-create-symphony:canvas-component-create-symphony:1.2:1] adds rx-comp-<tag>-<id> class for imported components", async () => {
+  it("[AC:renderx-web-orchestration:canvas-component-create-symphony:1.2:1] adds rx-comp-<tag>-<id> class for imported components", async () => {
     // Given: valid nodeId and template exist in context.payload
     const ctx = makeCtx();
     const ui = {
