@@ -10,6 +10,7 @@
                     "build:packages":  "npm --prefix packages/components run build \u0026\u0026 npm --prefix packages/musical-conductor run build \u0026\u0026 npm --prefix packages/host-sdk run build \u0026\u0026 npm --prefix packages/manifest-tools run build \u0026\u0026 npm --prefix packages/canvas run build \u0026\u0026 npm --prefix packages/canvas-component run build \u0026\u0026 npm --prefix packages/control-panel run build \u0026\u0026 npm --prefix packages/header run build \u0026\u0026 npm --prefix packages/library run build \u0026\u0026 npm --prefix packages/library-component run build \u0026\u0026 npm --prefix packages/real-estate-analyzer run build \u0026\u0026 npm --prefix packages/self-healing run build \u0026\u0026 npm --prefix packages/slo-dashboard run build",
                     "build:host":  "npm run pre:manifests \u0026\u0026 vite build",
                     "build:all":  "npm run build:packages \u0026\u0026 npm run build:host",
+                    "validate:musical-sequences": "node scripts/validate-musical-sequences.js",
                     "dev":  "npm run pre:manifests \u0026\u0026 vite",
                     "rebuild:mc":  "npm run build -w packages/musical-conductor",
                     "clean:vite":  "node -e \"try{require('fs').rmSync('node_modules/.vite',{recursive:true,force:true});console.log('Removed node_modules/.vite');}catch(e){console.log('No .vite cache to remove')}\"",

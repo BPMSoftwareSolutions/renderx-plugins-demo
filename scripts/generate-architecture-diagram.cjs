@@ -472,6 +472,11 @@ function generateHandlerSummary(handlerData) {
   // Create a lookup map of handler name -> handler object
   const handlerLookup = new Map();
   handlers.forEach(handler => {
+    // Exclude _analyzeHandler.js files from grouping
+    if (handler.file && handler.file.includes('_analyzeHandler.js')) {
+      return;
+    }
+
     // Extract handler name from file or use handler.name
     let handlerName = handler.name;
     if (!handlerName || handlerName === 'handlers' || handlerName === 'handler') {
@@ -891,7 +896,7 @@ ${renderLegendAndTerminology({
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-ANALYSIS EXECUTION SUMMARY:
+ANAlYSIS EXECUTION SUMMARY:
   ✅ Discovered: ${totalFiles} source files in ${domainId}
   ✅ Analyzed: ${totalHandlers} handler functions with measured LOC (${totalLoc} total lines)
   ✅ Mapped: Files to orchestration beats

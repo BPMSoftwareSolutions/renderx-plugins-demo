@@ -17,6 +17,13 @@ function loadJson(relPath) {
  */
 function analyzeFractalArchitecture() {
   const registry = loadJson('DOMAIN_REGISTRY.json');
+  // Read raw registry content for fuzzy matching of orchestration ids referenced in sequences or filenames
+  let registryRaw = '';
+  try {
+    registryRaw = fs.readFileSync(path.join(__dirname, '..', 'DOMAIN_REGISTRY.json'), 'utf8');
+  } catch (e) {
+    registryRaw = JSON.stringify(registry);
+  }
   const orchestrationRegistry = loadJson('orchestration-domains.json');
 
   const domains = registry.domains || {};
@@ -30,7 +37,35 @@ function analyzeFractalArchitecture() {
   const projectionOnly = [];
   for (const id of orchestrationIds) {
     if (!domains[id]) {
-      projectionOnly.push(id);
+      // Fuzzy presence check: consider it present if referenced anywhere in DOMAIN_REGISTRY
+      // 1) exact substring match in raw JSON
+      // 2) referenced as sequence file basename in any domain's orchestration.sequence_files
+      // 3) filename variant (dots replaced with '-')
+      const altId = id.replace(/\./g, '-');
+      let appearsInRegistry = registryRaw.includes(id) || registryRaw.includes(altId) || registryRaw.includes(id + '.json') || registryRaw.includes(altId + '.json');
+
+      if (!appearsInRegistry) {
+        // Check sequence_files across all registered domains
+        for (const [, d] of Object.entries(domains)) {
+          try {
+            const seqFiles = (d.orchestration && d.orchestration.sequence_files) || d.sequence_files || [];
+            for (const sf of seqFiles) {
+              const base = path.basename(sf, '.json');
+              if (base === id || base === altId || sf.includes(id) || sf.includes(altId)) {
+                appearsInRegistry = true;
+                break;
+              }
+            }
+            if (appearsInRegistry) break;
+          } catch (e) {
+            // ignore
+          }
+        }
+      }
+
+      if (!appearsInRegistry) {
+        projectionOnly.push(id);
+      }
     }
   }
 

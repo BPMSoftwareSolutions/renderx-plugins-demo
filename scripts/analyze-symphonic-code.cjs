@@ -146,13 +146,13 @@ if (!RUN_ALL) {
 }
 
 // Use registry paths if available, otherwise fall back to environment variables or defaults
-const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
-const REPORT_OUTPUT_PATH = domainConfig?.reportOutputPath || process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
+const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || 'packages/code-analysis/reports';
+const REPORT_OUTPUT_PATH = domainConfig?.reportOutputPath || process.env.REPORT_OUTPUT_PATH || 'packages/code-analysis/reports';
 const AUTO_GENERATE_REPORT = process.env.AUTO_GENERATE_REPORT === 'true';
 
 const ANALYSIS_DIR = path.join(process.cwd(), ANALYSIS_OUTPUT_PATH);
 const DOCS_DIR = path.join(process.cwd(), REPORT_OUTPUT_PATH);
-const TIMESTAMP = new Date().toISOString().replace(/[:.]/g, '-');
+// Removed TIMESTAMP to prevent duplicate files - use static filenames instead
 
 // Initialize directories
 [ANALYSIS_DIR, DOCS_DIR].forEach(dir => {
@@ -941,7 +941,7 @@ async function generateJsonArtifacts(metrics) {
   log(`Integrity checkpoint: ${checkpoint.integrityHash.substring(0, 8)}...`, '✓');
   
   const analysisData = {
-    id: `${DOMAIN_ID}-code-analysis-${TIMESTAMP}`,
+    id: `${DOMAIN_ID}-code-analysis`,
     timestamp: new Date().toISOString(),
     codebase: DOMAIN_ID,
     movements: {
@@ -983,7 +983,7 @@ async function generateJsonArtifacts(metrics) {
     integrity_checkpoint: checkpoint
   };
 
-  const jsonPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json`);
+  const jsonPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-code-analysis.json`);
   fs.writeFileSync(jsonPath, JSON.stringify(analysisData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), jsonPath)}`, '✓');
 
@@ -1010,7 +1010,7 @@ async function generateJsonArtifacts(metrics) {
     },
     integrity: checkpoint
   };
-  const domainMetricsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-domain-metrics-${TIMESTAMP}.json`);
+  const domainMetricsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-domain-metrics.json`);
   fs.writeFileSync(domainMetricsPath, JSON.stringify(domainMetrics, null, 2));
   log(`Saved domain metrics: ${path.relative(process.cwd(), domainMetricsPath)}`, '✓');
 
@@ -1027,7 +1027,7 @@ async function generateJsonArtifacts(metrics) {
     overall_coverage: metrics.coverage
   };
 
-  const coveragePath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json`);
+  const coveragePath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-coverage-summary.json`);
   fs.writeFileSync(coveragePath, JSON.stringify(coverageSummary, null, 2));
   log(`Saved: ${path.relative(process.cwd(), coveragePath)}`, '✓');
 
@@ -1052,7 +1052,7 @@ async function generateJsonArtifacts(metrics) {
     'beat-4-conformity,Movement 4,20,1356,1.34,68%,WARN'
   ];
 
-  const csvPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv`);
+  const csvPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-per-beat-metrics.csv`);
   fs.writeFileSync(csvPath, csvHeader + csvRows.join('\n'));
   log(`Saved: ${path.relative(process.cwd(), csvPath)}`, '✓');
 
@@ -1070,7 +1070,7 @@ async function generateJsonArtifacts(metrics) {
     }
   };
 
-  const trendsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-trends-${TIMESTAMP}.json`);
+  const trendsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-trends.json`);
   fs.writeFileSync(trendsPath, JSON.stringify(trendData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), trendsPath)}`, '✓');
 
@@ -1079,7 +1079,7 @@ async function generateJsonArtifacts(metrics) {
     const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
     const handlerResults = await analyzeCoverageByHandler();
     if (handlerResults.success && handlerResults.handlers && handlerResults.handlers.length > 0) {
-      const handlerMetricsPath = path.join(ANALYSIS_DIR, `handler-metrics-${TIMESTAMP}.json`);
+      const handlerMetricsPath = path.join(ANALYSIS_DIR, `handler-metrics.json`);
       fs.writeFileSync(handlerMetricsPath, JSON.stringify({
         timestamp: new Date().toISOString(),
         handlers: handlerResults.handlers.map(h => ({
@@ -1102,7 +1102,7 @@ async function generateJsonArtifacts(metrics) {
 
   // Save AC-to-Test validation results
   if (metrics.acValidation && !metrics.acValidation.error) {
-    const acValidationPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-ac-validation-${TIMESTAMP}.json`);
+    const acValidationPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-ac-validation.json`);
     fs.writeFileSync(acValidationPath, JSON.stringify(metrics.acValidation, null, 2));
     log(`Saved: ${path.relative(process.cwd(), acValidationPath)}`, '✓');
 
@@ -1112,7 +1112,7 @@ async function generateJsonArtifacts(metrics) {
       detailedValidations.forEach(validation => {
         if (validation.summary) {
           const symphonyName = validation.summary.symphonyId || 'unknown';
-          const detailPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-${symphonyName}-ac-validation-${TIMESTAMP}.json`);
+          const detailPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-${symphonyName}-ac-validation.json`);
           fs.writeFileSync(detailPath, JSON.stringify(validation, null, 2));
         }
       });
@@ -1506,10 +1506,10 @@ ${(() => {
 
 ## Artifacts Generated
 
-- **JSON Analysis**: ${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json
-- **Coverage Summary**: ${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json
-- **Per-Beat Metrics**: ${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv
-- **Trend Analysis**: ${DOMAIN_ID}-trends-${TIMESTAMP}.json
+- **JSON Analysis**: ${DOMAIN_ID}-code-analysis.json
+- **Coverage Summary**: ${DOMAIN_ID}-coverage-summary.json
+- **Per-Beat Metrics**: ${DOMAIN_ID}-per-beat-metrics.csv
+- **Trend Analysis**: ${DOMAIN_ID}-trends.json
 
 ---
 
@@ -1582,11 +1582,11 @@ ${(() => {
     }
   }
 
-  // ALWAYS save rich markdown artifact for orchestrator consumption
+  // ALWAYS save markdown report for orchestrator consumption
   // This contains ASCII diagrams, detailed handler portfolios, and comprehensive insights
-  const richMarkdownPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-rich-markdown-${TIMESTAMP}.md`);
-  fs.writeFileSync(richMarkdownPath, report);
-  log(`Saved rich markdown artifact: ${path.relative(process.cwd(), richMarkdownPath)}`, '✓');
+  const markdownPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}.md`);
+  fs.writeFileSync(markdownPath, report);
+  log(`Saved markdown report: ${path.relative(process.cwd(), markdownPath)}`, '✓');
   
   // Respect AUTO_GENERATE_REPORT flag to avoid inner subject report when orchestrated
   if (AUTO_GENERATE_REPORT) {

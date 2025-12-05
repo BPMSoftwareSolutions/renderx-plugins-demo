@@ -310,8 +310,8 @@
       },
       "analysisConfig": {
         "analysisSourcePath": "packages/",
-        "analysisOutputPath": ".generated/analysis/renderx-web/",
-        "reportOutputPath": "docs/generated/renderx-web/",
+        "analysisOutputPath": "packages/code-analysis/reports/",
+        "reportOutputPath": "packages/code-analysis/reports/",
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
