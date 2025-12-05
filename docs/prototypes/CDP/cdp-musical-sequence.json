@@ -164,7 +164,24 @@
             "persona": "System Architect",
             "goal": "implement architecting for releasability",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the System Architect is performing architect activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "architecting for releasability practices are implemented",
+                "the architecture supports multiple release strategies"
+              ],
+              "then": [
+                "components can be released independently based on business demand",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Architecting for testability",
@@ -192,7 +209,24 @@
             "persona": "System Architect",
             "goal": "implement architecting for testability",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the System Architect is performing architect activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "architecting for testability practices are implemented",
+                "the system is designed with modular, testable components"
+              ],
+              "then": [
+                "continuous testing can be performed at all levels",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Separating deployment and release",
@@ -220,7 +254,24 @@
             "persona": "System Architect",
             "goal": "implement separating deployment and release",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the System Architect is performing architect activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "separating deployment and release practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Architecting for operations",
@@ -248,7 +299,24 @@
             "persona": "System Architect",
             "goal": "implement architecting for operations",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the System Architect is performing architect activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "architecting for operations practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Threat modeling",
@@ -276,7 +344,24 @@
             "persona": "System Architect",
             "goal": "implement threat modeling",
             "benefit": "maintain security throughout the delivery pipeline"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the System Architect is performing architect activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "threat modeling practices are implemented",
+                "backlog items are evaluated against business value criteria"
+              ],
+              "then": [
+                "the backlog reflects current priorities and is ready for planning",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -319,7 +404,24 @@
             "persona": "Product Manager",
             "goal": "implement collaboration and research around customer needs",
             "benefit": "foster alignment and shared understanding"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "collaboration and research around customer needs practices are implemented",
+                "the vision is communicated to all stakeholders"
+              ],
+              "then": [
+                "teams are aligned on strategic direction and priorities",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Primary market research",
@@ -347,7 +449,24 @@
             "persona": "Product Manager",
             "goal": "implement primary market research",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "primary market research practices are implemented",
+                "market research activities are conducted systematically"
+              ],
+              "then": [
+                "insights inform product decisions and backlog prioritization",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Gemba walks",
@@ -375,7 +494,24 @@
             "persona": "Product Manager",
             "goal": "implement gemba walks",
             "benefit": "continuously evolve practices based on outcomes"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "gemba walks practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Customer Visits",
@@ -403,7 +539,24 @@
             "persona": "Product Manager",
             "goal": "implement customer visits",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "customer visits practices are implemented",
+                "monitoring dashboards and alerts are configured"
+              ],
+              "then": [
+                "system health and performance are continuously tracked",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Secondary market research",
@@ -431,7 +584,24 @@
             "persona": "Product Manager",
             "goal": "implement secondary market research",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "secondary market research practices are implemented",
+                "market research activities are conducted systematically"
+              ],
+              "then": [
+                "insights inform product decisions and backlog prioritization",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Lean UX thinking",
@@ -459,7 +629,24 @@
             "persona": "Product Manager",
             "goal": "implement lean ux thinking",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "lean ux thinking practices are implemented",
+                "market research activities are conducted systematically"
+              ],
+              "then": [
+                "insights inform product decisions and backlog prioritization",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Understanding the problem space",
@@ -487,7 +674,24 @@
             "persona": "Product Manager",
             "goal": "implement understanding the problem space",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "understanding the problem space practices are implemented",
+                "market research activities are conducted systematically"
+              ],
+              "then": [
+                "insights inform product decisions and backlog prioritization",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Developing personas to focus design",
@@ -515,7 +719,24 @@
             "persona": "Product Manager",
             "goal": "implement developing personas to focus design",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "developing personas to focus design practices are implemented",
+                "market research activities are conducted systematically"
+              ],
+              "then": [
+                "insights inform product decisions and backlog prioritization",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Building empathy for the user",
@@ -543,7 +764,24 @@
             "persona": "Product Manager",
             "goal": "implement building empathy for the user",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "building empathy for the user practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Designing the customer experience",
@@ -571,7 +809,24 @@
             "persona": "Product Manager",
             "goal": "implement designing the customer experience",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing collaborate and research activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "designing the customer experience practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -614,7 +869,24 @@
             "persona": "Product Manager",
             "goal": "implement lean startup thinking",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing hypothesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "lean startup thinking practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Innovation Accounting",
@@ -642,7 +914,24 @@
             "persona": "Product Manager",
             "goal": "implement innovation accounting",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing hypothesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "innovation accounting practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -685,7 +974,24 @@
             "persona": "Product Manager",
             "goal": "implement creating the solution vision",
             "benefit": "provide strategic direction for the team"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "creating the solution vision practices are implemented",
+                "the vision is communicated to all stakeholders"
+              ],
+              "then": [
+                "teams are aligned on strategic direction and priorities",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Maintaining the solution roadmap",
@@ -713,7 +1019,24 @@
             "persona": "Product Manager",
             "goal": "implement maintaining the solution roadmap",
             "benefit": "maximize value delivery with limited resources"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "maintaining the solution roadmap practices are implemented",
+                "backlog items are evaluated against business value criteria"
+              ],
+              "then": [
+                "the backlog reflects current priorities and is ready for planning",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Defining a backlog of clearly written features",
@@ -741,7 +1064,24 @@
             "persona": "Product Manager",
             "goal": "implement defining a backlog of clearly written features",
             "benefit": "maintain security throughout the delivery pipeline"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "defining a backlog of clearly written features practices are implemented",
+                "backlog items are evaluated against business value criteria"
+              ],
+              "then": [
+                "the backlog reflects current priorities and is ready for planning",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Behavior-driven development (BDD)",
@@ -769,7 +1109,24 @@
             "persona": "Product Manager",
             "goal": "implement behavior-driven development (bdd)",
             "benefit": "foster alignment and shared understanding"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "behavior-driven development (bdd) practices are implemented",
+                "stakeholders are engaged in the discovery process"
+              ],
+              "then": [
+                "a shared understanding of customer needs is established",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Economic prioritization",
@@ -797,7 +1154,24 @@
             "persona": "Product Manager",
             "goal": "implement economic prioritization",
             "benefit": "maximize value delivery with limited resources"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "economic prioritization practices are implemented",
+                "backlog items are evaluated against business value criteria"
+              ],
+              "then": [
+                "the backlog reflects current priorities and is ready for planning",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "PI Planning",
@@ -825,7 +1199,24 @@
             "persona": "Product Manager",
             "goal": "implement pi planning",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing synthesize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "pi planning practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -868,7 +1259,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement continuous code integration",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing build activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "continuous code integration practices are implemented",
+                "automated tests are created and maintained"
+              ],
+              "then": [
+                "test results provide rapid feedback on code quality",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Build and test automation",
@@ -896,7 +1304,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement build and test automation",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing build activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "build and test automation practices are implemented",
+                "code changes trigger automated build pipelines"
+              ],
+              "then": [
+                "build artifacts are produced consistently and reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Trunk-based development",
@@ -924,7 +1349,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement trunk-based development",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing build activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "trunk-based development practices are implemented",
+                "code is committed to the main branch frequently"
+              ],
+              "then": [
+                "integration issues are detected and resolved quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Gated commit",
@@ -952,7 +1394,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement gated commit",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing build activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "gated commit practices are implemented",
+                "code is committed to the main branch frequently"
+              ],
+              "then": [
+                "integration issues are detected and resolved quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Application security",
@@ -980,7 +1439,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement application security",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing build activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "application security practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1023,7 +1499,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement breaking features into stories",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "breaking features into stories practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Behavior-driven development (BDD)",
@@ -1051,7 +1544,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement behavior-driven development (bdd)",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "behavior-driven development (bdd) practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Test-driven development (TDD)",
@@ -1079,7 +1589,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement test-driven development (tdd)",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test-driven development (tdd) practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Version control",
@@ -1107,7 +1634,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement version control",
             "benefit": "continuously evolve practices based on outcomes"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "version control practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Built-in quality",
@@ -1135,7 +1679,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement built-in quality",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "built-in quality practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Application telemetry",
@@ -1163,7 +1724,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement application telemetry",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "application telemetry practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Threat modeling",
@@ -1191,7 +1769,24 @@
             "persona": "Agile Team Developer",
             "goal": "implement threat modeling",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Team Developer is performing develop activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "threat modeling practices are implemented",
+                "security requirements are identified and documented"
+              ],
+              "then": [
+                "threats are mitigated through architectural decisions and NFRs",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1234,7 +1829,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement maintain a staging environment",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing stage activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "maintain a staging environment practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Blue/Green deployment",
@@ -1262,7 +1874,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement blue/green deployment",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing stage activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "blue/green deployment practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "System demo",
@@ -1290,7 +1919,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement system demo",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing stage activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "system demo practices are implemented",
+                "deployment procedures are executed"
+              ],
+              "then": [
+                "changes are deployed safely to production",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1333,7 +1979,24 @@
             "persona": "QA Engineer",
             "goal": "implement test and production environment congruity",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test and production environment congruity practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Test automation",
@@ -1361,7 +2024,24 @@
             "persona": "QA Engineer",
             "goal": "implement test automation",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test automation practices are implemented",
+                "automated tests are created and maintained"
+              ],
+              "then": [
+                "test results provide rapid feedback on code quality",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Test data management",
@@ -1389,7 +2069,24 @@
             "persona": "QA Engineer",
             "goal": "implement test data management",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test data management practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Service virtualization",
@@ -1417,7 +2114,24 @@
             "persona": "QA Engineer",
             "goal": "implement service virtualization",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "service virtualization practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Testing non-functional requirements (NFRs)",
@@ -1445,7 +2159,24 @@
             "persona": "QA Engineer",
             "goal": "implement testing non-functional requirements (nfrs)",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "testing non-functional requirements (nfrs) practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Continuous integration and suppliers",
@@ -1473,7 +2204,24 @@
             "persona": "QA Engineer",
             "goal": "implement continuous integration and suppliers",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing test end-to-end activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "continuous integration and suppliers practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1516,7 +2264,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement dark launches",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "dark launches practices are implemented",
+                "target environments are provisioned and configured"
+              ],
+              "then": [
+                "deployments are consistent across all environments",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Feature toggles",
@@ -1544,7 +2309,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement feature toggles",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "feature toggles practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Deployment automation",
@@ -1572,7 +2354,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement deployment automation",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "deployment automation practices are implemented",
+                "deployment automation is configured and tested"
+              ],
+              "then": [
+                "deployments are executed without manual intervention",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Selective deployment",
@@ -1600,7 +2399,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement selective deployment",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "selective deployment practices are implemented",
+                "target environments are provisioned and configured"
+              ],
+              "then": [
+                "deployments are consistent across all environments",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Self-service deployment",
@@ -1628,7 +2444,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement self-service deployment",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "self-service deployment practices are implemented",
+                "deployment automation is configured and tested"
+              ],
+              "then": [
+                "deployments are executed without manual intervention",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Version control",
@@ -1656,7 +2489,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement version control",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "version control practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Blue/Green deployment",
@@ -1684,7 +2534,24 @@
             "persona": "DevOps Engineer",
             "goal": "implement blue/green deployment",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the DevOps Engineer is performing deploy activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "blue/green deployment practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1727,7 +2594,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement full-stack telemetry",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing monitor activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "full-stack telemetry practices are implemented",
+                "monitoring dashboards and alerts are configured"
+              ],
+              "then": [
+                "system health and performance are continuously tracked",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Visual displays",
@@ -1755,7 +2639,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement visual displays",
             "benefit": "reduce manual effort and increase consistency"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing monitor activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "visual displays practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Federated monitoring",
@@ -1783,7 +2684,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement federated monitoring",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing monitor activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "federated monitoring practices are implemented",
+                "monitoring dashboards and alerts are configured"
+              ],
+              "then": [
+                "system health and performance are continuously tracked",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -1826,7 +2744,24 @@
             "persona": "Operations Engineer",
             "goal": "implement proactive detection",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "proactive detection practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Cross-team collaboration",
@@ -1854,7 +2789,24 @@
             "persona": "Operations Engineer",
             "goal": "implement cross-team collaboration",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "cross-team collaboration practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Session replay",
@@ -1882,7 +2834,24 @@
             "persona": "Operations Engineer",
             "goal": "implement session replay",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "session replay practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Rollback and fix forward",
@@ -1910,7 +2879,24 @@
             "persona": "Operations Engineer",
             "goal": "implement rollback and fix forward",
             "benefit": "minimize impact of issues in production"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "rollback and fix forward practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Immutable infrastructure",
@@ -1938,7 +2924,24 @@
             "persona": "Operations Engineer",
             "goal": "implement immutable infrastructure",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "immutable infrastructure practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Version control",
@@ -1966,7 +2969,24 @@
             "persona": "Operations Engineer",
             "goal": "implement version control",
             "benefit": "minimize impact of issues in production"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Operations Engineer is performing respond activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "version control practices are implemented",
+                "code is committed to the main branch frequently"
+              ],
+              "then": [
+                "integration issues are detected and resolved quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -2009,7 +3029,24 @@
             "persona": "QA Engineer",
             "goal": "implement production testing",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing verify activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "production testing practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Test automation",
@@ -2037,7 +3074,24 @@
             "persona": "QA Engineer",
             "goal": "implement test automation",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing verify activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test automation practices are implemented",
+                "automated tests are created and maintained"
+              ],
+              "then": [
+                "test results provide rapid feedback on code quality",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Test data management",
@@ -2065,7 +3119,24 @@
             "persona": "QA Engineer",
             "goal": "implement test data management",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing verify activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "test data management practices are implemented",
+                "code is committed to the main branch frequently"
+              ],
+              "then": [
+                "integration issues are detected and resolved quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Testing non-functional requirements (NFRs)",
@@ -2093,7 +3164,24 @@
             "persona": "QA Engineer",
             "goal": "implement testing non-functional requirements (nfrs)",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the QA Engineer is performing verify activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "testing non-functional requirements (nfrs) practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -2136,7 +3224,24 @@
             "persona": "Agile Coach",
             "goal": "implement lean startup thinking",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Coach is performing learn activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "lean startup thinking practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Value stream mapping",
@@ -2164,7 +3269,24 @@
             "persona": "Agile Coach",
             "goal": "implement value stream mapping",
             "benefit": "continuously evolve practices based on outcomes"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Coach is performing learn activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "value stream mapping practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Relentless improvement",
@@ -2192,7 +3314,24 @@
             "persona": "Agile Coach",
             "goal": "implement relentless improvement",
             "benefit": "continuously evolve practices based on outcomes"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Agile Coach is performing learn activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "relentless improvement practices are implemented",
+                "feedback and metrics are analyzed"
+              ],
+              "then": [
+                "actionable improvements are identified and implemented",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -2235,7 +3374,24 @@
             "persona": "Product Manager",
             "goal": "implement application telemetry",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing measure activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "application telemetry practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Innovation Accounting",
@@ -2263,7 +3419,24 @@
             "persona": "Product Manager",
             "goal": "implement innovation accounting",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Product Manager is performing measure activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "innovation accounting practices are implemented",
+                "hypotheses are formulated with measurable outcomes"
+              ],
+              "then": [
+                "experiments validate or invalidate assumptions quickly",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -2306,7 +3479,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement dark launches",
             "benefit": "achieve reliable and repeatable deployments"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing release activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "dark launches practices are implemented",
+                "target environments are provisioned and configured"
+              ],
+              "then": [
+                "deployments are consistent across all environments",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Feature toggles",
@@ -2334,7 +3524,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement feature toggles",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing release activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "feature toggles practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Canary releases",
@@ -2362,7 +3569,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement canary releases",
             "benefit": "deliver value aligned with customer needs"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing release activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "canary releases practices are implemented",
+                "the defined process is followed"
+              ],
+              "then": [
+                "the expected outcomes are achieved",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Decoupled release elements",
@@ -2390,7 +3614,24 @@
             "persona": "Release Train Engineer",
             "goal": "implement decoupled release elements",
             "benefit": "enable flexible and controlled releases"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Release Train Engineer is performing release activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "decoupled release elements practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {
@@ -2433,7 +3674,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement cross-team collaboration",
             "benefit": "improve delivery flow and quality"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing stabilize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "cross-team collaboration practices are implemented",
+                "release criteria are verified before go-live"
+              ],
+              "then": [
+                "releases deliver value to customers reliably",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Failover/disaster recovery",
@@ -2461,7 +3719,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement failover/disaster recovery",
             "benefit": "minimize impact of issues in production"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing stabilize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "failover/disaster recovery practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Continuous security monitoring",
@@ -2489,7 +3764,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement continuous security monitoring",
             "benefit": "ensure quality through continuous validation"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing stabilize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "continuous security monitoring practices are implemented",
+                "test coverage meets defined quality standards"
+              ],
+              "then": [
+                "defects are identified early in the development cycle",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Architect for operations",
@@ -2517,7 +3809,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement architect for operations",
             "benefit": "maintain security throughout the delivery pipeline"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing stabilize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "architect for operations practices are implemented",
+                "incident response procedures are followed"
+              ],
+              "then": [
+                "issues are resolved with minimal impact to users",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         },
         {
           "name": "Monitor non-functional requirements (NFRs)",
@@ -2545,7 +3854,24 @@
             "persona": "Site Reliability Engineer",
             "goal": "implement monitor non-functional requirements (nfrs)",
             "benefit": "gain visibility into system health and performance"
-          }
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the Site Reliability Engineer is performing stabilize activities",
+                "the team has access to necessary tools and environments"
+              ],
+              "when": [
+                "monitor non-functional requirements (nfrs) practices are implemented",
+                "monitoring dashboards and alerts are configured"
+              ],
+              "then": [
+                "system health and performance are continuously tracked",
+                "the practice is documented and repeatable",
+                "progress is measurable and visible"
+              ]
+            }
+          ]
         }
       ],
       "userStory": {

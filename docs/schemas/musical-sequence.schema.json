@@ -211,7 +211,7 @@
     "SequenceBeat": {
       "type": "object",
       "additionalProperties": true,
-      "required": ["event", "userStory"],
+      "required": ["event", "userStory", "acceptanceCriteria"],
       "properties": {
         "name": {
           "type": "string",
@@ -311,11 +311,6 @@
         "persona": { "type": "string", "description": "Beat-level persona" },
         "businessValue": { "type": "string", "description": "Beat-level business value articulation" },
         "acceptanceCriteria": {
-          "type": "array",
-          "description": "List of acceptance criteria statements",
-          "items": { "type": "string" }
-        },
-        "acceptanceCriteriaStructured": {
           "type": "array",
           "description": "Structured acceptance criteria grouped into Given/When/Then/And clauses",
           "items": {

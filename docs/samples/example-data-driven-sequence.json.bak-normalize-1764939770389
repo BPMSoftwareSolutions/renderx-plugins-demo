@@ -15,12 +15,7 @@
           "timing": "immediate",
           "dynamics": "mf",
           "kind": "pure",
-          "number": 1,
-          "userStory": {
-            "persona": "design systems engineer",
-            "goal": "",
-            "benefit": ""
-          }
+          "number": 1
         },
         {
           "beat": 2,
@@ -30,19 +25,9 @@
           "timing": "immediate",
           "dynamics": "mf",
           "kind": "stage-crew",
-          "number": 2,
-          "userStory": {
-            "persona": "design systems engineer",
-            "goal": "",
-            "benefit": ""
-          }
+          "number": 2
         }
-      ],
-      "userStory": {
-        "persona": "design systems engineer",
-        "goal": "",
-        "benefit": ""
-      }
+      ]
     }
   ],
   "lifecycleTopics": [
@@ -77,10 +62,5 @@
       "notes": "Inventory state changed due to creation"
     }
   ],
-  "domainId": "renderx-web-orchestration",
-  "userStory": {
-    "persona": "design systems engineer",
-    "goal": "",
-    "benefit": ""
-  }
+  "domainId": "renderx-web-orchestration"
 }
