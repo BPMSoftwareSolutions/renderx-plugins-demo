@@ -337,9 +337,28 @@
       "required": ["name", "sourcePath"],
       "properties": {
         "name": { "type": "string", "description": "Handler function reference (module#export)" },
-        "scope": { "type": "string", "description": "Handler scope (plugin, orchestration, system)" },
-        "kind": { "type": "string", "description": "Handler kind classification" },
-        "sourcePath": { "type": "string", "description": "Optional filesystem or package path to the handler source code (e.g., 'packages/canvas-component/src/handlers/resolveTemplate.ts' or '@renderx/canvas/handlers')" }
+        "scope": {
+          "type": "string",
+          "enum": ["plugin", "orchestration", "system", "policy"],
+          "description": "Handler scope (plugin, orchestration, system, policy)"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["validation", "orchestration", "reporting", "policy-enforcement", "metrics", "automation"],
+          "description": "Handler kind classification"
+        },
+        "sourcePath": {
+          "type": "string",
+          "description": "Filesystem or package path to the handler source code (e.g., 'packages/cdp-handlers/src/build/trunk-based-development.ts')"
+        },
+        "handlerCapabilities": {
+          "type": "array",
+          "description": "Capabilities this handler supports - determines which lifecycle methods are implemented",
+          "items": {
+            "type": "string",
+            "enum": ["audit", "build", "deploy", "report", "validate", "measure", "learn", "rollback"]
+          }
+        }
       }
     }
   }

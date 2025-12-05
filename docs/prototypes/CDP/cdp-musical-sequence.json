@@ -149,7 +149,17 @@
           "reference": "CDP-Architecting-for-releasability",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-architecting-for-releasability",
+          "handler": {
+            "name": "cdp#cdp-architecting-for-releasability",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-releasability.ts",
+            "scope": "system",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Architecting-for-releasability",
             "fullDescription": "Different parts of the solution require different release strategies. The solution must be designed to enable various incremental release strategies and shift them over time based on business demand.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -195,7 +205,17 @@
           "reference": "CDP-Architecting-for-testability",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-architecting-for-testability",
+          "handler": {
+            "name": "cdp#cdp-architecting-for-testability",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-testability.ts",
+            "scope": "system",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Architecting-for-testability",
             "fullDescription": "Systems that can’t be easily tested can’t be readily changed. Systems designed and architected in a modular way enable continuous testing.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -241,7 +261,17 @@
           "reference": "CDP-Separating-deployment-and-release",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-separating-deployment-and-release",
+          "handler": {
+            "name": "cdp#cdp-separating-deployment-and-release",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/separating-deployment-and-release.ts",
+            "scope": "system",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Separating-deployment-and-release",
             "fullDescription": "In order to continuously deploy, the ability to release may need to be separate from the work of deploying to production. This requires architectural enablers that will allow functionality to be in production but hidden from Customers.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -287,7 +317,17 @@
           "reference": "CDP-Architecting-for-operations",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-architecting-for-operations",
+          "handler": {
+            "name": "cdp#cdp-architecting-for-operations",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-operations.ts",
+            "scope": "system",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Architecting-for-operations",
             "fullDescription": "Operational needs must be considered. Build telemetry and logging capabilities into every application and the solution as a whole. Allow services to be downgraded or even removed in times of high loads or in response to incidents. Build capabilities for fast recovery and fix-forward.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -333,7 +373,17 @@
           "reference": "CDP-Threat-modeling",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-threat-modeling",
+          "handler": {
+            "name": "cdp#cdp-threat-modeling",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/threat-modeling.ts",
+            "scope": "system",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Threat-modeling",
             "fullDescription": "Information security considerations should start early, identifying threats to proposed architecture, infrastructure, and applications. And record important security requirements as Non-Functional Requirements to influence backlogs.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -394,7 +444,17 @@
           "reference": "CDP-Collaboration-and-Research-Around-Customer-Needs",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-collaboration-and-research-around-customer-needs",
+          "handler": {
+            "name": "cdp#cdp-collaboration-and-research-around-customer-needs",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/collaboration-and-research-around-customer-needs.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Collaboration-and-Research-Around-Customer-Needs",
             "fullDescription": "To create a compelling and differentiated vision, Product Management facilitates a continuous and collaborative process, soliciting input from a diverse group of stakeholders\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -440,7 +500,17 @@
           "reference": "CDP-Primary-market-research",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-primary-market-research",
+          "handler": {
+            "name": "cdp#cdp-primary-market-research",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/primary-market-research.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Primary-market-research",
             "fullDescription": "Product Management develops additional insights through primary market research, including surveys, focus groups, questionnaires, and competitive analysis for customer understanding.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -486,7 +556,17 @@
           "reference": "CDP-Gemba-walks",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-gemba-walks",
+          "handler": {
+            "name": "cdp#cdp-gemba-walks",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/gemba-walks.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Gemba-walks",
             "fullDescription": "An experiential form of primary market research, a Gemba walk (‘Gemba’ is the place where the work is performed [2]) is a process in which the product team observes how stakeholders execute the steps and specific activities in their operational value streams to better identify opportunities for relentless improvement.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -532,7 +612,17 @@
           "reference": "CDP-Customer-Visits",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-customer-visits",
+          "handler": {
+            "name": "cdp#cdp-customer-visits",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/customer-visits.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Customer-Visits",
             "fullDescription": "There’s no substitute for first-person observation of the daily activities of the people doing the work. Whether structured or informal, Product Managers and Product Owners are responsible for understanding how people use systems in actual work environments. They can’t do that at their desk, so there is no substitute for “getting outside the building” and observing users in their specific Solution Context.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -578,7 +668,17 @@
           "reference": "CDP-Secondary-market-research",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-secondary-market-research",
+          "handler": {
+            "name": "cdp#cdp-secondary-market-research",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/secondary-market-research.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Secondary-market-research",
             "fullDescription": "To broaden their thinking, Product Management uses various secondary market research techniques to develop a comprehensive understanding of the customers and markets they’re serving. Staying abreast of market/industry trends is a critical outcome of secondary market research.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -624,7 +724,17 @@
           "reference": "CDP-Lean-UX-thinking",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-lean-ux-thinking",
+          "handler": {
+            "name": "cdp#cdp-lean-ux-thinking",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/lean-ux-thinking.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Lean-UX-thinking",
             "fullDescription": "Lean UX is a collaborative process of working with stakeholders to define Minimum Marketable Features (MMFs) and validate them quickly with customers.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -670,7 +780,17 @@
           "reference": "CDP-Understanding-the-problem-space",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-understanding-the-problem-space",
+          "handler": {
+            "name": "cdp#cdp-understanding-the-problem-space",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/understanding-the-problem-space.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Understanding-the-problem-space",
             "fullDescription": "Conducting research enables the organization to further refine its processes and create artifacts that clearly express its emerging understanding of the problem space\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -716,7 +836,17 @@
           "reference": "CDP-Developing-personas-to-focus-design",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-developing-personas-to-focus-design",
+          "handler": {
+            "name": "cdp#cdp-developing-personas-to-focus-design",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/developing-personas-to-focus-design.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Developing-personas-to-focus-design",
             "fullDescription": "Informed by research, Personas help the organization understand the target customer.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -762,7 +892,17 @@
           "reference": "CDP-Building-empathy-for-the-user",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-building-empathy-for-the-user",
+          "handler": {
+            "name": "cdp#cdp-building-empathy-for-the-user",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/building-empathy-for-the-user.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Building-empathy-for-the-user",
             "fullDescription": "Empathy maps ensure that the team is considering the full needs of the user and how these needs may be evolving through successive releases.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -808,7 +948,17 @@
           "reference": "CDP-Designing-the-customer-experience",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-designing-the-customer-experience",
+          "handler": {
+            "name": "cdp#cdp-designing-the-customer-experience",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/designing-the-customer-experience.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "report",
+              "measure"
+            ]
+          },
           "data": {
             "label": "CDP-Designing-the-customer-experience",
             "fullDescription": "Journey maps provide the design link between the operational value stream and the customer’s experience.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -869,7 +1019,17 @@
           "reference": "CDP-Lean-startup-thinking",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-lean-startup-thinking",
+          "handler": {
+            "name": "cdp#cdp-lean-startup-thinking",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/hypothesize/lean-startup-thinking.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Lean-startup-thinking",
             "fullDescription": "Defining Minimum Marketable Feature (MMFs) and/or Minimum Viable Products (MVPs) helps evaluate hypotheses quickly before making too much investment. Both MMFs and MVPs represent the smallest thing that can be built to evaluate whether the hypothesis is valid.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -915,7 +1075,17 @@
           "reference": "CDP-Innovation-Accounting",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-innovation-accounting",
+          "handler": {
+            "name": "cdp#cdp-innovation-accounting",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/hypothesize/innovation-accounting.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Innovation-Accounting",
             "fullDescription": "Evaluating hypotheses requires different metrics than those used to measure end-state working solutions. Innovation Accounting focuses on how to measure the intermediate and predictive business outcomes of a hypothesis both during initial incremental solution development and evaluation of the MVP.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -976,7 +1146,17 @@
           "reference": "CDP-Creating-the-solution-vision",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-creating-the-solution-vision",
+          "handler": {
+            "name": "cdp#cdp-creating-the-solution-vision",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/creating-the-solution-vision.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Creating-the-solution-vision",
             "fullDescription": "The vision serves as the cornerstone for teams to understand the why for the features being developed.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1022,7 +1202,17 @@
           "reference": "CDP-Maintaining-the-solution-roadmap",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-maintaining-the-solution-roadmap",
+          "handler": {
+            "name": "cdp#cdp-maintaining-the-solution-roadmap",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/maintaining-the-solution-roadmap.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Maintaining-the-solution-roadmap",
             "fullDescription": "The solution roadmap provides a view into the near future for the ART. It helps Product Management prioritize the work, enables System Architects to prioritize the runway, and provides visibility for Business Owners.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1068,7 +1258,17 @@
           "reference": "CDP-Defining-a-backlog-of-clearly-written-features",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-defining-a-backlog-of-clearly-written-features",
+          "handler": {
+            "name": "cdp#cdp-defining-a-backlog-of-clearly-written-features",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/defining-a-backlog-of-clearly-written-features.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Defining-a-backlog-of-clearly-written-features",
             "fullDescription": "Clearly defining features that fit in a PI is critical for ARTs to align on what is needed and for teams to be able to plan. The backlog also reflects important security requirements.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1114,7 +1314,17 @@
           "reference": "CDP-BDD",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-bdd",
+          "handler": {
+            "name": "cdp#cdp-bdd",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/bdd.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-BDD",
             "fullDescription": "BDD fosters collaboration between Product Management, Product Owners, and Agile Teams, which clarifies requirements by adding acceptance criteria.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1160,7 +1370,17 @@
           "reference": "CDP-Economic-prioritization",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-economic-prioritization",
+          "handler": {
+            "name": "cdp#cdp-economic-prioritization",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/economic-prioritization.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Economic-prioritization",
             "fullDescription": "Features must be prioritized for development to be effective. The budget guardrails of capacity allocation, investment horizons, and continuous Business Owners engagement are critical in prioritization.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1206,7 +1426,17 @@
           "reference": "CDP-PI-Planning",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-pi-planning",
+          "handler": {
+            "name": "cdp#cdp-pi-planning",
+            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/pi-planning.ts",
+            "scope": "orchestration",
+            "kind": "orchestration",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-PI-Planning",
             "fullDescription": "This is the culmination of the exploration work as the ART comes together to plan the next PI and gain alignment on what should be done in the next program increment.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1267,7 +1497,18 @@
           "reference": "CDP-Continuous-code-integration",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-continuous-code-integration",
+          "handler": {
+            "name": "cdp#cdp-continuous-code-integration",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/continuous-code-integration.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Continuous-code-integration",
             "fullDescription": "Code commit should automatically trigger compilation and testing of changes. Ideally, this happens on each commit but should happen at least several times a day.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1313,7 +1554,18 @@
           "reference": "CDP-Build-and-test-automation",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-build-and-test-automation",
+          "handler": {
+            "name": "cdp#cdp-build-and-test-automation",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/build-and-test-automation.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Build-and-test-automation",
             "fullDescription": "The compilation process should be automated and include unit- and story-level tests to verify the change. These tests often use test doubles to replicate other parts of the systems and enable fast builds.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1359,7 +1611,18 @@
           "reference": "CDP-Trunk-based-development",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-trunk-based-development",
+          "handler": {
+            "name": "cdp#cdp-trunk-based-development",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/trunk-based-development.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Trunk-based-development",
             "fullDescription": "Long-lived branches must be avoided. Teams should merge back as quickly as they can, at least once per day, and all teams should work off a single trunk.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1405,7 +1668,18 @@
           "reference": "CDP-Gated-commit",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-gated-commit",
+          "handler": {
+            "name": "cdp#cdp-gated-commit",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/gated-commit.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Gated-commit",
             "fullDescription": "Committing to a single trunk is risky, as broken changes can impact many teams. This is why only the changes that have been validated through the build and test process are merged into the trunk.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1451,7 +1725,18 @@
           "reference": "CDP-Application-security",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-application-security",
+          "handler": {
+            "name": "cdp#cdp-application-security",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/application-security.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Application-security",
             "fullDescription": "Code analysis tools inspect the code and third-party packages for known vulnerabilities.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1512,7 +1797,18 @@
           "reference": "CDP-Breaking-features-into-stories",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-breaking-features-into-stories",
+          "handler": {
+            "name": "cdp#cdp-breaking-features-into-stories",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/breaking-features-into-stories.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Breaking-features-into-stories",
             "fullDescription": "Splitting features into stories enables continuous delivery via small batches and smooth integration. This may include creating user story maps to ensure that workflows are designed to meet customer needs.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1558,7 +1854,18 @@
           "reference": "CDP-BDD",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-bdd",
+          "handler": {
+            "name": "cdp#cdp-bdd",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/bdd.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-BDD",
             "fullDescription": "BDD is a process Product Owners and teams use to more thoroughly understand requirements and improve quality by creating acceptance criteria and acceptance tests, and often automating them, before the code is even written. BDD works with TDD\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1604,7 +1911,18 @@
           "reference": "CDP-TDD",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-tdd",
+          "handler": {
+            "name": "cdp#cdp-tdd",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/tdd.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-TDD",
             "fullDescription": "TDD involves writing the unit test first, then building the minimal code needed to pass the test. This leads to better design, higher quality, and increased productivity. TDD works with BDD and is more fully described here. Version control – Effective version control allows teams to recover quickly from problems and to improve quality by making sure the right components are integrated together. Aggregating assets under version control is a leading indicator of continuous integration maturity.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1650,7 +1968,18 @@
           "reference": "CDP-Version-control",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-version-control",
+          "handler": {
+            "name": "cdp#cdp-version-control",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/version-control.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Version-control",
             "fullDescription": "Effective version control allows teams to recover quickly from problems and to improve quality by making sure the right components are integrated together. Aggregating assets under version control is a leading indicator of continuous integration maturity.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1696,7 +2025,18 @@
           "reference": "CDP-Built-in-quality",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-built-in-quality",
+          "handler": {
+            "name": "cdp#cdp-built-in-quality",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/built-in-quality.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Built-in-quality",
             "fullDescription": "Built-In Quality prescribes practices around flow, architecture & design quality, code quality, system quality, and release quality.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1742,7 +2082,18 @@
           "reference": "CDP-Application-telemetry",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-application-telemetry",
+          "handler": {
+            "name": "cdp#cdp-application-telemetry",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/application-telemetry.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Application-telemetry",
             "fullDescription": "Application telemetry is the primary mechanism that acquires and then uses application data to help determine the results of relevant hypotheses.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1788,7 +2139,18 @@
           "reference": "CDP-Threat-modeling",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-threat-modeling",
+          "handler": {
+            "name": "cdp#cdp-threat-modeling",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/threat-modeling.ts",
+            "scope": "orchestration",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "build",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Threat-modeling",
             "fullDescription": "In addition to the threat modeling done in the Architect activity of continuous exploration, attention should be given during system design to possible vulnerabilities that may be introduced into the system.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1849,7 +2211,18 @@
           "reference": "CDP-Maintain-a-staging-environment",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-maintain-a-staging-environment",
+          "handler": {
+            "name": "cdp#cdp-maintain-a-staging-environment",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/maintain-a-staging-environment.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback"
+            ]
+          },
           "data": {
             "label": "CDP-Maintain-a-staging-environment",
             "fullDescription": "A staging environment, which matches production provides the place for such validation.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1895,7 +2268,18 @@
           "reference": "CDP-Blue/Green-deployment",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-blue-green-deployment",
+          "handler": {
+            "name": "cdp#cdp-blue-green-deployment",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/blue-green-deployment.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback"
+            ]
+          },
           "data": {
             "label": "CDP-Blue/Green-deployment",
             "fullDescription": "The blue/green pattern involves two environments–live (production) and idle (staging). Changes flow continuously to the idle environment where they are staged until ready to deploy to production. At that point, a switch is flipped (a load balancer is updated for example), and the idle environment becomes the live environment, while the previous live environment becomes the new idle environment. This enables continuous delivery, zero-downtime deployment, and fast recovery from failures.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -1941,7 +2325,18 @@
           "reference": "CDP-System-demo",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-system-demo",
+          "handler": {
+            "name": "cdp#cdp-system-demo",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/system-demo.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback"
+            ]
+          },
           "data": {
             "label": "CDP-System-demo",
             "fullDescription": "This is the event where stakeholders evaluate a solution’s readiness to be deployed to production.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2002,7 +2397,17 @@
           "reference": "CDP-Test-and-production-environment-congruity",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-test-and-production-environment-congruity",
+          "handler": {
+            "name": "cdp#cdp-test-and-production-environment-congruity",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-and-production-environment-congruity.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Test-and-production-environment-congruity",
             "fullDescription": "Environment congruity assures that testing exercises the solution as it would behave in front of live users and decreases the probability that defects will escape into production.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2048,7 +2453,17 @@
           "reference": "CDP-Test-automation",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-test-automation",
+          "handler": {
+            "name": "cdp#cdp-test-automation",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-automation.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Test-automation",
             "fullDescription": "Many types of tests need to be run: functional testing, integration testing, regression testing, etc. The Agile Testing article details a testing matrix of what can and should be automated.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2094,7 +2509,17 @@
           "reference": "CDP-Test-data-management",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-test-data-management",
+          "handler": {
+            "name": "cdp#cdp-test-data-management",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-data-management.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Test-data-management",
             "fullDescription": "To create stability, tests must be consistent and realistic, replicating production as much as possible, and under source control.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2140,7 +2565,17 @@
           "reference": "CDP-Service-virtualization",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-service-virtualization",
+          "handler": {
+            "name": "cdp#cdp-service-virtualization",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/service-virtualization.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Service-virtualization",
             "fullDescription": "Different kinds of testing require different environments. Service virtualizations allow teams to simulate a production environment without the costs and effort associated with creating and managing real environments.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2186,7 +2621,17 @@
           "reference": "CDP-Testing-non-functional-requirements-(NFRs)",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-testing-non-functional-requirements-nfrs",
+          "handler": {
+            "name": "cdp#cdp-testing-non-functional-requirements-nfrs",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/testing-non-functional-requirements-nfrs.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Testing-non-functional-requirements-(NFRs)",
             "fullDescription": "System attributes such as security, reliability, performance, maintainability, scalability, and usability must also be thoroughly tested.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2232,7 +2677,17 @@
           "reference": "CDP-Continuous-integration-and-suppliers",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-continuous-integration-and-suppliers",
+          "handler": {
+            "name": "cdp#cdp-continuous-integration-and-suppliers",
+            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/continuous-integration-and-suppliers.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Continuous-integration-and-suppliers",
             "fullDescription": "Suppliers bring unique contributions that can have a significant impact on lead-time and value delivery. Their work must be continuously integrated as well. It helps to adopt a shared integration cadence and establish objective evaluation milestones.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2293,7 +2748,19 @@
           "reference": "CDP-Dark-launches",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-dark-launches",
+          "handler": {
+            "name": "cdp#cdp-dark-launches",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/dark-launches.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Dark-launches",
             "fullDescription": "the ability to deploy to a production environment without releasing the functionality to end users\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2339,7 +2806,19 @@
           "reference": "CDP-Feature-toggles",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-feature-toggles",
+          "handler": {
+            "name": "cdp#cdp-feature-toggles",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/feature-toggles.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Feature-toggles",
             "fullDescription": "a technique to facilitate dark launches by implementing toggles in the code, which enables switching between old and new functionality\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2385,7 +2864,19 @@
           "reference": "CDP-Deployment-automation",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-deployment-automation",
+          "handler": {
+            "name": "cdp#cdp-deployment-automation",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/deployment-automation.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Deployment-automation",
             "fullDescription": "the ability to deploy a tested solution automatically from check-in to production\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2431,7 +2922,19 @@
           "reference": "CDP-Selective-deployment",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-selective-deployment",
+          "handler": {
+            "name": "cdp#cdp-selective-deployment",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/selective-deployment.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Selective-deployment",
             "fullDescription": "the ability to deploy to specific production environments and not others based on criteria such as geography, user role, etc.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2477,7 +2980,19 @@
           "reference": "CDP-Self-service-deployment",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-self-service-deployment",
+          "handler": {
+            "name": "cdp#cdp-self-service-deployment",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/self-service-deployment.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Self-service-deployment",
             "fullDescription": "when automation deployment is not fully implemented, self-service deployment allows a single command to take solutions from staging to production\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2523,7 +3038,19 @@
           "reference": "CDP-Version-control",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-version-control",
+          "handler": {
+            "name": "cdp#cdp-version-control",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/version-control.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Version-control",
             "fullDescription": "maintaining environments under version control enables fast deployment and fast recovery\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2569,7 +3096,19 @@
           "reference": "CDP-Blue/Green-deployment",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-blue-green-deployment",
+          "handler": {
+            "name": "cdp#cdp-blue-green-deployment",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/blue-green-deployment.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Blue/Green-deployment",
             "fullDescription": "a technique that permits on-demand switching between staging and production environments\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2630,7 +3169,17 @@
           "reference": "CDP-Full-stack-telemetry",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-full-stack-telemetry",
+          "handler": {
+            "name": "cdp#cdp-full-stack-telemetry",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/full-stack-telemetry.ts",
+            "scope": "system",
+            "kind": "reporting",
+            "handlerCapabilities": [
+              "audit",
+              "measure",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Full-stack-telemetry",
             "fullDescription": "the ability to monitor for problems across the full stack that a system covers\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2676,7 +3225,17 @@
           "reference": "CDP-Visual-displays",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-visual-displays",
+          "handler": {
+            "name": "cdp#cdp-visual-displays",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/visual-displays.ts",
+            "scope": "system",
+            "kind": "reporting",
+            "handlerCapabilities": [
+              "audit",
+              "measure",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Visual-displays",
             "fullDescription": "tools that display automated measurements\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2722,7 +3281,17 @@
           "reference": "CDP-Federated-monitoring",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-federated-monitoring",
+          "handler": {
+            "name": "cdp#cdp-federated-monitoring",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/federated-monitoring.ts",
+            "scope": "system",
+            "kind": "reporting",
+            "handlerCapabilities": [
+              "audit",
+              "measure",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Federated-monitoring",
             "fullDescription": "consolidated monitoring across applications in the solution that creates a holistic view of problems and performance\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2783,7 +3352,17 @@
           "reference": "CDP-Proactive-detection",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-proactive-detection",
+          "handler": {
+            "name": "cdp#cdp-proactive-detection",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/proactive-detection.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Proactive-detection",
             "fullDescription": "a practice for proactively creating faults in the solution to identify potential problems and situations before they occur\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2829,7 +3408,17 @@
           "reference": "CDP-Cross-team-collaboration",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-cross-team-collaboration",
+          "handler": {
+            "name": "cdp#cdp-cross-team-collaboration",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/cross-team-collaboration.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Cross-team-collaboration",
             "fullDescription": "a mindset of cooperation across the Value Stream to identify and solve problems as they arise\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2875,7 +3464,17 @@
           "reference": "CDP-Session-replay",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-session-replay",
+          "handler": {
+            "name": "cdp#cdp-session-replay",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/session-replay.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Session-replay",
             "fullDescription": "the ability to replay end-user sessions to research incidents and identify problems\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2921,7 +3520,17 @@
           "reference": "CDP-Rollback-and-fix-forward",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-rollback-and-fix-forward",
+          "handler": {
+            "name": "cdp#cdp-rollback-and-fix-forward",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/rollback-and-fix-forward.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Rollback-and-fix-forward",
             "fullDescription": "the ability to both rollback a solution quickly to a previous environment, or to fix a problem quickly through the pipeline without the need to rollback\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -2967,7 +3576,17 @@
           "reference": "CDP-Immutable-infrastructure",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-immutable-infrastructure",
+          "handler": {
+            "name": "cdp#cdp-immutable-infrastructure",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/immutable-infrastructure.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Immutable-infrastructure",
             "fullDescription": "this concept recommends that teams never change the elements of the production environment in an uncontrolled manner, but instead manage infrastructure changes through the Continuous Delivery Pipeline\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3013,7 +3632,17 @@
           "reference": "CDP-Version-control",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-version-control",
+          "handler": {
+            "name": "cdp#cdp-version-control",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/version-control.ts",
+            "scope": "system",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Version-control",
             "fullDescription": "environments should be maintained under version control in order to rollback quickly\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3074,7 +3703,17 @@
           "reference": "CDP-Production-testing",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-production-testing",
+          "handler": {
+            "name": "cdp#cdp-production-testing",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/production-testing.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Production-testing",
             "fullDescription": "the ability to test solutions in production when they are still ‘dark’\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3120,7 +3759,17 @@
           "reference": "CDP-Test-automation",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-test-automation",
+          "handler": {
+            "name": "cdp#cdp-test-automation",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/test-automation.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Test-automation",
             "fullDescription": "the ability to test repeatedly via automation\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3166,7 +3815,17 @@
           "reference": "CDP-Test-data-management",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-test-data-management",
+          "handler": {
+            "name": "cdp#cdp-test-data-management",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/test-data-management.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Test-data-management",
             "fullDescription": "managing the test data in version control to create consistency in automatic testing\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3212,7 +3871,17 @@
           "reference": "CDP-Testing-non-functional-requirements-(NFRs)",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-testing-non-functional-requirements-nfrs",
+          "handler": {
+            "name": "cdp#cdp-testing-non-functional-requirements-nfrs",
+            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/testing-non-functional-requirements-nfrs.ts",
+            "scope": "system",
+            "kind": "validation",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Testing-non-functional-requirements-(NFRs)",
             "fullDescription": "system attributes such as security, reliability, performance, maintainability, scalability, and usability must also be thoroughly tested before release\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3273,7 +3942,17 @@
           "reference": "CDP-Lean-startup-thinking",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-lean-startup-thinking",
+          "handler": {
+            "name": "cdp#cdp-lean-startup-thinking",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/lean-startup-thinking.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Lean-startup-thinking",
             "fullDescription": "As MVPs are evaluated, hypothesis are proved or refuted. When hypotheses are refuted, the organization must decide if efforts should continue, should work stop, or should the new Epics with new hypotheses be formed to evaluate different approaches to the same strategy?\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3319,7 +3998,17 @@
           "reference": "CDP-Value-stream-mapping",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-value-stream-mapping",
+          "handler": {
+            "name": "cdp#cdp-value-stream-mapping",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/value-stream-mapping.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Value-stream-mapping",
             "fullDescription": "An essential tool to improve the flow of value across the pipeline is value stream mapping. This tool provides the visibility needed to identify bottlenecks and problem areas to flow, as well as design a future state and create Enablers to improve the pipeline.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3365,7 +4054,17 @@
           "reference": "CDP-Relentless-improvement",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-relentless-improvement",
+          "handler": {
+            "name": "cdp#cdp-relentless-improvement",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/relentless-improvement.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Relentless-improvement",
             "fullDescription": "The flow of work can always be improved. This mindset is part of the SAFe House of Lean and is crucial to achieving results.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3426,7 +4125,18 @@
           "reference": "CDP-Application-telemetry",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-application-telemetry",
+          "handler": {
+            "name": "cdp#cdp-application-telemetry",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/measure/application-telemetry.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "audit",
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Application-telemetry",
             "fullDescription": "Application telemetry is the primary mechanism used to track and measure data usage against the hypothesis.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3472,7 +4182,18 @@
           "reference": "CDP-Innovation-Accounting",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-innovation-accounting",
+          "handler": {
+            "name": "cdp#cdp-innovation-accounting",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/measure/innovation-accounting.ts",
+            "scope": "orchestration",
+            "kind": "metrics",
+            "handlerCapabilities": [
+              "audit",
+              "measure",
+              "report",
+              "learn"
+            ]
+          },
           "data": {
             "label": "CDP-Innovation-Accounting",
             "fullDescription": "Evaluating a hypothesis requires different metrics than those used to measure end-state working solutions. Innovation Accounting focuses on how to measure the intermediate and predictive business outcomes of the hypothesis during initial incremental solution development and evaluation of the Minimum Viable Product (MVP).\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3533,7 +4254,19 @@
           "reference": "CDP-Dark-launches",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-dark-launches",
+          "handler": {
+            "name": "cdp#cdp-dark-launches",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/dark-launches.ts",
+            "scope": "policy",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Dark-launches",
             "fullDescription": "This provides the ability to deploy to a production environment without releasing the functionality to end users.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3579,7 +4312,19 @@
           "reference": "CDP-Feature-toggles",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-feature-toggles",
+          "handler": {
+            "name": "cdp#cdp-feature-toggles",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/feature-toggles.ts",
+            "scope": "policy",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Feature-toggles",
             "fullDescription": "This is a technique to facilitate dark launches by implementing toggles in the code, which enables switching between old and new functionality.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3625,7 +4370,19 @@
           "reference": "CDP-Canary-releases",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-canary-releases",
+          "handler": {
+            "name": "cdp#cdp-canary-releases",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/canary-releases.ts",
+            "scope": "policy",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Canary-releases",
             "fullDescription": "These provide a mechanism for releasing the solution to a specific Customer segment and measuring the results, before expanding and releasing to more customers.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3671,7 +4428,19 @@
           "reference": "CDP-Decoupled-release-elements",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-decoupled-release-elements",
+          "handler": {
+            "name": "cdp#cdp-decoupled-release-elements",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/decoupled-release-elements.ts",
+            "scope": "policy",
+            "kind": "automation",
+            "handlerCapabilities": [
+              "audit",
+              "deploy",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Decoupled-release-elements",
             "fullDescription": "This technique identifies specific release elements, each of which can be released independently. Even simple solutions will have multiple release elements, each operating with different release strategies, as Figure 3 illustrates.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3732,7 +4501,18 @@
           "reference": "CDP-Cross-team-collaboration",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-cross-team-collaboration",
+          "handler": {
+            "name": "cdp#cdp-cross-team-collaboration",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/cross-team-collaboration.ts",
+            "scope": "system",
+            "kind": "policy-enforcement",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Cross-team-collaboration",
             "fullDescription": "A mindset of cooperation across the Value Stream to identify and solve problems as they arise is crucial. This involves building Agile Release Trains that can operate the solution, as well as develop it.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3778,7 +4558,18 @@
           "reference": "CDP-Failover/disaster-recovery",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-failover-disaster-recovery",
+          "handler": {
+            "name": "cdp#cdp-failover-disaster-recovery",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/failover-disaster-recovery.ts",
+            "scope": "system",
+            "kind": "policy-enforcement",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Failover/disaster-recovery",
             "fullDescription": "Failures will occur. It’s vital to develop a failover mechanism to allow service to resume quickly, or even avoid service interruption. Disaster recovery must be planned, architected into the service, and practiced.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3824,7 +4615,18 @@
           "reference": "CDP-Continuous-security-monitoring",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-continuous-security-monitoring",
+          "handler": {
+            "name": "cdp#cdp-continuous-security-monitoring",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/continuous-security-monitoring.ts",
+            "scope": "system",
+            "kind": "policy-enforcement",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Continuous-security-monitoring",
             "fullDescription": "Security as code and penetration testing focus on preventing known vulnerabilities from getting to production. But it’s also important to test services continuously for newly discovered and reported vulnerabilities and to detect intrusions and attacks on services and infrastructure.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3870,7 +4672,18 @@
           "reference": "CDP-Architect-for-operations",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-architect-for-operations",
+          "handler": {
+            "name": "cdp#cdp-architect-for-operations",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/architect-for-operations.ts",
+            "scope": "system",
+            "kind": "policy-enforcement",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Architect-for-operations",
             "fullDescription": "Operational needs must be considered. High loads, security attacks, and responding to incidents motivate a range of options from downgrading or removing services to adding capacity. Telemetry and logging capabilities enable organizations to better understand and further tune their architecture to meet actual usage patterns.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
@@ -3916,7 +4729,18 @@
           "reference": "CDP-Monitor-non-functional-requirements-(NFRs)",
           "timing": "sequential",
           "errorHandling": "continue",
-          "handler": "cdp#cdp-monitor-non-functional-requirements-nfrs",
+          "handler": {
+            "name": "cdp#cdp-monitor-non-functional-requirements-nfrs",
+            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/monitor-non-functional-requirements-nfrs.ts",
+            "scope": "system",
+            "kind": "policy-enforcement",
+            "handlerCapabilities": [
+              "audit",
+              "validate",
+              "rollback",
+              "report"
+            ]
+          },
           "data": {
             "label": "CDP-Monitor-non-functional-requirements-(NFRs)",
             "fullDescription": "To avoid service disruptions, system attributes such as reliability, performance, maintainability, scalability, and usability must be continuously monitored.\n\n© Scaled Agile, Inc.\nInclude this copyright notice with the copied content.\n\nRead the FAQs on how to use SAFe content and trademarks here:\nhttps://www.scaledagile.com/about/about-us/permissions-faq/\nExplore Training at:\nhttps://www.scaledagile.com/training/calendar/",
