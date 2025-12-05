@@ -151,7 +151,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-architecting-for-releasability",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-releasability.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/architect/architecting-for-releasability.ts",
             "scope": "system",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -207,7 +207,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-architecting-for-testability",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-testability.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/architect/architecting-for-testability.ts",
             "scope": "system",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -263,7 +263,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-separating-deployment-and-release",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/separating-deployment-and-release.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/architect/separating-deployment-and-release.ts",
             "scope": "system",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -319,7 +319,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-architecting-for-operations",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/architecting-for-operations.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/architect/architecting-for-operations.ts",
             "scope": "system",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -375,7 +375,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-threat-modeling",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/architect/threat-modeling.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/architect/threat-modeling.ts",
             "scope": "system",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -446,7 +446,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-collaboration-and-research-around-customer-needs",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/collaboration-and-research-around-customer-needs.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/collaboration-and-research-around-customer-needs.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -502,7 +502,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-primary-market-research",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/primary-market-research.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/primary-market-research.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -558,7 +558,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-gemba-walks",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/gemba-walks.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/gemba-walks.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -614,7 +614,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-customer-visits",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/customer-visits.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/customer-visits.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -670,7 +670,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-secondary-market-research",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/secondary-market-research.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/secondary-market-research.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -726,7 +726,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-lean-ux-thinking",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/lean-ux-thinking.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/lean-ux-thinking.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -782,7 +782,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-understanding-the-problem-space",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/understanding-the-problem-space.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/understanding-the-problem-space.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -838,7 +838,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-developing-personas-to-focus-design",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/developing-personas-to-focus-design.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/developing-personas-to-focus-design.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -894,7 +894,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-building-empathy-for-the-user",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/building-empathy-for-the-user.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/building-empathy-for-the-user.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -950,7 +950,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-designing-the-customer-experience",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/collaborate-and-research/designing-the-customer-experience.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/collaborate-and-research/designing-the-customer-experience.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1021,7 +1021,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-lean-startup-thinking",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/hypothesize/lean-startup-thinking.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/hypothesize/lean-startup-thinking.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -1077,7 +1077,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-innovation-accounting",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/hypothesize/innovation-accounting.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/hypothesize/innovation-accounting.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -1148,7 +1148,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-creating-the-solution-vision",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/creating-the-solution-vision.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/creating-the-solution-vision.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1204,7 +1204,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-maintaining-the-solution-roadmap",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/maintaining-the-solution-roadmap.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/maintaining-the-solution-roadmap.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1260,7 +1260,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-defining-a-backlog-of-clearly-written-features",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/defining-a-backlog-of-clearly-written-features.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/defining-a-backlog-of-clearly-written-features.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1316,7 +1316,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-bdd",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/bdd.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/bdd.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1372,7 +1372,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-economic-prioritization",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/economic-prioritization.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/economic-prioritization.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1428,7 +1428,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-pi-planning",
-            "sourcePath": "packages/cdp-handlers/src/continuous-exploration/synthesize/pi-planning.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-exploration/synthesize/pi-planning.ts",
             "scope": "orchestration",
             "kind": "orchestration",
             "handlerCapabilities": [
@@ -1499,7 +1499,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-continuous-code-integration",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/continuous-code-integration.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/build/continuous-code-integration.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -1556,7 +1556,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-build-and-test-automation",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/build-and-test-automation.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/build/build-and-test-automation.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -1613,7 +1613,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-trunk-based-development",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/trunk-based-development.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/build/trunk-based-development.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -1670,7 +1670,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-gated-commit",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/gated-commit.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/build/gated-commit.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -1727,7 +1727,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-application-security",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/build/application-security.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/build/application-security.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -1799,7 +1799,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-breaking-features-into-stories",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/breaking-features-into-stories.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/breaking-features-into-stories.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -1856,7 +1856,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-bdd",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/bdd.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/bdd.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -1913,7 +1913,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-tdd",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/tdd.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/tdd.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -1970,7 +1970,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-version-control",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/version-control.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/version-control.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2027,7 +2027,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-built-in-quality",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/built-in-quality.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/built-in-quality.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2084,7 +2084,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-application-telemetry",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/application-telemetry.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/application-telemetry.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2141,7 +2141,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-threat-modeling",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/develop/threat-modeling.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/develop/threat-modeling.ts",
             "scope": "orchestration",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2213,7 +2213,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-maintain-a-staging-environment",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/maintain-a-staging-environment.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/stage/maintain-a-staging-environment.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2270,7 +2270,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-blue-green-deployment",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/blue-green-deployment.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/stage/blue-green-deployment.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2327,7 +2327,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-system-demo",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/stage/system-demo.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/stage/system-demo.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2399,7 +2399,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-test-and-production-environment-congruity",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-and-production-environment-congruity.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/test-and-production-environment-congruity.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2455,7 +2455,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-test-automation",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-automation.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/test-automation.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2511,7 +2511,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-test-data-management",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/test-data-management.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/test-data-management.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2567,7 +2567,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-service-virtualization",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/service-virtualization.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/service-virtualization.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2623,7 +2623,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-testing-non-functional-requirements-nfrs",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/testing-non-functional-requirements-nfrs.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/testing-non-functional-requirements-nfrs.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2679,7 +2679,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-continuous-integration-and-suppliers",
-            "sourcePath": "packages/cdp-handlers/src/continuous-integration/test-end-to-end/continuous-integration-and-suppliers.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-integration/test-end-to-end/continuous-integration-and-suppliers.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -2750,7 +2750,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-dark-launches",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/dark-launches.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/dark-launches.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2808,7 +2808,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-feature-toggles",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/feature-toggles.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/feature-toggles.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2866,7 +2866,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-deployment-automation",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/deployment-automation.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/deployment-automation.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2924,7 +2924,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-selective-deployment",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/selective-deployment.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/selective-deployment.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -2982,7 +2982,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-self-service-deployment",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/self-service-deployment.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/self-service-deployment.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3040,7 +3040,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-version-control",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/version-control.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/version-control.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3098,7 +3098,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-blue-green-deployment",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/deploy/blue-green-deployment.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/deploy/blue-green-deployment.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3171,7 +3171,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-full-stack-telemetry",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/full-stack-telemetry.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/monitor/full-stack-telemetry.ts",
             "scope": "system",
             "kind": "reporting",
             "handlerCapabilities": [
@@ -3227,7 +3227,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-visual-displays",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/visual-displays.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/monitor/visual-displays.ts",
             "scope": "system",
             "kind": "reporting",
             "handlerCapabilities": [
@@ -3283,7 +3283,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-federated-monitoring",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/monitor/federated-monitoring.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/monitor/federated-monitoring.ts",
             "scope": "system",
             "kind": "reporting",
             "handlerCapabilities": [
@@ -3354,7 +3354,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-proactive-detection",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/proactive-detection.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/proactive-detection.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3410,7 +3410,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-cross-team-collaboration",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/cross-team-collaboration.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/cross-team-collaboration.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3466,7 +3466,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-session-replay",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/session-replay.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/session-replay.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3522,7 +3522,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-rollback-and-fix-forward",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/rollback-and-fix-forward.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/rollback-and-fix-forward.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3578,7 +3578,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-immutable-infrastructure",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/immutable-infrastructure.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/immutable-infrastructure.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3634,7 +3634,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-version-control",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/respond/version-control.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/respond/version-control.ts",
             "scope": "system",
             "kind": "automation",
             "handlerCapabilities": [
@@ -3705,7 +3705,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-production-testing",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/production-testing.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/verify/production-testing.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -3761,7 +3761,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-test-automation",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/test-automation.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/verify/test-automation.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -3817,7 +3817,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-test-data-management",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/test-data-management.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/verify/test-data-management.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -3873,7 +3873,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-testing-non-functional-requirements-nfrs",
-            "sourcePath": "packages/cdp-handlers/src/continuous-deployment/verify/testing-non-functional-requirements-nfrs.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/continuous-deployment/verify/testing-non-functional-requirements-nfrs.ts",
             "scope": "system",
             "kind": "validation",
             "handlerCapabilities": [
@@ -3944,7 +3944,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-lean-startup-thinking",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/lean-startup-thinking.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/learn/lean-startup-thinking.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -4000,7 +4000,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-value-stream-mapping",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/value-stream-mapping.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/learn/value-stream-mapping.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -4056,7 +4056,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-relentless-improvement",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/learn/relentless-improvement.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/learn/relentless-improvement.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -4127,7 +4127,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-application-telemetry",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/measure/application-telemetry.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/measure/application-telemetry.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -4184,7 +4184,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-innovation-accounting",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/measure/innovation-accounting.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/measure/innovation-accounting.ts",
             "scope": "orchestration",
             "kind": "metrics",
             "handlerCapabilities": [
@@ -4256,7 +4256,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-dark-launches",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/dark-launches.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/release/dark-launches.ts",
             "scope": "policy",
             "kind": "automation",
             "handlerCapabilities": [
@@ -4314,7 +4314,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-feature-toggles",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/feature-toggles.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/release/feature-toggles.ts",
             "scope": "policy",
             "kind": "automation",
             "handlerCapabilities": [
@@ -4372,7 +4372,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-canary-releases",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/canary-releases.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/release/canary-releases.ts",
             "scope": "policy",
             "kind": "automation",
             "handlerCapabilities": [
@@ -4430,7 +4430,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-decoupled-release-elements",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/release/decoupled-release-elements.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/release/decoupled-release-elements.ts",
             "scope": "policy",
             "kind": "automation",
             "handlerCapabilities": [
@@ -4503,7 +4503,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-cross-team-collaboration",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/cross-team-collaboration.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/stabilize/cross-team-collaboration.ts",
             "scope": "system",
             "kind": "policy-enforcement",
             "handlerCapabilities": [
@@ -4560,7 +4560,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-failover-disaster-recovery",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/failover-disaster-recovery.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/stabilize/failover-disaster-recovery.ts",
             "scope": "system",
             "kind": "policy-enforcement",
             "handlerCapabilities": [
@@ -4617,7 +4617,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-continuous-security-monitoring",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/continuous-security-monitoring.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/stabilize/continuous-security-monitoring.ts",
             "scope": "system",
             "kind": "policy-enforcement",
             "handlerCapabilities": [
@@ -4674,7 +4674,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-architect-for-operations",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/architect-for-operations.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/stabilize/architect-for-operations.ts",
             "scope": "system",
             "kind": "policy-enforcement",
             "handlerCapabilities": [
@@ -4731,7 +4731,7 @@
           "errorHandling": "continue",
           "handler": {
             "name": "cdp#cdp-monitor-non-functional-requirements-nfrs",
-            "sourcePath": "packages/cdp-handlers/src/release-on-demand/stabilize/monitor-non-functional-requirements-nfrs.ts",
+            "sourcePath": "packages/continuous-delivery-pipeline/src/release-on-demand/stabilize/monitor-non-functional-requirements-nfrs.ts",
             "scope": "system",
             "kind": "policy-enforcement",
             "handlerCapabilities": [
