@@ -1,0 +1,188 @@
+# Acceptance Criteria (Refined) – renderx-web-orchestration
+
+Format:
+- Domain: renderx-web-orchestration
+- Symphony: <package>.<symphony>
+- Movement: <movementId>
+- Beat: <beatNumber> <beatTitle>
+- Handler: <handlerName>
+- ACs (GWT): newline-delimited Given/When/Then/And lines
+
+Notes:
+- ACs target measurable, observable outcomes (latency SLAs, telemetry fields, side-effects) suitable for BDD.
+- Where legacy ACs were vague, refined ACs specify inputs, outputs, and assertions to support deterministic tests.
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 1 Resolve Template
+Handler: resolveTemplate
+ACs (GWT):
+Given: handler resolveTemplate is available
+Given: template id exists and cache is empty
+When: resolveTemplate(templateId) executes
+Then: schema and bindings are resolved deterministically
+And: concurrent fetches are deduped
+And: telemetry template.resolve includes { id, latencyMs, cacheHit }
+And: completes within ≤ 1000ms P95
+Given: malformed template input
+When: resolveTemplate executes
+Then: returns an error and never fetches remotely
+And: telemetry includes errorCode and latencyMs
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 2 Register Instance
+Handler: registerInstance
+ACs (GWT):
+Given: node has tag and no instanceId
+When: registerInstance(node) executes
+Then: assigns stable instanceId and persists registration
+And: adds class rx-comp-<tag>-<id>
+And: telemetry component.register includes { tag, instanceId, latencyMs }
+And: completes within ≤ 1000ms P95
+Given: node missing tag
+When: registerInstance executes
+Then: returns validation error and does not mutate node
+And: telemetry includes errorCode
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 3 Create Node
+Handler: createNode
+ACs (GWT):
+Given: resolved template and bindings available
+When: createNode executes
+Then: assembles canvas node without rendering React directly
+And: forwards to drop symphony
+And: validates schema
+And: completes within ≤ 2000ms P95
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 4 Render React Component
+Handler: renderReact
+ACs (GWT):
+Given: composed node ready for render
+When: renderReact executes
+Then: instantiates React component with memoized props and keyed lists
+And: emits perf telemetry { component, latencyMs }
+And: completes within ≤ 200ms P95
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 5 Notify UI
+Handler: notifyUi
+ACs (GWT):
+Given: UI state change present
+When: notifyUi executes
+Then: publishes FIFO events with backpressure
+And: telemetry ui.notify includes { event, latencyMs }
+And: end-to-end delivery < 20ms (P95)
+And: 99.9% success on valid input
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: canvas-component.create
+Movement: create
+Beat: 6 Enhance Line (Advanced)
+Handler: enhanceLine
+ACs (GWT):
+Given: line element and geometry available
+When: enhanceLine executes
+Then: applies augmentation (measurements, anchors, hit areas)
+And: validates geometry
+And: emits change events
+And: completes within ≤ 1000ms P95
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: control-panel.UI
+Movement: css.delete
+Beat: 1 Delete CSS Class
+Handler: deleteCssClass
+ACs (GWT):
+Given: target element has CSS class to delete
+When: deleteCssClass(className) executes
+Then: removes class from element state
+And: publishes canvas.component.deleted with { elementId, className }
+And: telemetry control-panel.css.delete includes { elementId, className, latencyMs }
+And: completes within ≤ 100ms P95
+Given: className not present on element
+When: deleteCssClass executes
+Then: no-op with informative result
+And: telemetry includes reason=no-op
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: control-panel.UI
+Movement: ui.init
+Beat: 1 Initialize Config
+Handler: initConfig
+ACs (GWT):
+Given: configuration source available
+When: initConfig executes
+Then: loads configuration within ≤ 200ms P95
+And: emits telemetry ui.init { latencyMs, source }
+And: falls back gracefully on error and logs context
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: control-panel.UI
+Movement: ui.render
+Beat: 1 Render View
+Handler: renderView
+ACs (GWT):
+Given: valid view model
+When: renderView executes
+Then: renders UI within ≤ 250ms P95
+And: DOM mutations are minimal (≤ N nodes changed)
+And: telemetry ui.render includes { latencyMs, nodesChanged }
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: orchestration.BUILD_PIPELINE
+Movement: validate-governance
+Beat: 1 Validate Governance Rules
+Handler: validateGovernanceRules
+ACs (GWT):
+Given: policy registry available
+When: validateGovernanceRules executes
+Then: evaluates all applicable rules deterministically
+And: emits violations with { policyId, severity }
+And: completes within ≤ 1000ms P95 for 100 packages
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: orchestration.BUILD_PIPELINE
+Movement: build-components
+Beat: 1 Build Components Package
+Handler: buildComponentsPackage
+ACs (GWT):
+Given: dependency graph resolves
+When: buildComponentsPackage executes
+Then: produces artifacts without missing imports
+And: telemetry build.components includes { durationMs, artifactsCount }
+And: completes within SLA budget for baseline input
+
+-------------------------------------------------------------------------------
+Domain: renderx-web-orchestration
+Symphony: musical-conductor.EXECUTE_SEQUENCE
+Movement: execute
+Beat: 1 Execute Sequence
+Handler: executeSequence
+ACs (GWT):
+Given: queue with N beats
+When: executeSequence runs
+Then: processes beats in order; records metrics per beat
+And: emits validation summary with { beatsProcessed, failures }
+And: respects cancellation and timeout semantics

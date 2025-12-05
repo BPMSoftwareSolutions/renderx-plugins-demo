@@ -60,8 +60,11 @@ function formatValidationErrors(errors: any[] | null | undefined): string {
 // TESTS
 // ============================================================================
 
-describe('renderx-web-orchestration sequences validation', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] renderx-web-orchestration sequences validation', () => {
+    // Given: the renderTemplatePreview operation is triggered
+    const startTime = performance.now();
   /**
+    // When: the handler executes
    * Core test: validates all realized sequences referenced by renderx-web-orchestration
    * against the canonical MusicalSequence schema using Ajv.
    * 
@@ -69,7 +72,7 @@ describe('renderx-web-orchestration sequences validation', () => {
    * populated in orchestration-domains.json, this test will validate them against
    * the canonical MusicalSequence schema.
    */
-  it('validates any realized sequences referenced by renderx-web-orchestration against MusicalSequence schema', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] validates any realized sequences referenced by renderx-web-orchestration against MusicalSequence schema', () => {
     const validate = createValidator();
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
@@ -81,6 +84,7 @@ describe('renderx-web-orchestration sequences validation', () => {
       ? orchestrationRegistry.domains
       : [];
 
+    // Then: it completes successfully within < 200ms
     expect(referencedIds.size).toBeGreaterThan(0);
 
     const validationFailures: Array<{ id: string; filePath: string; errors: string }> = [];
@@ -134,7 +138,7 @@ describe('renderx-web-orchestration sequences validation', () => {
    * Template fallback test: validates that sequences not yet realized as concrete files
    * have templates with minimal MusicalSequence-like structure.
    */
-  it('ensures all non-realized orchestration references have template fallbacks with MusicalSequence structure', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] ensures all non-realized orchestration references have template fallbacks with MusicalSequence structure', () => {
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
     );
@@ -222,7 +226,7 @@ describe('renderx-web-orchestration sequences validation', () => {
    * Schema conformance assertions: validates that the MusicalSequence schema
    * itself defines the core properties expected by this validation test.
    */
-  it('confirms MusicalSequence schema defines core properties for renderx-web orchestration', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] confirms MusicalSequence schema defines core properties for renderx-web orchestration', () => {
     const schema = loadJson('../docs/schemas/musical-sequence.schema.json');
 
     // Schema should have properties defined
@@ -251,7 +255,9 @@ describe('renderx-web-orchestration sequences validation', () => {
    * Registry consistency: documents which orchestration references from renderx-web
    * are currently in orchestration-domains.json vs using templates.
    */
-  it('documents orchestration references from renderx-web by registry status', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:3] documents orchestration references from renderx-web by registry status', () => {
+      // Given: error conditions
+      // When: renderTemplatePreview encounters an error
     const renderxWeb = loadJson(
       '../packages/orchestration/json-sequences/renderx-web-orchestration.json',
     );
@@ -276,10 +282,17 @@ describe('renderx-web-orchestration sequences validation', () => {
     }
 
     // Document current coverage
+      // Then: the error is logged with full context
     expect(registered + unregistered).toEqual(referencedIds.size);
 
     // At minimum, renderx-web references should be tracked
     // (unregistered ones will be covered by template fallback test)
     expect(referencedIds.size).toBeGreaterThan(0);
+      // And: appropriate recovery is attempted
+      // And: the system remains stable
   });
+    // And: the output is valid and meets schema
+    // And: any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
 });

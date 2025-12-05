@@ -1,0 +1,301 @@
+{
+  "id": "renderx-web-ac-alignment-workflow",
+  "sequenceId": "renderx-web-ac-alignment-workflow",
+  "name": "RenderX Web AC-to-Test Alignment Workflow",
+  "packageName": "orchestration",
+  "title": "AC-to-Test Alignment — Implementation Orchestration",
+  "description": "Fractal workflow to implement and operationalize alignment between structured acceptance criteria (GWT) and automated tests for the renderx-web-orchestration domain.",
+  "purpose": "Increase Average AC coverage from 0% to 70%+ by generating an AC registry, tagging tests, parsing results, computing alignment, reporting, and gating CI.",
+  "trigger": "Engineering initiative kickoff or CI pipeline task",
+  "kind": "governance-workflow",
+  "status": "active",
+  "tempo": 108,
+  "key": "D Major",
+  "timeSignature": "4/4",
+  "category": "orchestration",
+  "movements": [
+    {
+      "number": 1,
+      "name": "AC Registry",
+      "description": "Generate normalized AC registry from acceptanceCriteria across beats and sequences.",
+      "beats": [
+        {
+          "name": "generate-ac-registry",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/generate-registry#generate",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:registry-generated",
+          "scenario": "Generate canonical AC registry",
+          "acceptanceCriteria": [
+            {
+              "given": "ACs are present as acceptanceCriteria in sequence JSON",
+              "when": "the generator runs over renderx-web-orchestration",
+              "then": [
+                "It emits .generated/acs/renderx-web-orchestration.registry.json",
+                "Each AC entry has stable AC ID and normalized GWT",
+                "Beat and sequence IDs are preserved"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Tagging Enablement",
+      "description": "Introduce lightweight test tags to correlate tests with ACs and beats.",
+      "beats": [
+        {
+          "name": "publish-tagging-guide",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/tagging#publishGuide",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:tagging-guide-published",
+          "scenario": "Publish test tagging guide and helpers",
+          "acceptanceCriteria": [
+            {
+              "given": "Developers write or maintain tests",
+              "when": "they follow the tagging guide",
+              "then": [
+                "Tags like [AC:renderx-web-orchestration:create:1.1:1] are supported",
+                "Beat tags like [BEAT:renderx-web-orchestration:create:1.1] are supported",
+                "Examples exist for Cypress and Vitest/Jest"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "adopt-tags",
+          "number": 2,
+          "handler": {
+            "name": "ac-alignment/tagging#adopt",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:tags-adopted",
+          "scenario": "Adopt tags in representative tests",
+          "acceptanceCriteria": [
+            {
+              "given": "Key symphonies (Create, Select, UI, Export)",
+              "when": "tests are updated",
+              "then": [
+                "Each beat has at least one tagged test",
+                "AC coverage presence reaches 30%+"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Result Collection",
+      "description": "Collect test results and extract tags for mapping.",
+      "beats": [
+        {
+          "name": "collect-vitest-jest",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/results#collectUnit",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:unit-results-collected",
+          "scenario": "Collect unit/integration test results",
+          "acceptanceCriteria": [
+            {
+              "given": "Unit/Integration tests run with JSON reporter",
+              "when": "collector parses titles",
+              "then": [
+                "AC and BEAT tags are extracted",
+                "Artifacts stored under .generated/ac-alignment/results/unit.json"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "collect-cypress",
+          "number": 2,
+          "handler": {
+            "name": "ac-alignment/results#collectE2E",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:e2e-results-collected",
+          "scenario": "Collect Cypress E2E test results",
+          "acceptanceCriteria": [
+            {
+              "given": "Cypress runs with Mocha JSON or custom reporter",
+              "when": "collector processes spec outputs",
+              "then": [
+                "AC and BEAT tags are extracted",
+                "Artifacts stored under .generated/ac-alignment/results/e2e.json"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Alignment Computation",
+      "description": "Compute presence and basic THEN-assertion alignment metrics.",
+      "beats": [
+        {
+          "name": "compute-presence-coverage",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/compute#presence",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:presence-coverage-computed",
+          "scenario": "Compute presence-based AC coverage",
+          "acceptanceCriteria": [
+            {
+              "given": "AC registry and extracted tags",
+              "when": "the presence engine runs",
+              "then": [
+                "Per-AC mapping exists when any matching tag is found",
+                "Coverage summary JSON written under .generated/ac-alignment/coverage.presence.json"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compute-then-heuristics",
+          "number": 2,
+          "handler": {
+            "name": "ac-alignment/compute#thenHeuristics",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:then-coverage-computed",
+          "scenario": "Heuristic THEN-to-assertion mapping",
+          "acceptanceCriteria": [
+            {
+              "given": "THEN clauses and optional ASSERT markers",
+              "when": "heuristics evaluate assertion types",
+              "then": [
+                "THEN coverage computed per AC",
+                "Scores and confidence recorded in .generated/ac-alignment/coverage.then.json"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Reporting",
+      "description": "Emit alignment sections in analysis artifacts and Markdown report.",
+      "beats": [
+        {
+          "name": "emit-artifacts",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/report#emitArtifacts",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:artifacts-emitted",
+          "scenario": "Write JSON and Markdown summary",
+          "acceptanceCriteria": [
+            {
+              "given": "Computed presence and THEN coverage",
+              "when": "reporter runs",
+              "then": [
+                "Artifacts saved under .generated/analysis/renderx-web/*ac-alignment*",
+                "Markdown section included in CODE-ANALYSIS-REPORT.md"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "name": "CI Gate & Rollout",
+      "description": "Apply thresholds and integrate into CI with progressive rollout.",
+      "beats": [
+        {
+          "name": "enforce-thresholds",
+          "number": 1,
+          "handler": {
+            "name": "ac-alignment/ci#enforceThresholds",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:thresholds-enforced",
+          "scenario": "Warn/Fail based on coverage thresholds",
+          "acceptanceCriteria": [
+            {
+              "given": "Coverage metrics exist",
+              "when": "CI job evaluates thresholds",
+              "then": [
+                "Warn when Average AC coverage < 70%",
+                "Fail critical beats when coverage < 50%",
+                "Exit codes reflect gating policy"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "rollout",
+          "number": 2,
+          "handler": {
+            "name": "ac-alignment/ci#rollout",
+            "scope": "orchestration",
+            "kind": "orchestration"
+          },
+          "event": "renderx-web:ac-alignment:rolled-out",
+          "scenario": "Progressive rollout and stabilization",
+          "acceptanceCriteria": [
+            {
+              "given": "Initial adoption across key symphonies",
+              "when": "rollout expands to full domain",
+              "then": [
+                "Average AC coverage 70% is sustained",
+                "Documentation and helpers remain up-to-date",
+                "Regression alerts fire on drops"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": [
+    "renderx-web:ac-alignment:registry-generated",
+    "renderx-web:ac-alignment:tagging-guide-published",
+    "renderx-web:ac-alignment:tags-adopted",
+    "renderx-web:ac-alignment:unit-results-collected",
+    "renderx-web:ac-alignment:e2e-results-collected",
+    "renderx-web:ac-alignment:presence-coverage-computed",
+    "renderx-web:ac-alignment:then-coverage-computed",
+    "renderx-web:ac-alignment:artifacts-emitted",
+    "renderx-web:ac-alignment:thresholds-enforced",
+    "renderx-web:ac-alignment:rolled-out"
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-12-01",
+    "author": "Architecture & QA",
+    "lastModified": "2025-12-01",
+    "production": false,
+    "tags": [
+      "governance",
+      "quality",
+      "testing",
+      "renderx",
+      "ac-alignment"
+    ]
+  },
+  "domainId": "renderx-web-orchestration"
+}

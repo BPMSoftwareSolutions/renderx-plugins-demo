@@ -1,0 +1,25 @@
+{
+  "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/delete.requested.json",
+  "summary": {
+    "symphonyId": "canvas-component-delete-requested-symphony",
+    "symphonyName": "Canvas Component Delete Requested",
+    "totalBeats": 1,
+    "goodBeats": 0,
+    "partialBeats": 0,
+    "poorBeats": 0,
+    "noTestBeats": 0,
+    "averageCoverage": 0,
+    "totalConditions": 0,
+    "matchedConditions": 0
+  },
+  "beatResults": [
+    {
+      "movement": "Route Delete",
+      "beat": "Route Delete Request",
+      "status": "NO_AC",
+      "coverage": 0,
+      "message": "No acceptance criteria defined"
+    }
+  ],
+  "timestamp": "2025-12-05T12:18:46.237Z"
+}

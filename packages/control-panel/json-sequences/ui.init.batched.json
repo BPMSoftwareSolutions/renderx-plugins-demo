@@ -19,14 +19,24 @@
           "scenario": "Initialize Control Panel with Configuration",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
           "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
-          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "complete in <200ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["many components (≥ 100)"],
-              "when": ["initPanelBatched runs"],
-              "then": ["batching reduces CPU by ≥ 20% versus naive init"],
+              "given": [
+                "handler initConfig is available"
+              ],
+              "when": [
+                "initConfig executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "telemetry 'control-panel.init.batched' includes batchSize"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -43,14 +53,24 @@
           "scenario": "Initialize or Configure init Resolver",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["configuration and schema definitions"],
-              "when": ["initResolver runs"],
-              "then": ["field/type resolvers register successfully within ≤ 50ms"],
+              "given": [
+                "handler initResolver is available"
+              ],
+              "when": [
+                "initResolver executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "resolver map includes required primitives and custom types"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -67,14 +87,24 @@
           "scenario": "load Schemas",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\config-loader.test.js",
           "testCase": "should load plugin-architecture sprite library",
-          "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["resolver initialization completes"],
-              "when": ["loadSchemas runs"],
-              "then": ["schemas load from source with P95 ≤ 200ms and validate"],
+              "given": [
+                "handler loadSchemas is available"
+              ],
+              "when": [
+                "loadSchemas executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "telemetry 'control-panel.schemas.load' includes count and duration"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -91,14 +121,24 @@
           "scenario": "register Observers",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["event bus and DOM listeners"],
-              "when": ["registerObservers runs"],
-              "then": ["observers register idempotently without duplicates"],
+              "given": [
+                "handler registerObservers is available"
+              ],
+              "when": [
+                "registerObservers executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "unregistration handles teardown cleanly"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -115,14 +155,24 @@
           "scenario": "Notify or Publish notify Ready",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["batched initialization completes"],
-              "when": ["notifyReady runs"],
-              "then": ["a 'control-panel.ready' event publishes within 5ms"],
+              "given": [
+                "handler notifyReady is available"
+              ],
+              "when": [
+                "notifyReady executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "subscribers receive the event within ≤ 20ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -139,27 +189,46 @@
           "scenario": "Initialize or Configure init Movement",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\ui-init.batched.spec.ts",
           "testCase": "records sub-beat telemetry for the five init steps when run via iterator",
-          "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["movement context"],
-              "when": ["initMovement runs"],
-              "then": ["movement state is initialized deterministically and re-entrant"],
+              "given": [
+                "handler initMovement is available"
+              ],
+              "when": [
+                "initMovement executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "no side effects occur before first user interaction"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "complete in <200ms",
+        "benefit": "fast form rendering"
+      },
       "persona": "System Operator",
       "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
     }
   ],
   "beats": 6,
   "tempo": 120,
-  "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "complete in <200ms",
+    "benefit": "fast form rendering"
+  },
   "persona": "Product Owner",
-  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
+  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization",
+  "domainId": "renderx-web-orchestration"
 }

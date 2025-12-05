@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "musicalSequence": {
+    "id": "ac-alignment-remediation-v1",
+    "domainId": "renderx-web-orchestration",
+    "title": "AC Alignment Remediation Roadmap (v1)",
+    "version": "1.0.1",
+    "description": "Focused path-forward workflow only: Immediate (fix 15 quick wins to reach ~30%), Medium-term (fix top offenders, address partials, correct invalid tags to reach ~50%), Long-term (resolve unmatched handlers, enable AST validation, cover uncovered ACs to reach ~80%).",
+    "movements": [
+      {
+        "id": "movement-immediate",
+        "title": "Immediate (raise to 25%+)",
+        "beats": [
+          {
+            "id": "fix-quick-wins",
+            "title": "Fix 15 Quick Win Tests (~30% compliance)",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/fix-test-implementations.cjs",
+                "args": [
+                  "--target",
+                  "quick-wins",
+                  "--limit",
+                  "15"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "quick wins list from latest validation"
+                ],
+                "when": [
+                  "generate fixes for top 15 quick-win tests"
+                ],
+                "then": [
+                  "emit .fixes.txt suggestions for each targeted test"
+                ],
+                "and": [
+                  "post-application compliance approaches ~30% (>=25%)"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-medium",
+        "title": "Medium-term (raise to 50%)",
+        "beats": [
+          {
+            "id": "fix-top-offenders",
+            "title": "Fix Top 3 Offender ACs (13 tests)",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/fix-test-implementations.cjs",
+                "args": [
+                  "--targetAC",
+                  "renderx-web-orchestration:5.4:1",
+                  "--targetAC",
+                  "renderx-web-orchestration:1.5:1",
+                  "--targetAC",
+                  "renderx-web-orchestration:1.6:1"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "top offender AC IDs identified"
+                ],
+                "when": [
+                  "generate fixes for all impacted tests (≈13)"
+                ],
+                "then": [
+                  "emit .fixes.txt suggestions for each impacted test"
+                ],
+                "and": [
+                  "revalidation shows improvements for targeted ACs"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "address-partials",
+            "title": "Address 39 Partial Tests",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/fix-test-implementations.cjs",
+                "args": [
+                  "--target",
+                  "partial"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "list of partial tests from validation"
+                ],
+                "when": [
+                  "generate fixes for missing THENs"
+                ],
+                "then": [
+                  "partial tests count reduces significantly (target: -39)"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "fix-invalid-tags",
+            "title": "Fix 2 Invalid Tags",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/scan-existing-tags.cjs"
+              },
+              {
+                "script": "scripts/ac-alignment/apply-tags.cjs",
+                "args": [
+                  "--fixInvalid"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "invalid tag locations identified"
+                ],
+                "when": [
+                  "scan and apply tag corrections"
+                ],
+                "then": [
+                  "invalid tags count is 0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "movement-long",
+        "title": "Long-term (raise to 80%)",
+        "beats": [
+          {
+            "id": "align-unmatched-handlers",
+            "title": "Handle 442 Unmatched Handlers (beats vs helpers)",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/extract-acs-from-text.cjs"
+              },
+              {
+                "script": "scripts/apply-acceptance-criteria-from-text.js",
+                "args": [
+                  "--file",
+                  "docs/renderx-web/ac.apply.txt"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "unmatched handlers list (~442)"
+                ],
+                "when": [
+                  "classify as beats vs helpers and update sequences"
+                ],
+                "then": [
+                  "unmatched count reduced substantially (target: < 50)"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "enable-ast-validation",
+            "title": "AST-based Validation (replace heuristics)",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/validate-test-implementations.cjs",
+                "args": [
+                  "--strict",
+                  "--dedupe",
+                  "--ast"
+                ]
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "AST mode available"
+                ],
+                "when": [
+                  "run validator with AST mode"
+                ],
+                "then": [
+                  "false negatives reduced vs heuristic mode"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "cover-uncovered-acs",
+            "title": "Cover 72 Uncovered ACs (suggest + apply tags)",
+            "handlers": [
+              {
+                "script": "scripts/ac-alignment/suggest-tags-comprehensive.cjs"
+              },
+              {
+                "script": "scripts/ac-alignment/apply-tags.cjs",
+                "args": [
+                  "--write"
+                ]
+              },
+              {
+                "script": "scripts/ac-alignment/scan-existing-tags.cjs"
+              }
+            ],
+            "acceptanceCriteria": [
+              {
+                "given": [
+                  "72 uncovered ACs (137 total - 65 tagged)"
+                ],
+                "when": [
+                  "generate suggestions and apply tags"
+                ],
+                "then": [
+                  "uncovered ACs significantly reduced; compliance trends toward 80%"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "events": {
+      "onStart": [
+        "sequence:start"
+      ],
+      "onComplete": [
+        "sequence:complete",
+        "artifacts:ready"
+      ],
+      "onFailure": [
+        "sequence:failed"
+      ]
+    },
+    "artifacts": {
+      "reports": [
+        "docs/generated/renderx-web-orchestration/ac-validation-report.md",
+        ".generated/ac-alignment/validation-summary.json",
+        ".generated/ac-alignment/top-offenders.json",
+        ".generated/ac-alignment/quick-wins.json",
+        "tests/**/*.fixes.txt"
+      ]
+    }
+  },
+  "domainId": "renderx-web-orchestration"
+}

@@ -1,0 +1,17 @@
+Beat,Movement,Files,LOC,Complexity,Coverage,Status
+beat-1-discovery,Movement 1,42,2847,2.34,85%,PASS
+beat-2-baseline,Movement 1,35,1923,1.89,92%,PASS
+beat-3-structure,Movement 1,78,5412,2.67,68%,WARN
+beat-4-dependencies,Movement 1,28,1456,2.12,55%,WARN
+beat-1-metrics,Movement 2,45,3124,2.45,78%,PASS
+beat-2-metrics,Movement 2,52,3789,2.78,81%,PASS
+beat-3-metrics,Movement 2,38,2134,2.01,72%,PASS
+beat-4-metrics,Movement 2,41,2567,2.34,69%,PASS
+beat-1-coverage,Movement 3,29,1876,1.67,88%,PASS
+beat-2-coverage,Movement 3,34,2345,1.92,91%,PASS
+beat-3-coverage,Movement 3,26,1534,1.45,84%,PASS
+beat-4-coverage,Movement 3,31,1923,1.78,79%,PASS
+beat-1-conformity,Movement 4,19,1234,1.23,76%,PASS
+beat-2-conformity,Movement 4,22,1567,1.45,73%,PASS
+beat-3-conformity,Movement 4,18,1123,1.12,71%,WARN
+beat-4-conformity,Movement 4,20,1356,1.34,68%,WARN

@@ -1,0 +1,179 @@
+# Test Implementation Fixes for sequence-player-multi-sequence.spec.ts
+
+This file contains suggested test implementations to fix AC compliance issues.
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1]
+
+**AC Details:**
+- Handler: control-panel/ui#notifyReady
+- Given: the notifyReady operation is triggered
+- When: the handler executes
+- Then: it completes successfully within < 50ms, the output is valid and meets schema, any required events are published
+
+**Issues Found:**
+- Missing Given setup: "the notifyReady operation is triggered"
+- Missing When action: "the handler executes"
+- Missing Then assertion: "it completes successfully within < 50ms"
+- Missing Then assertion: "any required events are published"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] the handler executes → it completes successfully within < 50ms', async () => {
+    // Given: the notifyReady operation is triggered
+    // Setup: the notifyReady operation is triggered
+    const testData = {};
+
+    // When: the handler executes
+    const result = await notifyReady(/* params */);
+
+    // Then: it completes successfully within < 50ms, the output is valid and meets schema, any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(50);
+    expect(result).toBeDefined();
+    expect(typeof result).toBe('object');
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2]
+
+**AC Details:**
+- Handler: control-panel/ui#notifyReady
+- Given: valid input parameters
+- When: notifyReady processes them
+- Then: results conform to expected schema, no errors are thrown, telemetry events are recorded with latency metrics
+
+**Issues Found:**
+- Missing Given setup: "valid input parameters"
+- Missing When action: "notifyReady processes them"
+- Missing Then assertion: "results conform to expected schema"
+- Missing Then assertion: "no errors are thrown"
+- Missing Then assertion: "telemetry events are recorded with latency metrics"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] notifyReady processes them → results conform to expected schema', async () => {
+    // Given: valid input parameters
+    const input = { /* valid input parameters */ };
+
+    // When: notifyReady processes them
+    const result = await notifyReady(input);
+
+    // Then: results conform to expected schema, no errors are thrown, telemetry events are recorded with latency metrics
+    expect(result).toBeDefined();
+    expect(typeof result).toBe('object');
+    expect(() => result).not.toThrow();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4]
+
+**AC Details:**
+- Handler: control-panel/ui#notifyReady
+- Given: performance SLA of < 50ms
+- When: notifyReady executes
+- Then: latency is consistently within target, throughput meets baseline requirements, resource usage stays within bounds
+
+**Issues Found:**
+- Missing Given setup: "performance SLA of < 50ms"
+- Missing When action: "notifyReady executes"
+- Missing Then assertion: "latency is consistently within target"
+- Missing Then assertion: "throughput meets baseline requirements"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] notifyReady executes → latency is consistently within target', async () => {
+    // Given: performance SLA of < 50ms
+    const startTime = performance.now();
+
+    // When: notifyReady executes
+    const result = await notifyReady(/* params */);
+
+    // Then: latency is consistently within target, throughput meets baseline requirements, resource usage stays within bounds
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1]
+
+**AC Details:**
+- Handler: control-panel/ui#notifyReady
+- Given: the notifyReady operation is triggered
+- When: the handler executes
+- Then: it completes successfully within < 50ms, the output is valid and meets schema, any required events are published
+
+**Issues Found:**
+- Missing Given setup: "the notifyReady operation is triggered"
+- Missing When action: "the handler executes"
+- Missing Then assertion: "it completes successfully within < 50ms"
+- Missing Then assertion: "any required events are published"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] the handler executes → it completes successfully within < 50ms', async () => {
+    // Given: the notifyReady operation is triggered
+    // Setup: the notifyReady operation is triggered
+    const testData = {};
+
+    // When: the handler executes
+    const result = await notifyReady(/* params */);
+
+    // Then: it completes successfully within < 50ms, the output is valid and meets schema, any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(50);
+    expect(result).toBeDefined();
+    expect(typeof result).toBe('object');
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2]
+
+**AC Details:**
+- Handler: control-panel/ui#notifyReady
+- Given: valid input parameters
+- When: notifyReady processes them
+- Then: results conform to expected schema, no errors are thrown, telemetry events are recorded with latency metrics
+
+**Issues Found:**
+- Missing Given setup: "valid input parameters"
+- Missing When action: "notifyReady processes them"
+- Missing Then assertion: "results conform to expected schema"
+- Missing Then assertion: "no errors are thrown"
+- Missing Then assertion: "telemetry events are recorded with latency metrics"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] notifyReady processes them → results conform to expected schema', async () => {
+    // Given: valid input parameters
+    const input = { /* valid input parameters */ };
+
+    // When: notifyReady processes them
+    const result = await notifyReady(input);
+
+    // Then: results conform to expected schema, no errors are thrown, telemetry events are recorded with latency metrics
+    expect(result).toBeDefined();
+    expect(typeof result).toBe('object');
+    expect(() => result).not.toThrow();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+

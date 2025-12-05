@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2025-12-01T02:54:48.653Z",
+  "generatedAt": "2025-12-02T12:39:28.656Z",
   "summary": {
-    "totalProcesses": 541,
+    "totalProcesses": 559,
     "symphonic": 1,
-    "partialSymphonic": 41,
-    "nonSymphonic": 268,
-    "shouldBeSymphonic": 231,
+    "partialSymphonic": 42,
+    "nonSymphonic": 280,
+    "shouldBeSymphonic": 236,
     "complianceScore": 0
   },
   "processes": [
@@ -272,6 +272,17 @@
       "complexity": "very-complex",
       "shouldBeSymphonic": false,
       "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "analyze-tests.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\analyze-tests.cjs",
+      "category": "testing",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "moderate",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
     },
     {
       "name": "apply-acceptance-criteria-from-text.js",
@@ -1539,6 +1550,17 @@
       "complianceLevel": "should-be-symphonic"
     },
     {
+      "name": "generate-ac-registry.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-ac-registry.cjs",
+      "category": "generation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "complex",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
       "name": "generate-advanced-documentation.js",
       "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-advanced-documentation.js",
       "category": "generation",
@@ -2305,6 +2327,17 @@
       "registered": false,
       "inNpmScript": true,
       "complexity": "moderate",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "generate-test-stubs-from-acs.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\generate-test-stubs-from-acs.cjs",
+      "category": "generation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "complex",
       "shouldBeSymphonic": true,
       "complianceLevel": "should-be-symphonic"
     },
@@ -3187,6 +3220,28 @@
       "complexity": "moderate",
       "shouldBeSymphonic": false,
       "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "validate-ac-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-ac-alignment.cjs",
+      "category": "validation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "complex",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "validate-ac-test-alignment.cjs",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\validate-ac-test-alignment.cjs",
+      "category": "validation",
+      "symphonic": true,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "very-complex",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "partial-symphonic"
     },
     {
       "name": "validate-agent-behavior.cjs",
@@ -4661,7 +4716,7 @@
       "command": "vitest run",
       "category": "testing",
       "symphonic": false,
-      "registered": false,
+      "registered": true,
       "inNpmScript": true,
       "complexity": "simple",
       "shouldBeSymphonic": false,
@@ -6293,6 +6348,175 @@
       "complianceLevel": "partial-symphonic"
     },
     {
+      "name": "validate:ac-alignment",
+      "path": "package.json:scripts.validate:ac-alignment",
+      "type": "npm-script",
+      "command": "node scripts/validate-ac-alignment.cjs",
+      "category": "validation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "generate:ac-registry",
+      "path": "package.json:scripts.generate:ac-registry",
+      "type": "npm-script",
+      "command": "node scripts/generate-ac-registry.cjs",
+      "category": "generation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "collect:test-results",
+      "path": "package.json:scripts.collect:test-results",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/collect-test-results.cjs --all",
+      "category": "testing",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "compute:ac-alignment",
+      "path": "package.json:scripts.compute:ac-alignment",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/compute-alignment.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "suggest:ac-tags",
+      "path": "package.json:scripts.suggest:ac-tags",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/suggest-tags.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "apply:ac-tags",
+      "path": "package.json:scripts.apply:ac-tags",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/apply-tags.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "apply:ac-tags:write",
+      "path": "package.json:scripts.apply:ac-tags:write",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/apply-tags.cjs --write",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "format:ac-report",
+      "path": "package.json:scripts.format:ac-report",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/format-alignment-report.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "analyze:tests",
+      "path": "package.json:scripts.analyze:tests",
+      "type": "npm-script",
+      "command": "node scripts/analyze-tests.cjs",
+      "category": "testing",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "compute:canonical",
+      "path": "package.json:scripts.compute:canonical",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/compute-canonical.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "compute:quality-diff",
+      "path": "package.json:scripts.compute:quality-diff",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/quality-diff.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "compute:projection",
+      "path": "package.json:scripts.compute:projection",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/projection.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "enforce:thresholds",
+      "path": "package.json:scripts.enforce:thresholds",
+      "type": "npm-script",
+      "command": "node scripts/ac-alignment/enforce-thresholds.cjs",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
       "name": "orchestrate:graphing",
       "path": "package.json:scripts.orchestrate:graphing",
       "type": "npm-script",
@@ -6586,6 +6810,12 @@
     },
     {
       "process": "gen-symphonic-code-analysis-docs.js",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "generation",
+      "severity": "high"
+    },
+    {
+      "process": "generate-ac-registry.cjs",
       "reason": "Process type requires symphonic structure but none found",
       "category": "generation",
       "severity": "high"
@@ -6987,6 +7217,12 @@
       "severity": "high"
     },
     {
+      "process": "generate-test-stubs-from-acs.cjs",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "generation",
+      "severity": "high"
+    },
+    {
       "process": "generate-test-stubs.js",
       "reason": "Process type requires symphonic structure but none found",
       "category": "generation",
@@ -7074,6 +7310,12 @@
       "process": "traceability-pipeline.js",
       "reason": "Process type requires symphonic structure but none found",
       "category": "orchestration",
+      "severity": "high"
+    },
+    {
+      "process": "validate-ac-alignment.cjs",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "validation",
       "severity": "high"
     },
     {
@@ -7734,6 +7976,18 @@
       "process": "pipeline:delivery:report",
       "reason": "Process type requires symphonic structure but none found",
       "category": "orchestration",
+      "severity": "high"
+    },
+    {
+      "process": "validate:ac-alignment",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "validation",
+      "severity": "high"
+    },
+    {
+      "process": "generate:ac-registry",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "generation",
       "severity": "high"
     },
     {
@@ -8576,6 +8830,31 @@
         "id": "gen-symphonic-code-analysis-docs-symphony",
         "sequenceId": "gen-symphonic-code-analysis-docs-symphony",
         "name": "gen-symphonic-code-analysis-docs.js Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "generate-ac-registry.cjs",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/generate-ac-registry.cjs-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "generate-ac-registry-symphony",
+        "sequenceId": "generate-ac-registry-symphony",
+        "name": "generate-ac-registry.cjs Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],
@@ -10237,6 +10516,31 @@
       }
     },
     {
+      "process": "generate-test-stubs-from-acs.cjs",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/generate-test-stubs-from-acs.cjs-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "generate-test-stubs-from-acs-symphony",
+        "sequenceId": "generate-test-stubs-from-acs-symphony",
+        "name": "generate-test-stubs-from-acs.cjs Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
       "process": "generate-test-stubs.js",
       "action": "Convert to symphonic domain",
       "steps": [
@@ -10601,6 +10905,31 @@
         "id": "traceability-pipeline-symphony",
         "sequenceId": "traceability-pipeline-symphony",
         "name": "traceability-pipeline.js Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "validate-ac-alignment.cjs",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/validate-ac-alignment.cjs-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "validate-ac-alignment-symphony",
+        "sequenceId": "validate-ac-alignment-symphony",
+        "name": "validate-ac-alignment.cjs Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],
@@ -13351,6 +13680,56 @@
         "id": "pipeline:delivery:report",
         "sequenceId": "pipeline:delivery:report",
         "name": "pipeline:delivery:report Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "validate:ac-alignment",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/validate:ac-alignment-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "validate:ac-alignment",
+        "sequenceId": "validate:ac-alignment",
+        "name": "validate:ac-alignment Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "generate:ac-registry",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/generate:ac-registry-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "generate:ac-registry",
+        "sequenceId": "generate:ac-registry",
+        "name": "generate:ac-registry Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],

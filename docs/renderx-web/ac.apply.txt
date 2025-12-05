@@ -1,0 +1,565 @@
+[packages/canvas-component/json-sequences/canvas-component/create.json]
+beat: 1 handler: resolveTemplate
+- Given handler resolveTemplate is available
+- When resolveTemplate executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: registerInstance
+- Given handler registerInstance is available
+- When registerInstance executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: createNode
+- Given handler createNode is available
+- When createNode executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: renderReact
+- Given handler renderReact is available
+- When renderReact executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: notifyUi
+- Given handler notifyUi is available
+- When notifyUi executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: notifyUi
+- Given handler notifyUi is available
+- When notifyUi executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 6 handler: enhanceLine
+- Given handler enhanceLine is available
+- When enhanceLine executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/copy.json]
+beat: 1 handler: serializeSelectedComponent
+- Given handler serializeSelectedComponent is available
+- When serializeSelectedComponent executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: copyToClipboard
+- Given handler copyToClipboard is available
+- When copyToClipboard executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: notifyCopyComplete
+- Given handler notifyCopyComplete is available
+- When notifyCopyComplete executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/delete.json]
+beat: 1 handler: deleteComponent
+- Given handler deleteComponent is available
+- When deleteComponent executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: publishDeleted
+- Given handler publishDeleted is available
+- When publishDeleted executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/delete.requested.json]
+beat: 1 handler: routeDeleteRequest
+- Given handler routeDeleteRequest is available
+- When routeDeleteRequest executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/deselect.json]
+beat: 1 handler: deselectComponent
+- Given handler deselectComponent is available
+- When deselectComponent executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: publishDeselectionChanged
+- Given handler publishDeselectionChanged is available
+- When publishDeselectionChanged executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/deselect-all.json]
+beat: 1 handler: hideAllOverlays
+- Given handler hideAllOverlays is available
+- When hideAllOverlays executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: publishSelectionsCleared
+- Given handler publishSelectionsCleared is available
+- When publishSelectionsCleared executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/deselect.requested.json]
+beat: 1 handler: routeDeselectionRequest
+- Given handler routeDeselectionRequest is available
+- When routeDeselectionRequest executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/drag.end.json]
+beat: 1 handler: endDrag
+- Given handler endDrag is available
+- When endDrag executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/drag.move.json]
+beat: 1 handler: updatePosition
+- Given handler updatePosition is available
+- When updatePosition executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: forwardToControlPanel
+- Given handler forwardToControlPanel is available
+- When forwardToControlPanel executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/drag.start.json]
+beat: 1 handler: startDrag
+- Given handler startDrag is available
+- When startDrag executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/export.json]
+beat: 1 handler: queryAllComponents
+- Given handler queryAllComponents is available
+- When queryAllComponents executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: discoverComponentsFromDom
+- Given handler discoverComponentsFromDom is available
+- When discoverComponentsFromDom executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: collectCssClasses
+- Given handler collectCssClasses is available
+- When collectCssClasses executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: collectLayoutData
+- Given handler collectLayoutData is available
+- When collectLayoutData executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: buildUiFileContent
+- Given handler buildUiFileContent is available
+- When buildUiFileContent executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 6 handler: downloadUiFile
+- Given handler downloadUiFile is available
+- When downloadUiFile executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/export-gif.json]
+beat: 1 handler: exportSvgToGif
+- Given handler exportSvgToGif is available
+- When exportSvgToGif executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/export-mp4.json]
+beat: 1 handler: exportSvgToMp4
+- Given handler exportSvgToMp4 is available
+- When exportSvgToMp4 executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/import.json]
+beat: 1 handler: openUiFile
+- Given handler openUiFile is available
+- When openUiFile executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: parseUiFile
+- Given handler parseUiFile is available
+- When parseUiFile executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: injectCssClasses
+- Given handler injectCssClasses is available
+- When injectCssClasses executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: createComponentsSequentially
+- Given handler createComponentsSequentially is available
+- When createComponentsSequentially executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: applyHierarchyAndOrder
+- Given handler applyHierarchyAndOrder is available
+- When applyHierarchyAndOrder executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.end.json]
+beat: 1 handler: endLineManip
+- Given handler endLineManip is available
+- When endLineManip executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.move.json]
+beat: 1 handler: moveLineManip
+- Given handler moveLineManip is available
+- When moveLineManip executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/line.manip.start.json]
+beat: 1 handler: startLineManip
+- Given handler startLineManip is available
+- When startLineManip executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/paste.json]
+beat: 1 handler: readFromClipboard
+- Given handler readFromClipboard is available
+- When readFromClipboard executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: deserializeComponentData
+- Given handler deserializeComponentData is available
+- When deserializeComponentData executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: calculatePastePosition
+- Given handler calculatePastePosition is available
+- When calculatePastePosition executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: createPastedComponent
+- Given handler createPastedComponent is available
+- When createPastedComponent executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: notifyPasteComplete
+- Given handler notifyPasteComplete is available
+- When notifyPasteComplete executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.end.json]
+beat: 1 handler: endLineResize
+- Given handler endLineResize is available
+- When endLineResize executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.start.json]
+beat: 1 handler: startLineResize
+- Given handler startLineResize is available
+- When startLineResize executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.line.move.json]
+beat: 1 handler: updateLine
+- Given handler updateLine is available
+- When updateLine executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.end.json]
+beat: 1 handler: endResize
+- Given handler endResize is available
+- When endResize executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.start.json]
+beat: 1 handler: startResize
+- Given handler startResize is available
+- When startResize executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/resize.move.json]
+beat: 1 handler: updateSize
+- Given handler updateSize is available
+- When updateSize executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/select.json]
+beat: 1 handler: showSelectionOverlay
+- Given handler showSelectionOverlay is available
+- When showSelectionOverlay executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: publishSelectionChanged
+- Given handler publishSelectionChanged is available
+- When publishSelectionChanged executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/select.requested.json]
+beat: 1 handler: routeSelectionRequest
+- Given handler routeSelectionRequest is available
+- When routeSelectionRequest executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/select.svg-node.json]
+beat: 1 handler: showSvgNodeOverlay
+- Given handler showSvgNodeOverlay is available
+- When showSvgNodeOverlay executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/update.json]
+beat: 1 handler: updateAttribute
+- Given handler updateAttribute is available
+- When updateAttribute executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: refreshControlPanel
+- Given handler refreshControlPanel is available
+- When refreshControlPanel executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: refreshControlPanel
+- Given handler refreshControlPanel is available
+- When refreshControlPanel executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/update.svg-node.json]
+beat: 1 handler: updateSvgNodeAttribute
+- Given handler updateSvgNodeAttribute is available
+- When updateSvgNodeAttribute executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/canvas-component/json-sequences/canvas-component/rules.config.json]
+beat: 1 handler: setAllRulesConfig
+- Given handler setAllRulesConfig is available
+- When setAllRulesConfig executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: loadAllRulesFromWindow
+- Given handler loadAllRulesFromWindow is available
+- When loadAllRulesFromWindow executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: getAllRulesConfig
+- Given handler getAllRulesConfig is available
+- When getAllRulesConfig executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/classes.add.json]
+beat: 1 handler: addClass
+- Given handler addClass is available
+- When addClass executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/classes.remove.json]
+beat: 1 handler: removeClass
+- Given handler removeClass is available
+- When removeClass executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/css.create.json]
+beat: 1 handler: createCssClass
+- Given handler createCssClass is available
+- When createCssClass executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/css.delete.json]
+beat: 1 handler: deleteCssClass
+- Given handler deleteCssClass is available
+- When deleteCssClass executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/css.edit.json]
+beat: 1 handler: updateCssClass
+- Given handler updateCssClass is available
+- When updateCssClass executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/selection.show.json]
+beat: 1 handler: deriveSelectionModel
+- Given handler deriveSelectionModel is available
+- When deriveSelectionModel executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/ui.field.change.json]
+beat: 1 handler: prepareField
+- Given handler prepareField is available
+- When prepareField executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: dispatchField
+- Given handler dispatchField is available
+- When dispatchField executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: setDirty
+- Given handler setDirty is available
+- When setDirty executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: awaitRefresh
+- Given handler awaitRefresh is available
+- When awaitRefresh executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/ui.render.json]
+beat: 1 handler: generateFields
+- Given handler generateFields is available
+- When generateFields executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: generateSections
+- Given handler generateSections is available
+- When generateSections executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: renderView
+- Given handler renderView is available
+- When renderView executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/ui.init.batched.json]
+beat: 1 handler: initConfig
+- Given handler initConfig is available
+- When initConfig executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: initResolver
+- Given handler initResolver is available
+- When initResolver executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: loadSchemas
+- Given handler loadSchemas is available
+- When loadSchemas executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 4 handler: registerObservers
+- Given handler registerObservers is available
+- When registerObservers executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: notifyReady
+- Given handler notifyReady is available
+- When notifyReady executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 5 handler: notifyReady
+- Given handler notifyReady is available
+- When notifyReady executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 6 handler: initMovement
+- Given handler initMovement is available
+- When initMovement executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/ui.field.validate.json]
+beat: 1 handler: validateField
+- Given handler validateField is available
+- When validateField executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 2 handler: mergeErrors
+- Given handler mergeErrors is available
+- When mergeErrors executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+beat: 3 handler: updateView
+- Given handler updateView is available
+- When updateView executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/ui.section.toggle.json]
+beat: 1 handler: toggleSection
+- Given handler toggleSection is available
+- When toggleSection executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/control-panel/json-sequences/update.json]
+beat: 1 handler: updateFromElement
+- Given handler updateFromElement is available
+- When updateFromElement executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/header/json-sequences/header/ui.theme.get.json]
+beat: 1 handler: getCurrentTheme
+- Given handler getCurrentTheme is available
+- When getCurrentTheme executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value
+
+[packages/header/json-sequences/header/ui.theme.toggle.json]
+beat: 1 handler: toggleTheme
+- Given handler toggleTheme is available
+- When toggleTheme executes under normal conditions
+- Then it performs its expected orchestration logic
+- And emits expected side effects or returns expected value

@@ -29,5 +29,6 @@
     "**/*.test.ts"
   ],
   "id": "tsconfig",
-  "name": "Tsconfig"
+  "name": "Tsconfig",
+  "domainId": "renderx-web-orchestration"
 }

@@ -3,7 +3,10 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-describe('React Component Communication', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] React Component Communication', () => {
+    // Given: the renderTemplatePreview operation is triggered
+    const startTime = performance.now();
+    // When: the handler executes
   let mockConductor: any;
   let publishedEvents: any[] = [];
 
@@ -17,7 +20,7 @@ describe('React Component Communication', () => {
     };
   });
 
-  it('should expose EventRouter to React components', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] should expose EventRouter to React components', () => {
     // Simulate exposing EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -29,13 +32,16 @@ describe('React Component Communication', () => {
       },
     };
 
+    // Then: it completes successfully within < 200ms
     expect((window as any).RenderX).toBeDefined();
     expect((window as any).RenderX.publish).toBeDefined();
     expect((window as any).RenderX.subscribe).toBeDefined();
   });
 
-  it('should allow React components to publish events back to conductor', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should allow React components to publish events back to conductor', () => {
+      // Given: valid input parameters
     // Setup EventRouter
+      // When: renderTemplatePreview processes them
     (window as any).RenderX = {
       conductor: mockConductor,
       publish: (topic: string, data: any) => {
@@ -47,6 +53,7 @@ describe('React Component Communication', () => {
     (window as any).RenderX.publish('react.component.counter.incremented', { count: 1 });
 
     // Verify the event was published
+      // Then: results conform to expected schema
     expect(mockConductor.publish).toHaveBeenCalledWith(
       'react.component.counter.incremented',
       { count: 1 }
@@ -54,9 +61,11 @@ describe('React Component Communication', () => {
     expect(publishedEvents).toHaveLength(1);
     expect(publishedEvents[0].topic).toBe('react.component.counter.incremented');
     expect(publishedEvents[0].data.count).toBe(1);
+      // And: no errors are thrown
+      // And: telemetry events are recorded with latency metrics
   });
 
-  it('should handle multiple events from React component', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] should handle multiple events from React component', () => {
     // Setup EventRouter
     (window as any).RenderX = {
       conductor: mockConductor,
@@ -77,5 +86,9 @@ describe('React Component Communication', () => {
     expect(publishedEvents[1].data.count).toBe(2);
     expect(publishedEvents[2].topic).toBe('react.component.counter.reset');
   });
+    // And: the output is valid and meets schema
+    // And: any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
 });
 

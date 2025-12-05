@@ -1,5 +1,5 @@
 {
-  "pluginId": "ExamplePlugin", 
+  "pluginId": "ExamplePlugin",
   "id": "example-create-symphony",
   "name": "Example Create Operation",
   "movements": [
@@ -14,18 +14,35 @@
           "handler": "validateInput",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "pure"
+          "kind": "pure",
+          "number": 1,
+          "userStory": {
+            "persona": "design systems engineer",
+            "goal": "",
+            "benefit": ""
+          }
         },
         {
           "beat": 2,
           "event": "example:create:execute",
           "title": "Execute Creation",
-          "handler": "executeCreation", 
+          "handler": "executeCreation",
           "timing": "immediate",
           "dynamics": "mf",
-          "kind": "stage-crew"
+          "kind": "stage-crew",
+          "number": 2,
+          "userStory": {
+            "persona": "design systems engineer",
+            "goal": "",
+            "benefit": ""
+          }
         }
-      ]
+      ],
+      "userStory": {
+        "persona": "design systems engineer",
+        "goal": "",
+        "benefit": ""
+      }
     }
   ],
   "lifecycleTopics": [
@@ -35,19 +52,19 @@
       "type": "notify-only"
     },
     {
-      "name": "example.create.validated", 
+      "name": "example.create.validated",
       "notes": "Fired when input validation completes",
       "type": "notify-only"
     },
     {
       "name": "example.create.completed",
-      "notes": "Fired when creation completes successfully", 
+      "notes": "Fired when creation completes successfully",
       "type": "notify-only"
     },
     {
       "name": "example.create.failed",
       "notes": "Fired when creation fails",
-      "type": "notify-only"  
+      "type": "notify-only"
     }
   ],
   "notificationTopics": [
@@ -56,8 +73,14 @@
       "notes": "General notification that an item was created"
     },
     {
-      "name": "example.inventory.changed", 
+      "name": "example.inventory.changed",
       "notes": "Inventory state changed due to creation"
     }
-  ]
+  ],
+  "domainId": "renderx-web-orchestration",
+  "userStory": {
+    "persona": "design systems engineer",
+    "goal": "",
+    "benefit": ""
+  }
 }

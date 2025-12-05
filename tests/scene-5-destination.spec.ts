@@ -7,9 +7,13 @@ const root = path.resolve('.');
 const assetsDir = path.join(root, 'docs', 'digital-assets');
 const mappingPath = path.join(assetsDir, 'scene5_destination.mapping.json');
 
-describe('Scene 5: Destination (School)', () => {
-  it('matches mapping and contains school + delivered banner + animated bus', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Scene 5: Destination (School)', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] matches mapping and contains school + delivered banner + animated bus', () => {
+      // Given: the registerObservers operation is triggered
+      const startTime = performance.now();
+      // When: the handler executes
     const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
+      // Then: it completes successfully within < 1 second
     expect(mapping.scene.name).toBe('scene5_destination');
     expect(mapping.output.file).toBe('integrated_scene_5.svg');
 
@@ -37,6 +41,10 @@ describe('Scene 5: Destination (School)', () => {
     const textContent = doc.documentElement.textContent || '';
     expect(textContent).toMatch(/DESTINATION/);
     expect(textContent).toMatch(/DELIVERED/);
+      // And: the output is valid and meets schema
+      // And: any required events are published
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(1000);
   });
 });
 

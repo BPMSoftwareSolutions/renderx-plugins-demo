@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: C:\source\repos\bpm\internal\renderx-plugins-demo\packages\orchestration\json-sequences\orchestration-registry-audit-pipeline.json -->
-<!-- Generated: 2025-12-01T02:54:25.381Z -->
+<!-- Generated: 2025-12-02T12:39:10.517Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Orchestration Registry Audit Pipeline
@@ -34,9 +34,9 @@ npm run gen:registry:audit:docs # Generate documentation
 
 | Metric | Value |
 |--------|-------|
-| Total Orchestration Domains | 19 |
-| Domains with Sequence Files | 19/19 (100.0%) |
-| Domains with NPM Scripts | 0/19 (0.0%) |
+| Total Orchestration Domains | 25 |
+| Domains with Sequence Files | 25/25 (100.0%) |
+| Domains with NPM Scripts | 0/25 (0.0%) |
 | Total NPM Scripts | 0 |
 | Overall Compliance Score | 0.0% |
 

@@ -1,0 +1,40 @@
+# Test Implementation Fixes for digital-assets.spec.ts
+
+This file contains suggested test implementations to fix AC compliance issues.
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:5.3:1]
+
+**AC Details:**
+- Handler: library-component/drag.preview#createGhostContainer
+- Given: the createGhostContainer operation is triggered
+- When: the handler executes
+- Then: it completes successfully within < 2 seconds, the output is valid and meets schema, any required events are published
+
+**Issues Found:**
+- Missing Given setup: "the createGhostContainer operation is triggered"
+- Missing When action: "the handler executes"
+- Missing Then assertion: "it completes successfully within < 2 seconds"
+- Missing Then assertion: "any required events are published"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.3:1] the handler executes → it completes successfully within < 2 seconds', async () => {
+    // Given: the createGhostContainer operation is triggered
+    // Setup: the createGhostContainer operation is triggered
+    const testData = {};
+
+    // When: the handler executes
+    const result = await createGhostContainer(/* params */);
+
+    // Then: it completes successfully within < 2 seconds, the output is valid and meets schema, any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(2000);
+    expect(result).toBeDefined();
+    expect(typeof result).toBe('object');
+    expect(result).toBeDefined();
+  });
+```
+
+---
+

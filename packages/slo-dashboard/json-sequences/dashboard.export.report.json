@@ -12,16 +12,90 @@
           "kind": "pure",
           "number": 1,
           "scenario": "serialize Dashboard State",
-          "acceptanceCriteria": [
-            "Given the serializeDashboardState operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen serializeDashboardState processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen serializeDashboardState encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen serializeDashboardState executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen serializeDashboardState operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts",
           "testCase": "Scenario: Prepare export payload containing compliance snapshot.",
-          "userStory": "As an SRE, I need `serializeDashboardState` to produce a stable report."
+          "userStory": {
+            "persona": "SRE",
+            "goal": "produce a stable report",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the serializeDashboardState operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "serializeDashboardState processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "serializeDashboardState encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "serializeDashboardState executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "serializeDashboardState operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "beat": 2,
@@ -29,19 +103,97 @@
           "kind": "io",
           "number": 2,
           "scenario": "trigger Export Download",
-          "acceptanceCriteria": [
-            "Given the triggerExportDownload operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen triggerExportDownload processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen triggerExportDownload encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen triggerExportDownload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen triggerExportDownload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts",
           "testCase": "Scenario: Initiate download of signed export artifacts.",
-          "userStory": "As an SRE, I need `triggerExportDownload` to initiate download reliably."
+          "userStory": {
+            "persona": "SRE",
+            "goal": "initiate download reliably",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the triggerExportDownload operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "triggerExportDownload processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "triggerExportDownload encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "triggerExportDownload executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "triggerExportDownload operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ],
-      "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+      "userStory": {
+        "persona": "SRE",
+        "goal": "dashboard export to serialize state and trigger downloads deterministically in ≤1s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "SRE",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
@@ -49,7 +201,12 @@
   "name": "Dashboard.export.report",
   "beats": 2,
   "tempo": 120,
-  "userStory": "As an SRE, I need dashboard export to serialize state and trigger downloads deterministically in ≤1s P95.",
+  "userStory": {
+    "persona": "SRE",
+    "goal": "dashboard export to serialize state and trigger downloads deterministically in ≤1s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "SRE",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

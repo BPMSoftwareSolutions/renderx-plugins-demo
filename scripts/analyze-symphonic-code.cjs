@@ -39,6 +39,10 @@ const {
   validateSymphony,
   formatValidationReport: formatACValidationReport
 } = require('./validate-ac-test-alignment.cjs');
+const {
+  getAlignmentSummary,
+  formatAlignmentSectionForAnalysisReport
+} = require('./validate-ac-alignment.cjs');
 
 // ============================================================================
 // DOMAIN REGISTRY INTEGRATION
@@ -49,7 +53,7 @@ const {
  * @param {string} domainId - Domain identifier
  * @returns {object} Domain configuration with paths
  */
-function loadDomainConfig(domainId) {
+function loadDomainConfig(domainId, options = { strict: true }) {
   try {
     const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
     if (!fs.existsSync(registryPath)) {
@@ -99,29 +103,56 @@ function loadDomainConfig(domainId) {
       canonicalDomainId: domainConfig.domain_id
     };
   } catch (err) {
-    console.error(`❌ FATAL: ${err.message}`);
-    process.exit(1);
+    if (options.strict) {
+      console.error(`❌ FATAL: ${err.message}`);
+      process.exit(1);
+    } else {
+      console.error(`⚠ Skipping domain '${domainId}': ${err.message}`);
+      return null;
+    }
   }
 }
 
-// Support environment variables for domain-based analysis orchestration
-let DOMAIN_ID = process.env.ANALYSIS_DOMAIN_ID || 'unknown-domain';
+// Support CLI args for domain selection; fallback to env; default: ALL domains
+// Usage:
+//   node scripts/analyze-symphonic-code.cjs --domain renderx-web-orchestration
+//   node scripts/analyze-symphonic-code.cjs              (analyze ALL domains)
+//   node scripts/analyze-symphonic-code.cjs --all        (explicit ALL)
+function parseCliDomainArgs() {
+  const argv = process.argv.slice(2);
+  let domainArg = null;
+  let allFlag = false;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--all') allFlag = true;
+    else if (a === '--domain' && argv[i + 1]) domainArg = argv[i + 1];
+    else if (a.startsWith('--domain=')) domainArg = a.split('=')[1];
+  }
+  return { domainArg: domainArg ? domainArg.trim() : null, allFlag };
+}
 
-// Load domain configuration from registry
-const domainConfig = loadDomainConfig(DOMAIN_ID);
-// Normalize DOMAIN_ID to canonical resolved id (handles aliases)
-if (domainConfig?.canonicalDomainId && DOMAIN_ID !== domainConfig.canonicalDomainId) {
-  DOMAIN_ID = domainConfig.canonicalDomainId;
+const { domainArg, allFlag } = parseCliDomainArgs();
+let DOMAIN_ID = (domainArg || process.env.ANALYSIS_DOMAIN_ID || '').trim();
+const RUN_ALL = allFlag || !DOMAIN_ID;
+
+// Load domain configuration if running single domain; in ALL mode we'll iterate later
+let domainConfig = null;
+if (!RUN_ALL) {
+  domainConfig = loadDomainConfig(DOMAIN_ID);
+  // Normalize DOMAIN_ID to canonical resolved id (handles aliases)
+  if (domainConfig?.canonicalDomainId && DOMAIN_ID !== domainConfig.canonicalDomainId) {
+    DOMAIN_ID = domainConfig.canonicalDomainId;
+  }
 }
 
 // Use registry paths if available, otherwise fall back to environment variables or defaults
-const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || '.generated/analysis';
-const REPORT_OUTPUT_PATH = domainConfig?.reportOutputPath || process.env.REPORT_OUTPUT_PATH || 'docs/generated/symphonic-code-analysis-pipeline';
+const ANALYSIS_OUTPUT_PATH = domainConfig?.analysisOutputPath || process.env.ANALYSIS_OUTPUT_PATH || 'packages/code-analysis/reports';
+const REPORT_OUTPUT_PATH = domainConfig?.reportOutputPath || process.env.REPORT_OUTPUT_PATH || 'packages/code-analysis/reports';
 const AUTO_GENERATE_REPORT = process.env.AUTO_GENERATE_REPORT === 'true';
 
 const ANALYSIS_DIR = path.join(process.cwd(), ANALYSIS_OUTPUT_PATH);
 const DOCS_DIR = path.join(process.cwd(), REPORT_OUTPUT_PATH);
-const TIMESTAMP = new Date().toISOString().replace(/[:.]/g, '-');
+// Removed TIMESTAMP to prevent duplicate files - use static filenames instead
 
 // Initialize directories
 [ANALYSIS_DIR, DOCS_DIR].forEach(dir => {
@@ -137,6 +168,141 @@ const header = (title) => console.log(`\n╔════════════
 const { generateDiagram } = require('./generate-architecture-diagram.cjs');
 // ASCII renderer (used for handler symphony sections)
 const { renderCleanSymphonyHandler } = require('./ascii-sketch-renderers.cjs');
+
+// ============================================================================
+// AC/GWT ALIGNMENT HELPER
+// ============================================================================
+
+/**
+ * Load handlers that have AC-tagged tests by directly parsing test file AC tags
+ * Uses existing test telemetry: [AC:domain:sequence:beat:acIndex] tags in test titles
+ * @returns {{ beatIds: Set<string>, handlerNames: Set<string>, sequenceHandlers: Map<string, Set<string>> }}
+ */
+function loadAcCoveredHandlers() {
+  const result = {
+    beatIds: new Set(),
+    handlerNames: new Set(),
+    sequenceHandlers: new Map() // Map of sequence:beat -> Set of handler names
+  };
+
+  try {
+    // Load AC-tagged test results (already parsed from test files by collect-test-results.cjs)
+    const resultsPath = path.join(process.cwd(), '.generated/ac-alignment/results/collected-results.json');
+    if (!fs.existsSync(resultsPath)) {
+      return result;
+    }
+
+    const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+
+    // Process each AC tag found in tests
+    (results.uniqueACs || []).forEach(acId => {
+      // AC ID format: domain:sequence:beat:acIndex
+      // Example: "renderx-web-orchestration:canvas-component-select-symphony:1.3:1"
+      const parts = acId.split(':');
+      if (parts.length >= 3) {
+        const beatId = parts[2]; // e.g., "1.3"
+        const sequenceId = parts[1]; // e.g., "canvas-component-select-symphony"
+
+        result.beatIds.add(beatId);
+
+        // Load sequence JSON to get handler name for this beat
+        const sequenceKey = `${sequenceId}:${beatId}`;
+        if (!result.sequenceHandlers.has(sequenceKey)) {
+          const handler = findHandlerForSequenceBeat(sequenceId, beatId);
+          if (handler) {
+            result.handlerNames.add(handler.toLowerCase());
+
+            if (!result.sequenceHandlers.has(sequenceKey)) {
+              result.sequenceHandlers.set(sequenceKey, new Set());
+            }
+            result.sequenceHandlers.get(sequenceKey).add(handler.toLowerCase());
+          }
+        }
+      }
+    });
+
+    return result;
+  } catch (e) {
+    console.error(`⚠️  Error loading AC-covered handlers: ${e.message}`);
+    return result;
+  }
+}
+
+/**
+ * Find handler name for a given sequence and beat by parsing sequence JSON files
+ * @param {string} sequenceId - Sequence identifier
+ * @param {string} beatId - Beat identifier (e.g., "1.3")
+ * @returns {string|null} Handler name or null
+ */
+function findHandlerForSequenceBeat(sequenceId, beatId) {
+  try {
+    // Load domain config to get sequence files
+    const sequenceFiles = domainConfig?.sequenceFiles || [];
+
+    // Parse beat ID into movement and beat numbers
+    const [movementNum, beatNum] = beatId.split('.').map(Number);
+
+    // Search through sequence files
+    for (const seqFile of sequenceFiles) {
+      const fullPath = path.join(process.cwd(), seqFile);
+      if (!fs.existsSync(fullPath)) continue;
+
+      const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+      // Check if this is the right sequence
+      const seqId = sequence.sequenceId || sequence.id;
+      if (seqId !== sequenceId) continue;
+
+      // Find the beat
+      if (!sequence.movements || !Array.isArray(sequence.movements)) continue;
+
+      // Use 0-based index to find movement by position (beat "1.3" = first movement, third beat)
+      const movement = sequence.movements[movementNum - 1];
+
+      if (!movement || !movement.beats) continue;
+
+      // Use 0-based index to find beat by position
+      const beat = movement.beats[beatNum - 1];
+
+      if (beat && beat.handler) {
+        // Extract handler name (handle both "handlerName" and "path/to#handlerName" formats)
+        const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+        if (handlerStr) {
+          const parts = handlerStr.split('#');
+          return parts.length > 1 ? parts[1] : parts[0];
+        }
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Global cache for AC-covered handlers
+let acCoveredHandlersCache = null;
+
+/**
+ * Check if a handler has AC-tagged tests (by handler name or beat ID)
+ * @param {string} handlerName - Handler function name (e.g., "initConfig")
+ * @param {string} [beatId] - Optional beat ID (e.g., "1.3") for fallback check
+ * @returns {boolean} Whether the handler has AC-tagged tests
+ */
+function handlerHasAcGwt(handlerName, beatId) {
+  if (acCoveredHandlersCache === null) {
+    acCoveredHandlersCache = loadAcCoveredHandlers();
+  }
+  // Check by handler name first (normalized to lowercase)
+  if (acCoveredHandlersCache.handlerNames.has(handlerName.toLowerCase())) {
+    return true;
+  }
+  // Fallback to beat ID check (for global orchestration beats)
+  if (beatId && acCoveredHandlersCache.beatIds.has(beatId)) {
+    return true;
+  }
+  return false;
+}
 
 // ============================================================================
 // MOVEMENT 1: CODE DISCOVERY & BEAT MAPPING
@@ -598,12 +764,40 @@ Verify scan-duplication.cjs is accessible and git repository is initialized.`;
 async function generateHandlerMappingMetrics() {
   try {
     const handlerResults = await scanHandlerExports();
-    
+
     if (!handlerResults.handlers || handlerResults.handlers.length === 0) {
       return `⚠ **No handlers to map** - Handler discovery must complete first.`;
     }
-    
+
     const mappingResults = mapHandlersToBeat(handlerResults.handlers);
+
+    // Read accurate handler count from classification if available
+    let accurateHandlerCount = handlerResults.handlers.length;
+    try {
+      const classificationPaths = [
+        path.join(ANALYSIS_DIR, 'handler-classification.json'),
+        path.join(ANALYSIS_DIR, '..', DOMAIN_ID, 'handler-classification.json'),
+        path.join(process.cwd(), '.generated', 'analysis', DOMAIN_ID, 'handler-classification.json')
+      ];
+
+      for (const tryPath of classificationPaths) {
+        if (fs.existsSync(tryPath)) {
+          const classification = JSON.parse(fs.readFileSync(tryPath, 'utf8'));
+          if (classification.summary && classification.summary.total) {
+            accurateHandlerCount = classification.summary.total;
+            break;
+          }
+        }
+      }
+    } catch (err) {
+      // Use scanned count as fallback
+    }
+
+    // Override totalHandlers and mappedCount with accurate count
+    // The scanner may find duplicate exports, so we use the classification count
+    mappingResults.totalHandlers = accurateHandlerCount;
+    mappingResults.mappedCount = accurateHandlerCount - mappingResults.orphanedCount;
+
     const healthScore = calculateSympahonicHealthScore(mappingResults);
     
     const orphansList = mappingResults.orphaned.length > 0
@@ -747,7 +941,7 @@ async function generateJsonArtifacts(metrics) {
   log(`Integrity checkpoint: ${checkpoint.integrityHash.substring(0, 8)}...`, '✓');
   
   const analysisData = {
-    id: `${DOMAIN_ID}-code-analysis-${TIMESTAMP}`,
+    id: `${DOMAIN_ID}-code-analysis`,
     timestamp: new Date().toISOString(),
     codebase: DOMAIN_ID,
     movements: {
@@ -789,7 +983,7 @@ async function generateJsonArtifacts(metrics) {
     integrity_checkpoint: checkpoint
   };
 
-  const jsonPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json`);
+  const jsonPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-code-analysis.json`);
   fs.writeFileSync(jsonPath, JSON.stringify(analysisData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), jsonPath)}`, '✓');
 
@@ -816,7 +1010,7 @@ async function generateJsonArtifacts(metrics) {
     },
     integrity: checkpoint
   };
-  const domainMetricsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-domain-metrics-${TIMESTAMP}.json`);
+  const domainMetricsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-domain-metrics.json`);
   fs.writeFileSync(domainMetricsPath, JSON.stringify(domainMetrics, null, 2));
   log(`Saved domain metrics: ${path.relative(process.cwd(), domainMetricsPath)}`, '✓');
 
@@ -833,7 +1027,7 @@ async function generateJsonArtifacts(metrics) {
     overall_coverage: metrics.coverage
   };
 
-  const coveragePath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json`);
+  const coveragePath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-coverage-summary.json`);
   fs.writeFileSync(coveragePath, JSON.stringify(coverageSummary, null, 2));
   log(`Saved: ${path.relative(process.cwd(), coveragePath)}`, '✓');
 
@@ -858,7 +1052,7 @@ async function generateJsonArtifacts(metrics) {
     'beat-4-conformity,Movement 4,20,1356,1.34,68%,WARN'
   ];
 
-  const csvPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv`);
+  const csvPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-per-beat-metrics.csv`);
   fs.writeFileSync(csvPath, csvHeader + csvRows.join('\n'));
   log(`Saved: ${path.relative(process.cwd(), csvPath)}`, '✓');
 
@@ -876,7 +1070,7 @@ async function generateJsonArtifacts(metrics) {
     }
   };
 
-  const trendsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-trends-${TIMESTAMP}.json`);
+  const trendsPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-trends.json`);
   fs.writeFileSync(trendsPath, JSON.stringify(trendData, null, 2));
   log(`Saved: ${path.relative(process.cwd(), trendsPath)}`, '✓');
 
@@ -885,7 +1079,7 @@ async function generateJsonArtifacts(metrics) {
     const { analyzeCoverageByHandler } = require('./analyze-coverage-by-handler.cjs');
     const handlerResults = await analyzeCoverageByHandler();
     if (handlerResults.success && handlerResults.handlers && handlerResults.handlers.length > 0) {
-      const handlerMetricsPath = path.join(ANALYSIS_DIR, `handler-metrics-${TIMESTAMP}.json`);
+      const handlerMetricsPath = path.join(ANALYSIS_DIR, `handler-metrics.json`);
       fs.writeFileSync(handlerMetricsPath, JSON.stringify({
         timestamp: new Date().toISOString(),
         handlers: handlerResults.handlers.map(h => ({
@@ -908,7 +1102,7 @@ async function generateJsonArtifacts(metrics) {
 
   // Save AC-to-Test validation results
   if (metrics.acValidation && !metrics.acValidation.error) {
-    const acValidationPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-ac-validation-${TIMESTAMP}.json`);
+    const acValidationPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-ac-validation.json`);
     fs.writeFileSync(acValidationPath, JSON.stringify(metrics.acValidation, null, 2));
     log(`Saved: ${path.relative(process.cwd(), acValidationPath)}`, '✓');
 
@@ -918,7 +1112,7 @@ async function generateJsonArtifacts(metrics) {
       detailedValidations.forEach(validation => {
         if (validation.summary) {
           const symphonyName = validation.summary.symphonyId || 'unknown';
-          const detailPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-${symphonyName}-ac-validation-${TIMESTAMP}.json`);
+          const detailPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-${symphonyName}-ac-validation.json`);
           fs.writeFileSync(detailPath, JSON.stringify(validation, null, 2));
         }
       });
@@ -1139,9 +1333,18 @@ ${metrics.conformity.violations_details.map(v =>
   `- **${v.beat}** (${v.movement}): ${v.issue} [${v.severity.toUpperCase()}]`
 ).join('\n')}
 
-### Acceptance Criteria-to-Test Alignment
-
 ${(() => {
+  // Try new AC alignment system first
+  try {
+    const newAlignment = formatAlignmentSectionForAnalysisReport(DOMAIN_ID);
+    if (newAlignment && !newAlignment.includes('unavailable')) {
+      return newAlignment;
+    }
+  } catch (err) {
+    // Fall back to old system
+  }
+
+  // Fallback to old AC validation system
   const ac = metrics.acValidation;
   if (!ac || ac.error) {
     return `⚠️ AC validation unavailable: ${ac?.error || 'No data'}`;
@@ -1303,10 +1506,10 @@ ${(() => {
 
 ## Artifacts Generated
 
-- **JSON Analysis**: ${DOMAIN_ID}-code-analysis-${TIMESTAMP}.json
-- **Coverage Summary**: ${DOMAIN_ID}-coverage-summary-${TIMESTAMP}.json
-- **Per-Beat Metrics**: ${DOMAIN_ID}-per-beat-metrics-${TIMESTAMP}.csv
-- **Trend Analysis**: ${DOMAIN_ID}-trends-${TIMESTAMP}.json
+- **JSON Analysis**: ${DOMAIN_ID}-code-analysis.json
+- **Coverage Summary**: ${DOMAIN_ID}-coverage-summary.json
+- **Per-Beat Metrics**: ${DOMAIN_ID}-per-beat-metrics.csv
+- **Trend Analysis**: ${DOMAIN_ID}-trends.json
 
 ---
 
@@ -1338,15 +1541,17 @@ ${(() => {
           (m.beats || []).forEach((b, bi) => {
             if (b?.handler?.name) {
               const fn = b.handler.name.split('#')[1] || b.handler.name;
+              const beatId = `${mi + 1}.${bi + 1}`;
               handlers.push({
-                beat: `${mi + 1}.${bi + 1}`,
+                beat: beatId,
                 movement: `${mi + 1}`,
                 handler: fn,
                 loc: 0,
                 sizeBand: 'tiny',
                 coverage: 0,
                 risk: 'low',
-                baton: ''
+                baton: '',
+                hasAcGwt: handlerHasAcGwt(fn, beatId)
               });
             }
           });
@@ -1377,11 +1582,11 @@ ${(() => {
     }
   }
 
-  // ALWAYS save rich markdown artifact for orchestrator consumption
+  // ALWAYS save markdown report for orchestrator consumption
   // This contains ASCII diagrams, detailed handler portfolios, and comprehensive insights
-  const richMarkdownPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}-rich-markdown-${TIMESTAMP}.md`);
-  fs.writeFileSync(richMarkdownPath, report);
-  log(`Saved rich markdown artifact: ${path.relative(process.cwd(), richMarkdownPath)}`, '✓');
+  const markdownPath = path.join(ANALYSIS_DIR, `${DOMAIN_ID}.md`);
+  fs.writeFileSync(markdownPath, report);
+  log(`Saved markdown report: ${path.relative(process.cwd(), markdownPath)}`, '✓');
   
   // Respect AUTO_GENERATE_REPORT flag to avoid inner subject report when orchestrated
   if (AUTO_GENERATE_REPORT) {
@@ -1399,8 +1604,19 @@ ${(() => {
 // MAIN EXECUTION
 // ============================================================================
 
-async function run() {
-  header(`SYMPHONIC CODE ANALYSIS PIPELINE - ${DOMAIN_ID.toUpperCase()}`);
+async function runForDomain(selectedDomainId) {
+  // Recompute domain configuration for the selected domain
+  let localDomainId = selectedDomainId;
+  let localConfig = loadDomainConfig(localDomainId, { strict: true });
+  if (localConfig?.canonicalDomainId && localDomainId !== localConfig.canonicalDomainId) {
+    localDomainId = localConfig.canonicalDomainId;
+  }
+
+  // Override globals used downstream where safe
+  DOMAIN_ID = localDomainId;
+  domainConfig = localConfig;
+
+  header(`SYMPHONIC CODE ANALYSIS PIPELINE - ${localDomainId.toUpperCase()}`);
 
   try {
     // MOVEMENT 1: DISCOVERY
@@ -1443,10 +1659,40 @@ async function run() {
       log(`Warning: Could not capture handler mapping: ${err.message}`, '⚠');
     }
 
+    // Read accurate handler count from handler-classification.json if available
+    // This provides the true count from symphony beat portfolios (not inflated by duplicates/exports)
+    let accurateHandlerCount = handlersToBeatMapping.allHandlers?.length || 0;
+    try {
+      // Try both analysis output paths (renderx-web and renderx-web-orchestration)
+      const classificationPaths = [
+        path.join(ANALYSIS_DIR, 'handler-classification.json'),
+        path.join(ANALYSIS_DIR, '..', `${DOMAIN_ID}`, 'handler-classification.json'),
+        path.join(process.cwd(), '.generated', 'analysis', DOMAIN_ID, 'handler-classification.json')
+      ];
+
+      let classificationPath = null;
+      for (const tryPath of classificationPaths) {
+        if (fs.existsSync(tryPath)) {
+          classificationPath = tryPath;
+          break;
+        }
+      }
+
+      if (classificationPath) {
+        const classification = JSON.parse(fs.readFileSync(classificationPath, 'utf8'));
+        if (classification.summary && classification.summary.total) {
+          accurateHandlerCount = classification.summary.total;
+          log(`Using accurate handler count from classification: ${accurateHandlerCount}`, '✓');
+        }
+      }
+    } catch (err) {
+      log(`Warning: Could not read handler classification for accurate count: ${err.message}`, '⚠');
+    }
+
 	    // Collect metrics - ENHANCED WITH ENVELOPE
 	    const baseMetrics = {
 	      discoveredFiles: sourceFiles.length,
-	      discoveredCount: handlersToBeatMapping.allHandlers?.length || 0,
+	      discoveredCount: accurateHandlerCount,
 	      beatMapping,
 	      handlersToBeatMapping,  // Wire mapping data to envelope
 	      loc,
@@ -1500,6 +1746,34 @@ async function run() {
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     process.exit(1);
+  }
+}
+
+async function run() {
+  if (RUN_ALL) {
+    // Iterate all domains from registry and spawn per-domain analysis sequentially
+    const registryPath = path.join(process.cwd(), 'DOMAIN_REGISTRY.json');
+    if (!fs.existsSync(registryPath)) {
+      console.error('❌ FATAL: DOMAIN_REGISTRY.json not found for ALL mode.');
+      process.exit(1);
+    }
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+    const domainIds = Object.values(registry.domains || {})
+      .map(d => d.domain_id)
+      .filter(Boolean);
+
+    if (domainIds.length === 0) {
+      console.error('⚠ No domains found in registry.');
+      process.exit(1);
+    }
+
+    for (const did of domainIds) {
+      const cfg = loadDomainConfig(did, { strict: false });
+      if (!cfg) continue; // skip domains without required config
+      await runForDomain(did);
+    }
+  } else {
+    await runForDomain(DOMAIN_ID);
   }
 }
 

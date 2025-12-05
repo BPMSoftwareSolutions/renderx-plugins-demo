@@ -3,7 +3,7 @@
 Audit renderx-web sequence files for acceptance criteria status.
 Purpose:
   1. Identify any remaining legacy `acceptanceCriteria` arrays (should be migrated).
-  2. Identify beats missing `acceptanceCriteriaStructured` (coverage gaps).
+  2. Identify beats missing `acceptanceCriteria` (coverage gaps).
 Notes:
   - Legacy field detection is retained intentionally for regression monitoring.
   - Single-item arrays in structured AC should already be inlined by upstream updater.
@@ -57,7 +57,7 @@ for (const root of roots) {
     beats.forEach((b, idx) => {
       totals.beats++;
       const hasLegacy = Object.prototype.hasOwnProperty.call(b, 'acceptanceCriteria');
-      const hasStructured = Object.prototype.hasOwnProperty.call(b, 'acceptanceCriteriaStructured');
+      const hasStructured = Object.prototype.hasOwnProperty.call(b, 'acceptanceCriteria');
       if (hasLegacy) totals.legacyBeats++;
       if (!hasStructured) totals.missingStructured++;
       if (hasLegacy || !hasStructured) {
@@ -79,7 +79,7 @@ console.log('====================');
 console.log(`Files scanned: ${totals.files}`);
 console.log(`Beats scanned: ${totals.beats}`);
 console.log(`Beats with legacy acceptanceCriteria (should be 0): ${totals.legacyBeats}`);
-console.log(`Beats missing acceptanceCriteriaStructured: ${totals.missingStructured}`);
+console.log(`Beats missing acceptanceCriteria: ${totals.missingStructured}`);
 console.log('');
 for (const [file, items] of Object.entries(grouped)) {
   console.log(file);

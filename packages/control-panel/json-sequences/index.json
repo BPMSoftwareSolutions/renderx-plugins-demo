@@ -53,5 +53,6 @@
       "file": "ui.section.toggle.json",
       "handlersPath": "@renderx-plugins/control-panel/symphonies/ui/ui.symphony"
     }
-  ]
+  ],
+  "domainId": "renderx-web-orchestration"
 }

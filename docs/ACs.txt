@@ -1,0 +1,3173 @@
+Title: getClipboardText (_clipboard) | AC-H-1
+Given: handler getClipboardText is available
+When: getClipboardText executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: safeGetStorage (_clipboard) | AC-H-2
+Given: handler safeGetStorage is available
+When: safeGetStorage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: safeSetStorage (_clipboard) | AC-H-3
+Given: handler safeSetStorage is available
+When: safeSetStorage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setClipboardText (_clipboard) | AC-H-4
+Given: handler setClipboardText is available
+When: setClipboardText executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: enhanceLine (augment.line.stage-crew) | AC-H-5
+Given: handler enhanceLine is available
+When: enhanceLine executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureLineMarkers (augment.line.stage-crew) | AC-H-6
+Given: handler ensureLineMarkers is available
+When: ensureLineMarkers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureCurve (line.recompute.stage-crew) | AC-H-7
+Given: handler ensureCurve is available
+When: ensureCurve executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureLine (line.recompute.stage-crew) | AC-H-8
+Given: handler ensureLine is available
+When: ensureLine executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: fmt (line.recompute.stage-crew) | AC-H-9
+Given: handler fmt is available
+When: fmt executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readBooleanVar (line.recompute.stage-crew) | AC-H-10
+Given: handler readBooleanVar is available
+When: readBooleanVar executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readCssNumber (line.recompute.stage-crew) | AC-H-11
+Given: handler readCssNumber is available
+When: readCssNumber executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recomputeLineSvg (line.recompute.stage-crew) | AC-H-12
+Given: handler recomputeLineSvg is available
+When: recomputeLineSvg executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveSize (line.recompute.stage-crew) | AC-H-13
+Given: handler resolveSize is available
+When: resolveSize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toVbX (line.recompute.stage-crew) | AC-H-14
+Given: handler toVbX is available
+When: toVbX executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toVbY (line.recompute.stage-crew) | AC-H-15
+Given: handler toVbY is available
+When: toVbY executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: copyToClipboard (copy.stage-crew) | AC-H-16
+Given: handler copyToClipboard is available
+When: copyToClipboard executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getSelectedId (copy.stage-crew) | AC-H-17
+Given: handler getSelectedId is available
+When: getSelectedId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (copy.stage-crew) | AC-H-18
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyCopyComplete (copy.stage-crew) | AC-H-19
+Given: handler notifyCopyComplete is available
+When: notifyCopyComplete executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: serializeElement (copy.stage-crew) | AC-H-20
+Given: handler serializeElement is available
+When: serializeElement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: serializeSelectedComponent (copy.stage-crew) | AC-H-21
+Given: handler serializeSelectedComponent is available
+When: serializeSelectedComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveTemplate (create.arrangement) | AC-H-22
+Given: handler resolveTemplate is available
+When: resolveTemplate executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: injectCssFallback (create.css.stage-crew) | AC-H-23
+Given: handler injectCssFallback is available
+When: injectCssFallback executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: injectRawCss (create.css.stage-crew) | AC-H-24
+Given: handler injectRawCss is available
+When: injectRawCss executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: appendTo (create.dom.stage-crew) | AC-H-25
+Given: handler appendTo is available
+When: appendTo executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyClasses (create.dom.stage-crew) | AC-H-26
+Given: handler applyClasses is available
+When: applyClasses executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyInlineStyle (create.dom.stage-crew) | AC-H-27
+Given: handler applyInlineStyle is available
+When: applyInlineStyle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createElementWithId (create.dom.stage-crew) | AC-H-28
+Given: handler createElementWithId is available
+When: createElementWithId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCanvasOrThrow (create.dom.stage-crew) | AC-H-29
+Given: handler getCanvasOrThrow is available
+When: getCanvasOrThrow executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachStandardImportInteractions (create.from-import) | AC-H-30
+Given: handler attachStandardImportInteractions is available
+When: attachStandardImportInteractions executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createFromImportRecord (create.from-import) | AC-H-31
+Given: handler createFromImportRecord is available
+When: createFromImportRecord executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toCreatePayloadFromData (create.from-import) | AC-H-32
+Given: handler toCreatePayloadFromData is available
+When: toCreatePayloadFromData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: transformClipboardToCreatePayload (create.from-import) | AC-H-33
+Given: handler transformClipboardToCreatePayload is available
+When: transformClipboardToCreatePayload executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: transformImportToCreatePayload (create.from-import) | AC-H-34
+Given: handler transformImportToCreatePayload is available
+When: transformImportToCreatePayload executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachDrag (create.interactions.stage-crew) | AC-H-35
+Given: handler attachDrag is available
+When: attachDrag executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachSelection (create.interactions.stage-crew) | AC-H-36
+Given: handler attachSelection is available
+When: attachSelection executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachSvgNodeClick (create.interactions.stage-crew) | AC-H-37
+Given: handler attachSvgNodeClick is available
+When: attachSvgNodeClick executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: derivePath (create.interactions.stage-crew) | AC-H-38
+Given: handler derivePath is available
+When: derivePath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerInstance (create.io) | AC-H-39
+Given: handler registerInstance is available
+When: registerInstance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyUi (create.notify) | AC-H-40
+Given: handler notifyUi is available
+When: notifyUi executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: cleanupReactRoot (create.react.stage-crew) | AC-H-41
+Given: handler cleanupReactRoot is available
+When: cleanupReactRoot executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: compileReactCode (create.react.stage-crew) | AC-H-42
+Given: handler compileReactCode is available
+When: compileReactCode executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: escapeHtml (create.react.stage-crew) | AC-H-43
+Given: handler escapeHtml is available
+When: escapeHtml executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exposeEventRouterToReact (create.react.stage-crew) | AC-H-44
+Given: handler exposeEventRouterToReact is available
+When: exposeEventRouterToReact executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getDiagnosticsEmitter (create.react.stage-crew) | AC-H-45
+Given: handler getDiagnosticsEmitter is available
+When: getDiagnosticsEmitter executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getMetricsCollector (create.react.stage-crew) | AC-H-46
+Given: handler getMetricsCollector is available
+When: getMetricsCollector executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: renderReact (create.react.stage-crew) | AC-H-47
+Given: handler renderReact is available
+When: renderReact executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyContentProperties (create.stage-crew) | AC-H-48
+Given: handler applyContentProperties is available
+When: applyContentProperties executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createNode (create.stage-crew) | AC-H-49
+Given: handler createNode is available
+When: createNode executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (create.stage-crew) | AC-H-50
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeCssVarBlock (create.style.stage-crew) | AC-H-51
+Given: handler computeCssVarBlock is available
+When: computeCssVarBlock executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeInlineStyle (create.style.stage-crew) | AC-H-52
+Given: handler computeInlineStyle is available
+When: computeInlineStyle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeInstanceClass (create.style.stage-crew) | AC-H-53
+Given: handler computeInstanceClass is available
+When: computeInstanceClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateReactCode (react-code-validator) | AC-H-54
+Given: handler validateReactCode is available
+When: validateReactCode executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateReactCodeOrThrow (react-code-validator) | AC-H-55
+Given: handler validateReactCodeOrThrow is available
+When: validateReactCodeOrThrow executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deleteComponent (delete.stage-crew) | AC-H-56
+Given: handler deleteComponent is available
+When: deleteComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (delete.stage-crew) | AC-H-57
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hideOverlaysForId (delete.stage-crew) | AC-H-58
+Given: handler hideOverlaysForId is available
+When: hideOverlaysForId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: publishDeleted (delete.stage-crew) | AC-H-59
+Given: handler publishDeleted is available
+When: publishDeleted executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveId (delete.stage-crew) | AC-H-60
+Given: handler resolveId is available
+When: resolveId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: routeDeleteRequest (delete.stage-crew) | AC-H-61
+Given: handler routeDeleteRequest is available
+When: routeDeleteRequest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearAllSelections (deselect.stage-crew) | AC-H-62
+Given: handler clearAllSelections is available
+When: clearAllSelections executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deselectComponent (deselect.stage-crew) | AC-H-63
+Given: handler deselectComponent is available
+When: deselectComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (deselect.stage-crew) | AC-H-64
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hideAllOverlays (deselect.stage-crew) | AC-H-65
+Given: handler hideAllOverlays is available
+When: hideAllOverlays executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hideOverlayById (deselect.stage-crew) | AC-H-66
+Given: handler hideOverlayById is available
+When: hideOverlayById executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: publishDeselectionChanged (deselect.stage-crew) | AC-H-67
+Given: handler publishDeselectionChanged is available
+When: publishDeselectionChanged executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: publishSelectionsCleared (deselect.stage-crew) | AC-H-68
+Given: handler publishSelectionsCleared is available
+When: publishSelectionsCleared executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: routeDeselectionRequest (deselect.stage-crew) | AC-H-69
+Given: handler routeDeselectionRequest is available
+When: routeDeselectionRequest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: endDrag (drag.stage-crew) | AC-H-70
+Given: handler endDrag is available
+When: endDrag executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: forwardToControlPanel (drag.stage-crew) | AC-H-71
+Given: handler forwardToControlPanel is available
+When: forwardToControlPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (drag.stage-crew) | AC-H-72
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startDrag (drag.stage-crew) | AC-H-73
+Given: handler startDrag is available
+When: startDrag executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updatePosition (drag.stage-crew) | AC-H-74
+Given: handler updatePosition is available
+When: updatePosition executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: collectCssClasses (export.css.stage-crew) | AC-H-75
+Given: handler collectCssClasses is available
+When: collectCssClasses executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: discoverComponentsFromDom (export.discover.stage-crew) | AC-H-76
+Given: handler discoverComponentsFromDom is available
+When: discoverComponentsFromDom executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: downloadUiFile (export.download.stage-crew) | AC-H-77
+Given: handler downloadUiFile is available
+When: downloadUiFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exportSvgToGif (export.gif.stage-crew) | AC-H-78
+Given: handler exportSvgToGif is available
+When: exportSvgToGif executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: makeGifEncoder (export.gif.stage-crew) | AC-H-79
+Given: handler makeGifEncoder is available
+When: makeGifEncoder executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (export.gif.symphony) | AC-H-80
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: queryAllComponents (export.io) | AC-H-81
+Given: handler queryAllComponents is available
+When: queryAllComponents executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createMP4Encoder (export.mp4-encoder) | AC-H-82
+Given: handler createMP4Encoder is available
+When: createMP4Encoder executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exportSvgToMp4 (export.mp4.stage-crew) | AC-H-83
+Given: handler exportSvgToMp4 is available
+When: exportSvgToMp4 executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (export.mp4.symphony) | AC-H-84
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildUiFileContent (export.pure) | AC-H-85
+Given: handler buildUiFileContent is available
+When: buildUiFileContent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: collectLayoutData (export.stage-crew) | AC-H-86
+Given: handler collectLayoutData is available
+When: collectLayoutData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: extractElementContent (export.stage-crew) | AC-H-87
+Given: handler extractElementContent is available
+When: extractElementContent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (export.symphony) | AC-H-88
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: injectCssClasses (import.css.stage-crew) | AC-H-89
+Given: handler injectCssClasses is available
+When: injectCssClasses executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: openUiFile (import.file.stage-crew) | AC-H-90
+Given: handler openUiFile is available
+When: openUiFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerInstances (import.io) | AC-H-91
+Given: handler registerInstances is available
+When: registerInstances executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyHierarchyAndOrder (import.nodes.stage-crew) | AC-H-92
+Given: handler applyHierarchyAndOrder is available
+When: applyHierarchyAndOrder executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createComponentsSequentially (import.nodes.stage-crew) | AC-H-93
+Given: handler createComponentsSequentially is available
+When: createComponentsSequentially executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadComponentTemplate (import.parse.pure) | AC-H-94
+Given: handler loadComponentTemplate is available
+When: loadComponentTemplate executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseUiFile (import.parse.pure) | AC-H-95
+Given: handler parseUiFile is available
+When: parseUiFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (import.symphony) | AC-H-96
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (line.manip.end.symphony) | AC-H-97
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (line.manip.move.symphony) | AC-H-98
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: endLineManip (line.manip.stage-crew) | AC-H-99
+Given: handler endLineManip is available
+When: endLineManip executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: moveLineManip (line.manip.stage-crew) | AC-H-100
+Given: handler moveLineManip is available
+When: moveLineManip executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startLineManip (line.manip.stage-crew) | AC-H-101
+Given: handler startLineManip is available
+When: startLineManip executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateCurve (line.manip.stage-crew) | AC-H-102
+Given: handler updateCurve is available
+When: updateCurve executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateEndpoint (line.manip.stage-crew) | AC-H-103
+Given: handler updateEndpoint is available
+When: updateEndpoint executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateRotate (line.manip.stage-crew) | AC-H-104
+Given: handler updateRotate is available
+When: updateRotate executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (line.manip.start.symphony) | AC-H-105
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: calculatePastePosition (paste.stage-crew) | AC-H-106
+Given: handler calculatePastePosition is available
+When: calculatePastePosition executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createPastedComponent (paste.stage-crew) | AC-H-107
+Given: handler createPastedComponent is available
+When: createPastedComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deserializeComponentData (paste.stage-crew) | AC-H-108
+Given: handler deserializeComponentData is available
+When: deserializeComponentData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (paste.stage-crew) | AC-H-109
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyPasteComplete (paste.stage-crew) | AC-H-110
+Given: handler notifyPasteComplete is available
+When: notifyPasteComplete executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readFromClipboard (paste.stage-crew) | AC-H-111
+Given: handler readFromClipboard is available
+When: readFromClipboard executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.line.end.symphony) | AC-H-112
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.line.move.symphony) | AC-H-113
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: endLineResize (resize.line.stage-crew) | AC-H-114
+Given: handler endLineResize is available
+When: endLineResize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.line.stage-crew) | AC-H-115
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startLineResize (resize.line.stage-crew) | AC-H-116
+Given: handler startLineResize is available
+When: startLineResize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateLine (resize.line.stage-crew) | AC-H-117
+Given: handler updateLine is available
+When: updateLine executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.line.start.symphony) | AC-H-118
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.end.symphony) | AC-H-119
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.move.symphony) | AC-H-120
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clamp (resize.stage-crew) | AC-H-121
+Given: handler clamp is available
+When: clamp executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: endResize (resize.stage-crew) | AC-H-122
+Given: handler endResize is available
+When: endResize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getResizeConfig (resize.stage-crew) | AC-H-123
+Given: handler getResizeConfig is available
+When: getResizeConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.stage-crew) | AC-H-124
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readCssNumber (resize.stage-crew) | AC-H-125
+Given: handler readCssNumber is available
+When: readCssNumber executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startResize (resize.stage-crew) | AC-H-126
+Given: handler startResize is available
+When: startResize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateSize (resize.stage-crew) | AC-H-127
+Given: handler updateSize is available
+When: updateSize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: writeCssNumber (resize.stage-crew) | AC-H-128
+Given: handler writeCssNumber is available
+When: writeCssNumber executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.start.symphony) | AC-H-129
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (resize.symphony) | AC-H-130
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureOverlayCss (select.overlay.css.stage-crew) | AC-H-131
+Given: handler ensureOverlayCss is available
+When: ensureOverlayCss executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyOverlayRectForEl (select.overlay.dom.stage-crew) | AC-H-132
+Given: handler applyOverlayRectForEl is available
+When: applyOverlayRectForEl executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureOverlay (select.overlay.dom.stage-crew) | AC-H-133
+Given: handler ensureOverlay is available
+When: ensureOverlay executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCanvasOrThrow (select.overlay.dom.stage-crew) | AC-H-134
+Given: handler getCanvasOrThrow is available
+When: getCanvasOrThrow executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCanvasRect (select.overlay.dom.stage-crew) | AC-H-135
+Given: handler getCanvasRect is available
+When: getCanvasRect executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createOverlayStructure (select.overlay.helpers) | AC-H-136
+Given: handler createOverlayStructure is available
+When: createOverlayStructure executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readCssNumber (select.overlay.helpers) | AC-H-137
+Given: handler readCssNumber is available
+When: readCssNumber executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveEndpoints (select.overlay.helpers) | AC-H-138
+Given: handler resolveEndpoints is available
+When: resolveEndpoints executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachAdvancedLineManipHandlers (select.overlay.line-advanced.stage-crew) | AC-H-139
+Given: handler attachAdvancedLineManipHandlers is available
+When: attachAdvancedLineManipHandlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureAdvancedLineCss (select.overlay.line-advanced.stage-crew) | AC-H-140
+Given: handler ensureAdvancedLineCss is available
+When: ensureAdvancedLineCss executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureAdvancedLineOverlayFor (select.overlay.line-advanced.stage-crew) | AC-H-141
+Given: handler ensureAdvancedLineOverlayFor is available
+When: ensureAdvancedLineOverlayFor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachLineResizeHandlers (select.overlay.line-resize.stage-crew) | AC-H-142
+Given: handler attachLineResizeHandlers is available
+When: attachLineResizeHandlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureLineCss (select.overlay.line-resize.stage-crew) | AC-H-143
+Given: handler ensureLineCss is available
+When: ensureLineCss executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureLineOverlayFor (select.overlay.line-resize.stage-crew) | AC-H-144
+Given: handler ensureLineOverlayFor is available
+When: ensureLineOverlayFor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: attachResizeHandlers (select.overlay.resize.stage-crew) | AC-H-145
+Given: handler attachResizeHandlers is available
+When: attachResizeHandlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getDiagnosticsEmitter (select.overlay.resize.stage-crew) | AC-H-146
+Given: handler getDiagnosticsEmitter is available
+When: getDiagnosticsEmitter executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getResizeConfig (select.overlay.resize.stage-crew) | AC-H-147
+Given: handler getResizeConfig is available
+When: getResizeConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readNumericPx (select.overlay.resize.stage-crew) | AC-H-148
+Given: handler readNumericPx is available
+When: readNumericPx executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: configureHandlesVisibility (select.stage-crew) | AC-H-149
+Given: handler configureHandlesVisibility is available
+When: configureHandlesVisibility executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deriveSelectedId (select.stage-crew) | AC-H-150
+Given: handler deriveSelectedId is available
+When: deriveSelectedId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (select.stage-crew) | AC-H-151
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hideSelectionOverlay (select.stage-crew) | AC-H-152
+Given: handler hideSelectionOverlay is available
+When: hideSelectionOverlay executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyUi (select.stage-crew) | AC-H-153
+Given: handler notifyUi is available
+When: notifyUi executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: publishSelectionChanged (select.stage-crew) | AC-H-154
+Given: handler publishSelectionChanged is available
+When: publishSelectionChanged executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: routeSelectionRequest (select.stage-crew) | AC-H-155
+Given: handler routeSelectionRequest is available
+When: routeSelectionRequest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: showSelectionOverlay (select.stage-crew) | AC-H-156
+Given: handler showSelectionOverlay is available
+When: showSelectionOverlay executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (select.svg-node.stage-crew) | AC-H-157
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: showSvgNodeOverlay (select.svg-node.stage-crew) | AC-H-158
+Given: handler showSvgNodeOverlay is available
+When: showSvgNodeOverlay executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: refreshControlPanel (update.stage-crew) | AC-H-159
+Given: handler refreshControlPanel is available
+When: refreshControlPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateAttribute (update.stage-crew) | AC-H-160
+Given: handler updateAttribute is available
+When: updateAttribute executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: refreshControlPanel (update.svg-node.stage-crew) | AC-H-161
+Given: handler refreshControlPanel is available
+When: refreshControlPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateSvgNodeAttribute (update.svg-node.stage-crew) | AC-H-162
+Given: handler updateSvgNodeAttribute is available
+When: updateSvgNodeAttribute executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (update.svg-node.symphony) | AC-H-163
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initConductor (conductor) | AC-H-164
+Given: handler initConductor is available
+When: initConductor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadJsonSequenceCatalogs (conductor) | AC-H-165
+Given: handler loadJsonSequenceCatalogs is available
+When: loadJsonSequenceCatalogs executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerAllSequences (conductor) | AC-H-166
+Given: handler registerAllSequences is available
+When: registerAllSequences executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearFlagOverrides (feature-flags) | AC-H-167
+Given: handler clearFlagOverrides is available
+When: clearFlagOverrides executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getFlagOverride (feature-flags) | AC-H-168
+Given: handler getFlagOverride is available
+When: getFlagOverride executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isFlagEnabled (feature-flags) | AC-H-169
+Given: handler isFlagEnabled is available
+When: isFlagEnabled executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setFlagOverride (feature-flags) | AC-H-170
+Given: handler setFlagOverride is available
+When: setFlagOverride executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearAllObservers (observer.store) | AC-H-171
+Given: handler clearAllObservers is available
+When: clearAllObservers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getClassesObserver (observer.store) | AC-H-172
+Given: handler getClassesObserver is available
+When: getClassesObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCssRegistryObserver (observer.store) | AC-H-173
+Given: handler getCssRegistryObserver is available
+When: getCssRegistryObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getSelectionObserver (observer.store) | AC-H-174
+Given: handler getSelectionObserver is available
+When: getSelectionObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setClassesObserver (observer.store) | AC-H-175
+Given: handler setClassesObserver is available
+When: setClassesObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setCssRegistryObserver (observer.store) | AC-H-176
+Given: handler setCssRegistryObserver is available
+When: setCssRegistryObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setSelectionObserver (observer.store) | AC-H-177
+Given: handler setSelectionObserver is available
+When: setSelectionObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getAllRulesConfig (rule-engine) | AC-H-178
+Given: handler getAllRulesConfig is available
+When: getAllRulesConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getComponentTypeFromClasses (rule-engine) | AC-H-179
+Given: handler getComponentTypeFromClasses is available
+When: getComponentTypeFromClasses executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadAllRulesFromWindow (rule-engine) | AC-H-180
+Given: handler loadAllRulesFromWindow is available
+When: loadAllRulesFromWindow executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setAllRulesConfig (rule-engine) | AC-H-181
+Given: handler setAllRulesConfig is available
+When: setAllRulesConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isDataImage (sanitizeHtml) | AC-H-182
+Given: handler isDataImage is available
+When: isDataImage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: sanitizeHtml (sanitizeHtml) | AC-H-183
+Given: handler sanitizeHtml is available
+When: sanitizeHtml executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: transform (babel-standalone.d) | AC-H-184
+Given: handler transform is available
+When: transform executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: onDropForTest (CanvasDrop) | AC-H-185
+Given: handler onDropForTest is available
+When: onDropForTest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: CanvasHeader (CanvasHeader) | AC-H-186
+Given: handler CanvasHeader is available
+When: CanvasHeader executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: CanvasPage (CanvasPage) | AC-H-187
+Given: handler CanvasPage is available
+When: CanvasPage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getFieldRenderer (index) | AC-H-188
+Given: handler getFieldRenderer is available
+When: getFieldRenderer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerFieldRenderer (index) | AC-H-189
+Given: handler registerFieldRenderer is available
+When: registerFieldRenderer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getAttributesForNodeType (SvgNodeInspector) | AC-H-190
+Given: handler getAttributesForNodeType is available
+When: getAttributesForNodeType executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getNodeTypeFromTag (SvgNodeInspector) | AC-H-191
+Given: handler getNodeTypeFromTag is available
+When: getNodeTypeFromTag executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseSvgToTree (SvgTreeView) | AC-H-192
+Given: handler parseSvgToTree is available
+When: parseSvgToTree executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: TreeNode (SvgTreeView) | AC-H-193
+Given: handler TreeNode is available
+When: TreeNode executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: EmptyState (EmptyState) | AC-H-194
+Given: handler EmptyState is available
+When: EmptyState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: LoadingState (LoadingState) | AC-H-195
+Given: handler LoadingState is available
+When: LoadingState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: PanelHeader (PanelHeader) | AC-H-196
+Given: handler PanelHeader is available
+When: PanelHeader executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useControlPanelActions (useControlPanelActions) | AC-H-197
+Given: handler useControlPanelActions is available
+When: useControlPanelActions executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useControlPanelSequences (useControlPanelSequences) | AC-H-198
+Given: handler useControlPanelSequences is available
+When: useControlPanelSequences executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useControlPanelState (useControlPanelState) | AC-H-199
+Given: handler useControlPanelState is available
+When: useControlPanelState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadConfig (useSchemaResolver) | AC-H-200
+Given: handler loadConfig is available
+When: loadConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useSchemaResolver (useSchemaResolver) | AC-H-201
+Given: handler useSchemaResolver is available
+When: useSchemaResolver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: controlPanelReducer (control-panel.reducer) | AC-H-202
+Given: handler controlPanelReducer is available
+When: controlPanelReducer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initialControlPanelState (control-panel.reducer) | AC-H-203
+Given: handler initialControlPanelState is available
+When: initialControlPanelState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearAllObservers (observer.store) | AC-H-204
+Given: handler clearAllObservers is available
+When: clearAllObservers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getClassesObserver (observer.store) | AC-H-205
+Given: handler getClassesObserver is available
+When: getClassesObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCssRegistryObserver (observer.store) | AC-H-206
+Given: handler getCssRegistryObserver is available
+When: getCssRegistryObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getSelectionObserver (observer.store) | AC-H-207
+Given: handler getSelectionObserver is available
+When: getSelectionObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getStore (observer.store) | AC-H-208
+Given: handler getStore is available
+When: getStore executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setClassesObserver (observer.store) | AC-H-209
+Given: handler setClassesObserver is available
+When: setClassesObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setCssRegistryObserver (observer.store) | AC-H-210
+Given: handler setCssRegistryObserver is available
+When: setCssRegistryObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setSelectionObserver (observer.store) | AC-H-211
+Given: handler setSelectionObserver is available
+When: setSelectionObserver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: addClass (classes.stage-crew) | AC-H-212
+Given: handler addClass is available
+When: addClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: removeClass (classes.stage-crew) | AC-H-213
+Given: handler removeClass is available
+When: removeClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (classes.symphony) | AC-H-214
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyCssClassToElement (css-management.stage-crew) | AC-H-215
+Given: handler applyCssClassToElement is available
+When: applyCssClassToElement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createCssClass (css-management.stage-crew) | AC-H-216
+Given: handler createCssClass is available
+When: createCssClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deleteCssClass (css-management.stage-crew) | AC-H-217
+Given: handler deleteCssClass is available
+When: deleteCssClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCssClass (css-management.stage-crew) | AC-H-218
+Given: handler getCssClass is available
+When: getCssClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: listCssClasses (css-management.stage-crew) | AC-H-219
+Given: handler listCssClasses is available
+When: listCssClasses executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: removeClassFromAllElements (css-management.stage-crew) | AC-H-220
+Given: handler removeClassFromAllElements is available
+When: removeClassFromAllElements executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: removeCssClassFromElement (css-management.stage-crew) | AC-H-221
+Given: handler removeCssClassFromElement is available
+When: removeCssClassFromElement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateCssClass (css-management.stage-crew) | AC-H-222
+Given: handler updateCssClass is available
+When: updateCssClass executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (css-management.symphony) | AC-H-223
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deriveSelectionModel (selection.stage-crew) | AC-H-224
+Given: handler deriveSelectionModel is available
+When: deriveSelectionModel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (selection.symphony) | AC-H-225
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: awaitRefresh (ui.stage-crew) | AC-H-226
+Given: handler awaitRefresh is available
+When: awaitRefresh executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: dispatchField (ui.stage-crew) | AC-H-227
+Given: handler dispatchField is available
+When: dispatchField executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateFields (ui.stage-crew) | AC-H-228
+Given: handler generateFields is available
+When: generateFields executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateSections (ui.stage-crew) | AC-H-229
+Given: handler generateSections is available
+When: generateSections executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initConfig (ui.stage-crew) | AC-H-230
+Given: handler initConfig is available
+When: initConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initMovement (ui.stage-crew) | AC-H-231
+Given: handler initMovement is available
+When: initMovement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initResolver (ui.stage-crew) | AC-H-232
+Given: handler initResolver is available
+When: initResolver executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadSchemas (ui.stage-crew) | AC-H-233
+Given: handler loadSchemas is available
+When: loadSchemas executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: mergeErrors (ui.stage-crew) | AC-H-234
+Given: handler mergeErrors is available
+When: mergeErrors executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyReady (ui.stage-crew) | AC-H-235
+Given: handler notifyReady is available
+When: notifyReady executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: prepareField (ui.stage-crew) | AC-H-236
+Given: handler prepareField is available
+When: prepareField executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerObservers (ui.stage-crew) | AC-H-237
+Given: handler registerObservers is available
+When: registerObservers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: renderView (ui.stage-crew) | AC-H-238
+Given: handler renderView is available
+When: renderView executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setDirty (ui.stage-crew) | AC-H-239
+Given: handler setDirty is available
+When: setDirty executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toggleSection (ui.stage-crew) | AC-H-240
+Given: handler toggleSection is available
+When: toggleSection executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateView (ui.stage-crew) | AC-H-241
+Given: handler updateView is available
+When: updateView executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateField (ui.stage-crew) | AC-H-242
+Given: handler validateField is available
+When: validateField executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (ui.symphony) | AC-H-243
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateFromElement (update.stage-crew) | AC-H-244
+Given: handler updateFromElement is available
+When: updateFromElement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (update.symphony) | AC-H-245
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ControlPanel (ControlPanel) | AC-H-246
+Given: handler ControlPanel is available
+When: ControlPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: extractClassVariant (content-extractor) | AC-H-247
+Given: handler extractClassVariant is available
+When: extractClassVariant executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: extractElementContent (content-extractor) | AC-H-248
+Given: handler extractElementContent is available
+When: extractElementContent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: inferTypeFromElement (content-extractor) | AC-H-249
+Given: handler inferTypeFromElement is available
+When: inferTypeFromElement executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: formatLabel (field.utils) | AC-H-250
+Given: handler formatLabel is available
+When: formatLabel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generatePlaceholder (field.utils) | AC-H-251
+Given: handler generatePlaceholder is available
+When: generatePlaceholder executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getNestedValue (field.utils) | AC-H-252
+Given: handler getNestedValue is available
+When: getNestedValue executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: setNestedValue (field.utils) | AC-H-253
+Given: handler setNestedValue is available
+When: setNestedValue executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: coerceTheme (ui.stage-crew) | AC-H-254
+Given: handler coerceTheme is available
+When: coerceTheme executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCurrentTheme (ui.stage-crew) | AC-H-255
+Given: handler getCurrentTheme is available
+When: getCurrentTheme executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: safeGetStoredTheme (ui.stage-crew) | AC-H-256
+Given: handler safeGetStoredTheme is available
+When: safeGetStoredTheme executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: safeSetStoredTheme (ui.stage-crew) | AC-H-257
+Given: handler safeSetStoredTheme is available
+When: safeSetStoredTheme executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toggleTheme (ui.stage-crew) | AC-H-258
+Given: handler toggleTheme is available
+When: toggleTheme executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (ui.symphony) | AC-H-259
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: HeaderControls (HeaderControls) | AC-H-260
+Given: handler HeaderControls is available
+When: HeaderControls executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: HeaderThemeToggle (HeaderThemeToggle) | AC-H-261
+Given: handler HeaderThemeToggle is available
+When: HeaderThemeToggle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: HeaderTitle (HeaderTitle) | AC-H-262
+Given: handler HeaderTitle is available
+When: HeaderTitle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (drag.symphony) | AC-H-263
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyTemplateStyles (drag.preview.stage-crew) | AC-H-264
+Given: handler applyTemplateStyles is available
+When: applyTemplateStyles executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeCursorOffsets (drag.preview.stage-crew) | AC-H-265
+Given: handler computeCursorOffsets is available
+When: computeCursorOffsets executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeGhostSize (drag.preview.stage-crew) | AC-H-266
+Given: handler computeGhostSize is available
+When: computeGhostSize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createGhostContainer (drag.preview.stage-crew) | AC-H-267
+Given: handler createGhostContainer is available
+When: createGhostContainer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensurePayload (drag.preview.stage-crew) | AC-H-268
+Given: handler ensurePayload is available
+When: ensurePayload executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: installDragImage (drag.preview.stage-crew) | AC-H-269
+Given: handler installDragImage is available
+When: installDragImage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: renderTemplatePreview (drag.preview.stage-crew) | AC-H-270
+Given: handler renderTemplatePreview is available
+When: renderTemplatePreview executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (drop.container.symphony) | AC-H-271
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (drop.symphony) | AC-H-272
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadAndChunk (rag-enrichment-telemetry.service.test) | AC-H-273
+Given: handler loadAndChunk is available
+When: loadAndChunk executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (load.symphony) | AC-H-274
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: mapJsonComponentToTemplateCompat (load.symphony) | AC-H-275
+Given: handler mapJsonComponentToTemplateCompat is available
+When: mapJsonComponentToTemplateCompat executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureOp (component-behavior-extractor) | AC-H-276
+Given: handler ensureOp is available
+When: ensureOp executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: extractSequenceIdFromRequestIdLine (component-behavior-extractor) | AC-H-277
+Given: handler extractSequenceIdFromRequestIdLine is available
+When: extractSequenceIdFromRequestIdLine executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: normalizeOp (component-behavior-extractor) | AC-H-278
+Given: handler normalizeOp is available
+When: normalizeOp executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: titleFromSequenceId (component-behavior-extractor) | AC-H-279
+Given: handler titleFromSequenceId is available
+When: titleFromSequenceId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toComponentFromEvent (component-behavior-extractor) | AC-H-280
+Given: handler toComponentFromEvent is available
+When: toComponentFromEvent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: toComponentFromTopic (component-behavior-extractor) | AC-H-281
+Given: handler toComponentFromTopic is available
+When: toComponentFromTopic executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ChatMessageComponent (ChatMessage) | AC-H-282
+Given: handler ChatMessageComponent is available
+When: ChatMessageComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ChatWindow (ChatWindow) | AC-H-283
+Given: handler ChatWindow is available
+When: ChatWindow executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ConfigStatusUI (ConfigStatusUI) | AC-H-284
+Given: handler ConfigStatusUI is available
+When: ConfigStatusUI executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: CustomComponentList (CustomComponentList) | AC-H-285
+Given: handler CustomComponentList is available
+When: CustomComponentList executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: CustomComponentUpload (CustomComponentUpload) | AC-H-286
+Given: handler CustomComponentUpload is available
+When: CustomComponentUpload executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: LibraryPanel (LibraryPanel) | AC-H-287
+Given: handler LibraryPanel is available
+When: LibraryPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerCssForComponents (LibraryPanel) | AC-H-288
+Given: handler registerCssForComponents is available
+When: registerCssForComponents executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: LibraryPreview (LibraryPreview) | AC-H-289
+Given: handler LibraryPreview is available
+When: LibraryPreview executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computePreviewModel (preview.model) | AC-H-290
+Given: handler computePreviewModel is available
+When: computePreviewModel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: addMessagesToCurrentSession (chat.utils) | AC-H-291
+Given: handler addMessagesToCurrentSession is available
+When: addMessagesToCurrentSession executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: cleanupChatHistory (chat.utils) | AC-H-292
+Given: handler cleanupChatHistory is available
+When: cleanupChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearAllChatHistory (chat.utils) | AC-H-293
+Given: handler clearAllChatHistory is available
+When: clearAllChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createChatSession (chat.utils) | AC-H-294
+Given: handler createChatSession is available
+When: createChatSession executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deleteChatSession (chat.utils) | AC-H-295
+Given: handler deleteChatSession is available
+When: deleteChatSession executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exportChatHistory (chat.utils) | AC-H-296
+Given: handler exportChatHistory is available
+When: exportChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateChatTitle (chat.utils) | AC-H-297
+Given: handler generateChatTitle is available
+When: generateChatTitle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateSessionId (chat.utils) | AC-H-298
+Given: handler generateSessionId is available
+When: generateSessionId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getChatHistoryStats (chat.utils) | AC-H-299
+Given: handler getChatHistoryStats is available
+When: getChatHistoryStats executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getConversationContext (chat.utils) | AC-H-300
+Given: handler getConversationContext is available
+When: getConversationContext executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCurrentChatSession (chat.utils) | AC-H-301
+Given: handler getCurrentChatSession is available
+When: getCurrentChatSession executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: importChatHistory (chat.utils) | AC-H-302
+Given: handler importChatHistory is available
+When: importChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadChatHistory (chat.utils) | AC-H-303
+Given: handler loadChatHistory is available
+When: loadChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: saveChatHistory (chat.utils) | AC-H-304
+Given: handler saveChatHistory is available
+When: saveChatHistory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startNewChatSession (chat.utils) | AC-H-305
+Given: handler startNewChatSession is available
+When: startNewChatSession executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCategoryDisplayName (library.utils) | AC-H-306
+Given: handler getCategoryDisplayName is available
+When: getCategoryDisplayName executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: groupComponentsByCategory (library.utils) | AC-H-307
+Given: handler groupComponentsByCategory is available
+When: groupComponentsByCategory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: pickDataAttrs (library.utils) | AC-H-308
+Given: handler pickDataAttrs is available
+When: pickDataAttrs executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: sortCategories (library.utils) | AC-H-309
+Given: handler sortCategories is available
+When: sortCategories executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: varsToStyle (library.utils) | AC-H-310
+Given: handler varsToStyle is available
+When: varsToStyle executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildSystemPrompt (prompt.templates) | AC-H-311
+Given: handler buildSystemPrompt is available
+When: buildSystemPrompt executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getPromptTemplate (prompt.templates) | AC-H-312
+Given: handler getPromptTemplate is available
+When: getPromptTemplate executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkStorageLimit (storage.utils) | AC-H-313
+Given: handler checkStorageLimit is available
+When: checkStorageLimit executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearCustomComponents (storage.utils) | AC-H-314
+Given: handler clearCustomComponents is available
+When: clearCustomComponents executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateComponentId (storage.utils) | AC-H-315
+Given: handler generateComponentId is available
+When: generateComponentId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getStorageInfo (storage.utils) | AC-H-316
+Given: handler getStorageInfo is available
+When: getStorageInfo executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getStorageSize (storage.utils) | AC-H-317
+Given: handler getStorageSize is available
+When: getStorageSize executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadCustomComponents (storage.utils) | AC-H-318
+Given: handler loadCustomComponents is available
+When: loadCustomComponents executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: removeCustomComponent (storage.utils) | AC-H-319
+Given: handler removeCustomComponent is available
+When: removeCustomComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: saveCustomComponent (storage.utils) | AC-H-320
+Given: handler saveCustomComponent is available
+When: saveCustomComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isValidObject (validation.utils) | AC-H-321
+Given: handler isValidObject is available
+When: isValidObject executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isValidString (validation.utils) | AC-H-322
+Given: handler isValidString is available
+When: isValidString executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: normalizeComponent (validation.utils) | AC-H-323
+Given: handler normalizeComponent is available
+When: normalizeComponent executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateAndParseJson (validation.utils) | AC-H-324
+Given: handler validateAndParseJson is available
+When: validateAndParseJson executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateComponentJson (validation.utils) | AC-H-325
+Given: handler validateComponentJson is available
+When: validateComponentJson executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateFile (validation.utils) | AC-H-326
+Given: handler validateFile is available
+When: validateFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateMetadata (validation.utils) | AC-H-327
+Given: handler validateMetadata is available
+When: validateMetadata executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateUI (validation.utils) | AC-H-328
+Given: handler validateUI is available
+When: validateUI executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkResources (execute-sequence.stage-crew) | AC-H-329
+Given: handler checkResources is available
+When: checkResources executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: cleanupResources (execute-sequence.stage-crew) | AC-H-330
+Given: handler cleanupResources is available
+When: cleanupResources executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: enqueueSequence (execute-sequence.stage-crew) | AC-H-331
+Given: handler enqueueSequence is available
+When: enqueueSequence executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handleBeatComplete (execute-sequence.stage-crew) | AC-H-332
+Given: handler handleBeatComplete is available
+When: handleBeatComplete executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (execute-sequence.stage-crew) | AC-H-333
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyComplete (execute-sequence.stage-crew) | AC-H-334
+Given: handler notifyComplete is available
+When: notifyComplete executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: processBeat (execute-sequence.stage-crew) | AC-H-335
+Given: handler processBeat is available
+When: processBeat executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recordMetrics (execute-sequence.stage-crew) | AC-H-336
+Given: handler recordMetrics is available
+When: recordMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startExecution (execute-sequence.stage-crew) | AC-H-337
+Given: handler startExecution is available
+When: startExecution executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateStatistics (execute-sequence.stage-crew) | AC-H-338
+Given: handler updateStatistics is available
+When: updateStatistics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateRequest (execute-sequence.stage-crew) | AC-H-339
+Given: handler validateRequest is available
+When: validateRequest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: bootstrapLogging (initialize.stage-crew) | AC-H-340
+Given: handler bootstrapLogging is available
+When: bootstrapLogging executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkExistingInstance (initialize.stage-crew) | AC-H-341
+Given: handler checkExistingInstance is available
+When: checkExistingInstance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: connectSystems (initialize.stage-crew) | AC-H-342
+Given: handler connectSystems is available
+When: connectSystems executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: createConductor (initialize.stage-crew) | AC-H-343
+Given: handler createConductor is available
+When: createConductor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exposeFacade (initialize.stage-crew) | AC-H-344
+Given: handler exposeFacade is available
+When: exposeFacade executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getCommunicationSystemInstance (initialize.stage-crew) | AC-H-345
+Given: handler getCommunicationSystemInstance is available
+When: getCommunicationSystemInstance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (initialize.stage-crew) | AC-H-346
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isCommunicationSystemInitialized (initialize.stage-crew) | AC-H-347
+Given: handler isCommunicationSystemInitialized is available
+When: isCommunicationSystemInitialized executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadSequences (initialize.stage-crew) | AC-H-348
+Given: handler loadSequences is available
+When: loadSequences executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: markInitialized (initialize.stage-crew) | AC-H-349
+Given: handler markInitialized is available
+When: markInitialized executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyReady (initialize.stage-crew) | AC-H-350
+Given: handler notifyReady is available
+When: notifyReady executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resetCommunicationSystem (initialize.stage-crew) | AC-H-351
+Given: handler resetCommunicationSystem is available
+When: resetCommunicationSystem executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateEnvironment (initialize.stage-crew) | AC-H-352
+Given: handler validateEnvironment is available
+When: validateEnvironment executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateRegistrations (initialize.stage-crew) | AC-H-353
+Given: handler validateRegistrations is available
+When: validateRegistrations executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkEventBusHealth (monitor.stage-crew) | AC-H-354
+Given: handler checkEventBusHealth is available
+When: checkEventBusHealth executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkExecutionHealth (monitor.stage-crew) | AC-H-355
+Given: handler checkExecutionHealth is available
+When: checkExecutionHealth executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateStatusReport (monitor.stage-crew) | AC-H-356
+Given: handler generateStatusReport is available
+When: generateStatusReport executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getConductorStatus (monitor.stage-crew) | AC-H-357
+Given: handler getConductorStatus is available
+When: getConductorStatus executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getDuplicationReport (monitor.stage-crew) | AC-H-358
+Given: handler getDuplicationReport is available
+When: getDuplicationReport executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getPerformanceMetrics (monitor.stage-crew) | AC-H-359
+Given: handler getPerformanceMetrics is available
+When: getPerformanceMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getQueueStatus (monitor.stage-crew) | AC-H-360
+Given: handler getQueueStatus is available
+When: getQueueStatus executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getSequenceCount (monitor.stage-crew) | AC-H-361
+Given: handler getSequenceCount is available
+When: getSequenceCount executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getStatistics (monitor.stage-crew) | AC-H-362
+Given: handler getStatistics is available
+When: getStatistics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (monitor.stage-crew) | AC-H-363
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: logHealthSummary (monitor.stage-crew) | AC-H-364
+Given: handler logHealthSummary is available
+When: logHealthSummary executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkDuplicates (register-sequence.stage-crew) | AC-H-365
+Given: handler checkDuplicates is available
+When: checkDuplicates executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (register-sequence.stage-crew) | AC-H-366
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: logRegistrationDetails (register-sequence.stage-crew) | AC-H-367
+Given: handler logRegistrationDetails is available
+When: logRegistrationDetails executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: notifyRegistered (register-sequence.stage-crew) | AC-H-368
+Given: handler notifyRegistered is available
+When: notifyRegistered executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerWithRegistry (register-sequence.stage-crew) | AC-H-369
+Given: handler registerWithRegistry is available
+When: registerWithRegistry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: updateEventMappings (register-sequence.stage-crew) | AC-H-370
+Given: handler updateEventMappings is available
+When: updateEventMappings executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateBeats (register-sequence.stage-crew) | AC-H-371
+Given: handler validateBeats is available
+When: validateBeats executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateSequenceShape (register-sequence.stage-crew) | AC-H-372
+Given: handler validateSequenceShape is available
+When: validateSequenceShape executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: verifyAvailability (register-sequence.stage-crew) | AC-H-373
+Given: handler verifyAvailability is available
+When: verifyAvailability executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkManifest (validate-plugin.stage-crew) | AC-H-374
+Given: handler checkManifest is available
+When: checkManifest executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkResourceRequirements (validate-plugin.stage-crew) | AC-H-375
+Given: handler checkResourceRequirements is available
+When: checkResourceRequirements executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: checkSPACompliance (validate-plugin.stage-crew) | AC-H-376
+Given: handler checkSPACompliance is available
+When: checkSPACompliance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateValidationReport (validate-plugin.stage-crew) | AC-H-377
+Given: handler generateValidationReport is available
+When: generateValidationReport executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: handlers (validate-plugin.stage-crew) | AC-H-378
+Given: handler handlers is available
+When: handlers executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: logResults (validate-plugin.stage-crew) | AC-H-379
+Given: handler logResults is available
+When: logResults executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateHandlerContracts (validate-plugin.stage-crew) | AC-H-380
+Given: handler validateHandlerContracts is available
+When: validateHandlerContracts executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validatePluginShape (validate-plugin.stage-crew) | AC-H-381
+Given: handler validatePluginShape is available
+When: validatePluginShape executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validatePriorities (validate-plugin.stage-crew) | AC-H-382
+Given: handler validatePriorities is available
+When: validatePriorities executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: verifyBeatMapping (validate-plugin.stage-crew) | AC-H-383
+Given: handler verifyBeatMapping is available
+When: verifyBeatMapping executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: verifyExports (validate-plugin.stage-crew) | AC-H-384
+Given: handler verifyExports is available
+When: verifyExports executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadBuildContext (build.validation) | AC-H-385
+Given: handler loadBuildContext is available
+When: loadBuildContext executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recordValidationResults (build.validation) | AC-H-386
+Given: handler recordValidationResults is available
+When: recordValidationResults executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateAgentBehavior (build.validation) | AC-H-387
+Given: handler validateAgentBehavior is available
+When: validateAgentBehavior executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateGovernanceRules (build.validation) | AC-H-388
+Given: handler validateGovernanceRules is available
+When: validateGovernanceRules executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateOrchestrationDomains (build.validation) | AC-H-389
+Given: handler validateOrchestrationDomains is available
+When: validateOrchestrationDomains executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateManifests (manifests) | AC-H-390
+Given: handler generateManifests is available
+When: generateManifests executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recordManifestState (manifests) | AC-H-391
+Given: handler recordManifestState is available
+When: recordManifestState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: regenerateOrchestrationDomains (manifests) | AC-H-392
+Given: handler regenerateOrchestrationDomains is available
+When: regenerateOrchestrationDomains executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: syncJsonSources (manifests) | AC-H-393
+Given: handler syncJsonSources is available
+When: syncJsonSources executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateManifestIntegrity (manifests) | AC-H-394
+Given: handler validateManifestIntegrity is available
+When: validateManifestIntegrity executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildComponentsPackage (packages.build) | AC-H-395
+Given: handler buildComponentsPackage is available
+When: buildComponentsPackage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildHostSdkPackage (packages.build) | AC-H-396
+Given: handler buildHostSdkPackage is available
+When: buildHostSdkPackage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildMusicalConductorPackage (packages.build) | AC-H-397
+Given: handler buildMusicalConductorPackage is available
+When: buildMusicalConductorPackage executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: initializePackageBuild (packages.build) | AC-H-398
+Given: handler initializePackageBuild is available
+When: initializePackageBuild executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: OpportunityAnalyzer (OpportunityAnalyzer) | AC-H-399
+Given: handler OpportunityAnalyzer is available
+When: OpportunityAnalyzer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: OpportunityCard (OpportunityAnalyzer) | AC-H-400
+Given: handler OpportunityCard is available
+When: OpportunityCard executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: aggregateAnomalies (aggregate.anomalies) | AC-H-401
+Given: handler aggregateAnomalies is available
+When: aggregateAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectBehavioralAnomalies (detect.behavioral) | AC-H-402
+Given: handler detectBehavioralAnomalies is available
+When: detectBehavioralAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityFromDelta (detect.behavioral) | AC-H-403
+Given: handler severityFromDelta is available
+When: severityFromDelta executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectAnomaliesCompleted (detect.completed) | AC-H-404
+Given: handler detectAnomaliesCompleted is available
+When: detectAnomaliesCompleted executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectCoverageAnomalies (detect.coverage) | AC-H-405
+Given: handler detectCoverageAnomalies is available
+When: detectCoverageAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityFromGap (detect.coverage) | AC-H-406
+Given: handler severityFromGap is available
+When: severityFromGap executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectErrorAnomalies (detect.errors) | AC-H-407
+Given: handler detectErrorAnomalies is available
+When: detectErrorAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityFromErrorRate (detect.errors) | AC-H-408
+Given: handler severityFromErrorRate is available
+When: severityFromErrorRate executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: assessSeverity (detect.performance) | AC-H-409
+Given: handler assessSeverity is available
+When: assessSeverity executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectPerformanceAnomalies (detect.performance) | AC-H-410
+Given: handler detectPerformanceAnomalies is available
+When: detectPerformanceAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectAnomaliesRequested (detect.requested) | AC-H-411
+Given: handler detectAnomaliesRequested is available
+When: detectAnomaliesRequested executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: anomalyTypeForKey (detect.slo.breaches) | AC-H-412
+Given: handler anomalyTypeForKey is available
+When: anomalyTypeForKey executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectSloBreaches (detect.slo.breaches) | AC-H-413
+Given: handler detectSloBreaches is available
+When: detectSloBreaches executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: generateId (detect.slo.breaches) | AC-H-414
+Given: handler generateId is available
+When: generateId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveSloConfigPath (detect.slo.breaches) | AC-H-415
+Given: handler resolveSloConfigPath is available
+When: resolveSloConfigPath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityForBreach (detect.slo.breaches) | AC-H-416
+Given: handler severityForBreach is available
+When: severityForBreach executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadTelemetryData (load.telemetry) | AC-H-417
+Given: handler loadTelemetryData is available
+When: loadTelemetryData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: runAnomalyDetection (run.anomaly.detect) | AC-H-418
+Given: handler runAnomalyDetection is available
+When: runAnomalyDetection executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: storeAnomalies (store.anomalies) | AC-H-419
+Given: handler storeAnomalies is available
+When: storeAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: aggregateBaselineMetrics (aggregate.metrics) | AC-H-420
+Given: handler aggregateBaselineMetrics is available
+When: aggregateBaselineMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: baselineCompleted (baseline.completed) | AC-H-421
+Given: handler baselineCompleted is available
+When: baselineCompleted executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: collectBaselineMetrics (collect.metrics) | AC-H-422
+Given: handler collectBaselineMetrics is available
+When: collectBaselineMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deriveP50 (establish.baseline) | AC-H-423
+Given: handler deriveP50 is available
+When: deriveP50 executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: deriveP95 (establish.baseline) | AC-H-424
+Given: handler deriveP95 is available
+When: deriveP95 executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: establishBaseline (establish.baseline) | AC-H-425
+Given: handler establishBaseline is available
+When: establishBaseline executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: runBaselineEstablish (run.baseline.establish) | AC-H-426
+Given: handler runBaselineEstablish is available
+When: runBaselineEstablish executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: storeBaseline (store.baseline) | AC-H-427
+Given: handler storeBaseline is available
+When: storeBaseline executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: aggregateDiagnosis (aggregate.diagnosis) | AC-H-428
+Given: handler aggregateDiagnosis is available
+When: aggregateDiagnosis executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityRank (aggregate.diagnosis) | AC-H-429
+Given: handler severityRank is available
+When: severityRank executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzeBehavioralIssues (analyze.behavioral.issues) | AC-H-430
+Given: handler analyzeBehavioralIssues is available
+When: analyzeBehavioralIssues executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzeCompleted (analyze.completed) | AC-H-431
+Given: handler analyzeCompleted is available
+When: analyzeCompleted executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzeCoverageIssues (analyze.coverage.issues) | AC-H-432
+Given: handler analyzeCoverageIssues is available
+When: analyzeCoverageIssues executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzeErrorIssues (analyze.error.issues) | AC-H-433
+Given: handler analyzeErrorIssues is available
+When: analyzeErrorIssues executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzePerformanceIssues (analyze.performance.issues) | AC-H-434
+Given: handler analyzePerformanceIssues is available
+When: analyzePerformanceIssues executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzeRequested (analyze.requested) | AC-H-435
+Given: handler analyzeRequested is available
+When: analyzeRequested executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: assessImpact (assess.impact) | AC-H-436
+Given: handler assessImpact is available
+When: assessImpact executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: severityRank (assess.impact) | AC-H-437
+Given: handler severityRank is available
+When: severityRank executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadAnomalies (load.anomalies) | AC-H-438
+Given: handler loadAnomalies is available
+When: loadAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveAnomaliesPath (load.anomalies) | AC-H-439
+Given: handler resolveAnomaliesPath is available
+When: resolveAnomaliesPath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadCodebaseInfo (load.codebase.info) | AC-H-440
+Given: handler loadCodebaseInfo is available
+When: loadCodebaseInfo executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: walk (load.codebase.info) | AC-H-441
+Given: handler walk is available
+When: walk executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: nextId (recommend.fixes) | AC-H-442
+Given: handler nextId is available
+When: nextId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recommendFixes (recommend.fixes) | AC-H-443
+Given: handler recommendFixes is available
+When: recommendFixes executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: runDiagnosisAnalyze (run.diagnosis.analyze) | AC-H-444
+Given: handler runDiagnosisAnalyze is available
+When: runDiagnosisAnalyze executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveDiagnosisPath (store.diagnosis) | AC-H-445
+Given: handler resolveDiagnosisPath is available
+When: resolveDiagnosisPath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: storeDiagnosis (store.diagnosis) | AC-H-446
+Given: handler storeDiagnosis is available
+When: storeDiagnosis executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: aggregateTelemetryMetrics (aggregate.metrics) | AC-H-447
+Given: handler aggregateTelemetryMetrics is available
+When: aggregateTelemetryMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: percentile (aggregate.metrics) | AC-H-448
+Given: handler percentile is available
+When: percentile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: extractTelemetryEvents (extract.events) | AC-H-449
+Given: handler extractTelemetryEvents is available
+When: extractTelemetryEvents executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseLine (extract.events) | AC-H-450
+Given: handler parseLine is available
+When: parseLine executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: discoverPaths (load.logs) | AC-H-451
+Given: handler discoverPaths is available
+When: discoverPaths executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isDirectory (load.logs) | AC-H-452
+Given: handler isDirectory is available
+When: isDirectory executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadLogFiles (load.logs) | AC-H-453
+Given: handler loadLogFiles is available
+When: loadLogFiles executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: readFileAdaptive (load.logs) | AC-H-454
+Given: handler readFileAdaptive is available
+When: readFileAdaptive executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: normalizeTelemetryData (normalize.data) | AC-H-455
+Given: handler normalizeTelemetryData is available
+When: normalizeTelemetryData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: normalizeTimestamp (normalize.data) | AC-H-456
+Given: handler normalizeTimestamp is available
+When: normalizeTimestamp executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseTelemetryCompleted (parse.completed) | AC-H-457
+Given: handler parseTelemetryCompleted is available
+When: parseTelemetryCompleted executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseTelemetryRequested (parse.requested) | AC-H-458
+Given: handler parseTelemetryRequested is available
+When: parseTelemetryRequested executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: runTelemetryParsing (run.telemetry.parse) | AC-H-459
+Given: handler runTelemetryParsing is available
+When: runTelemetryParsing executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveMetricsPath (store.database) | AC-H-460
+Given: handler resolveMetricsPath is available
+When: resolveMetricsPath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: storeTelemetryDatabase (store.database) | AC-H-461
+Given: handler storeTelemetryDatabase is available
+When: storeTelemetryDatabase executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: annotateShapeEvolution (annotation) | AC-H-462
+Given: handler annotateShapeEvolution is available
+When: annotateShapeEvolution executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hasAnnotation (annotation) | AC-H-463
+Given: handler hasAnnotation is available
+When: hasAnnotation executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadRegistry (annotation) | AC-H-464
+Given: handler loadRegistry is available
+When: loadRegistry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: saveRegistry (annotation) | AC-H-465
+Given: handler saveRegistry is available
+When: saveRegistry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: annotateShapeEvolution (annotation) | AC-H-466
+Given: handler annotateShapeEvolution is available
+When: annotateShapeEvolution executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: hasAnnotation (annotation) | AC-H-467
+Given: handler hasAnnotation is available
+When: hasAnnotation executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadRegistry (annotation) | AC-H-468
+Given: handler loadRegistry is available
+When: loadRegistry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: saveRegistry (annotation) | AC-H-469
+Given: handler saveRegistry is available
+When: saveRegistry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearAnomalies (anomalies) | AC-H-470
+Given: handler clearAnomalies is available
+When: clearAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getAnomalies (anomalies) | AC-H-471
+Given: handler getAnomalies is available
+When: getAnomalies executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recordAnomaly (anomalies) | AC-H-472
+Given: handler recordAnomaly is available
+When: recordAnomaly executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: store (anomalies) | AC-H-473
+Given: handler store is available
+When: store executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: configExists (budget-evaluator) | AC-H-474
+Given: handler configExists is available
+When: configExists executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: evaluateBudgets (budget-evaluator) | AC-H-475
+Given: handler evaluateBudgets is available
+When: evaluateBudgets executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadConfig (budget-evaluator) | AC-H-476
+Given: handler loadConfig is available
+When: loadConfig executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: resolveConfigPath (budget-evaluator) | AC-H-477
+Given: handler resolveConfigPath is available
+When: resolveConfigPath executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearTelemetry (collector) | AC-H-478
+Given: handler clearTelemetry is available
+When: clearTelemetry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureGlobal (collector) | AC-H-479
+Given: handler ensureGlobal is available
+When: ensureGlobal executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getTelemetry (collector) | AC-H-480
+Given: handler getTelemetry is available
+When: getTelemetry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: recordTelemetry (collector) | AC-H-481
+Given: handler recordTelemetry is available
+When: recordTelemetry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: matchesContract (contract) | AC-H-482
+Given: handler matchesContract is available
+When: matchesContract executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeCoverageId (coverage-coupling) | AC-H-483
+Given: handler computeCoverageId is available
+When: computeCoverageId executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureDir (coverage-persistence) | AC-H-484
+Given: handler ensureDir is available
+When: ensureDir executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: persistCoverageSegment (coverage-persistence) | AC-H-485
+Given: handler persistCoverageSegment is available
+When: persistCoverageSegment executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: beat (emitter) | AC-H-486
+Given: handler beat is available
+When: beat executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: endFeature (emitter) | AC-H-487
+Given: handler endFeature is available
+When: endFeature executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerBatonMutation (emitter) | AC-H-488
+Given: handler registerBatonMutation is available
+When: registerBatonMutation executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: registerDomainMutation (emitter) | AC-H-489
+Given: handler registerDomainMutation is available
+When: registerDomainMutation executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: startFeature (emitter) | AC-H-490
+Given: handler startFeature is available
+When: startFeature executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeShapeHash (hash) | AC-H-491
+Given: handler computeShapeHash is available
+When: computeShapeHash executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: normalizeForHash (hash) | AC-H-492
+Given: handler normalizeForHash is available
+When: normalizeForHash executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: shortHash (hash) | AC-H-493
+Given: handler shortHash is available
+When: shortHash executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: installTelemetryMatcher (matcher) | AC-H-494
+Given: handler installTelemetryMatcher is available
+When: installTelemetryMatcher executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: ensureDir (persistence) | AC-H-495
+Given: handler ensureDir is available
+When: ensureDir executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadIndex (persistence) | AC-H-496
+Given: handler loadIndex is available
+When: loadIndex executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: persistTelemetry (persistence) | AC-H-497
+Given: handler persistTelemetry is available
+When: persistTelemetry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: saveIndex (persistence) | AC-H-498
+Given: handler saveIndex is available
+When: saveIndex executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getAccessibilityLabelForColor (accessibility) | AC-H-499
+Given: handler getAccessibilityLabelForColor is available
+When: getAccessibilityLabelForColor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: calculateProjectionStatus (compliance) | AC-H-500
+Given: handler calculateProjectionStatus is available
+When: calculateProjectionStatus executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeWeightedCompliance (compliance) | AC-H-501
+Given: handler computeWeightedCompliance is available
+When: computeWeightedCompliance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getProgressColor (compliance) | AC-H-502
+Given: handler getProgressColor is available
+When: getProgressColor executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: isBurnRateSpike (compliance) | AC-H-503
+Given: handler isBurnRateSpike is available
+When: isBurnRateSpike executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: sortByRemainingBudget (compliance) | AC-H-504
+Given: handler sortByRemainingBudget is available
+When: sortByRemainingBudget executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: computeCompliance (metrics) | AC-H-505
+Given: handler computeCompliance is available
+When: computeCompliance executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadBudgets (metrics) | AC-H-506
+Given: handler loadBudgets is available
+When: loadBudgets executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadMetrics (metrics) | AC-H-507
+Given: handler loadMetrics is available
+When: loadMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: serializeDashboardState (metrics) | AC-H-508
+Given: handler serializeDashboardState is available
+When: serializeDashboardState executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: triggerExportDownload (metrics) | AC-H-509
+Given: handler triggerExportDownload is available
+When: triggerExportDownload executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: validateExportSignature (metrics) | AC-H-510
+Given: handler validateExportSignature is available
+When: validateExportSignature executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useComplianceStatus (useComplianceStatus) | AC-H-511
+Given: handler useComplianceStatus is available
+When: useComplianceStatus executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useErrorBudget (useErrorBudget) | AC-H-512
+Given: handler useErrorBudget is available
+When: useErrorBudget executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: useSLOMetrics (useSLOMetrics) | AC-H-513
+Given: handler useSLOMetrics is available
+When: useSLOMetrics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: clearTelemetryBuffer (emitter) | AC-H-514
+Given: handler clearTelemetryBuffer is available
+When: clearTelemetryBuffer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: emitTelemetry (emitter) | AC-H-515
+Given: handler emitTelemetry is available
+When: emitTelemetry executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: getTelemetryBuffer (emitter) | AC-H-516
+Given: handler getTelemetryBuffer is available
+When: getTelemetryBuffer executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: App (App) | AC-H-517
+Given: handler App is available
+When: App executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exportCsv (App) | AC-H-518
+Given: handler exportCsv is available
+When: exportCsv executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: exportDiagnostics (App) | AC-H-519
+Given: handler exportDiagnostics is available
+When: exportDiagnostics executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: InteractionFlowView (App) | AC-H-520
+Given: handler InteractionFlowView is available
+When: InteractionFlowView executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: SequenceBeatsView (App) | AC-H-521
+Given: handler SequenceBeatsView is available
+When: SequenceBeatsView executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: buildFramesFromRawLog (frames-builder) | AC-H-522
+Given: handler buildFramesFromRawLog is available
+When: buildFramesFromRawLog executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: detectFileType (LogAnalyzer) | AC-H-523
+Given: handler detectFileType is available
+When: detectFileType executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: loadAndParseFile (LogAnalyzer) | AC-H-524
+Given: handler loadAndParseFile is available
+When: loadAndParseFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: parseRawLogFile (LogAnalyzer) | AC-H-525
+Given: handler parseRawLogFile is available
+When: parseRawLogFile executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: applyEventFilter (OperationFilter) | AC-H-526
+Given: handler applyEventFilter is available
+When: applyEventFilter executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: OperationFilterPanel (OperationFilter) | AC-H-527
+Given: handler OperationFilterPanel is available
+When: OperationFilterPanel executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: analyzerToTimelineData (TimelineDataAdapter) | AC-H-528
+Given: handler analyzerToTimelineData is available
+When: analyzerToTimelineData executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value
+
+Title: TimelineFlowVisualization (TimelineFlowVisualization) | AC-H-529
+Given: handler TimelineFlowVisualization is available
+When: TimelineFlowVisualization executes under normal conditions
+Then: it performs its expected orchestration logic
+And: emits expected side effects or returns expected value

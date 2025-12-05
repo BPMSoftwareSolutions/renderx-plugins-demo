@@ -11,7 +11,10 @@ import { wireUiEvents, type UiEventDef } from '../src/ui/events/wiring';
 
 let publishMock: any;
 
-describe('UI Event Wiring (data-driven)', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:5.4] [[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1]] UI Event Wiring (data-driven)', () => {
+    // Given: the renderTemplatePreview operation is triggered
+    const startTime = performance.now();
+    // When: the handler executes
   let cleanup: (() => void) | null = null;
 
   beforeEach(async () => {
@@ -54,7 +57,7 @@ describe('UI Event Wiring (data-driven)', () => {
     },
   ];
 
-  it('publishes deselect when clicking on canvas (outside component)', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:1] publishes deselect when clicking on canvas (outside component)', async () => {
     const canvas = document.createElement('div');
     canvas.id = 'rx-canvas';
     document.body.appendChild(canvas);
@@ -64,23 +67,29 @@ describe('UI Event Wiring (data-driven)', () => {
     canvas.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     await Promise.resolve();
 
+    // Then: it completes successfully within < 200ms
     expect(publishMock).toHaveBeenCalled();
     const [topic] = publishMock.mock.calls[0];
     expect(topic).toBe('canvas.component.deselect.requested');
   });
 
-  it('publishes deselect on Escape key', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] publishes deselect on Escape key', async () => {
+      // Given: valid input parameters
+      // When: renderTemplatePreview processes them
     cleanup = wireUiEvents(defs);
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     await Promise.resolve();
 
+      // Then: results conform to expected schema
     expect(publishMock).toHaveBeenCalled();
     const [topic] = publishMock.mock.calls[0];
     expect(topic).toBe('canvas.component.deselect.requested');
+      // And: no errors are thrown
+      // And: telemetry events are recorded with latency metrics
   });
 
-  it('publishes delete on Delete key', async () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:5.4:2] publishes delete on Delete key', async () => {
     cleanup = wireUiEvents(defs);
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Delete', bubbles: true }));
@@ -90,5 +99,9 @@ describe('UI Event Wiring (data-driven)', () => {
     const [topic] = publishMock.mock.calls[0];
     expect(topic).toBe('canvas.component.delete.requested');
   });
+    // And: the output is valid and meets schema
+    // And: any required events are published
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
 });
 

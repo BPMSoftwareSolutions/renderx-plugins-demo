@@ -22,8 +22,12 @@
           "scenario": "Generate or Create generate Fix Requested",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\28-generate-fix-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateFixRequested to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateFixRequested operation is triggered"
@@ -114,8 +118,12 @@
           "scenario": "load Diagnosis",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\29-load-diagnosis.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want loadDiagnosis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadDiagnosis operation is triggered"
@@ -206,8 +214,12 @@
           "scenario": "Generate or Create generate Code Fix",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\30-generate-code-fix.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateCodeFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateCodeFix operation is triggered"
@@ -298,8 +310,12 @@
           "scenario": "Generate or Create generate Test Fix",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\31-generate-test-fix.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateTestFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateTestFix operation is triggered"
@@ -390,8 +406,12 @@
           "scenario": "Generate or Create generate Documentation Fix",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\32-generate-documentation-fix.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateDocumentationFix to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateDocumentationFix operation is triggered"
@@ -482,8 +502,12 @@
           "scenario": "Generate or Create create Patch",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\33-create-patch.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want createPatch to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the createPatch operation is triggered"
@@ -574,8 +598,12 @@
           "scenario": "Validate or Verify validate Syntax",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\34-validate-syntax.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want validateSyntax to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateSyntax operation is triggered"
@@ -666,8 +694,12 @@
           "scenario": "store Patch",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\35-store-patch.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want storePatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storePatch operation is triggered"
@@ -758,8 +790,12 @@
           "scenario": "Generate or Create generate Fix Completed",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\36-generate-fix-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateFixCompleted to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateFixCompleted operation is triggered"
@@ -838,14 +874,23 @@
           ]
         }
       ],
-      "userStory": "As an SRE, I need fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails.",
+      "userStory": {
+        "persona": "SRE",
+        "goal": "fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails",
+        "benefit": "accelerates content creation"
+      },
       "persona": "SRE",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "As an SRE, I need fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails.",
+  "userStory": {
+    "persona": "SRE",
+    "goal": "fix generation to produce candidate patches and run validation with ≤2s P95, with audit trails",
+    "benefit": "accelerates content creation"
+  },
   "persona": "SRE",
-  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
+  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity",
+  "domainId": "renderx-web-orchestration"
 }

@@ -1,0 +1,35 @@
+{
+  "name": "@renderx/cdp-handlers",
+  "version": "0.1.0",
+  "description": "CDP (Continuous Delivery Pipeline) handlers implementing SAFe practices with audit, build, deploy, report, validate, measure, learn, and rollback capabilities",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "cdp",
+    "safe",
+    "continuous-delivery",
+    "devops",
+    "orchestration"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
+
