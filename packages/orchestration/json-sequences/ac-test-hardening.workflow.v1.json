@@ -26,7 +26,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "existing renderx-web test suite"
@@ -63,7 +63,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "validator results listing missing Given/When"
@@ -94,7 +94,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "AC registry THEN clauses"
@@ -129,7 +129,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "ACs specifying timing (10ms theme retrieval SLA)"
@@ -167,7 +167,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "tests referencing telemetry events"
@@ -204,7 +204,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "list of invalid AC tags (1.1:2, 1.1:3)"
@@ -229,7 +229,7 @@
                 "script": "scripts/test-hardening/remove-dead-code.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "test files contain unused imports, unused variables, arbitrary setTimeout waits"
@@ -264,7 +264,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "reactCode blocks in context JSON"
@@ -310,7 +310,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "refactored tests with runtime GWT, timing, telemetry, AST parsing"
@@ -365,7 +365,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "hardening scripts enumerated by this workflow"

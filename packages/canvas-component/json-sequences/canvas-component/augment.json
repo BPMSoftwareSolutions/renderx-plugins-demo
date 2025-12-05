@@ -22,7 +22,7 @@
           "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
           "testCase": "should enhance-line",
           "testFile": "__tests__\\advanced-line.augment.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "lineAdvanced feature flag is enabled and SVG element with rx-line class exists"

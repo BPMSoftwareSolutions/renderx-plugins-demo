@@ -159,7 +159,7 @@ function renderBddPipelineAnalysis(jsonPath){
         lines.push('');
       }
       // Prefer structured acceptance criteria if present; fallback to legacy
-      const structured = sprint.acceptanceCriteriaStructured;
+      const structured = sprint.acceptanceCriteria;
       if(Array.isArray(structured) && structured.length){
         lines.push('**Acceptance Criteria (Structured GWT)**:');
         structured.forEach(block=>{

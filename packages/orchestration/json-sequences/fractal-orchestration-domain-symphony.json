@@ -23,7 +23,7 @@
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
           "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the fractalNarrator operation is triggered"
@@ -116,7 +116,7 @@
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
           "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the fractalNarrator operation is triggered"

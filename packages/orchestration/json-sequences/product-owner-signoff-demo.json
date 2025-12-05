@@ -23,7 +23,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
           "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the scanOrchestrationFiles operation is triggered"

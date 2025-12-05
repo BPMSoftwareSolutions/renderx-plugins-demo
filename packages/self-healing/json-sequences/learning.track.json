@@ -23,7 +23,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\58-track-effectiveness-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want trackRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the trackRequested operation is triggered"
@@ -115,7 +115,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadDeploymentInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadDeploymentInfo operation is triggered"
@@ -207,7 +207,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\59-load-deployment-metrics.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want collectPostDeploymentMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the collectPostDeploymentMetrics operation is triggered"
@@ -299,7 +299,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\60-compare-metrics.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want compareMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the compareMetrics operation is triggered"
@@ -391,7 +391,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateImprovement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the calculateImprovement operation is triggered"
@@ -483,7 +483,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\69-assess-impact.spec.ts",
           "testCase": "Scenario: Aggregate issue severities into overall impact",
           "userStory": "As an operations system, I want assessSuccess to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the assessSuccess operation is triggered"
@@ -575,7 +575,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\62-update-learning-model.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want updateLearningModels to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the updateLearningModels operation is triggered"
@@ -667,7 +667,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateInsights to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateInsights operation is triggered"
@@ -759,7 +759,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
           "testCase": "should load default CSS classes",
           "userStory": "As an operations system, I want storeEffectiveness to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storeEffectiveness operation is triggered"
@@ -851,7 +851,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\67-track-effectiveness-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want trackCompleted to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the trackCompleted operation is triggered"

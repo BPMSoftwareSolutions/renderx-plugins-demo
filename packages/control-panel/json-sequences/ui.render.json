@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateFields is available"
@@ -50,7 +50,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateSections is available"
@@ -80,7 +80,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
           "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler renderView is available"

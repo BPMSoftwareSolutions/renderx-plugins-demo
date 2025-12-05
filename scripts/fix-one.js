@@ -89,11 +89,11 @@ async function run(){
         if(Array.isArray(mv.beats)){
           for(const beat of mv.beats){
             if(typeof beat.userStory === 'string') beat.userStory = transformUserStory(beat.userStory, (beat.persona||mv.persona||root.persona||'developer').toLowerCase());
-            // move acceptanceCriteriaStructured -> acceptanceCriteria
-            if(beat.acceptanceCriteriaStructured && !beat.acceptanceCriteria){
+            // move acceptanceCriteria -> acceptanceCriteria
+            if(beat.acceptanceCriteria && !beat.acceptanceCriteria){
               // normalize entries
-              beat.acceptanceCriteria = beat.acceptanceCriteriaStructured.map(normalizeAcceptanceCriteriaStructured);
-              delete beat.acceptanceCriteriaStructured;
+              beat.acceptanceCriteria = beat.acceptanceCriteria.map(normalizeAcceptanceCriteriaStructured);
+              delete beat.acceptanceCriteria;
             }
           }
         }

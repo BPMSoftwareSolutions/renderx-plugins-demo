@@ -22,7 +22,7 @@
           "userStory": "As a UI runtime engineer, I need `updateSize` to update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications.",
           "testCase": "forwards drag position updates to Control Panel",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateSize is available"
@@ -51,7 +51,7 @@
           "userStory": "As an operations system, I want forwardToControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "addClass adds class and populates payload",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "size changes"

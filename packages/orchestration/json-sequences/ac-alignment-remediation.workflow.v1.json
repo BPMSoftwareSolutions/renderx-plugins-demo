@@ -25,7 +25,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "quick wins list from latest validation"
@@ -64,7 +64,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "top offender AC IDs identified"
@@ -93,7 +93,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "list of partial tests from validation"
@@ -121,7 +121,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "invalid tag locations identified"
@@ -156,7 +156,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "unmatched handlers list (~442)"
@@ -183,7 +183,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "AST mode available"
@@ -214,7 +214,7 @@
                 "script": "scripts/ac-alignment/scan-existing-tags.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "72 uncovered ACs (137 total - 65 tagged)"

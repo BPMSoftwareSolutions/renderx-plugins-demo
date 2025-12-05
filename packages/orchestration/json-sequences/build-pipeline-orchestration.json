@@ -20,7 +20,7 @@
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
           "testCase": "should build context for symbol generation",
           "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadBuildContext operation is triggered"
@@ -107,7 +107,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateOrchestrationDomains to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateOrchestrationDomains operation is triggered"
@@ -194,7 +194,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateGovernanceRules to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateGovernanceRules operation is triggered"
@@ -281,7 +281,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateAgentBehavior to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateAgentBehavior operation is triggered"
@@ -368,7 +368,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want recordValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the recordValidationResults operation is triggered"
@@ -463,7 +463,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want regenerateOrchestrationDomains to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the regenerateOrchestrationDomains operation is triggered"
@@ -550,7 +550,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want syncJsonSources to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the syncJsonSources operation is triggered"
@@ -637,7 +637,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateManifests to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateManifests operation is triggered"
@@ -724,7 +724,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateManifestIntegrity to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateManifestIntegrity operation is triggered"
@@ -811,7 +811,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
           "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
           "userStory": "As an operations system, I want recordManifestState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the recordManifestState operation is triggered"
@@ -906,7 +906,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
           "userStory": "As an operations system, I want initializePackageBuild to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the initializePackageBuild operation is triggered"
@@ -993,7 +993,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
           "userStory": "As an operations system, I want buildComponentsPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the buildComponentsPackage operation is triggered"
@@ -1080,7 +1080,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\sequences\\MusicalConductor.minimal.test.ts",
           "testCase": "should create a MusicalConductor instance",
           "userStory": "As an operations system, I want buildMusicalConductorPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the buildMusicalConductorPackage operation is triggered"
@@ -1167,7 +1167,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want buildHostSdkPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the buildHostSdkPackage operation is triggered"

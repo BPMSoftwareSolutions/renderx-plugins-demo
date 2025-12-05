@@ -22,7 +22,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getClipboardText is available"
@@ -48,7 +48,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler safeGetStorage is available"
@@ -74,7 +74,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler safeSetStorage is available"
@@ -100,7 +100,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setClipboardText is available"
@@ -126,7 +126,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler enhanceLine is available"
@@ -152,7 +152,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureLineMarkers is available"
@@ -178,7 +178,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureCurve is available"
@@ -204,7 +204,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureLine is available"
@@ -230,7 +230,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler fmt is available"
@@ -256,7 +256,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readBooleanVar is available"
@@ -282,7 +282,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readCssNumber is available"
@@ -308,7 +308,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recomputeLineSvg is available"
@@ -334,7 +334,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveSize is available"
@@ -360,7 +360,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toVbX is available"
@@ -386,7 +386,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toVbY is available"
@@ -412,7 +412,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler copyToClipboard is available"
@@ -438,7 +438,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getSelectedId is available"
@@ -464,7 +464,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -490,7 +490,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyCopyComplete is available"
@@ -516,7 +516,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler serializeElement is available"
@@ -542,7 +542,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler serializeSelectedComponent is available"
@@ -568,7 +568,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveTemplate is available"
@@ -594,7 +594,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler injectCssFallback is available"
@@ -620,7 +620,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler injectRawCss is available"
@@ -646,7 +646,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler appendTo is available"
@@ -672,7 +672,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyClasses is available"
@@ -698,7 +698,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyInlineStyle is available"
@@ -724,7 +724,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createElementWithId is available"
@@ -750,7 +750,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCanvasOrThrow is available"
@@ -776,7 +776,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachStandardImportInteractions is available"
@@ -802,7 +802,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createFromImportRecord is available"
@@ -828,7 +828,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toCreatePayloadFromData is available"
@@ -854,7 +854,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler transformClipboardToCreatePayload is available"
@@ -880,7 +880,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler transformImportToCreatePayload is available"
@@ -906,7 +906,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachDrag is available"
@@ -932,7 +932,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachSelection is available"
@@ -958,7 +958,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachSvgNodeClick is available"
@@ -984,7 +984,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler derivePath is available"
@@ -1010,7 +1010,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerInstance is available"
@@ -1036,7 +1036,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyUi is available"
@@ -1062,7 +1062,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler cleanupReactRoot is available"
@@ -1088,7 +1088,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler compileReactCode is available"
@@ -1114,7 +1114,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler escapeHtml is available"
@@ -1140,7 +1140,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exposeEventRouterToReact is available"
@@ -1166,7 +1166,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getDiagnosticsEmitter is available"
@@ -1192,7 +1192,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getMetricsCollector is available"
@@ -1218,7 +1218,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler renderReact is available"
@@ -1244,7 +1244,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyContentProperties is available"
@@ -1270,7 +1270,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createNode is available"
@@ -1296,7 +1296,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -1322,7 +1322,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeCssVarBlock is available"
@@ -1348,7 +1348,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeInlineStyle is available"
@@ -1374,7 +1374,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeInstanceClass is available"
@@ -1400,7 +1400,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateReactCode is available"
@@ -1426,7 +1426,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateReactCodeOrThrow is available"
@@ -1452,7 +1452,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deleteComponent is available"
@@ -1478,7 +1478,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -1504,7 +1504,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hideOverlaysForId is available"
@@ -1530,7 +1530,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishDeleted is available"
@@ -1556,7 +1556,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveId is available"
@@ -1582,7 +1582,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeDeleteRequest is available"
@@ -1608,7 +1608,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearAllSelections is available"
@@ -1634,7 +1634,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deselectComponent is available"
@@ -1660,7 +1660,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -1686,7 +1686,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hideAllOverlays is available"
@@ -1712,7 +1712,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hideOverlayById is available"
@@ -1738,7 +1738,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishDeselectionChanged is available"
@@ -1764,7 +1764,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishSelectionsCleared is available"
@@ -1790,7 +1790,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeDeselectionRequest is available"
@@ -1816,7 +1816,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endDrag is available"
@@ -1842,7 +1842,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler forwardToControlPanel is available"
@@ -1868,7 +1868,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -1894,7 +1894,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startDrag is available"
@@ -1920,7 +1920,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updatePosition is available"
@@ -1946,7 +1946,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler collectCssClasses is available"
@@ -1972,7 +1972,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler discoverComponentsFromDom is available"
@@ -1998,7 +1998,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler downloadUiFile is available"
@@ -2024,7 +2024,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportSvgToGif is available"
@@ -2050,7 +2050,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler makeGifEncoder is available"
@@ -2076,7 +2076,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2102,7 +2102,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler queryAllComponents is available"
@@ -2128,7 +2128,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createMP4Encoder is available"
@@ -2154,7 +2154,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportSvgToMp4 is available"
@@ -2180,7 +2180,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2206,7 +2206,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildUiFileContent is available"
@@ -2232,7 +2232,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler collectLayoutData is available"
@@ -2258,7 +2258,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler extractElementContent is available"
@@ -2284,7 +2284,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2310,7 +2310,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler injectCssClasses is available"
@@ -2336,7 +2336,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler openUiFile is available"
@@ -2362,7 +2362,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerInstances is available"
@@ -2388,7 +2388,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyHierarchyAndOrder is available"
@@ -2414,7 +2414,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createComponentsSequentially is available"
@@ -2440,7 +2440,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadComponentTemplate is available"
@@ -2466,7 +2466,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseUiFile is available"
@@ -2492,7 +2492,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2518,7 +2518,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2544,7 +2544,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2570,7 +2570,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endLineManip is available"
@@ -2596,7 +2596,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler moveLineManip is available"
@@ -2622,7 +2622,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startLineManip is available"
@@ -2648,7 +2648,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateCurve is available"
@@ -2674,7 +2674,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateEndpoint is available"
@@ -2700,7 +2700,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateRotate is available"
@@ -2726,7 +2726,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2752,7 +2752,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler calculatePastePosition is available"
@@ -2778,7 +2778,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createPastedComponent is available"
@@ -2804,7 +2804,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deserializeComponentData is available"
@@ -2830,7 +2830,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2856,7 +2856,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyPasteComplete is available"
@@ -2882,7 +2882,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readFromClipboard is available"
@@ -2908,7 +2908,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2934,7 +2934,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -2960,7 +2960,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endLineResize is available"
@@ -2986,7 +2986,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3012,7 +3012,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startLineResize is available"
@@ -3038,7 +3038,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateLine is available"
@@ -3064,7 +3064,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3090,7 +3090,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3116,7 +3116,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3142,7 +3142,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clamp is available"
@@ -3168,7 +3168,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endResize is available"
@@ -3194,7 +3194,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getResizeConfig is available"
@@ -3220,7 +3220,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3246,7 +3246,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readCssNumber is available"
@@ -3272,7 +3272,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startResize is available"
@@ -3298,7 +3298,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateSize is available"
@@ -3324,7 +3324,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler writeCssNumber is available"
@@ -3350,7 +3350,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3376,7 +3376,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3402,7 +3402,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureOverlayCss is available"
@@ -3428,7 +3428,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyOverlayRectForEl is available"
@@ -3454,7 +3454,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureOverlay is available"
@@ -3480,7 +3480,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCanvasOrThrow is available"
@@ -3506,7 +3506,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCanvasRect is available"
@@ -3532,7 +3532,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createOverlayStructure is available"
@@ -3558,7 +3558,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readCssNumber is available"
@@ -3584,7 +3584,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveEndpoints is available"
@@ -3610,7 +3610,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachAdvancedLineManipHandlers is available"
@@ -3636,7 +3636,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureAdvancedLineCss is available"
@@ -3662,7 +3662,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureAdvancedLineOverlayFor is available"
@@ -3688,7 +3688,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachLineResizeHandlers is available"
@@ -3714,7 +3714,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureLineCss is available"
@@ -3740,7 +3740,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureLineOverlayFor is available"
@@ -3766,7 +3766,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler attachResizeHandlers is available"
@@ -3792,7 +3792,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getDiagnosticsEmitter is available"
@@ -3818,7 +3818,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getResizeConfig is available"
@@ -3844,7 +3844,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readNumericPx is available"
@@ -3870,7 +3870,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler configureHandlesVisibility is available"
@@ -3896,7 +3896,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deriveSelectedId is available"
@@ -3922,7 +3922,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -3948,7 +3948,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hideSelectionOverlay is available"
@@ -3974,7 +3974,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyUi is available"
@@ -4000,7 +4000,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishSelectionChanged is available"
@@ -4026,7 +4026,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeSelectionRequest is available"
@@ -4052,7 +4052,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler showSelectionOverlay is available"
@@ -4078,7 +4078,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -4104,7 +4104,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler showSvgNodeOverlay is available"
@@ -4130,7 +4130,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler refreshControlPanel is available"
@@ -4156,7 +4156,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateAttribute is available"
@@ -4182,7 +4182,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler refreshControlPanel is available"
@@ -4208,7 +4208,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateSvgNodeAttribute is available"
@@ -4234,7 +4234,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -4260,7 +4260,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initConductor is available"
@@ -4286,7 +4286,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadJsonSequenceCatalogs is available"
@@ -4312,7 +4312,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerAllSequences is available"
@@ -4338,7 +4338,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearFlagOverrides is available"
@@ -4364,7 +4364,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getFlagOverride is available"
@@ -4390,7 +4390,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isFlagEnabled is available"
@@ -4416,7 +4416,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setFlagOverride is available"
@@ -4442,7 +4442,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearAllObservers is available"
@@ -4468,7 +4468,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getClassesObserver is available"
@@ -4494,7 +4494,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCssRegistryObserver is available"
@@ -4520,7 +4520,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getSelectionObserver is available"
@@ -4546,7 +4546,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setClassesObserver is available"
@@ -4572,7 +4572,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setCssRegistryObserver is available"
@@ -4598,7 +4598,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setSelectionObserver is available"
@@ -4624,7 +4624,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getAllRulesConfig is available"
@@ -4650,7 +4650,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getComponentTypeFromClasses is available"
@@ -4676,7 +4676,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadAllRulesFromWindow is available"
@@ -4702,7 +4702,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setAllRulesConfig is available"
@@ -4728,7 +4728,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isDataImage is available"
@@ -4754,7 +4754,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler sanitizeHtml is available"
@@ -4780,7 +4780,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler transform is available"
@@ -4806,7 +4806,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler onDropForTest is available"
@@ -4832,7 +4832,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler CanvasHeader is available"
@@ -4858,7 +4858,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler CanvasPage is available"
@@ -4884,7 +4884,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getFieldRenderer is available"
@@ -4910,7 +4910,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerFieldRenderer is available"
@@ -4936,7 +4936,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getAttributesForNodeType is available"
@@ -4962,7 +4962,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getNodeTypeFromTag is available"
@@ -4988,7 +4988,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseSvgToTree is available"
@@ -5014,7 +5014,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler TreeNode is available"
@@ -5040,7 +5040,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler EmptyState is available"
@@ -5066,7 +5066,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler LoadingState is available"
@@ -5092,7 +5092,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler PanelHeader is available"
@@ -5118,7 +5118,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useControlPanelActions is available"
@@ -5144,7 +5144,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useControlPanelSequences is available"
@@ -5170,7 +5170,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useControlPanelState is available"
@@ -5196,7 +5196,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadConfig is available"
@@ -5222,7 +5222,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useSchemaResolver is available"
@@ -5248,7 +5248,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler controlPanelReducer is available"
@@ -5274,7 +5274,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initialControlPanelState is available"
@@ -5300,7 +5300,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearAllObservers is available"
@@ -5326,7 +5326,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getClassesObserver is available"
@@ -5352,7 +5352,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCssRegistryObserver is available"
@@ -5378,7 +5378,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getSelectionObserver is available"
@@ -5404,7 +5404,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getStore is available"
@@ -5430,7 +5430,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setClassesObserver is available"
@@ -5456,7 +5456,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setCssRegistryObserver is available"
@@ -5482,7 +5482,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setSelectionObserver is available"
@@ -5508,7 +5508,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler addClass is available"
@@ -5534,7 +5534,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler removeClass is available"
@@ -5560,7 +5560,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -5586,7 +5586,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyCssClassToElement is available"
@@ -5612,7 +5612,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createCssClass is available"
@@ -5638,7 +5638,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deleteCssClass is available"
@@ -5664,7 +5664,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCssClass is available"
@@ -5690,7 +5690,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler listCssClasses is available"
@@ -5716,7 +5716,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler removeClassFromAllElements is available"
@@ -5742,7 +5742,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler removeCssClassFromElement is available"
@@ -5768,7 +5768,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateCssClass is available"
@@ -5794,7 +5794,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -5820,7 +5820,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deriveSelectionModel is available"
@@ -5846,7 +5846,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -5872,7 +5872,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler awaitRefresh is available"
@@ -5898,7 +5898,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler dispatchField is available"
@@ -5924,7 +5924,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateFields is available"
@@ -5950,7 +5950,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateSections is available"
@@ -5976,7 +5976,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initConfig is available"
@@ -6002,7 +6002,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initMovement is available"
@@ -6028,7 +6028,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initResolver is available"
@@ -6054,7 +6054,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadSchemas is available"
@@ -6080,7 +6080,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler mergeErrors is available"
@@ -6106,7 +6106,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyReady is available"
@@ -6132,7 +6132,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler prepareField is available"
@@ -6158,7 +6158,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerObservers is available"
@@ -6184,7 +6184,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler renderView is available"
@@ -6210,7 +6210,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setDirty is available"
@@ -6236,7 +6236,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toggleSection is available"
@@ -6262,7 +6262,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateView is available"
@@ -6288,7 +6288,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateField is available"
@@ -6314,7 +6314,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -6340,7 +6340,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateFromElement is available"
@@ -6366,7 +6366,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -6392,7 +6392,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ControlPanel is available"
@@ -6418,7 +6418,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler extractClassVariant is available"
@@ -6444,7 +6444,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler extractElementContent is available"
@@ -6470,7 +6470,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler inferTypeFromElement is available"
@@ -6496,7 +6496,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler formatLabel is available"
@@ -6522,7 +6522,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generatePlaceholder is available"
@@ -6548,7 +6548,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getNestedValue is available"
@@ -6574,7 +6574,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setNestedValue is available"
@@ -6600,7 +6600,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler coerceTheme is available"
@@ -6626,7 +6626,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCurrentTheme is available"
@@ -6652,7 +6652,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler safeGetStoredTheme is available"
@@ -6678,7 +6678,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler safeSetStoredTheme is available"
@@ -6704,7 +6704,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toggleTheme is available"
@@ -6730,7 +6730,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -6756,7 +6756,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler HeaderControls is available"
@@ -6782,7 +6782,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler HeaderThemeToggle is available"
@@ -6808,7 +6808,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler HeaderTitle is available"
@@ -6834,7 +6834,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -6860,7 +6860,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyTemplateStyles is available"
@@ -6886,7 +6886,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeCursorOffsets is available"
@@ -6912,7 +6912,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeGhostSize is available"
@@ -6938,7 +6938,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createGhostContainer is available"
@@ -6964,7 +6964,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensurePayload is available"
@@ -6990,7 +6990,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler installDragImage is available"
@@ -7016,7 +7016,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler renderTemplatePreview is available"
@@ -7042,7 +7042,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -7068,7 +7068,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -7094,7 +7094,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadAndChunk is available"
@@ -7120,7 +7120,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -7146,7 +7146,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler mapJsonComponentToTemplateCompat is available"
@@ -7172,7 +7172,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureOp is available"
@@ -7198,7 +7198,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler extractSequenceIdFromRequestIdLine is available"
@@ -7224,7 +7224,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler normalizeOp is available"
@@ -7250,7 +7250,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler titleFromSequenceId is available"
@@ -7276,7 +7276,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toComponentFromEvent is available"
@@ -7302,7 +7302,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toComponentFromTopic is available"
@@ -7328,7 +7328,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ChatMessageComponent is available"
@@ -7354,7 +7354,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ChatWindow is available"
@@ -7380,7 +7380,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ConfigStatusUI is available"
@@ -7406,7 +7406,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler CustomComponentList is available"
@@ -7432,7 +7432,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler CustomComponentUpload is available"
@@ -7458,7 +7458,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler LibraryPanel is available"
@@ -7484,7 +7484,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerCssForComponents is available"
@@ -7510,7 +7510,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler LibraryPreview is available"
@@ -7536,7 +7536,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computePreviewModel is available"
@@ -7562,7 +7562,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler addMessagesToCurrentSession is available"
@@ -7588,7 +7588,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler cleanupChatHistory is available"
@@ -7614,7 +7614,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearAllChatHistory is available"
@@ -7640,7 +7640,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createChatSession is available"
@@ -7666,7 +7666,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deleteChatSession is available"
@@ -7692,7 +7692,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportChatHistory is available"
@@ -7718,7 +7718,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateChatTitle is available"
@@ -7744,7 +7744,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateSessionId is available"
@@ -7770,7 +7770,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getChatHistoryStats is available"
@@ -7796,7 +7796,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getConversationContext is available"
@@ -7822,7 +7822,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCurrentChatSession is available"
@@ -7848,7 +7848,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler importChatHistory is available"
@@ -7874,7 +7874,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadChatHistory is available"
@@ -7900,7 +7900,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler saveChatHistory is available"
@@ -7926,7 +7926,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startNewChatSession is available"
@@ -7952,7 +7952,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCategoryDisplayName is available"
@@ -7978,7 +7978,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler groupComponentsByCategory is available"
@@ -8004,7 +8004,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler pickDataAttrs is available"
@@ -8030,7 +8030,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler sortCategories is available"
@@ -8056,7 +8056,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler varsToStyle is available"
@@ -8082,7 +8082,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildSystemPrompt is available"
@@ -8108,7 +8108,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getPromptTemplate is available"
@@ -8134,7 +8134,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkStorageLimit is available"
@@ -8160,7 +8160,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearCustomComponents is available"
@@ -8186,7 +8186,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateComponentId is available"
@@ -8212,7 +8212,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getStorageInfo is available"
@@ -8238,7 +8238,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getStorageSize is available"
@@ -8264,7 +8264,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadCustomComponents is available"
@@ -8290,7 +8290,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler removeCustomComponent is available"
@@ -8316,7 +8316,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler saveCustomComponent is available"
@@ -8342,7 +8342,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isValidObject is available"
@@ -8368,7 +8368,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isValidString is available"
@@ -8394,7 +8394,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler normalizeComponent is available"
@@ -8420,7 +8420,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateAndParseJson is available"
@@ -8446,7 +8446,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateComponentJson is available"
@@ -8472,7 +8472,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateFile is available"
@@ -8498,7 +8498,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateMetadata is available"
@@ -8524,7 +8524,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateUI is available"
@@ -8550,7 +8550,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkResources is available"
@@ -8576,7 +8576,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler cleanupResources is available"
@@ -8602,7 +8602,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler enqueueSequence is available"
@@ -8628,7 +8628,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handleBeatComplete is available"
@@ -8654,7 +8654,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -8680,7 +8680,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyComplete is available"
@@ -8706,7 +8706,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler processBeat is available"
@@ -8732,7 +8732,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recordMetrics is available"
@@ -8758,7 +8758,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startExecution is available"
@@ -8784,7 +8784,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateStatistics is available"
@@ -8810,7 +8810,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateRequest is available"
@@ -8836,7 +8836,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler bootstrapLogging is available"
@@ -8862,7 +8862,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkExistingInstance is available"
@@ -8888,7 +8888,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler connectSystems is available"
@@ -8914,7 +8914,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createConductor is available"
@@ -8940,7 +8940,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exposeFacade is available"
@@ -8966,7 +8966,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCommunicationSystemInstance is available"
@@ -8992,7 +8992,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -9018,7 +9018,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isCommunicationSystemInitialized is available"
@@ -9044,7 +9044,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadSequences is available"
@@ -9070,7 +9070,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler markInitialized is available"
@@ -9096,7 +9096,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyReady is available"
@@ -9122,7 +9122,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resetCommunicationSystem is available"
@@ -9148,7 +9148,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateEnvironment is available"
@@ -9174,7 +9174,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateRegistrations is available"
@@ -9200,7 +9200,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkEventBusHealth is available"
@@ -9226,7 +9226,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkExecutionHealth is available"
@@ -9252,7 +9252,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateStatusReport is available"
@@ -9278,7 +9278,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getConductorStatus is available"
@@ -9304,7 +9304,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getDuplicationReport is available"
@@ -9330,7 +9330,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getPerformanceMetrics is available"
@@ -9356,7 +9356,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getQueueStatus is available"
@@ -9382,7 +9382,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getSequenceCount is available"
@@ -9408,7 +9408,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getStatistics is available"
@@ -9434,7 +9434,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -9460,7 +9460,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler logHealthSummary is available"
@@ -9486,7 +9486,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkDuplicates is available"
@@ -9512,7 +9512,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -9538,7 +9538,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler logRegistrationDetails is available"
@@ -9564,7 +9564,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyRegistered is available"
@@ -9590,7 +9590,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerWithRegistry is available"
@@ -9616,7 +9616,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateEventMappings is available"
@@ -9642,7 +9642,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateBeats is available"
@@ -9668,7 +9668,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateSequenceShape is available"
@@ -9694,7 +9694,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler verifyAvailability is available"
@@ -9720,7 +9720,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkManifest is available"
@@ -9746,7 +9746,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkResourceRequirements is available"
@@ -9772,7 +9772,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler checkSPACompliance is available"
@@ -9798,7 +9798,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateValidationReport is available"
@@ -9824,7 +9824,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler handlers is available"
@@ -9850,7 +9850,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler logResults is available"
@@ -9876,7 +9876,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateHandlerContracts is available"
@@ -9902,7 +9902,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validatePluginShape is available"
@@ -9928,7 +9928,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validatePriorities is available"
@@ -9954,7 +9954,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler verifyBeatMapping is available"
@@ -9980,7 +9980,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler verifyExports is available"
@@ -10006,7 +10006,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadBuildContext is available"
@@ -10032,7 +10032,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recordValidationResults is available"
@@ -10058,7 +10058,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateAgentBehavior is available"
@@ -10084,7 +10084,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateGovernanceRules is available"
@@ -10110,7 +10110,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateOrchestrationDomains is available"
@@ -10136,7 +10136,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateManifests is available"
@@ -10162,7 +10162,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recordManifestState is available"
@@ -10188,7 +10188,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler regenerateOrchestrationDomains is available"
@@ -10214,7 +10214,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler syncJsonSources is available"
@@ -10240,7 +10240,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateManifestIntegrity is available"
@@ -10266,7 +10266,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildComponentsPackage is available"
@@ -10292,7 +10292,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildHostSdkPackage is available"
@@ -10318,7 +10318,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildMusicalConductorPackage is available"
@@ -10344,7 +10344,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler initializePackageBuild is available"
@@ -10370,7 +10370,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler OpportunityAnalyzer is available"
@@ -10396,7 +10396,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler OpportunityCard is available"
@@ -10422,7 +10422,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler aggregateAnomalies is available"
@@ -10448,7 +10448,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectBehavioralAnomalies is available"
@@ -10474,7 +10474,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityFromDelta is available"
@@ -10500,7 +10500,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectAnomaliesCompleted is available"
@@ -10526,7 +10526,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectCoverageAnomalies is available"
@@ -10552,7 +10552,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityFromGap is available"
@@ -10578,7 +10578,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectErrorAnomalies is available"
@@ -10604,7 +10604,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityFromErrorRate is available"
@@ -10630,7 +10630,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler assessSeverity is available"
@@ -10656,7 +10656,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectPerformanceAnomalies is available"
@@ -10682,7 +10682,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectAnomaliesRequested is available"
@@ -10708,7 +10708,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler anomalyTypeForKey is available"
@@ -10734,7 +10734,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectSloBreaches is available"
@@ -10760,7 +10760,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler generateId is available"
@@ -10786,7 +10786,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveSloConfigPath is available"
@@ -10812,7 +10812,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityForBreach is available"
@@ -10838,7 +10838,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadTelemetryData is available"
@@ -10864,7 +10864,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler runAnomalyDetection is available"
@@ -10890,7 +10890,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler storeAnomalies is available"
@@ -10916,7 +10916,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler aggregateBaselineMetrics is available"
@@ -10942,7 +10942,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler baselineCompleted is available"
@@ -10968,7 +10968,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler collectBaselineMetrics is available"
@@ -10994,7 +10994,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deriveP50 is available"
@@ -11020,7 +11020,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deriveP95 is available"
@@ -11046,7 +11046,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler establishBaseline is available"
@@ -11072,7 +11072,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler runBaselineEstablish is available"
@@ -11098,7 +11098,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler storeBaseline is available"
@@ -11124,7 +11124,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler aggregateDiagnosis is available"
@@ -11150,7 +11150,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityRank is available"
@@ -11176,7 +11176,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzeBehavioralIssues is available"
@@ -11202,7 +11202,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzeCompleted is available"
@@ -11228,7 +11228,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzeCoverageIssues is available"
@@ -11254,7 +11254,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzeErrorIssues is available"
@@ -11280,7 +11280,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzePerformanceIssues is available"
@@ -11306,7 +11306,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzeRequested is available"
@@ -11332,7 +11332,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler assessImpact is available"
@@ -11358,7 +11358,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler severityRank is available"
@@ -11384,7 +11384,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadAnomalies is available"
@@ -11410,7 +11410,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveAnomaliesPath is available"
@@ -11436,7 +11436,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadCodebaseInfo is available"
@@ -11462,7 +11462,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler walk is available"
@@ -11488,7 +11488,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler nextId is available"
@@ -11514,7 +11514,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recommendFixes is available"
@@ -11540,7 +11540,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler runDiagnosisAnalyze is available"
@@ -11566,7 +11566,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveDiagnosisPath is available"
@@ -11592,7 +11592,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler storeDiagnosis is available"
@@ -11618,7 +11618,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler aggregateTelemetryMetrics is available"
@@ -11644,7 +11644,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler percentile is available"
@@ -11670,7 +11670,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler extractTelemetryEvents is available"
@@ -11696,7 +11696,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseLine is available"
@@ -11722,7 +11722,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler discoverPaths is available"
@@ -11748,7 +11748,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isDirectory is available"
@@ -11774,7 +11774,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadLogFiles is available"
@@ -11800,7 +11800,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readFileAdaptive is available"
@@ -11826,7 +11826,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler normalizeTelemetryData is available"
@@ -11852,7 +11852,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler normalizeTimestamp is available"
@@ -11878,7 +11878,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseTelemetryCompleted is available"
@@ -11904,7 +11904,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseTelemetryRequested is available"
@@ -11930,7 +11930,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler runTelemetryParsing is available"
@@ -11956,7 +11956,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveMetricsPath is available"
@@ -11982,7 +11982,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler storeTelemetryDatabase is available"
@@ -12008,7 +12008,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler annotateShapeEvolution is available"
@@ -12034,7 +12034,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hasAnnotation is available"
@@ -12060,7 +12060,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadRegistry is available"
@@ -12086,7 +12086,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler saveRegistry is available"
@@ -12112,7 +12112,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler annotateShapeEvolution is available"
@@ -12138,7 +12138,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hasAnnotation is available"
@@ -12164,7 +12164,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadRegistry is available"
@@ -12190,7 +12190,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler saveRegistry is available"
@@ -12216,7 +12216,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearAnomalies is available"
@@ -12242,7 +12242,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getAnomalies is available"
@@ -12268,7 +12268,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recordAnomaly is available"
@@ -12294,7 +12294,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler store is available"
@@ -12320,7 +12320,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler configExists is available"
@@ -12346,7 +12346,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler evaluateBudgets is available"
@@ -12372,7 +12372,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadConfig is available"
@@ -12398,7 +12398,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler resolveConfigPath is available"
@@ -12424,7 +12424,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearTelemetry is available"
@@ -12450,7 +12450,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureGlobal is available"
@@ -12476,7 +12476,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getTelemetry is available"
@@ -12502,7 +12502,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler recordTelemetry is available"
@@ -12528,7 +12528,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler matchesContract is available"
@@ -12554,7 +12554,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeCoverageId is available"
@@ -12580,7 +12580,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureDir is available"
@@ -12606,7 +12606,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler persistCoverageSegment is available"
@@ -12632,7 +12632,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler beat is available"
@@ -12658,7 +12658,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endFeature is available"
@@ -12684,7 +12684,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerBatonMutation is available"
@@ -12710,7 +12710,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler registerDomainMutation is available"
@@ -12736,7 +12736,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startFeature is available"
@@ -12762,7 +12762,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeShapeHash is available"
@@ -12788,7 +12788,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler normalizeForHash is available"
@@ -12814,7 +12814,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler shortHash is available"
@@ -12840,7 +12840,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler installTelemetryMatcher is available"
@@ -12866,7 +12866,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler ensureDir is available"
@@ -12892,7 +12892,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadIndex is available"
@@ -12918,7 +12918,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler persistTelemetry is available"
@@ -12944,7 +12944,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler saveIndex is available"
@@ -12970,7 +12970,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getAccessibilityLabelForColor is available"
@@ -12996,7 +12996,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler calculateProjectionStatus is available"
@@ -13022,7 +13022,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeWeightedCompliance is available"
@@ -13048,7 +13048,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getProgressColor is available"
@@ -13074,7 +13074,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler isBurnRateSpike is available"
@@ -13100,7 +13100,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler sortByRemainingBudget is available"
@@ -13126,7 +13126,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler computeCompliance is available"
@@ -13152,7 +13152,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadBudgets is available"
@@ -13178,7 +13178,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadMetrics is available"
@@ -13204,7 +13204,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler serializeDashboardState is available"
@@ -13230,7 +13230,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler triggerExportDownload is available"
@@ -13256,7 +13256,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler validateExportSignature is available"
@@ -13282,7 +13282,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useComplianceStatus is available"
@@ -13308,7 +13308,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useErrorBudget is available"
@@ -13334,7 +13334,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler useSLOMetrics is available"
@@ -13360,7 +13360,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler clearTelemetryBuffer is available"
@@ -13386,7 +13386,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler emitTelemetry is available"
@@ -13412,7 +13412,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getTelemetryBuffer is available"
@@ -13438,7 +13438,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler App is available"
@@ -13464,7 +13464,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportCsv is available"
@@ -13490,7 +13490,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportDiagnostics is available"
@@ -13516,7 +13516,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler InteractionFlowView is available"
@@ -13542,7 +13542,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler SequenceBeatsView is available"
@@ -13568,7 +13568,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler buildFramesFromRawLog is available"
@@ -13594,7 +13594,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler detectFileType is available"
@@ -13620,7 +13620,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadAndParseFile is available"
@@ -13646,7 +13646,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler parseRawLogFile is available"
@@ -13672,7 +13672,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler applyEventFilter is available"
@@ -13698,7 +13698,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler OperationFilterPanel is available"
@@ -13724,7 +13724,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler analyzerToTimelineData is available"
@@ -13750,7 +13750,7 @@
             "Then it performs its expected orchestration logic",
             "And emits expected side effects or returns expected value"
           ],
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler TimelineFlowVisualization is available"

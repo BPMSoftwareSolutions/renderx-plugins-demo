@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `exportSvgToMp4` to rasterize frames and encode MP4 with telemetry.",
           "testCase": "exports CSS classes from registry in the UI file",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportSvgToMp4 is available"

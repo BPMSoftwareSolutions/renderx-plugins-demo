@@ -22,7 +22,7 @@
           "userStory": "As an operations system, I want readFromClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler readFromClipboard is available"
@@ -51,7 +51,7 @@
           "userStory": "As an operations system, I want deserializeComponentData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deserializeComponentData is available"
@@ -80,7 +80,7 @@
           "userStory": "As an operations system, I want calculatePastePosition to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "every beat declares dynamics",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler calculatePastePosition is available"
@@ -109,7 +109,7 @@
           "userStory": "As an operations system, I want createPastedComponent to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler createPastedComponent is available"
@@ -138,7 +138,7 @@
           "userStory": "As an operations system, I want notifyPasteComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyPasteComplete is available"

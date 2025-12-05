@@ -22,7 +22,7 @@
           "userStory": "As a UI runtime engineer, I need `updatePosition` to update DOM transform with throttling in ≤100ms P95 and emit selection updates.",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updatePosition is available"
@@ -51,7 +51,7 @@
           "userStory": "As an orchestrator, I need `forwardToControlPanel` to publish selection change events within ≤1s P95.",
           "testCase": "addClass adds class and populates payload",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler forwardToControlPanel is available"

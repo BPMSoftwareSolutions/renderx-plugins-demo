@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
           "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
           "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "application startup"
@@ -50,7 +50,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "testCase": "dedupes schema fetches across multiple calls and instances",
           "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "configuration and schema definitions"
@@ -80,7 +80,7 @@
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\config-loader.test.js",
           "testCase": "should load plugin-architecture sprite library",
           "userStory": "As an operations system, I want loadSchemas to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "resolver initialization completes"
@@ -110,7 +110,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
           "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "event bus and DOM listeners"
@@ -140,7 +140,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "initialization sequence completes"
@@ -170,7 +170,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\ui-init.batched.spec.ts",
           "testCase": "records sub-beat telemetry for the five init steps when run via iterator",
           "userStory": "As an operations system, I want initMovement to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "movement context"

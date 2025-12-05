@@ -23,7 +23,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\8-detect-anomalies-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectAnomaliesRequested operation is triggered"
@@ -115,7 +115,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\9-load-telemetry-data.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadTelemetryData operation is triggered"
@@ -207,7 +207,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectPerformanceAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectPerformanceAnomalies operation is triggered"
@@ -299,7 +299,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\11-detect-behavioral-anomalies.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectBehavioralAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectBehavioralAnomalies operation is triggered"
@@ -391,7 +391,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\12-detect-coverage-gaps.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectCoverageGaps to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectCoverageGaps operation is triggered"
@@ -483,7 +483,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\13-detect-error-patterns.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectErrorPatterns to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectErrorPatterns operation is triggered"
@@ -575,7 +575,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the aggregateAnomalyResults operation is triggered"
@@ -667,7 +667,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\15-store-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want storeAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storeAnomalyResults operation is triggered"
@@ -759,7 +759,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\16-detect-anomalies-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectAnomaliesCompleted operation is triggered"

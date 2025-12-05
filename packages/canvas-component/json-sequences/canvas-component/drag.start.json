@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `startDrag` to capture source element, compute ghost offsets, and emit telemetry in ≤100ms P95.",
           "testCase": "should start-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startDrag is available"

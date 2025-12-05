@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `toggleTheme` to switch theme and persist preference.",
           "testCase": "should render theme toggle component with light mode by default",
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toggleTheme is available"

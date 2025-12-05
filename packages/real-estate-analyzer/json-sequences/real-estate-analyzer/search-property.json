@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the fetchPropertyData operation is triggered"
@@ -108,7 +108,7 @@
           "userStory": "As an operations system, I want analyze to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyze operation is triggered"
@@ -197,7 +197,7 @@
           "userStory": "As an operations system, I want format to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "should format",
           "testFile": "TBD",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the format operation is triggered"

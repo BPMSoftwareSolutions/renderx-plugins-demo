@@ -23,7 +23,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\1-parse-telemetry-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want parseTelemetryRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the parseTelemetryRequested operation is triggered"
@@ -115,7 +115,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
           "testCase": "should load valid logs and skip corrupted ones, reporting progress",
           "userStory": "As an operations system, I want loadLogFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadLogFiles operation is triggered"
@@ -207,7 +207,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\3-extract-telemetry-events.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want extractTelemetryEvents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the extractTelemetryEvents operation is triggered"
@@ -299,7 +299,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\4-normalize-telemetry-data.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want normalizeTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the normalizeTelemetryData operation is triggered"
@@ -391,7 +391,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\5-aggregate-telemetry-metrics.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateTelemetryMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the aggregateTelemetryMetrics operation is triggered"
@@ -483,7 +483,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\6-store-telemetry-database.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want storeTelemetryDatabase to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storeTelemetryDatabase operation is triggered"
@@ -575,7 +575,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\7-parse-telemetry-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want parseTelemetryCompleted to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the parseTelemetryCompleted operation is triggered"

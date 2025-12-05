@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want moveLineManip to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "updates endpoint A and recomputes line geometry",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler moveLineManip is available"

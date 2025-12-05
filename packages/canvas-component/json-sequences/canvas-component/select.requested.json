@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.",
           "testCase": "should route-selection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeSelectionRequest is available"

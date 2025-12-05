@@ -151,7 +151,7 @@ async function fixFile(file) {
         if (Array.isArray(mv.beats)) {
           for (const beat of mv.beats) {
             if (typeof beat.userStory === 'string') { beat.userStory = transformUserStory(beat.userStory, (beat.persona || mv.persona || root.persona || 'developer').toLowerCase()); changed = true; }
-            if (beat.acceptanceCriteriaStructured && !beat.acceptanceCriteria) { beat.acceptanceCriteria = beat.acceptanceCriteriaStructured.map(normalizeAcceptanceCriteriaStructured); delete beat.acceptanceCriteriaStructured; changed = true; }
+            if (beat.acceptanceCriteria && !beat.acceptanceCriteria) { beat.acceptanceCriteria = beat.acceptanceCriteria.map(normalizeAcceptanceCriteriaStructured); delete beat.acceptanceCriteria; changed = true; }
             if (!beat.event) {
               let handlerName = null;
               if (typeof beat.handler === 'string') handlerName = beat.handler;

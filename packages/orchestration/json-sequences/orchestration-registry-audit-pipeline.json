@@ -36,7 +36,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
           "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
           "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the scanOrchestrationFiles operation is triggered"
@@ -134,7 +134,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateHandlerMapping operation is triggered"
@@ -222,7 +222,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateHandlerMapping operation is triggered"
@@ -310,7 +310,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the calculateConformityScore operation is triggered"
@@ -408,7 +408,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateAnalysisReport operation is triggered"

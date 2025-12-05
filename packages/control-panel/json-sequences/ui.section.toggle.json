@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
           "testCase": "applies rx-button--<variant> from content.variant even if classRefs lacked it",
           "userStory": "As an engineer, I need `toggleSection` to apply state and notify UI.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler toggleSection is available"

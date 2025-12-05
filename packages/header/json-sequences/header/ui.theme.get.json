@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `getCurrentTheme` to read persisted theme and apply classes.",
           "testCase": "should have required metadata fields",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getCurrentTheme is available"
@@ -48,7 +48,7 @@
           "userStory": "As an orchestrator, I need `notifyUi` to publish theme state in <20ms.",
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "a theme fetch completes"

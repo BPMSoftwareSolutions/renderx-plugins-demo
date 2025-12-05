@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `routeDeselectionRequest` to identify current selection and clear state.",
           "testCase": "should route-deselection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeDeselectionRequest is available"

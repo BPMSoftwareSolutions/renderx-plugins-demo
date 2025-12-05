@@ -37,7 +37,7 @@ function collectFiles(patternDirs){
 }
 
 function refineBeatACs(b){
-  const ac = b.acceptanceCriteriaStructured || [];
+  const ac = b.acceptanceCriteria || [];
   const newAC = [];
   const handler = b.handler;
   // Helper to add lines
@@ -163,8 +163,8 @@ for (const f of files){
     const beats = m.beats || m.Beats || m.steps || [];
     for (const b of beats){
       const refined = refineBeatACs(b);
-      if (refined && JSON.stringify(refined) !== JSON.stringify(b.acceptanceCriteriaStructured || [])){
-        b.acceptanceCriteriaStructured = refined;
+      if (refined && JSON.stringify(refined) !== JSON.stringify(b.acceptanceCriteria || [])){
+        b.acceptanceCriteria = refined;
         changed = true;
       }
     }

@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `endDrag` to finalize position, snap to grid, and publish outcome telemetry.",
           "testCase": "should end-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler endDrag is available"

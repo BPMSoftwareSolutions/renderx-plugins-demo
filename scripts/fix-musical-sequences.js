@@ -3,7 +3,7 @@
 // - Add missing top-level `id` from `sequenceId` or name
 // - Add missing beat `event` derived from sequence/movement/beat/handler
 // - Add missing numeric `beat` field if not present (1-based index)
-// - Normalize acceptanceCriteriaStructured clauses to arrays
+// - Normalize acceptanceCriteria clauses to arrays
 // - Backup files before writing
 
 import fs from 'fs/promises';
@@ -185,23 +185,23 @@ async function fixFile(file) {
           changed = true;
         }
 
-        // Normalize acceptanceCriteriaStructured entries to arrays per clause
-        if (beat.acceptanceCriteriaStructured) {
-          if (Array.isArray(beat.acceptanceCriteriaStructured)) {
-            const newArr = beat.acceptanceCriteriaStructured.map(normalizeAcceptanceCriteriaStructured);
+        // Normalize acceptanceCriteria entries to arrays per clause
+        if (beat.acceptanceCriteria) {
+          if (Array.isArray(beat.acceptanceCriteria)) {
+            const newArr = beat.acceptanceCriteria.map(normalizeAcceptanceCriteriaStructured);
             // detect change (simple stringify compare)
-            if (JSON.stringify(newArr) !== JSON.stringify(beat.acceptanceCriteriaStructured)) {
-              beat.acceptanceCriteriaStructured = newArr;
+            if (JSON.stringify(newArr) !== JSON.stringify(beat.acceptanceCriteria)) {
+              beat.acceptanceCriteria = newArr;
               changed = true;
             }
-          } else if (typeof beat.acceptanceCriteriaStructured === 'object') {
+          } else if (typeof beat.acceptanceCriteria === 'object') {
             // Single object -> wrap in array
-            const normalized = normalizeAcceptanceCriteriaStructured(beat.acceptanceCriteriaStructured);
-            beat.acceptanceCriteriaStructured = [normalized];
+            const normalized = normalizeAcceptanceCriteriaStructured(beat.acceptanceCriteria);
+            beat.acceptanceCriteria = [normalized];
             changed = true;
-          } else if (typeof beat.acceptanceCriteriaStructured === 'string') {
+          } else if (typeof beat.acceptanceCriteria === 'string') {
             // wrap string into Given array
-            beat.acceptanceCriteriaStructured = [{ given: [beat.acceptanceCriteriaStructured] }];
+            beat.acceptanceCriteria = [{ given: [beat.acceptanceCriteria] }];
             changed = true;
           }
         }

@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want routeDeleteRequest to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "should route-delete-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler routeDeleteRequest is available"

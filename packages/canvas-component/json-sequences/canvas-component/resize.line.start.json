@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `startLineResize` to compute segment anchors and prepare overlay.",
           "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler startLineResize is available"

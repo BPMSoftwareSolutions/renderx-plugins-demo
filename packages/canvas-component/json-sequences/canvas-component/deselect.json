@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deselectComponent is available"
@@ -48,7 +48,7 @@
           "userStory": "As an operations system, I want publishDeselectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishDeselectionChanged is available"

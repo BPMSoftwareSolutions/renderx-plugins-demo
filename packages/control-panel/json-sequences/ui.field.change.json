@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As an engineer, I need `prepareField` to normalize input and validate.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler prepareField is available"
@@ -50,7 +50,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
           "userStory": "As an engineer, I need `dispatchField` to route changes to the canvas component.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler dispatchField is available"
@@ -80,7 +80,7 @@
           "testFile": "tests\\digital-assets.spec.ts",
           "testCase": "resolves and exposes correct package name",
           "userStory": "As an engineer, I need `setDirty` to mark state and enable save.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setDirty is available"
@@ -110,7 +110,7 @@
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "testCase": "setDirty marks isDirty with timestamp",
           "userStory": "As an engineer, I need `awaitRefresh` to synchronize view updates.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler awaitRefresh is available"

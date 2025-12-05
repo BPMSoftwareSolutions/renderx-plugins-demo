@@ -77,7 +77,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateJSONSchemaStructure operation is triggered"
@@ -173,7 +173,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateOrchestrationDomainsRegistry operation is triggered"
@@ -269,7 +269,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateSymphonyFiles operation is triggered"
@@ -365,7 +365,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateSchemaSection operation is triggered"
@@ -461,7 +461,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the reportJSONValidation operation is triggered"
@@ -568,7 +568,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
           "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the startHandlerMappingVerification operation is triggered"
@@ -664,7 +664,7 @@
           "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
           "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
           "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadHandlerImplementations operation is triggered"
@@ -760,7 +760,7 @@
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the indexBeatsFromJSON operation is triggered"
@@ -856,7 +856,7 @@
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the verifyBeatHandlerMapping operation is triggered"
@@ -952,7 +952,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
           "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectOrphanHandlers operation is triggered"
@@ -1048,7 +1048,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
           "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the reportHandlerMapping operation is triggered"
@@ -1155,7 +1155,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the startTestCoverageVerification operation is triggered"
@@ -1251,7 +1251,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the catalogBeatsFromJSON operation is triggered"
@@ -1347,7 +1347,7 @@
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js",
           "testCase": "should index-test-files",
           "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the indexTestFiles operation is triggered"
@@ -1443,7 +1443,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
           "testCase": "Scenario: Analyze coverage gaps to identify untested code",
           "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeTestCoverage operation is triggered"
@@ -1539,7 +1539,7 @@
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the identifyUncoveredBeats operation is triggered"
@@ -1635,7 +1635,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts",
           "testCase": "should calculate duration reduction",
           "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the reportTestCoverage operation is triggered"
@@ -1742,7 +1742,7 @@
           "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts",
           "testCase": "should governance.handlers#startMarkdownConsistencyCheck when event published",
           "userStory": "As an operations system, I want startMarkdownConsistencyCheck to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the startMarkdownConsistencyCheck operation is triggered"
@@ -1838,7 +1838,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the extractFactsFromJSON operation is triggered"
@@ -1934,7 +1934,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
           "testCase": "should load valid logs and skip corrupted ones, reporting progress",
           "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the identifyMarkdownFiles operation is triggered"
@@ -2030,7 +2030,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "testCase": "should verify-facts-in-markdown",
           "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the verifyFactsInMarkdown operation is triggered"
@@ -2126,7 +2126,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
           "testCase": "detectAnomaliesRequested - happy path",
           "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the detectMarkdownContradictions operation is triggered"
@@ -2222,7 +2222,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the reportMarkdownConsistency operation is triggered"
@@ -2329,7 +2329,7 @@
           "testFile": "packages/orchestration/test/governance.handlers#startAuditabilityVerification.spec.ts",
           "testCase": "should governance.handlers#startAuditabilityVerification when event published",
           "userStory": "As an operations system, I want startAuditabilityVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the startAuditabilityVerification operation is triggered"
@@ -2425,7 +2425,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
           "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadJSONDefinitions operation is triggered"
@@ -2521,7 +2521,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the createCodeMappings operation is triggered"
@@ -2617,7 +2617,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the createTestMappings operation is triggered"
@@ -2713,7 +2713,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
           "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the createMarkdownMappings operation is triggered"
@@ -2809,7 +2809,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
           "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the verifyChainCompleteness operation is triggered"
@@ -2905,7 +2905,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the reportAuditability operation is triggered"
@@ -3012,7 +3012,7 @@
           "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
           "testCase": "should analyze a property and return opportunity score",
           "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the startConformityAnalysis operation is triggered"
@@ -3108,7 +3108,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the aggregateGovernanceResults operation is triggered"
@@ -3204,7 +3204,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the calculateConformityScore operation is triggered"
@@ -3300,7 +3300,7 @@
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\spa-validator.stage-crew-violations.test.ts",
           "testCase": "stage:cue",
           "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the summarizeViolations operation is triggered"
@@ -3396,7 +3396,7 @@
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the makeGovernanceDecision operation is triggered"
@@ -3492,7 +3492,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the generateGovernanceReport operation is triggered"
@@ -3588,7 +3588,7 @@
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
           "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the concludeGovernanceEnforcement operation is triggered"

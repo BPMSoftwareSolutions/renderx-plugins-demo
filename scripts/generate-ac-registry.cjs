@@ -1,7 +1,7 @@
 /**
  * AC Registry Generator
  *
- * Generates a canonical, normalized AC registry from acceptanceCriteriaStructured
+ * Generates a canonical, normalized AC registry from acceptanceCriteria
  * fields across all beats in sequence JSON files.
  *
  * Output: .generated/acs/<domain-id>.registry.json
@@ -183,8 +183,8 @@ function extractACsFromSequence(sequenceFilePath, domainId) {
       movement.beats.forEach((beat, beatIndex) => {
         const beatId = `${movement.number || movementIndex + 1}.${beat.number || beatIndex + 1}`;
 
-        // Check for acceptanceCriteriaStructured (new format)
-        let acList = beat.acceptanceCriteriaStructured || beat.acceptanceCriteria;
+        // Check for acceptanceCriteria (new format)
+        let acList = beat.acceptanceCriteria || beat.acceptanceCriteria;
 
         if (!acList || !Array.isArray(acList)) {
           return;

@@ -17,7 +17,7 @@
           "kind": "stage-crew",
           "number": 1,
           "scenario": "Update or Modify update From Element",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateFromElement is available"
@@ -47,7 +47,7 @@
           "kind": "pure",
           "number": 2,
           "scenario": "Publish UI State Change Notifications to Event System",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "a class change operation completes"

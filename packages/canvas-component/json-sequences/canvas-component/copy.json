@@ -22,7 +22,7 @@
           "userStory": "As an operations system, I want serializeSelectedComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler serializeSelectedComponent is available"
@@ -51,7 +51,7 @@
           "userStory": "As an operations system, I want copyToClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "does not throw for Map",
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler copyToClipboard is available"
@@ -80,7 +80,7 @@
           "userStory": "As an operations system, I want notifyCopyComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler notifyCopyComplete is available"

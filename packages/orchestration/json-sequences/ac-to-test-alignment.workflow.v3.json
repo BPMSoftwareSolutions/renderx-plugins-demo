@@ -19,7 +19,7 @@
                 "script": "scripts/renderx-web/generate-canonical-sequence-index.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "DOMAIN_REGISTRY.json"
@@ -44,7 +44,7 @@
                 "script": "scripts/generate-ac-registry.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "domain registry is available"
@@ -69,7 +69,7 @@
                 "script": "scripts/analyze-tests.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "workspace root"
@@ -100,7 +100,7 @@
                 "script": "scripts/ac-alignment/compute-canonical.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "AC registry"
@@ -125,7 +125,7 @@
                 "script": "scripts/ac-alignment/quality-diff.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "existing tests",
@@ -157,7 +157,7 @@
                 "script": "scripts/ac-alignment/projection.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "existing test count",
@@ -183,7 +183,7 @@
                 "script": "scripts/ac-alignment/extract-handler-usage.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "all test files"
@@ -208,7 +208,7 @@
                 "script": "scripts/ac-alignment/map-handlers-to-acs.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "AC registry with handlers",
@@ -234,7 +234,7 @@
                 "script": "scripts/ac-alignment/suggest-tags-comprehensive.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "handler mapping",
@@ -264,7 +264,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "comprehensive suggestions.json"
@@ -289,7 +289,7 @@
                 "script": "scripts/ac-alignment/scan-existing-tags.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "all test files"
@@ -314,7 +314,7 @@
                 "script": "scripts/ac-alignment/validate-test-implementations.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "tagged tests",
@@ -340,7 +340,7 @@
                 "script": "scripts/ac-alignment/fix-test-implementations.cjs"
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "validation results",
@@ -376,7 +376,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "registry",
@@ -410,7 +410,7 @@
                 ]
               }
             ],
-            "acceptanceCriteriaStructured": [
+            "acceptanceCriteria": [
               {
                 "given": [
                   "coverage metrics"

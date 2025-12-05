@@ -235,17 +235,17 @@ function applyBestEffortFixesToJson(json, file) {
           changed = true;
         }
 
-        if (beat.acceptanceCriteriaStructured) {
-          if (Array.isArray(beat.acceptanceCriteriaStructured)) {
-            const newArr = beat.acceptanceCriteriaStructured.map(normalizeAcceptanceCriteriaStructured);
-            beat.acceptanceCriteriaStructured = newArr;
+        if (beat.acceptanceCriteria) {
+          if (Array.isArray(beat.acceptanceCriteria)) {
+            const newArr = beat.acceptanceCriteria.map(normalizeAcceptanceCriteriaStructured);
+            beat.acceptanceCriteria = newArr;
             changed = true;
-          } else if (typeof beat.acceptanceCriteriaStructured === 'object') {
-            const normalized = normalizeAcceptanceCriteriaStructured(beat.acceptanceCriteriaStructured);
-            beat.acceptanceCriteriaStructured = [normalized];
+          } else if (typeof beat.acceptanceCriteria === 'object') {
+            const normalized = normalizeAcceptanceCriteriaStructured(beat.acceptanceCriteria);
+            beat.acceptanceCriteria = [normalized];
             changed = true;
-          } else if (typeof beat.acceptanceCriteriaStructured === 'string') {
-            beat.acceptanceCriteriaStructured = [{ given: [beat.acceptanceCriteriaStructured] }];
+          } else if (typeof beat.acceptanceCriteria === 'string') {
+            beat.acceptanceCriteria = [{ given: [beat.acceptanceCriteria] }];
             changed = true;
           }
         }

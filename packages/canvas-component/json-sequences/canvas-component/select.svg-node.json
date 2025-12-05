@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want showSvgNodeOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "positions overlay over the target sub-element given a child-index path (e.g., ",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler showSvgNodeOverlay is available"

@@ -23,7 +23,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\37-validate-fix-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want validateRequested to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateRequested operation is triggered"
@@ -115,7 +115,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\38-load-patch.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want loadPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadPatch operation is triggered"
@@ -207,7 +207,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\39-apply-patch.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want applyPatch to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the applyPatch operation is triggered"
@@ -299,7 +299,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\40-run-unit-tests.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As a QA system, I want test execution to complete in <10 minutes so that developers get rapid feedback on code quality (target: 80% of test suites run < 5 min).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "a test suite for the project"
@@ -392,7 +392,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
           "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
           "userStory": "As an operations system, I want checkCoverage to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the checkCoverage operation is triggered"
@@ -484,7 +484,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want verifyPerformance to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the verifyPerformance operation is triggered"
@@ -576,7 +576,7 @@
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
           "userStory": "As an operations system, I want validateDocumentation to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateDocumentation operation is triggered"
@@ -668,7 +668,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want aggregateValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the aggregateValidationResults operation is triggered"
@@ -760,7 +760,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\45-store-validation-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want storeValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storeValidationResults operation is triggered"
@@ -852,7 +852,7 @@
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\46-validate-fix-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
           "userStory": "As an operations system, I want validateCompleted to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the validateCompleted operation is triggered"

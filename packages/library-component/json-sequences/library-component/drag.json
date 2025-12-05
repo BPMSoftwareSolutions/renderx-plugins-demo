@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `onDragStart` to prepare drag payload and emit telemetry.",
           "testCase": "publishes drag.move with { id, position }",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "pointer down"

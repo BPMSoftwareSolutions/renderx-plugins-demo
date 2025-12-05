@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler setAllRulesConfig is available"
@@ -48,7 +48,7 @@
           "userStory": "As an operations system, I want loadAllRulesFromWindow to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler loadAllRulesFromWindow is available"
@@ -77,7 +77,7 @@
           "userStory": "As an operations system, I want getAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler getAllRulesConfig is available"

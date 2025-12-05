@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want hideAllOverlays to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler hideAllOverlays is available"
@@ -48,7 +48,7 @@
           "userStory": "As an operations system, I want publishSelectionsCleared to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishSelectionsCleared is available"

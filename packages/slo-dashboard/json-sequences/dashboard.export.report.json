@@ -15,7 +15,7 @@
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts",
           "testCase": "Scenario: Prepare export payload containing compliance snapshot.",
           "userStory": "As an SRE, I need `serializeDashboardState` to produce a stable report.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the serializeDashboardState operation is triggered"
@@ -102,7 +102,7 @@
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts",
           "testCase": "Scenario: Initiate download of signed export artifacts.",
           "userStory": "As an SRE, I need `triggerExportDownload` to initiate download reliably.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "the triggerExportDownload operation is triggered"

@@ -19,7 +19,7 @@
           "userStory": "As an engineer, I need `exportSvgToGif` to rasterize frames and encode GIF with telemetry.",
           "testCase": "success minimal export triggers download without error",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler exportSvgToGif is available"

@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deleteComponent is available"
@@ -48,7 +48,7 @@
           "userStory": "As an operations system, I want publishDeleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler publishDeleted is available"

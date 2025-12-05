@@ -17,7 +17,7 @@
     {
       "number": 1,
       "name": "AC Registry",
-      "description": "Generate normalized AC registry from acceptanceCriteriaStructured across beats and sequences.",
+      "description": "Generate normalized AC registry from acceptanceCriteria across beats and sequences.",
       "beats": [
         {
           "name": "generate-ac-registry",
@@ -29,9 +29,9 @@
           },
           "event": "renderx-web:ac-alignment:registry-generated",
           "scenario": "Generate canonical AC registry",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": "ACs are present as acceptanceCriteriaStructured in sequence JSON",
+              "given": "ACs are present as acceptanceCriteria in sequence JSON",
               "when": "the generator runs over renderx-web-orchestration",
               "then": [
                 "It emits .generated/acs/renderx-web-orchestration.registry.json",
@@ -58,7 +58,7 @@
           },
           "event": "renderx-web:ac-alignment:tagging-guide-published",
           "scenario": "Publish test tagging guide and helpers",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Developers write or maintain tests",
               "when": "they follow the tagging guide",
@@ -80,7 +80,7 @@
           },
           "event": "renderx-web:ac-alignment:tags-adopted",
           "scenario": "Adopt tags in representative tests",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Key symphonies (Create, Select, UI, Export)",
               "when": "tests are updated",
@@ -108,7 +108,7 @@
           },
           "event": "renderx-web:ac-alignment:unit-results-collected",
           "scenario": "Collect unit/integration test results",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Unit/Integration tests run with JSON reporter",
               "when": "collector parses titles",
@@ -129,7 +129,7 @@
           },
           "event": "renderx-web:ac-alignment:e2e-results-collected",
           "scenario": "Collect Cypress E2E test results",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Cypress runs with Mocha JSON or custom reporter",
               "when": "collector processes spec outputs",
@@ -157,7 +157,7 @@
           },
           "event": "renderx-web:ac-alignment:presence-coverage-computed",
           "scenario": "Compute presence-based AC coverage",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "AC registry and extracted tags",
               "when": "the presence engine runs",
@@ -178,7 +178,7 @@
           },
           "event": "renderx-web:ac-alignment:then-coverage-computed",
           "scenario": "Heuristic THEN-to-assertion mapping",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "THEN clauses and optional ASSERT markers",
               "when": "heuristics evaluate assertion types",
@@ -206,7 +206,7 @@
           },
           "event": "renderx-web:ac-alignment:artifacts-emitted",
           "scenario": "Write JSON and Markdown summary",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Computed presence and THEN coverage",
               "when": "reporter runs",
@@ -234,7 +234,7 @@
           },
           "event": "renderx-web:ac-alignment:thresholds-enforced",
           "scenario": "Warn/Fail based on coverage thresholds",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Coverage metrics exist",
               "when": "CI job evaluates thresholds",
@@ -256,7 +256,7 @@
           },
           "event": "renderx-web:ac-alignment:rolled-out",
           "scenario": "Progressive rollout and stabilization",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": "Initial adoption across key symphonies",
               "when": "rollout expands to full domain",

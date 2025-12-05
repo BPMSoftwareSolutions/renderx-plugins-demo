@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\delete.spec.ts",
           "testCase": "publishes canvas.component.deleted when publishDeleted is called",
           "userStory": "As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler deleteCssClass is available"
@@ -50,7 +50,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
           "userStory": "As an orchestrator, I need `notifyUi` to publish style-delete events within <20ms.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "a class change operation completes"

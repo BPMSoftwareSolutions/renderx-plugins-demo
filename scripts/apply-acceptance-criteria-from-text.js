@@ -134,7 +134,7 @@ function applyToJson(rootDir, section) {
       }
     }
     commit();
-    target.acceptanceCriteriaStructured = structured;
+    target.acceptanceCriteria = structured;
   }
   // Pretty-print JSON but keep small clause arrays inline for readability
   const pretty = JSON.stringify(obj, null, 2);

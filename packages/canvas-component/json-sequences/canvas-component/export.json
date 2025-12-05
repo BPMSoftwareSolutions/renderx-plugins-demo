@@ -19,7 +19,7 @@
           "userStory": "As an operations system, I want queryAllComponents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler queryAllComponents is available"
@@ -48,7 +48,7 @@
           "userStory": "As an operations system, I want discoverComponentsFromDom to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler discoverComponentsFromDom is available"
@@ -77,7 +77,7 @@
           "userStory": "As an operations system, I want collectCssClasses to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "collects CSS from components with template.classRefs (current export format)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler collectCssClasses is available"
@@ -103,7 +103,7 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "collect Layout Data",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "discovered components"
@@ -135,7 +135,7 @@
           "userStory": "As an operations system, I want buildUiFileContent to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "should build context for symbol generation",
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler collectLayoutData is available"
@@ -164,7 +164,7 @@
           "userStory": "As an operations system, I want downloadUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler downloadUiFile is available"

@@ -20,7 +20,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
           "userStory": "As an engineer, I need `updateCssClass` to modify rules atomically and register change events.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "handler updateCssClass is available"
@@ -50,7 +50,7 @@
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
           "userStory": "As an orchestrator, I need `notifyUi` to publish style-change events within <20ms.",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "a class change operation completes"
