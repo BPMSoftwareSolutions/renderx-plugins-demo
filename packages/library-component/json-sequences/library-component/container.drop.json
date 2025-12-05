@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Create Requested",
-          "userStory": "As an orchestrator, I need `publishCreateRequested` to route drop events to canvas create.",
+          "userStory": {
+            "persona": "Orchestration integrator",
+            "goal": "route drop events to canvas create",
+            "benefit": "automated deployment"
+          },
           "testCase": "forwards to drop symphony and does not render React nodes directly",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As an integrator, I need container drop to publish create requests deterministically with ≤1s P95 and route to canvas create.",
+      "userStory": {
+        "persona": "Orchestration integrator",
+        "goal": "container drop to publish create requests deterministically with ≤1s P95 and route to canvas create",
+        "benefit": "automated deployment"
+      },
       "persona": "Orchestration integrator",
       "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
     }
   ],
   "beats": 1,
-  "userStory": "As an integrator, I need container drop to publish create requests deterministically with ≤1s P95 and route to canvas create.",
+  "userStory": {
+    "persona": "Orchestration integrator",
+    "goal": "container drop to publish create requests deterministically with ≤1s P95 and route to canvas create",
+    "benefit": "automated deployment"
+  },
   "persona": "Orchestration integrator",
   "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
   "domainId": "renderx-web-orchestration"

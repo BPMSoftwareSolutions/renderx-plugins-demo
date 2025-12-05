@@ -35,7 +35,11 @@
           "scenario": "Scan, Discover, or Analyze scan Orchestration Files",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
           "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
-          "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -123,7 +127,11 @@
           "scenario": "Scan, Discover, or Analyze discover Source Code",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\react-code-validator.spec.ts",
           "testCase": "should validate simple React component",
-          "userStory": "As an operations system, I want discoverSourceCode to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -211,7 +219,11 @@
           "scenario": "map Beats To Code",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\html.code-editor.mapping.spec.ts",
           "testCase": "uses code textarea renderer (type=code)",
-          "userStory": "As an operations system, I want mapBeatsToCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -299,7 +311,11 @@
           "scenario": "collect Baseline",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "testCase": "collects CSS from components with template.classRefs (current export format)",
-          "userStory": "As an operations system, I want collectBaseline to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -379,7 +395,11 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 5 seconds",
+        "benefit": "discovery-driven workflows"
+      },
       "persona": "System Operator",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     },
@@ -396,7 +416,11 @@
           "scenario": "count Lines Of Code",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\react-code-validator.spec.ts",
           "testCase": "should validate simple React component",
-          "userStory": "As an operations system, I want countLinesOfCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -484,7 +508,11 @@
           "scenario": "Scan, Discover, or Analyze analyze Complexity",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
           "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
-          "userStory": "As an operations system, I want analyzeComplexity to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -572,7 +600,11 @@
           "scenario": "Detect or Identify detect Duplication",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
           "testCase": "detectAnomaliesRequested - happy path",
-          "userStory": "As an operations system, I want detectDuplication to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -660,7 +692,11 @@
           "scenario": "calculate Maintainability",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateMaintainability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -740,7 +776,11 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want countLinesOfCode to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -757,7 +797,11 @@
           "scenario": "measure Statement Coverage",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
           "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
-          "userStory": "As an operations system, I want measureStatementCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -845,7 +889,11 @@
           "scenario": "measure Branch Coverage",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
           "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
-          "userStory": "As an operations system, I want measureBranchCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -933,7 +981,11 @@
           "scenario": "measure Function Coverage",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\102-coverage-coupling.spec.ts",
           "testCase": "Scenario: Attach coverageId representing touched lines/functions to telemetry.",
-          "userStory": "As an operations system, I want measureFunctionCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1021,7 +1073,11 @@
           "scenario": "calculate Gap Analysis",
           "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
           "testCase": "should analyze a property and return opportunity score",
-          "userStory": "As an operations system, I want calculateGapAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1101,7 +1157,11 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want measureStatementCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -1118,7 +1178,11 @@
           "scenario": "Validate or Verify validate Handler Mapping",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1206,7 +1270,11 @@
           "scenario": "calculate Conformity Score",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1294,7 +1362,11 @@
           "scenario": "Generate or Create generate Trend Report",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateTrendReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1382,7 +1454,11 @@
           "scenario": "Generate or Create generate Analysis Report",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1462,7 +1538,11 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 500ms",
+        "benefit": "prevents invalid operations"
+      },
       "persona": "System Operator",
       "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     }
@@ -1694,7 +1774,11 @@
       "description": "Produce final analysis report and artifacts"
     }
   ],
-  "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 5 seconds",
+    "benefit": "discovery-driven workflows"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
   "domainId": "renderx-web-orchestration"

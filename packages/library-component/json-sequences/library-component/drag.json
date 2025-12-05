@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "on Drag Start",
-          "userStory": "As an engineer, I need `onDragStart` to prepare drag payload and emit telemetry.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "prepare drag payload and emit telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "publishes drag.move with { id, position }",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an interaction designer, I need drag to start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

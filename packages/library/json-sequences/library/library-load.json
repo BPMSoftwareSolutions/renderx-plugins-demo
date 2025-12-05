@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Load and Initialize Application Components",
-          "userStory": "As an application initializer, I want to load all components with proper dependency resolution in <500ms so that the app becomes interactive quickly (target: <1s Time to Interactive).",
+          "userStory": {
+            "persona": "Library curator",
+            "goal": "to load all components with proper dependency resolution in <500ms",
+            "benefit": "reduces application startup time by 30%"
+          },
           "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
           "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
           "acceptanceCriteria": [
@@ -45,7 +49,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "userStory": {
+            "persona": "Library curator",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "reduces application startup time by 30%"
+          },
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteria": [
@@ -66,13 +74,21 @@
           ]
         }
       ],
-      "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+      "userStory": {
+        "persona": "Library curator",
+        "goal": "the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably",
+        "benefit": "reduces application startup time by 30%"
+      },
       "persona": "Library curator",
       "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
     }
   ],
   "beats": 2,
-  "userStory": "As a curator, I need the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably.",
+  "userStory": {
+    "persona": "Library curator",
+    "goal": "the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably",
+    "benefit": "reduces application startup time by 30%"
+  },
   "persona": "Library curator",
   "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance",
   "domainId": "renderx-web-orchestration"

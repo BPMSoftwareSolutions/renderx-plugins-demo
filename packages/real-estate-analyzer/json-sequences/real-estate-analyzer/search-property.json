@@ -16,7 +16,11 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "fetch Property Data",
-          "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts",
           "acceptanceCriteria": [
@@ -105,7 +109,11 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "Scan, Discover, or Analyze analyze",
-          "userStory": "As an operations system, I want analyze to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
           "acceptanceCriteria": [
@@ -194,7 +202,11 @@
           "dynamics": "mf",
           "timing": "immediate",
           "scenario": "format",
-          "userStory": "As an operations system, I want format to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should format",
           "testFile": "TBD",
           "acceptanceCriteria": [
@@ -276,13 +288,21 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 3,
-  "userStory": "As an operations system, I want fetchPropertyData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 1 second",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

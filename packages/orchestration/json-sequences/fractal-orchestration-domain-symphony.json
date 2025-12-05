@@ -22,7 +22,11 @@
           "scenario": "fractal Narrator",
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
-          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -115,7 +119,11 @@
           "scenario": "fractal Narrator",
           "testFile": "scripts\\__tests__\\symphonic-fractal-architecture.spec.ts",
           "testCase": "computes registry-aligned fractal metrics for the fractal orchestration domain",
-          "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -195,12 +203,20 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "userStory": "As an operations system, I want fractalNarrator to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 1 second",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

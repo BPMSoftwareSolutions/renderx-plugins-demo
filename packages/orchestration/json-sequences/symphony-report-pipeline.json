@@ -72,7 +72,11 @@
           "timing": "< 150ms"
         }
       ],
-      "userStory": "As a system component, I want the Data Collection & Aggregation process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Data Collection & Aggregation process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -128,7 +132,11 @@
           "timing": "< 100ms"
         }
       ],
-      "userStory": "As a system component, I want the Executive Summary Synthesis process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Executive Summary Synthesis process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -184,7 +192,11 @@
           "timing": "< 200ms"
         }
       ],
-      "userStory": "As a system component, I want the Detailed Analysis & Recommendations process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Detailed Analysis & Recommendations process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -240,7 +252,11 @@
           "timing": "< 50ms"
         }
       ],
-      "userStory": "As a system component, I want the Report Generation (Multi-Format) process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Report Generation (Multi-Format) process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -296,7 +312,11 @@
           "timing": "< 100ms"
         }
       ],
-      "userStory": "As a system component, I want the Lineage & Audit Trail Construction process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Lineage & Audit Trail Construction process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -352,7 +372,11 @@
           "timing": "< 50ms"
         }
       ],
-      "userStory": "As a system component, I want the Report Delivery & Distribution process to execute with measurable, auditable results so that dependent systems can rely on consistent behavior with quantifiable performance targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "the Report Delivery & Distribution process to execute with measurable, auditable results",
+        "benefit": "reliable operations with measurable SLA compliance (target: 99"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable SLA compliance (target: 99.9%); supports performance tracking and continuous optimization",
       "beats": []
@@ -360,7 +384,11 @@
   ],
   "tempo": 120,
   "beats": 6,
-  "userStory": "As a product stakeholder, I want the symphony report pipeline process to execute with measurable, auditable results and quantifiable KPIs so that business outcomes are predictable and verifiable (target SLA: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "the symphony report pipeline process to execute with measurable, auditable results and quantifiable KPIs",
+    "benefit": "measurable business value with SLA compliance and performance tracking"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables measurable business value with SLA compliance and performance tracking; supports data-driven optimization",
   "domainId": "renderx-web-orchestration"

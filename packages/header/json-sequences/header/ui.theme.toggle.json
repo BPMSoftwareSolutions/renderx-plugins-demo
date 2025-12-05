@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Switch Between Light and Dark Theme",
-          "userStory": "As an engineer, I need `toggleTheme` to switch theme and persist preference.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "switch theme and persist preference",
+            "benefit": "user satisfaction"
+          },
           "testCase": "should render theme toggle component with light mode by default",
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "theme toggles to update preference, mutate classes, and notify subscribers within <20ms",
+        "benefit": "user satisfaction"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
     }
   ],
   "beats": 1,
-  "userStory": "As a UI runtime engineer, I need theme toggles to update preference, mutate classes, and notify subscribers within <20ms.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "theme toggles to update preference, mutate classes, and notify subscribers within <20ms",
+    "benefit": "user satisfaction"
+  },
   "persona": "UI runtime engineer",
   "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience",
   "domainId": "renderx-web-orchestration"

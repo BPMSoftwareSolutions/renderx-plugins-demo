@@ -22,7 +22,11 @@
           "scenario": "Publish or Deploy deploy Requested",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\47-deploy-fix-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want deployRequested to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -114,7 +118,11 @@
           "scenario": "load Validation Results",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want loadValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -206,7 +214,11 @@
           "scenario": "Validate or Verify check Approval",
           "testFile": "packages/self-healing/__tests__/check-approval.test.ts",
           "testCase": "should check-approval",
-          "userStory": "As an operations system, I want checkApproval to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -298,7 +310,11 @@
           "scenario": "Generate or Create create Branch",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createBranch to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -390,7 +406,11 @@
           "scenario": "apply Changes",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
           "testCase": "getCssClass returns built-in class definition (rx-button)",
-          "userStory": "As an operations system, I want applyChanges to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -482,7 +502,11 @@
           "scenario": "Generate or Create create Pull Request",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\48-create-pull-request.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want createPullRequest to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -574,7 +598,11 @@
           "scenario": "Test or Execute run C I Checks",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
           "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
-          "userStory": "As an operations system, I want runCIChecks to execute reliably with latency < 10 minutes so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 10 minutes",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -666,7 +694,11 @@
           "scenario": "auto Merge P R",
           "testFile": "node_modules\\@jest\\reporters\\node_modules\\@bcoe\\v8-coverage\\src\\test\\merge.spec.ts",
           "testCase": "accepts empty arrays for `mergeProcessCovs`",
-          "userStory": "As an operations system, I want autoMergePR to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -758,7 +790,11 @@
           "scenario": "Publish or Deploy deploy To Production",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\54-deploy-to-production.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want deployToProduction to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -850,7 +886,11 @@
           "scenario": "Validate or Verify verify Deployment",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\53-validate-staging-deployment.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want verifyDeployment to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -942,7 +982,11 @@
           "scenario": "Publish or Deploy deploy Completed",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\57-deploy-fix-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want deployCompleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Release manager",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "automated deployment"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1022,14 +1066,22 @@
           ]
         }
       ],
-      "userStory": "As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.",
+      "userStory": {
+        "persona": "Release manager",
+        "goal": "roll out changes safely with rollback, meeting ≤2s P95 per step",
+        "benefit": "automated deployment"
+      },
       "persona": "Release manager",
       "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
     }
   ],
   "beats": 11,
   "tempo": 120,
-  "userStory": "As a release manager, I need deployment to roll out changes safely with rollback, meeting ≤2s P95 per step.",
+  "userStory": {
+    "persona": "Release manager",
+    "goal": "roll out changes safely with rollback, meeting ≤2s P95 per step",
+    "benefit": "automated deployment"
+  },
   "persona": "Release manager",
   "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
   "domainId": "renderx-web-orchestration"

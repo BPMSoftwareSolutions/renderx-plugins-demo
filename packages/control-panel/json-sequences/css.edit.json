@@ -19,7 +19,11 @@
           "scenario": "Update or Modify update Css Class",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "userStory": "As an engineer, I need `updateCssClass` to modify rules atomically and register change events.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "modify rules atomically and register change events",
+            "benefit": "real-time content updates"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish style-change events within <20ms.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "publish style-change events within <20ms",
+            "benefit": "real-time content updates"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -129,14 +137,22 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "cSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95",
+        "benefit": "real-time content updates"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need CSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "cSS edits to update scoped rules deterministically, handling specificity and ordering with ≤1s P95",
+    "benefit": "real-time content updates"
+  },
   "persona": "Design systems engineer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
   "domainId": "renderx-web-orchestration"

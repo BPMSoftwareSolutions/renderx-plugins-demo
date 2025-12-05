@@ -19,7 +19,11 @@
           "scenario": "Generate Form Fields from Configuration Metadata",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "derive UI elements from schema",
+            "benefit": "no-code form generation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Generate Grouped Form Sections from Configuration",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "group fields semantically",
+            "benefit": "no-code form generation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -79,7 +87,11 @@
           "scenario": "Render Complete Dynamic View with All Components",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "render efficiently with memoization",
+            "benefit": "no-code form generation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -98,14 +110,22 @@
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "generate fields and sections and draw views in <200ms P95",
+        "benefit": "no-code form generation"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
     }
   ],
   "beats": 3,
   "tempo": 120,
-  "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "generate fields and sections and draw views in <200ms P95",
+    "benefit": "no-code form generation"
+  },
   "persona": "UI runtime engineer",
   "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant",
   "domainId": "renderx-web-orchestration"

@@ -19,7 +19,11 @@
           "scenario": "Delete or Remove delete Css Class",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\delete.spec.ts",
           "testCase": "publishes canvas.component.deleted when publishDeleted is called",
-          "userStory": "As an engineer, I need `deleteCssClass` to remove rules, validate fallout, and record audit.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "remove rules, validate fallout, and record audit",
+            "benefit": "data cleanup workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish style-delete events within <20ms.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "publish style-delete events within <20ms",
+            "benefit": "data cleanup workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -129,14 +137,22 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need CSS deletion to remove scoped rules safely with governance checks in ≤1s P95.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "cSS deletion to remove scoped rules safely with governance checks in ≤1s P95",
+        "benefit": "data cleanup workflows"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need CSS deletion to remove scoped rules safely with governance checks in ≤1s P95.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "cSS deletion to remove scoped rules safely with governance checks in ≤1s P95",
+    "benefit": "data cleanup workflows"
+  },
   "persona": "Design systems engineer",
   "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)",
   "domainId": "renderx-web-orchestration"

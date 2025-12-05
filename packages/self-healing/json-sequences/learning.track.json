@@ -22,7 +22,11 @@
           "scenario": "track Requested",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\58-track-effectiveness-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want trackRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -114,7 +118,11 @@
           "scenario": "load Deployment Info",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want loadDeploymentInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -206,7 +214,11 @@
           "scenario": "collect Post Deployment Metrics",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\59-load-deployment-metrics.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want collectPostDeploymentMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -298,7 +310,11 @@
           "scenario": "compare Metrics",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\60-compare-metrics.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want compareMetrics to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -390,7 +406,11 @@
           "scenario": "calculate Improvement",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateImprovement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -482,7 +502,11 @@
           "scenario": "assess Success",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\69-assess-impact.spec.ts",
           "testCase": "Scenario: Aggregate issue severities into overall impact",
-          "userStory": "As an operations system, I want assessSuccess to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -574,7 +598,11 @@
           "scenario": "Update or Modify update Learning Models",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\62-update-learning-model.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want updateLearningModels to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -666,7 +694,11 @@
           "scenario": "Generate or Create generate Insights",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateInsights to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -758,7 +790,11 @@
           "scenario": "store Effectiveness",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
           "testCase": "should load default CSS classes",
-          "userStory": "As an operations system, I want storeEffectiveness to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -850,7 +886,11 @@
           "scenario": "track Completed",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\67-track-effectiveness-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want trackCompleted to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -930,14 +970,22 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want trackRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 10,
   "tempo": 120,
-  "userStory": "As an operations system, I want trackRequested to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 1 second",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

@@ -22,7 +22,11 @@
           "scenario": "Detect or Identify detect Anomalies Requested",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\8-detect-anomalies-requested.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectAnomaliesRequested to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -114,7 +118,11 @@
           "scenario": "load Telemetry Data",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\9-load-telemetry-data.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want loadTelemetryData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -206,7 +214,11 @@
           "scenario": "Detect or Identify detect Performance Anomalies",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\10-detect-performance-anomalies.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectPerformanceAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -298,7 +310,11 @@
           "scenario": "Detect or Identify detect Behavioral Anomalies",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\11-detect-behavioral-anomalies.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectBehavioralAnomalies to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -390,7 +406,11 @@
           "scenario": "Detect or Identify detect Coverage Gaps",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\12-detect-coverage-gaps.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectCoverageGaps to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -482,7 +502,11 @@
           "scenario": "Detect or Identify detect Error Patterns",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\13-detect-error-patterns.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectErrorPatterns to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -574,7 +598,11 @@
           "scenario": "aggregate Anomaly Results",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want aggregateAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -666,7 +694,11 @@
           "scenario": "store Anomaly Results",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\15-store-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want storeAnomalyResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -758,7 +790,11 @@
           "scenario": "Detect or Identify detect Anomalies Completed",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\16-detect-anomalies-completed.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want detectAnomaliesCompleted to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reduces MTTR by 70%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -838,14 +874,22 @@
           ]
         }
       ],
-      "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+      "userStory": {
+        "persona": "SRE",
+        "goal": "anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts",
+        "benefit": "reduces MTTR by 70%"
+      },
       "persona": "SRE",
       "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%"
     }
   ],
   "beats": 9,
   "tempo": 120,
-  "userStory": "As an SRE, I need anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts.",
+  "userStory": {
+    "persona": "SRE",
+    "goal": "anomaly detection to process telemetry streams within ≤1s P95, flagging deviations with confidence scores and publishing alerts",
+    "benefit": "reduces MTTR by 70%"
+  },
   "persona": "SRE",
   "businessValue": "Reduces MTTR by 70%; enables proactive issue resolution; prevents customer impact; improves system stability by 40%",
   "domainId": "renderx-web-orchestration"

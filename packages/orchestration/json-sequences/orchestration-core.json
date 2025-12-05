@@ -22,7 +22,11 @@
           "scenario": "Scan, Discover, or Analyze scan Orchestration Files",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
           "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
-          "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -102,12 +106,20 @@
           ]
         }
       ],
-      "userStory": "As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.",
+      "userStory": {
+        "persona": "DevOps engineer",
+        "goal": "orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails",
+        "benefit": "discovery-driven workflows"
+      },
       "persona": "DevOps engineer",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     }
   ],
-  "userStory": "As a DevOps engineer, I need orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails.",
+  "userStory": {
+    "persona": "DevOps engineer",
+    "goal": "orchestration-core flows to scan, schedule, and monitor tasks with backpressure, retries, and audit trails",
+    "benefit": "discovery-driven workflows"
+  },
   "persona": "DevOps engineer",
   "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
   "domainId": "renderx-web-orchestration"

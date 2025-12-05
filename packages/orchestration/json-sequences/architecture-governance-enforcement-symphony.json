@@ -76,7 +76,11 @@
           "scenario": "Validate or Verify validate J S O N Schema Structure",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateJSONSchemaStructure to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -172,7 +176,11 @@
           "scenario": "Validate or Verify validate Orchestration Domains Registry",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
-          "userStory": "As an operations system, I want validateOrchestrationDomainsRegistry to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -268,7 +276,11 @@
           "scenario": "Validate or Verify validate Symphony Files",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateSymphonyFiles to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -364,7 +376,11 @@
           "scenario": "Validate or Verify validate Schema Section",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateSchemaSection to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -460,7 +476,11 @@
           "scenario": "report J S O N Validation",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want reportJSONValidation to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -540,7 +560,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "prevents invalid operations"
+      },
       "persona": "Governance lead",
       "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     },
@@ -567,7 +591,11 @@
           "scenario": "start Handler Mapping Verification",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want startHandlerMappingVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -663,7 +691,11 @@
           "scenario": "load Handler Implementations",
           "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
           "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
-          "userStory": "As an operations system, I want loadHandlerImplementations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -759,7 +791,11 @@
           "scenario": "index Beats From J S O N",
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want indexBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -855,7 +891,11 @@
           "scenario": "Validate or Verify verify Beat Handler Mapping",
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want verifyBeatHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -951,7 +991,11 @@
           "scenario": "Detect or Identify detect Orphan Handlers",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want detectOrphanHandlers to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1047,7 +1091,11 @@
           "scenario": "report Handler Mapping",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
           "testCase": "placeholder passes",
-          "userStory": "As an operations system, I want reportHandlerMapping to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1127,7 +1175,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -1154,7 +1206,11 @@
           "scenario": "start Test Coverage Verification",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want startTestCoverageVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1250,7 +1306,11 @@
           "scenario": "catalog Beats From J S O N",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want catalogBeatsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1346,7 +1406,11 @@
           "scenario": "index Test Files",
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\index.test.js",
           "testCase": "should index-test-files",
-          "userStory": "As an operations system, I want indexTestFiles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1442,7 +1506,11 @@
           "scenario": "Scan, Discover, or Analyze analyze Test Coverage",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
           "testCase": "Scenario: Analyze coverage gaps to identify untested code",
-          "userStory": "As an operations system, I want analyzeTestCoverage to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1538,7 +1606,11 @@
           "scenario": "Detect or Identify identify Uncovered Beats",
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want identifyUncoveredBeats to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1634,7 +1706,11 @@
           "scenario": "report Test Coverage",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\cli\\comparison-reporter.test.ts",
           "testCase": "should calculate duration reduction",
-          "userStory": "As an operations system, I want reportTestCoverage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1714,7 +1790,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -1741,7 +1821,11 @@
           "scenario": "start Markdown Consistency Check",
           "testFile": "packages/orchestration/test/governance.handlers#startMarkdownConsistencyCheck.spec.ts",
           "testCase": "should governance.handlers#startMarkdownConsistencyCheck when event published",
-          "userStory": "As an operations system, I want startMarkdownConsistencyCheck to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1837,7 +1921,11 @@
           "scenario": "extract Facts From J S O N",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want extractFactsFromJSON to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1933,7 +2021,11 @@
           "scenario": "Detect or Identify identify Markdown Files",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
           "testCase": "should load valid logs and skip corrupted ones, reporting progress",
-          "userStory": "As an operations system, I want identifyMarkdownFiles to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2029,7 +2121,11 @@
           "scenario": "Validate or Verify verify Facts In Markdown",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "testCase": "should verify-facts-in-markdown",
-          "userStory": "As an operations system, I want verifyFactsInMarkdown to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2125,7 +2221,11 @@
           "scenario": "Detect or Identify detect Markdown Contradictions",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\anomaly.detect.spec.ts",
           "testCase": "detectAnomaliesRequested - happy path",
-          "userStory": "As an operations system, I want detectMarkdownContradictions to execute reliably with latency < 30 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 30 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2221,7 +2321,11 @@
           "scenario": "report Markdown Consistency",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want reportMarkdownConsistency to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2301,7 +2405,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -2328,7 +2436,11 @@
           "scenario": "start Auditability Verification",
           "testFile": "packages/orchestration/test/governance.handlers#startAuditabilityVerification.spec.ts",
           "testCase": "should governance.handlers#startAuditabilityVerification when event published",
-          "userStory": "As an operations system, I want startAuditabilityVerification to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2424,7 +2536,11 @@
           "scenario": "Initialize or Configure load J S O N Definitions",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want loadJSONDefinitions to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2520,7 +2636,11 @@
           "scenario": "Generate or Create create Code Mappings",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createCodeMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2616,7 +2736,11 @@
           "scenario": "Generate or Create create Test Mappings",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want createTestMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2712,7 +2836,11 @@
           "scenario": "Generate or Create create Markdown Mappings",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createMarkdownMappings to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2808,7 +2936,11 @@
           "scenario": "Validate or Verify verify Chain Completeness",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
-          "userStory": "As an operations system, I want verifyChainCompleteness to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2904,7 +3036,11 @@
           "scenario": "report Auditability",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want reportAuditability to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2984,7 +3120,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -3011,7 +3151,11 @@
           "scenario": "start Conformity Analysis",
           "testFile": "node_modules\\@renderx-plugins\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts",
           "testCase": "should analyze a property and return opportunity score",
-          "userStory": "As an operations system, I want startConformityAnalysis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3107,7 +3251,11 @@
           "scenario": "aggregate Governance Results",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want aggregateGovernanceResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3203,7 +3351,11 @@
           "scenario": "calculate Conformity Score",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3299,7 +3451,11 @@
           "scenario": "summarize Violations",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\spa-validator.stage-crew-violations.test.ts",
           "testCase": "stage:cue",
-          "userStory": "As an operations system, I want summarizeViolations to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3395,7 +3551,11 @@
           "scenario": "make Governance Decision",
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want makeGovernanceDecision to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3491,7 +3651,11 @@
           "scenario": "Generate or Create generate Governance Report",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateGovernanceReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3587,7 +3751,11 @@
           "scenario": "conclude Governance Enforcement",
           "testFile": "scripts\\__tests__\\architecture-governance-handlers-indexBeats.spec.js",
           "testCase": "indexes beats from symphony JSON without throwing on numeric beat summaries",
-          "userStory": "As an operations system, I want concludeGovernanceEnforcement to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -3667,12 +3835,20 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
-  "userStory": "As a governance lead, I need policy checks to run with ≤1s P95 per rule set and produce actionable reports.",
+  "userStory": {
+    "persona": "Governance lead",
+    "goal": "policy checks to run with ≤1s P95 per rule set and produce actionable reports",
+    "benefit": "prevents invalid operations"
+  },
   "persona": "Governance lead",
   "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements",
   "domainId": "renderx-web-orchestration"

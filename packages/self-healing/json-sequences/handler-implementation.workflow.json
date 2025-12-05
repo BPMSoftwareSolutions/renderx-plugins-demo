@@ -656,7 +656,11 @@
   "id": "handler-implementation.workflow",
   "beats": 1,
   "tempo": 120,
-  "userStory": "As a product stakeholder, I want the handler-implementation-workflow process to execute with measurable, auditable results and quantifiable KPIs so that business outcomes are predictable and verifiable (target SLA: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "the handler-implementation-workflow process to execute with measurable, auditable results and quantifiable KPIs",
+    "benefit": "measurable business value with SLA compliance and performance tracking"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables measurable business value with SLA compliance and performance tracking; supports data-driven optimization",
   "domainId": "renderx-web-orchestration"

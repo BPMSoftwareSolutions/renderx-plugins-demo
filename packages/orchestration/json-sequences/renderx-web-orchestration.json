@@ -42,7 +42,11 @@
       "number": 1,
       "name": "Initialization",
       "description": "Initialize RenderX Web build environment and dependencies",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "instant theme switching"
+      },
       "persona": "Product owner",
       "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
       "status": "active",
@@ -59,7 +63,11 @@
           "scenario": "Retrieve Current Application Theme Configuration",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
           "testCase": "should have required metadata fields",
-          "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "to retrieve the current theme in <10ms",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -150,7 +158,11 @@
           "scenario": "Switch Between Light and Dark Theme",
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
           "testCase": "should render theme toggle component with light mode by default",
-          "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "theme switching to complete in <100ms",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -241,7 +253,11 @@
           "scenario": "Initialize Control Panel with Configuration",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
           "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
-          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "complete in <200ms",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -332,7 +348,11 @@
           "scenario": "Initialize or Configure init Resolver",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -423,7 +443,11 @@
           "scenario": "register Observers",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -514,7 +538,11 @@
           "scenario": "Notify or Publish notify Ready",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "instant theme switching"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -599,7 +627,11 @@
       "number": 2,
       "name": "Build",
       "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "real-time content updates"
+      },
       "persona": "Product owner",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
       "orchestration": "pre-build-pipeline-check-symphony",
@@ -617,7 +649,11 @@
           "scenario": "Update or Modify update Attribute",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -708,7 +744,11 @@
           "scenario": "refresh Control Panel",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "testCase": "setDirty marks isDirty with timestamp",
-          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -793,7 +833,11 @@
       "number": 3,
       "name": "Test & Validation",
       "description": "Execute E2E Cypress tests and compliance validation (7-layer framework)",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "page load time by 25%"
+      },
       "persona": "Product owner",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
       "orchestration": [
@@ -814,7 +858,11 @@
           "scenario": "Render or Display show Selection Overlay",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts",
           "testCase": "getCanvasRect returns patched bounding client rect values",
-          "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 200ms",
+            "benefit": "page load time by 25%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -905,7 +953,11 @@
           "scenario": "hide Selection Overlay",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
           "testCase": "should hide-selection-overlay",
-          "userStory": "As an operations system, I want hideSelectionOverlay to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -996,7 +1048,11 @@
           "scenario": "attach Line Resize Handlers",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
           "testCase": "startLineResize - calls optional callback harmlessly",
-          "userStory": "As an operations system, I want attachLineResizeHandlers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1087,7 +1143,11 @@
           "scenario": "ensure Line Overlay For",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.attach.spec.ts",
           "testCase": "should ensure-line-overlay-for",
-          "userStory": "As an operations system, I want ensureLineOverlayFor to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1178,7 +1238,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "page load time by 25%"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1263,7 +1327,11 @@
       "number": 4,
       "name": "Delivery",
       "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-delivery-execute-symphony",
@@ -1281,7 +1349,11 @@
           "scenario": "export Svg To Gif",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts",
           "testCase": "success minimal export triggers download without error",
-          "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1372,7 +1444,11 @@
           "scenario": "export Svg To Mp4",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "exportSvgToMp4 to execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1457,7 +1533,11 @@
       "number": 5,
       "name": "Telemetry & Monitoring",
       "description": "Collect and instrument telemetry for observability and SLO tracking",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "generate-telemetry-instrumentation-symphony",
@@ -1475,7 +1555,11 @@
           "scenario": "ensure Payload",
           "testFile": "packages/orchestration/test/library-component/drag.preview#ensurePayload.spec.ts",
           "testCase": "should library-component/drag.preview#ensurePayload when event published",
-          "userStory": "As an operations system, I want ensurePayload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1566,7 +1650,11 @@
           "scenario": "compute Ghost Size",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
           "testCase": "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
-          "userStory": "As an operations system, I want computeGhostSize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1657,7 +1745,11 @@
           "scenario": "Generate or Create create Ghost Container",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.container-append.spec.ts",
           "testCase": "creates container and then child inside it with relative positioning",
-          "userStory": "As an operations system, I want createGhostContainer to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1748,7 +1840,11 @@
           "scenario": "Render or Display render Template Preview",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\template-exactness.test.js",
           "testCase": "\\n",
-          "userStory": "As an operations system, I want renderTemplatePreview to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 200ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1839,7 +1935,11 @@
           "scenario": "apply Template Styles",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
           "testCase": "getCssClass returns built-in class definition (rx-button)",
-          "userStory": "As an operations system, I want applyTemplateStyles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1930,7 +2030,11 @@
           "scenario": "compute Cursor Offsets",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
           "testCase": "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
-          "userStory": "As an operations system, I want computeCursorOffsets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2021,7 +2125,11 @@
           "scenario": "install Drag Image",
           "testFile": "node_modules\\@renderx-plugins\\library-component\\__tests__\\handlers.drag.nodragimage.spec.ts",
           "testCase": "onDragStart sets payload and returns { started: true } even without setDragImage",
-          "userStory": "As an operations system, I want installDragImage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2106,7 +2214,11 @@
       "number": 6,
       "name": "Recovery & Resilience",
       "description": "Enable recovery procedures and resilience mechanisms",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-recovery-symphony",
@@ -2124,7 +2236,11 @@
           "scenario": "establish",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\baseline.establish.spec.ts",
           "testCase": "establishes baseline metrics from synthetic telemetry artifact",
-          "userStory": "As an operations system, I want establish to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -2254,7 +2370,11 @@
       "continuous-delivery"
     ]
   },
-  "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+  "userStory": {
+    "persona": "Product owner",
+    "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+    "benefit": "instant theme switching"
+  },
   "persona": "Product owner",
   "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
   "domainId": "renderx-web-orchestration"

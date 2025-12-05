@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Retrieve Current Application Theme Configuration",
-          "userStory": "As an engineer, I need `getCurrentTheme` to read persisted theme and apply classes.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "read persisted theme and apply classes",
+            "benefit": "instant theme switching"
+          },
           "testCase": "should have required metadata fields",
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
           "acceptanceCriteria": [
@@ -45,7 +49,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish theme state in <20ms.",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "publish theme state in <20ms",
+            "benefit": "instant theme switching"
+          },
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteria": [
@@ -67,13 +75,21 @@
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "theme retrieval to load and apply preferences without blocking initial render (≤1s P95)",
+        "benefit": "instant theme switching"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
     }
   ],
   "beats": 2,
-  "userStory": "As a UI runtime engineer, I need theme retrieval to load and apply preferences without blocking initial render (≤1s P95).",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "theme retrieval to load and apply preferences without blocking initial render (≤1s P95)",
+    "benefit": "instant theme switching"
+  },
   "persona": "UI runtime engineer",
   "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
   "domainId": "renderx-web-orchestration"

@@ -19,7 +19,11 @@
           "scenario": "Remove CSS Class from UI Element for State Cleanup",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
           "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
-          "userStory": "As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "remove classes safely, validate impact, and record change events",
+            "benefit": "prevents CSS accumulation that degrades performance"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish class-remove events with <20ms delivery and backpressure.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "publish class-remove events with <20ms delivery and backpressure",
+            "benefit": "prevents CSS accumulation that degrades performance"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -129,14 +137,22 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95",
+        "benefit": "prevents CSS accumulation that degrades performance"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95",
+    "benefit": "prevents CSS accumulation that degrades performance"
+  },
   "persona": "Design systems engineer",
   "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations",
   "domainId": "renderx-web-orchestration"

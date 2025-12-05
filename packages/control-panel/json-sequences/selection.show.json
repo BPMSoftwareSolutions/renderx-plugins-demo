@@ -19,7 +19,11 @@
           "scenario": "derive Selection Model",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
           "testCase": "returns null selectionModel when id missing",
-          "userStory": "As a runtime engineer, I need `deriveSelectionModel` to compute selected fields and sections for the control panel.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "compute selected fields and sections for the control panel",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish selection model events within <20ms.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "publish selection model events within <20ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -129,14 +137,22 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As an interaction designer, I need selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

@@ -35,7 +35,11 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "userStory": "As an engineer, I need `updateFromElement` to map element changes into panel state."
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "map element changes into panel state",
+            "benefit": "real-time content updates"
+          }
         },
         {
           "beat": 2,
@@ -126,17 +130,29 @@
           ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish panel updates with <20ms delivery."
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "publish panel updates with <20ms delivery",
+            "benefit": "real-time content updates"
+          }
         }
       ],
-      "userStory": "As a UI runtime engineer, I need updates from canvas components to refresh control panel state deterministically with <20ms notifications.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "updates from canvas components to refresh control panel state deterministically with <20ms notifications",
+        "benefit": "real-time content updates"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a UI runtime engineer, I need updates from canvas components to refresh control panel state deterministically with <20ms notifications.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "updates from canvas components to refresh control panel state deterministically with <20ms notifications",
+    "benefit": "real-time content updates"
+  },
   "persona": "UI runtime engineer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
   "domainId": "renderx-web-orchestration"

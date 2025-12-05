@@ -35,7 +35,11 @@
           "scenario": "Scan, Discover, or Analyze scan Orchestration Files",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
           "testCase": "should fallback to DOM scanning when KV store is empty but components exist in DOM",
-          "userStory": "As an operations system, I want scanOrchestrationFiles to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -115,7 +119,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "registry audits to validate handler mapping and conformity, producing actionable reports",
+        "benefit": "discovery-driven workflows"
+      },
       "persona": "Governance lead",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     },
@@ -133,7 +141,11 @@
           "scenario": "Validate or Verify validate Handler Mapping",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -221,7 +233,11 @@
           "scenario": "Validate or Verify validate Handler Mapping",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateHandlerMapping to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -309,7 +325,11 @@
           "scenario": "calculate Conformity Score",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\61-calculate-effectiveness.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want calculateConformityScore to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "prevents invalid operations"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -389,7 +409,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "registry audits to validate handler mapping and conformity, producing actionable reports",
+        "benefit": "prevents invalid operations"
+      },
       "persona": "Governance lead",
       "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     },
@@ -407,7 +431,11 @@
           "scenario": "Generate or Create generate Analysis Report",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\63-generate-learning-report.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateAnalysisReport to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Governance lead",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -487,7 +515,11 @@
           ]
         }
       ],
-      "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+      "userStory": {
+        "persona": "Governance lead",
+        "goal": "registry audits to validate handler mapping and conformity, producing actionable reports",
+        "benefit": "accelerates content creation"
+      },
       "persona": "Governance lead",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
@@ -577,7 +609,11 @@
     "audit.registry.validation.completed",
     "audit.registry.reporting.completed"
   ],
-  "userStory": "As a governance lead, I need registry audits to validate handler mapping and conformity, producing actionable reports.",
+  "userStory": {
+    "persona": "Governance lead",
+    "goal": "registry audits to validate handler mapping and conformity, producing actionable reports",
+    "benefit": "discovery-driven workflows"
+  },
   "persona": "Governance lead",
   "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
   "domainId": "renderx-web-orchestration"

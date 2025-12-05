@@ -19,7 +19,11 @@
           "scenario": "load Build Context",
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
           "testCase": "should build context for symbol generation",
-          "userStory": "As an operations system, I want loadBuildContext to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -106,7 +110,11 @@
           "scenario": "Validate or Verify validate Orchestration Domains",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateOrchestrationDomains to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -193,7 +201,11 @@
           "scenario": "Validate or Verify validate Governance Rules",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateGovernanceRules to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -280,7 +292,11 @@
           "scenario": "Validate or Verify validate Agent Behavior",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateAgentBehavior to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -367,7 +383,11 @@
           "scenario": "record Validation Results",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want recordValidationResults to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -447,7 +467,11 @@
           ]
         }
       ],
-      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "userStory": {
+        "persona": "DevOps engineer",
+        "goal": "the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "DevOps engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     },
@@ -462,7 +486,11 @@
           "scenario": "Generate or Create regenerate Orchestration Domains",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\registry\\orchestration-registry-completeness.spec.ts",
           "testCase": "should have SAFe Continuous Delivery Pipeline registered",
-          "userStory": "As an operations system, I want regenerateOrchestrationDomains to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -549,7 +577,11 @@
           "scenario": "sync Json Sources",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want syncJsonSources to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -636,7 +668,11 @@
           "scenario": "Generate or Create generate Manifests",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want generateManifests to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -723,7 +759,11 @@
           "scenario": "Validate or Verify validate Manifest Integrity",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want validateManifestIntegrity to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -810,7 +850,11 @@
           "scenario": "record Manifest State",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
           "testCase": "includes a runtime entry for @renderx-plugins/canvas-component",
-          "userStory": "As an operations system, I want recordManifestState to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -890,7 +934,11 @@
           ]
         }
       ],
-      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "userStory": {
+        "persona": "DevOps engineer",
+        "goal": "the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance",
+        "benefit": "accelerates content creation"
+      },
       "persona": "DevOps engineer",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     },
@@ -905,7 +953,11 @@
           "scenario": "Initialize or Configure initialize Package Build",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want initializePackageBuild to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "accelerates onboarding"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -992,7 +1044,11 @@
           "scenario": "Generate or Create build Components Package",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want buildComponentsPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates onboarding"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1079,7 +1135,11 @@
           "scenario": "Generate or Create build Musical Conductor Package",
           "testFile": "node_modules\\musical-conductor\\tests\\unit\\communication\\sequences\\MusicalConductor.minimal.test.ts",
           "testCase": "should create a MusicalConductor instance",
-          "userStory": "As an operations system, I want buildMusicalConductorPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates onboarding"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1166,7 +1226,11 @@
           "scenario": "Generate or Create build Host Sdk Package",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an operations system, I want buildHostSdkPackage to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "DevOps engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates onboarding"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -1246,12 +1310,20 @@
           ]
         }
       ],
-      "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+      "userStory": {
+        "persona": "DevOps engineer",
+        "goal": "the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance",
+        "benefit": "accelerates onboarding"
+      },
       "persona": "DevOps engineer",
       "businessValue": "Accelerates onboarding; reduces setup time by 50%; enables self-service configuration; improves first-time success"
     }
   ],
-  "userStory": "As a DevOps engineer, I need the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance.",
+  "userStory": {
+    "persona": "DevOps engineer",
+    "goal": "the build pipeline orchestration to execute stages deterministically with beat SLAs (plan ≤1s, build ≤2s, test ≤2s, report ≤1s) and 99.9% success, emitting telemetry for governance",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "DevOps engineer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

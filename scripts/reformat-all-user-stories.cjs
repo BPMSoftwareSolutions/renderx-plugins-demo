@@ -12,8 +12,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const sequencesDir = path.join(__dirname, '../packages/canvas-component/json-sequences/canvas-component');
-
 // Helper function to reformat a user story object
 function reformatUserStory(us) {
   if (!us || typeof us !== 'object') return false;
@@ -62,12 +60,48 @@ function reformatUserStory(us) {
   return false;
 }
 
-// Get all .json files except index.json and rules.config.json
-const files = fs.readdirSync(sequencesDir)
-  .filter(f => f.endsWith('.json') && f !== 'index.json' && f !== 'rules.config.json')
-  .map(f => path.join(sequencesDir, f));
+// Discover all sequence files from all packages
+function discoverSequenceFiles() {
+  const allFiles = [];
+  const packagesDir = path.join(__dirname, '../packages');
 
-console.log(`Processing ${files.length} sequence files\n`);
+  const packages = [
+    'canvas-component',
+    'control-panel',
+    'header',
+    'library',
+    'library-component',
+    'orchestration',
+    'real-estate-analyzer',
+    'self-healing',
+    'slo-dashboard'
+  ];
+
+  for (const pkg of packages) {
+    const seqDir = path.join(packagesDir, pkg, 'json-sequences');
+    if (fs.existsSync(seqDir)) {
+      // Recursively find all .json files
+      function walkDir(dir) {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry.name);
+          if (entry.isDirectory()) {
+            walkDir(fullPath);
+          } else if (entry.isFile() && entry.name.endsWith('.json') &&
+                     entry.name !== 'index.json' && entry.name !== 'rules.config.json') {
+            allFiles.push(fullPath);
+          }
+        }
+      }
+      walkDir(seqDir);
+    }
+  }
+
+  return allFiles;
+}
+
+const files = discoverSequenceFiles();
+console.log(`Processing ${files.length} sequence files from all packages\n`);
 
 let fixed = 0;
 

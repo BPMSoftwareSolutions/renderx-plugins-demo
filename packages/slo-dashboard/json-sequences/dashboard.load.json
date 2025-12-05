@@ -14,7 +14,11 @@
           "scenario": "load Budgets",
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\01-load-budgets.spec.ts",
           "testCase": "Scenario: Load initial SLO budgets for compliance baseline.",
-          "userStory": "As an SRE, I need `loadBudgets` to fetch and validate budget data.",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "fetch and validate budget data",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -101,7 +105,11 @@
           "scenario": "load Metrics",
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\02-load-metrics.spec.ts",
           "testCase": "Scenario: Retrieve latest SLI metrics for compliance calculation.",
-          "userStory": "As an SRE, I need `loadMetrics` to fetch recent metrics reliably.",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "fetch recent metrics reliably",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -188,7 +196,11 @@
           "scenario": "compute Compliance",
           "testFile": "node_modules\\@slo-shape\\dashboard\\__tests__\\business-bdd-handlers\\03-compute-compliance.spec.ts",
           "testCase": "Scenario: Aggregate weighted compliance across loaded SLO budgets and metrics.",
-          "userStory": "As an SRE, I need `computeCompliance` to calculate status and thresholds deterministically.",
+          "userStory": {
+            "persona": "SRE",
+            "goal": "calculate status and thresholds deterministically",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -268,7 +280,11 @@
           ]
         }
       ],
-      "userStory": "As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.",
+      "userStory": {
+        "persona": "SRE",
+        "goal": "the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "SRE",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
@@ -276,7 +292,11 @@
   "name": "Dashboard.load",
   "beats": 3,
   "tempo": 120,
-  "userStory": "As an SRE, I need the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry.",
+  "userStory": {
+    "persona": "SRE",
+    "goal": "the dashboard to load budgets and metrics and compute compliance in ≤1s P95 with accurate telemetry",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "SRE",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

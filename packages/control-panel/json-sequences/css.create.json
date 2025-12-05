@@ -19,7 +19,11 @@
           "scenario": "Generate or Create create Css Class",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -49,7 +53,11 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "accelerates content creation"
+          },
           "acceptanceCriteria": [
             {
               "given": [
@@ -129,14 +137,22 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need CSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "cSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks",
+        "benefit": "accelerates content creation"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need CSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "cSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks",
+    "benefit": "accelerates content creation"
+  },
   "persona": "Design systems engineer",
   "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity",
   "domainId": "renderx-web-orchestration"
