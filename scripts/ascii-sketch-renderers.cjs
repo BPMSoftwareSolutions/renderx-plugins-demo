@@ -49,7 +49,7 @@
  * @property {number} totalLoc
  * @property {number} handlerCount
  * @property {number} avgLocPerHandler
- * @property {number} coverageStatements
+ * @property {number] coverageStatements
  * @property {number} duplicationBlocks
  * @property {number} maintainability
  * @property {number} conformityScore
@@ -164,22 +164,21 @@ function getTrendDirection(current, previous, epsilon = 0.1) {
  * @returns {string}
  */
 function renderSymphonyArchitecture(data) {
-  const { domainId, summary, symphonies } = data;
-  const { symphonyCount, handlerCount } = summary || {};
+  const { domainId, summary, symphonies } = data || {};
+  const { symphonyCount = 0, handlerCount = 0 } = summary || {};
 
   const sketch = new AsciiSketcher({ boxWidth: 48 });
-  sketch._pushTopBorder();
-  sketch._pushLine(' SYMPHONY ORCHESTRATION ');
-  sketch._pushSeparator();
-  sketch._pushLine(`Domain : ${domainId}`);
-  sketch._pushLine(`Units  : ${symphonyCount} symphonies`);
-  sketch._pushLine(`        ${handlerCount} handlers`);
-  sketch._pushSeparator();
-  sketch._pushLine('SYMPHONIES');
+  const lines = [];
+  lines.push(`Domain : ${domainId || ''}`);
+  lines.push(`Units  : ${symphonyCount} symphonies`);
+  lines.push(`        ${handlerCount} handlers`);
+  lines.push('');
+  lines.push('SYMPHONIES');
 
   const sorted = Array.isArray(symphonies) ? [...symphonies].sort((a, b) => b.handlerCount - a.handlerCount) : [];
-  sorted.forEach(s => sketch._pushLine(`• ${s.label} (${s.handlerCount} @ ${s.avgCoverage.toFixed(1)}%)`));
-  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  sorted.forEach(s => lines.push(`• ${s.label} (${s.handlerCount} @ ${Number(s.avgCoverage || 0).toFixed(1)}%)`));
+
+  sketch.addCard('SYMPHONY ORCHESTRATION', lines, { width: 48 });
   return sketch.current.join('\n');
 }
 
@@ -189,21 +188,16 @@ function renderSymphonyArchitecture(data) {
  * @returns {string}
  */
 function renderSymphonyHandlerBreakdown(data) {
-  const { symphonyLabel, handlers } = data;
+  const { symphonyLabel, handlers } = data || {};
+  const columns = [
+    { key: 'name', header: 'Name', width: 24 },
+    { key: 'loc', header: 'LOC', width: 4, align: 'right' },
+    { key: 'cov', header: 'Cov', width: 4, align: 'right' },
+    { key: 'risk', header: 'Risk', width: 8 }
+  ];
+  const rows = (handlers || []).map(h => [h.name || '', String(h.loc || ''), String(Math.floor(h.coverage || 0)) + '%', h.risk || '']);
   const sketch = new AsciiSketcher({ boxWidth: 44 });
-  sketch._pushTopBorder();
-  sketch._pushLine(` HANDLERS: ${symphonyLabel}`);
-  sketch._pushSeparator();
-  sketch._pushLine('Name                     LOC   Cov   Risk');
-  sketch._pushSeparator();
-  (handlers || []).forEach(h => {
-    const name = padString(h.name, 24);
-    const loc = padString(String(h.loc), 4, true);
-    const cov = padString(String(Math.floor(h.coverage)), 3, true) + '%';
-    const risk = padString(h.risk, 8);
-    sketch._pushLine(`${name} ${loc}${cov} ${risk}`);
-  });
-  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  sketch.addTable(columns, rows);
   return sketch.current.join('\n');
 }
 
@@ -225,18 +219,18 @@ function renderHandlerPortfolioFoundation(data) {
   } = data || {};
 
   const sketch = new AsciiSketcher({ boxWidth: 40 });
-  sketch._pushTopBorder();
-  sketch._pushLine(' HANDLER PORTFOLIO METRICS ');
-  sketch._pushSeparator();
-  sketch._pushLine(`Files           : ${String(totalFiles)}`);
-  sketch._pushLine(`Total LOC       : ${String(totalLoc)}`);
-  sketch._pushLine(`Handlers        : ${String(handlerCount)}`);
-  sketch._pushLine(`Avg LOC/Handler : ${Number(avgLocPerHandler || 0).toFixed(1)}`);
-  sketch._pushLine(`Coverage        : ${Number(coverageStatements || 0).toFixed(1)}%`);
-  sketch._pushLine(`Duplication     : ${String(duplicationBlocks)}`);
-  sketch._pushLine(`Maintainability : ${Number(maintainability || 0).toFixed(1)}`);
-  sketch._pushLine(`Conformity      : ${Number(conformityScore || 0).toFixed(1)}%`);
-  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  const lines = [
+    `Files           : ${String(totalFiles || '')}`,
+    `Total LOC       : ${String(totalLoc || '')}`,
+    `Handlers        : ${String(handlerCount || '')}`,
+    `Avg LOC/Handler : ${Number(avgLocPerHandler || 0).toFixed(1)}`,
+    `Coverage        : ${Number(coverageStatements || 0).toFixed(1)}%`,
+    `Duplication     : ${String(duplicationBlocks || '')}`,
+    `Maintainability : ${Number(maintainability || 0).toFixed(1)}`,
+    `Conformity      : ${Number(conformityScore || 0).toFixed(1)}%`
+  ];
+
+  sketch.addCard('HANDLER PORTFOLIO METRICS', lines, { width: 40 });
   return sketch.current.join('\n');
 }
 
@@ -246,20 +240,15 @@ function renderHandlerPortfolioFoundation(data) {
  * @returns {string}
  */
 function renderCoverageHeatmapByBeat(data) {
+  const columns = [
+    { key: 'beat', header: 'Beat', width: 10 },
+    { key: 'movement', header: 'Mov', width: 6 },
+    { key: 'cov', header: 'Cov', width: 4, align: 'right' },
+    { key: 'bar', header: 'Bar', width: 11 }
+  ];
+  const rows = (data || []).map(b => [b.beat || '', b.movement || '', String(Math.round(b.coverage || 0)) + '%', generateBar(b.coverage || 0, 11)]);
   const sketch = new AsciiSketcher({ boxWidth: 38 });
-  sketch._pushTopBorder();
-  sketch._pushLine(' COVERAGE HEATMAP BY BEAT ');
-  sketch._pushSeparator();
-  sketch._pushLine('Beat       Mov.   Cov   Bar');
-  sketch._pushSeparator();
-  (data || []).forEach(beat => {
-    const beatName = padString(beat.beat, 10);
-    const movement = padString(beat.movement, 6);
-    const coverage = padString(Math.round(beat.coverage) + '%', 3, true);
-    const bar = padString(generateBar(beat.coverage, 11), 11);
-    sketch._pushLine(`${beatName} ${movement} ${coverage} ${bar}`);
-  });
-  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  sketch.addTable(columns, rows, { colSpacing: 1 });
   return sketch.current.join('\n');
 }
 
@@ -275,27 +264,21 @@ function renderRiskAssessmentMatrix(data) {
   const medium = Array.isArray(safe.medium) ? safe.medium : [];
   const low = Array.isArray(safe.low) ? safe.low : [];
 
-  const boxWidth = 45;
-  const sketch = new AsciiSketcher({ boxWidth });
-  sketch._pushTopBorder();
-  sketch._pushLine('RISK ASSESSMENT MATRIX');
-  sketch._pushSeparator();
-  sketch._pushLine('Level    Items');
-  sketch._pushSeparator();
+  const sketch = new AsciiSketcher({ boxWidth: 45 });
+  const lines = [];
+  lines.push(`CRITICAL: ${critical.length}`);
+  critical.forEach(i => lines.push(`  - ${String(i)}`));
+  lines.push('');
+  lines.push(`HIGH    : ${high.length}`);
+  high.forEach(i => lines.push(`  - ${String(i)}`));
+  lines.push('');
+  lines.push(`MEDIUM  : ${medium.length}`);
+  medium.forEach(i => lines.push(`  - ${String(i)}`));
+  lines.push('');
+  lines.push(`LOW     : ${low.length}`);
+  low.forEach(i => lines.push(`  - ${String(i)}`));
 
-  sketch._pushLine(`CRITICAL: ${String(critical.length)}`);
-  critical.forEach(item => sketch._pushLine(`  - ${String(item)}`));
-
-  sketch._pushLine(`HIGH    : ${String(high.length)}`);
-  high.forEach(item => sketch._pushLine(`  - ${String(item)}`));
-
-  sketch._pushLine(`MEDIUM  : ${String(medium.length)}`);
-  medium.forEach(item => sketch._pushLine(`  - ${String(item)}`));
-
-  sketch._pushLine(`LOW     : ${String(low.length)}`);
-  low.forEach(item => sketch._pushLine(`  - ${String(item)}`));
-
-  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  sketch.addCard('RISK ASSESSMENT MATRIX', lines, { width: 45 });
   return sketch.current.join('\n');
 }
 
@@ -306,78 +289,49 @@ function renderRiskAssessmentMatrix(data) {
  */
 function renderRefactoringRoadmap(data) {
   if (!Array.isArray(data)) return '';
-
-  const boxWidth = 55;
-  const sketch = new AsciiSketcher({ boxWidth });
-  sketch._pushTopBorder();
-  sketch._pushLine('REFACTORING ROADMAP');
-  sketch._pushSeparator();
-
-  data.forEach((item, index) => {
-    sketch._pushLine(`${index + 1}. ${item.title}`);
-    sketch._pushLine(`  Target : ${item.target}`);
-    if (item.effort) sketch._pushLine(`  Effort : ${item.effort}`);
-    sketch._pushLine(`  Rationale: ${item.rationale}`);
-    if (item.suggestedPrTitle) sketch._pushLine(`  PR: ${item.suggestedPrTitle}`);
-    if (index < data.length - 1) sketch._pushLine('');
+  const sketch = new AsciiSketcher({ boxWidth: 55 });
+  data.forEach(item => {
+    const lines = [];
+    lines.push(`Target : ${item.target}`);
+    if (item.effort) lines.push(`Effort : ${item.effort}`);
+    lines.push(`Rationale: ${item.rationale}`);
+    if (item.suggestedPrTitle) lines.push(`PR: ${item.suggestedPrTitle}`);
+    sketch.addCard(item.title || 'REF - ITEM', lines, { width: 55 });
   });
-
-  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
-  return sketch.current.join('\n');
+  return sketch.current.join('\n\n');
 }
 
 function renderHistoricalTrendAnalysis(data) {
   const { periodLabel, baselineAt, current, previous } = data || {};
-  const boxWidth = 42;
-  const sketch = new AsciiSketcher({ boxWidth });
-
-  sketch._pushTopBorder();
-  sketch._pushLine('HISTORICAL TREND ANALYSIS');
-  sketch._pushSeparator();
-  sketch._pushLine(`Period  : ${periodLabel || ''}`);
-  sketch._pushLine(`Baseline: ${baselineAt ? String(baselineAt).substring(0,10) : ''}`);
-  sketch._pushSeparator();
-  sketch._pushLine('Metric        Cur   Prev  Trend');
-  sketch._pushSeparator();
-
+  const sketch = new AsciiSketcher({ boxWidth: 42 });
+  const lines = [];
+  lines.push(`Period  : ${periodLabel || ''}`);
+  lines.push(`Baseline: ${baselineAt ? String(baselineAt).substring(0,10) : ''}`);
+  lines.push('');
+  lines.push('Metric        Cur   Prev  Trend');
   if (previous && current) {
-    const handlersTrend = getTrendDirection(current.handlerCount, previous.handlerCount);
-    sketch._pushLine(`Handlers      ${padString(String(current.handlerCount),4,true)}  ${padString(String(previous.handlerCount),4,true)}  ${handlersTrend}`);
-
-    const dupTrend = getTrendDirection(current.duplicationBlocks, previous.duplicationBlocks);
-    sketch._pushLine(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  ${padString(String(previous.duplicationBlocks),4,true)}  ${dupTrend}`);
-
-    const covTrend = getTrendDirection(current.coverageAvg, previous.coverageAvg);
-    sketch._pushLine(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} ${padString(previous.coverageAvg.toFixed(1) + '%',5,true)} ${covTrend}`);
-
-    const confTrend = getTrendDirection(current.conformity, previous.conformity);
-    sketch._pushLine(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} ${padString(previous.conformity.toFixed(1) + '%',5,true)} ${confTrend}`);
+    lines.push(`Handlers      ${padString(String(current.handlerCount),4,true)}  ${padString(String(previous.handlerCount),4,true)}  ${getTrendDirection(current.handlerCount, previous.handlerCount)}`);
+    lines.push(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  ${padString(String(previous.duplicationBlocks),4,true)}  ${getTrendDirection(current.duplicationBlocks, previous.duplicationBlocks)}`);
+    lines.push(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} ${padString(previous.coverageAvg.toFixed(1) + '%',5,true)} ${getTrendDirection(current.coverageAvg, previous.coverageAvg)}`);
+    lines.push(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} ${padString(previous.conformity.toFixed(1) + '%',5,true)} ${getTrendDirection(current.conformity, previous.conformity)}`);
   } else if (current) {
-    sketch._pushLine(`Handlers      ${padString(String(current.handlerCount),4,true)}  N/A   –`);
-    sketch._pushLine(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  N/A   –`);
-    sketch._pushLine(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} N/A   –`);
-    sketch._pushLine(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} N/A   –`);
+    lines.push(`Handlers      ${padString(String(current.handlerCount),4,true)}  N/A   –`);
+    lines.push(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  N/A   –`);
+    lines.push(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} N/A   –`);
+    lines.push(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} N/A   –`);
   }
-
-  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  sketch.addCard('HISTORICAL TREND ANALYSIS', lines, { width: 42 });
   return sketch.current.join('\n');
 }
 
 function renderLegendAndTerminology(data) {
   const { domainId, entries } = data || {};
-  const boxWidth = 70;
-  const sketch = new AsciiSketcher({ boxWidth });
-  sketch._pushTopBorder();
-  sketch._pushLine('LEGEND & DOMAIN TERMINOLOGY');
-  sketch._pushSeparator();
-  sketch._pushLine(`Domain: ${domainId || ''}`);
-  sketch._pushSeparator();
-
-  (entries || []).forEach(entry => {
-    sketch._pushLine(`• ${entry.term}: ${entry.definition}`);
-  });
-
-  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  const sketch = new AsciiSketcher({ boxWidth: 70 });
+  const lines = [];
+  lines.push(`Domain: ${domainId || ''}`);
+  lines.push('');
+  (entries || []).forEach(e => lines.push(`• ${e.term}: ${e.definition}`));
+  sketch.addCard('LEGEND & DOMAIN TERMINOLOGY', lines, { width: 70 });
   return sketch.current.join('\n');
 }
 
