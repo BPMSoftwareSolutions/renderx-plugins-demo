@@ -19,7 +19,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "serialize Selected Component",
-          "userStory": "As an operations system, I want serializeSelectedComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteria": [
@@ -48,7 +52,11 @@
           "timing": "immediate",
           "kind": "io",
           "scenario": "copy To Clipboard",
-          "userStory": "As an operations system, I want copyToClipboard to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "does not throw for Map",
           "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js",
           "acceptanceCriteria": [
@@ -77,7 +85,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Notify or Publish notify Copy Complete",
-          "userStory": "As an operations system, I want notifyCopyComplete to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "acceptanceCriteria": [
@@ -98,13 +110,21 @@
           ]
         }
       ],
-      "userStory": "As a content author, I need copy to duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy.",
+      "userStory": {
+        "persona": "Content author",
+        "goal": "duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Content author",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 3,
-  "userStory": "As a content author, I need copy to duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy.",
+  "userStory": {
+    "persona": "Content author",
+    "goal": "duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Content author",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

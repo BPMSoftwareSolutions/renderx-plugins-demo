@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "end Drag",
-          "userStory": "As an engineer, I need `endDrag` to finalize position, snap to grid, and publish outcome telemetry.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "finalize position, snap to grid, and publish outcome telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should end-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
           "acceptanceCriteria": [
@@ -37,7 +41,11 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "drag end to finalize placement, snap to guides, and clear state within ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
@@ -46,7 +54,11 @@
     "routeToBase": true
   },
   "beats": 1,
-  "userStory": "As an interaction designer, I need drag end to finalize placement, snap to guides, and clear state within ≤100ms P95.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "drag end to finalize placement, snap to guides, and clear state within ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

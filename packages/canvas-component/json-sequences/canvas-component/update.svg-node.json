@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Svg Node Attribute",
-          "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
           "testCase": "updates rect fill attribute correctly",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\svg-node.update.spec.ts",
           "acceptanceCriteria": [
@@ -45,7 +49,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "refresh Control Panel",
-          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
           "testCase": "setDirty marks isDirty with timestamp",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "acceptanceCriteria": [
@@ -66,13 +74,21 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 100ms",
+        "benefit": "real-time content updates"
+      },
       "persona": "System Operator",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an operations system, I want updateSvgNodeAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 100ms",
+    "benefit": "real-time content updates"
+  },
   "persona": "Product Owner",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
   "domainId": "renderx-web-orchestration"

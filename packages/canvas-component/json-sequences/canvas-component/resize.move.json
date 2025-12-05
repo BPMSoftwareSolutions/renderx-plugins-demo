@@ -19,7 +19,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Size",
-          "userStory": "As a UI runtime engineer, I need `updateSize` to update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications",
+            "benefit": "real-time content updates"
+          },
           "testCase": "forwards drag position updates to Control Panel",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
           "acceptanceCriteria": [
@@ -48,7 +52,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "forward To Control Panel",
-          "userStory": "As an operations system, I want forwardToControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
           "testCase": "addClass adds class and populates payload",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
           "acceptanceCriteria": [
@@ -69,13 +77,21 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint",
+        "benefit": "real-time content updates"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an interaction designer, I need resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint",
+    "benefit": "real-time content updates"
+  },
   "persona": "Interaction designer",
   "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
   "domainId": "renderx-web-orchestration"

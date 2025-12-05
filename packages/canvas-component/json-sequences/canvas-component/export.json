@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "io",
           "scenario": "query All Components",
-          "userStory": "As an operations system, I want queryAllComponents to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
           "acceptanceCriteria": [
@@ -45,7 +49,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Scan, Discover, or Analyze discover Components From Dom",
-          "userStory": "As an operations system, I want discoverComponentsFromDom to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "forwards to drop symphony and does not render React nodes directly",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "acceptanceCriteria": [
@@ -74,7 +82,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "collect Css Classes",
-          "userStory": "As an operations system, I want collectCssClasses to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "collects CSS from components with template.classRefs (current export format)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
           "acceptanceCriteria": [
@@ -119,7 +131,11 @@
               ]
             }
           ],
-          "userStory": "As an operations system, I want collectLayoutData to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "builds create payload from clipboard-shaped component without preserving id",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
         },
@@ -132,7 +148,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Generate or Create build Ui File Content",
-          "userStory": "As an operations system, I want buildUiFileContent to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should build context for symbol generation",
           "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
           "acceptanceCriteria": [
@@ -161,7 +181,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "download Ui File",
-          "userStory": "As an operations system, I want downloadUiFile to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "exports CanvasPage and register()",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "acceptanceCriteria": [
@@ -182,13 +206,21 @@
           ]
         }
       ],
-      "userStory": "As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.",
+      "userStory": {
+        "persona": "Platform operator",
+        "goal": "serialize canvas and assets deterministically within ≤2s P95 with traceable audit",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Platform operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 6,
-  "userStory": "As a platform operator, I need export to serialize canvas and assets deterministically within ≤2s P95 with traceable audit.",
+  "userStory": {
+    "persona": "Platform operator",
+    "goal": "serialize canvas and assets deterministically within ≤2s P95 with traceable audit",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Platform operator",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

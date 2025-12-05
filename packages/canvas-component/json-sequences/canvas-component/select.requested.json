@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "route Selection Request",
-          "userStory": "As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "identify the target node and route to base",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should route-selection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "requested selection to resolve the target and route to base handlers reliably",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "requested selection to resolve the target and route to base handlers reliably",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

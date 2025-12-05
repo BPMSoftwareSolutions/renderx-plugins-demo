@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "export Svg To Mp4",
-          "userStory": "As an engineer, I need `exportSvgToMp4` to rasterize frames and encode MP4 with telemetry.",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "rasterize frames and encode MP4 with telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "exports CSS classes from registry in the UI file",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+      "userStory": {
+        "persona": "Platform operator",
+        "goal": "mP4 export to render frames and encode deterministically within ≤2s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Platform operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As a platform operator, I need MP4 export to render frames and encode deterministically within ≤2s P95.",
+  "userStory": {
+    "persona": "Platform operator",
+    "goal": "mP4 export to render frames and encode deterministically within ≤2s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Platform operator",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

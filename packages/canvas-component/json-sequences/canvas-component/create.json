@@ -21,8 +21,8 @@
           "scenario": "resolve Template",
           "userStory": {
             "persona": "system operator",
-            "goal": "`resolveTemplate` to deterministically resolve component schemas and bindings within 1s P95 (99.9% success), deduping remote fetches and emitting telemetry",
-            "benefit": "downstream renderers can build pages without retries."
+            "goal": "deterministically resolve component schemas and bindings within 1s P95 (99.9% success), deduping remote fetches and emitting telemetry",
+            "benefit": "downstream renderers can build pages without retries"
           },
           "testCase": "dedupes schema fetches across multiple calls and instances",
           "testFile": "__tests__\\create.from-data.spec.ts",
@@ -91,8 +91,8 @@
           "scenario": "register Instance",
           "userStory": {
             "persona": "system operator",
-            "goal": "`registerInstance` to assign stable IDs and semantic classes to imported components within 1s P95 and persist registration events",
-            "benefit": "style hooks and analytics can target instances consistently across sessions."
+            "goal": "assign stable IDs and semantic classes to imported components within 1s P95 and persist registration events",
+            "benefit": "style hooks and analytics can target instances consistently across sessions"
           },
           "testCase": "adds rx-comp-<tag>-<id> class for imported components",
           "testFile": "__tests__\\import.instance-class.spec.ts",
@@ -160,7 +160,7 @@
           "scenario": "Generate or Create create Node",
           "userStory": {
             "persona": "system operator",
-            "goal": "`createNode` to assemble a canvas node from resolved templates within 2s P95 without directly rendering React, forwarding to the drop symphony and validating schema to keep the composition pipeline decoupled and safe.",
+            "goal": "assemble a canvas node from resolved templates within 2s P95 without directly rendering React, forwarding to the drop symphony and validating schema to keep the composition pipeline decoupled and safe",
             "benefit": ""
           },
           "testCase": "forwards to drop symphony and does not render React nodes directly",
@@ -247,8 +247,8 @@
           "scenario": "Render or Display render React",
           "userStory": {
             "persona": "system operator",
-            "goal": "`renderReact` to instantiate React components from composed nodes in <200ms P95, with memoized props and keyed lists, emitting perf telemetry",
-            "benefit": "UI remains responsive on median devices."
+            "goal": "instantiate React components from composed nodes in <200ms P95, with memoized props and keyed lists, emitting perf telemetry",
+            "benefit": "uI remains responsive on median devices"
           },
           "testCase": "creates a React component through the complete create sequence",
           "testFile": "__tests__\\create.react.integration.spec.ts",
@@ -351,8 +351,8 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "userStory": {
             "persona": "system operator",
-            "goal": "As an event-driven UI orchestrator, I need UI class/state changes published with <20ms end-to-end delivery, ordered FIFO with backpressure",
-            "benefit": "subscribers (controls, analytics, accessibility) react consistently without missed transitions."
+            "goal": "uI class/state changes published with <20ms end-to-end delivery, ordered FIFO with backpressure",
+            "benefit": "subscribers (controls, analytics, accessibility) react consistently without missed transitions"
           },
           "testCase": "exports CanvasPage and register()",
           "testFile": "__tests__\\exports.spec.ts",
@@ -410,7 +410,7 @@
       "userStory": {
         "persona": "system operator",
         "goal": "the create symphony to produce a fully composed, registered, and render-ready canvas component sequence with P95 latencies per beat (resolveTemplate ≤1s, registerInstance ≤1s, createNode ≤2s, renderReact ≤200ms, notifyUi ≤20ms) and 99.9% success",
-        "benefit": "downstream experiences render predictably."
+        "benefit": "downstream experiences render predictably"
       },
       "persona": "System Operator",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
@@ -420,7 +420,7 @@
   "userStory": {
     "persona": "product owner",
     "goal": "the canvas component create flow to reliably transform templates into interactive UI with clear telemetry, strict schemas, and beat-specific SLAs (≤1s/≤2s/≤200ms/≤20ms as defined), achieving 99.9% success",
-    "benefit": "we meet customer performance commitments."
+    "benefit": "we meet customer performance commitments"
   },
   "persona": "Product Owner",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",

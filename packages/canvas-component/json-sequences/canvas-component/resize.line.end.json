@@ -16,7 +16,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "end Line Resize",
-          "userStory": "As an engineer, I need `endLineResize` to commit endpoints and publish geometry change events.",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "commit endpoints and publish geometry change events",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
           "acceptanceCriteria": [
@@ -37,13 +41,21 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need line-resize end to commit new geometry and trigger reflow safely.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "line-resize end to commit new geometry and trigger reflow safely",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As a design systems engineer, I need line-resize end to commit new geometry and trigger reflow safely.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "line-resize end to commit new geometry and trigger reflow safely",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Design systems engineer",
   "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
   "domainId": "renderx-web-orchestration"

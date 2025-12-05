@@ -19,7 +19,11 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "enhance Line",
-          "userStory": "As a design systems engineer, I need `enhanceLine` to apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise.",
+          "userStory": {
+            "persona": "Design Systems Engineer",
+            "goal": "apply advanced line augmentation (measurements, anchors, hit areas) within 1s P95, validating geometry and emitting change events so tooling and interactions remain precise",
+            "benefit": "advanced design tooling features"
+          },
           "testCase": "should enhance-line",
           "testFile": "__tests__\\advanced-line.augment.spec.ts",
           "acceptanceCriteria": [
@@ -88,13 +92,21 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need the augment symphony to apply advanced visual enhancements to canvas components (line markers, measurements, anchors, hit areas) with ≤1s P95 latency and idempotent application, so interactive tooling remains precise and responsive.",
+      "userStory": {
+        "persona": "Design Systems Engineer",
+        "goal": "the augment symphony to apply advanced visual enhancements to canvas components (line markers, measurements, anchors, hit areas) with ≤1s P95 latency and idempotent application, so interactive tooling remains precise and responsive",
+        "benefit": "advanced design tooling features"
+      },
       "persona": "Design Systems Engineer",
       "businessValue": "Enables advanced design tooling features; improves precision and interactivity; supports professional design workflows"
     }
   ],
   "beats": 1,
-  "userStory": "As a design systems engineer, I need the augment symphony to enhance canvas components with advanced visual features and interaction affordances, meeting strict latency targets (≤1s P95) with idempotent operations, so design tools remain precise and responsive.",
+  "userStory": {
+    "persona": "Design Systems Engineer",
+    "goal": "the augment symphony to enhance canvas components with advanced visual features and interaction affordances, meeting strict latency targets (≤1s P95) with idempotent operations, so design tools remain precise and responsive",
+    "benefit": "advanced design tooling features"
+  },
   "persona": "Design Systems Engineer",
   "businessValue": "Enables advanced design tooling features; improves precision and interactivity; supports professional design workflows",
   "domainId": "renderx-web-orchestration"
