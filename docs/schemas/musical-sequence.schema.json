@@ -4,8 +4,12 @@
   "description": "Canonical MusicalSequence JSON Schema used for orchestration sequences and registry projections.",
   "type": "object",
   "additionalProperties": true,
-  "required": ["domainId", "id", "name", "movements"],
+  "required": ["domainId", "id", "name", "movements", "userStory"],
   "properties": {
+    "domainId": {
+      "type": "string",
+      "description": "Domain identifier for the sequence (e.g., 'cdp-safe', 'renderx-canvas')"
+    },
     "id": {
       "type": "string",
       "description": "Unique sequence identifier"
@@ -88,7 +92,7 @@
       "items": { "type": "string" }
     },
     "userStory": {
-      "type": "string",
+      "type": "object",
       "description": "Beat-level user story",
       "additionalProperties": false,
       "properties": {
@@ -138,7 +142,7 @@
     "SequenceMovement": {
       "type": "object",
       "additionalProperties": true,
-      "required": ["name", "beats"],
+      "required": ["name", "beats", "userStory"],
       "properties": {
         "id": {
           "type": "string",
@@ -167,7 +171,7 @@
           "description": "Movement-level error handling strategy"
         },
         "userStory": {
-          "type": "string",
+          "type": "object",
           "description": "Beat-level user story",
           "additionalProperties": false,
           "properties": {
@@ -207,7 +211,7 @@
     "SequenceBeat": {
       "type": "object",
       "additionalProperties": true,
-      "required": ["event"],
+      "required": ["event", "userStory"],
       "properties": {
         "name": {
           "type": "string",
@@ -286,7 +290,7 @@
         "testFile": { "type": "string", "description": "Linked test file path" },
         "testCase": { "type": "string", "description": "Linked test case description" },
         "userStory": {
-          "type": "string",
+          "type": "object",
           "description": "Beat-level user story",
           "additionalProperties": false,
           "properties": {

@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-12-05T12:18:47.609Z",
+  "source": "domain-analysis",
+  "codebase": "renderx-web-orchestration",
+  "analysisSourcePath": "packages/",
+  "metrics": {
+    "loc": 5168,
+    "complexity": 0,
+    "duplication": "77.60",
+    "maintainability": 100,
+    "functions": 0
+  },
+  "coverage": {
+    "statements": "79.83",
+    "branches": "71.98",
+    "functions": "86.36",
+    "lines": "79.15"
+  },
+  "integrity": {
+    "timestamp": "2025-12-05T12:18:47.605Z",
+    "integrityHash": "5a2755c1ad2163dd",
+    "metricCount": 7,
+    "hasMock": false
+  }
+}

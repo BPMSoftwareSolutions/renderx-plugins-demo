@@ -61,6 +61,5 @@
       "name": "example.inventory.changed",
       "notes": "Inventory state changed due to creation"
     }
-  ],
-  "domainId": "renderx-web-orchestration"
+  ]
 }

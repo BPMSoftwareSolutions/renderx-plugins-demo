@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-12-05T12:18:47.611Z",
+  "codebase": "renderx-web-orchestration",
+  "aggregated_by_movement": {
+    "Movement 1: Discovery": {
+      "average_coverage": 84.75
+    },
+    "Movement 2: Metrics": {
+      "average_coverage": 73.33
+    },
+    "Movement 3: Coverage": {
+      "average_coverage": 76.25
+    },
+    "Movement 4: Conformity": {
+      "average_coverage": 71.5
+    }
+  },
+  "overall_coverage": {
+    "statements": "79.83",
+    "branches": "71.98",
+    "functions": "86.36",
+    "lines": "79.15"
+  }
+}

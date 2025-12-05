@@ -1,0 +1,664 @@
+{
+  "totalSymphonies": 42,
+  "validatedSymphonies": 20,
+  "totalBeats": 42,
+  "goodBeats": 0,
+  "partialBeats": 0,
+  "poorBeats": 0,
+  "averageCoverage": 0,
+  "validations": [
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/augment.json",
+      "summary": {
+        "symphonyId": "canvas-component-augment-symphony",
+        "symphonyName": "Canvas Component Augment",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Augment",
+          "beat": "Enhance Line (Advanced)",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.221Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/copy.json",
+      "summary": {
+        "symphonyId": "canvas-component-copy-symphony",
+        "symphonyName": "Canvas Component Copy",
+        "totalBeats": 3,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Copy to Clipboard",
+          "beat": "Serialize Component Data",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Copy to Clipboard",
+          "beat": "Copy to Clipboard",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Copy to Clipboard",
+          "beat": "Notify Copy Complete",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.228Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/create.json",
+      "summary": {
+        "symphonyId": "canvas-component-create-symphony",
+        "symphonyName": "Canvas Component Create",
+        "totalBeats": 5,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Create",
+          "beat": "Resolve Template",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        },
+        {
+          "movement": "Create",
+          "beat": "Register Instance",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        },
+        {
+          "movement": "Create",
+          "beat": "Create Node",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        },
+        {
+          "movement": "Create",
+          "beat": "Render React Component",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        },
+        {
+          "movement": "Create",
+          "beat": "Notify UI",
+          "status": "TEST_FILE_ERROR",
+          "coverage": 0,
+          "message": "Test file not found"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.229Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/delete.json",
+      "summary": {
+        "symphonyId": "canvas-component-delete-symphony",
+        "symphonyName": "Canvas Component Delete",
+        "totalBeats": 2,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Delete",
+          "beat": "Delete Component",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Delete",
+          "beat": "Publish Deleted",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.235Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/delete.requested.json",
+      "summary": {
+        "symphonyId": "canvas-component-delete-requested-symphony",
+        "symphonyName": "Canvas Component Delete Requested",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Route Delete",
+          "beat": "Route Delete Request",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.237Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/deselect-all.json",
+      "summary": {
+        "symphonyId": "canvas-component-deselect-all-symphony",
+        "symphonyName": "Canvas Component Deselect All",
+        "totalBeats": 2,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Deselect All",
+          "beat": "Hide All Overlays",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Deselect All",
+          "beat": "Publish Selections Cleared",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.240Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/deselect.json",
+      "summary": {
+        "symphonyId": "canvas-component-deselect-symphony",
+        "symphonyName": "Canvas Component Deselect",
+        "totalBeats": 2,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Deselect",
+          "beat": "Hide Overlays for ID",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Deselect",
+          "beat": "Publish Deselection Changed",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.243Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/deselect.requested.json",
+      "summary": {
+        "symphonyId": "canvas-component-deselect-requested-symphony",
+        "symphonyName": "Canvas Component Deselect Requested",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Route Deselection",
+          "beat": "Route Deselection Request",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.244Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/drag.end.json",
+      "summary": {
+        "symphonyId": "canvas-component-drag-end-symphony",
+        "symphonyName": "Canvas Component Drag End",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Drag End",
+          "beat": "Drag End",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.245Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/drag.move.json",
+      "summary": {
+        "symphonyId": "canvas-component-drag-move-symphony",
+        "symphonyName": "Canvas Component Drag Move",
+        "totalBeats": 2,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Drag Move",
+          "beat": "Update Position",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Drag Move",
+          "beat": "Forward to Control Panel",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.248Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/drag.start.json",
+      "summary": {
+        "symphonyId": "canvas-component-drag-start-symphony",
+        "symphonyName": "Canvas Component Drag Start",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Drag Start",
+          "beat": "Drag Start",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.250Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/export-gif.json",
+      "summary": {
+        "symphonyId": "canvas-component-export-gif-symphony",
+        "symphonyName": "Canvas Component Export GIF",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Export GIF",
+          "beat": "Rasterize SVG and Encode GIF",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.251Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/export-mp4.json",
+      "summary": {
+        "symphonyId": "canvas-component-export-mp4-symphony",
+        "symphonyName": "Canvas Component Export MP4",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Export MP4",
+          "beat": "Rasterize SVG and Encode MP4",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.252Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/export.json",
+      "summary": {
+        "symphonyId": "canvas-component-export-symphony",
+        "symphonyName": "Canvas Component Export",
+        "totalBeats": 6,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Export",
+          "beat": "Query All Components",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Export",
+          "beat": "Discover Components from DOM",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Export",
+          "beat": "Collect CSS Classes",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Export",
+          "beat": "Collect Layout Data",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Export",
+          "beat": "Build UI File Content",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Export",
+          "beat": "Download UI File",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.257Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/import.json",
+      "summary": {
+        "symphonyId": "canvas-component-import-symphony",
+        "symphonyName": "Canvas Component Import",
+        "totalBeats": 5,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Import",
+          "beat": "Open UI File",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Import",
+          "beat": "Parse UI File",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Import",
+          "beat": "Inject CSS Classes",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Import",
+          "beat": "Create Components Sequentially",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Import",
+          "beat": "Apply Hierarchy & Order",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.260Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/index.json",
+      "summary": {
+        "symphonyId": "index",
+        "totalBeats": 0,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [],
+      "timestamp": "2025-12-05T12:18:46.260Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/line.manip.end.json",
+      "summary": {
+        "symphonyId": "canvas-line-manip-end-symphony",
+        "symphonyName": "Canvas Line Manip End",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Manip Line End",
+          "beat": "Line Manip End",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.261Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/line.manip.move.json",
+      "summary": {
+        "symphonyId": "canvas-line-manip-move-symphony",
+        "symphonyName": "Canvas Line Manip Move",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Manip Line Move",
+          "beat": "Line Manip Move",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.262Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/line.manip.start.json",
+      "summary": {
+        "symphonyId": "canvas-line-manip-start-symphony",
+        "symphonyName": "Canvas Line Manip Start",
+        "totalBeats": 1,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Manip Line Start",
+          "beat": "Line Manip Start",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.263Z"
+    },
+    {
+      "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/paste.json",
+      "summary": {
+        "symphonyId": "canvas-component-paste-symphony",
+        "symphonyName": "Canvas Component Paste",
+        "totalBeats": 5,
+        "goodBeats": 0,
+        "partialBeats": 0,
+        "poorBeats": 0,
+        "noTestBeats": 0,
+        "averageCoverage": 0,
+        "totalConditions": 0,
+        "matchedConditions": 0
+      },
+      "beatResults": [
+        {
+          "movement": "Paste from Clipboard",
+          "beat": "Read from Clipboard",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Paste from Clipboard",
+          "beat": "Deserialize Component Data",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Paste from Clipboard",
+          "beat": "Calculate Paste Position",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Paste from Clipboard",
+          "beat": "Create Pasted Component",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        },
+        {
+          "movement": "Paste from Clipboard",
+          "beat": "Notify Paste Complete",
+          "status": "NO_AC",
+          "coverage": 0,
+          "message": "No acceptance criteria defined"
+        }
+      ],
+      "timestamp": "2025-12-05T12:18:46.267Z"
+    }
+  ],
+  "timestamp": "2025-12-05T12:18:46.267Z"
+}

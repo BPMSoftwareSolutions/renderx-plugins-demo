@@ -1,0 +1,37 @@
+{
+  "codebase": "renderx-web-orchestration",
+  "baseline_timestamp": "2025-11-28T12:18:47.613Z",
+  "current_timestamp": "2025-12-05T12:18:47.613Z",
+  "trends": {
+    "loc": {
+      "baseline": 18500,
+      "current": 18945,
+      "change": "+2.4%",
+      "direction": "up"
+    },
+    "complexity": {
+      "baseline": 2.34,
+      "current": 2.28,
+      "change": "-2.6%",
+      "direction": "down"
+    },
+    "duplication": {
+      "baseline": 3.2,
+      "current": 2.8,
+      "change": "-12.5%",
+      "direction": "down"
+    },
+    "coverage": {
+      "baseline": 71.2,
+      "current": 73.5,
+      "change": "+3.2%",
+      "direction": "up"
+    },
+    "maintainability": {
+      "baseline": 71.8,
+      "current": 73.4,
+      "change": "+2.2%",
+      "direction": "up"
+    }
+  }
+}
