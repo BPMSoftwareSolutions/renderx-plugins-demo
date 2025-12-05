@@ -72,8 +72,14 @@
       "description": "Governance policies and metrics for orchestration",
       "additionalProperties": true,
       "properties": {
-        "policies": { "type": "array", "items": { "type": "string" } },
-        "metrics": { "type": "array", "items": { "type": "string" } }
+        "policies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "metrics": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     },
     "events": {
@@ -81,9 +87,33 @@
       "description": "Declared event names emitted by sequence",
       "items": { "type": "string" }
     },
-    "userStory": { "type": "string", "description": "Primary user story for the sequence" },
-    "persona": { "type": "string", "description": "Primary persona served" },
-    "businessValue": { "type": "string", "description": "Business value articulation" },
+    "userStory": {
+      "type": "string",
+      "description": "Beat-level user story",
+      "additionalProperties": false,
+      "properties": {
+        "persona": {
+          "type": "string",
+          "description": "Persona for the user story (who)"
+        },
+        "goal": {
+          "type": "string",
+          "description": "What the user wants to achieve"
+        },
+        "benefit": {
+          "type": "string",
+          "description": "The benefit or value derived from achieving the goal"
+        }
+      }
+    },
+    "persona": {
+      "type": "string",
+      "description": "Primary persona served"
+    },
+    "businessValue": {
+      "type": "string",
+      "description": "Business value articulation"
+    },
     "metadata": {
       "type": "object",
       "description": "Optional metadata for the sequence",
@@ -133,13 +163,40 @@
         },
         "errorHandling": {
           "type": "string",
-          "enum": ["continue", "abort-sequence"],
+          "enum": [ "continue", "abort-sequence" ],
           "description": "Movement-level error handling strategy"
         },
-        "userStory": { "type": "string", "description": "Movement-level user story" },
-        "persona": { "type": "string", "description": "Movement-level persona" },
-        "businessValue": { "type": "string", "description": "Movement-level business value" },
-        "status": { "type": "string", "description": "Movement lifecycle status" },
+        "userStory": {
+          "type": "string",
+          "description": "Beat-level user story",
+          "additionalProperties": false,
+          "properties": {
+            "persona": {
+              "type": "string",
+              "description": "Persona for the user story (who)"
+            },
+            "goal": {
+              "type": "string",
+              "description": "What the user wants to achieve"
+            },
+            "benefit": {
+              "type": "string",
+              "description": "The benefit or value derived from achieving the goal"
+            }
+          }
+        },
+        "persona": {
+          "type": "string",
+          "description": "Movement-level persona"
+        },
+        "businessValue": {
+          "type": "string",
+          "description": "Movement-level business value"
+        },
+        "status": {
+          "type": "string",
+          "description": "Movement lifecycle status"
+        },
         "beats": {
           "type": "array",
           "description": "Beats within this movement",
