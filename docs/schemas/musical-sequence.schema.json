@@ -228,7 +228,25 @@
         "scenario": { "type": "string", "description": "Scenario / test narrative for beat" },
         "testFile": { "type": "string", "description": "Linked test file path" },
         "testCase": { "type": "string", "description": "Linked test case description" },
-        "userStory": { "type": "string", "description": "Beat-level user story" },
+        "userStory": {
+          "type": "string",
+          "description": "Beat-level user story",
+          "additionalProperties": false,
+          "properties": {
+            "persona": {
+              "type": "string",
+              "description": "Persona for the user story (who)"
+            },
+            "goal": {
+              "type": "string",
+              "description": "What the user wants to achieve"
+            },
+            "benefit": {
+              "type": "string",
+              "description": "The benefit or value derived from achieving the goal"
+            }
+          }
+        },
         "persona": { "type": "string", "description": "Beat-level persona" },
         "businessValue": { "type": "string", "description": "Beat-level business value articulation" },
         "acceptanceCriteria": {
