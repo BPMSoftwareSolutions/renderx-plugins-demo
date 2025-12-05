@@ -22,6 +22,10 @@ const {
   renderCleanSymphonyHandler
 } = require('./ascii-sketch-renderers.cjs');
 
+// Import new ASCII generators
+const { generateHeader } = require('./generate-ascii-header.cjs');
+const { generateSketch } = require('./generate-ascii-sketch.cjs');
+
 // ============================================================================
 // AC/GWT ALIGNMENT HELPER (for handler symphony AC column)
 // ============================================================================
@@ -696,18 +700,32 @@ function generateDiagram(metrics = {}) {
     handlers: []
   });
 
-  return `
-╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                    SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.padEnd(50)}║
-║                    Enhanced Handler Portfolio & Orchestration Framework                                          ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  // Generate clean ASCII header
+  const header = generateHeader({
+    lines: [
+      `SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.toUpperCase()}`,
+      'Enhanced Handler Portfolio & Orchestration Framework'
+    ],
+    width: 114
+  });
 
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  📊 CODEBASE METRICS FOUNDATION                                                                                 │
-│  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: ${String(totalFiles).padEnd(4)}│ Total LOC: ${String(totalLoc).padEnd(6)}│ Handlers: ${String(totalHandlers).padEnd(3)}│ Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(5)}│ Coverage: ${safeCoverage.toFixed(2)}% │           │
-│  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  // Generate metrics sketch
+  const metricsSketch = generateSketch({
+    title: 'CODEBASE METRICS FOUNDATION',
+    metrics: {
+      'Total Files': String(totalFiles),
+      'Total LOC': String(totalLoc),
+      'Handlers': String(totalHandlers),
+      'Avg LOC/Handler': safeAvgLoc.toFixed(2),
+      'Coverage': `${safeCoverage.toFixed(2)}%`
+    },
+    icon: '📊'
+  });
+
+  return `
+${header}
+
+${metricsSketch}
 
 ${renderHandlerPortfolioFoundation({
   totalFiles,
@@ -793,19 +811,18 @@ ${beatCoverage ? renderCoverageHeatmapByBeat(
 ${symphonySection}
                         │
                         ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║   QUALITY & COVERAGE METRICS                         ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Handlers Analyzed: ${String(totalHandlers).padEnd(33)}║
-        ║  Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(35)}║
-        ║  Test Coverage: ${safeCoverage.toFixed(1)}%${' '.repeat(Math.max(0, 38 - safeCoverage.toFixed(1).length))}║
-        ║  Duplication: ${safeDuplication.toFixed(1)}%${' '.repeat(Math.max(0, 42 - safeDuplication.toFixed(1).length))}║
-        ║  ${godHandlers.length > 0 ? `⚠️  God Handlers: ${godHandlers.length}` : `✓  No God Handlers`}${' '.repeat(Math.max(0, 45 - (godHandlers.length > 0 ? `God Handlers: ${godHandlers.length}` : `No God Handlers`).length))}║
-        ║                                                       ║
-        ║  [Full metrics available in detailed report]          ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
+
+${generateSketch({
+  title: 'QUALITY & COVERAGE METRICS',
+  metrics: {
+    'Handlers Analyzed': String(totalHandlers),
+    'Avg LOC/Handler': safeAvgLoc.toFixed(2),
+    'Test Coverage': `${safeCoverage.toFixed(1)}%`,
+    'Duplication': `${safeDuplication.toFixed(1)}%`,
+    'God Handlers': godHandlers.length > 0 ? `⚠️ ${godHandlers.length}` : '✓ None'
+  },
+  icon: '📊'
+})}
 
 ${conformityViolations && conformityViolations.length > 0 ? renderRiskAssessmentMatrix({
   critical: conformityViolations.filter(v => v.severity === 'critical').map(v => v.issue),
