@@ -211,7 +211,7 @@
     "SequenceBeat": {
       "type": "object",
       "additionalProperties": true,
-      "required": ["event", "userStory", "acceptanceCriteria"],
+      "required": ["event", "userStory", "acceptanceCriteria", "testFile"],
       "properties": {
         "name": {
           "type": "string",
@@ -334,7 +334,7 @@
     "HandlerRef": {
       "type": "object",
       "additionalProperties": true,
-      "required": ["name"],
+      "required": ["name", "sourcePath"],
       "properties": {
         "name": { "type": "string", "description": "Handler function reference (module#export)" },
         "scope": { "type": "string", "description": "Handler scope (plugin, orchestration, system)" },

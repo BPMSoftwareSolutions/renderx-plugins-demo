@@ -96,13 +96,8 @@ function toEventName(parts) {
 }
 
 async function backupFile(filePath) {
-  try {
-    const bak = `${filePath}.bak-${Date.now()}`;
-    await fs.copyFile(filePath, bak);
-    return bak;
-  } catch (e) {
-    return null;
-  }
+  // Backups disabled: rely on git/source control for history. Return null to preserve callers.
+  return null;
 }
 
 function normalizeAcceptanceCriteriaStructured(item) {

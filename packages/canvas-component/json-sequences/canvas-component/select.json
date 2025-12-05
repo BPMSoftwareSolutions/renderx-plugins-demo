@@ -19,10 +19,14 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Render or Display show Selection Overlay",
-          "userStory": "As a runtime engineer, I need `showSelectionOverlay` to render selection affordances (overlay, resize handles, interactions) within <100ms P95, derive element ID from data/DOM/baton, and emit selection.shown telemetry so UI controls remain responsive and analytics track user behavior.",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "`showSelectionOverlay` to render selection affordances (overlay, resize handles, interactions) within <100ms P95, derive element ID from data/DOM/baton, and emit selection.shown telemetry",
+            "benefit": "UI controls remain responsive and analytics track user behavior."
+          },
           "testCase": "derives ID from data.id, data.elementId, DOM target, or baton fallback and renders overlay with handlers",
           "testFile": "__tests__\\selection-id-derivation.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "selection event contains data.id"
@@ -115,10 +119,14 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "userStory": "As an event-driven UI orchestrator, I need selection notifications published with <20ms end-to-end delivery, ordered FIFO, so control panel, property inspector, and analytics subscribers react consistently without missed transitions.",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "As an event-driven UI orchestrator, I need selection notifications published with <20ms end-to-end delivery, ordered FIFO",
+            "benefit": "control panel, property inspector, and analytics subscribers react consistently without missed transitions."
+          },
           "testCase": "publishes canvas.component.selected with element ID via EventRouter using data.id or baton.id fallback",
           "testFile": "__tests__\\selection-id-derivation.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "element is selected and data.id is present"
@@ -181,10 +189,14 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Selection Changed",
-          "userStory": "As an event-driven system integrator, I need `publishSelectionChanged` to publish canvas.component.selection.changed event within <50ms, with element ID and optional metadata, so dependent systems (property panel, inspector, analytics) can synchronize state reliably (target: 99.9% delivery success).",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "As an event-driven system integrator, I need `publishSelectionChanged` to publish canvas.component.selection.changed event within <50ms, with element ID and optional metadata",
+            "benefit": "dependent systems (property panel, inspector, analytics) can synchronize state reliably (target: 99.9% delivery success)."
+          },
           "testCase": "publishes canvas.component.selection.changed with element ID and metadata via EventRouter",
           "testFile": "__tests__\\selection-topic-publishing.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
               "given": [
                 "selection change occurs with element ID"
@@ -237,13 +249,21 @@
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+      "userStory": {
+        "persona": "interaction designer",
+        "goal": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+        "benefit": ""
+      },
       "persona": "Interaction designer",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
     }
   ],
   "beats": 3,
-  "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+  "userStory": {
+    "persona": "interaction designer",
+    "goal": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+    "benefit": ""
+  },
   "persona": "Interaction designer",
   "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
   "domainId": "renderx-web-orchestration"
