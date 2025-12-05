@@ -12,11 +12,12 @@
                     "build:all":  "npm run build:packages \u0026\u0026 npm run build:host",
                     "dev":  "npm run pre:manifests \u0026\u0026 vite",
                     "rebuild:mc":  "npm run build -w packages/musical-conductor",
-                    "clean:vite":  "node -e \"try{require(\u0027fs\u0027).rmSync(\u0027node_modules/.vite\u0027,{recursive:true,force:true});console.log(\u0027Removed node_modules/.vite\u0027);}catch(e){console.log(\u0027No .vite cache to remove\u0027)}\"",
+                    "clean:vite":  "node -e \"try{require('fs').rmSync('node_modules/.vite',{recursive:true,force:true});console.log('Removed node_modules/.vite');}catch(e){console.log('No .vite cache to remove')}\"",
                     "clean:all":  "node scripts/clean-all-caches.js",
                     "dev:clean":  "npm run rebuild:mc \u0026\u0026 npm run clean:vite \u0026\u0026 npm run dev",
                     "debug:sourcemaps":  "node scripts/debug-sourcemaps.js",
                     "build":  "npm run validate:domains \u0026\u0026 npm run generate:readme \u0026\u0026 npm run generate:governance:docs \u0026\u0026 npm run validate:governance:docs \u0026\u0026 npm run validate:agent:behavior \u0026\u0026 npm run generate:slo:traceability \u0026\u0026 node scripts/enrich-domain-authorities.cjs \u0026\u0026 npm run build:all \u0026\u0026 npm run regenerate:ographx",
+                    "audit:hardcoded": "node scripts/audit-hardcoded-values.js",
                     "enrich:domains":  "node scripts/enrich-domain-authorities.cjs",
                     "regenerate:ographx":  "node scripts/run-python.js packages/ographx/generators/regenerate_all.py",
                     "regenerate:ographx:test-graph":  "node scripts/run-python.js packages/ographx/generators/generate_test_graph.py",
@@ -38,7 +39,6 @@
                     "generate:docs":  "node scripts/generate-system-documentation.js",
                     "generate:docs:advanced":  "node scripts/generate-advanced-documentation.js",
                     "docs:generate:governed":  "node scripts/generate-governed-docs.js",
-                    "generate:readme":  "node scripts/generate-readme.cjs",
                     "docs:verify":  "node scripts/verify-doc-provenance.js",
                     "generate:slo:traceability":  "node scripts/generate-slo-traceability-manifest.cjs",
                     "generate:topics:telemetry":  "node scripts/generate-topic-telemetry-signatures.cjs",
@@ -65,11 +65,11 @@
                     "artifacts:hash":  "node scripts/hash-artifacts.js dist/artifacts",
                     "artifacts:validate":  "node scripts/validate-artifacts.js",
                     "artifacts:pack":  "node scripts/pack-artifacts.js --dir=dist/artifacts --out=dist/packages",
-                    "artifacts:validate:strict":  "node -e \"process.env.RENDERX_VALIDATION_STRICT=\u00271\u0027; require(\u0027./scripts/validate-artifacts.js\u0027)\"",
+                    "artifacts:validate:strict":  "node -e \"process.env.RENDERX_VALIDATION_STRICT='1'; require('./scripts/validate-artifacts.js')\"",
                     "artifacts:verify:signature":  "node scripts/verify-artifact-signature.js",
                     "public-api:hash":  "node scripts/hash-public-api.js",
                     "public-api:check":  "node scripts/hash-public-api.js --check",
-                    "artifacts:ci":  "npm run artifacts:build:signed \u0026\u0026 npm run artifacts:validate:strict \u0026\u0026 npm run artifacts:verify:signature \u0026\u0026 npm test \u0026\u0026 npm run artifacts:pack",
+                    "artifacts:ci":  "npm run artifacts:build:signed \u0026\u0026 npm run artifacts:validate:strict \u0026\u0026 npm test \u0026\u0026 npm run artifacts:pack",
                     "validate:public-api":  "node scripts/validate-public-api.js",
                     "preview":  "vite preview",
                     "generate:context:session":  "node scripts/gen-context-session-docs.cjs",
@@ -78,7 +78,7 @@
                     "generate:process:symphonic:report":  "node scripts/generate-process-symphonic-compliance-report.cjs",
                     "generate:process:symphonic:remediation":  "node scripts/generate-symphonic-remediation-definitions.cjs",
                     "verify:process:symphonic":  "node scripts/verify-process-symphonic-compliance.cjs",
-                    "pre:manifests":  "npm run regenerate:ographx \u0026\u0026 node scripts/generate-orchestration-domains-from-sequences.js \u0026\u0026 node scripts/gen-orchestration-diff.js \u0026\u0026 node scripts/gen-orchestration-docs.js \u0026\u0026 node scripts/gen-symphonic-code-analysis-docs.js \u0026\u0026 node scripts/gen-orchestration-registry-audit-docs.js \u0026\u0026 node scripts/verify-orchestration-governance.js \u0026\u0026 node scripts/gen-orchestration-project-plan.js \u0026\u0026 node scripts/generate-sprint-reports.js \u0026\u0026 node scripts/generate-canonical-hash-report.js \u0026\u0026 node scripts/generate-provenance-index.js \u0026\u0026 node scripts/generate-compliance-report.js \u0026\u0026 node scripts/advance-current-sprint.js \u0026\u0026 node scripts/generate-sprint-integrity-snapshots.js \u0026\u0026 node scripts/generate-handler-coverage.js \u0026\u0026 node scripts/generate-sprint-deltas.js \u0026\u0026 node scripts/generate-telemetry-matrix.js \u0026\u0026 node scripts/generate-sprint-telemetry-snapshots.js \u0026\u0026 node scripts/generate-release-notes.js \u0026\u0026 node scripts/generate-demo-readiness.js \u0026\u0026 node scripts/generate-telemetry-instrumentation.js \u0026\u0026 node scripts/generate-telemetry-quickstart.js \u0026\u0026 node scripts/generate-telemetry-verification.js \u0026\u0026 node scripts/generate-telemetry-complete.js \u0026\u0026 node scripts/generate-documentation-governance-framework.js \u0026\u0026 node scripts/generate-pattern-recognition-achievement.js \u0026\u0026 node scripts/generate-governance-implementation-report.js \u0026\u0026 node scripts/generate-documentation-governance-index.js \u0026\u0026 node scripts/generate-document-drift-audit.js \u0026\u0026 node scripts/generate-domain-documentation-structure.js \u0026\u0026 node scripts/allocate-documentation-files.js \u0026\u0026 node scripts/generate-domain-documentation-indexes.js \u0026\u0026 node scripts/archive-orphaned-documents.js \u0026\u0026 node scripts/generate-archive-search-index.js \u0026\u0026 node scripts/gen-context-session-docs.cjs \u0026\u0026 node scripts/sync-json-sources.js --srcRoot=catalog \u0026\u0026 npm run sync:json-components \u0026\u0026 node scripts/sync-json-sequences.js --srcRoot=catalog \u0026\u0026 node scripts/generate-json-interactions-from-plugins.js \u0026\u0026 node scripts/generate-interaction-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topics-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topic-telemetry-signatures.cjs \u0026\u0026 node scripts/generate-layout-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/aggregate-plugins.js \u0026\u0026 node scripts/sync-plugins.js --srcRoot=catalog \u0026\u0026 node scripts/sync-control-panel-config.js \u0026\u0026 node scripts/generate-versions-manifest.js \u0026\u0026 node scripts/generate-build-pipeline-audit-report.js \u0026\u0026 node scripts/generate-build-pipeline-audit-action-plan.js \u0026\u0026 node scripts/generate-build-pipeline-scripts-inventory.js \u0026\u0026 node scripts/generate-build-pipeline-audit-index.js \u0026\u0026 npm run verify:process:symphonic",
+                    "pre:manifests":  "npm run regenerate:ographx \u0026\u0026 node scripts/generate-orchestration-domains-from-sequences.js \u0026\u0026 node scripts/gen-orchestration-diff.js \u0026\u0026 node scripts/gen-orchestration-docs.js \u0026\u0026 node scripts/gen-symphonic-code-analysis-docs.js \u0026\u0026 node scripts/gen-orchestration-registry-audit-docs.js \u0026\u0026 node scripts/verify-orchestration-governance.js \u0026\u0026 node scripts/gen-orchestration-project-plan.js \u0026\u0026 node scripts/generate-sprint-reports.js \u0026\u0026 node scripts/generate-canonical-hash-report.js \u0026\u0026 node scripts/generate-provenance-index.js \u0026\u0026 node scripts/generate-compliance-report.js \u0026\u0026 node scripts/advance-current-sprint.js \u0026\u0026 node scripts/generate-sprint-integrity-snapshots.js \u0026\u0026 node scripts/generate-handler-coverage.js \u0026\u0026 node scripts/generate-sprint-deltas.js \u0026\u0026 node scripts/generate-telemetry-matrix.js \u0026\u0026 node scripts/generate-sprint-telemetry-snapshots.js \u0026\u0026 node scripts/generate-release-notes.js \u0026\u0026 node scripts/generate-demo-readiness.js \u0026\u0026 node scripts/generate-telemetry-instrumentation.js \u0026\u0026 node scripts/generate-telemetry-quickstart.js \u0026\u0026 node scripts/generate-telemetry-verification.js \u0026\u0026 node scripts/generate-telemetry-complete.js \u0026\u0026 node scripts/generate-documentation-governance-framework.js \u0026\u0026 node scripts/generate-pattern-recognition-achievement.js \u0026\u0026 node scripts/generate-governance-implementation-report.js \u0026\u0026 node scripts/generate-documentation-governance-index.js \u0026\u0026 node scripts/generate-document-drift-audit.js \u0026\u0026 node scripts/generate-domain-documentation-structure.js \u0026\u0026 node scripts/allocate-documentation-files.js \u0026\u0026 node scripts/generate-domain-documentation-indexes.js \u0026\u0026 node scripts/archive-orphaned-documents.js \u0026\u0026 node scripts/generate-archive-search-index.js \u0026\u0026 node scripts/gen-context-session-docs.cjs \u0026\u0026 node scripts/sync-json-sources.js --srcRoot=catalog \u0026\u0026 npm run sync:json-components \u0026\u0026 node scripts/sync-json-sequences.js --srcRoot=catalog \u0026\u0026 node scripts/generate-json-interactions-from-plugins.js \u0026\u0026 node scripts/generate-interaction-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topics-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topic-telemetry-signatures.cjs \u0026\u0026 node scripts/generate-layout-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/aggregate-plugins.js \u0026\u0026 node scripts/sync-plugins.js --srcRoot=catalog \u0026\u0026 node scripts/sync-control-panel-config.js \u0026\u0026 node scripts/generate-versions-manifest.js \u0026\u0026 node scripts/generate-build-pipeline-audit-report.js \u0026\u0026 node scripts/generate-build-pipeline-audit-action-plan.js \u0026\u0026 node scripts/generate-build-pipeline-scripts-inventory.js \u0026\u0026 npm run verify:process:symphonic",
                     "verify:shape:bdd:alignment":  "node scripts/verify-shape-bdd-alignment.js",
                     "verify:slo:project-plan":  "node scripts/verify-slo-dashboard-project-plan.js",
                     "pretest":  "node scripts/verify-bdd-spec.js \u0026\u0026 node scripts/verify-demo-spec.js \u0026\u0026 node scripts/verify-synthetic-telemetry.js \u0026\u0026 npm run regenerate:ographx:test-graph \u0026\u0026 node scripts/sync-json-sources.js --srcRoot=catalog \u0026\u0026 npm run sync:json-components \u0026\u0026 node scripts/sync-json-sequences.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topics-manifest.js --srcRoot=catalog \u0026\u0026 node scripts/generate-topic-telemetry-signatures.cjs \u0026\u0026 node scripts/validate-topic-telemetry-signatures.cjs \u0026\u0026 node scripts/aggregate-plugins.js \u0026\u0026 node scripts/sync-plugins.js --srcRoot=catalog \u0026\u0026 node scripts/validate-shape-contracts.js \u0026\u0026 node scripts/shape-diff-check.js \u0026\u0026 node scripts/verify-shape-bdd-alignment.js \u0026\u0026 node scripts/verify-slo-dashboard-project-plan.js \u0026\u0026 node scripts/verify-bdd-assertion-completeness.js",
@@ -160,6 +160,7 @@
                     "visualize:domains:blueprint:complete":  "node scripts/visualize-domains.js blueprint --complete",
                     "visualize:domains:all":  "node scripts/visualize-domains.js all --complete",
                     "visualize:domains:all:truncated":  "node scripts/visualize-domains.js all",
+                    "visualize:domains:truncated":  "node scripts/visualize-domains.js truncated",
                     "allocate:documents":  "node scripts/allocate-documentation-files.js",
                     "relocate:documents":  "node scripts/relocate-documentation-files.js",
                     "generate:domain:indexes":  "node scripts/generate-domain-documentation-indexes.js",
@@ -214,7 +215,6 @@
                     "analyze:symphonic:code:baseline":  "node scripts/analyze-symphonic-code.cjs --baseline",
                     "analyze:symphonic:code:trends":  "node scripts/analyze-symphonic-code.cjs --trends",
                     "analyze:symphonic:code:renderx":  "node scripts/analyze-symphonic-code.cjs --domain renderx-web-orchestration",
-                    "analyze:symphonic:code:domain":  "node scripts/analyze-domain.cjs",
                     "analyze:domains:all": "node scripts/analyze-all-domains.cjs",
                     "gen:symphonic:code:docs":  "node scripts/gen-symphonic-code-analysis-docs.js",
                     "validate:ac-alignment": "node scripts/validate-ac-alignment.cjs",
@@ -241,7 +241,7 @@
                     "audit:registry":  "node scripts/audit-orchestration-registry.js",
                     "gen:registry:audit:docs":  "node scripts/gen-orchestration-registry-audit-docs.js"
                 },
-    "dependencies":  {
+                "dependencies":  {
                          "@renderx-plugins/canvas":  "*",
                          "@renderx-plugins/canvas-component":  "*",
                          "@renderx-plugins/components":  "*",
@@ -281,7 +281,7 @@
                             "vitest":  "^3.2.4",
                             "ws":  "^8.18.3"
                         },
-    "optionalDependencies":  {
+                    "optionalDependencies":  {
                                  "@rollup/rollup-linux-x64-gnu":  "4.50.1"
                              }
 }

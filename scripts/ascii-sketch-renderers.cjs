@@ -165,26 +165,22 @@ function getTrendDirection(current, previous, epsilon = 0.1) {
  */
 function renderSymphonyArchitecture(data) {
   const { domainId, summary, symphonies } = data;
-  const { symphonyCount, handlerCount } = summary;
+  const { symphonyCount, handlerCount } = summary || {};
 
-  let output = '';
-  output += '╔════════ SYMPHONY ORCHESTRATION ════════╗\n';
-  output += `║ Domain : ${padString(domainId, 29)}║\n`;
-  output += `║ Units  : ${symphonyCount} symphonies${' '.repeat(20 - String(symphonyCount).length)}║\n`;
-  output += `║         ${handlerCount} handlers${' '.repeat(22 - String(handlerCount).length)}║\n`;
-  output += '╠═══════════════════════════════════════╣\n';
-  output += '║ SYMPHONIES                            ║\n';
+  const sketch = new AsciiSketcher({ boxWidth: 48 });
+  sketch._pushTopBorder();
+  sketch._pushLine(' SYMPHONY ORCHESTRATION ');
+  sketch._pushSeparator();
+  sketch._pushLine(`Domain : ${domainId}`);
+  sketch._pushLine(`Units  : ${symphonyCount} symphonies`);
+  sketch._pushLine(`        ${handlerCount} handlers`);
+  sketch._pushSeparator();
+  sketch._pushLine('SYMPHONIES');
 
-  // Sort by handler count descending
-  const sorted = [...symphonies].sort((a, b) => b.handlerCount - a.handlerCount);
-  
-  sorted.forEach(symphony => {
-    const line = `• ${symphony.label} (${symphony.handlerCount} @ ${symphony.avgCoverage.toFixed(1)}%)`;
-    output += `║ ${padString(line, 38)}║\n`;
-  });
-
-  output += '╚═══════════════════════════════════════╝';
-  return output;
+  const sorted = Array.isArray(symphonies) ? [...symphonies].sort((a, b) => b.handlerCount - a.handlerCount) : [];
+  sorted.forEach(s => sketch._pushLine(`• ${s.label} (${s.handlerCount} @ ${s.avgCoverage.toFixed(1)}%)`));
+  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
 /**
@@ -194,22 +190,21 @@ function renderSymphonyArchitecture(data) {
  */
 function renderSymphonyHandlerBreakdown(data) {
   const { symphonyLabel, handlers } = data;
-
-  let output = '';
-  output += `╔════════ HANDLERS: ${padString(symphonyLabel, 20)}════════╗\n`;
-  output += '║ Name                     LOC   Cov   Risk ║\n';
-  output += '╠═══════════════════════════════════════════╣\n';
-
-  handlers.forEach(handler => {
-    const name = padString(handler.name, 24);
-    const loc = padString(String(handler.loc), 4, true);
-    const cov = padString(String(Math.floor(handler.coverage)), 3, true);
-    const risk = padString(handler.risk, 8);
-    output += `║ ${name} ${loc}${cov}% ${risk}║\n`;
+  const sketch = new AsciiSketcher({ boxWidth: 44 });
+  sketch._pushTopBorder();
+  sketch._pushLine(` HANDLERS: ${symphonyLabel}`);
+  sketch._pushSeparator();
+  sketch._pushLine('Name                     LOC   Cov   Risk');
+  sketch._pushSeparator();
+  (handlers || []).forEach(h => {
+    const name = padString(h.name, 24);
+    const loc = padString(String(h.loc), 4, true);
+    const cov = padString(String(Math.floor(h.coverage)), 3, true) + '%';
+    const risk = padString(h.risk, 8);
+    sketch._pushLine(`${name} ${loc}${cov} ${risk}`);
   });
-
-  output += '╚═══════════════════════════════════════════╝';
-  return output;
+  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
 /**
@@ -227,24 +222,22 @@ function renderHandlerPortfolioFoundation(data) {
     duplicationBlocks,
     maintainability,
     conformityScore
-  } = data;
+  } = data || {};
 
-  // Safely convert to numbers
-  const safeMaintainability = Number(maintainability) || 0;
-  const safeConformity = Number(conformityScore) || 0;
-
-  let output = '';
-  output += '╔════ HANDLER PORTFOLIO METRICS ════╗\n';
-  output += `║ Files           : ${padString(String(totalFiles), 14)}║\n`;
-  output += `║ Total LOC       : ${padString(String(totalLoc), 14)}║\n`;
-  output += `║ Handlers        : ${padString(String(handlerCount), 14)}║\n`;
-  output += `║ Avg LOC/Handler : ${padString(avgLocPerHandler.toFixed(1), 14)}║\n`;
-  output += `║ Coverage        : ${padString(coverageStatements.toFixed(1) + '%', 14)}║\n`;
-  output += `║ Duplication     : ${padString(String(duplicationBlocks), 14)}║\n`;
-  output += `║ Maintainability : ${padString(safeMaintainability.toFixed(1), 14)}║\n`;
-  output += `║ Conformity      : ${padString(safeConformity.toFixed(1) + '%', 14)}║\n`;
-  output += '╚════════════════════════════════════╝';
-  return output;
+  const sketch = new AsciiSketcher({ boxWidth: 40 });
+  sketch._pushTopBorder();
+  sketch._pushLine(' HANDLER PORTFOLIO METRICS ');
+  sketch._pushSeparator();
+  sketch._pushLine(`Files           : ${String(totalFiles)}`);
+  sketch._pushLine(`Total LOC       : ${String(totalLoc)}`);
+  sketch._pushLine(`Handlers        : ${String(handlerCount)}`);
+  sketch._pushLine(`Avg LOC/Handler : ${Number(avgLocPerHandler || 0).toFixed(1)}`);
+  sketch._pushLine(`Coverage        : ${Number(coverageStatements || 0).toFixed(1)}%`);
+  sketch._pushLine(`Duplication     : ${String(duplicationBlocks)}`);
+  sketch._pushLine(`Maintainability : ${Number(maintainability || 0).toFixed(1)}`);
+  sketch._pushLine(`Conformity      : ${Number(conformityScore || 0).toFixed(1)}%`);
+  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
 /**
@@ -253,22 +246,21 @@ function renderHandlerPortfolioFoundation(data) {
  * @returns {string}
  */
 function renderCoverageHeatmapByBeat(data) {
-  let output = '';
-  output += '╔════ COVERAGE HEATMAP BY BEAT ════╗\n';
-  // Header spacing aligned to tests: 'Beat       Mov.   Cov   Bar'
-  output += '║ Beat       Mov.   Cov   Bar       ║\n';
-  output += '╠═══════════════════════════════════╣\n';
-
-  data.forEach(beat => {
+  const sketch = new AsciiSketcher({ boxWidth: 38 });
+  sketch._pushTopBorder();
+  sketch._pushLine(' COVERAGE HEATMAP BY BEAT ');
+  sketch._pushSeparator();
+  sketch._pushLine('Beat       Mov.   Cov   Bar');
+  sketch._pushSeparator();
+  (data || []).forEach(beat => {
     const beatName = padString(beat.beat, 10);
     const movement = padString(beat.movement, 6);
     const coverage = padString(Math.round(beat.coverage) + '%', 3, true);
     const bar = padString(generateBar(beat.coverage, 11), 11);
-    output += `║ ${beatName} ${movement} ${coverage} ${bar} ║\n`;
+    sketch._pushLine(`${beatName} ${movement} ${coverage} ${bar}`);
   });
-
-  output += '╚═══════════════════════════════════╝';
-  return output;
+  sketch.current.push('╚' + '═'.repeat(sketch.boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
 /**
@@ -277,7 +269,6 @@ function renderCoverageHeatmapByBeat(data) {
  * @returns {string}
  */
 function renderRiskAssessmentMatrix(data) {
-  // Accept a RiskMatrix object with string arrays for each level
   const safe = data && typeof data === 'object' ? data : {};
   const critical = Array.isArray(safe.critical) ? safe.critical : [];
   const high = Array.isArray(safe.high) ? safe.high : [];
@@ -285,33 +276,27 @@ function renderRiskAssessmentMatrix(data) {
   const low = Array.isArray(safe.low) ? safe.low : [];
 
   const boxWidth = 45;
-  let output = '';
-  output += '╔════ RISK ASSESSMENT MATRIX ═════════════════╗\n';
-  output += '║ Level    Items                               ║\n';
-  output += '╠══════════════════════════════════════════════╣\n';
-  
-  output += `║ CRITICAL: ${String(critical.length).padEnd(boxWidth - 11)}║\n`;
-  critical.forEach(item => {
-    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
-  });
+  const sketch = new AsciiSketcher({ boxWidth });
+  sketch._pushTopBorder();
+  sketch._pushLine('RISK ASSESSMENT MATRIX');
+  sketch._pushSeparator();
+  sketch._pushLine('Level    Items');
+  sketch._pushSeparator();
 
-  output += `║ HIGH    : ${String(high.length).padEnd(boxWidth - 11)}║\n`;
-  high.forEach(item => {
-    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
-  });
+  sketch._pushLine(`CRITICAL: ${String(critical.length)}`);
+  critical.forEach(item => sketch._pushLine(`  - ${String(item)}`));
 
-  output += `║ MEDIUM  : ${String(medium.length).padEnd(boxWidth - 11)}║\n`;
-  medium.forEach(item => {
-    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
-  });
+  sketch._pushLine(`HIGH    : ${String(high.length)}`);
+  high.forEach(item => sketch._pushLine(`  - ${String(item)}`));
 
-  output += `║ LOW     : ${String(low.length).padEnd(boxWidth - 11)}║\n`;
-  low.forEach(item => {
-    output += `║   - ${padString(String(item), boxWidth - 4)}║\n`;
-  });
-  
-  output += '╚══════════════════════════════════════════════╝';
-  return output;
+  sketch._pushLine(`MEDIUM  : ${String(medium.length)}`);
+  medium.forEach(item => sketch._pushLine(`  - ${String(item)}`));
+
+  sketch._pushLine(`LOW     : ${String(low.length)}`);
+  low.forEach(item => sketch._pushLine(`  - ${String(item)}`));
+
+  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
 /**
@@ -320,115 +305,82 @@ function renderRiskAssessmentMatrix(data) {
  * @returns {string}
  */
 function renderRefactoringRoadmap(data) {
-  if (!Array.isArray(data)) {
-    return ''; // Return empty string if data is not an array
-  }
-  let output = '';
+  if (!Array.isArray(data)) return '';
+
   const boxWidth = 55;
-  output += '╔════ REFACTORING ROADMAP ══════════════════════════════╗\n';
+  const sketch = new AsciiSketcher({ boxWidth });
+  sketch._pushTopBorder();
+  sketch._pushLine('REFACTORING ROADMAP');
+  sketch._pushSeparator();
 
   data.forEach((item, index) => {
-    const num = index + 1;
-    const titleLine = `${num}. ${item.title}`;
-    output += `║ ${padString(titleLine, boxWidth)}║\n`;
-    
-    const targetLine = `  Target : ${item.target}`;
-    output += `║ ${padString(targetLine, boxWidth)}║\n`;
-    
-    if (item.effort) {
-      const effortLine = `  Effort : ${item.effort}`;
-      output += `║ ${padString(effortLine, boxWidth)}║\n`;
-    }
-    
-    const rationaleLine = `  Rationale: ${item.rationale}`;
-    output += `║ ${padString(rationaleLine, boxWidth)}║\n`;
-    
-    if (item.suggestedPrTitle) {
-      const prLine = `  PR: ${item.suggestedPrTitle}`;
-      output += `║ ${padString(prLine, boxWidth)}║\n`;
-    }
-    
-    if (index < data.length - 1) {
-      output += `║ ${' '.repeat(boxWidth)}║\n`;
-    }
+    sketch._pushLine(`${index + 1}. ${item.title}`);
+    sketch._pushLine(`  Target : ${item.target}`);
+    if (item.effort) sketch._pushLine(`  Effort : ${item.effort}`);
+    sketch._pushLine(`  Rationale: ${item.rationale}`);
+    if (item.suggestedPrTitle) sketch._pushLine(`  PR: ${item.suggestedPrTitle}`);
+    if (index < data.length - 1) sketch._pushLine('');
   });
 
-  output += '╚' + '═'.repeat(boxWidth + 2) + '╝';
-  return output;
+  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
-/**
- * Render historical trend analysis
- * @param {TrendAnalysis} data
- * @returns {string}
- */
 function renderHistoricalTrendAnalysis(data) {
-  const { periodLabel, baselineAt, current, previous } = data;
+  const { periodLabel, baselineAt, current, previous } = data || {};
+  const boxWidth = 42;
+  const sketch = new AsciiSketcher({ boxWidth });
 
-  let output = '';
-  output += '╔════ HISTORICAL TREND ANALYSIS ════╗\n';
-  output += `║ Period  : ${padString(periodLabel, 24)}║\n`;
-  output += `║ Baseline: ${padString(baselineAt.substring(0, 10), 24)}║\n`;
-  output += '╠════════ METRIC TRENDS ═══════════╣\n';
-  output += '║ Metric        Cur   Prev  Trend  ║\n';
+  sketch._pushTopBorder();
+  sketch._pushLine('HISTORICAL TREND ANALYSIS');
+  sketch._pushSeparator();
+  sketch._pushLine(`Period  : ${periodLabel || ''}`);
+  sketch._pushLine(`Baseline: ${baselineAt ? String(baselineAt).substring(0,10) : ''}`);
+  sketch._pushSeparator();
+  sketch._pushLine('Metric        Cur   Prev  Trend');
+  sketch._pushSeparator();
 
-  if (previous) {
-    // Handlers
+  if (previous && current) {
     const handlersTrend = getTrendDirection(current.handlerCount, previous.handlerCount);
-    output += `║ Handlers      ${padString(String(current.handlerCount), 4, true)}  ${padString(String(previous.handlerCount), 4, true)}  ${handlersTrend}     ║\n`;
+    sketch._pushLine(`Handlers      ${padString(String(current.handlerCount),4,true)}  ${padString(String(previous.handlerCount),4,true)}  ${handlersTrend}`);
 
-    // Duplication
     const dupTrend = getTrendDirection(current.duplicationBlocks, previous.duplicationBlocks);
-    output += `║ Duplication   ${padString(String(current.duplicationBlocks), 4, true)}  ${padString(String(previous.duplicationBlocks), 4, true)}  ${dupTrend}     ║\n`;
+    sketch._pushLine(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  ${padString(String(previous.duplicationBlocks),4,true)}  ${dupTrend}`);
 
-    // Coverage
     const covTrend = getTrendDirection(current.coverageAvg, previous.coverageAvg);
-    output += `║ Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%', 5, true)} ${padString(previous.coverageAvg.toFixed(1) + '%', 5, true)} ${covTrend}     ║\n`;
+    sketch._pushLine(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} ${padString(previous.coverageAvg.toFixed(1) + '%',5,true)} ${covTrend}`);
 
-    // Conformity
     const confTrend = getTrendDirection(current.conformity, previous.conformity);
-    output += `║ Conformity    ${padString(current.conformity.toFixed(1) + '%', 5, true)} ${padString(previous.conformity.toFixed(1) + '%', 5, true)} ${confTrend}     ║\n`;
-  } else {
-    // No previous data - show current only
-    output += `║ Handlers      ${padString(String(current.handlerCount), 4, true)}  N/A   –     ║\n`;
-    output += `║ Duplication   ${padString(String(current.duplicationBlocks), 4, true)}  N/A   –     ║\n`;
-    output += `║ Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%', 5, true)} N/A   –     ║\n`;
-    output += `║ Conformity    ${padString(current.conformity.toFixed(1) + '%', 5, true)} N/A   –     ║\n`;
+    sketch._pushLine(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} ${padString(previous.conformity.toFixed(1) + '%',5,true)} ${confTrend}`);
+  } else if (current) {
+    sketch._pushLine(`Handlers      ${padString(String(current.handlerCount),4,true)}  N/A   –`);
+    sketch._pushLine(`Duplication   ${padString(String(current.duplicationBlocks),4,true)}  N/A   –`);
+    sketch._pushLine(`Coverage avg  ${padString(current.coverageAvg.toFixed(1) + '%',5,true)} N/A   –`);
+    sketch._pushLine(`Conformity    ${padString(current.conformity.toFixed(1) + '%',5,true)} N/A   –`);
   }
 
-  output += '╚══════════════════════════════════╝';
-  return output;
+  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
-/**
- * Render legend and domain terminology
- * @param {Legend} data
- * @returns {string}
- */
 function renderLegendAndTerminology(data) {
-  const { domainId, entries } = data;
-
+  const { domainId, entries } = data || {};
   const boxWidth = 70;
-  let output = '';
-  output += '╔════ LEGEND & DOMAIN TERMINOLOGY ════' + '═'.repeat(boxWidth - 36) + '╗\n';
-  output += `║ Domain: ${padString(domainId, boxWidth - 9)}║\n`;
-  output += '╠' + '═'.repeat(boxWidth + 2) + '╣\n';
+  const sketch = new AsciiSketcher({ boxWidth });
+  sketch._pushTopBorder();
+  sketch._pushLine('LEGEND & DOMAIN TERMINOLOGY');
+  sketch._pushSeparator();
+  sketch._pushLine(`Domain: ${domainId || ''}`);
+  sketch._pushSeparator();
 
-  entries.forEach(entry => {
-    const termLine = `• ${entry.term}: ${entry.definition}`;
-    output += `║ ${padString(termLine, boxWidth)}║\n`;
+  (entries || []).forEach(entry => {
+    sketch._pushLine(`• ${entry.term}: ${entry.definition}`);
   });
 
-  output += `║ ${' '.repeat(boxWidth)}║\n`;
-  output += '╚' + '═'.repeat(boxWidth + 2) + '╝';
-  return output;
+  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  return sketch.current.join('\n');
 }
 
-/**
- * Render clean symphony handler portfolio view
- * @param {CleanSymphonyHandler} data
- * @returns {string}
- */
 function renderCleanSymphonyHandler(data) {
   const {
     symphonyName,
@@ -445,12 +397,8 @@ function renderCleanSymphonyHandler(data) {
     movements,
     handlers,
     metrics
-  } = data;
+  } = data || {};
 
-  // ========================================================================
-  // TABLE COLUMN CONFIGURATION
-  // Define columns here - adding/removing columns automatically adjusts layout
-  // ========================================================================
   const TABLE_COLUMNS = [
     { key: 'beat', header: 'Beat', width: 4, align: 'left', getValue: h => h.beat },
     { key: 'movement', header: 'Mov', width: 3, align: 'left', getValue: h => h.movement },
@@ -464,101 +412,173 @@ function renderCleanSymphonyHandler(data) {
     { key: 'baton', header: 'Baton', width: 8, align: 'left', getValue: h => h.baton }
   ];
 
-  // Spacing between columns (one entry per gap between columns)
-  // Length should be TABLE_COLUMNS.length - 1
   const COLUMN_SPACING = [1, 1, 1, 2, 2, 1, 1, 2, 1];
 
-  // Calculate table content width dynamically
   const tableContentWidth = TABLE_COLUMNS.reduce((sum, col) => sum + col.width, 0) +
                             COLUMN_SPACING.reduce((sum, space) => sum + space, 0);
 
-  // Box width is the maximum of content width and minimum width (68 for legacy compatibility)
   const boxWidth = Math.max(68, tableContentWidth);
 
-  // Build table header line dynamically
+  const sketch = new AsciiSketcher({ boxWidth });
+  sketch._pushTopBorder();
+  sketch._pushLine(`HANDLER SYMPHONY: ${symphonyName ? symphonyName.toUpperCase() : ''}`);
+  sketch._pushLine(`Domain : ${domainId || ''}`);
+  sketch._pushLine(`Package: ${packageName || ''}`);
+  sketch._pushLine(`Scope : ${symphonyCount || 0} Symphony · ${movementCount || 0} Movements · ${beatCount || 0} Beats · ${handlerCount || 0} Handlers`);
+  sketch._pushLine(`Health: ${totalLoc || 0} LOC · Avg Cov ${avgCoverage || 0}% · Size Band: ${sizeBand || ''} · Risk: ${riskLevel || ''}`);
+
+  sketch._pushSeparator();
+  sketch._pushLine('MOVEMENT MAP');
+  const movementLine = (movements || []).map(m => m.name).join('   →   ');
+  sketch._pushLine('  ' + movementLine);
+  const beatsLine = (movements || []).map(m => m.beats).join('      ');
+  sketch._pushLine('  ' + beatsLine);
+  const focusLine = (movements || []).map(m => m.description).join('     ');
+  sketch._pushLine('  ' + focusLine);
+
+  const portfolioTitle = ' BEAT / HANDLER PORTFOLIO ';
+  const leftPadding = 24;
+  const rightPadding = boxWidth - leftPadding - portfolioTitle.length;
+  sketch.current.push('╠' + '═'.repeat(leftPadding) + portfolioTitle + '═'.repeat(Math.max(0, rightPadding)) + '╣');
+
   let tableHeader = '';
   TABLE_COLUMNS.forEach((col, idx) => {
     tableHeader += padString(col.header, col.width, col.align === 'right');
-    if (idx < TABLE_COLUMNS.length - 1) {
-      tableHeader += ' '.repeat(COLUMN_SPACING[idx]);
-    }
+    if (idx < TABLE_COLUMNS.length - 1) tableHeader += ' '.repeat(COLUMN_SPACING[idx]);
   });
+  sketch._pushLine(tableHeader);
+  sketch._pushLine('─'.repeat(boxWidth - 1));
 
-  let output = '';
-
-  // Header
-  output += '╔' + '═'.repeat(boxWidth) + '╗\n';
-  output += `║ ${padString(`HANDLER SYMPHONY: ${symphonyName.toUpperCase()}`, boxWidth)}║\n`;
-  output += `║ ${padString(`Domain : ${domainId}`, boxWidth)}║\n`;
-  output += `║ ${padString(`Package: ${packageName}`, boxWidth)}║\n`;
-  output += `║ ${padString(`Scope : ${symphonyCount} Symphony · ${movementCount} Movements · ${beatCount} Beats · ${handlerCount} Handlers`, boxWidth)}║\n`;
-  output += `║ ${padString(`Health: ${totalLoc} LOC · Avg Cov ${avgCoverage}% · Size Band: ${sizeBand} · Risk: ${riskLevel}`, boxWidth)}║\n`;
-
-  // Movement Map
-  output += '╠' + '═'.repeat(boxWidth) + '╣\n';
-  output += `║ ${padString('MOVEMENT MAP', boxWidth)}║\n`;
-
-  // Build movement flow line
-  const movementLine = movements.map(m => m.name).join('   →   ');
-  output += `║ ${padString('  ' + movementLine, boxWidth)}║\n`;
-
-  // Build beats line
-  const beatsLine = movements.map(m => m.beats).join('      ');
-  output += `║ ${padString('  ' + beatsLine, boxWidth)}║\n`;
-
-  // Build focus line
-  const focusLine = movements.map(m => m.description).join('     ');
-  output += `║ ${padString('  ' + focusLine, boxWidth)}║\n`;
-
-  // Handler Portfolio Section
-  output += '╠' + '═'.repeat(24) + ' BEAT / HANDLER PORTFOLIO ' + '═'.repeat(boxWidth - 50) + '╣\n';
-  output += `║ ${padString(tableHeader, boxWidth)}║\n`;
-  output += `║ ${padString('─'.repeat(boxWidth - 1), boxWidth)}║\n`;
-
-  // Handler rows - built dynamically from column configuration
-  handlers.forEach((handler, idx) => {
+  (handlers || []).forEach((handler, idx) => {
     let row = '';
     TABLE_COLUMNS.forEach((col, colIdx) => {
       const value = col.getValue(handler);
       row += padString(value, col.width, col.align === 'right');
-      if (colIdx < TABLE_COLUMNS.length - 1) {
-        row += ' '.repeat(COLUMN_SPACING[colIdx]);
-      }
+      if (colIdx < TABLE_COLUMNS.length - 1) row += ' '.repeat(COLUMN_SPACING[colIdx]);
     });
+    sketch._pushLine(row);
 
-    output += `║ ${row} ║\n`;
-    
-    // Add data baton handoff after movement boundaries
-    if (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload') {
-      const nextHandler = handlers[idx + 1];
+    if (handler && (handler.baton === 'metrics' || handler.baton === 'dom' || handler.baton === 'payload')) {
+      const nextHandler = (handlers || [])[idx + 1];
       if (nextHandler && nextHandler.baton !== handler.baton) {
         let batonDesc = '';
         if (handler.baton === 'metrics') batonDesc = 'handoff: template + CSS metrics';
         else if (handler.baton === 'dom') batonDesc = 'handoff: DOM + styling coverage';
         else if (handler.baton === 'payload') batonDesc = 'handoff: import + payload data';
-        
-        output += `║ ${padString(`     🎭 Data Baton ▸ ${batonDesc}`, boxWidth)}║\n`;
+        sketch._pushLine(`     🎭 Data Baton ▸ ${batonDesc}`);
       }
     }
   });
 
-  // Metrics Summary
-  output += '╠' + '═'.repeat(24) + ' HANDLER PORTFOLIO METRICS ' + '═'.repeat(boxWidth - 51) + '╣\n';
-  
-  // Size bands
-  const sizeLine = `Size Bands    : Tiny ${metrics.sizeBands.tiny} · Small ${metrics.sizeBands.small} · Medium ${metrics.sizeBands.medium} · Large ${metrics.sizeBands.large} · XL ${metrics.sizeBands.xl}`;
-  output += `║ ${padString(sizeLine, boxWidth)}║\n`;
-  
-  // Coverage distribution
-  const covLine = `Coverage Dist.: 0–30% ${metrics.coverageDist.low} · 30–60% ${metrics.coverageDist.medLow} · 60–80% ${metrics.coverageDist.medHigh} · 80–100% ${metrics.coverageDist.high}`;
-  output += `║ ${padString(covLine, boxWidth)}║\n`;
-  
-  // Risk summary
-  const riskLine = `Risk Summary  : CRITICAL ${metrics.riskSummary.critical} · HIGH ${metrics.riskSummary.high} · MEDIUM ${metrics.riskSummary.medium} · LOW ${metrics.riskSummary.low}`;
-  output += `║ ${padString(riskLine, boxWidth)}║\n`;
+  const metricsTitle = ' HANDLER PORTFOLIO METRICS ';
+  const metricsLeftPadding = 24;
+  const metricsRightPadding = boxWidth - metricsLeftPadding - metricsTitle.length;
+  sketch.current.push('╠' + '═'.repeat(metricsLeftPadding) + metricsTitle + '═'.repeat(Math.max(0, metricsRightPadding)) + '╣');
 
-  output += '╚' + '═'.repeat(boxWidth) + '╝';
-  return output;
+  const sizeLine = `Size Bands    : Tiny ${(metrics && metrics.sizeBands ? metrics.sizeBands.tiny : 0)} · Small ${(metrics && metrics.sizeBands ? metrics.sizeBands.small : 0)} · Medium ${(metrics && metrics.sizeBands ? metrics.sizeBands.medium : 0)} · Large ${(metrics && metrics.sizeBands ? metrics.sizeBands.large : 0)} · XL ${(metrics && metrics.sizeBands ? metrics.sizeBands.xl : 0)}`;
+  sketch._pushLine(sizeLine);
+  const covLine = `Coverage Dist.: 0–30% ${(metrics && metrics.coverageDist ? metrics.coverageDist.low : 0)} · 30–60% ${(metrics && metrics.coverageDist ? metrics.coverageDist.medLow : 0)} · 60–80% ${(metrics && metrics.coverageDist ? metrics.coverageDist.medHigh : 0)} · 80–100% ${(metrics && metrics.coverageDist ? metrics.coverageDist.high : 0)}`;
+  sketch._pushLine(covLine);
+  const riskLine = `Risk Summary  : CRITICAL ${(metrics && metrics.riskSummary ? metrics.riskSummary.critical : 0)} · HIGH ${(metrics && metrics.riskSummary ? metrics.riskSummary.high : 0)} · MEDIUM ${(metrics && metrics.riskSummary ? metrics.riskSummary.medium : 0)} · LOW ${(metrics && metrics.riskSummary ? metrics.riskSummary.low : 0)}`;
+  sketch._pushLine(riskLine);
+
+  sketch.current.push('╚' + '═'.repeat(boxWidth) + '╝');
+  return sketch.current.join('\n');
+}
+
+// ===== ASCII SKETCH BUILDER =====
+
+class AsciiSketcher {
+  constructor(options = {}) {
+    this.boxWidth = options.boxWidth || 80;
+    this.pages = [];
+    this.current = [];
+    this.pageTitle = '';
+  }
+
+  setWidth(w) {
+    this.boxWidth = Math.max(20, Math.floor(w));
+  }
+
+  newPage(title = '') {
+    if (this.current.length) {
+      this.pages.push(this.current.join('\n'));
+    }
+    this.current = [];
+    this.pageTitle = title;
+    this._pushTopBorder();
+    if (title) {
+      this._pushLine(` ${title.toUpperCase()}`);
+      this._pushSeparator();
+    }
+  }
+
+  build() {
+    if (this.current.length) this.pages.push(this.current.join('\n'));
+    const doc = this.pages.join('\n\n');
+    this.pages = [];
+    this.current = [];
+    this.pageTitle = '';
+    return doc;
+  }
+
+  addCard(title, lines = [], opts = {}) {
+    const innerWidth = Math.min(this.boxWidth, opts.width || this.boxWidth);
+    const box = [];
+    box.push('╔' + '═'.repeat(innerWidth) + '╗');
+    box.push(`║ ${padString(title, innerWidth - 1)}║`);
+    box.push('╠' + '═'.repeat(innerWidth) + '╣');
+    lines.forEach(line => {
+      const parts = String(line).split('\n');
+      parts.forEach(p => box.push(`║ ${padString(p, innerWidth - 1)}║`));
+    });
+    box.push('╚' + '═'.repeat(innerWidth) + '╝');
+    this.current.push(box.join('\n'));
+  }
+
+  addSummary(kv = {}, opts = {}) {
+    const innerWidth = Math.min(this.boxWidth, opts.width || this.boxWidth);
+    const lines = Object.keys(kv).map(k => `${k}: ${kv[k]}`);
+    this.addCard(opts.title || 'SUMMARY', lines, { width: innerWidth });
+  }
+
+  addTable(columns, rows, opts = {}) {
+    const colCount = columns.length;
+    const normalizedRows = rows.map(r => Array.isArray(r) ? r.map(c => String(c)) : columns.map(c => String(r[c.key] != null ? r[c.key] : '')));
+    const natural = columns.map((col, i) => {
+      const headerLen = String(col.header || '').length;
+      const maxCell = Math.max(...normalizedRows.map(r => String(r[i] || '').length), 0);
+      const specified = col.width ? Number(col.width) : 0;
+      return Math.max(headerLen, maxCell, specified);
+    });
+    const spacingTotal = (colCount - 1) * (opts.colSpacing || 1);
+    const contentTotal = natural.reduce((s, v) => s + v, 0) + spacingTotal;
+    const available = Math.max(10, this.boxWidth - 4);
+    let widths = [...natural];
+    if (contentTotal > available) {
+      const scale = available / contentTotal;
+      widths = widths.map(w => Math.max(1, Math.floor(w * scale)));
+    }
+    const used = widths.reduce((s, v) => s + v, 0) + spacingTotal;
+    if (used < available) widths[widths.length - 1] += (available - used);
+    const innerWidth = Math.min(this.boxWidth, available);
+    const box = [];
+    box.push('╔' + '═'.repeat(innerWidth) + '╗');
+    const headerLine = columns.map((col, i) => padString(String(col.header || ''), widths[i], col.align === 'right')).join(' '.repeat(opts.colSpacing || 1));
+    box.push(`║ ${padString(headerLine, innerWidth - 1)}║`);
+    box.push('╠' + '═'.repeat(innerWidth) + '╣');
+    normalizedRows.forEach(row => {
+      const cells = row.map((cell, i) => padString(String(cell || ''), widths[i], columns[i].align === 'right'));
+      const line = cells.join(' '.repeat(opts.colSpacing || 1));
+      box.push(`║ ${padString(line, innerWidth - 1)}║`);
+    });
+    box.push('╚' + '═'.repeat(innerWidth) + '╝');
+    this.current.push(box.join('\n'));
+  }
+
+  _pushTopBorder() { this.current.push('╔' + '═'.repeat(this.boxWidth) + '╗'); }
+  _pushSeparator() { this.current.push('╠' + '═'.repeat(this.boxWidth) + '╣'); }
+  _pushLine(content) { this.current.push(`║ ${padString(content, this.boxWidth - 1)}║`); }
 }
 
 // ===== EXPORTS =====
@@ -572,5 +592,6 @@ module.exports = {
   renderRefactoringRoadmap,
   renderHistoricalTrendAnalysis,
   renderLegendAndTerminology,
-  renderCleanSymphonyHandler
+  renderCleanSymphonyHandler,
+  AsciiSketcher
 };
