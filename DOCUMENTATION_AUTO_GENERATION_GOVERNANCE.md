@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.framework.governanceRules) -->
-<!-- Generated: 2025-12-14T15:40:51.206Z -->
+<!-- Generated: 2025-12-14T15:52:07.038Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Documentation Auto-Generation Governance Framework

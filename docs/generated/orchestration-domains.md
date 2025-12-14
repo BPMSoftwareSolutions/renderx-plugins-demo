@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-12-14T15:40:49.931Z
+**Last Generated:** 2025-12-14T15:52:05.768Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
