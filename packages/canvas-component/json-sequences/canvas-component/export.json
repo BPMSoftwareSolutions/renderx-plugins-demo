@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler queryAllComponents is available"
+                "handler queryAllComponents is available",
+                "required inputs are provided"
               ],
               "when": [
-                "queryAllComponents executes under normal conditions"
+                "queryAllComponents executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "queryAllComponents performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -59,16 +63,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler discoverComponentsFromDom is available"
+                "handler discoverComponentsFromDom is available",
+                "required inputs are provided"
               ],
               "when": [
-                "discoverComponentsFromDom executes under normal conditions"
+                "discoverComponentsFromDom executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "discoverComponentsFromDom performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -92,16 +100,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler collectCssClasses is available"
+                "handler collectCssClasses is available",
+                "required inputs are provided"
               ],
               "when": [
-                "collectCssClasses executes under normal conditions"
+                "collectCssClasses executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "collectCssClasses performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -158,16 +170,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler collectLayoutData is available"
+                "handler buildUiFileContent is available",
+                "required inputs are provided"
               ],
               "when": [
-                "collectLayoutData executes under normal conditions"
+                "buildUiFileContent executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "buildUiFileContent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -191,16 +207,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler downloadUiFile is available"
+                "handler downloadUiFile is available",
+                "required inputs are provided"
               ],
               "when": [
-                "downloadUiFile executes under normal conditions"
+                "downloadUiFile executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "downloadUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

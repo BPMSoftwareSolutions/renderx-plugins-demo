@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler endDrag is available"
+                "handler endDrag is available",
+                "required inputs are provided"
               ],
               "when": [
-                "endDrag executes under normal conditions"
+                "endDrag executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "endDrag performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

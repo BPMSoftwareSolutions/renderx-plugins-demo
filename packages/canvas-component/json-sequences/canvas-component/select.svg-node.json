@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler showSvgNodeOverlay is available"
+                "handler showSvgNodeOverlay is available",
+                "required inputs are provided"
               ],
               "when": [
-                "showSvgNodeOverlay executes under normal conditions"
+                "showSvgNodeOverlay executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "showSvgNodeOverlay performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

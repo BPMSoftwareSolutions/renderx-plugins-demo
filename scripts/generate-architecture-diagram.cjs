@@ -233,7 +233,7 @@ function handlerHasSourcePath(handlerName) {
  * Generate a generic summary when detailed handler data isn't available
  */
 function generateGenericSummary(metrics) {
-  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', handlers = [] } = metrics;
+  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', handlers = [], godHandlers = [] } = metrics;
   const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
   // Safe numeric conversions (coverage might be string from metrics)
@@ -268,9 +268,14 @@ function generateGenericSummary(metrics) {
         ╚═════════════════════════════════════════════════════════╝`;
   }
 
+  const godHandlerIndicator = godHandlers.length > 0
+    ? `⚠️  God Handlers: ${godHandlers.length}`
+    : '✓  No God Handlers';
+
   return `        ╔═════════════════════════════════════╗
         ║ ${domainName.toUpperCase()} STRUCTURE    ${' '.repeat(Math.max(0, 30 - domainName.length))}║
         ║ (Analyzed: ${totalHandlers} handlers)   ${' '.repeat(Math.max(0, 20 - String(totalHandlers).length))}║
+        ║ ${godHandlerIndicator}${' '.repeat(Math.max(0, 37 - godHandlerIndicator.length))}║
         ╠═════════════════════════════════════╣
         ║                                     ║
         ║  Analysis Summary:                  ║
@@ -434,7 +439,7 @@ function discoverSequences(domainId) {
  * Groups handlers by package/feature and shows LOC, coverage, and risk metrics
  */
 function generateHandlerSummary(handlerData) {
-  const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = handlerData;
+  const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', godHandlers = [] } = handlerData;
 
   // If no handlers, use generic summary
   if (!handlers || handlers.length === 0) {
@@ -443,7 +448,8 @@ function generateHandlerSummary(handlerData) {
       avgLocPerHandler,
       overallCoverage,
       domainId,
-      handlers: []
+      handlers: [],
+      godHandlers
     });
   }
 
@@ -459,7 +465,8 @@ function generateHandlerSummary(handlerData) {
       avgLocPerHandler,
       overallCoverage,
       domainId,
-      handlers
+      handlers,
+      godHandlers
     });
   }
   
@@ -702,7 +709,8 @@ function generateDiagram(metrics = {}) {
     avgLocPerHandler: safeAvgLoc,
     overallCoverage: safeCoverage,
     domainId,
-    handlers: []
+    handlers: [],
+    godHandlers
   });
 
   // Generate clean ASCII header

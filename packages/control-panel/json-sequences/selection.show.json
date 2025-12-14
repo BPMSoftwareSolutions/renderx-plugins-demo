@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler deriveSelectionModel is available"
+                "handler deriveSelectionModel is available",
+                "required inputs are provided"
               ],
               "when": [
-                "deriveSelectionModel executes under normal conditions"
+                "deriveSelectionModel executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "deriveSelectionModel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

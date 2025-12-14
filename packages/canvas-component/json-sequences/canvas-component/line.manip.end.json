@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler endLineManip is available"
+                "handler endLineManip is available",
+                "required inputs are provided"
               ],
               "when": [
-                "endLineManip executes under normal conditions"
+                "endLineManip executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "endLineManip performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

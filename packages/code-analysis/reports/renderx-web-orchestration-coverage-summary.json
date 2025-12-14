@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-05T12:18:47.611Z",
+  "timestamp": "2025-12-06T04:26:54.412Z",
   "codebase": "renderx-web-orchestration",
   "aggregated_by_movement": {
     "Movement 1: Discovery": {
@@ -16,9 +16,9 @@
     }
   },
   "overall_coverage": {
-    "statements": "79.83",
-    "branches": "71.98",
-    "functions": "86.36",
-    "lines": "79.15"
+    "statements": "72.96",
+    "branches": "65.98",
+    "functions": "86.31",
+    "lines": "79.44"
   }
 }

@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler openUiFile is available"
+                "handler openUiFile is available",
+                "required inputs are provided"
               ],
               "when": [
-                "openUiFile executes under normal conditions"
+                "openUiFile executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "openUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -59,16 +63,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler parseUiFile is available"
+                "handler parseUiFile is available",
+                "required inputs are provided"
               ],
               "when": [
-                "parseUiFile executes under normal conditions"
+                "parseUiFile executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "parseUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -92,16 +100,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler injectCssClasses is available"
+                "handler injectCssClasses is available",
+                "required inputs are provided"
               ],
               "when": [
-                "injectCssClasses executes under normal conditions"
+                "injectCssClasses executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "injectCssClasses performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -125,16 +137,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler createComponentsSequentially is available"
+                "handler createComponentsSequentially is available",
+                "required inputs are provided"
               ],
               "when": [
-                "createComponentsSequentially executes under normal conditions"
+                "createComponentsSequentially executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "createComponentsSequentially performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -158,16 +174,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler applyHierarchyAndOrder is available"
+                "handler applyHierarchyAndOrder is available",
+                "required inputs are provided"
               ],
               "when": [
-                "applyHierarchyAndOrder executes under normal conditions"
+                "applyHierarchyAndOrder executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "applyHierarchyAndOrder performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

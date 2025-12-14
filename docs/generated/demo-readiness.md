@@ -1,6 +1,6 @@
 # Demo Readiness
 
-> Generated 2025-12-02T12:39:11.817Z
+> Generated 2025-12-14T15:40:50.903Z
 
 | Item | Status |
 |------|--------|

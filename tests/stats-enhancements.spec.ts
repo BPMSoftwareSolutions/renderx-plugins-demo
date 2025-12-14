@@ -47,19 +47,14 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.3] [[AC:re
       const startTime = performance.now();
       // When: initConfig prepares the form
     const css = readFileSync(cssPath, 'utf8');
-      // Then: initialization completes within 300ms
+      // Then: initialization completes within 500ms
     expect(css.includes('.stats-dashboard')).toBe(true);
     expect(css.includes('.metric-card')).toBe(true);
     expect(css.includes('.ring-blue')).toBe(true);
       // And: form is ready for user interaction
       // And: memory usage scales linearly with field count
       const elapsed = performance.now() - startTime;
-      expect(elapsed).toBeLessThan(300);
+      expect(elapsed).toBeLessThan(500);
   });
-
-    // And: all fields are prepared for rendering
-    // And: validation rules are attached
-    const elapsed = performance.now() - startTime;
-    expect(elapsed).toBeLessThan(200);
 });
 

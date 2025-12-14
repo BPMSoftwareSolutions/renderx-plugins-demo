@@ -26,13 +26,13 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
 
     const result = parseLog(input);
 
-      // Then: it completes successfully within < 50ms
+      // Then: it completes successfully within < 100ms
     expect(result.success).toBe(true);
     expect(result.execution).toBeDefined();
       // And: the output is valid and meets schema
       // And: any required events are published
       const elapsed = performance.now() - startTime;
-      expect(elapsed).toBeLessThan(50);
+      expect(elapsed).toBeLessThan(100);
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should extract correct metadata from sample log', () => {

@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler hideAllOverlays is available"
+                "handler hideAllOverlays is available",
+                "required inputs are provided"
               ],
               "when": [
-                "hideAllOverlays executes under normal conditions"
+                "hideAllOverlays executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "hideAllOverlays performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -59,16 +63,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler publishSelectionsCleared is available"
+                "handler publishSelectionsCleared is available",
+                "required inputs are provided"
               ],
               "when": [
-                "publishSelectionsCleared executes under normal conditions"
+                "publishSelectionsCleared executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "publishSelectionsCleared performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

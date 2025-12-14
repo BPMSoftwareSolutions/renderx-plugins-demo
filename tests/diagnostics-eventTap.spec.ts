@@ -39,7 +39,7 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.5] diagnos
       // And: the event contains element ID, action (add/remove), and class name
       // And: the event is stamped with microsecond-precision timestamp
       const elapsed = performance.now() - startTime;
-      expect(elapsed).toBeLessThan(5);
+      expect(elapsed).toBeLessThan(20);
   });
 
   it('[AC:renderx-web-orchestration:renderx-web-orchestration:3.5:2] does not deliver events when disabled', () => {

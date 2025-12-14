@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler endResize is available"
+                "handler endResize is available",
+                "required inputs are provided"
               ],
               "when": [
-                "endResize executes under normal conditions"
+                "endResize executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "endResize performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

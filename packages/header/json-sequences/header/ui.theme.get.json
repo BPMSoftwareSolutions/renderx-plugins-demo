@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler getCurrentTheme is available"
+                "handler getCurrentTheme is available",
+                "required inputs are provided"
               ],
               "when": [
-                "getCurrentTheme executes under normal conditions"
+                "getCurrentTheme executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "getCurrentTheme performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

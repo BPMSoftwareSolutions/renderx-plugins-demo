@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler prepareField is available"
+                "handler prepareField is available",
+                "required inputs are provided"
               ],
               "when": [
-                "prepareField executes under normal conditions"
+                "prepareField executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "prepareField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -61,16 +65,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler dispatchField is available"
+                "handler dispatchField is available",
+                "required inputs are provided"
               ],
               "when": [
-                "dispatchField executes under normal conditions"
+                "dispatchField executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "dispatchField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler setDirty is available"
+                "handler setDirty is available",
+                "required inputs are provided"
               ],
               "when": [
-                "setDirty executes under normal conditions"
+                "setDirty executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "setDirty performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -129,16 +141,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler awaitRefresh is available"
+                "handler awaitRefresh is available",
+                "required inputs are provided"
               ],
               "when": [
-                "awaitRefresh executes under normal conditions"
+                "awaitRefresh executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "awaitRefresh performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

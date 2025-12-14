@@ -84,22 +84,34 @@
       "newHash": "8acc0ed3ce6d140338f80d96d7e437c5e6a27c443d4faa472e2080aac40289bd",
       "annotatedAt": "2025-11-30T09:31:16.992Z",
       "reason": "Test-run variability; aligning telemetry diff annotations"
-    }
-    ,
+    },
     {
       "feature": "detect-slo-breaches",
       "previousHash": "8acc0ed3ce6d140338f80d96d7e437c5e6a27c443d4faa472e2080aac40289bd",
       "newHash": "75186c75c451234718d130699f6d24c17587a7b216980a834f73c59b2a79640a",
       "annotatedAt": "2025-11-30T10:12:00.000Z",
       "reason": "Symphonic analysis pipeline normalization; expected shape evolution"
-    }
-    ,
+    },
     {
       "feature": "detect-slo-breaches",
       "previousHash": "75186c75c451234718d130699f6d24c17587a7b216980a834f73c59b2a79640a",
       "newHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
       "annotatedAt": "2025-11-30T10:20:00.000Z",
       "reason": "Re-run stabilization; align annotations with telemetry diffs"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "a0d0dd1e07d67fb771205dd42a932f3decfa7dffd562133c4a9ac5b0e4ff2de5",
+      "newHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
+      "annotatedAt": "2025-12-06T00:00:00.000Z",
+      "reason": "Align detect-slo-breaches telemetry shape with updated SLO breach context and metrics structure."
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "8bfab878b3e787cf6672e20ee35ececa61ee498cd8bf88aaf38a224afcafbfad",
+      "newHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
+      "annotatedAt": "2025-12-14T14:44:00.000Z",
+      "reason": "Test run variability; normalizing shape evolution during test execution"
     }
   ]
 }

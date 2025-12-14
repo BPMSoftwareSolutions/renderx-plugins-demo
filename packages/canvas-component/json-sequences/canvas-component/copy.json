@@ -29,16 +29,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler serializeSelectedComponent is available"
+                "handler serializeSelectedComponent is available",
+                "required inputs are provided"
               ],
               "when": [
-                "serializeSelectedComponent executes under normal conditions"
+                "serializeSelectedComponent executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "serializeSelectedComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -62,16 +66,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler copyToClipboard is available"
+                "handler copyToClipboard is available",
+                "required inputs are provided"
               ],
               "when": [
-                "copyToClipboard executes under normal conditions"
+                "copyToClipboard executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "copyToClipboard performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler notifyCopyComplete is available"
+                "handler notifyCopyComplete is available",
+                "required inputs are provided"
               ],
               "when": [
-                "notifyCopyComplete executes under normal conditions"
+                "notifyCopyComplete executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "notifyCopyComplete performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

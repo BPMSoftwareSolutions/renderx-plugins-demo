@@ -29,16 +29,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler updateSize is available"
+                "handler updateSize is available",
+                "required inputs are provided"
               ],
               "when": [
-                "updateSize executes under normal conditions"
+                "updateSize executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "updateSize performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler updateCssClass is available"
+                "handler updateCssClass is available",
+                "required inputs are provided"
               ],
               "when": [
-                "updateCssClass executes under normal conditions"
+                "updateCssClass executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "updateCssClass performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

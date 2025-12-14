@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler initConfig is available"
+                "handler initConfig is available",
+                "required inputs are provided"
               ],
               "when": [
-                "initConfig executes under normal conditions"
+                "initConfig executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "initConfig performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -61,16 +65,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler initResolver is available"
+                "handler initResolver is available",
+                "required inputs are provided"
               ],
               "when": [
-                "initResolver executes under normal conditions"
+                "initResolver executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "initResolver performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler loadSchemas is available"
+                "handler loadSchemas is available",
+                "required inputs are provided"
               ],
               "when": [
-                "loadSchemas executes under normal conditions"
+                "loadSchemas executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "loadSchemas performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -129,16 +141,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler registerObservers is available"
+                "handler registerObservers is available",
+                "required inputs are provided"
               ],
               "when": [
-                "registerObservers executes under normal conditions"
+                "registerObservers executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "registerObservers performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -163,16 +179,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler notifyReady is available"
+                "handler notifyReady is available",
+                "required inputs are provided"
               ],
               "when": [
-                "notifyReady executes under normal conditions"
+                "notifyReady executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "notifyReady performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -197,16 +217,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler initMovement is available"
+                "handler initMovement is available",
+                "required inputs are provided"
               ],
               "when": [
-                "initMovement executes under normal conditions"
+                "initMovement executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "initMovement performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

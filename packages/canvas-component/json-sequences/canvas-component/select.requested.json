@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler routeSelectionRequest is available"
+                "handler routeSelectionRequest is available",
+                "required inputs are provided"
               ],
               "when": [
-                "routeSelectionRequest executes under normal conditions"
+                "routeSelectionRequest executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "routeSelectionRequest performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

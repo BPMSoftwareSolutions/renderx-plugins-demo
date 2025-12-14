@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler toggleSection is available"
+                "handler toggleSection is available",
+                "required inputs are provided"
               ],
               "when": [
-                "toggleSection executes under normal conditions"
+                "toggleSection executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "toggleSection performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

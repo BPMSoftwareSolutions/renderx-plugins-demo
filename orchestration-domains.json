@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-12-02T12:39:10.199Z"
+    "generated": "2025-12-14T15:45:47.912Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -2286,62 +2286,6 @@
             "items": 3
           }
         ]
-      }
-    },
-    {
-      "id": "ac-alignment-remediation.workflow.v1",
-      "name": "ac-alignment-remediation.workflow.v1",
-      "emoji": "🎼",
-      "description": "Orchestration domain: ac-alignment-remediation.workflow.v1",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/ac-alignment-remediation.workflow.v1.json",
-      "movements": 0,
-      "beats": 0,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "ac-alignment-remediation.workflow.v1",
-        "sequence": {
-          "id": "ac-alignment-remediation.workflow.v1",
-          "name": "ac-alignment-remediation.workflow.v1",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": []
-      }
-    },
-    {
-      "id": "ac-test-hardening.workflow.v1",
-      "name": "ac-test-hardening.workflow.v1",
-      "emoji": "🎼",
-      "description": "Orchestration domain: ac-test-hardening.workflow.v1",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages/orchestration/json-sequences/ac-test-hardening.workflow.v1.json",
-      "movements": 0,
-      "beats": 0,
-      "tempo": 120,
-      "key": "C Major",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "ac-test-hardening.workflow.v1",
-        "sequence": {
-          "id": "ac-test-hardening.workflow.v1",
-          "name": "ac-test-hardening.workflow.v1",
-          "tempo": 120,
-          "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": []
       }
     },
     {

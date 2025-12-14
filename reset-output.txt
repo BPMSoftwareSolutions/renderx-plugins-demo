@@ -1,0 +1,65 @@
+﻿
+≡ƒôï Resetting 61 sequence files
+
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\augment.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\copy.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\create.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\delete.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\delete.requested.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\deselect-all.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\deselect.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\deselect.requested.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\drag.end.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\drag.move.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\drag.start.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\export-gif.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\export-mp4.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\export.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\import.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\line.manip.end.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\line.manip.move.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\line.manip.start.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\paste.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.end.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.line.end.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.line.move.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.line.start.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.move.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\resize.start.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\select.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\select.requested.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\select.svg-node.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\update.json
+Γ£à Reset: packages\canvas-component\json-sequences\canvas-component\update.svg-node.json
+Γ£à Reset: packages\control-panel\json-sequences\classes.add.json
+Γ£à Reset: packages\control-panel\json-sequences\classes.remove.json
+Γ£à Reset: packages\control-panel\json-sequences\css.create.json
+Γ£à Reset: packages\control-panel\json-sequences\css.delete.json
+Γ£à Reset: packages\control-panel\json-sequences\css.edit.json
+Γ£à Reset: packages\control-panel\json-sequences\selection.show.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.field.change.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.field.validate.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.init.batched.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.init.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.render.json
+Γ£à Reset: packages\control-panel\json-sequences\ui.section.toggle.json
+Γ£à Reset: packages\control-panel\json-sequences\update.json
+Γ£à Reset: packages\header\json-sequences\header\ui.theme.get.json
+Γ£à Reset: packages\header\json-sequences\header\ui.theme.toggle.json
+Γ£à Reset: packages\library\json-sequences\library\library-load.json
+Γ£à Reset: packages\library-component\json-sequences\library-component\container.drop.json
+Γ£à Reset: packages\library-component\json-sequences\library-component\drag.json
+Γ£à Reset: packages\library-component\json-sequences\library-component\drop.json
+Γ£à Reset: packages\real-estate-analyzer\json-sequences\real-estate-analyzer\search-property.json
+Γ£à Reset: packages\self-healing\json-sequences\anomaly.detect.json
+Γ£à Reset: packages\self-healing\json-sequences\deployment.deploy.json
+Γ£à Reset: packages\self-healing\json-sequences\diagnosis.analyze.json
+Γ£à Reset: packages\self-healing\json-sequences\fix.generate.json
+Γ£à Reset: packages\self-healing\json-sequences\learning.track.json
+Γ£à Reset: packages\self-healing\json-sequences\telemetry.parse.json
+Γ£à Reset: packages\self-healing\json-sequences\validation.run.json
+
+============================================================
+Γ£à Reset: 57 | ≡ƒôè Total: 61
+============================================================
+

@@ -32,12 +32,12 @@ describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequenc
 
       const conductor = getConductor();
 
-        // Then: it completes successfully within < 50ms
+        // Then: it completes successfully within < 20ms
       expect(conductor).toBe(mockConductor);
         // And: the output is valid and meets schema
         // And: any required events are published
         const elapsed = performance.now() - startTime;
-        expect(elapsed).toBeLessThan(50);
+        expect(elapsed).toBeLessThan(20);
     });
 
     it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should throw error when conductor is not initialized', () => {

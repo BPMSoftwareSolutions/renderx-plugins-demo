@@ -61,7 +61,12 @@ function main() {
     if (latestHash !== prevHash) {
       const annotated = annotations.annotations.some(a => a.feature === feature && a.previousHash === prevHash && a.newHash === latestHash);
       const allowlist = loadJson(ALLOWLIST_PATH, { allow: [] });
-  const allowed = allowlist.allow.some(a => a.feature === feature && a.previousHash === prevHash && a.newHash === latestHash && (!a.expiresAt || new Date(a.expiresAt).getTime() > Date.now()));
+      const allowed = allowlist.allow.some(a =>
+        a.feature === feature &&
+        prevHash.startsWith(a.previousHash) &&
+        latestHash.startsWith(a.newHash) &&
+        (!a.expiresAt || new Date(a.expiresAt).getTime() > Date.now())
+      );
       diffs.push({ feature, previousHash: prevHash, newHash: latestHash, annotated, allowed });
     }
   }

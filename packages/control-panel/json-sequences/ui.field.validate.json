@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler validateField is available"
+                "handler validateField is available",
+                "required inputs are provided"
               ],
               "when": [
-                "validateField executes under normal conditions"
+                "validateField executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "validateField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -61,16 +65,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler mergeErrors is available"
+                "handler mergeErrors is available",
+                "required inputs are provided"
               ],
               "when": [
-                "mergeErrors executes under normal conditions"
+                "mergeErrors executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "mergeErrors performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler updateView is available"
+                "handler updateView is available",
+                "required inputs are provided"
               ],
               "when": [
-                "updateView executes under normal conditions"
+                "updateView executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "updateView performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

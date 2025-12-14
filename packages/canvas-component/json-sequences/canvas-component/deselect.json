@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler deselectComponent is available"
+                "handler deselectComponent is available",
+                "required inputs are provided"
               ],
               "when": [
-                "deselectComponent executes under normal conditions"
+                "deselectComponent executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "deselectComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -59,16 +63,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler publishDeselectionChanged is available"
+                "handler publishDeselectionChanged is available",
+                "required inputs are provided"
               ],
               "when": [
-                "publishDeselectionChanged executes under normal conditions"
+                "publishDeselectionChanged executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "publishDeselectionChanged performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

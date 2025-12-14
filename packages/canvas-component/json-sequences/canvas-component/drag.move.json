@@ -29,16 +29,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler updatePosition is available"
+                "handler updatePosition is available",
+                "required inputs are provided"
               ],
               "when": [
-                "updatePosition executes under normal conditions"
+                "updatePosition executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "updatePosition performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -62,16 +66,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler forwardToControlPanel is available"
+                "handler forwardToControlPanel is available",
+                "required inputs are provided"
               ],
               "when": [
-                "forwardToControlPanel executes under normal conditions"
+                "forwardToControlPanel executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "forwardToControlPanel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

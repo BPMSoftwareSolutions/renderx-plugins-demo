@@ -34,11 +34,11 @@ describe('Business BDD: multi-feature-correlation (auto-generated GREEN)', () =>
     clearTelemetry();
     // Emit first feature with manual beats
     const c1 = startFeature('multi-feature-correlation', 'multi-feature-correlation:executed');
-    for (let i = 0; i < 4; i++) beat(c1);
+    for (let i = 0; i < 5; i++) beat(c1);
     const r1 = endFeature(c1, 'ok', { ok: true })!;
     // Emit second existing feature to correlate (reuse shape-persistence)
     const c2 = startFeature('shape-persistence', 'shape-persistence:executed');
-    for (let i = 0; i < 3; i++) beat(c2);
+    for (let i = 0; i < 2; i++) beat(c2);
     const r2 = endFeature(c2, 'ok', { ok: true })!;
     expect(getTelemetry().length).toBe(2);
     // Persist run artifacts so buildComposite sees current beats instead of previous cached runs

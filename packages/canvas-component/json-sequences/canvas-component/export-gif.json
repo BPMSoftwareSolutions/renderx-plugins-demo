@@ -26,16 +26,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler exportSvgToGif is available"
+                "handler exportSvgToGif is available",
+                "required inputs are provided"
               ],
               "when": [
-                "exportSvgToGif executes under normal conditions"
+                "exportSvgToGif executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "exportSvgToGif performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

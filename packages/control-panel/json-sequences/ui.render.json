@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler generateFields is available"
+                "handler generateFields is available",
+                "required inputs are provided"
               ],
               "when": [
-                "generateFields executes under normal conditions"
+                "generateFields executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "generateFields performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -61,16 +65,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler generateSections is available"
+                "handler generateSections is available",
+                "required inputs are provided"
               ],
               "when": [
-                "generateSections executes under normal conditions"
+                "generateSections executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "generateSections performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler renderView is available"
+                "handler renderView is available",
+                "required inputs are provided"
               ],
               "when": [
-                "renderView executes under normal conditions"
+                "renderView executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "renderView performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

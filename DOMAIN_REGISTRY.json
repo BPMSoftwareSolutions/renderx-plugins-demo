@@ -315,6 +315,35 @@
         "reportAuthorityRef": "docs/authorities/report-generation-authority.json"
       }
     },
+    "renderx-web-acs.generated": {
+      "domain_id": "renderx-web-acs.generated",
+      "domain_type": "orchestration",
+      "status": "active",
+      "description": "Auto-generated acceptance criteria, one per handler",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "renderx-web-orchestration"
+      ],
+      "checksum": "pending-sequence-governance-computation",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "RenderX-Web",
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry",
+          "domain_id": "renderx-web-acs.generated"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/renderx-web-acs.generated.json"
+        ]
+      }
+    },
     "self-healing": {
       "domain_id": "self-healing",
       "domain_type": "capability",
@@ -2021,6 +2050,105 @@
         "symphoniesRoot": "scripts/symphonies"
       }
     },
+    "renderx-web-ac-alignment-workflow": {
+      "domain_id": "renderx-web-ac-alignment-workflow",
+      "domain_type": "orchestration",
+      "status": "active",
+      "description": "Fractal workflow to implement and operationalize alignment between structured acceptance criteria (GWT) and automated tests for the renderx-web-orchestration domain.",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "renderx-web-orchestration"
+      ],
+      "ownership": "RenderX-Web",
+      "deprecated": false,
+      "supersedes": [],
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry",
+          "domain_id": "renderx-web-ac-alignment-workflow"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "packages/",
+        "analysisOutputPath": ".generated/analysis/renderx-web-ac-alignment-workflow/",
+        "reportOutputPath": "docs/generated/renderx-web-ac-alignment-workflow/"
+      }
+    },
+    "renderx-web-ac-alignment-workflow-v2": {
+      "domain_id": "renderx-web-ac-alignment-workflow-v2",
+      "domain_type": "orchestration",
+      "status": "active",
+      "description": "Fractal workflow to implement and operationalize alignment between structured acceptance criteria (GWT) and automated tests for the renderx-web-orchestration domain (v2).",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "renderx-web-orchestration"
+      ],
+      "ownership": "RenderX-Web",
+      "deprecated": false,
+      "supersedes": [],
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry",
+          "domain_id": "renderx-web-ac-alignment-workflow-v2"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v2.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "packages/",
+        "analysisOutputPath": ".generated/analysis/renderx-web-ac-alignment-workflow-v2/",
+        "reportOutputPath": "docs/generated/renderx-web-ac-alignment-workflow-v2/"
+      }
+    },
+    "ac-to-test-alignment.workflow.v3": {
+      "domain_id": "ac-to-test-alignment.workflow.v3",
+      "domain_type": "orchestration",
+      "status": "active",
+      "description": "Fractal workflow to implement and operationalize alignment between structured acceptance criteria (GWT) and automated tests for the renderx-web-orchestration domain (v3).",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "renderx-web-orchestration"
+      ],
+      "ownership": "RenderX-Web",
+      "deprecated": false,
+      "supersedes": [],
+      "orchestration": {
+        "schema_ref": "docs/schemas/musical-sequence.schema.json",
+        "interface": {
+          "name": "MusicalSequence",
+          "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
+        },
+        "registry_ref": {
+          "file": "orchestration-domains.json",
+          "id": "orchestration-domains-registry",
+          "domain_id": "ac-to-test-alignment.workflow.v3"
+        },
+        "sequence_files": [
+          "packages/orchestration/json-sequences/ac-to-test-alignment.workflow.v3.json"
+        ]
+      },
+      "analysisConfig": {
+        "analysisSourcePath": "packages/",
+        "analysisOutputPath": ".generated/analysis/ac-to-test-alignment.workflow.v3/",
+        "reportOutputPath": "docs/generated/ac-to-test-alignment.workflow.v3/"
+      }
+    },
     "product-owner-signoff-demo": {
       "domain_id": "product-owner-signoff-demo",
       "domain_type": "orchestration",
@@ -2391,7 +2519,7 @@
     "active_count": 77,
     "deprecated_count": 1,
     "retired_count": 0,
-    "last_validation": "2025-12-02T12:38:24.904Z",
+    "last_validation": "2025-12-14T15:00:36.205Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

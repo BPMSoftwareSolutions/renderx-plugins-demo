@@ -29,16 +29,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler readFromClipboard is available"
+                "handler readFromClipboard is available",
+                "required inputs are provided"
               ],
               "when": [
-                "readFromClipboard executes under normal conditions"
+                "readFromClipboard executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "readFromClipboard performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -62,16 +66,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler deserializeComponentData is available"
+                "handler deserializeComponentData is available",
+                "required inputs are provided"
               ],
               "when": [
-                "deserializeComponentData executes under normal conditions"
+                "deserializeComponentData executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "deserializeComponentData performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -95,16 +103,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler calculatePastePosition is available"
+                "handler calculatePastePosition is available",
+                "required inputs are provided"
               ],
               "when": [
-                "calculatePastePosition executes under normal conditions"
+                "calculatePastePosition executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "calculatePastePosition performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -128,16 +140,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler createPastedComponent is available"
+                "handler createPastedComponent is available",
+                "required inputs are provided"
               ],
               "when": [
-                "createPastedComponent executes under normal conditions"
+                "createPastedComponent executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "createPastedComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -161,16 +177,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler notifyPasteComplete is available"
+                "handler notifyPasteComplete is available",
+                "required inputs are provided"
               ],
               "when": [
-                "notifyPasteComplete executes under normal conditions"
+                "notifyPasteComplete executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "notifyPasteComplete performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]

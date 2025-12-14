@@ -27,16 +27,20 @@
           "acceptanceCriteria": [
             {
               "given": [
-                "handler removeClass is available"
+                "handler removeClass is available",
+                "required inputs are provided"
               ],
               "when": [
-                "removeClass executes under normal conditions"
+                "removeClass executes"
               ],
               "then": [
-                "it performs its expected orchestration logic"
+                "removeClass performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
               ],
               "and": [
-                "emits expected side effects or returns expected value"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
