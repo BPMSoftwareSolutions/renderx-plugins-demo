@@ -1,0 +1,751 @@
+{
+  "$schema": "./domain-registry.schema.json",
+  "metadata": {
+    "version": "1.0.0",
+    "generated": "2025-12-14T16:00:00.000Z",
+    "description": "Complete registry for the RenderX Web orchestration domain",
+    "maintainer": "RenderX Platform Team",
+    "status": "proposed"
+  },
+  "domain": {
+    "id": "renderx-web-orchestration",
+    "name": "RenderX Web Domain",
+    "version": "1.0.0",
+    "description": "Core web orchestration domain for RenderX platform providing canvas, library, and control panel functionality",
+    "category": "orchestration",
+    "entryPoint": "./src/index.tsx",
+    "publicDir": "./public",
+    "buildConfig": "./vite.config.js"
+  },
+  "architecture": {
+    "pattern": "plugin-based-orchestration",
+    "orchestrator": "musical-conductor",
+    "communicationModel": "event-driven-pub-sub",
+    "uiComposition": "slot-based-lazy-loading",
+    "stateManagement": "conductor-managed",
+    "telemetryBridge": "dotnet-backend"
+  },
+  "dependencies": {
+    "core": [
+      {
+        "package": "@renderx-plugins/host-sdk",
+        "version": "^1.0.6",
+        "scope": "runtime",
+        "modules": [
+          "core/conductor/conductor",
+          "core/conductor/sequence-registration",
+          "core/manifests/interactionManifest",
+          "core/manifests/topicsManifest",
+          "core/manifests/symphony-loader",
+          "core/events/EventRouter",
+          "core/environment/feature-flags",
+          "core/environment/config",
+          "core/startup/startupValidation"
+        ]
+      },
+      {
+        "package": "musical-conductor",
+        "version": "^1.5.1",
+        "scope": "runtime",
+        "description": "Sequence orchestration engine"
+      },
+      {
+        "package": "react",
+        "version": "^19.1.1",
+        "scope": "ui"
+      },
+      {
+        "package": "react-dom",
+        "version": "^19.1.1",
+        "scope": "ui"
+      }
+    ],
+    "shared": [
+      {
+        "package": "@renderx-plugins/components",
+        "version": "^0.1.1",
+        "scope": "ui",
+        "description": "Shared UI component library"
+      },
+      {
+        "package": "@renderx-plugins/digital-assets",
+        "version": "^1.0.0",
+        "scope": "runtime",
+        "description": "Asset management utilities"
+      },
+      {
+        "package": "@renderx-plugins/manifest-tools",
+        "version": "^0.1.2",
+        "scope": "build",
+        "description": "Manifest generation and validation tools"
+      }
+    ]
+  },
+  "plugins": {
+    "runtime": [
+      {
+        "id": "canvas-component",
+        "name": "Canvas Component Plugin",
+        "type": "runtime-only",
+        "package": "@renderx-web/canvas-component",
+        "version": "1.0.11",
+        "location": "./runtime/canvas-component",
+        "entryPoint": "./runtime/canvas-component/src/index.ts",
+        "export": "register",
+        "sequences": {
+          "count": 33,
+          "catalog": "./runtime/canvas-component/sequences/index.json",
+          "handlersPath": "@renderx-web/canvas-component"
+        },
+        "description": "Core business logic for canvas component operations (create, select, drag, resize, export, etc.)",
+        "responsibilities": [
+          "Component lifecycle management (create, delete, update)",
+          "Selection handling (select, deselect, multi-select)",
+          "Drag and drop operations",
+          "Resize and transformation",
+          "Import/export functionality (JSON, GIF, MP4)",
+          "SVG node manipulation",
+          "Clipboard operations (copy, paste)",
+          "Line manipulation and editing",
+          "Component rules and configuration"
+        ],
+        "domainId": "renderx-web-orchestration"
+      },
+      {
+        "id": "library-component",
+        "name": "Library Component Plugin",
+        "type": "runtime-only",
+        "package": "@renderx-web/library-component",
+        "version": "1.0.5",
+        "location": "./runtime/library-component",
+        "entryPoint": "./runtime/library-component/src/index.ts",
+        "export": "register",
+        "sequences": {
+          "count": 3,
+          "catalog": "./runtime/library-component/sequences/index.json",
+          "handlersPath": "@renderx-web/library-component"
+        },
+        "description": "Business logic for library drag-and-drop operations",
+        "responsibilities": [
+          "Library item drag initiation",
+          "Canvas drop handling",
+          "Container-specific drop logic"
+        ],
+        "domainId": "renderx-web-orchestration"
+      }
+    ],
+    "ui": [
+      {
+        "id": "control-panel",
+        "name": "Control Panel Plugin",
+        "type": "ui-and-runtime",
+        "package": "@renderx-web/control-panel",
+        "version": "0.1.0-rc.9",
+        "location": "./ui-plugins/control-panel",
+        "entryPoint": "./ui-plugins/control-panel/src/index.ts",
+        "exports": {
+          "ui": "ControlPanel",
+          "runtime": "register"
+        },
+        "ui": {
+          "slot": "controlPanel",
+          "component": "ControlPanel"
+        },
+        "sequences": {
+          "count": 13,
+          "catalog": "./ui-plugins/control-panel/sequences/index.json",
+          "symphonies": {
+            "selection": "./ui-plugins/control-panel/src/symphonies/selection/selection.symphony",
+            "classes": "./ui-plugins/control-panel/src/symphonies/classes/classes.symphony",
+            "cssManagement": "./ui-plugins/control-panel/src/symphonies/css-management/css-management.symphony",
+            "ui": "./ui-plugins/control-panel/src/symphonies/ui/ui.symphony",
+            "update": "./ui-plugins/control-panel/src/symphonies/update/update.symphony"
+          }
+        },
+        "description": "Property editor panel with CSS management, class management, and component property editing",
+        "responsibilities": [
+          "Display component properties for editing",
+          "CSS class creation and management",
+          "CSS rule editing and validation",
+          "Component property updates",
+          "Field validation",
+          "Section toggling and UI state management"
+        ],
+        "domainId": "renderx-web-orchestration"
+      },
+      {
+        "id": "header",
+        "name": "Header Plugin",
+        "type": "ui-and-runtime",
+        "package": "@renderx-web/header",
+        "version": "1.0.1",
+        "location": "./ui-plugins/header",
+        "entryPoint": "./ui-plugins/header/src/index.ts",
+        "exports": {
+          "ui": ["HeaderTitle", "HeaderControls", "HeaderThemeToggle"],
+          "runtime": "register"
+        },
+        "ui": {
+          "slots": {
+            "headerLeft": "HeaderTitle",
+            "headerCenter": "HeaderControls",
+            "headerRight": "HeaderThemeToggle"
+          }
+        },
+        "sequences": {
+          "count": 2,
+          "catalog": "./ui-plugins/header/sequences/index.json",
+          "handlersPath": "@renderx-web/header"
+        },
+        "description": "Top navigation header with theme toggle functionality",
+        "responsibilities": [
+          "Display application title",
+          "Render header controls",
+          "Theme switching (light/dark mode)",
+          "Theme state persistence"
+        ],
+        "domainId": "renderx-web-orchestration"
+      },
+      {
+        "id": "library",
+        "name": "Library Plugin",
+        "type": "ui-and-runtime",
+        "package": "@renderx-web/library",
+        "version": "1.0.6",
+        "location": "./ui-plugins/library",
+        "entryPoint": "./ui-plugins/library/src/index.ts",
+        "exports": {
+          "ui": "LibraryPanel",
+          "runtime": "register"
+        },
+        "ui": {
+          "slot": "library",
+          "component": "LibraryPanel"
+        },
+        "sequences": {
+          "count": 1,
+          "catalog": "./ui-plugins/library/sequences/index.json",
+          "handlersPath": "@renderx-web/library"
+        },
+        "description": "Component library panel displaying draggable components",
+        "responsibilities": [
+          "Load and display component library",
+          "Component search and filtering",
+          "Drag initiation for library items"
+        ],
+        "domainId": "renderx-web-orchestration"
+      },
+      {
+        "id": "canvas",
+        "name": "Canvas Plugin",
+        "type": "ui-only",
+        "package": "@renderx-web/canvas",
+        "version": "0.1.0-rc.4",
+        "location": "./ui-plugins/canvas",
+        "entryPoint": "./ui-plugins/canvas/src/index.ts",
+        "exports": {
+          "ui": "CanvasPage",
+          "runtime": "register"
+        },
+        "ui": {
+          "slot": "canvas",
+          "component": "CanvasPage"
+        },
+        "sequences": {
+          "count": 0,
+          "note": "UI only - business logic provided by canvas-component plugin"
+        },
+        "description": "Canvas rendering surface for component composition",
+        "responsibilities": [
+          "Render canvas workspace",
+          "Display placed components",
+          "Handle canvas-level interactions",
+          "Coordinate with canvas-component for business logic"
+        ],
+        "domainId": "renderx-web-orchestration"
+      }
+    ]
+  },
+  "sequences": {
+    "total": 43,
+    "byPlugin": {
+      "canvas-component": {
+        "count": 24,
+        "sequences": [
+          "augment",
+          "copy",
+          "create",
+          "delete",
+          "delete.requested",
+          "deselect",
+          "deselect-all",
+          "deselect.requested",
+          "drag.end",
+          "drag.move",
+          "drag.start",
+          "export",
+          "export-gif",
+          "export-mp4",
+          "import",
+          "line.manip.end",
+          "line.manip.move",
+          "line.manip.start",
+          "paste",
+          "resize.end",
+          "resize.line.end",
+          "resize.line.move",
+          "resize.line.start",
+          "resize.move",
+          "resize.start",
+          "rules.config",
+          "select",
+          "select.requested",
+          "select.svg-node",
+          "update",
+          "update.svg-node"
+        ]
+      },
+      "control-panel": {
+        "count": 13,
+        "sequences": [
+          "classes.add",
+          "classes.remove",
+          "css.create",
+          "css.delete",
+          "css.edit",
+          "selection.show",
+          "ui.field.change",
+          "ui.field.validate",
+          "ui.init",
+          "ui.init.batched",
+          "ui.render",
+          "ui.section.toggle",
+          "update"
+        ]
+      },
+      "library-component": {
+        "count": 3,
+        "sequences": [
+          "container.drop",
+          "drag",
+          "drop"
+        ]
+      },
+      "library": {
+        "count": 1,
+        "sequences": [
+          "library-load"
+        ]
+      },
+      "header": {
+        "count": 2,
+        "sequences": [
+          "ui.theme.get",
+          "ui.theme.toggle"
+        ]
+      }
+    }
+  },
+  "services": {
+    "domain": [
+      {
+        "name": "InventoryService",
+        "location": "./src/services/inventory/inventory.service.ts",
+        "exports": ["listComponents", "getComponentById", "onInventoryChanged"],
+        "globalExposure": "window.RenderX.inventory",
+        "description": "Component inventory management - loads and manages component metadata",
+        "dependencies": [
+          "/json-components/index.json",
+          "/json-components/*.json"
+        ]
+      },
+      {
+        "name": "CssRegistryService",
+        "location": "./src/services/css/cssRegistry.service.ts",
+        "exports": ["hasClass", "createClass", "updateClass"],
+        "globalExposure": "window.RenderX.cssRegistry",
+        "description": "CSS class registry and management via EventRouter",
+        "dependencies": [
+          "EventRouter",
+          "conductor"
+        ]
+      },
+      {
+        "name": "LayoutManifestService",
+        "location": "./src/services/layout/layoutManifest.service.ts",
+        "exports": ["loadLayoutManifest", "validateLayoutManifest"],
+        "description": "Layout manifest loading and validation",
+        "dependencies": [
+          "/manifests/layout-manifest.json"
+        ]
+      }
+    ]
+  },
+  "infrastructure": {
+    "bridges": [
+      {
+        "name": "DotNetApiClient",
+        "location": "./src/infrastructure/dotnet/apiClient.ts",
+        "type": "http-bridge",
+        "target": "ASP.NET Core Backend",
+        "baseUrl": "http://localhost:5000",
+        "endpoints": {
+          "telemetry": "POST /api/telemetry/event",
+          "telemetryBatch": "POST /api/telemetry/batch",
+          "plugins": "GET /api/plugins",
+          "pluginEnable": "POST /api/plugins/{id}/enable",
+          "pluginDisable": "POST /api/plugins/{id}/disable",
+          "sequenceExecute": "POST /api/sequences/execute",
+          "publishToFrontend": "POST /api/frontend/publish"
+        },
+        "description": "HTTP bridge for telemetry recording and plugin management"
+      },
+      {
+        "name": "CliBridge",
+        "location": "./src/infrastructure/cli/cli-bridge.ts",
+        "type": "websocket-bridge",
+        "target": "CLI Development Tools",
+        "transport": "Vite HMR WebSocket",
+        "endpoint": "/conductor-ws",
+        "active": "dev-mode-only",
+        "description": "WebSocket bridge for CLI interaction in development mode"
+      },
+      {
+        "name": "DotNetMessageBridge",
+        "location": "./src/index.tsx",
+        "type": "message-bridge",
+        "channels": [
+          {
+            "type": "window.postMessage",
+            "source": "dotnet-host",
+            "direction": "bidirectional"
+          },
+          {
+            "type": "chrome.webview",
+            "source": "WebView2",
+            "direction": "bidirectional"
+          }
+        ],
+        "description": "Message channel bridges for .NET host communication"
+      }
+    ],
+    "utilities": [
+      {
+        "name": "ModuleResolution",
+        "location": "./src/infrastructure/module-resolution/handlersPath.ts",
+        "exports": ["normalizeHandlersImportSpec", "isBareSpecifier"],
+        "description": "Module specifier resolution for dynamic imports"
+      }
+    ]
+  },
+  "ui": {
+    "framework": "React 19.1.1",
+    "composition": "slot-based",
+    "entryPoint": "./src/index.tsx",
+    "rootComponent": "./src/ui/App/App.tsx",
+    "components": {
+      "core": [
+        {
+          "name": "App",
+          "location": "./src/ui/App/App.tsx",
+          "description": "Root application component - handles layout mode selection and diagnostics"
+        },
+        {
+          "name": "PanelSlot",
+          "location": "./src/ui/shared/PanelSlot.tsx",
+          "description": "Plugin loader and renderer for named slots"
+        },
+        {
+          "name": "SlotContainer",
+          "location": "./src/ui/shared/SlotContainer.tsx",
+          "description": "Wrapper for plugin slots with drag-drop capabilities"
+        },
+        {
+          "name": "LayoutEngine",
+          "location": "./src/ui/layout/LayoutEngine.tsx",
+          "description": "Manifest-driven responsive layout engine"
+        }
+      ],
+      "diagnostics": [
+        {
+          "name": "DiagnosticsOverlay",
+          "location": "./src/ui/diagnostics/DiagnosticsOverlay.tsx",
+          "description": "Modal overlay for diagnostics panel"
+        },
+        {
+          "name": "DiagnosticsPanel",
+          "location": "./src/ui/diagnostics/DiagnosticsPanel.tsx",
+          "description": "Main diagnostics UI with tabbed interface"
+        }
+      ]
+    },
+    "slots": {
+      "headerLeft": {
+        "plugin": "header",
+        "component": "HeaderTitle",
+        "description": "Application title display"
+      },
+      "headerCenter": {
+        "plugin": "header",
+        "component": "HeaderControls",
+        "description": "Header controls and actions"
+      },
+      "headerRight": {
+        "plugin": "header",
+        "component": "HeaderThemeToggle",
+        "description": "Theme toggle button"
+      },
+      "library": {
+        "plugin": "library",
+        "component": "LibraryPanel",
+        "description": "Component library panel",
+        "droppable": false
+      },
+      "canvas": {
+        "plugin": "canvas",
+        "component": "CanvasPage",
+        "description": "Canvas workspace",
+        "droppable": true
+      },
+      "controlPanel": {
+        "plugin": "control-panel",
+        "component": "ControlPanel",
+        "description": "Property editor panel",
+        "droppable": false
+      }
+    },
+    "events": {
+      "config": "./src/config/uiEvents.json",
+      "description": "Declarative DOM event → EventRouter topic mappings",
+      "handler": "./src/ui/events/wiring.ts"
+    }
+  },
+  "manifests": {
+    "runtime": [
+      {
+        "name": "plugin-manifest.json",
+        "location": "./public/plugins/plugin-manifest.json",
+        "generatedBy": "sync-plugins.js",
+        "description": "Plugin registry with UI slots and runtime modules"
+      },
+      {
+        "name": "interaction-manifest.json",
+        "location": "./public/manifests/interaction-manifest.json",
+        "generatedBy": "generate-interaction-manifest.js",
+        "description": "Route definitions for interaction handling"
+      },
+      {
+        "name": "topics-manifest.json",
+        "location": "./public/manifests/topics-manifest.json",
+        "generatedBy": "generate-topics-manifest.js",
+        "description": "Pub/sub topic definitions"
+      },
+      {
+        "name": "layout-manifest.json",
+        "location": "./public/manifests/layout-manifest.json",
+        "generatedBy": "generate-layout-manifest.js",
+        "description": "UI layout configuration (responsive grid)"
+      },
+      {
+        "name": "build-versions.json",
+        "location": "./public/manifests/build-versions.json",
+        "generatedBy": "generate-versions-manifest.js",
+        "description": "Package versions for reproducibility"
+      }
+    ],
+    "sequences": [
+      {
+        "location": "./public/sequences/{plugin}/index.json",
+        "description": "Sequence catalog index per plugin",
+        "generatedBy": "sync-json-sequences.js"
+      },
+      {
+        "location": "./public/sequences/{plugin}/{sequence}.json",
+        "description": "Individual sequence definitions",
+        "generatedBy": "sync-json-sequences.js"
+      }
+    ]
+  },
+  "globalAPIs": {
+    "namespace": "window.RenderX",
+    "apis": [
+      {
+        "name": "conductor",
+        "type": "ConductorInstance",
+        "source": "@renderx-plugins/host-sdk",
+        "description": "Musical Conductor instance for sequence execution"
+      },
+      {
+        "name": "EventRouter",
+        "type": "BridgedEventRouter",
+        "source": "@renderx-plugins/host-sdk",
+        "bridge": "DotNetTelemetryBridge",
+        "description": "Event routing with telemetry bridge to .NET backend"
+      },
+      {
+        "name": "resolveInteraction",
+        "type": "Function",
+        "source": "@renderx-plugins/host-sdk",
+        "description": "Resolves route to pluginId/sequenceId"
+      },
+      {
+        "name": "getTopicDef",
+        "type": "Function",
+        "source": "@renderx-plugins/host-sdk",
+        "description": "Gets topic definition by topic name"
+      },
+      {
+        "name": "featureFlags",
+        "type": "FeatureFlagsAPI",
+        "source": "@renderx-plugins/host-sdk",
+        "methods": ["isFlagEnabled", "getFlagMeta", "getAllFlags"],
+        "description": "Feature flag management"
+      },
+      {
+        "name": "inventory",
+        "type": "InventoryAPI",
+        "source": "./src/services/inventory",
+        "methods": ["listComponents", "getComponentById", "onInventoryChanged"],
+        "description": "Component inventory management"
+      },
+      {
+        "name": "cssRegistry",
+        "type": "CssRegistryAPI",
+        "source": "./src/services/css",
+        "methods": ["hasClass", "createClass", "updateClass"],
+        "description": "CSS class registry"
+      },
+      {
+        "name": "plugins",
+        "type": "PluginManagementAPI",
+        "source": "./src/infrastructure/dotnet",
+        "methods": ["list", "enable", "disable"],
+        "description": "Plugin management via .NET backend"
+      },
+      {
+        "name": "diagnostics",
+        "type": "DiagnosticsAPI",
+        "source": "./src/ui/diagnostics",
+        "methods": ["enable", "disable", "isEnabled", "emitDiagnostic", "addListener"],
+        "description": "Diagnostics event system"
+      }
+    ]
+  },
+  "buildPipeline": {
+    "dev": {
+      "command": "npm run dev",
+      "steps": [
+        {
+          "name": "pre:manifests",
+          "scripts": [
+            "regenerate:ographx",
+            "generate-orchestration-domains-from-sequences.js",
+            "sync-json-sequences.js",
+            "generate-interaction-manifest.js",
+            "generate-topics-manifest.js",
+            "generate-layout-manifest.js",
+            "aggregate-plugins.js",
+            "sync-plugins.js",
+            "generate-versions-manifest.js",
+            "verify:process:symphonic"
+          ],
+          "description": "Generate runtime manifests and sync sequences"
+        },
+        {
+          "name": "vite",
+          "config": "./vite.config.js",
+          "port": 5173,
+          "description": "Start Vite dev server with HMR"
+        }
+      ]
+    },
+    "build": {
+      "command": "npm run build",
+      "steps": [
+        {
+          "name": "build:packages",
+          "targets": [
+            "runtime/canvas-component",
+            "runtime/library-component",
+            "ui-plugins/control-panel",
+            "ui-plugins/header",
+            "ui-plugins/library",
+            "ui-plugins/canvas"
+          ]
+        },
+        {
+          "name": "build:host",
+          "steps": ["pre:manifests", "vite build"]
+        }
+      ]
+    }
+  },
+  "testing": {
+    "framework": "vitest",
+    "coverage": "vitest/coverage-v8",
+    "e2e": "cypress",
+    "testLocations": {
+      "unit": "./__tests__/unit/",
+      "integration": "./__tests__/integration/",
+      "e2e": "./__tests__/e2e/",
+      "plugins": {
+        "canvas-component": "./runtime/canvas-component/__tests__/",
+        "library-component": "./runtime/library-component/__tests__/",
+        "control-panel": "./ui-plugins/control-panel/__tests__/",
+        "header": "./ui-plugins/header/__tests__/",
+        "library": "./ui-plugins/library/__tests__/",
+        "canvas": "./ui-plugins/canvas/__tests__/"
+      }
+    }
+  },
+  "documentation": {
+    "architecture": "./docs/architecture.md",
+    "sequences": "./docs/sequences.md",
+    "api": "./docs/api.md",
+    "migration": "../RENDERX_WEB_DOMAIN_ARCHITECTURE.md",
+    "readme": "./README.md"
+  },
+  "orchestration": {
+    "registry": "./orchestration/domains.json",
+    "totalDomains": 78,
+    "renderxWebSequences": 43,
+    "categories": ["plugin", "orchestration"],
+    "executionFlow": [
+      "Load Context",
+      "Validate",
+      "Execute",
+      "Monitor",
+      "Report"
+    ]
+  },
+  "migrationStatus": {
+    "currentState": "scattered",
+    "targetState": "domain-organized",
+    "phase": "proposed",
+    "blockers": [],
+    "readiness": {
+      "registry": true,
+      "directory": false,
+      "plugins": false,
+      "sources": false,
+      "manifests": false,
+      "documentation": false
+    }
+  },
+  "workspaceIntegration": {
+    "packageManager": "npm",
+    "workspaces": [
+      "domains/renderx-web/runtime/*",
+      "domains/renderx-web/ui-plugins/*"
+    ],
+    "packagePrefix": "@renderx-web/",
+    "buildOrder": [
+      "runtime/canvas-component",
+      "runtime/library-component",
+      "ui-plugins/control-panel",
+      "ui-plugins/header",
+      "ui-plugins/library",
+      "ui-plugins/canvas"
+    ]
+  }
+}

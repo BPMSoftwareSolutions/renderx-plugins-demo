@@ -1,0 +1,849 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://renderx.dev/schemas/domain-registry.schema.json",
+  "title": "RenderX Domain Registry Schema",
+  "description": "Schema for RenderX domain registry files that define domain structure, plugins, sequences, and dependencies",
+  "type": "object",
+  "required": ["metadata", "domain", "plugins", "sequences"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["version", "generated", "description"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Registry schema version"
+        },
+        "generated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of registry generation"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the registry"
+        },
+        "maintainer": {
+          "type": "string",
+          "description": "Team or person responsible for this domain"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["proposed", "active", "deprecated", "archived"],
+          "description": "Current status of the domain"
+        }
+      }
+    },
+    "domain": {
+      "type": "object",
+      "required": ["id", "name", "version", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Unique domain identifier (kebab-case)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable domain name"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Domain version (semver)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed domain description"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["orchestration", "plugin", "infrastructure", "ui"],
+          "description": "Domain category"
+        },
+        "entryPoint": {
+          "type": "string",
+          "description": "Relative path to domain entry point"
+        },
+        "publicDir": {
+          "type": "string",
+          "description": "Relative path to public assets directory"
+        },
+        "buildConfig": {
+          "type": "string",
+          "description": "Relative path to build configuration file"
+        }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Architectural pattern used by this domain"
+        },
+        "orchestrator": {
+          "type": "string",
+          "description": "Orchestration engine/library name"
+        },
+        "communicationModel": {
+          "type": "string",
+          "description": "Inter-component communication model"
+        },
+        "uiComposition": {
+          "type": "string",
+          "description": "UI composition strategy"
+        },
+        "stateManagement": {
+          "type": "string",
+          "description": "State management approach"
+        },
+        "telemetryBridge": {
+          "type": "string",
+          "description": "Telemetry bridge target"
+        }
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "core": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dependency"
+          }
+        },
+        "shared": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dependency"
+          }
+        }
+      }
+    },
+    "plugins": {
+      "type": "object",
+      "required": ["runtime", "ui"],
+      "properties": {
+        "runtime": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/runtimePlugin"
+          },
+          "description": "Runtime-only plugins (no UI)"
+        },
+        "ui": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uiPlugin"
+          },
+          "description": "UI plugins (with or without runtime)"
+        }
+      }
+    },
+    "sequences": {
+      "type": "object",
+      "required": ["total", "byPlugin"],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of sequences in domain"
+        },
+        "byPlugin": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/pluginSequences"
+          }
+        }
+      }
+    },
+    "services": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/service"
+          }
+        }
+      }
+    },
+    "infrastructure": {
+      "type": "object",
+      "properties": {
+        "bridges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bridge"
+          }
+        },
+        "utilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/utility"
+          }
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "framework": {
+          "type": "string",
+          "description": "UI framework and version"
+        },
+        "composition": {
+          "type": "string",
+          "description": "UI composition strategy"
+        },
+        "entryPoint": {
+          "type": "string",
+          "description": "UI entry point path"
+        },
+        "rootComponent": {
+          "type": "string",
+          "description": "Root React component path"
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/component"
+            }
+          }
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/slot"
+          }
+        },
+        "events": {
+          "type": "object",
+          "properties": {
+            "config": {
+              "type": "string",
+              "description": "Event configuration file path"
+            },
+            "description": {
+              "type": "string"
+            },
+            "handler": {
+              "type": "string",
+              "description": "Event handler implementation path"
+            }
+          }
+        }
+      }
+    },
+    "manifests": {
+      "type": "object",
+      "properties": {
+        "runtime": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/manifest"
+          }
+        },
+        "sequences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/manifest"
+          }
+        }
+      }
+    },
+    "globalAPIs": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "description": "Global namespace for exposed APIs"
+        },
+        "apis": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/globalAPI"
+          }
+        }
+      }
+    },
+    "buildPipeline": {
+      "type": "object",
+      "properties": {
+        "dev": {
+          "$ref": "#/definitions/buildConfig"
+        },
+        "build": {
+          "$ref": "#/definitions/buildConfig"
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "properties": {
+        "framework": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "string"
+        },
+        "e2e": {
+          "type": "string"
+        },
+        "testLocations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documentation": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Path to documentation file"
+      }
+    },
+    "orchestration": {
+      "type": "object",
+      "properties": {
+        "registry": {
+          "type": "string",
+          "description": "Path to orchestration registry file"
+        },
+        "totalDomains": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "renderxWebSequences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "executionFlow": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "migrationStatus": {
+      "type": "object",
+      "properties": {
+        "currentState": {
+          "type": "string",
+          "enum": ["scattered", "partial", "organized"]
+        },
+        "targetState": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["proposed", "in-progress", "completed"]
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "readiness": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "workspaceIntegration": {
+      "type": "object",
+      "properties": {
+        "packageManager": {
+          "type": "string",
+          "enum": ["npm", "yarn", "pnpm"]
+        },
+        "workspaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "packagePrefix": {
+          "type": "string",
+          "pattern": "^@[a-z][a-z0-9-]*/",
+          "description": "NPM package scope prefix"
+        },
+        "buildOrder": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Dependency-ordered build sequence"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "dependency": {
+      "type": "object",
+      "required": ["package", "version", "scope"],
+      "properties": {
+        "package": {
+          "type": "string",
+          "description": "Package name"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version constraint (semver)"
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["runtime", "ui", "build", "test"],
+          "description": "Dependency scope"
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specific modules used from package"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "runtimePlugin": {
+      "type": "object",
+      "required": ["id", "name", "type", "package", "location", "sequences"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Plugin identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable plugin name"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["runtime-only"],
+          "description": "Plugin type"
+        },
+        "package": {
+          "type": "string",
+          "description": "NPM package name"
+        },
+        "version": {
+          "type": "string",
+          "description": "Plugin version"
+        },
+        "location": {
+          "type": "string",
+          "description": "Relative path to plugin directory"
+        },
+        "entryPoint": {
+          "type": "string",
+          "description": "Plugin entry point file"
+        },
+        "export": {
+          "type": "string",
+          "description": "Export name for registration function"
+        },
+        "sequences": {
+          "type": "object",
+          "required": ["count", "catalog"],
+          "properties": {
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "catalog": {
+              "type": "string",
+              "description": "Path to sequence catalog index.json"
+            },
+            "handlersPath": {
+              "type": "string",
+              "description": "Module path for sequence handlers"
+            }
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "responsibilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of plugin responsibilities"
+        },
+        "domainId": {
+          "type": "string",
+          "description": "Associated domain identifier"
+        }
+      }
+    },
+    "uiPlugin": {
+      "type": "object",
+      "required": ["id", "name", "type", "package", "location"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["ui-and-runtime", "ui-only"]
+        },
+        "package": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "entryPoint": {
+          "type": "string"
+        },
+        "exports": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "ui": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "array", "items": { "type": "string" } }
+                  ]
+                },
+                "runtime": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "ui": {
+          "type": "object",
+          "properties": {
+            "slot": {
+              "type": "string"
+            },
+            "slots": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "component": {
+              "type": "string"
+            }
+          }
+        },
+        "sequences": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "catalog": {
+              "type": "string"
+            },
+            "handlersPath": {
+              "type": "string"
+            },
+            "symphonies": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "responsibilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domainId": {
+          "type": "string"
+        }
+      }
+    },
+    "pluginSequences": {
+      "type": "object",
+      "required": ["count", "sequences"],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sequences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["name", "location"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "exports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "globalExposure": {
+          "type": "string",
+          "description": "Global namespace path (e.g., window.RenderX.inventory)"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "bridge": {
+      "type": "object",
+      "required": ["name", "location", "type"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["http-bridge", "websocket-bridge", "message-bridge"]
+        },
+        "target": {
+          "type": "string"
+        },
+        "baseUrl": {
+          "type": "string"
+        },
+        "transport": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "endpoints": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "active": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "utility": {
+      "type": "object",
+      "required": ["name", "location"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "exports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": ["name", "location"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "slot": {
+      "type": "object",
+      "required": ["plugin", "component"],
+      "properties": {
+        "plugin": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "droppable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["name", "location"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "generatedBy": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "globalAPI": {
+      "type": "object",
+      "required": ["name", "type", "source"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "bridge": {
+          "type": "string"
+        },
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "buildConfig": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "scripts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "description": {
+                "type": "string"
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
