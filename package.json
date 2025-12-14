@@ -241,7 +241,10 @@
     "orchestrate:audit-session": "node scripts/execute-orchestration.js packages/ographx/.ographx/sequences/orchestration-audit-session.json",
     "orchestrate:audit-system": "node scripts/execute-orchestration.js packages/ographx/.ographx/sequences/orchestration-audit-system.json",
     "audit:registry": "node scripts/audit-orchestration-registry.js",
-    "gen:registry:audit:docs": "node scripts/gen-orchestration-registry-audit-docs.js"
+    "gen:registry:audit:docs": "node scripts/gen-orchestration-registry-audit-docs.js",
+    "schema:analyze": "schema-fixer analyze --root . --report .generated/schema-analysis.json",
+    "schema:fix:preview": "schema-fixer fix --root . --dry-run --report .generated/schema-migration-preview.json",
+    "schema:fix": "schema-fixer fix --root . --autofix --report .generated/schema-migration-results.json"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "*",
