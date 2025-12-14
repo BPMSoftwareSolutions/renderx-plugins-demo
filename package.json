@@ -18,6 +18,7 @@
     "dev:clean": "npm run rebuild:mc && npm run clean:vite && npm run dev",
     "debug:sourcemaps": "node scripts/debug-sourcemaps.js",
     "build": "npm run validate:domains && npm run generate:readme && npm run generate:governance:docs && npm run validate:governance:docs && npm run validate:agent:behavior && npm run generate:slo:traceability && node scripts/enrich-domain-authorities.cjs && npm run build:all && npm run regenerate:ographx",
+    "generate:readme": "node scripts/generate-readme.cjs",
     "audit:hardcoded": "node scripts/audit-hardcoded-values.js",
     "enrich:domains": "node scripts/enrich-domain-authorities.cjs",
     "regenerate:ographx": "node scripts/run-python.js packages/ographx/generators/regenerate_all.py",
