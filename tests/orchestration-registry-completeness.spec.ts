@@ -30,7 +30,7 @@ interface Registry {
   domains: RegistryDomain[];
 }
 
-describe('Orchestration Registry - Domain Completeness', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] Orchestration Registry - Domain Completeness', () => {
   let registry: Registry;
   let discoveredSequences: DiscoveredSequence[];
 
@@ -62,11 +62,11 @@ describe('Orchestration Registry - Domain Completeness', () => {
   });
 
   describe('All Orchestration Sequences Must Be Registered', () => {
-    it('should discover orchestration sequences from filesystem', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] should discover orchestration sequences from filesystem', () => {
       expect(discoveredSequences.length).toBeGreaterThan(0);
     });
 
-    it('each discovered sequence should have a registry entry', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] each discovered sequence should have a registry entry', () => {
       const notRegistered: string[] = [];
       discoveredSequences.forEach(seq => {
         const registered = registry.domains.find(d => d.id === seq.id);
@@ -80,7 +80,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
       expect(notRegistered.length).toBe(0);
     });
 
-    it('each discovered sequence should match its registry entry', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] each discovered sequence should match its registry entry', () => {
       discoveredSequences.forEach(seq => {
         const registered = registry.domains.find(d => d.id === seq.id);
         if (registered) {
@@ -92,7 +92,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
   });
 
   describe('All Registered Domains Must Conform to MusicalSequence', () => {
-    it('all domains should have required MusicalSequence fields', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] all domains should have required MusicalSequence fields', () => {
       const requiredFields = ['id', 'name', 'category'];
       
       registry.domains.forEach(domain => {
@@ -102,7 +102,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
       });
     });
 
-    it('domains should have status field with valid value', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] domains should have status field with valid value', () => {
       registry.domains.forEach(domain => {
         expect(domain).toHaveProperty('status');
         expect(['active', 'planned', 'deprecated', 'experimental']).toContain(domain.status);
@@ -111,19 +111,19 @@ describe('Orchestration Registry - Domain Completeness', () => {
   });
 
   describe('Registry Integrity', () => {
-    it('should not have duplicate domain IDs', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] should not have duplicate domain IDs', () => {
       const ids = registry.domains.map(d => d.id);
       const uniqueIds = new Set(ids);
       expect(uniqueIds.size).toBe(ids.length);
     });
 
-    it('should have metadata with version and generated timestamp', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] should have metadata with version and generated timestamp', () => {
       expect(registry.metadata).toBeDefined();
       expect(registry.metadata.version).toBeTruthy();
       expect(registry.metadata.generated).toBeTruthy();
     });
 
-    it('orchestration sequences in registry >= discovered sequences', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] orchestration sequences in registry >= discovered sequences', () => {
       const orchestrationInRegistry = registry.domains.filter(d => d.category === 'orchestration').length;
       const orchestrationDiscovered = discoveredSequences.length;
       expect(orchestrationInRegistry).toBeGreaterThanOrEqual(orchestrationDiscovered);
@@ -131,7 +131,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
   });
 
   describe('Category Distribution', () => {
-    it('should have both plugin and orchestration categories', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] should have both plugin and orchestration categories', () => {
       const categories = new Set(registry.domains.map(d => d.category));
       expect(categories.has('plugin')).toBe(true);
       expect(categories.has('orchestration')).toBe(true);
@@ -139,7 +139,7 @@ describe('Orchestration Registry - Domain Completeness', () => {
   });
 
   describe('Domain Relationships', () => {
-    it('domains can only reference existing domains', () => {
+    it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] domains can only reference existing domains', () => {
       const allIds = new Set(registry.domains.map(d => d.id));
       registry.domains.forEach(domain => {
         if (domain.relatedDomains && Array.isArray(domain.relatedDomains)) {

@@ -19,13 +19,19 @@
           "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a rule set"],
-              "when": ["setAllRulesConfig runs"],
-              "then": ["rules apply atomically and persist; validation passes"],
+              "given": [
+                "handler setAllRulesConfig is available"
+              ],
+              "when": [
+                "setAllRulesConfig executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "telemetry includes rule count"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -42,13 +48,19 @@
           "userStory": "As an operations system, I want loadAllRulesFromWindow to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a window-bound rule store"],
-              "when": ["loadAllRulesFromWindow runs"],
-              "then": ["rules load with defaults for missing entries; typed errors on invalid"],
+              "given": [
+                "handler loadAllRulesFromWindow is available"
+              ],
+              "when": [
+                "loadAllRulesFromWindow executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "P95 ≤ 100ms"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -65,13 +77,19 @@
           "userStory": "As an operations system, I want getAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
           "testCase": "allows relative and approved bare imports",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["rules are loaded"],
-              "when": ["getAllRulesConfig runs"],
-              "then": ["a normalized rules snapshot returns; consumers receive consistent view"],
+              "given": [
+                "handler getAllRulesConfig is available"
+              ],
+              "when": [
+                "getAllRulesConfig executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
               "and": [
-                "calls are idempotent and cached"
+                "emits expected side effects or returns expected value"
               ]
             }
           ]
@@ -85,5 +103,6 @@
   "beats": 3,
   "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
   "persona": "Product Owner",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

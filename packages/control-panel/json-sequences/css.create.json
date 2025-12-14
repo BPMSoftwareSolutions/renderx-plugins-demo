@@ -19,14 +19,28 @@
           "scenario": "Generate or Create create Css Class",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
           "testCase": "forwards to drop symphony and does not render React nodes directly",
-          "userStory": "As an operations system, I want createCssClass to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a valid CSS rule"],
-              "when": ["createRule runs"],
-              "then": ["rule is inserted into stylesheet, latency ≤ 20ms"],
+              "given": [
+                "handler createCssClass is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "createCssClass executes"
+              ],
+              "then": [
+                "createCssClass performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'css.rule.create' includes selector and index"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -43,48 +57,82 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "accelerates content creation"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a class change operation completes"],
-              "when": ["notifyUi is invoked with change details"],
-              "then": ["an event is published to the central EventRouter within 5ms"],
+              "given": [
+                "a class change operation completes"
+              ],
+              "when": [
+                "notifyUi is invoked with change details"
+              ],
+              "then": [
+                "an event is published to the central EventRouter within 5ms"
+              ],
               "and": [
                 "the event contains element ID, action (add/remove), and class name",
                 "the event is stamped with microsecond-precision timestamp"
               ]
             },
             {
-              "given": ["multiple class operations occur in sequence"],
-              "when": ["notifyUi publishes events"],
-              "then": ["events are queued in FIFO order"],
+              "given": [
+                "multiple class operations occur in sequence"
+              ],
+              "when": [
+                "notifyUi publishes events"
+              ],
+              "then": [
+                "events are queued in FIFO order"
+              ],
               "and": [
                 "subscribers receive events in the order they occurred",
                 "no events are dropped or duplicated"
               ]
             },
             {
-              "given": ["a subscriber is registered for UI change events"],
-              "when": ["notifyUi publishes"],
-              "then": ["the subscriber receives the event within 20ms"],
+              "given": [
+                "a subscriber is registered for UI change events"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "the subscriber receives the event within 20ms"
+              ],
               "and": [
                 "the subscriber can act on the notification",
                 "multiple subscribers can consume the same event"
               ]
             },
             {
-              "given": ["the event system is congested"],
-              "when": ["notifyUi attempts to publish"],
-              "then": ["the event is queued with backpressure"],
+              "given": [
+                "the event system is congested"
+              ],
+              "when": [
+                "notifyUi attempts to publish"
+              ],
+              "then": [
+                "the event is queued with backpressure"
+              ],
               "and": [
                 "the operation does not block the caller",
                 "events are eventually delivered with bounded latency"
               ]
             },
             {
-              "given": ["notification occurs during error conditions"],
-              "when": ["notifyUi is called"],
-              "then": ["events are still published for traceability"],
+              "given": [
+                "notification occurs during error conditions"
+              ],
+              "when": [
+                "notifyUi is called"
+              ],
+              "then": [
+                "events are still published for traceability"
+              ],
               "and": [
                 "error context is included in event payload",
                 "the system can reconstruct the failure chain from events"
@@ -93,14 +141,23 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need CSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "cSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks",
+        "benefit": "accelerates content creation"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need CSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "cSS creation to apply scoped classes and persist edits within ≤1s P95, with ordering rules and governance checks",
+    "benefit": "accelerates content creation"
+  },
   "persona": "Design systems engineer",
-  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity"
+  "businessValue": "Accelerates content creation; reduces manual effort by 40%; enables bulk operations; improves developer productivity",
+  "domainId": "renderx-web-orchestration"
 }

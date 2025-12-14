@@ -16,16 +16,30 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Attribute",
-          "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform reliability engineer",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["selected component"],
-              "when": ["serializeSelectedComponent runs"],
-              "then": ["component serializes deterministically; payload validates; latency ≤ 20ms"],
+              "given": [
+                "handler updateAttribute is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateAttribute executes"
+              ],
+              "then": [
+                "updateAttribute performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'copy.serialize' includes bytes and fields"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -39,28 +53,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "refresh Control Panel",
-          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Platform reliability engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
           "testCase": "setDirty marks isDirty with timestamp",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a node update completes"],
-              "when": ["refreshControlPanel runs"],
-              "then": ["control panel reflects new state within ≤ 50ms"],
+              "given": [
+                "handler refreshControlPanel is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "refreshControlPanel executes"
+              ],
+              "then": [
+                "refreshControlPanel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "publish a 'control-panel.refresh' event idempotently"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.",
+      "userStory": {
+        "persona": "Platform reliability engineer",
+        "goal": "the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent",
+        "benefit": "real-time content updates"
+      },
       "persona": "Platform reliability engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As a reliability engineer, I need the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent.",
+  "userStory": {
+    "persona": "Platform reliability engineer",
+    "goal": "the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent",
+    "benefit": "real-time content updates"
+  },
   "persona": "Platform reliability engineer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

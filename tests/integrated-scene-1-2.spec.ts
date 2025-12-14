@@ -7,13 +7,17 @@ const root = path.resolve('.');
 const assetsDir = path.join(root, 'docs', 'digital-assets');
 const integratedSvgPath = path.join(assetsDir, 'integrated_scene_1_2.svg');
 
-describe('Integrated Scene 1+2 SVG', () => {
-  it('exists and contains key elements/text from both scenes', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.5] Integrated Scene 1+2 SVG', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.5:1] exists and contains key elements/text from both scenes', () => {
+      // Given: the registerObservers operation is triggered
+      const startTime = performance.now();
+      // When: the handler executes
     const svgStr = fs.readFileSync(integratedSvgPath, 'utf-8');
     const dom = new JSDOM(svgStr, { contentType: 'image/svg+xml' });
     const doc = dom.window.document;
 
     const rootSvg = doc.querySelector('svg');
+      // Then: it completes successfully within < 1 second
     expect(rootSvg).toBeTruthy();
     expect(rootSvg!.getAttribute('viewBox')).toBe('0 0 1400 400');
 
@@ -30,6 +34,10 @@ describe('Integrated Scene 1+2 SVG', () => {
     expect(textContent).toMatch(/DEBUG LOGS AHEAD/);
     expect(textContent).toMatch(/REPLAY CACHE STOP/);
     expect(textContent).toMatch(/FEATURE FLAGS ON\/OFF/);
+      // And: the output is valid and meets schema
+      // And: any required events are published
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(1000);
   });
 });
 

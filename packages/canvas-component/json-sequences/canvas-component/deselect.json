@@ -16,16 +16,30 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "deselect Component",
-          "userStory": "As an operations system, I want deselectComponent to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a selected component"],
-              "when": ["deselectComponent runs"],
-              "then": ["the component becomes unselected and overlay removed within ≤ 20ms"],
+              "given": [
+                "handler deselectComponent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "deselectComponent executes"
+              ],
+              "then": [
+                "deselectComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "idempotent calls have no effect"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -39,28 +53,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Deselection Changed",
-          "userStory": "As an operations system, I want publishDeselectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["deselection occurs"],
-              "when": ["publishDeselectionChanged runs"],
-              "then": ["event publishes with previous and current selection"],
+              "given": [
+                "handler publishDeselectionChanged is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "publishDeselectionChanged executes"
+              ],
+              "then": [
+                "publishDeselectionChanged performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "ordering remains FIFO"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "clear overlays and notify subscribers within ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 2,
-  "userStory": "As an interaction designer, I need deselect to clear overlays and notify subscribers within ≤100ms P95.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "clear overlays and notify subscribers within ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

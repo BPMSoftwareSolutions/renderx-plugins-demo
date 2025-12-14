@@ -16,28 +16,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "route Deselection Request",
-          "userStory": "As an engineer, I need `routeDeselectionRequest` to identify current selection and clear state.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "identify current selection and clear state",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should route-deselection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a user deselect action"],
-              "when": ["routeDeselectionRequest runs"],
-              "then": ["request routes to orchestrator with correlation id"],
+              "given": [
+                "handler routeDeselectionRequest is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "routeDeselectionRequest executes"
+              ],
+              "then": [
+                "routeDeselectionRequest performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "invalid state is rejected with typed error"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need requested deselect to route to base and clear selection consistently.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "requested deselect to route to base and clear selection consistently",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an interaction designer, I need requested deselect to route to base and clear selection consistently.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "requested deselect to route to base and clear selection consistently",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

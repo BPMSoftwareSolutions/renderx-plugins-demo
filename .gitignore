@@ -246,3 +246,4 @@ cypress/videos/
 **/wwwroot/
 /json-components
 /json-sequences/control-panel
+/composites

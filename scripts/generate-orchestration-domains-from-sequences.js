@@ -249,10 +249,16 @@ async function generateOrchestrationDomains() {
 
   // Explicitly add orchestration sequences from packages/orchestration/json-sequences
   // These are not under ographx paths and were previously missed by auto-detection.
+  // EXCLUDE sub-sequences that are part of renderx-web-orchestration domain
+  const subSequencesOfRenderXWeb = new Set([
+    'ac-alignment-remediation.workflow.v1.json',
+    'ac-test-hardening.workflow.v1.json'
+  ]);
+
   const orchestrationJsonDir = path.join(rootDir, 'packages', 'orchestration', 'json-sequences');
   if (fs.existsSync(orchestrationJsonDir)) {
     fs.readdirSync(orchestrationJsonDir)
-      .filter(f => f.endsWith('.json'))
+      .filter(f => f.endsWith('.json') && !subSequencesOfRenderXWeb.has(f))
       .forEach(file => {
         try {
           const content = JSON.parse(fs.readFileSync(path.join(orchestrationJsonDir, file), 'utf-8'));

@@ -53,6 +53,6 @@
     "auto-fix"
   ],
   "author": "RenderX Team",
-  "license": "MIT"
+  "license": "MIT",
+  "domainId": "renderx-web-orchestration"
 }
-

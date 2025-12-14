@@ -3,7 +3,7 @@
   Migration Utility: Legacy -> Structured Acceptance Criteria
 
   Converts legacy `acceptanceCriteria` (array of Given/When/Then text blocks)
-  into `acceptanceCriteriaStructured` (array of compact GWT objects) for all
+  into `acceptanceCriteria` (array of compact GWT objects) for all
   JSON sequence files under a directory.
 
   Intent:
@@ -55,9 +55,9 @@ function convertFile(filePath) {
   for (const movement of json.movements) {
     if (!movement || !Array.isArray(movement.beats)) continue;
     for (const beat of movement.beats) {
-      if (beat && Array.isArray(beat.acceptanceCriteria) && !beat.acceptanceCriteriaStructured) {
+      if (beat && Array.isArray(beat.acceptanceCriteria) && !beat.acceptanceCriteria) {
         const structured = beat.acceptanceCriteria.map(parseGwtBlock);
-        beat.acceptanceCriteriaStructured = structured;
+        beat.acceptanceCriteria = structured;
         delete beat.acceptanceCriteria;
         changed = true;
       }

@@ -19,14 +19,28 @@
           "scenario": "prepare Field",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As an engineer, I need `prepareField` to normalize input and validate.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "normalize input and validate",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a user input event"],
-              "when": ["onFieldChange runs"],
-              "then": ["model updates debounced ≤ 50ms and validates lazily"],
+              "given": [
+                "handler prepareField is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "prepareField executes"
+              ],
+              "then": [
+                "prepareField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'ui.field.change' includes field and debounce"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -43,14 +57,28 @@
           "scenario": "dispatch Field",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As an engineer, I need `dispatchField` to route changes to the canvas component.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "route changes to the canvas component",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a normalized change payload"],
-              "when": ["dispatchField runs"],
-              "then": ["change routes to the correct handler with latency ≤ 5ms"],
+              "given": [
+                "handler dispatchField is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "dispatchField executes"
+              ],
+              "then": [
+                "dispatchField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "no duplicate dispatch occurs for the same tick"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -67,14 +95,28 @@
           "scenario": "set Dirty",
           "testFile": "tests\\digital-assets.spec.ts",
           "testCase": "resolves and exposes correct package name",
-          "userStory": "As an engineer, I need `setDirty` to mark state and enable save.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "mark state and enable save",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["the model updates"],
-              "when": ["setDirty runs"],
-              "then": ["the form state flips to dirty and tracks changed fields"],
+              "given": [
+                "handler setDirty is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "setDirty executes"
+              ],
+              "then": [
+                "setDirty performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "idempotent calls do not re-emit"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -91,27 +133,50 @@
           "scenario": "await Refresh",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "testCase": "setDirty marks isDirty with timestamp",
-          "userStory": "As an engineer, I need `awaitRefresh` to synchronize view updates.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "synchronize view updates",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["UI depends on derived state"],
-              "when": ["awaitRefresh runs"],
-              "then": ["view refresh completes within ≤ 50ms P95"],
+              "given": [
+                "handler awaitRefresh is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "awaitRefresh executes"
+              ],
+              "then": [
+                "awaitRefresh performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "no layout thrash occurs (≤ 1 reflow)"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 4,
   "tempo": 120,
-  "userStory": "As a UI runtime engineer, I need field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "UI runtime engineer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

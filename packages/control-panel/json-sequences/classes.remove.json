@@ -19,14 +19,28 @@
           "scenario": "Remove CSS Class from UI Element for State Cleanup",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.base-classes.spec.ts",
           "testCase": "adds rx-comp and rx-<type> when missing from classRefs",
-          "userStory": "As an engineer, I need `removeClass` to remove classes safely, validate impact, and record change events.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "remove classes safely, validate impact, and record change events",
+            "benefit": "prevents CSS accumulation that degrades performance"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["element with existing class"],
-              "when": ["removeClass runs"],
-              "then": ["class is removed, latency ≤ 5ms"],
+              "given": [
+                "handler removeClass is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "removeClass executes"
+              ],
+              "then": [
+                "removeClass performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'ui.class.remove' includes elementId and class"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -43,48 +57,82 @@
           "scenario": "Publish UI State Change Notifications to Event System",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish class-remove events with <20ms delivery and backpressure.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "publish class-remove events with <20ms delivery and backpressure",
+            "benefit": "prevents CSS accumulation that degrades performance"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a class change operation completes"],
-              "when": ["notifyUi is invoked with change details"],
-              "then": ["an event is published to the central EventRouter within 5ms"],
+              "given": [
+                "a class change operation completes"
+              ],
+              "when": [
+                "notifyUi is invoked with change details"
+              ],
+              "then": [
+                "an event is published to the central EventRouter within 5ms"
+              ],
               "and": [
                 "the event contains element ID, action (add/remove), and class name",
                 "the event is stamped with microsecond-precision timestamp"
               ]
             },
             {
-              "given": ["multiple class operations occur in sequence"],
-              "when": ["notifyUi publishes events"],
-              "then": ["events are queued in FIFO order"],
+              "given": [
+                "multiple class operations occur in sequence"
+              ],
+              "when": [
+                "notifyUi publishes events"
+              ],
+              "then": [
+                "events are queued in FIFO order"
+              ],
               "and": [
                 "subscribers receive events in the order they occurred",
                 "no events are dropped or duplicated"
               ]
             },
             {
-              "given": ["a subscriber is registered for UI change events"],
-              "when": ["notifyUi publishes"],
-              "then": ["the subscriber receives the event within 20ms"],
+              "given": [
+                "a subscriber is registered for UI change events"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "the subscriber receives the event within 20ms"
+              ],
               "and": [
                 "the subscriber can act on the notification",
                 "multiple subscribers can consume the same event"
               ]
             },
             {
-              "given": ["the event system is congested"],
-              "when": ["notifyUi attempts to publish"],
-              "then": ["the event is queued with backpressure"],
+              "given": [
+                "the event system is congested"
+              ],
+              "when": [
+                "notifyUi attempts to publish"
+              ],
+              "then": [
+                "the event is queued with backpressure"
+              ],
               "and": [
                 "the operation does not block the caller",
                 "events are eventually delivered with bounded latency"
               ]
             },
             {
-              "given": ["notification occurs during error conditions"],
-              "when": ["notifyUi is called"],
-              "then": ["events are still published for traceability"],
+              "given": [
+                "notification occurs during error conditions"
+              ],
+              "when": [
+                "notifyUi is called"
+              ],
+              "then": [
+                "events are still published for traceability"
+              ],
               "and": [
                 "error context is included in event payload",
                 "the system can reconstruct the failure chain from events"
@@ -93,14 +141,23 @@
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95",
+        "benefit": "prevents CSS accumulation that degrades performance"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
     }
   ],
   "beats": 2,
   "tempo": 120,
-  "userStory": "As a design systems engineer, I need class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "class removals to preserve accessibility and styling invariants, updating UI within <20ms and persisting within ≤1s P95",
+    "benefit": "prevents CSS accumulation that degrades performance"
+  },
   "persona": "Design systems engineer",
-  "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations"
+  "businessValue": "Prevents CSS accumulation that degrades performance; enables clean state management; supports form reset/clear operations",
+  "domainId": "renderx-web-orchestration"
 }

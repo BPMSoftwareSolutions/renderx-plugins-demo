@@ -2,10 +2,15 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    environment: "node",
+    // Use jsdom by default so DOM APIs like document and localStorage are available
+    environment: "jsdom",
     globals: true,
     testTimeout: 60000,
     hookTimeout: 60000,
+    reporters: ['default', 'json'],
+    outputFile: {
+      json: './test-results/unit-results.json'
+    },
     include: [
       "**/__tests__/**/*.spec.ts",
       "**/__tests__/**/*.spec.tsx",

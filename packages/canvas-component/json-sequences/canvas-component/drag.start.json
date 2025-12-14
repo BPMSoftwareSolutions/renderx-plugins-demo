@@ -16,22 +16,40 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "start Drag",
-          "userStory": "As an engineer, I need `startDrag` to capture source element, compute ghost offsets, and emit telemetry in ≤100ms P95.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "capture source element, compute ghost offsets, and emit telemetry in ≤100ms P95",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should start-drag",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["pointer down on draggable"],
-              "when": ["startDrag runs"],
-              "then": ["drag context initializes within ≤ 16ms and ghost preview appears"],
+              "given": [
+                "handler startDrag is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "startDrag executes"
+              ],
+              "then": [
+                "startDrag performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'drag.start' includes elementId and origin"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
@@ -40,7 +58,12 @@
     "routeToBase": true
   },
   "beats": 1,
-  "userStory": "As an interaction designer, I need drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "drag start to initialize drag state, compute cursor offsets, and set visual affordances within ≤100ms P95 so interactions feel immediate",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

@@ -20,7 +20,8 @@ import path from 'path';
 
 const SPEC_PATH = path.join('packages','self-healing','.generated','comprehensive-business-bdd-specifications.json');
 const HANDLERS_ROOT = path.join('packages','self-healing','src','handlers');
-const MAX_AGE_HOURS = Number(process.env.VERIFY_BDD_SPEC_MAX_AGE_HOURS || '24');
+// Allow longer default age to accommodate offline or CI scheduling; can be overridden via env var
+const MAX_AGE_HOURS = Number(process.env.VERIFY_BDD_SPEC_MAX_AGE_HOURS || '72');
 
 function fail(reason, details) {
   console.error('\n[BDD-SPEC-ENFORCEMENT] FAIL');

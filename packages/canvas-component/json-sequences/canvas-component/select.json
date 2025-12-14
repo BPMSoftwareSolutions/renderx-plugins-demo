@@ -16,16 +16,90 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Render or Display show Selection Overlay",
-          "userStory": "As a runtime engineer, I need `showSelectionOverlay` to render selection affordances and register handlers.",
-          "testCase": "getCanvasRect returns patched bounding client rect values",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "render selection affordances (overlay, resize handles, interactions) within <100ms P95, derive element ID from data/DOM/baton, and emit selection.shown telemetry",
+            "benefit": "uI controls remain responsive and analytics track user behavior"
+          },
+          "testCase": "derives ID from data.id, data.elementId, DOM target, or baton fallback and renders overlay with handlers",
+          "testFile": "__tests__\\selection-id-derivation.spec.ts",
+          "acceptanceCriteria": [
             {
-              "given": ["selected element(s)"],
-              "when": ["showSelectionOverlay runs"],
-              "then": ["overlay appears within ≤ 30ms and aligns within ≤ 1px"],
+              "given": [
+                "selection event contains data.id"
+              ],
+              "when": [
+                "showSelectionOverlay executes"
+              ],
+              "then": [
+                "element ID is derived from data.id",
+                "overlay container is created or reused with id='rx-overlay'",
+                "overlay rect is positioned to match selected element bounds",
+                "resize handles (8 corners/edges) are attached to overlay",
+                "selection interactions (drag, resize) are registered"
+              ],
               "and": [
-                "telemetry 'selection.overlay' includes bounds and count"
+                "operation completes within 100ms P95",
+                "selection.shown event is emitted with element ID",
+                "overlay is visible and positioned correctly"
+              ]
+            },
+            {
+              "given": [
+                "data.id is missing but data.elementId is provided"
+              ],
+              "when": [
+                "showSelectionOverlay derives ID"
+              ],
+              "then": [
+                "element ID is derived from data.elementId as fallback"
+              ],
+              "and": [
+                "overlay rendering proceeds normally"
+              ]
+            },
+            {
+              "given": [
+                "both data.id and data.elementId are missing"
+              ],
+              "when": [
+                "showSelectionOverlay derives ID from DOM target"
+              ],
+              "then": [
+                "element ID is derived from event target's id attribute",
+                "if target has no id, closest('.rx-comp') ancestor is used"
+              ],
+              "and": [
+                "nested element clicks are handled correctly"
+              ]
+            },
+            {
+              "given": [
+                "all ID sources are exhausted and baton contains ID"
+              ],
+              "when": [
+                "showSelectionOverlay uses baton fallback"
+              ],
+              "then": [
+                "element ID is derived from ctx.baton.id or ctx.baton.elementId"
+              ],
+              "and": [
+                "baton provides last-resort ID for legacy flows"
+              ]
+            },
+            {
+              "given": [
+                "no valid ID can be derived from any source"
+              ],
+              "when": [
+                "showSelectionOverlay validates ID"
+              ],
+              "then": [
+                "handler returns early without rendering overlay",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
               ]
             }
           ]
@@ -39,16 +113,60 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "userStory": "As an orchestrator, I need `notifyUi` to publish selection events with <20ms delivery.",
-          "testCase": "exports CanvasPage and register()",
-          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "selection notifications published with <20ms end-to-end delivery, ordered FIFO",
+            "benefit": "control panel, property inspector, and analytics subscribers react consistently without missed transitions"
+          },
+          "testCase": "publishes canvas.component.selected with element ID via EventRouter using data.id or baton.id fallback",
+          "testFile": "__tests__\\selection-id-derivation.spec.ts",
+          "acceptanceCriteria": [
             {
-              "given": ["a selection change occurs"],
-              "when": ["notifyUi publishes"],
-              "then": ["an event is sent to EventRouter within 5ms with item IDs"],
+              "given": [
+                "element is selected and data.id is present"
+              ],
+              "when": [
+                "notifyUi executes"
+              ],
+              "then": [
+                "canvas.component.selected event is published via EventRouter",
+                "event payload includes element ID from data.id",
+                "event is published with conductor context"
+              ],
               "and": [
-                "delivery is FIFO with no drops or duplicates"
+                "delivery completes within 20ms end-to-end",
+                "events are ordered FIFO",
+                "subscribers receive notification consistently"
+              ]
+            },
+            {
+              "given": [
+                "data.id is missing but ctx.baton.id is available"
+              ],
+              "when": [
+                "notifyUi derives ID"
+              ],
+              "then": [
+                "element ID is derived from ctx.baton.id as fallback",
+                "canvas.component.selected event is published with baton ID"
+              ],
+              "and": [
+                "legacy flows with baton-based ID propagation are supported"
+              ]
+            },
+            {
+              "given": [
+                "both data.id and baton.id are missing"
+              ],
+              "when": [
+                "notifyUi validates ID"
+              ],
+              "then": [
+                "event publication is skipped",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
               ]
             }
           ]
@@ -62,28 +180,82 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Selection Changed",
-          "userStory": "As an operations system, I want publishSelectionChanged to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
-          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "publish canvas.component.selection.changed event within <50ms, with element ID and optional metadata",
+            "benefit": "dependent systems synchronize state reliably"
+          },
+          "testCase": "publishes canvas.component.selection.changed with element ID and metadata via EventRouter",
+          "testFile": "__tests__\\selection-topic-publishing.spec.ts",
+          "acceptanceCriteria": [
             {
-              "given": ["a selection change is finalized"],
-              "when": ["publishSelectionChanged runs"],
-              "then": ["a domain event with before/after snapshots is emitted"],
+              "given": [
+                "selection change occurs with element ID"
+              ],
+              "when": [
+                "publishSelectionChanged executes"
+              ],
+              "then": [
+                "canvas.component.selection.changed event is published via EventRouter",
+                "event payload includes element ID",
+                "event payload includes optional metadata (type, classes, dimensions)",
+                "event is published with conductor context"
+              ],
               "and": [
-                "subscribers receive it within ≤ 20ms"
+                "operation completes within 50ms P95",
+                "event delivery is guaranteed FIFO",
+                "dependent systems can synchronize state"
+              ]
+            },
+            {
+              "given": [
+                "element ID is missing"
+              ],
+              "when": [
+                "publishSelectionChanged validates input"
+              ],
+              "then": [
+                "event publication is skipped",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
+              ]
+            },
+            {
+              "given": [
+                "conductor is not available in context"
+              ],
+              "when": [
+                "publishSelectionChanged attempts to publish"
+              ],
+              "then": [
+                "event is published with undefined conductor",
+                "EventRouter handles missing conductor gracefully"
+              ],
+              "and": [
+                "legacy flows without conductor are supported"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+      "userStory": {
+        "persona": "interaction designer",
+        "goal": "highlight target nodes, attach overlays, and notify control panel within ≤100ms P95",
+        "benefit": "smooth visual feedback and responsive interactions"
+      },
       "persona": "Interaction designer",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
     }
   ],
   "beats": 3,
-  "userStory": "As an interaction designer, I need selection to highlight target nodes, attach overlays, and notify control panel within ≤100ms P95.",
+  "userStory": {
+    "persona": "interaction designer",
+    "goal": "highlight target nodes, attach overlays, and notify control panel within ≤100ms P95",
+    "benefit": "smooth visual feedback and responsive interactions"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
+  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
+  "domainId": "renderx-web-orchestration"
 }

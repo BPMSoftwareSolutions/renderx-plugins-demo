@@ -22,8 +22,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Requested",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\17-analyze-requested.spec.ts",
           "testCase": "initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)",
-          "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeRequested operation is triggered"
@@ -114,8 +118,12 @@
           "scenario": "load Anomalies",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\18-load-anomalies.spec.ts",
           "testCase": "loads anomalies when file exists and provides structured envelope (Given anomalies stored, When load runs, Then anomalies available for analysis)",
-          "userStory": "As an operations system, I want loadAnomalies to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadAnomalies operation is triggered"
@@ -206,8 +214,12 @@
           "scenario": "load Codebase Info",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an operations system, I want loadCodebaseInfo to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the loadCodebaseInfo operation is triggered"
@@ -298,8 +310,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Performance Issues",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\20-analyze-performance-issues.spec.ts",
           "testCase": "classifies latency spike severity and emits issue list",
-          "userStory": "As an operations system, I want analyzePerformanceIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzePerformanceIssues operation is triggered"
@@ -390,8 +406,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Behavioral Issues",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\21-analyze-behavioral-issues.spec.ts",
           "testCase": "Scenario: Analyze behavioral anomalies to find sequence issues",
-          "userStory": "As an operations system, I want analyzeBehavioralIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeBehavioralIssues operation is triggered"
@@ -482,8 +502,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Coverage Issues",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\22-analyze-coverage-issues.spec.ts",
           "testCase": "Scenario: Analyze coverage gaps to identify untested code",
-          "userStory": "As an operations system, I want analyzeCoverageIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeCoverageIssues operation is triggered"
@@ -574,8 +598,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Error Issues",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\23-analyze-error-issues.spec.ts",
           "testCase": "Scenario: Analyze error patterns to find root cause",
-          "userStory": "As an operations system, I want analyzeErrorIssues to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeErrorIssues operation is triggered"
@@ -666,8 +694,12 @@
           "scenario": "assess Impact",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\69-assess-impact.spec.ts",
           "testCase": "Scenario: Aggregate issue severities into overall impact",
-          "userStory": "As an operations system, I want assessImpact to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the assessImpact operation is triggered"
@@ -758,8 +790,12 @@
           "scenario": "recommend Fixes",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\70-recommend-fixes.spec.ts",
           "testCase": "Scenario: Generate recommendations for mixed issues",
-          "userStory": "As an operations system, I want recommendFixes to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the recommendFixes operation is triggered"
@@ -850,8 +886,12 @@
           "scenario": "store Diagnosis",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\25-store-diagnosis.spec.ts",
           "testCase": "persists diagnosis slice (all issue arrays present) and exposes file path (Given aggregated slice, When store runs, Then fix generation can proceed)",
-          "userStory": "As an operations system, I want storeDiagnosis to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the storeDiagnosis operation is triggered"
@@ -942,8 +982,12 @@
           "scenario": "Scan, Discover, or Analyze analyze Completed",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd-handlers\\27-analyze-completed.spec.ts",
           "testCase": "emits completion event with counts and overall severity",
-          "userStory": "As an operations system, I want analyzeCompleted to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "discovery-driven workflows"
+          },
+          "acceptanceCriteria": [
             {
               "given": [
                 "the analyzeCompleted operation is triggered"
@@ -1022,14 +1066,23 @@
           ]
         }
       ],
-      "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 5 seconds",
+        "benefit": "discovery-driven workflows"
+      },
       "persona": "System Operator",
       "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
     }
   ],
   "beats": 11,
   "tempo": 120,
-  "userStory": "As an operations system, I want analyzeRequested to execute reliably with latency < 5 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 5 seconds",
+    "benefit": "discovery-driven workflows"
+  },
   "persona": "Product Owner",
-  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation"
+  "businessValue": "Enables discovery-driven workflows; reduces manual analysis time by 60%; supports automation",
+  "domainId": "renderx-web-orchestration"
 }

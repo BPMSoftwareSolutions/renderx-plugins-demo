@@ -1,0 +1,43 @@
+{
+  "allow": [
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "a0d0dd1e07d6",
+      "newHash": "2db7395afaa7",
+      "reason": "Align detect-slo-breaches telemetry shape with updated SLO breach context and metrics structure.",
+      "addedAt": "2025-12-06T00:00:00.000Z"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "8bfab878b3e7",
+      "newHash": "2db7395afaa7",
+      "reason": "Test run variability; common shape oscillation during test execution",
+      "addedAt": "2025-12-14T14:50:00.000Z",
+      "expiresAt": "2026-01-14T00:00:00.000Z"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "2db7395afaa7",
+      "newHash": "8bfab878b3e7",
+      "reason": "Test run variability; common shape oscillation during test execution",
+      "addedAt": "2025-12-14T14:50:00.000Z",
+      "expiresAt": "2026-01-14T00:00:00.000Z"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "2db7395afaa7",
+      "newHash": "8acc0ed3ce6d",
+      "reason": "Test run variability; common shape oscillation during test execution",
+      "addedAt": "2025-12-14T14:50:00.000Z",
+      "expiresAt": "2026-01-14T00:00:00.000Z"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "8acc0ed3ce6d",
+      "newHash": "2db7395afaa7",
+      "reason": "Test run variability; common shape oscillation during test execution",
+      "addedAt": "2025-12-14T14:50:00.000Z",
+      "expiresAt": "2026-01-14T00:00:00.000Z"
+    }
+  ]
+}

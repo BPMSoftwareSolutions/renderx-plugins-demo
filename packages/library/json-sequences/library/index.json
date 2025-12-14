@@ -7,5 +7,6 @@
     }
   ],
   "userStory": "As an operator, I need the library index symphony to refresh and publish indices in ≤1s P95, with audit trails and rollback.",
-  "persona": "Platform operator"
+  "persona": "Platform operator",
+  "domainId": "renderx-web-orchestration"
 }

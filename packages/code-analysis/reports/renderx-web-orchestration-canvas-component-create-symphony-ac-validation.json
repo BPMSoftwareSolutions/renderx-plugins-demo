@@ -1,0 +1,53 @@
+{
+  "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/create.json",
+  "summary": {
+    "symphonyId": "canvas-component-create-symphony",
+    "symphonyName": "Canvas Component Create",
+    "totalBeats": 5,
+    "goodBeats": 0,
+    "partialBeats": 0,
+    "poorBeats": 0,
+    "noTestBeats": 0,
+    "averageCoverage": 0,
+    "totalConditions": 0,
+    "matchedConditions": 0
+  },
+  "beatResults": [
+    {
+      "movement": "Create",
+      "beat": "Resolve Template",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    },
+    {
+      "movement": "Create",
+      "beat": "Register Instance",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    },
+    {
+      "movement": "Create",
+      "beat": "Create Node",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    },
+    {
+      "movement": "Create",
+      "beat": "Render React Component",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    },
+    {
+      "movement": "Create",
+      "beat": "Notify UI",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    }
+  ],
+  "timestamp": "2025-12-06T04:26:53.017Z"
+}

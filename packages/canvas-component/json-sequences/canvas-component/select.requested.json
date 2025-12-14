@@ -16,28 +16,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "route Selection Request",
-          "userStory": "As an engineer, I need `routeSelectionRequest` to identify the target node and route to base.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "identify the target node and route to base",
+            "benefit": "reliable operations with measurable KPIs"
+          },
           "testCase": "should route-selection-request",
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a user selection action"],
-              "when": ["routeSelectionRequest runs"],
-              "then": ["selection criteria routes to orchestrator with correlation id"],
+              "given": [
+                "handler routeSelectionRequest is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "routeSelectionRequest executes"
+              ],
+              "then": [
+                "routeSelectionRequest performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "invalid targets are rejected with typed error"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "requested selection to resolve the target and route to base handlers reliably",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
     }
   ],
   "beats": 1,
-  "userStory": "As an interaction designer, I need requested selection to resolve the target and route to base handlers reliably.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "requested selection to resolve the target and route to base handlers reliably",
+    "benefit": "reliable operations with measurable KPIs"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
 }

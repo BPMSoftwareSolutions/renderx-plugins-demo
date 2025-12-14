@@ -42,7 +42,11 @@
       "number": 1,
       "name": "Initialization",
       "description": "Initialize RenderX Web build environment and dependencies",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "instant theme switching"
+      },
       "persona": "Product owner",
       "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
       "status": "active",
@@ -57,16 +61,90 @@
           },
           "event": "renderx-web:initialization:theme-resolved",
           "scenario": "Retrieve Current Application Theme Configuration",
-          "acceptanceCriteria": [
-            "Given the theme system is initialized\nWhen getCurrentTheme is called\nThen current theme (dark/light) is returned within 10ms\nAnd theme preference from localStorage is respected\nAnd default theme is applied if no preference exists",
-            "Given user has theme preference saved\nWhen getCurrentTheme executes\nThen saved preference is returned\nAnd the response includes theme metadata (colors, fonts)\nAnd no API calls are made (cached lookup)",
-            "Given theme system encounters error\nWhen getCurrentTheme fails\nThen fallback default theme is returned\nAnd error is logged for monitoring\nAnd system remains functional",
-            "Given performance SLA of 10ms\nWhen getCurrentTheme completes\nThen operation time is < 10ms\nAnd memory footprint is < 100KB\nAnd no memory leaks occur on repeated calls",
-            "Given concurrent requests for theme\nWhen multiple calls occur\nThen all requests return consistent value\nAnd response time remains < 10ms per request\nAnd no race conditions exist"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
           "testCase": "should have required metadata fields",
-          "userStory": "As a UI system, I want to retrieve the current theme in <10ms so that theme application happens imperceptibly (target: <5ms for 95th percentile)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "to retrieve the current theme in <10ms",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the theme system is initialized"
+              ],
+              "when": [
+                "getCurrentTheme is called"
+              ],
+              "then": [
+                "current theme (dark/light) is returned within 10ms"
+              ],
+              "and": [
+                "theme preference from localStorage is respected",
+                "default theme is applied if no preference exists"
+              ]
+            },
+            {
+              "given": [
+                "user has theme preference saved"
+              ],
+              "when": [
+                "getCurrentTheme executes"
+              ],
+              "then": [
+                "saved preference is returned"
+              ],
+              "and": [
+                "the response includes theme metadata (colors, fonts)",
+                "no API calls are made (cached lookup)"
+              ]
+            },
+            {
+              "given": [
+                "theme system encounters error"
+              ],
+              "when": [
+                "getCurrentTheme fails"
+              ],
+              "then": [
+                "fallback default theme is returned"
+              ],
+              "and": [
+                "error is logged for monitoring",
+                "system remains functional"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of 10ms"
+              ],
+              "when": [
+                "getCurrentTheme completes"
+              ],
+              "then": [
+                "operation time is < 10ms"
+              ],
+              "and": [
+                "memory footprint is < 100KB",
+                "no memory leaks occur on repeated calls"
+              ]
+            },
+            {
+              "given": [
+                "concurrent requests for theme"
+              ],
+              "when": [
+                "multiple calls occur"
+              ],
+              "then": [
+                "all requests return consistent value"
+              ],
+              "and": [
+                "response time remains < 10ms per request",
+                "no race conditions exist"
+              ]
+            }
+          ]
         },
         {
           "name": "apply-theme",
@@ -78,16 +156,90 @@
           },
           "event": "renderx-web:initialization:theme-applied",
           "scenario": "Switch Between Light and Dark Theme",
-          "acceptanceCriteria": [
-            "Given the current theme\nWhen toggleTheme is invoked\nThen theme switches to opposite value within 50ms\nAnd new preference is saved to localStorage\nAnd 'theme:changed' event is published",
-            "Given animation requirements\nWhen theme toggles\nThen CSS transitions are applied smoothly\nAnd no layout shift occurs (CLS < 0.1)\nAnd visual change appears within 100ms total",
-            "Given DOM elements with theme-dependent styling\nWhen toggleTheme executes\nThen all styled elements update immediately\nAnd CSS variables are recalculated\nAnd no flickering or flashing occurs",
-            "Given accessibility requirements\nWhen theme changes\nThen color contrast remains >= 4.5:1 for all text\nAnd prefers-color-scheme media query is respected\nAnd system respects 'no-preference' setting",
-            "Given performance budget\nWhen toggleTheme completes\nThen theme switch completes within 100ms\nAnd no frame drops occur (maintain 60fps)\nAnd memory usage stays within baseline (no leaks)"
-          ],
           "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
           "testCase": "should render theme toggle component with light mode by default",
-          "userStory": "As a user, I want theme switching to complete in <100ms so that dark mode activation feels instantaneous (target: imperceptible transition < 1 frame at 60fps)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "theme switching to complete in <100ms",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the current theme"
+              ],
+              "when": [
+                "toggleTheme is invoked"
+              ],
+              "then": [
+                "theme switches to opposite value within 50ms"
+              ],
+              "and": [
+                "new preference is saved to localStorage",
+                "'theme:changed' event is published"
+              ]
+            },
+            {
+              "given": [
+                "animation requirements"
+              ],
+              "when": [
+                "theme toggles"
+              ],
+              "then": [
+                "CSS transitions are applied smoothly"
+              ],
+              "and": [
+                "no layout shift occurs (CLS < 0.1)",
+                "visual change appears within 100ms total"
+              ]
+            },
+            {
+              "given": [
+                "DOM elements with theme-dependent styling"
+              ],
+              "when": [
+                "toggleTheme executes"
+              ],
+              "then": [
+                "all styled elements update immediately"
+              ],
+              "and": [
+                "CSS variables are recalculated",
+                "no flickering or flashing occurs"
+              ]
+            },
+            {
+              "given": [
+                "accessibility requirements"
+              ],
+              "when": [
+                "theme changes"
+              ],
+              "then": [
+                "color contrast remains >= 4.5:1 for all text"
+              ],
+              "and": [
+                "prefers-color-scheme media query is respected",
+                "system respects 'no-preference' setting"
+              ]
+            },
+            {
+              "given": [
+                "performance budget"
+              ],
+              "when": [
+                "toggleTheme completes"
+              ],
+              "then": [
+                "theme switch completes within 100ms"
+              ],
+              "and": [
+                "no frame drops occur (maintain 60fps)",
+                "memory usage stays within baseline (no leaks)"
+              ]
+            }
+          ]
         },
         {
           "name": "init-control-panel",
@@ -99,16 +251,90 @@
           },
           "event": "renderx-web:initialization:control-panel-ready",
           "scenario": "Initialize Control Panel with Configuration",
-          "acceptanceCriteria": [
-            "Given configuration metadata\nWhen initConfig is called\nThen configuration is loaded within 200ms\nAnd all fields are prepared for rendering\nAnd validation rules are attached",
-            "Given complex nested configuration\nWhen initConfig processes it\nThen all nested sections are initialized\nAnd dependencies between sections are resolved\nAnd no circular dependencies cause deadlock",
-            "Given configuration with 100+ fields\nWhen initConfig prepares the form\nThen initialization completes within 300ms\nAnd form is ready for user interaction\nAnd memory usage scales linearly with field count",
-            "Given configuration errors\nWhen initConfig encounters invalid config\nThen error is reported with specific issue\nAnd fallback configuration is applied\nAnd system degrades gracefully",
-            "Given performance SLA\nWhen initConfig completes\nThen Time to Interactive (TTI) is < 500ms\nAnd First Contentful Paint (FCP) is < 1 second\nAnd form is responsive immediately"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
           "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
-          "userStory": "As a configuration system, I want initialization to complete in <200ms so that the form is interactive immediately (target: <500ms total TTI per RAIL model)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "complete in <200ms",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "configuration metadata"
+              ],
+              "when": [
+                "initConfig is called"
+              ],
+              "then": [
+                "configuration is loaded within 200ms"
+              ],
+              "and": [
+                "all fields are prepared for rendering",
+                "validation rules are attached"
+              ]
+            },
+            {
+              "given": [
+                "complex nested configuration"
+              ],
+              "when": [
+                "initConfig processes it"
+              ],
+              "then": [
+                "all nested sections are initialized"
+              ],
+              "and": [
+                "dependencies between sections are resolved",
+                "no circular dependencies cause deadlock"
+              ]
+            },
+            {
+              "given": [
+                "configuration with 100+ fields"
+              ],
+              "when": [
+                "initConfig prepares the form"
+              ],
+              "then": [
+                "initialization completes within 300ms"
+              ],
+              "and": [
+                "form is ready for user interaction",
+                "memory usage scales linearly with field count"
+              ]
+            },
+            {
+              "given": [
+                "configuration errors"
+              ],
+              "when": [
+                "initConfig encounters invalid config"
+              ],
+              "then": [
+                "error is reported with specific issue"
+              ],
+              "and": [
+                "fallback configuration is applied",
+                "system degrades gracefully"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA"
+              ],
+              "when": [
+                "initConfig completes"
+              ],
+              "then": [
+                "Time to Interactive (TTI) is < 500ms"
+              ],
+              "and": [
+                "First Contentful Paint (FCP) is < 1 second",
+                "form is responsive immediately"
+              ]
+            }
+          ]
         },
         {
           "name": "init-resolver",
@@ -120,16 +346,90 @@
           },
           "event": "renderx-web:initialization:resolver-ready",
           "scenario": "Initialize or Configure init Resolver",
-          "acceptanceCriteria": [
-            "Given the initResolver operation is triggered\nWhen the handler executes\nThen it completes successfully within < 500ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen initResolver processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen initResolver encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 500ms\nWhen initResolver executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen initResolver operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
           "testCase": "dedupes schema fetches across multiple calls and instances",
-          "userStory": "As an operations system, I want initResolver to execute reliably with latency < 500ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the initResolver operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 500ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "initResolver processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "initResolver encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 500ms"
+              ],
+              "when": [
+                "initResolver executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "initResolver operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "register-observers",
@@ -141,16 +441,90 @@
           },
           "event": "renderx-web:initialization:observers-registered",
           "scenario": "register Observers",
-          "acceptanceCriteria": [
-            "Given the registerObservers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen registerObservers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen registerObservers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen registerObservers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen registerObservers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
           "testCase": "exposes handlers and a register(conductor) function",
-          "userStory": "As an operations system, I want registerObservers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the registerObservers operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "registerObservers processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "registerObservers encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "registerObservers executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "registerObservers operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "notify-ready",
@@ -162,16 +536,90 @@
           },
           "event": "renderx-web:initialization:complete",
           "scenario": "Notify or Publish notify Ready",
-          "acceptanceCriteria": [
-            "Given the notifyReady operation is triggered\nWhen the handler executes\nThen it completes successfully within < 50ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen notifyReady processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen notifyReady encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 50ms\nWhen notifyReady executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen notifyReady operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
-          "userStory": "As an operations system, I want notifyReady to execute reliably with latency < 50ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "instant theme switching"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the notifyReady operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 50ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "notifyReady processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "notifyReady encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 50ms"
+              ],
+              "when": [
+                "notifyReady executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "notifyReady operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -179,7 +627,11 @@
       "number": 2,
       "name": "Build",
       "description": "Execute build through pre-build-pipeline-check-symphony with pre-build validation",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "real-time content updates"
+      },
       "persona": "Product owner",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
       "orchestration": "pre-build-pipeline-check-symphony",
@@ -195,16 +647,90 @@
           },
           "event": "renderx-web:build:attribute-updated",
           "scenario": "Update or Modify update Attribute",
-          "acceptanceCriteria": [
-            "Given the updateAttribute operation is triggered\nWhen the handler executes\nThen it completes successfully within < 100ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen updateAttribute processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen updateAttribute encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 100ms\nWhen updateAttribute executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen updateAttribute operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
-          "userStory": "As an operations system, I want updateAttribute to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the updateAttribute operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 100ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "updateAttribute processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "updateAttribute encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 100ms"
+              ],
+              "when": [
+                "updateAttribute executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "updateAttribute operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "refresh-control-panel",
@@ -216,16 +742,90 @@
           },
           "event": "renderx-web:build:complete",
           "scenario": "refresh Control Panel",
-          "acceptanceCriteria": [
-            "Given the refreshControlPanel operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen refreshControlPanel processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen refreshControlPanel encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen refreshControlPanel executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen refreshControlPanel operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
           "testCase": "setDirty marks isDirty with timestamp",
-          "userStory": "As an operations system, I want refreshControlPanel to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the refreshControlPanel operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "refreshControlPanel processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "refreshControlPanel encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "refreshControlPanel executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "refreshControlPanel operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -233,7 +833,11 @@
       "number": 3,
       "name": "Test & Validation",
       "description": "Execute E2E Cypress tests and compliance validation (7-layer framework)",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "page load time by 25%"
+      },
       "persona": "Product owner",
       "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
       "orchestration": [
@@ -252,16 +856,90 @@
           },
           "event": "renderx-web:test:selection-overlay-shown",
           "scenario": "Render or Display show Selection Overlay",
-          "acceptanceCriteria": [
-            "Given the showSelectionOverlay operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen showSelectionOverlay processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen showSelectionOverlay encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 200ms\nWhen showSelectionOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen showSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection.overlay.advanced.handlers.spec.ts",
           "testCase": "getCanvasRect returns patched bounding client rect values",
-          "userStory": "As an operations system, I want showSelectionOverlay to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 200ms",
+            "benefit": "page load time by 25%"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the showSelectionOverlay operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 200ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "showSelectionOverlay processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "showSelectionOverlay encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 200ms"
+              ],
+              "when": [
+                "showSelectionOverlay executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "showSelectionOverlay operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "hide-selection-overlay",
@@ -273,16 +951,90 @@
           },
           "event": "renderx-web:test:selection-overlay-hidden",
           "scenario": "hide Selection Overlay",
-          "acceptanceCriteria": [
-            "Given the hideSelectionOverlay operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen hideSelectionOverlay processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen hideSelectionOverlay encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen hideSelectionOverlay executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen hideSelectionOverlay operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
           "testCase": "should hide-selection-overlay",
-          "userStory": "As an operations system, I want hideSelectionOverlay to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the hideSelectionOverlay operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "hideSelectionOverlay processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "hideSelectionOverlay encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "hideSelectionOverlay executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "hideSelectionOverlay operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "attach-line-resize",
@@ -294,16 +1046,90 @@
           },
           "event": "renderx-web:test:line-resize-attached",
           "scenario": "attach Line Resize Handlers",
-          "acceptanceCriteria": [
-            "Given the attachLineResizeHandlers operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen attachLineResizeHandlers processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen attachLineResizeHandlers encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen attachLineResizeHandlers executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen attachLineResizeHandlers operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
           "testCase": "startLineResize - calls optional callback harmlessly",
-          "userStory": "As an operations system, I want attachLineResizeHandlers to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the attachLineResizeHandlers operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "attachLineResizeHandlers processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "attachLineResizeHandlers encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "attachLineResizeHandlers executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "attachLineResizeHandlers operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "ensure-line-overlay",
@@ -315,16 +1141,90 @@
           },
           "event": "renderx-web:test:line-overlay-ensured",
           "scenario": "ensure Line Overlay For",
-          "acceptanceCriteria": [
-            "Given the ensureLineOverlayFor operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen ensureLineOverlayFor processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen ensureLineOverlayFor encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen ensureLineOverlayFor executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen ensureLineOverlayFor operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.attach.spec.ts",
           "testCase": "should ensure-line-overlay-for",
-          "userStory": "As an operations system, I want ensureLineOverlayFor to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "page load time by 25%"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the ensureLineOverlayFor operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "ensureLineOverlayFor processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "ensureLineOverlayFor encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "ensureLineOverlayFor executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "ensureLineOverlayFor operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "notify-ui",
@@ -336,16 +1236,90 @@
           },
           "event": "renderx-web:test:complete",
           "scenario": "Publish UI State Change Notifications to Event System",
-          "acceptanceCriteria": [
-            "Given a class change operation completes\nWhen notifyUi is invoked with change details\nThen an event is published to the central EventRouter within 5ms\nAnd the event contains element ID, action (add/remove), and class name\nAnd the event is stamped with microsecond-precision timestamp",
-            "Given multiple class operations occur in sequence\nWhen notifyUi publishes events\nThen events are queued in FIFO order\nAnd subscribers receive events in the order they occurred\nAnd no events are dropped or duplicated",
-            "Given a subscriber is registered for UI change events\nWhen notifyUi publishes\nThen the subscriber receives the event within 20ms\nAnd the subscriber can act on the notification\nAnd multiple subscribers can consume the same event",
-            "Given the event system is congested\nWhen notifyUi attempts to publish\nThen the event is queued with backpressure\nAnd the operation does not block the caller\nAnd events are eventually delivered with bounded latency",
-            "Given notification occurs during error conditions\nWhen notifyUi is called\nThen events are still published for traceability\nAnd error context is included in event payload\nAnd the system can reconstruct the failure chain from events"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
           "testCase": "exports CanvasPage and register()",
-          "userStory": "As a distributed system, I want UI state changes to be published as events with <20ms delivery latency so that dependent components stay synchronized and can react to state transitions reliably."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "page load time by 25%"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "a class change operation completes"
+              ],
+              "when": [
+                "notifyUi is invoked with change details"
+              ],
+              "then": [
+                "an event is published to the central EventRouter within 5ms"
+              ],
+              "and": [
+                "the event contains element ID, action (add/remove), and class name",
+                "the event is stamped with microsecond-precision timestamp"
+              ]
+            },
+            {
+              "given": [
+                "multiple class operations occur in sequence"
+              ],
+              "when": [
+                "notifyUi publishes events"
+              ],
+              "then": [
+                "events are queued in FIFO order"
+              ],
+              "and": [
+                "subscribers receive events in the order they occurred",
+                "no events are dropped or duplicated"
+              ]
+            },
+            {
+              "given": [
+                "a subscriber is registered for UI change events"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "the subscriber receives the event within 20ms"
+              ],
+              "and": [
+                "the subscriber can act on the notification",
+                "multiple subscribers can consume the same event"
+              ]
+            },
+            {
+              "given": [
+                "the event system is congested"
+              ],
+              "when": [
+                "notifyUi attempts to publish"
+              ],
+              "then": [
+                "the event is queued with backpressure"
+              ],
+              "and": [
+                "the operation does not block the caller",
+                "events are eventually delivered with bounded latency"
+              ]
+            },
+            {
+              "given": [
+                "notification occurs during error conditions"
+              ],
+              "when": [
+                "notifyUi is called"
+              ],
+              "then": [
+                "events are still published for traceability"
+              ],
+              "and": [
+                "error context is included in event payload",
+                "the system can reconstruct the failure chain from events"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -353,7 +1327,11 @@
       "number": 4,
       "name": "Delivery",
       "description": "Orchestrate deployment through pipeline-delivery-execute-symphony",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-delivery-execute-symphony",
@@ -369,16 +1347,90 @@
           },
           "event": "renderx-web:delivery:gif-exported",
           "scenario": "export Svg To Gif",
-          "acceptanceCriteria": [
-            "Given the exportSvgToGif operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen exportSvgToGif processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen exportSvgToGif encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen exportSvgToGif executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen exportSvgToGif operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts",
           "testCase": "success minimal export triggers download without error",
-          "userStory": "As an operations system, I want exportSvgToGif to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the exportSvgToGif operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "exportSvgToGif processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "exportSvgToGif encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "exportSvgToGif executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "exportSvgToGif operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "export-mp4",
@@ -390,16 +1442,90 @@
           },
           "event": "renderx-web:delivery:complete",
           "scenario": "export Svg To Mp4",
-          "acceptanceCriteria": [
-            "Given the exportSvgToMp4 operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen exportSvgToMp4 processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen exportSvgToMp4 encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen exportSvgToMp4 executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen exportSvgToMp4 operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
           "testCase": "exports CSS classes from registry in the UI file",
-          "userStory": "As an operations system, I want exportSvgToMp4 to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "exportSvgToMp4 to execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the exportSvgToMp4 operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "exportSvgToMp4 processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "exportSvgToMp4 encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "exportSvgToMp4 executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "exportSvgToMp4 operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -407,7 +1533,11 @@
       "number": 5,
       "name": "Telemetry & Monitoring",
       "description": "Collect and instrument telemetry for observability and SLO tracking",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "generate-telemetry-instrumentation-symphony",
@@ -423,16 +1553,90 @@
           },
           "event": "renderx-web:telemetry:payload-ensured",
           "scenario": "ensure Payload",
-          "acceptanceCriteria": [
-            "Given the ensurePayload operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen ensurePayload processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen ensurePayload encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen ensurePayload executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen ensurePayload operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "packages/orchestration/test/library-component/drag.preview#ensurePayload.spec.ts",
           "testCase": "should library-component/drag.preview#ensurePayload when event published",
-          "userStory": "As an operations system, I want ensurePayload to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the ensurePayload operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "ensurePayload processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "ensurePayload encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "ensurePayload executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "ensurePayload operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "compute-ghost-size",
@@ -444,16 +1648,90 @@
           },
           "event": "renderx-web:telemetry:ghost-size-computed",
           "scenario": "compute Ghost Size",
-          "acceptanceCriteria": [
-            "Given the computeGhostSize operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen computeGhostSize processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen computeGhostSize encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen computeGhostSize executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen computeGhostSize operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
           "testCase": "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
-          "userStory": "As an operations system, I want computeGhostSize to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the computeGhostSize operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "computeGhostSize processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "computeGhostSize encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "computeGhostSize executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "computeGhostSize operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "create-ghost-container",
@@ -465,16 +1743,90 @@
           },
           "event": "renderx-web:telemetry:ghost-container-created",
           "scenario": "Generate or Create create Ghost Container",
-          "acceptanceCriteria": [
-            "Given the createGhostContainer operation is triggered\nWhen the handler executes\nThen it completes successfully within < 2 seconds\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen createGhostContainer processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen createGhostContainer encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 2 seconds\nWhen createGhostContainer executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen createGhostContainer operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.container-append.spec.ts",
           "testCase": "creates container and then child inside it with relative positioning",
-          "userStory": "As an operations system, I want createGhostContainer to execute reliably with latency < 2 seconds so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the createGhostContainer operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 2 seconds"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "createGhostContainer processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "createGhostContainer encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 2 seconds"
+              ],
+              "when": [
+                "createGhostContainer executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "createGhostContainer operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "render-template-preview",
@@ -486,16 +1838,90 @@
           },
           "event": "renderx-web:telemetry:template-preview-rendered",
           "scenario": "Render or Display render Template Preview",
-          "acceptanceCriteria": [
-            "Given the renderTemplatePreview operation is triggered\nWhen the handler executes\nThen it completes successfully within < 200ms\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen renderTemplatePreview processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen renderTemplatePreview encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 200ms\nWhen renderTemplatePreview executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen renderTemplatePreview operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\template-exactness.test.js",
           "testCase": "\\n",
-          "userStory": "As an operations system, I want renderTemplatePreview to execute reliably with latency < 200ms so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 200ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the renderTemplatePreview operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 200ms"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "renderTemplatePreview processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "renderTemplatePreview encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 200ms"
+              ],
+              "when": [
+                "renderTemplatePreview executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "renderTemplatePreview operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "apply-template-styles",
@@ -507,16 +1933,90 @@
           },
           "event": "renderx-web:telemetry:template-styles-applied",
           "scenario": "apply Template Styles",
-          "acceptanceCriteria": [
-            "Given the applyTemplateStyles operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen applyTemplateStyles processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen applyTemplateStyles encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen applyTemplateStyles executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen applyTemplateStyles operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
           "testCase": "getCssClass returns built-in class definition (rx-button)",
-          "userStory": "As an operations system, I want applyTemplateStyles to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the applyTemplateStyles operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "applyTemplateStyles processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "applyTemplateStyles encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "applyTemplateStyles executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "applyTemplateStyles operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "compute-cursor-offsets",
@@ -528,16 +2028,90 @@
           },
           "event": "renderx-web:telemetry:cursor-offsets-computed",
           "scenario": "compute Cursor Offsets",
-          "acceptanceCriteria": [
-            "Given the computeCursorOffsets operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen computeCursorOffsets processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen computeCursorOffsets encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen computeCursorOffsets executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen computeCursorOffsets operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
           "testCase": "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
-          "userStory": "As an operations system, I want computeCursorOffsets to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the computeCursorOffsets operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "computeCursorOffsets processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "computeCursorOffsets encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "computeCursorOffsets executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "computeCursorOffsets operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         },
         {
           "name": "install-drag-image",
@@ -549,16 +2123,90 @@
           },
           "event": "renderx-web:telemetry:complete",
           "scenario": "install Drag Image",
-          "acceptanceCriteria": [
-            "Given the installDragImage operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen installDragImage processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen installDragImage encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen installDragImage executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen installDragImage operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\library-component\\__tests__\\handlers.drag.nodragimage.spec.ts",
           "testCase": "onDragStart sets payload and returns { started: true } even without setDragImage",
-          "userStory": "As an operations system, I want installDragImage to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the installDragImage operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "installDragImage processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "installDragImage encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "installDragImage executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "installDragImage operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -566,7 +2214,11 @@
       "number": 6,
       "name": "Recovery & Resilience",
       "description": "Enable recovery procedures and resilience mechanisms",
-      "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+      "userStory": {
+        "persona": "Product owner",
+        "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+        "benefit": "reliable operations with measurable KPIs"
+      },
       "persona": "Product owner",
       "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
       "orchestration": "pipeline-recovery-symphony",
@@ -582,16 +2234,90 @@
           },
           "event": "renderx-web:recovery:enabled",
           "scenario": "establish",
-          "acceptanceCriteria": [
-            "Given the establish operation is triggered\nWhen the handler executes\nThen it completes successfully within < 1 second\nAnd the output is valid and meets schema\nAnd any required events are published",
-            "Given valid input parameters\nWhen establish processes them\nThen results conform to expected schema\nAnd no errors are thrown\nAnd telemetry events are recorded with latency metrics",
-            "Given error conditions\nWhen establish encounters an error\nThen the error is logged with full context\nAnd appropriate recovery is attempted\nAnd the system remains stable",
-            "Given performance SLA of < 1 second\nWhen establish executes\nThen latency is consistently within target\nAnd throughput meets baseline requirements\nAnd resource usage stays within bounds",
-            "Given compliance and governance\nWhen establish operates\nThen all governance rules are enforced\nAnd audit trails capture execution\nAnd no compliance violations occur"
-          ],
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\baseline.establish.spec.ts",
           "testCase": "establishes baseline metrics from synthetic telemetry artifact",
-          "userStory": "As an operations system, I want establish to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate)."
+          "userStory": {
+            "persona": "Product owner",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "the establish operation is triggered"
+              ],
+              "when": [
+                "the handler executes"
+              ],
+              "then": [
+                "it completes successfully within < 1 second"
+              ],
+              "and": [
+                "the output is valid and meets schema",
+                "any required events are published"
+              ]
+            },
+            {
+              "given": [
+                "valid input parameters"
+              ],
+              "when": [
+                "establish processes them"
+              ],
+              "then": [
+                "results conform to expected schema"
+              ],
+              "and": [
+                "no errors are thrown",
+                "telemetry events are recorded with latency metrics"
+              ]
+            },
+            {
+              "given": [
+                "error conditions"
+              ],
+              "when": [
+                "establish encounters an error"
+              ],
+              "then": [
+                "the error is logged with full context"
+              ],
+              "and": [
+                "appropriate recovery is attempted",
+                "the system remains stable"
+              ]
+            },
+            {
+              "given": [
+                "performance SLA of < 1 second"
+              ],
+              "when": [
+                "establish executes"
+              ],
+              "then": [
+                "latency is consistently within target"
+              ],
+              "and": [
+                "throughput meets baseline requirements",
+                "resource usage stays within bounds"
+              ]
+            },
+            {
+              "given": [
+                "compliance and governance"
+              ],
+              "when": [
+                "establish operates"
+              ],
+              "then": [
+                "all governance rules are enforced"
+              ],
+              "and": [
+                "audit trails capture execution",
+                "no compliance violations occur"
+              ]
+            }
+          ]
         }
       ]
     }
@@ -644,7 +2370,12 @@
       "continuous-delivery"
     ]
   },
-  "userStory": "As a product owner, I need the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies.",
+  "userStory": {
+    "persona": "Product owner",
+    "goal": "the renderx-web orchestration to coordinate plugin flows (header, control-panel, canvas, library-component) deterministically with clear telemetry and <2s P95 phase latencies",
+    "benefit": "instant theme switching"
+  },
   "persona": "Product owner",
-  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
+  "domainId": "renderx-web-orchestration"
 }

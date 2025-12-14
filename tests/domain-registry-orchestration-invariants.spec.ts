@@ -38,7 +38,7 @@ interface OrchestrationRegistryFile {
   domains: OrchestrationRegistryDomain[];
 }
 
-describe('DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1] [[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1]] DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
   const registryPath = path.join(__dirname, '../DOMAIN_REGISTRY.json');
   const orchestrationRegistryPath = path.join(
     __dirname,
@@ -73,7 +73,7 @@ describe('DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
     };
   }
 
-  it('orchestration-domains ids are a subset of DOMAIN_REGISTRY.domain_ids', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] orchestration-domains ids are a subset of DOMAIN_REGISTRY.domain_ids', () => {
     const registryDomainIds = new Set(Object.keys(registry.domains ?? {}));
     const missing: string[] = [];
 
@@ -92,7 +92,7 @@ describe('DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
     expect(missing).toEqual([]);
   });
 
-  it('registry orchestration blocks for orchestration domains reference canonical schema and projection', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] registry orchestration blocks for orchestration domains reference canonical schema and projection', () => {
     const orchestrationIds = new Set(
       (orchestrationRegistry.domains ?? []).map(d => d.id),
     );
@@ -113,7 +113,7 @@ describe('DOMAIN_REGISTRY / orchestration-domains / context invariants', () => {
     }
   });
 
-  it('context tree domain counts stay aligned with orchestration-domains.json', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-ac-alignment-workflow-v2:1.1:1] context tree domain counts stay aligned with orchestration-domains.json', () => {
     const orchestrationCount = (orchestrationRegistry.domains ?? []).length;
 
     const sourceOfTruth = contextIndex.sourceArtifacts?.sourceOfTruth;

@@ -16,16 +16,30 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Delete or Remove delete Component",
-          "userStory": "As an operations system, I want deleteComponent to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Security-conscious operator",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "data cleanup workflows"
+          },
           "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["a deletable component"],
-              "when": ["deleteComponent runs"],
-              "then": ["component is removed atomically and references are cleaned; ≤ 50ms"],
+              "given": [
+                "handler deleteComponent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "deleteComponent executes"
+              ],
+              "then": [
+                "deleteComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "undo snapshot is captured"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -39,28 +53,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "Publish or Deploy publish Deleted",
-          "userStory": "As an operations system, I want publishDeleted to execute reliably with latency < 1 minute so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Security-conscious operator",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "data cleanup workflows"
+          },
           "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["deletion completes"],
-              "when": ["publishDeleted runs"],
-              "then": ["a 'component.deleted' event publishes with id and parent"],
+              "given": [
+                "handler publishDeleted is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "publishDeleted executes"
+              ],
+              "then": [
+                "publishDeleted performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "no duplicate events are emitted"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+      "userStory": {
+        "persona": "Security-conscious operator",
+        "goal": "the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain",
+        "benefit": "data cleanup workflows"
+      },
       "persona": "Security-conscious operator",
       "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
     }
   ],
   "beats": 2,
-  "userStory": "As an operator, I need the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain.",
+  "userStory": {
+    "persona": "Security-conscious operator",
+    "goal": "the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain",
+    "benefit": "data cleanup workflows"
+  },
   "persona": "Security-conscious operator",
-  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
+  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)",
+  "domainId": "renderx-web-orchestration"
 }

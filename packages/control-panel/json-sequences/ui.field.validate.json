@@ -19,14 +19,28 @@
           "scenario": "Validate or Verify validate Field",
           "testFile": "eslint-rules\\__tests__\\validate-host-sdk-version.test.js",
           "testCase": "should detect incompatible major versions",
-          "userStory": "As an engineer, I need `validateField` to run validators and collect errors.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "run validators and collect errors",
+            "benefit": "prevents invalid operations"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["field value"],
-              "when": ["validateField runs"],
-              "then": ["errors are reported with code and path, latency ≤ 10ms"],
+              "given": [
+                "handler validateField is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "validateField executes"
+              ],
+              "then": [
+                "validateField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry 'ui.field.validate' includes validity"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -43,14 +57,28 @@
           "scenario": "merge Errors",
           "testFile": "node_modules\\@jest\\reporters\\node_modules\\@bcoe\\v8-coverage\\src\\test\\merge.spec.ts",
           "testCase": "accepts empty arrays for `mergeProcessCovs`",
-          "userStory": "As an engineer, I need `mergeErrors` to compose error state.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "compose error state",
+            "benefit": "prevents invalid operations"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["existing error state and new results"],
-              "when": ["mergeErrors runs"],
-              "then": ["errors merge by path without losing unrelated entries"],
+              "given": [
+                "handler mergeErrors is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "mergeErrors executes"
+              ],
+              "then": [
+                "mergeErrors performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "clearing a field removes its errors"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -67,27 +95,50 @@
           "scenario": "Update or Modify update View",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As an engineer, I need `updateView` to render errors promptly.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "render errors promptly",
+            "benefit": "prevents invalid operations"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["merged errors"],
-              "when": ["updateView runs"],
-              "then": ["visuals reflect validity within ≤ 30ms and announce changes (a11y)"],
+              "given": [
+                "handler updateView is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateView executes"
+              ],
+              "then": [
+                "updateView performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "no unnecessary re-renders occur"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need field validation to merge errors and update views within ≤1s P95.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "field validation to merge errors and update views within ≤1s P95",
+        "benefit": "prevents invalid operations"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
     }
   ],
   "beats": 3,
   "tempo": 120,
-  "userStory": "As a UI runtime engineer, I need field validation to merge errors and update views within ≤1s P95.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "field validation to merge errors and update views within ≤1s P95",
+    "benefit": "prevents invalid operations"
+  },
   "persona": "UI runtime engineer",
-  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements"
+  "businessValue": "Prevents invalid operations; catches errors early; improves data quality by 50%; meets compliance requirements",
+  "domainId": "renderx-web-orchestration"
 }

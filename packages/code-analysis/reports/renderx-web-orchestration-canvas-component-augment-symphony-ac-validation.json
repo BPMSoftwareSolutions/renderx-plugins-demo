@@ -1,0 +1,25 @@
+{
+  "symphonyPath": "packages/canvas-component/json-sequences/canvas-component/augment.json",
+  "summary": {
+    "symphonyId": "canvas-component-augment-symphony",
+    "symphonyName": "Canvas Component Augment",
+    "totalBeats": 1,
+    "goodBeats": 0,
+    "partialBeats": 0,
+    "poorBeats": 0,
+    "noTestBeats": 0,
+    "averageCoverage": 0,
+    "totalConditions": 0,
+    "matchedConditions": 0
+  },
+  "beatResults": [
+    {
+      "movement": "Augment",
+      "beat": "Enhance Line (Advanced)",
+      "status": "TEST_FILE_ERROR",
+      "coverage": 0,
+      "message": "Test file not found"
+    }
+  ],
+  "timestamp": "2025-12-06T04:26:53.014Z"
+}

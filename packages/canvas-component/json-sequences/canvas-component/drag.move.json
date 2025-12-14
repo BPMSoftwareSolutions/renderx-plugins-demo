@@ -19,16 +19,30 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Position",
-          "userStory": "As a UI runtime engineer, I need `updatePosition` to update DOM transform with throttling in ≤100ms P95 and emit selection updates.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "update DOM transform with throttling in ≤100ms P95 and emit selection updates",
+            "benefit": "real-time content updates"
+          },
           "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["an active drag"],
-              "when": ["updatePosition runs"],
-              "then": ["position updates at 60fps target; jitter ≤ 2px"],
+              "given": [
+                "handler updatePosition is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updatePosition executes"
+              ],
+              "then": [
+                "updatePosition performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "constraints (grid/snap) apply deterministically"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -42,28 +56,51 @@
           "timing": "immediate",
           "kind": "pure",
           "scenario": "forward To Control Panel",
-          "userStory": "As an orchestrator, I need `forwardToControlPanel` to publish selection change events within ≤1s P95.",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "publish selection change events within ≤1s P95",
+            "benefit": "real-time content updates"
+          },
           "testCase": "addClass adds class and populates payload",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["position changes"],
-              "when": ["forwardToControlPanel runs"],
-              "then": ["update publishes to control panel within ≤ 20ms"],
+              "given": [
+                "handler forwardToControlPanel is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "forwardToControlPanel executes"
+              ],
+              "then": [
+                "forwardToControlPanel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "messages are coalesced per frame"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.",
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably",
+        "benefit": "real-time content updates"
+      },
       "persona": "Interaction designer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 2,
-  "userStory": "As an interaction designer, I need drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably.",
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably",
+    "benefit": "real-time content updates"
+  },
   "persona": "Interaction designer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

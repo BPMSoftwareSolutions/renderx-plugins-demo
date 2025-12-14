@@ -40,7 +40,7 @@ function extractPreservedSections(existingReadme, sectionTitles) {
 
   sectionTitles.forEach(title => {
     // Find section by matching "## Title"
-    const regex = new RegExp(`^##\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'gm');
+    const regex = new RegExp(`^##\\s+${title.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}\\s*$`, 'gm');
     const match = regex.exec(existingReadme);
 
     if (match) {
@@ -64,27 +64,57 @@ function extractPreservedSections(existingReadme, sectionTitles) {
 function findLatestAnalysis(domainId) {
   const analysisDir = path.join(process.cwd(), '.generated', 'analysis');
 
+  // If there is a subdirectory exactly matching the domainId, look there first
   const domainDir = path.join(analysisDir, domainId);
-  if (fs.existsSync(domainDir)) {
+  if (fs.existsSync(domainDir) && fs.statSync(domainDir).isDirectory()) {
     const files = fs.readdirSync(domainDir)
       .filter(f => f.includes('rich-markdown') && f.endsWith('.md'))
-      .sort()
-      .reverse();
+      .map(f => ({ name: f, full: path.join(domainDir, f) }))
+      .sort((a, b) => b.name.localeCompare(a.name));
 
     if (files.length > 0) {
-      return path.join(domainDir, files[0]);
+      return files[0].full;
     }
   }
 
+  // Walk the analysisDir recursively and collect candidate files that include the domainId
   if (fs.existsSync(analysisDir)) {
-    const files = fs.readdirSync(analysisDir)
+    const candidates = [];
+
+    function walk(dir) {
+      const entries = fs.readdirSync(dir);
+      for (const entry of entries) {
+        const full = path.join(dir, entry);
+        try {
+          const stat = fs.statSync(full);
+          if (stat.isDirectory()) walk(full);
+          else if (stat.isFile()) {
+            const lower = entry.toLowerCase();
+            if (lower.includes(domainId.toLowerCase()) && lower.includes('rich-markdown') && lower.endsWith('.md')) {
+              candidates.push({ full, mtime: stat.mtimeMs, name: entry });
+            }
+          }
+        } catch (e) {
+          // ignore unreadable entries
+        }
+      }
+    }
+
+    walk(analysisDir);
+
+    if (candidates.length > 0) {
+      // prefer the most recently modified file
+      candidates.sort((a, b) => b.mtime - a.mtime);
+      return candidates[0].full;
+    }
+
+    // fallback: look for files at top-level of analysisDir whose name contains the domainId
+    const topFiles = fs.readdirSync(analysisDir)
       .filter(f => f.includes(domainId) && f.includes('rich-markdown') && f.endsWith('.md'))
       .sort()
       .reverse();
 
-    if (files.length > 0) {
-      return path.join(analysisDir, files[0]);
-    }
+    if (topFiles.length > 0) return path.join(analysisDir, topFiles[0]);
   }
 
   return null;
@@ -201,7 +231,7 @@ ${(meta.related_resources || []).map(r => `- **${r.name}** — ${r.description}:
 ### By Type
 ${Object.entries(summary.byType)
   .sort((a, b) => b[1] - a[1])
-  .map(([type, count]) => `- **${type}**: ${count} domains`)
+  .map(([k, v]) => `- ${k}: ${v}`)
   .join('\n')}
 
 ### By Ownership
@@ -403,37 +433,25 @@ npm run generate:readme
   return readme;
 }
 
-// Main function
-function main() {
-  log('Starting fully data-driven README generation...');
+// Export helper for tests and programmatic use
+module.exports = {
+  findLatestAnalysis,
+  extractMetrics,
+  generateReadme,
+  loadRegistry,
+  extractPreservedSections
+};
 
+// If invoked directly, run the generator (existing behavior preserved)
+if (require.main === module) {
   try {
+    log('Generating README from DOMAIN_REGISTRY.json', '📝');
     const registry = loadRegistry();
-    log(`Loaded registry with ${Object.keys(registry.domains || {}).length} domains`);
-
-    const readmePath = path.join(process.cwd(), 'README.md');
-    let preservedSections = {};
-
-    // Read existing README to extract preserved sections
-    if (fs.existsSync(readmePath)) {
-      const existingReadme = fs.readFileSync(readmePath, 'utf8');
-      const preserveSections = registry.readme_metadata?.preserve_sections || [];
-      preservedSections = extractPreservedSections(existingReadme, preserveSections);
-      log(`Preserved ${Object.keys(preservedSections).length} sections from existing README`);
-    }
-
-    const readmeContent = generateReadme(registry, preservedSections);
-    fs.writeFileSync(readmePath, readmeContent, 'utf8');
-
-    log(`✅ README.md generated successfully at ${readmePath}`, '✅');
-    log(`   - Total domains: ${Object.keys(registry.domains || {}).length}`);
-    log(`   - Preserved sections: ${Object.keys(preservedSections).length}`);
-
-  } catch (err) {
-    error(`Failed to generate README: ${err.message}`);
-    console.error(err);
+    const readme = generateReadme(registry, {});
+    fs.writeFileSync(path.join(process.cwd(), 'README.md'), readme, 'utf8');
+    log('README.md written', '✅');
+  } catch (e) {
+    error(e.message || String(e));
     process.exit(1);
   }
 }
-
-main();

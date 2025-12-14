@@ -1,0 +1,74 @@
+# Test Implementation Fixes for no-local-control-panel-sequences.spec.ts
+
+This file contains suggested test implementations to fix AC compliance issues.
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: configuration metadata
+- When: initConfig is called
+- Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+
+**Issues Found:**
+- Missing Given setup: "configuration metadata"
+- Missing When action: "initConfig is called"
+- Missing Then assertion: "configuration is loaded within 200ms"
+- Missing Then assertion: "all fields are prepared for rendering"
+- Missing Then assertion: "validation rules are attached"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] initConfig is called → configuration is loaded within 200ms', async () => {
+    // Given: configuration metadata
+    const config = { /* mock configuration */ };
+
+    // When: initConfig is called
+    const result = await initConfig(/* params */);
+
+    // Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+
+## [AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1]
+
+**AC Details:**
+- Handler: control-panel/ui#initConfig
+- Given: configuration metadata
+- When: initConfig is called
+- Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+
+**Issues Found:**
+- Missing Given setup: "configuration metadata"
+- Missing When action: "initConfig is called"
+- Missing Then assertion: "configuration is loaded within 200ms"
+- Missing Then assertion: "all fields are prepared for rendering"
+- Missing Then assertion: "validation rules are attached"
+
+**Suggested Test Code:**
+
+```typescript
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.3:1] initConfig is called → configuration is loaded within 200ms', async () => {
+    // Given: configuration metadata
+    const config = { /* mock configuration */ };
+
+    // When: initConfig is called
+    const result = await initConfig(/* params */);
+
+    // Then: configuration is loaded within 200ms, all fields are prepared for rendering, validation rules are attached
+    const elapsed = performance.now() - startTime;
+    expect(elapsed).toBeLessThan(200);
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+```
+
+---
+

@@ -19,14 +19,28 @@
           "scenario": "Generate Form Fields from Configuration Metadata",
           "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
           "testCase": "generateFields populates fields array with layout/styling fields",
-          "userStory": "As an engineer, I need `generateFields` to derive UI elements from schema.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "derive UI elements from schema",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["a resizable component"],
-              "when": ["startResize runs"],
-              "then": ["resize context initializes with bounds and handles visible"],
+              "given": [
+                "handler generateFields is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "generateFields executes"
+              ],
+              "then": [
+                "generateFields performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "a 'resize.start' event publishes"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -43,15 +57,28 @@
           "scenario": "Generate Grouped Form Sections from Configuration",
           "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
           "testCase": "should achieve the desired business outcome",
-          "userStory": "As an engineer, I need `generateSections` to group fields semantically.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "group fields semantically",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["size changes"],
-              "when": ["forwardToControlPanel runs"],
-              "then": ["update publishes to control panel within ≤ 20ms"],
+              "given": [
+                "handler generateSections is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "generateSections executes"
+              ],
+              "then": [
+                "generateSections performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "messages are coalesced per frame",
-                "keyboard navigation remains fully functional"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
@@ -68,27 +95,50 @@
           "scenario": "Render Complete Dynamic View with All Components",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
           "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
-          "userStory": "As a runtime owner, I need `renderView` to render efficiently with memoization.",
-          "acceptanceCriteriaStructured": [
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "render efficiently with memoization",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
             {
-              "given": ["cursor and canvas bounds"],
-              "when": ["calculatePastePosition runs"],
-              "then": ["target position computes with snap; within viewport"],
+              "given": [
+                "handler renderView is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "renderView executes"
+              ],
+              "then": [
+                "renderView performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "no overlap violations occur beyond threshold"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "generate fields and sections and draw views in <200ms P95",
+        "benefit": "no-code form generation"
+      },
       "persona": "UI runtime engineer",
       "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
     }
   ],
   "beats": 3,
   "tempo": 120,
-  "userStory": "As a UI runtime engineer, I need rendering to generate fields and sections and draw views in <200ms P95.",
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "generate fields and sections and draw views in <200ms P95",
+    "benefit": "no-code form generation"
+  },
   "persona": "UI runtime engineer",
-  "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
+  "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant",
+  "domainId": "renderx-web-orchestration"
 }

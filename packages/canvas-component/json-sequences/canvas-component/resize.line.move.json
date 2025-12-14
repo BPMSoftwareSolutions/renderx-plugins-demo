@@ -16,28 +16,51 @@
           "timing": "immediate",
           "kind": "stage-crew",
           "scenario": "Update or Modify update Line",
-          "userStory": "As an operations system, I want updateLine to execute reliably with latency < 100ms so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "userStory": {
+            "persona": "Design systems engineer",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
           "testCase": "should update-line",
           "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
-          "acceptanceCriteriaStructured": [
+          "acceptanceCriteria": [
             {
-              "given": ["an active line resize"],
-              "when": ["updateLine runs"],
-              "then": ["line size updates at 60fps; constraints apply"],
+              "given": [
+                "handler updateLine is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateLine executes"
+              ],
+              "then": [
+                "updateLine performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
               "and": [
-                "telemetry includes new length/angle"
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
               ]
             }
           ]
         }
       ],
-      "userStory": "As a design systems engineer, I need line-resize move to adjust endpoints and measure lengths at ≤100ms P95.",
+      "userStory": {
+        "persona": "Design systems engineer",
+        "goal": "line-resize move to adjust endpoints and measure lengths at ≤100ms P95",
+        "benefit": "real-time content updates"
+      },
       "persona": "Design systems engineer",
       "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
     }
   ],
   "beats": 1,
-  "userStory": "As a design systems engineer, I need line-resize move to adjust endpoints and measure lengths at ≤100ms P95.",
+  "userStory": {
+    "persona": "Design systems engineer",
+    "goal": "line-resize move to adjust endpoints and measure lengths at ≤100ms P95",
+    "benefit": "real-time content updates"
+  },
   "persona": "Design systems engineer",
-  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
 }

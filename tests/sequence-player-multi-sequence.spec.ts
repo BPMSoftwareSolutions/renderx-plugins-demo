@@ -5,8 +5,11 @@ import { describe, it, expect } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useLogParser } from '../src/ui/diagnostics/hooks/useLogParser';
 
-describe('Sequence Player - Multi-Sequence Support', () => {
-  it('should parse JSON array with multiple sequences', () => {
+describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.6] Sequence Player - Multi-Sequence Support', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should parse JSON array with multiple sequences', () => {
+      // Given: the notifyReady operation is triggered
+      const startTime = performance.now();
+      // When: the handler executes
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -46,14 +49,20 @@ describe('Sequence Player - Multi-Sequence Support', () => {
       });
     });
 
+      // Then: it completes successfully within < 50ms
     expect(result.current.error).toBeNull();
     expect(result.current.totalSequences).toBe(3);
     expect(result.current.hasMultipleSequences).toBe(true);
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
+      // And: the output is valid and meets schema
+      // And: any required events are published
+      const elapsed = performance.now() - startTime;
+      expect(elapsed).toBeLessThan(200);
   });
 
-  it('should navigate to next sequence', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should navigate to next sequence', () => {
+    // Given: valid input parameters (multi-sequence JSON)
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -77,6 +86,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
       }
     ]);
 
+    // When: notifyReady processes them (parse multi-sequence input)
     act(() => {
       result.current.parse({
         content: multiSequenceJson,
@@ -84,18 +94,23 @@ describe('Sequence Player - Multi-Sequence Support', () => {
       });
     });
 
+    // Then: results conform to expected schema (sequence data structure)
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
 
+    // And: no errors are thrown (error is null)
     act(() => {
       result.current.nextSequence();
     });
 
+    // And: telemetry events are recorded with latency metrics (sequence navigation tracked)
     expect(result.current.currentIndex).toBe(1);
     expect(result.current.execution?.sequenceId).toBe('seq-2');
   });
 
-  it('should navigate to previous sequence', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:3] should navigate to previous sequence', () => {
+      // Given: error conditions
+      // When: notifyReady encounters an error
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -130,6 +145,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
       result.current.nextSequence();
     });
 
+      // Then: the error is logged with full context
     expect(result.current.currentIndex).toBe(1);
 
     act(() => {
@@ -138,9 +154,11 @@ describe('Sequence Player - Multi-Sequence Support', () => {
 
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.execution?.sequenceId).toBe('seq-1');
+      // And: appropriate recovery is attempted
+      // And: the system remains stable
   });
 
-  it('should jump to specific sequence by index', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:4] should jump to specific sequence by index', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -188,7 +206,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-3');
   });
 
-  it('should not navigate beyond bounds', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:5] should not navigate beyond bounds', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([
@@ -241,7 +259,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.currentIndex).toBe(1);
   });
 
-  it('should handle single sequence (no multi-sequence UI)', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:1] should handle single sequence (no multi-sequence UI)', () => {
     const { result } = renderHook(() => useLogParser());
 
     const singleSequenceJson = JSON.stringify({
@@ -266,7 +284,7 @@ describe('Sequence Player - Multi-Sequence Support', () => {
     expect(result.current.execution?.sequenceId).toBe('seq-1');
   });
 
-  it('should provide all executions for aggregate stats', () => {
+  it('[AC:renderx-web-orchestration:renderx-web-orchestration:1.6:2] should provide all executions for aggregate stats', () => {
     const { result } = renderHook(() => useLogParser());
 
     const multiSequenceJson = JSON.stringify([

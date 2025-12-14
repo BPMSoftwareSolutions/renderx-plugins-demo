@@ -6,6 +6,9 @@
  * DATA-DRIVEN: Generates diagram from actual analysis metrics
  */
 
+const fs = require('fs');
+const path = require('path');
+
 // Import ASCII sketch renderers
 const {
   renderSymphonyArchitecture,
@@ -19,11 +22,218 @@ const {
   renderCleanSymphonyHandler
 } = require('./ascii-sketch-renderers.cjs');
 
+// Import new ASCII generators
+const { generateHeader } = require('./generate-ascii-header.cjs');
+const { generateSketch } = require('./generate-ascii-sketch.cjs');
+
+// ============================================================================
+// AC/GWT ALIGNMENT HELPER (for handler symphony AC column)
+// ============================================================================
+
+/**
+ * Load handlers that have AC-tagged tests by directly reading test file AC tags
+ * Uses existing test telemetry: [AC:domain:sequence:beat:acIndex] tags in test titles
+ * No redundant AC registry lookup needed - test files are the source of truth
+ * @returns {{ beatIds: Set<string>, handlerNames: Set<string> }}
+ */
+function loadAcCoveredHandlers() {
+  const result = { beatIds: new Set(), handlerNames: new Set() };
+  try {
+    // Load AC-tagged test results (already parsed from test files)
+    const resultsPath = path.join(process.cwd(), '.generated/ac-alignment/results/collected-results.json');
+    if (!fs.existsSync(resultsPath)) {
+      return result;
+    }
+
+    const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+
+    // Extract handler names directly from AC tags in tests
+    (results.tests || []).forEach(test => {
+      if (test.acTags && test.acTags.length > 0) {
+        test.acTags.forEach(acTag => {
+          const beatId = acTag.beat; // e.g., "1.3"
+          const sequenceId = acTag.sequence; // e.g., "canvas-component-select-symphony"
+
+          if (beatId) {
+            result.beatIds.add(beatId);
+          }
+
+          // Look up handler from sequence JSON based on sequence:beat
+          if (sequenceId && beatId) {
+            const handler = findHandlerFromSequence(sequenceId, beatId);
+            if (handler) {
+              result.handlerNames.add(handler.toLowerCase());
+            }
+          }
+        });
+      }
+    });
+
+    return result;
+  } catch (e) {
+    return result;
+  }
+}
+
+/**
+ * Find handler name from sequence JSON file for given sequence and beat
+ * @param {string} sequenceId - Sequence identifier
+ * @param {string} beatId - Beat identifier (e.g., "1.3")
+ * @returns {string|null} Handler name or null
+ */
+function findHandlerFromSequence(sequenceId, beatId) {
+  try {
+    // Common sequence file locations
+    const searchPaths = [
+      `packages/orchestration/json-sequences/${sequenceId}.json`,
+      `packages/canvas-component/json-sequences/canvas-component/${sequenceId.replace('canvas-component-', '').replace('-symphony', '')}.json`,
+      `packages/*/json-sequences/**/${sequenceId}.json`
+    ];
+
+    const [movementNum, beatNum] = beatId.split('.').map(Number);
+
+    // Try to find and parse the sequence file
+    for (const searchPattern of searchPaths) {
+      const files = require('glob').sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+
+          if (seqId !== sequenceId) continue;
+
+          // Find movement and beat
+          if (!sequence.movements) continue;
+
+          // Use 0-based index to find movement by position (beat "1.3" = first movement, third beat)
+          const movement = sequence.movements[movementNum - 1];
+
+          if (!movement || !movement.beats) continue;
+
+          // Use 0-based index to find beat by position
+          const beat = movement.beats[beatNum - 1];
+
+          if (beat && beat.handler) {
+            const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+            if (handlerStr) {
+              const parts = handlerStr.split('#');
+              return parts.length > 1 ? parts[1] : parts[0];
+            }
+          }
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Global cache for AC-covered handlers
+let acCoveredHandlersCache = null;
+
+/**
+ * Check if a handler has AC-tagged tests (by handler name or beat ID)
+ * @param {string} handlerName - Handler function name (e.g., "initConfig")
+ * @param {string} [beatId] - Optional beat ID (e.g., "1.3") for fallback check
+ * @returns {boolean} Whether the handler has AC-tagged tests
+ */
+function handlerHasAcGwt(handlerName, beatId) {
+  if (acCoveredHandlersCache === null) {
+    acCoveredHandlersCache = loadAcCoveredHandlers();
+  }
+  // Check by handler name first (normalized to lowercase)
+  if (acCoveredHandlersCache.handlerNames.has(handlerName.toLowerCase())) {
+    return true;
+  }
+  // Fallback to beat ID check (for global orchestration beats)
+  if (beatId && acCoveredHandlersCache.beatIds.has(beatId)) {
+    return true;
+  }
+  return false;
+}
+
+// Global cache for handlers with sourcePath
+let sourcePathHandlersCache = null;
+
+/**
+ * Load all handlers that have sourcePath defined in sequences
+ * @returns {Set<string>} Set of handler names with valid sourcePath
+ */
+function loadSourcePathHandlers() {
+  const glob = require('glob');
+  const handlersWithSource = new Set();
+
+  try {
+    const searchPaths = [
+      'packages/*/json-sequences/**/*.json',
+      'packages/orchestration/json-sequences/*.json'
+    ];
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    // Handler can be string or object with name and sourcePath
+                    if (typeof beat.handler === 'object' && beat.handler.name && beat.handler.sourcePath) {
+                      // Validate sourcePath exists
+                      const sourcePath = path.join(process.cwd(), beat.handler.sourcePath);
+                      if (fs.existsSync(sourcePath)) {
+                        handlersWithSource.add(beat.handler.name.toLowerCase());
+                      }
+                    }
+                  }
+                });
+              }
+            });
+          }
+        } catch (err) {
+          // Skip invalid JSON files
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty set on error
+  }
+
+  return handlersWithSource;
+}
+
+/**
+ * Check if a handler has a valid sourcePath defined in sequence JSON
+ * @param {string} handlerName - Handler function name (e.g., "resolveTemplate")
+ * @returns {boolean} Whether the handler has a valid sourcePath
+ */
+function handlerHasSourcePath(handlerName) {
+  if (sourcePathHandlersCache === null) {
+    sourcePathHandlersCache = loadSourcePathHandlers();
+  }
+  return sourcePathHandlersCache.has(handlerName.toLowerCase());
+}
+
 /**
  * Generate a generic summary when detailed handler data isn't available
  */
 function generateGenericSummary(metrics) {
-  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', handlers = [] } = metrics;
+  const { totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', handlers = [], godHandlers = [] } = metrics;
   const domainName = domainId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
   // Safe numeric conversions (coverage might be string from metrics)
@@ -58,9 +268,14 @@ function generateGenericSummary(metrics) {
         ╚═════════════════════════════════════════════════════════╝`;
   }
 
+  const godHandlerIndicator = godHandlers.length > 0
+    ? `⚠️  God Handlers: ${godHandlers.length}`
+    : '✓  No God Handlers';
+
   return `        ╔═════════════════════════════════════╗
         ║ ${domainName.toUpperCase()} STRUCTURE    ${' '.repeat(Math.max(0, 30 - domainName.length))}║
         ║ (Analyzed: ${totalHandlers} handlers)   ${' '.repeat(Math.max(0, 20 - String(totalHandlers).length))}║
+        ║ ${godHandlerIndicator}${' '.repeat(Math.max(0, 37 - godHandlerIndicator.length))}║
         ╠═════════════════════════════════════╣
         ║                                     ║
         ║  Analysis Summary:                  ║
@@ -75,11 +290,156 @@ function generateGenericSummary(metrics) {
 }
 
 /**
+ * Load sequence JSON file and extract handler names defined in beats
+ * @param {string} sequenceId - Sequence identifier (e.g., "canvas-component-create-symphony")
+ * @returns {Set<string>} Set of handler names defined in this sequence
+ */
+function loadSequenceHandlers(sequenceId) {
+  const handlerNames = new Set();
+
+  try {
+    // Common sequence file locations
+    const searchPaths = [
+      `packages/orchestration/json-sequences/${sequenceId}.json`,
+      `packages/canvas-component/json-sequences/canvas-component/${sequenceId.replace('canvas-component-', '').replace('-symphony', '')}.json`,
+      `packages/*/json-sequences/**/${sequenceId}.json`
+    ];
+
+    const glob = require('glob');
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+
+          if (seqId !== sequenceId) continue;
+
+          // Extract all handler names from all beats
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+                    if (handlerStr) {
+                      // Extract handler name (handle both "handlerName" and "path/to#handlerName" formats)
+                      const parts = handlerStr.split('#');
+                      const handlerName = parts.length > 1 ? parts[1] : parts[0];
+                      handlerNames.add(handlerName.toLowerCase());
+                    }
+                  }
+                });
+              }
+            });
+          }
+
+          // Found and processed the sequence, return
+          return handlerNames;
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty set on error
+  }
+
+  return handlerNames;
+}
+
+/**
+ * Discover all sequence JSON files and load their metadata
+ * @param {string} domainId - Domain identifier to filter sequences
+ * @returns {Array<{sequenceId: string, name: string, packageName: string, filePath: string, handlers: Set<string>}>}
+ */
+function discoverSequences(domainId) {
+  const sequences = [];
+  const glob = require('glob');
+
+  try {
+    // Find all sequence JSON files
+    const searchPaths = [
+      'packages/*/json-sequences/**/*.json',
+      'packages/orchestration/json-sequences/*.json'
+    ];
+
+    for (const searchPattern of searchPaths) {
+      const files = glob.sync(searchPattern, { cwd: process.cwd() });
+
+      for (const file of files) {
+        const fullPath = path.join(process.cwd(), file);
+        if (!fs.existsSync(fullPath)) continue;
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+          const seqId = sequence.sequenceId || sequence.id;
+          const seqDomainId = sequence.domainId;
+
+          // Skip if domain doesn't match (if domain filtering is used)
+          if (domainId && seqDomainId && seqDomainId !== domainId) {
+            continue;
+          }
+
+          // Extract package name from file path
+          const pathParts = file.split('/');
+          const packagesIndex = pathParts.indexOf('packages');
+          let packageName = 'unknown';
+          if (packagesIndex >= 0 && packagesIndex + 1 < pathParts.length) {
+            packageName = pathParts[packagesIndex + 1];
+          }
+
+          // Extract handler names
+          const handlers = new Set();
+          if (sequence.movements && Array.isArray(sequence.movements)) {
+            sequence.movements.forEach(movement => {
+              if (movement.beats && Array.isArray(movement.beats)) {
+                movement.beats.forEach(beat => {
+                  if (beat.handler) {
+                    const handlerStr = typeof beat.handler === 'string' ? beat.handler : beat.handler.name;
+                    if (handlerStr) {
+                      const parts = handlerStr.split('#');
+                      const handlerName = parts.length > 1 ? parts[1] : parts[0];
+                      handlers.add(handlerName.toLowerCase());
+                    }
+                  }
+                });
+              }
+            });
+          }
+
+          sequences.push({
+            sequenceId: seqId,
+            name: sequence.name || seqId,
+            packageName,
+            filePath: file,
+            handlers,
+            beatCount: sequence.beats || 0
+          });
+        } catch (err) {
+          // Skip invalid JSON files
+          continue;
+        }
+      }
+    }
+  } catch (e) {
+    // Return empty array on error
+  }
+
+  return sequences;
+}
+
+/**
  * Generate detailed handler summary with symphony groupings
  * Groups handlers by package/feature and shows LOC, coverage, and risk metrics
  */
 function generateHandlerSummary(handlerData) {
-  const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain' } = handlerData;
+  const { handlers = [], totalHandlers = 0, avgLocPerHandler = 0, overallCoverage = 0, domainId = 'unknown-domain', godHandlers = [] } = handlerData;
 
   // If no handlers, use generic summary
   if (!handlers || handlers.length === 0) {
@@ -88,7 +448,8 @@ function generateHandlerSummary(handlerData) {
       avgLocPerHandler,
       overallCoverage,
       domainId,
-      handlers: []
+      handlers: [],
+      godHandlers
     });
   }
 
@@ -104,61 +465,62 @@ function generateHandlerSummary(handlerData) {
       avgLocPerHandler,
       overallCoverage,
       domainId,
-      handlers
+      handlers,
+      godHandlers
     });
   }
   
-  // Group handlers by actual symphony name (extract from /symphonies/NAME/)
+  // SEQUENCE-DRIVEN GROUPING: Build symphony groups from sequence JSON files
+  // This ensures sequence JSON is the single source of truth for symphony composition
+  const sequences = discoverSequences(domainId);
   const symphonyGroups = {};
-  const symphonyHandlers = [];
-  const utilityHandlers = [];
-  
+  const unmatchedHandlers = [];
+
+  // Create a lookup map of handler name -> handler object
+  const handlerLookup = new Map();
   handlers.forEach(handler => {
-    // Separate symphony handlers from utility/infrastructure code
-    if (handler.file.includes('/symphonies/')) {
-      symphonyHandlers.push(handler);
-    } else {
-      utilityHandlers.push(handler);
+    // Exclude _analyzeHandler.js files from grouping
+    if (handler.file && handler.file.includes('_analyzeHandler.js')) {
+      return;
     }
-  });
-  
-  // Group symphony handlers by actual symphony name from path
-  symphonyHandlers.forEach(handler => {
-    const pathParts = handler.file.split('/');
-    let symphonyName = 'Other';
 
-    // Extract symphony name: packages/*/src/symphonies/FOLDER/ or symphonies/file.symphony.ts
-    const symphoniesIndex = pathParts.indexOf('symphonies');
-    if (symphoniesIndex >= 0 && symphoniesIndex + 1 < pathParts.length) {
-      let symphonyIdentifier = pathParts[symphoniesIndex + 1];
-      
-      // Check if this is a file (has extension) or a folder
-      if (symphonyIdentifier.match(/\.(ts|js|tsx|jsx)$/)) {
-        // It's a file directly under symphonies: symphonies/drop.symphony.ts
-        // Extract name from filename
-        symphonyIdentifier = symphonyIdentifier
-          .replace(/\.(ts|js|tsx|jsx)$/, '')    // Remove file extensions
-          .replace(/\.symphony$/, '')            // Remove .symphony suffix  
-          .replace(/\.stage-crew$/, '')          // Remove .stage-crew suffix
-          .replace(/^_/, '');                    // Remove leading underscore
+    // Extract handler name from file or use handler.name
+    let handlerName = handler.name;
+    if (!handlerName || handlerName === 'handlers' || handlerName === 'handler') {
+      const pathParts = handler.file.split('/');
+      const fileName = pathParts[pathParts.length - 1].replace(/.(ts|tsx|js|jsx)$/, '');
+      handlerName = fileName.replace('.stage-crew', '').replace(/-/g, '_');
+    }
+    handlerLookup.set(handlerName.toLowerCase(), handler);
+  });
+
+  // Build symphony groups from sequences
+  sequences.forEach(sequence => {
+    const symphonyHandlers = [];
+
+    // Match handlers by name (regardless of folder location)
+    sequence.handlers.forEach(handlerName => {
+      const handler = handlerLookup.get(handlerName.toLowerCase());
+      if (handler) {
+        symphonyHandlers.push(handler);
+        // NOTE: Do NOT delete from lookup - handlers can be shared by multiple sequences
       }
-      // else: it's a folder name, use as-is
-      
-      symphonyName = symphonyIdentifier
-        .split('-')
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' ') + ' Symphony';
-    } else if (pathParts[0] === 'scripts') {
-      symphonyName = 'Build Scripts';
-    }
+    });
 
-    if (!symphonyGroups[symphonyName]) {
-      symphonyGroups[symphonyName] = [];
+    // Only create symphony group if we found matching handlers
+    if (symphonyHandlers.length > 0) {
+      // Use sequence name for symphony grouping
+      const symphonyName = sequence.name || sequence.sequenceId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      symphonyGroups[symphonyName] = symphonyHandlers;
     }
-    symphonyGroups[symphonyName].push(handler);
+  });
+
+  // Any remaining handlers are unmatched (not in any sequence)
+  handlerLookup.forEach(handler => {
+    unmatchedHandlers.push(handler);
   });
   
-  // Estimate LOC per handler (avg if not available)
+    // Estimate LOC per handler (avg if not available)
   const estimatedLocPerHandler = avgLocPerHandler > 0 ? avgLocPerHandler : 30;
   
   // Build clean symphony sections using new renderer
@@ -178,7 +540,7 @@ function generateHandlerSummary(handlerData) {
         packageName = 'build-scripts';
       }
     }
-    
+
     // Calculate metrics for this symphony
     const symphonyLoc = Math.round(estimatedLocPerHandler * symphonyHandlers.length);
     const symphonyCoverage = Math.round(overallCoverage);
@@ -252,7 +614,9 @@ function generateHandlerSummary(handlerData) {
         sizeBand: hSizeBand,
         coverage: handlerCov,
         risk: hRisk,
-        baton: baton
+        baton: baton,
+        hasAcGwt: handlerHasAcGwt(displayName),
+        hasSourcePath: handlerHasSourcePath(displayName)
       };
     });
     
@@ -345,21 +709,36 @@ function generateDiagram(metrics = {}) {
     avgLocPerHandler: safeAvgLoc,
     overallCoverage: safeCoverage,
     domainId,
-    handlers: []
+    handlers: [],
+    godHandlers
+  });
+
+  // Generate clean ASCII header
+  const header = generateHeader({
+    lines: [
+      `SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.toUpperCase()}`,
+      'Enhanced Handler Portfolio & Orchestration Framework'
+    ],
+    width: 114
+  });
+
+  // Generate metrics sketch
+  const metricsSketch = generateSketch({
+    title: 'CODEBASE METRICS FOUNDATION',
+    metrics: {
+      'Total Files': String(totalFiles),
+      'Total LOC': String(totalLoc),
+      'Handlers': String(totalHandlers),
+      'Avg LOC/Handler': safeAvgLoc.toFixed(2),
+      'Coverage': `${safeCoverage.toFixed(2)}%`
+    },
+    icon: '📊'
   });
 
   return `
-╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                    SYMPHONIC CODE ANALYSIS ARCHITECTURE - ${domainTitle.padEnd(50)}║
-║                    Enhanced Handler Portfolio & Orchestration Framework                                          ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+${header}
 
-┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  📊 CODEBASE METRICS FOUNDATION                                                                                 │
-│  ═════════════════════════════════════════════════════════════════════════════════════════════════════════════   │
-│  │ Total Files: ${String(totalFiles).padEnd(4)}│ Total LOC: ${String(totalLoc).padEnd(6)}│ Handlers: ${String(totalHandlers).padEnd(3)}│ Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(5)}│ Coverage: ${safeCoverage.toFixed(2)}% │           │
-│  ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
-└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+${metricsSketch}
 
 ${renderHandlerPortfolioFoundation({
   totalFiles,
@@ -445,19 +824,18 @@ ${beatCoverage ? renderCoverageHeatmapByBeat(
 ${symphonySection}
                         │
                         ▼
-        ╔═══════════════════════════════════════════════════════╗
-        ║   QUALITY & COVERAGE METRICS                         ║
-        ╠═══════════════════════════════════════════════════════╣
-        ║                                                       ║
-        ║  Handlers Analyzed: ${String(totalHandlers).padEnd(33)}║
-        ║  Avg LOC/Handler: ${safeAvgLoc.toFixed(2).padEnd(35)}║
-        ║  Test Coverage: ${safeCoverage.toFixed(1)}%${' '.repeat(Math.max(0, 38 - safeCoverage.toFixed(1).length))}║
-        ║  Duplication: ${safeDuplication.toFixed(1)}%${' '.repeat(Math.max(0, 42 - safeDuplication.toFixed(1).length))}║
-        ║  ${godHandlers.length > 0 ? `⚠️  God Handlers: ${godHandlers.length}` : `✓  No God Handlers`}${' '.repeat(Math.max(0, 45 - (godHandlers.length > 0 ? `God Handlers: ${godHandlers.length}` : `No God Handlers`).length))}║
-        ║                                                       ║
-        ║  [Full metrics available in detailed report]          ║
-        ║                                                       ║
-        ╚═══════════════════════════════════════════════════════╝
+
+${generateSketch({
+  title: 'QUALITY & COVERAGE METRICS',
+  metrics: {
+    'Handlers Analyzed': String(totalHandlers),
+    'Avg LOC/Handler': safeAvgLoc.toFixed(2),
+    'Test Coverage': `${safeCoverage.toFixed(1)}%`,
+    'Duplication': `${safeDuplication.toFixed(1)}%`,
+    'God Handlers': godHandlers.length > 0 ? `⚠️ ${godHandlers.length}` : '✓ None'
+  },
+  icon: '📊'
+})}
 
 ${conformityViolations && conformityViolations.length > 0 ? renderRiskAssessmentMatrix({
   critical: conformityViolations.filter(v => v.severity === 'critical').map(v => v.issue),
@@ -526,7 +904,7 @@ ${renderLegendAndTerminology({
 
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-ANALYSIS EXECUTION SUMMARY:
+ANAlYSIS EXECUTION SUMMARY:
   ✅ Discovered: ${totalFiles} source files in ${domainId}
   ✅ Analyzed: ${totalHandlers} handler functions with measured LOC (${totalLoc} total lines)
   ✅ Mapped: Files to orchestration beats

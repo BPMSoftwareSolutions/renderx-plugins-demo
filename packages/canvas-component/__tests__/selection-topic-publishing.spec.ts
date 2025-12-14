@@ -49,14 +49,30 @@ describe("Canvas selection publishes selection.changed topic", () => {
     vi.clearAllMocks();
   });
 
-  it("publishes canvas.component.selection.changed when publishSelectionChanged handler is called", async () => {
+  /**
+   * @ac renderx-web-orchestration:canvas-component-select-symphony:1.3:1
+   *
+   * Given: selection change occurs with element ID
+   * When: publishSelectionChanged executes
+   * Then: canvas.component.selection.changed event is published via EventRouter
+   *       event payload includes element ID
+   *       event payload includes optional metadata (type, classes, dimensions)
+   *       event is published with conductor context
+   * And: operation completes within 50ms P95
+   *      event delivery is guaranteed FIFO
+   *      dependent systems can synchronize state
+   */
+  it("[AC:renderx-web-orchestration:canvas-component-select-symphony:1.3:1] publishes canvas.component.selection.changed when publishSelectionChanged handler is called", async () => {
+    // Given: selection change occurs with element ID
     const conductor = { play: vi.fn() };
     const ctx = { conductor, baton: { id: "rx-node-abc123" } };
 
-    // Act: trigger canvas selection publishSelectionChanged handler
+    // When: publishSelectionChanged executes
     await selectHandlers.publishSelectionChanged({}, ctx);
 
-    // Assert: should publish selection.changed topic
+    // Then: canvas.component.selection.changed event is published via EventRouter
+    // Then: event payload includes element ID
+    // Then: event is published with conductor context
     expect(EventRouter.publish).toHaveBeenCalledWith(
       "canvas.component.selection.changed",
       { id: "rx-node-abc123" },
@@ -64,14 +80,30 @@ describe("Canvas selection publishes selection.changed topic", () => {
     );
   });
 
-  it("publishes selection.changed with elementId from baton when id is missing", async () => {
+  /**
+   * @ac renderx-web-orchestration:canvas-component-select-symphony:1.3:1
+   *
+   * Given: selection change occurs with element ID
+   * When: publishSelectionChanged executes
+   * Then: canvas.component.selection.changed event is published via EventRouter
+   *       event payload includes element ID
+   *       event payload includes optional metadata (type, classes, dimensions)
+   *       event is published with conductor context
+   * And: operation completes within 50ms P95
+   *      event delivery is guaranteed FIFO
+   *      dependent systems can synchronize state
+   */
+  it("[AC:renderx-web-orchestration:canvas-component-select-symphony:1.3:1] publishes selection.changed with elementId from baton when id is missing", async () => {
+    // Given: selection change occurs with element ID from baton.elementId
     const conductor = { play: vi.fn() };
-    const ctx = { conductor, baton: { elementId: "rx-node-from-elementId" } }; // no id, but has elementId
+    const ctx = { conductor, baton: { elementId: "rx-node-from-elementId" } };
 
-    // Act: trigger canvas selection publishSelectionChanged handler
+    // When: publishSelectionChanged executes
     await selectHandlers.publishSelectionChanged({}, ctx);
 
-    // Assert: should use elementId from baton
+    // Then: canvas.component.selection.changed event is published via EventRouter
+    // Then: event payload includes element ID
+    // Then: event is published with conductor context
     expect(EventRouter.publish).toHaveBeenCalledWith(
       "canvas.component.selection.changed",
       { id: "rx-node-from-elementId" },
@@ -79,14 +111,30 @@ describe("Canvas selection publishes selection.changed topic", () => {
     );
   });
 
-  it("publishes selection.changed with selectedId from baton when id and elementId are missing", async () => {
+  /**
+   * @ac renderx-web-orchestration:canvas-component-select-symphony:1.3:1
+   *
+   * Given: selection change occurs with element ID
+   * When: publishSelectionChanged executes
+   * Then: canvas.component.selection.changed event is published via EventRouter
+   *       event payload includes element ID
+   *       event payload includes optional metadata (type, classes, dimensions)
+   *       event is published with conductor context
+   * And: operation completes within 50ms P95
+   *      event delivery is guaranteed FIFO
+   *      dependent systems can synchronize state
+   */
+  it("[AC:renderx-web-orchestration:canvas-component-select-symphony:1.3:1] publishes selection.changed with selectedId from baton when id and elementId are missing", async () => {
+    // Given: selection change occurs with element ID from baton.selectedId
     const conductor = { play: vi.fn() };
-    const ctx = { conductor, baton: { selectedId: "rx-node-from-selectedId" } }; // no id or elementId, but has selectedId
+    const ctx = { conductor, baton: { selectedId: "rx-node-from-selectedId" } };
 
-    // Act: trigger canvas selection publishSelectionChanged handler
+    // When: publishSelectionChanged executes
     await selectHandlers.publishSelectionChanged({}, ctx);
 
-    // Assert: should use selectedId from baton
+    // Then: canvas.component.selection.changed event is published via EventRouter
+    // Then: event payload includes element ID
+    // Then: event is published with conductor context
     expect(EventRouter.publish).toHaveBeenCalledWith(
       "canvas.component.selection.changed",
       { id: "rx-node-from-selectedId" },
@@ -94,25 +142,47 @@ describe("Canvas selection publishes selection.changed topic", () => {
     );
   });
 
-  it("does not publish when no id is available", async () => {
+  /**
+   * @ac renderx-web-orchestration:canvas-component-select-symphony:1.3:2
+   *
+   * Given: element ID is missing
+   * When: publishSelectionChanged validates input
+   * Then: event publication is skipped
+   *       warning is logged with context
+   * And: system remains stable without errors
+   */
+  it("[AC:renderx-web-orchestration:canvas-component-select-symphony:1.3:2] does not publish when no id is available", async () => {
+    // Given: element ID is missing
     const conductor = { play: vi.fn() };
-    const ctx = { conductor, baton: {} }; // no id, elementId, or selectedId
+    const ctx = { conductor, baton: {} };
 
-    // Act: trigger canvas selection publishSelectionChanged handler
+    // When: publishSelectionChanged validates input
     await selectHandlers.publishSelectionChanged({}, ctx);
 
-    // Assert: should not publish anything
+    // Then: event publication is skipped
     expect(EventRouter.publish).not.toHaveBeenCalled();
   });
 
-  it("handles missing conductor gracefully (matches SVG node pattern)", async () => {
-    const ctx = { baton: { id: "rx-node-abc123" } }; // no conductor
+  /**
+   * @ac renderx-web-orchestration:canvas-component-select-symphony:1.3:3
+   *
+   * Given: conductor is not available in context
+   * When: publishSelectionChanged attempts to publish
+   * Then: event is published with undefined conductor
+   *       EventRouter handles missing conductor gracefully
+   * And: legacy flows without conductor are supported
+   */
+  it("[AC:renderx-web-orchestration:canvas-component-select-symphony:1.3:3] handles missing conductor gracefully (matches SVG node pattern)", async () => {
+    // Given: conductor is not available in context
+    const ctx = { baton: { id: "rx-node-abc123" } };
 
+    // When: publishSelectionChanged attempts to publish
     expect(async () => {
       await selectHandlers.publishSelectionChanged({}, ctx);
     }).not.toThrow();
 
-    // Should publish with undefined conductor (matches SVG node selection pattern)
+    // Then: event is published with undefined conductor
+    // Then: EventRouter handles missing conductor gracefully
     expect(EventRouter.publish).toHaveBeenCalledWith(
       "canvas.component.selection.changed",
       { id: "rx-node-abc123" },
