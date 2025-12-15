@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-12-15T14:40:48.269Z",
+  "timestamp": "2025-12-15T14:50:51.806Z",
   "slis": {
-    "latency_p95_ms": 450,
-    "latency_p99_ms": 600,
-    "error_rate": 0.02,
-    "throughput_min": 20,
-    "availability": 0.98
+    "latency_p95_ms": 16,
+    "latency_p99_ms": 18,
+    "error_rate": 0.0958,
+    "throughput_min": 106,
+    "availability": 0.9042
   },
   "slo": {
     "latency_p95_ms": 300,
@@ -16,28 +16,16 @@
   },
   "breaches": [
     {
-      "key": "latency_p95_ms",
-      "actual": 450,
-      "target": 300,
-      "diff": 150
-    },
-    {
-      "key": "latency_p99_ms",
-      "actual": 600,
-      "target": 500,
-      "diff": 100
-    },
-    {
-      "key": "throughput_min",
-      "actual": 20,
-      "target": 50,
-      "diff": -30
+      "key": "error_rate",
+      "actual": 0.0958,
+      "target": 0.05,
+      "diff": 0.045799999999999993
     },
     {
       "key": "availability",
-      "actual": 0.98,
+      "actual": 0.9042,
       "target": 0.995,
-      "diff": -0.015000000000000013
+      "diff": -0.09079999999999999
     }
   ]
 }
