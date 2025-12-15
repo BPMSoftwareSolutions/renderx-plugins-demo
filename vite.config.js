@@ -13,12 +13,12 @@ function staleCodeDetectionPlugin() {
     'packages/musical-conductor',
     'packages/host-sdk',
     'packages/manifest-tools',
-    'packages/canvas',
-    'packages/canvas-component',
-    'packages/control-panel',
-    'packages/header',
-    'packages/library',
-    'packages/library-component',
+    'domains/renderx-web/ui-plugins/canvas',
+    'domains/renderx-web/runtime/canvas-component',
+    'domains/renderx-web/ui-plugins/control-panel',
+    'domains/renderx-web/ui-plugins/header',
+    'domains/renderx-web/ui-plugins/library',
+    'domains/renderx-web/runtime/library-component',
   ];
 
   // Initialize timestamps on startup

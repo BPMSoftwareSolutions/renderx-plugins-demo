@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { getCurrentTheme } from '../packages/header/src/symphonies/ui/ui.stage-crew';
+import { getCurrentTheme } from '../domains/renderx-web/ui-plugins/header/src/symphonies/ui/ui.stage-crew';
 
 describe('[BEAT:renderx-web-orchestration:renderx-web-orchestration:1.1] React Theme Toggle - Proper AC Implementation', () => {
   let mockLogger: any;

@@ -8,7 +8,7 @@
       "name": "Deselect All",
       "beats": [
         { "beat": 1, "event": "canvas:component:deselect:all", "title": "Hide All Overlays", "dynamics": "mf", "handler": "hideAllOverlays", "timing": "immediate", "kind": "stage-crew" },
-        { "beat": 2, "event": "canvas:component:selections:cleared", "title": "Publish Selections Cleared", "dynamics": "mf", "handler": "publishSelectionsCleared", "timing": "immediate", "kind": "pure" }
+        { "beat": 2, "event": "canvas.component.selections.cleared", "title": "Publish Selections Cleared", "dynamics": "mf", "handler": "publishSelectionsCleared", "timing": "immediate", "kind": "pure", "scenario": "Publish or Deploy publish Selections Cleared", "userStory": {"persona": "Interaction designer","goal": "execute reliably with latency < 1 minute","benefit": "reliable operations with measurable KPIs"},"testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called","testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts","acceptanceCriteria": [{"given": ["handler publishSelectionsCleared is available","required inputs are provided"],"when": ["publishSelectionsCleared executes"],"then": ["publishSelectionsCleared performs its expected logic","output matches expected format","no errors are thrown"],"and": ["side effects are emitted correctly","performance meets SLA targets"]}] }
       ]
     }
   ]

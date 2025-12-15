@@ -9,20 +9,20 @@ import { resolveModuleSpecifier } from "./conductor";
 // Statically known runtime package loaders to ensure Vite can analyze and bundle
 export const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   // @ts-ignore missing d.ts (external plugin package)
-  "@renderx-plugins/header": () => import("@renderx-plugins/header"),
+  "@renderx-web/header": () => import("@renderx-web/header"),
   // @ts-ignore missing d.ts
-  "@renderx-plugins/library": () => import("@renderx-plugins/library"),
+  "@renderx-web/library": () => import("@renderx-web/library"),
   // @ts-ignore missing d.ts
-  "@renderx-plugins/library-component": () =>
-    import("@renderx-plugins/library-component"),
+  "@renderx-web/library-component": () =>
+    import("@renderx-web/library-component"),
   // @ts-ignore missing d.ts
-  "@renderx-plugins/canvas": () => import("@renderx-plugins/canvas"),
+  "@renderx-web/canvas": () => import("@renderx-web/canvas"),
   // @ts-ignore missing d.ts
-  "@renderx-plugins/canvas-component": () =>
-    import("@renderx-plugins/canvas-component"),
+  "@renderx-web/canvas-component": () =>
+    import("@renderx-web/canvas-component"),
   // @ts-ignore missing d.ts
-  "@renderx-plugins/control-panel": () =>
-    import("@renderx-plugins/control-panel"),
+  "@renderx-web/control-panel": () =>
+    import("@renderx-web/control-panel"),
 };
 
 export type ConductorClient = any; // re-declared for local file cohesion
@@ -194,10 +194,10 @@ export async function loadJsonSequenceCatalogs(
           mod = await runtimePackageLoaders[handlersPath]!();
         }
       } catch {}
-      // Try vendor symphony loader for deep handlersPath under @renderx-plugins/*/symphonies/**
+      // Try vendor symphony loader for deep handlersPath under @renderx-web/*/symphonies/**
       if (!mod) {
         try {
-          if (isBrowser && isBareSpecifier(handlersPath) && /@renderx-plugins\/[^/]+\/symphonies\//.test(handlersPath)) {
+          if (isBrowser && isBareSpecifier(handlersPath) && /@renderx-web\/[^/]+\/symphonies\//.test(handlersPath)) {
             // @ts-ignore optional vendor loader not present in SDK builds
             const vendor = await import(/* @vite-ignore */ '../../vendor/vendor-symphony-loader');
             const loader = (vendor as any)?.getVendorSymphonyLoader?.(handlersPath);

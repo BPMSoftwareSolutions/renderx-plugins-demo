@@ -157,7 +157,7 @@ async function aggregate() {
     }
   } catch {}
 
-  // If @renderx-plugins/control-panel is installed but not present in the manifest,
+  // If @renderx-web/control-panel is installed but not present in the manifest,
   // synthesize a ControlPanelPlugin entry that points to the package (UI + runtime).
   try {
     const hasCP = (merged.plugins || []).some(
@@ -167,7 +167,7 @@ async function aggregate() {
       const cpPkg = join(
         rootDir,
         "node_modules",
-        "@renderx-plugins",
+        "@renderx-web",
         "control-panel",
         "package.json"
       );
@@ -176,11 +176,11 @@ async function aggregate() {
           id: "ControlPanelPlugin",
           ui: {
             slot: "controlPanel",
-            module: "@renderx-plugins/control-panel",
+            module: "@renderx-web/control-panel",
             export: "ControlPanel",
           },
           runtime: {
-            module: "@renderx-plugins/control-panel",
+            module: "@renderx-web/control-panel",
             export: "register",
           },
         });

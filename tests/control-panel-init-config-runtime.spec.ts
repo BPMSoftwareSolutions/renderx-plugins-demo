@@ -6,7 +6,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { initConfig } from '../packages/control-panel/src/symphonies/ui/ui.stage-crew';
+import { initConfig } from '../domains/renderx-web/ui-plugins/control-panel/src/symphonies/ui/ui.stage-crew';
 
 describe('initConfig - Runtime Validation', () => {
   let mockCtx: any;

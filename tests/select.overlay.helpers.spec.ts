@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { CoordinateConverter } from "../packages/canvas-component/src/symphonies/select/select.overlay.helpers";
+import { CoordinateConverter } from "../domains/renderx-web/runtime/canvas-component/src/symphonies/select/select.overlay.helpers";
 
 describe("[BEAT:renderx-web-orchestration:renderx-web-orchestration:3.1] [[AC:renderx-web-orchestration:renderx-web-orchestration:3.1:1]] CoordinateConverter (integration)", () => {
     // Given: the showSelectionOverlay operation is triggered

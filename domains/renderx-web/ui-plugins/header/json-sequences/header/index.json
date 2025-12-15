@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    {
+      "file": "ui.theme.toggle.json",
+      "handlersPath": "@renderx-web/header"
+    },
+    {
+      "file": "ui.theme.get.json",
+      "handlersPath": "@renderx-web/header"
+    }
+  ],
+  "userStory": "As a UI runtime engineer, I need the header to render and handle theme toggles with <200ms P95 render and ≤20ms event handling so navigation feels instant.",
+  "persona": "UI runtime engineer",
+  "domainId": "renderx-web-orchestration"
+}

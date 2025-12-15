@@ -1,0 +1,73 @@
+{
+  "name": "@renderx-web/library-component",
+  "version": "1.0.5",
+  "private": false,
+  "description": "Runtime for Library-Component drag/drop sequences (monorepo workspace package).",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "json-sequences"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "renderx-plugin",
+    "renderx",
+    "plugin",
+    "library"
+  ],
+  "scripts": {
+    "build": "tsup --config tsup.config.ts",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "lint": "eslint src __tests__",
+    "lint:fix": "eslint src __tests__ --fix",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "validate:handlers": "node scripts/validate-handlers-export.cjs",
+    "prepublishOnly": "npm run clean && npm run build && npm run test && npm run validate:handlers",
+    "pack:verify": "npm pack && tar -tzf *.tgz"
+  },
+  "peerDependencies": {
+    "@renderx-plugins/host-sdk": "^1.0.4-rc.0"
+  },
+  "dependencies": {
+    "@renderx-plugins/host-sdk": "^1.0.6",
+    "@renderx-web/library": "^1.0.6",
+    "musical-conductor": "^1.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^8.57.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^2.0.0"
+  },
+  "renderx": {
+    "plugins": [
+      {
+        "id": "LibraryComponentPlugin",
+        "runtime": {
+          "module": "@renderx-web/library-component",
+          "export": "register"
+        }
+      }
+    ],
+    "sequences": [
+      "json-sequences"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "UNLICENSED"
+}

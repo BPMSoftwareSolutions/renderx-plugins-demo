@@ -6,6 +6,12 @@ declare module '@renderx-plugins/*' {
   export default anyExport;
 }
 
+declare module '@renderx-web/*' {
+  const anyExport: any;
+  export = anyExport;
+  export default anyExport;
+}
+
 declare module '*?raw' {
   const content: string;
   export default content;

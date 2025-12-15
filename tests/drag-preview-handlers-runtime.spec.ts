@@ -14,7 +14,7 @@ import {
   installDragImage,
   createGhostContainer,
   renderTemplatePreview
-} from '../packages/library-component/src/symphonies/drag/drag.preview.stage-crew';
+} from '../domains/renderx-web/runtime/library-component/src/symphonies/drag/drag.preview.stage-crew';
 
 describe('computeCursorOffsets - Runtime Validation', () => {
   let mockElement: HTMLElement;

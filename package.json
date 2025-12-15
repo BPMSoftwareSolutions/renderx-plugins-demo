@@ -4,10 +4,12 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "domains/renderx-web/runtime/*",
+    "domains/renderx-web/ui-plugins/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build && npm --prefix packages/real-estate-analyzer run build && npm --prefix packages/self-healing run build && npm --prefix packages/slo-dashboard run build",
+    "build:packages": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix domains/renderx-web/ui-plugins/canvas run build && npm --prefix domains/renderx-web/runtime/canvas-component run build && npm --prefix domains/renderx-web/ui-plugins/control-panel run build && npm --prefix domains/renderx-web/ui-plugins/header run build && npm --prefix domains/renderx-web/ui-plugins/library run build && npm --prefix domains/renderx-web/runtime/library-component run build && npm --prefix packages/real-estate-analyzer run build && npm --prefix packages/self-healing run build && npm --prefix packages/slo-dashboard run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "validate:musical-sequences": "node scripts/validate-musical-sequences.js",
@@ -248,15 +250,15 @@
   },
   "dependencies": {
     "@renderx-plugins/canvas": "*",
-    "@renderx-plugins/canvas-component": "*",
     "@renderx-plugins/components": "*",
     "@renderx-plugins/control-panel": "*",
     "@renderx-plugins/digital-assets": "*",
     "@renderx-plugins/header": "*",
     "@renderx-plugins/host-sdk": "*",
     "@renderx-plugins/library": "*",
-    "@renderx-plugins/library-component": "*",
     "@renderx-plugins/manifest-tools": "*",
+    "@renderx-web/canvas-component": "*",
+    "@renderx-web/library-component": "*",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",
     "musical-conductor": "*",

@@ -5,7 +5,7 @@
       "status": "production",
       "ui": {
         "slot": "headerLeft",
-        "module": "@renderx-plugins/header",
+        "module": "@renderx-web/header",
         "export": "HeaderTitle"
       }
     },
@@ -14,7 +14,7 @@
       "status": "production",
       "ui": {
         "slot": "headerCenter",
-        "module": "@renderx-plugins/header",
+        "module": "@renderx-web/header",
         "export": "HeaderControls"
       }
     },
@@ -23,7 +23,7 @@
       "status": "production",
       "ui": {
         "slot": "headerRight",
-        "module": "@renderx-plugins/header",
+        "module": "@renderx-web/header",
         "export": "HeaderThemeToggle"
       }
     },
@@ -32,50 +32,50 @@
       "status": "production",
       "ui": {
         "slot": "library",
-        "module": "@renderx-plugins/library",
+        "module": "@renderx-web/library",
         "export": "LibraryPanel"
       },
-      "runtime": { "module": "@renderx-plugins/library", "export": "register" }
+      "runtime": { "module": "@renderx-web/library", "export": "register" }
     },
     {
       "id": "CanvasPlugin",
       "status": "production",
       "ui": {
         "slot": "canvas",
-        "module": "@renderx-plugins/canvas",
+        "module": "@renderx-web/canvas",
         "export": "CanvasPage"
       },
-      "runtime": { "module": "@renderx-plugins/canvas", "export": "register" }
+      "runtime": { "module": "@renderx-web/canvas", "export": "register" }
     },
     {
       "id": "ControlPanelPlugin",
       "status": "production",
       "ui": {
         "slot": "controlPanel",
-        "module": "@renderx-plugins/control-panel",
+        "module": "@renderx-web/control-panel",
         "export": "ControlPanel"
       },
-      "runtime": { "module": "@renderx-plugins/control-panel", "export": "register" }
+      "runtime": { "module": "@renderx-web/control-panel", "export": "register" }
     },
     {
       "id": "LibraryComponentPlugin",
       "status": "production",
-      "runtime": { "module": "@renderx-plugins/library-component", "export": "register" }
+      "runtime": { "module": "@renderx-web/library-component", "export": "register" }
     },
     {
       "id": "CanvasComponentPlugin",
       "status": "production",
-      "runtime": { "module": "@renderx-plugins/canvas-component", "export": "register" }
+      "runtime": { "module": "@renderx-web/canvas-component", "export": "register" }
     },
     {
       "id": "RealEstateAnalyzerPlugin",
       "status": "production",
       "ui": {
         "slot": "library",
-        "module": "@renderx-plugins/real-estate-analyzer",
+        "module": "@renderx-web/real-estate-analyzer",
         "export": "OpportunityAnalyzer"
       },
-      "runtime": { "module": "@renderx-plugins/real-estate-analyzer", "export": "register" }
+      "runtime": { "module": "@renderx-web/real-estate-analyzer", "export": "register" }
     },
     {
       "id": "SelfHealingPlugin",

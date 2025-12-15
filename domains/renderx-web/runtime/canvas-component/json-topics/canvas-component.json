@@ -1,0 +1,31 @@
+{
+  "plugin": "CanvasComponentPlugin",
+  "topics": {
+    "canvas.component.copied": {
+      "visibility": "public",
+      "notes": "Published when a component is copied to clipboard"
+    },
+    "canvas.component.pasted": {
+      "visibility": "public",
+      "notes": "Published when a component is pasted from clipboard"
+    },
+    "canvas.component.select.svg-node.changed": {
+      "visibility": "public",
+      "notes": "Published when SVG node selection changes"
+    },
+    "react.component.mounted": {
+      "visibility": "public",
+      "notes": "Published when a React component is successfully mounted on the canvas"
+    },
+    "react.component.error": {
+      "visibility": "public",
+      "notes": "Published when a React component fails to compile or render"
+    },
+    "canvas.component.selections.cleared": {
+      "visibility": "public",
+      "notes": "Published when all component selections are cleared. This is a notify-only topic to avoid deselect loops.",
+      "routes": []
+    }
+  }
+}
+

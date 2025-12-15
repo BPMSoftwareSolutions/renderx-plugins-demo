@@ -1,0 +1,82 @@
+{
+  "name": "@renderx-web/canvas-component",
+  "version": "1.0.11",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "json-sequences"
+  ],
+  "type": "module",
+  "keywords": [
+    "renderx-plugin"
+  ],
+  "scripts": {
+    "build": "npm run lint && tsup src/index.ts src/symphonies/**/*.ts --splitting --format esm --out-dir dist --clean --external react,react-dom,@renderx-plugins/host-sdk,gif.js.optimized",
+    "test": "vitest --run --config vitest.config.ts",
+    "test:isolation": "vitest run __tests__/create.isolation.spec.ts --config vitest.config.ts",
+    "lint": "eslint src/**/*.{ts,tsx,js,jsx} __tests__/**/*.{ts,tsx,js,jsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx,js,jsx} __tests__/**/*.{ts,tsx,js,jsx} --fix",
+    "ci": "npm run lint && npm run build && npm run test"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./symphonies/create/create.symphony.ts": {
+      "import": "./dist/symphonies/create/create.symphony.js"
+    },
+    "./symphonies/resize/resize.start.symphony.ts": {
+      "import": "./dist/symphonies/resize/resize.start.symphony.js"
+    },
+    "./symphonies/*.ts": {
+      "import": "./dist/symphonies/*.js"
+    },
+    "./symphonies/*": {
+      "import": "./dist/symphonies/*"
+    }
+  },
+  "renderx": {
+    "plugins": [
+      {
+        "id": "CanvasComponentPlugin",
+        "runtime": {
+          "module": "@renderx-web/canvas-component",
+          "export": "register"
+        }
+      }
+    ],
+    "sequences": [
+      "json-sequences"
+    ],
+    "topics": [
+      "json-topics"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@babel/standalone": "^7.28.5",
+    "@renderx-web/canvas": "^0.1.0-rc.4",
+    "@renderx-plugins/host-sdk": "^1.0.6",
+    "@renderx-plugins/manifest-tools": "^0.1.2",
+    "musical-conductor": "^1.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.14",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.35.0",
+    "gif.js.optimized": "^1.0.1",
+    "jsdom": "^27.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

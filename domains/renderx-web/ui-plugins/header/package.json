@@ -1,0 +1,99 @@
+{
+  "name": "@renderx-web/header",
+  "version": "1.0.1",
+  "private": false,
+  "type": "module",
+  "description": "RenderX Header UI plugin (externalized package)",
+  "keywords": [
+    "renderx-plugin",
+    "renderx",
+    "plugin",
+    "header"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts src/symphonies/ui/ui.symphony.ts src/symphonies/ui/ui.stage-crew.ts --format esm --sourcemap --injectStyle --external react,react-dom,@renderx-plugins/host-sdk --out-dir dist && node ./scripts/copy-css.cjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "prepublishOnly": "npm run lint && npm run build && npm test"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./symphonies/ui/*": {
+      "import": "./dist/symphonies/ui/*.js"
+    }
+  },
+  "files": [
+    "dist",
+    "json-sequences",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./src/**/*.css",
+    "./dist/**/*.css"
+  ],
+  "dependencies": {
+    "@renderx-plugins/host-sdk": "^1.0.6"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "renderx": {
+    "plugins": [
+      {
+        "id": "HeaderTitlePlugin",
+        "ui": {
+          "slot": "headerLeft",
+          "module": "@renderx-web/header",
+          "export": "HeaderTitle"
+        }
+      },
+      {
+        "id": "HeaderControlsPlugin",
+        "ui": {
+          "slot": "headerCenter",
+          "module": "@renderx-web/header",
+          "export": "HeaderControls"
+        }
+      },
+      {
+        "id": "HeaderThemePlugin",
+        "ui": {
+          "slot": "headerRight",
+          "module": "@renderx-web/header",
+          "export": "HeaderThemeToggle"
+        }
+      }
+    ],
+    "sequences": [
+      "json-sequences"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^8.57.1",
+    "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.0",
+    "jsdom": "^25.0.0",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^0.29.3"
+  }
+}
+
