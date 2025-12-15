@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2025-12-14T15:52:27.784Z",
+  "generatedAt": "2025-12-15T14:55:49.016Z",
   "summary": {
-    "totalProcesses": 599,
+    "totalProcesses": 603,
     "symphonic": 1,
     "partialSymphonic": 43,
-    "nonSymphonic": 305,
-    "shouldBeSymphonic": 250,
+    "nonSymphonic": 307,
+    "shouldBeSymphonic": 252,
     "complianceScore": 0
   },
   "processes": [
@@ -2314,7 +2314,7 @@
       "category": "generation",
       "symphonic": false,
       "registered": false,
-      "inNpmScript": false,
+      "inNpmScript": true,
       "complexity": "complex",
       "shouldBeSymphonic": true,
       "complianceLevel": "should-be-symphonic"
@@ -4028,7 +4028,7 @@
       "name": "build:packages",
       "path": "package.json:scripts.build:packages",
       "type": "npm-script",
-      "command": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build && npm --prefix packages/real-estate-analyzer run build && npm --prefix packages/self-healing run build && npm --prefix packages/slo-dashboard run build",
+      "command": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix domains/renderx-web/ui-plugins/canvas run build && npm --prefix domains/renderx-web/runtime/canvas-component run build && npm --prefix domains/renderx-web/ui-plugins/control-panel run build && npm --prefix domains/renderx-web/ui-plugins/header run build && npm --prefix domains/renderx-web/ui-plugins/library run build && npm --prefix domains/renderx-web/runtime/library-component run build && npm --prefix packages/real-estate-analyzer run build && npm --prefix packages/self-healing run build && npm --prefix packages/slo-dashboard run build",
       "category": "build",
       "symphonic": false,
       "registered": false,
@@ -4166,6 +4166,19 @@
       "complexity": "very-complex",
       "shouldBeSymphonic": false,
       "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "generate:readme",
+      "path": "package.json:scripts.generate:readme",
+      "type": "npm-script",
+      "command": "node scripts/generate-readme.cjs",
+      "category": "generation",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
     },
     {
       "name": "audit:hardcoded",
@@ -7065,6 +7078,45 @@
       "complexity": "simple",
       "shouldBeSymphonic": true,
       "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "schema:analyze",
+      "path": "package.json:scripts.schema:analyze",
+      "type": "npm-script",
+      "command": "schema-fixer analyze --root . --report .generated/schema-analysis.json",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "schema:fix:preview",
+      "path": "package.json:scripts.schema:fix:preview",
+      "type": "npm-script",
+      "command": "schema-fixer fix --root . --dry-run --report .generated/schema-migration-preview.json",
+      "category": "orchestration",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": true,
+      "complianceLevel": "should-be-symphonic"
+    },
+    {
+      "name": "schema:fix",
+      "path": "package.json:scripts.schema:fix",
+      "type": "npm-script",
+      "command": "schema-fixer fix --root . --autofix --report .generated/schema-migration-results.json",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": true,
+      "complexity": "simple",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
     }
   ],
   "violations": [
@@ -8029,6 +8081,12 @@
       "severity": "high"
     },
     {
+      "process": "generate:readme",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "generation",
+      "severity": "high"
+    },
+    {
       "process": "audit:hardcoded",
       "reason": "Process type requires symphonic structure but none found",
       "category": "validation",
@@ -8566,6 +8624,12 @@
       "process": "gen:registry:audit:docs",
       "reason": "Process type requires symphonic structure but none found",
       "category": "generation",
+      "severity": "high"
+    },
+    {
+      "process": "schema:fix:preview",
+      "reason": "Process type requires symphonic structure but none found",
+      "category": "orchestration",
       "severity": "high"
     }
   ],
@@ -12571,6 +12635,31 @@
       }
     },
     {
+      "process": "generate:readme",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/generate:readme-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "generate:readme",
+        "sequenceId": "generate:readme",
+        "name": "generate:readme Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
       "process": "audit:hardcoded",
       "action": "Convert to symphonic domain",
       "steps": [
@@ -14810,6 +14899,31 @@
         "id": "gen:registry:audit:docs",
         "sequenceId": "gen:registry:audit:docs",
         "name": "gen:registry:audit:docs Symphony",
+        "kind": "orchestration",
+        "status": "active",
+        "movements": [],
+        "governance": {
+          "policies": [],
+          "metrics": []
+        },
+        "events": []
+      }
+    },
+    {
+      "process": "schema:fix:preview",
+      "action": "Convert to symphonic domain",
+      "steps": [
+        "1. Create symphony definition: packages/orchestration/json-sequences/schema:fix:preview-symphony.json",
+        "2. Define movements (phases) and beats (operations)",
+        "3. Add telemetry/event recording at each beat",
+        "4. Register in orchestration-domains.json with 'orchestration' category",
+        "5. Update pre:manifests npm script to call symphony handler",
+        "6. Verify compliance: npm run audit:process-symphony"
+      ],
+      "template": {
+        "id": "schema:fix:preview",
+        "sequenceId": "schema:fix:preview",
+        "name": "schema:fix:preview Symphony",
         "kind": "orchestration",
         "status": "active",
         "movements": [],

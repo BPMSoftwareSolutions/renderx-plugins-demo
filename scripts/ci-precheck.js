@@ -39,10 +39,10 @@ function safeResolve(id) {
 }
 
 // 1) Resolve key packages (require.resolve)
-const resolvedHeader = safeResolve('@renderx-plugins/header');
+const resolvedHeader = safeResolve('@renderx-web/header');
 const resolvedHostSdk = safeResolve('@renderx-plugins/host-sdk');
 log('module resolution (require.resolve)', {
-  '@renderx-plugins/header': resolvedHeader || 'NOT RESOLVED',
+  '@renderx-web/header': resolvedHeader || 'NOT RESOLVED',
   '@renderx-plugins/host-sdk': resolvedHostSdk || 'NOT RESOLVED',
 });
 
@@ -73,14 +73,14 @@ async function tryImport(id) {
     return 'import FAILED: ' + (e?.message || e);
   }
 }
-const importHeader = await tryImport('@renderx-plugins/header');
+const importHeader = await tryImport('@renderx-web/header');
 const importHost = await tryImport('@renderx-plugins/host-sdk');
 log('module import (dynamic)', {
-  '@renderx-plugins/header': importHeader,
+  '@renderx-web/header': importHeader,
   '@renderx-plugins/host-sdk': importHost,
 });
 if (!importHeader.startsWith('import OK')) {
-  console.error('FATAL: cannot import @renderx-plugins/header');
+  console.error('FATAL: cannot import @renderx-web/header');
   fail = true;
 }
 
