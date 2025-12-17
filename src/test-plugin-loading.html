@@ -20,7 +20,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@renderx-plugins/control-panel": "/assets/vendor-control-panel.js"
+          "@renderx-web/control-panel": "/assets/vendor-control-panel.js"
         }
       }
     </script>
@@ -31,7 +31,7 @@
       try {
         if (import.meta.env && import.meta.env.DEV) {
           // Load the package stylesheet so Vite injects it as <style> at runtime.
-          await import('@renderx-plugins/control-panel/index.css');
+          await import('@renderx-web/control-panel/index.css');
         }
       } catch {}
     </script>

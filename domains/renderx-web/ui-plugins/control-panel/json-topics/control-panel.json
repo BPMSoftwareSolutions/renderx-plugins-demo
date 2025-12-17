@@ -12,6 +12,19 @@
     "control.panel.css.registry.updated": {
       "visibility": "public",
       "notes": "Published when the CSS registry is updated"
+    },
+    "control.panel.css.create.requested": {
+      "visibility": "public",
+      "notes": "Published when CSS creation is requested"
+    },
+    "control.panel.css.edit.requested": {
+      "visibility": "public",
+      "notes": "Published when CSS editing is requested"
+    },
+    "canvas.component.selections.cleared": {
+      "visibility": "public",
+      "notes": "Published when all component selections are cleared. This is a notify-only topic to avoid deselect loops.",
+      "routes": []
     }
   }
 }

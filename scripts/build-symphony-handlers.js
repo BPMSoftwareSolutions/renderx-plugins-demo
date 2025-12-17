@@ -312,27 +312,27 @@ const buildCanvasPackage = buildPackage(
 );
 
 const buildCanvasComponentPackage = buildPackage(
-  '@renderx-plugins/canvas-component',
+  '@renderx-web/canvas-component',
   'npm --prefix packages/canvas-component run build'
 );
 
 const buildControlPanelPackage = buildPackage(
-  '@renderx-plugins/control-panel',
+  '@renderx-web/control-panel',
   'npm --prefix packages/control-panel run build'
 );
 
 const buildHeaderPackage = buildPackage(
-  '@renderx-plugins/header',
+  '@renderx-web/header',
   'npm --prefix packages/header run build'
 );
 
 const buildLibraryPackage = buildPackage(
-  '@renderx-plugins/library',
+  '@renderx-web/library',
   'npm --prefix packages/library run build'
 );
 
 const buildLibraryComponentPackage = buildPackage(
-  '@renderx-plugins/library-component',
+  '@renderx-web/library-component',
   'npm --prefix packages/library-component run build'
 );
 

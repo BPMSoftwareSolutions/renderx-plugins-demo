@@ -7,7 +7,7 @@
  * - If dist/ exists, also verifies dist copies
  *
  * Fails fast (exit 1) if critical checks fail:
- * - cannot import @renderx-plugins/header
+ * - cannot import @renderx-web/header
  */
 
 import fs from 'fs';

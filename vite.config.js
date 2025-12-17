@@ -261,10 +261,11 @@ export default {
     // Allow Vite to discover and pre-bundle dependencies that need CommonJS-to-ESM transformation
     include: [
       // Pre-bundle React plugins that might have CommonJS dependencies
-      "@renderx-plugins/header",
-      "@renderx-plugins/library",
-      "@renderx-plugins/library-component",
-      "@renderx-plugins/control-panel",
+      "@renderx-web/header",
+      "@renderx-web/library",
+      "@renderx-web/library-component",
+      "@renderx-web/control-panel",
+      "@renderx-web/canvas-component",
       // Include any other dependencies that might need transformation
       "musical-conductor"
     ],
@@ -279,7 +280,7 @@ export default {
       "@renderx-plugins/host-sdk/core/startup/startupValidation",
       "@renderx-plugins/host-sdk/core/events/EventRouter",
       "@renderx-plugins/host-sdk/core/environment/feature-flags",
-      "@renderx-plugins/canvas-component",
+      "@renderx-web/canvas-component",
       "gif.js.optimized"
     ],
     // Enable discovery but be selective about what gets optimized

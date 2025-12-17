@@ -249,13 +249,11 @@
     "schema:fix": "schema-fixer fix --root . --autofix --report .generated/schema-migration-results.json"
   },
   "dependencies": {
-    "@renderx-plugins/canvas": "*",
     "@renderx-plugins/components": "*",
-    "@renderx-plugins/control-panel": "*",
     "@renderx-plugins/digital-assets": "*",
     "@renderx-plugins/host-sdk": "*",
-    "@renderx-plugins/library": "*",
     "@renderx-plugins/manifest-tools": "*",
+    "@renderx-web/canvas": "*",
     "@renderx-web/canvas-component": "*",
     "@renderx-web/control-panel": "*",
     "@renderx-web/header": "*",
