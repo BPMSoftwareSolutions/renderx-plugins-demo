@@ -46,12 +46,12 @@ What it runs:
      │  ├─ Build @renderx-plugins/musical-conductor
      │  ├─ Build @renderx-plugins/host-sdk
      │  ├─ Build @renderx-plugins/manifest-tools
-     │  ├─ Build @renderx-plugins/canvas
-     │  ├─ Build @renderx-plugins/canvas-component
-     │  ├─ Build @renderx-plugins/control-panel
-     │  ├─ Build @renderx-plugins/header
-     │  ├─ Build @renderx-plugins/library
-     │  ├─ Build @renderx-plugins/library-component
+     │  ├─ Build @renderx-web/canvas
+     │  ├─ Build @renderx-web/canvas-component
+     │  ├─ Build @renderx-web/control-panel
+     │  ├─ Build @renderx-web/header
+     │  ├─ Build @renderx-web/library
+     │  ├─ Build @renderx-web/library-component
      │  ├─ Build @renderx-plugins/real-estate-analyzer
      │  ├─ Build @renderx-plugins/self-healing
      │  └─ Build @renderx-plugins/slo-dashboard

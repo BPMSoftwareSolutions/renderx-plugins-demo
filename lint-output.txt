@@ -1,0 +1,1189 @@
+
+> renderx-plugins-demo@0.1.0 lint
+> eslint .
+
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\BUILD_SCRIPTS_COMPARISON.js
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/selection/selection.symphony' is not under src/ and is not a resolvable package            handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/classes/classes.symphony' is not under src/ and is not a resolvable package                handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/classes/classes.symphony' is not under src/ and is not a resolvable package                handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/update/update.symphony' is not under src/ and is not a resolvable package                  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/selection/selection.symphony' is not under src/ and is not a resolvable package            handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/classes/classes.symphony' is not under src/ and is not a resolvable package                handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/classes/classes.symphony' is not under src/ and is not a resolvable package                handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/update/update.symphony' is not under src/ and is not a resolvable package                  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony' is not under src/ and is not a resolvable package  handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+  8:1  error  handlersPath '@renderx-plugins/control-panel/symphonies/ui/ui.symphony' is not under src/ and is not a resolvable package                          handlers-path/valid-handlers-path
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\advanced-line.viewbox.autosize.spec.ts
+  17:10  warning  'makeCtx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.dom.spec.ts
+  16:10  warning  'makeCtx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.from-import.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.isolation.spec.ts
+  81:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.react.integration.spec.ts
+  76:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.react.spec.ts
+  68:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\create.svg.basic.spec.ts
+  18:10  warning  'makeCtx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\delete.spec.ts
+  40:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\deselection.spec.ts
+  35:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\drag.dom.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\drag.stage-crew.handlers.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\drag.transform.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export-import.content.spec.ts
+  108:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.integration.basic.spec.ts
+  56:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.integration.dom-errors.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.integration.dom-scan.spec.ts
+  20:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.integration.structure.spec.ts
+  26:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.io.spec.ts
+  56:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.pure.spec.ts
+  41:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\export.stage-crew.spec.ts
+  22:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\exports.spec.ts
+  4:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\flags.rules.sanitize.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\helpers\host-click-select.ts
+  16:33  error  Unknown topic 'canvas.component.select.requested' in EventRouter.publish()  topics-keys/valid-topics
+  51:33  error  Unknown topic 'canvas.component.select.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\host.harness.click-select.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.base-classes.spec.ts
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.instance-class.spec.ts
+  70:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.integration.spec.ts
+  91:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.nesting.spec.ts
+  62:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.selection.spec.ts
+  64:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\import.variant-toggle.spec.ts
+  49:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\line.svg.spec.ts
+  18:10  warning  'makeCtx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\lint.guardrails.spec.ts
+  8:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\manifest.runtime.entry.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\package.register.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\paste.stage-crew.handlers.spec.ts
+  24:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\react-code-validator.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\react-component-export-import.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\react-component.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\registerAllSequences.idempotency.spec.ts
+  8:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\resize.line.stage-crew.handlers.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\routing-declarations.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\select.overlay-container.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection-id-derivation.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection-post-externalization.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection-topic-first.spec.ts
+  32:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection-topic-publishing.spec.ts
+  27:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection.forwarding.spec.ts
+  28:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection.loop-regression.spec.ts
+  32:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection.overlay.advanced.handlers.spec.ts
+  54:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\selection.overlay.line.handlers.spec.ts
+  35:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\svg-node-click-select.spec.ts
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\__tests__\svg-node.update.spec.ts
+  44:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\create\create.from-import.ts
+  49:31  error  Unknown topic 'canvas.component.drag.start' in EventRouter.publish()         topics-keys/valid-topics
+  54:27  error  Unknown topic 'canvas.component.drag.move' in EventRouter.publish()          topics-keys/valid-topics
+  62:27  error  Unknown topic 'canvas.component.drag.end' in EventRouter.publish()           topics-keys/valid-topics
+  66:31  error  Unknown topic 'canvas.component.selection.changed' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\create\create.interactions.stage-crew.ts
+  175:13  error  Unknown topic 'canvas.component.select.svg-node.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\create\create.notify.ts
+  12:7  error  Unknown topic 'canvas.component.created' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\delete\delete.stage-crew.ts
+  18:31  error  Unknown topic 'canvas.component.deleted' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts
+  40:39  error  Unknown topic 'canvas.component.deselection.changed' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\import\import.file.stage-crew.ts
+  36:11  error  Unknown topic 'canvas.component.import.started' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts
+   1:1  error  Cannot analyze import flow: missing import.parse.pure.ts or import.nodes.stage-crew.ts files  import-css-injection-coverage/validate-import-css
+  66:9  error  Unknown topic 'canvas.component.import.completed' in EventRouter.publish()                    topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\import\import.parse.pure.ts
+  1:1  error  Cannot analyze import flow: missing import.parse.pure.ts or import.nodes.stage-crew.ts files  import-css-injection-coverage/validate-import-css
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\select\select.stage-crew.ts
+  143:39  error  Unknown topic 'canvas.component.selection.changed' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\update\update.stage-crew.ts
+  48:11  error  Unknown topic 'control.panel.update.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts
+  122:7  error  Unknown topic 'control.panel.update.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\handlers.drag.nodragimage.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\handlers.drop.container.spec.ts
+  14:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\handlers.drop.spec.ts
+  14:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\handlers.export.spec.ts
+  4:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\handlers.handlers.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\package.manifest.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\__tests__\register.spec.ts
+  22:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\src\symphonies\drop.container.symphony.ts
+  20:7  error  Unknown topic 'canvas.component.create.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\runtime\library-component\src\symphonies\drop.symphony.ts
+  26:7  error  Unknown topic 'canvas.component.create.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\canvas\__tests__\lint.guardrails.spec.ts
+  8:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\canvas\__tests__\ui.export.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\canvas\src\ui\CanvasDrop.ts
+  43:9  error  Unknown topic 'canvas.component.drag.start' in EventRouter.publish()  topics-keys/valid-topics
+  62:9  error  Unknown topic 'canvas.component.drag.move' in EventRouter.publish()   topics-keys/valid-topics
+  98:9  error  Unknown topic 'canvas.component.drag.end' in EventRouter.publish()    topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\canvas\src\ui\CanvasHeader.tsx
+  41:9  error  Unknown topic 'canvas.component.import.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\api.control-panel.css-management.retrieval.apply.spec.ts
+  21:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\api.control-panel.fields.lifecycle.spec.ts
+  35:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\api.control-panel.selection.derive.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\api.control-panel.state.update.refresh.spec.ts
+  11:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\api.control-panel.ui.bootstrap.spec.ts
+  24:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\bidirectional-sync.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\css.idempotency.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\eventrouter-communication.spec.ts
+   35:7   warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+   90:31  error    Unknown topic 'control.panel.selection.updated' in EventRouter.publish()        topics-keys/valid-topics
+  112:31  error    Unknown topic 'control.panel.classes.updated' in EventRouter.publish()          topics-keys/valid-topics
+  135:31  error    Unknown topic 'control.panel.css.registry.updated' in EventRouter.publish()     topics-keys/valid-topics
+  164:31  error    Unknown topic 'control.panel.selection.updated' in EventRouter.publish()        topics-keys/valid-topics
+  190:31  error    Unknown topic 'control.panel.selection.updated' in EventRouter.publish()        topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\exports.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\handlers.handlers.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\heading-level-sync.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\html.code-editor.fallback.spec.ts
+  43:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\html.code-editor.mapping.spec.ts
+  43:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\integration.end-to-end.spec.ts
+  28:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\interaction-routing.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\observer.store.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\react.code-editor.mapping.spec.ts
+  38:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\schema-resolver.memo.spec.ts
+  22:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\svg.code-editor.mapping.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\__tests__\ui-sequences.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\components\field-renderers\SvgNodeInspector.tsx
+  121:9  error  Unknown topic 'canvas.component.update.svg-node.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\components\field-renderers\SvgTreeView.tsx
+  193:9  error  Unknown topic 'canvas.component.select.svg-node.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\hooks\useControlPanelSequences.ts
+   87:11  error  Unknown topic 'control.panel.ui.render.requested' in EventRouter.publish()          topics-keys/valid-topics
+  125:11  error  Unknown topic 'control.panel.ui.field.change.requested' in EventRouter.publish()    topics-keys/valid-topics
+  159:11  error  Unknown topic 'control.panel.ui.field.validate.requested' in EventRouter.publish()  topics-keys/valid-topics
+  189:11  error  Unknown topic 'control.panel.ui.section.toggle.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\symphonies\classes\classes.symphony.ts
+  16:31  error  Unknown topic 'control.panel.classes.updated' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\symphonies\css-management\css-management.symphony.ts
+  29:29  error  Unknown topic 'control.panel.css.registry.updated' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\symphonies\selection\selection.symphony.ts
+  20:31  error  Unknown topic 'control.panel.selection.updated' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\control-panel\src\symphonies\update\update.symphony.ts
+  70:29  error  Unknown topic 'control.panel.selection.updated' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\header\__tests__\handlers.handlers.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\chat.utils.spec.ts
+  29:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\handlers.handlers.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\manifest.exports.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\openai.service.spec.ts
+  21:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\rag-enrichment.service.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\register.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\storage.utils.spec.ts
+  31:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\utils.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\__tests__\validation.utils.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\src\ui\LibraryPanel.tsx
+  91:9  error  Unknown topic 'library.load.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\domains\renderx-web\ui-plugins\library\src\ui\LibraryPreview.tsx
+  26:9  error  Unknown topic 'library.component.drag.start.requested' in EventRouter.publish()  topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\extract-handlers.js
+  47:16  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\blue-green-deployment.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\dark-launches.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\deployment-automation.ts
+   27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  119:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  136:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  159:34  warning  'env' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  162:39  warning  'env' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  166:32  warning  'version' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\feature-toggles.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\selective-deployment.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\self-service-deployment.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\deploy\version-control.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\monitor\federated-monitoring.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\monitor\full-stack-telemetry.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\monitor\visual-displays.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\cross-team-collaboration.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\immutable-infrastructure.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\proactive-detection.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\rollback-and-fix-forward.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\session-replay.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\respond\version-control.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\verify\production-testing.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\verify\test-automation.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\verify\test-data-management.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-deployment\verify\testing-non-functional-requirements-nfrs.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\architect\architecting-for-operations.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\architect\architecting-for-releasability.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\architect\architecting-for-testability.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\architect\separating-deployment-and-release.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\architect\threat-modeling.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\building-empathy-for-the-user.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\collaboration-and-research-around-customer-needs.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\customer-visits.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\designing-the-customer-experience.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\developing-personas-to-focus-design.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\gemba-walks.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\lean-ux-thinking.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\primary-market-research.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\secondary-market-research.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\collaborate-and-research\understanding-the-problem-space.ts
+  10:46  warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  28:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\hypothesize\innovation-accounting.ts
+   51:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   78:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  100:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  137:34  warning  'exp' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  143:34  warning  'exp' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  146:35  warning  'items' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\hypothesize\lean-startup-thinking.ts
+  17:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  22:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\bdd.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\creating-the-solution-vision.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\defining-a-backlog-of-clearly-written-features.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\economic-prioritization.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\maintaining-the-solution-roadmap.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-exploration\synthesize\pi-planning.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\build\application-security.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\build\build-and-test-automation.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\build\continuous-code-integration.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\build\gated-commit.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\build\trunk-based-development.ts
+   32:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   75:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   96:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  124:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\application-telemetry.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\bdd.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\breaking-features-into-stories.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\built-in-quality.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\tdd.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\threat-modeling.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\develop\version-control.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\stage\blue-green-deployment.ts
+  10:80  warning  'CDPMetricResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\stage\maintain-a-staging-environment.ts
+  10:80  warning  'CDPMetricResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\stage\system-demo.ts
+  10:80  warning  'CDPMetricResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\continuous-integration-and-suppliers.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\service-virtualization.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\test-and-production-environment-congruity.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\test-automation.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\test-data-management.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\continuous-integration\test-end-to-end\testing-non-functional-requirements-nfrs.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\registry.ts
+  77:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\learn\lean-startup-thinking.ts
+  17:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  22:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\learn\relentless-improvement.ts
+   26:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   47:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   68:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  134:40  warning  'items' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\learn\value-stream-mapping.ts
+  17:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  22:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\measure\application-telemetry.ts
+  14:3   warning  'CDPHandlerResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  74:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  95:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\measure\innovation-accounting.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:17  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\release\canary-releases.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\release\dark-launches.ts
+   28:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+  121:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+  141:33  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  142:37  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  143:39  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  144:36  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  145:36  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  146:34  warning  'featureId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\release\decoupled-release-elements.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\release\feature-toggles.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  38:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\stabilize\architect-for-operations.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\stabilize\continuous-security-monitoring.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\stabilize\cross-team-collaboration.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\stabilize\failover-disaster-recovery.ts
+   27:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   74:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+   93:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  113:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\continuous-delivery-pipeline\src\release-on-demand\stabilize\monitor-non-functional-requirements-nfrs.ts
+  17:15  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  23:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  28:18  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  33:16  warning  'context' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\src\symphonies\execute-sequence\execute-sequence.stage-crew.ts
+   13:23  warning  'executionContext' is assigned a value but never used. Allowed unused vars must match /^_/u    @typescript-eslint/no-unused-vars
+   44:21  warning  'executionContext' is assigned a value but never used. Allowed unused vars must match /^_/u    @typescript-eslint/no-unused-vars
+   57:34  warning  'executionContext' is assigned a value but never used. Allowed unused vars must match /^_/u    @typescript-eslint/no-unused-vars
+  140:11  warning  'conductor' is assigned a value but never used. Allowed unused vars must match /^_/u           @typescript-eslint/no-unused-vars
+  140:32  warning  'performanceMetrics' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  152:34  warning  'performanceMetrics' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  167:11  warning  'executionId' is assigned a value but never used. Allowed unused vars must match /^_/u         @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\src\symphonies\monitor\monitor.stage-crew.ts
+  108:11  warning  'conductor' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\real-estate-analyzer\__tests__\analysis.engine.spec.ts
+  6:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\real-estate-analyzer\__tests__\handlers.handlers.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\schema-fixer\src\__tests__\schema-fixer.spec.ts
+  1:32  warning  'beforeAll' is defined but never used. Allowed unused vars must match /^_/u        @typescript-eslint/no-unused-vars
+  2:8   warning  'path' is defined but never used. Allowed unused vars must match /^_/u             @typescript-eslint/no-unused-vars
+  3:10  warning  'SchemaValidator' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  4:10  warning  'SchemaAnalyzer' is defined but never used. Allowed unused vars must match /^_/u   @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\schema-fixer\src\cli.ts
+  13:10  warning  'AnalysisReport' is defined but never used. Allowed unused vars must match /^_/u   @typescript-eslint/no-unused-vars
+  13:26  warning  'MigrationResult' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\schema-fixer\src\lib\migration-framework.ts
+  5:10  warning  'MusicalSequence' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\schema-fixer\src\lib\schema-analyzer.ts
+   5:22  warning  'fs' is defined but never used. Allowed unused vars must match /^_/u                  @typescript-eslint/no-unused-vars
+  28:11  warning  'startTime' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\schema-fixer\src\lib\schema-validator.ts
+  7:8   warning  'path' is defined but never used. Allowed unused vars must match /^_/u             @typescript-eslint/no-unused-vars
+  8:10  warning  'MusicalSequence' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\anomaly.detect.spec.ts
+  46:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\anomaly.orchestrator.spec.ts
+  31:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\baseline.establish.spec.ts
+  24:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\100-shape-persistence.spec.ts
+  11:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\101-shape-hash-annotation.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\102-coverage-coupling.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\103-shape-budgets.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\104-shape-contracts.spec.ts
+  11:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\105-multi-feature-correlation.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\11-detect-behavioral-anomalies.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\12-detect-coverage-gaps.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\13-detect-error-patterns.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\14-aggregate-anomaly-results.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\15-store-anomaly-results.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\16-detect-anomalies-completed.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\17-analyze-requested.spec.ts
+  19:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\18-load-anomalies.spec.ts
+  21:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\19-load-codebase-info.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\20-analyze-performance-issues.spec.ts
+  20:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\21-analyze-behavioral-issues.spec.ts
+  19:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\24-aggregate-diagnosis.spec.ts
+  20:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\25-store-diagnosis.spec.ts
+  20:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\26-generate-fix-recommendations.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\27-analyze-completed.spec.ts
+  20:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\28-generate-fix-requested.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\29-load-diagnosis.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\30-generate-code-fix.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\31-generate-test-fix.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\32-generate-documentation-fix.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\33-create-patch.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\34-validate-syntax.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\35-store-patch.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\36-generate-fix-completed.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\37-validate-fix-requested.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\38-load-patch.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\39-apply-patch.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\40-run-unit-tests.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\41-run-integration-tests.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\42-validate-coverage.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\43-validate-performance.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\44-aggregate-validation-results.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\45-store-validation-results.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\46-validate-fix-completed.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\47-deploy-fix-requested.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\48-create-pull-request.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\49-run-c-i-tests.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\50-review-pull-request.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\51-merge-pull-request.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\52-deploy-to-staging.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\53-validate-staging-deployment.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\54-deploy-to-production.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\55-monitor-deployment.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\56-store-deployment-info.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\57-deploy-fix-completed.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\58-track-effectiveness-requested.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\59-load-deployment-metrics.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\60-compare-metrics.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\61-calculate-effectiveness.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\62-update-learning-model.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\63-generate-learning-report.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\64-store-learning-data.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\65-notify-stakeholders.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\66-archive-fix-data.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\67-track-effectiveness-completed.spec.ts
+  18:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\68-baseline-establish.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\69-assess-impact.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd-handlers\70-recommend-fixes.spec.ts
+  10:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\1-i-want-to-parse-production-logs-to-under.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\2-i-want-to-automatically-detect-anomalies.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\3-i-want-to-understand-root-causes-of-prod.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\4-i-want-to-automatically-generate-fixes-f.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\5-i-want-to-validate-fixes-before-deployin.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\6-i-want-to-safely-deploy-validated-fixes-.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\business-bdd\7-i-want-to-track-the-effectiveness-of-fix.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  36:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\deployment.deploy.spec.ts
+  14:7  warning  'ctx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\diagnosis.analyze.spec.ts
+  12:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\fix.generate.spec.ts
+  14:7  warning  'ctx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\learning.track.spec.ts
+  14:7  warning  'ctx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\telemetry.contract.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\telemetry.parse.spec.ts
+  23:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\self-healing\__tests__\validation.run.spec.ts
+  14:7  warning  'ctx' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd-handlers\01-load-budgets.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd-handlers\02-load-metrics.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd-handlers\03-compute-compliance.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd-handlers\04-serialize-dashboard-state.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd-handlers\05-trigger-export-download.spec.ts
+  7:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd\slo-dashboard-bdd.spec.ts
+  9:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\business-bdd\slo-dashboard-scenarios.generated.spec.ts
+  16:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\handlers.handlers.spec.ts
+  13:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\packages\slo-dashboard\__tests__\unit\compliance.spec.ts
+  5:7  warning  'ctx' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\src\domain\css\cssRegistry.facade.ts
+  34:29  error  Unknown topic 'control.panel.css.create.requested' in EventRouter.publish()  topics-keys/valid-topics
+  38:29  error  Unknown topic 'control.panel.css.edit.requested' in EventRouter.publish()    topics-keys/valid-topics
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\tests\ascii-sketcher.test.ts
+  10:3  warning  Unused eslint-disable directive (no problems were reported from 'no-cond-assign')
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\tests\drag-preview-handlers-runtime.spec.ts
+  16:3  warning  'renderTemplatePreview' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+c:\source\repos\bpm\internal\renderx-plugins-demo\tests\stats-enhancements.spec.ts
+  13:11  warning  'startTime' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+✖ 583 problems (68 errors, 515 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

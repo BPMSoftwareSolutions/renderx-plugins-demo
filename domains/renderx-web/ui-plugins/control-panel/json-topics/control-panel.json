@@ -21,6 +21,26 @@
       "visibility": "public",
       "notes": "Published when CSS editing is requested"
     },
+    "control.panel.update.requested": {
+      "visibility": "public",
+      "notes": "Published when control panel update is requested"
+    },
+    "control.panel.ui.field.change.requested": {
+      "visibility": "public",
+      "notes": "Published when UI field change is requested"
+    },
+    "control.panel.ui.field.validate.requested": {
+      "visibility": "public",
+      "notes": "Published when UI field validation is requested"
+    },
+    "control.panel.ui.render.requested": {
+      "visibility": "public",
+      "notes": "Published when UI render is requested"
+    },
+    "control.panel.ui.section.toggle.requested": {
+      "visibility": "public",
+      "notes": "Published when UI section toggle is requested"
+    },
     "canvas.component.selections.cleared": {
       "visibility": "public",
       "notes": "Published when all component selections are cleared. This is a notify-only topic to avoid deselect loops.",
