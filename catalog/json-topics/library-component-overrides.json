@@ -1,0 +1,9 @@
+{
+  "plugin": "LibraryComponentPlugin",
+  "topics": {
+    "library.component.drag.start.requested": {
+      "visibility": "public",
+      "notes": "Published when library component drag is requested"
+    }
+  }
+}

@@ -318,6 +318,20 @@ async function discoverTopicCatalogs() {
     // @renderx-plugins directory doesn't exist, skip
   }
 
+  // Discover all @renderx-web packages in node_modules
+  const renderxWebDir = join(nodeModulesDir, "@renderx-web");
+
+  try {
+    const packageDirs = await readdir(renderxWebDir);
+
+    for (const packageName of packageDirs) {
+      const packagePath = join(renderxWebDir, packageName);
+      await scanPackageForTopics(packagePath, packageName);
+    }
+  } catch {
+    // @renderx-web directory doesn't exist, skip
+  }
+
   // Also discover local packages in packages/ directory
   try {
     const localPackageDirs = await readdir(localPackagesDir);

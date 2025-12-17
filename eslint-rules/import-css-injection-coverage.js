@@ -82,19 +82,25 @@ function getComponentTypeFromJson(componentJson) {
 }
 
 function analyzeImportFlow(cwd) {
-  // Prefer local source files (legacy, pre-externalization)
+  // Check domain-driven architecture paths first (new structure)
   let parsePath = path.join(
     cwd,
-    "plugins",
+    "domains",
+    "renderx-web",
+    "runtime",
     "canvas-component",
+    "src",
     "symphonies",
     "import",
     "import.parse.pure.ts"
   );
   let nodesPath = path.join(
     cwd,
-    "plugins",
+    "domains",
+    "renderx-web",
+    "runtime",
     "canvas-component",
+    "src",
     "symphonies",
     "import",
     "import.nodes.stage-crew.ts"
@@ -103,25 +109,68 @@ function analyzeImportFlow(cwd) {
   let parseExists = fs.existsSync(parsePath);
   let nodesExists = fs.existsSync(nodesPath);
 
-  // Fallback to the externalized package in node_modules when local files are removed
+  // Fallback to legacy plugins directory
   if (!parseExists || !nodesExists) {
-    const externalDir = path.join(
+    parsePath = path.join(
+      cwd,
+      "plugins",
+      "canvas-component",
+      "symphonies",
+      "import",
+      "import.parse.pure.ts"
+    );
+    nodesPath = path.join(
+      cwd,
+      "plugins",
+      "canvas-component",
+      "symphonies",
+      "import",
+      "import.nodes.stage-crew.ts"
+    );
+    parseExists = fs.existsSync(parsePath);
+    nodesExists = fs.existsSync(nodesPath);
+  }
+
+  // Fallback to the externalized package in node_modules
+  if (!parseExists || !nodesExists) {
+    // Try @renderx-web first
+    let externalDir = path.join(
       cwd,
       "node_modules",
-      "@renderx-plugins",
+      "@renderx-web",
       "canvas-component",
       "dist",
       "symphonies",
       "import"
     );
-    const externalParse = path.join(externalDir, "import.parse.pure.js");
-    const externalNodes = path.join(externalDir, "import.nodes.stage-crew.js");
+    let externalParse = path.join(externalDir, "import.parse.pure.js");
+    let externalNodes = path.join(externalDir, "import.nodes.stage-crew.js");
 
     if (fs.existsSync(externalParse) && fs.existsSync(externalNodes)) {
       parsePath = externalParse;
       nodesPath = externalNodes;
       parseExists = true;
       nodesExists = true;
+    } else {
+      // Fallback to @renderx-plugins
+      externalDir = path.join(
+        cwd,
+        "node_modules",
+        "@renderx-plugins",
+        "canvas-component",
+        "dist",
+        "symphonies",
+        "import"
+      );
+      externalParse = path.join(externalDir, "import.parse.pure.js");
+      externalNodes = path.join(externalDir, "import.nodes.stage-crew.js");
+
+      if (fs.existsSync(externalParse) && fs.existsSync(externalNodes)) {
+        parsePath = externalParse;
+        nodesPath = externalNodes;
+        parseExists = true;
+        nodesExists = true;
+      }
     }
   }
 

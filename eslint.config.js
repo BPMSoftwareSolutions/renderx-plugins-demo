@@ -74,12 +74,16 @@ export default [
       ".vite/**",
       ".venv/**",
       "coverage/**",
+      ".generated/**",
       // Exclude Cypress E2E tests and support files from linting
       "cypress/e2e/**",
       "cypress/support/**",
   "scripts/codemods/**",
   "scripts/**",
       "docs/**",
+      // Documentation files in root
+      "BUILD_SCRIPTS_COMPARISON.js",
+      ".bak/**",
       // Ignore .NET build outputs and embedded frontend assets
       "src/RenderX.Shell.Avalonia/wwwroot/**",
       "src/RenderX.Shell.Avalonia/**/wwwroot/**",

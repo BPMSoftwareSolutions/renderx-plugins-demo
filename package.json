@@ -255,7 +255,7 @@
     "@renderx-plugins/manifest-tools": "*",
     "@renderx-web/canvas": "*",
     "@renderx-web/canvas-component": "*",
-    "@renderx-web/control-panel": "*",
+    "@renderx-web/control-panel": "^0.1.0-rc.9",
     "@renderx-web/header": "*",
     "@renderx-web/library": "*",
     "@renderx-web/library-component": "*",

@@ -247,3 +247,4 @@ cypress/videos/
 /json-components
 /json-sequences/control-panel
 /composites
+/nul
