@@ -7,10 +7,10 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
     EventRouter: {
       publish: (key: string, payload: any, conductor?: any) => {
         try {
-          const routeKey = key === "library.container.drop.requested"
-            ? "library.container.drop"
-            : key === "library.component.drop.requested"
-            ? "library.component.drop"
+          const routeKey = key === "library:container:drop"
+            ? "library:container:drop"
+            : key === "library:component:drop"
+            ? "library:component:drop"
             : null;
           if (routeKey && conductor?.play) {
             const r = (actual as any).resolveInteraction(routeKey);

@@ -133,9 +133,10 @@ export async function onDropForTest(
   };
 
   try {
+    // Topic names match the sequences exactly (source of truth in domains/renderx-web/runtime/library-component/json-sequences/)
     const topicKey = isContainer
-      ? "library.container.drop.requested"
-      : "library.component.drop.requested";
+      ? "library:container:drop"
+      : "library:component:drop";
 
     try {
       EventRouter.publish(
@@ -155,8 +156,8 @@ export async function onDropForTest(
     } catch {
       // Fallback to direct interaction routing
       const routeKey = isContainer
-        ? "library.container.drop"
-        : "library.component.drop";
+        ? "library:container:drop"
+        : "library:component:drop";
       const r = resolveInteraction(routeKey);
       conductor?.play?.(r.pluginId, r.sequenceId, {
         component,

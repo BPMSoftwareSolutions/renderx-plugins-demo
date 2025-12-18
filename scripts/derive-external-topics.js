@@ -278,6 +278,7 @@ export async function discoverSequenceFiles() {
 async function discoverTopicCatalogs() {
   const nodeModulesDir = join(rootDir, "node_modules");
   const localPackagesDir = join(rootDir, "packages");
+  const domainsDir = join(rootDir, "domains");
   const topicCatalogs = [];
 
   async function scanPackageForTopics(packagePath, packageName) {
@@ -350,6 +351,53 @@ async function discoverTopicCatalogs() {
     }
   } catch {
     // packages/ directory doesn't exist, skip
+  }
+
+  // Discover plugins in domains/ directory (e.g., domains/renderx-web/runtime/library-component)
+  try {
+    async function scanDomainsRecursively(dir, prefix = "") {
+      try {
+        const items = await readdir(dir);
+        for (const item of items) {
+          const itemPath = join(dir, item);
+          try {
+            const stat = await fs.stat(itemPath);
+            if (stat.isDirectory()) {
+              // Check if this directory has json-topics
+              const jsonTopicsDir = join(itemPath, "json-topics");
+              try {
+                const topicFiles = await readdir(jsonTopicsDir);
+                for (const topicFile of topicFiles) {
+                  if (topicFile.endsWith(".json")) {
+                    const topicPath = join(jsonTopicsDir, topicFile);
+                    const catalog = await readJsonSafe(topicPath);
+                    if (catalog && catalog.plugin && catalog.topics) {
+                      topicCatalogs.push({
+                        plugin: catalog.plugin,
+                        topics: catalog.topics,
+                        file: `domains/${prefix}${item}/json-topics/${topicFile}`,
+                        sourcePath: topicPath
+                      });
+                    }
+                  }
+                }
+              } catch {
+                // No json-topics in this directory, continue recursion
+              }
+              // Recurse into subdirectories
+              await scanDomainsRecursively(itemPath, prefix + item + "/");
+            }
+          } catch {
+            // Skip if not accessible
+          }
+        }
+      } catch {
+        // Directory doesn't exist or not accessible
+      }
+    }
+    await scanDomainsRecursively(domainsDir);
+  } catch {
+    // domains/ directory doesn't exist, skip
   }
 
   return topicCatalogs;
@@ -445,8 +493,9 @@ function extractTopicsFromSequenceBeats(seq) {
 
     for (const beat of movement.beats) {
       if (beat.event) {
-        // Convert colon-based event names to dot notation topic names
-        let topicName = beat.event.replace(/:/g, '.');
+        // Use beat.event exactly as defined in the sequence (source of truth)
+        // Do NOT transform colons to dots - sequences define the canonical topic names
+        let topicName = beat.event;
 
         // Check if sequence declares beat event transformations
         if (seq.sequence?.beatEventTransforms) {
