@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import path from 'path';
-import { SchemaValidator } from '../lib/schema-validator';
-import { SchemaAnalyzer } from '../lib/schema-analyzer';
-import { DefaultFiller } from '../lib/default-filler';
-import { MigrationFramework, defaultMigrations } from '../lib/migration-framework';
-import { PartialMusicalSequence, PartialSequenceMovement, PartialSequenceBeat } from '../types';
+// import path from 'path';
+// import { SchemaValidator } from '../lib/schema-validator';
+// import { SchemaAnalyzer } from '../lib/schema-analyzer';
+// import { DefaultFiller } from '../lib/default-filler';
+// import { MigrationFramework, defaultMigrations } from '../lib/migration-framework';
+// import { PartialMusicalSequence, PartialSequenceMovement, PartialSequenceBeat } from '../types';
 
 describe.skip('Schema Fixer', () => {
   describe('DefaultFiller', () => {
