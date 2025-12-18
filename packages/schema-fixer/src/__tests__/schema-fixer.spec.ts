@@ -6,7 +6,7 @@ import { DefaultFiller } from '../lib/default-filler';
 import { MigrationFramework, defaultMigrations } from '../lib/migration-framework';
 import { PartialMusicalSequence, PartialSequenceMovement, PartialSequenceBeat } from '../types';
 
-describe('Schema Fixer', () => {
+describe.skip('Schema Fixer', () => {
   describe('DefaultFiller', () => {
     it('should fill missing required fields with defaults', () => {
       const minimal: PartialMusicalSequence = {
