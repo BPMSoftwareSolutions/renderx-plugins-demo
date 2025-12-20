@@ -88,9 +88,41 @@ try {
     command = `"${pythonExe}" "${scriptPath}" ${scriptArgs.join(' ')}`;
   }
 
-  execSync(command, { stdio: 'inherit', shell: true });
+  // Set UTF-8 encoding for Python on Windows
+  const env = { ...process.env };
+  if (process.platform === 'win32') {
+    env.PYTHONIOENCODING = 'utf-8';
+  }
+  execSync(command, { stdio: 'inherit', shell: true, env });
 
 } catch (error) {
+  // Check if this is a "Python not found" error for an optional script
+  if (error.message && error.message.includes('Python not found')) {
+    // List of optional generation scripts that can be skipped
+    const optionalScripts = [
+      'regenerate_all.py',
+      'generate_test_graph.py',
+      'generate_self_sequences.py',
+      'generate_orchestration_diagram.py',
+      'generate_sequence_flow.py',
+      'analyze_self_graph.py',
+      'convert_to_svg.py'
+    ];
+    
+    // Check if this is an optional script
+    const isOptionalScript = pythonScript && optionalScripts.some(script => 
+      pythonScript.includes(script)
+    );
+    
+    if (isOptionalScript) {
+      console.warn(`⚠️  Python not found - skipping optional ographx generation script`);
+      console.warn(`   This is a development/generation script and not required for core functionality`);
+      console.warn(`   Install Python if you need code generation and self-analysis features`);
+      process.exit(0);  // Exit successfully to allow the build/dev process to continue
+    }
+  }
+  
+  // For non-optional scripts, fail with the error
   console.error(`Error: ${error.message}`);
   process.exit(1);
 }

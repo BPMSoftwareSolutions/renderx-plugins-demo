@@ -19,8 +19,6 @@ const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 const BUILD_LOG_PATH = join(rootDir, 'build.log');
 
-let logStream = null;
-let logBuffer = [];
 let isInitialized = false;
 let buildStats = {
   sequences: { files: 0, packages: 0 },
@@ -33,9 +31,52 @@ let buildStats = {
 /**
  * Initialize the build logger
  * Clears any existing build.log and prepares for new build session
+ * If the log already exists and has stats, preserve them
  */
 export async function initBuildLogger() {
   if (isInitialized) return;
+
+  // Try to read existing stats from the log file
+  try {
+    const existing = await fs.readFile(BUILD_LOG_PATH, 'utf-8');
+    // Extract stats from existing executive summary if present
+    const seqFilesMatch = existing.match(/Total Files Synced:\s+(\d+)/);
+    const seqPkgsMatch = existing.match(/Source Packages:\s+(\d+)/);
+    const compFilesMatch = existing.match(/COMPONENTS:\s+Total Files Synced:\s+(\d+)/);
+    const compPkgsMatch = existing.match(/COMPONENTS:.*?Source Packages:\s+(\d+)/s);
+    const topicsDerivedMatch = existing.match(/Total Topics Derived:\s+(\d+)/);
+    const topicsSeqMatch = existing.match(/Source Sequences Processed:\s+(\d+)/);
+    const topicsCatMatch = existing.match(/Source Topic Catalogs:\s+(\d+)/);
+    const topicsExplicitMatch = existing.match(/Explicit json-topics catalog:\s+(\d+)/);
+    const topicsSequenceMatch = existing.match(/Sequence file auto-derived:\s+(\d+)/);
+    const topicsLifecycleMatch = existing.match(/Lifecycle auto-generated:\s+(\d+)/);
+    const topicsBeatMatch = existing.match(/Beat events:\s+(\d+)/);
+    const interactionsDerivedMatch = existing.match(/INTERACTIONS:.*?Total Interactions Derived:\s+(\d+)/s);
+    const interactionsSeqMatch = existing.match(/INTERACTIONS:.*?Source Sequences Processed:\s+(\d+)/s);
+    const pluginsDiscoveredMatch = existing.match(/Total Plugins Discovered:\s+(\d+)/);
+    const pluginsTotalMatch = existing.match(/Total Plugins in Manifest:\s+(\d+)/);
+
+    if (seqFilesMatch) buildStats.sequences.files = parseInt(seqFilesMatch[1], 10);
+    if (seqPkgsMatch) buildStats.sequences.packages = parseInt(seqPkgsMatch[1], 10);
+    if (compFilesMatch) buildStats.components.files = parseInt(compFilesMatch[1], 10);
+    if (compPkgsMatch) buildStats.components.packages = parseInt(compPkgsMatch[1], 10);
+    if (topicsDerivedMatch) buildStats.topics.derived = parseInt(topicsDerivedMatch[1], 10);
+    if (topicsSeqMatch) buildStats.topics.sequences = parseInt(topicsSeqMatch[1], 10);
+    if (topicsCatMatch) buildStats.topics.catalogs = parseInt(topicsCatMatch[1], 10);
+    if (topicsExplicitMatch) buildStats.topics.bySource['explicit-json-topics-catalog'] = parseInt(topicsExplicitMatch[1], 10);
+    if (topicsSequenceMatch) buildStats.topics.bySource['sequence-file'] = parseInt(topicsSequenceMatch[1], 10);
+    if (topicsLifecycleMatch) buildStats.topics.bySource['lifecycle-auto-generated'] = parseInt(topicsLifecycleMatch[1], 10);
+    if (topicsBeatMatch) buildStats.topics.bySource['beat-event'] = parseInt(topicsBeatMatch[1], 10);
+    if (interactionsDerivedMatch) buildStats.interactions.derived = parseInt(interactionsDerivedMatch[1], 10);
+    if (interactionsSeqMatch) buildStats.interactions.sequences = parseInt(interactionsSeqMatch[1], 10);
+    if (pluginsDiscoveredMatch) buildStats.plugins.discovered = parseInt(pluginsDiscoveredMatch[1], 10);
+    if (pluginsTotalMatch) buildStats.plugins.total = parseInt(pluginsTotalMatch[1], 10);
+
+    isInitialized = true;
+    return; // Log already exists with stats
+  } catch {
+    // File doesn't exist, create new
+  }
 
   const timestamp = new Date().toISOString();
   const header = `
@@ -68,9 +109,31 @@ export function updateBuildStats(category, field, value) {
 
 /**
  * Write executive summary at the beginning of the log
+ * Preserves any detailed operations that were already appended
  */
 export async function writeExecutiveSummary() {
+  // Ensure we've loaded any existing stats from the log
+  await initBuildLogger();
+
   const timestamp = new Date().toISOString();
+
+  // Read the existing log to preserve detailed operations
+  let existingContent = '';
+  try {
+    existingContent = await fs.readFile(BUILD_LOG_PATH, 'utf-8');
+    // Extract everything after the "DETAILED OPERATIONS LOG" section
+    const detailsMarker = 'DETAILED OPERATIONS LOG\n' + '='.repeat(80);
+    const detailsIndex = existingContent.indexOf(detailsMarker);
+    if (detailsIndex !== -1) {
+      // Keep everything after the marker
+      existingContent = existingContent.substring(detailsIndex + detailsMarker.length);
+    } else {
+      existingContent = '';
+    }
+  } catch {
+    existingContent = '';
+  }
+
   const summary = `
 ${'='.repeat(80)}
 BUILD CATALOG TELEMETRY LOG
@@ -111,8 +174,7 @@ ${'='.repeat(80)}
 
 DETAILED OPERATIONS LOG
 ${'='.repeat(80)}
-
-`;
+${existingContent}`;
 
   await fs.writeFile(BUILD_LOG_PATH, summary, 'utf-8');
 }

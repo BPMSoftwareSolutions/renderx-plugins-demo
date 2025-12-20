@@ -21,7 +21,7 @@
 import { promises as fs } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { logSection, logPluginDiscovery, logSummary } from "./build-logger.js";
+import { logSection, logPluginDiscovery, logSummary, updateBuildStats, writeExecutiveSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -203,13 +203,21 @@ async function aggregate() {
 
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
 
+  // Update build stats
+  const externalPluginsCount = external.flatMap((e) => e.fragment.plugins || []).length;
+  updateBuildStats('plugins', 'discovered', externalPluginsCount);
+  updateBuildStats('plugins', 'total', merged.plugins.length);
+
   await logSummary('AGGREGATE PLUGINS', {
     'Base Plugins': base.plugins?.length || 0,
     'External Packages Discovered': external.length,
-    'External Plugins Found': external.flatMap((e) => e.fragment.plugins || []).length,
+    'External Plugins Found': externalPluginsCount,
     'Total Merged Plugins': merged.plugins.length,
     'Output File': generatedOut
   });
+
+  // Update executive summary with current stats
+  await writeExecutiveSummary();
 
   console.log(
     `🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`

@@ -84,12 +84,12 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Map 6 movements → BDD scenarios with orchestration phase integration
 - Validate governance compliance (verify:orchestration:governance)
 
-**Acceptance Criteria (Legacy)**:
-- Feature file contains exactly 11 scenarios mapping 6 movements
-- Each scenario includes Given-When-Then steps with orchestration context
-- All scenarios reference actual movement names and event types
-- verify:orchestration:governance passes with no violations
-- Musical-conductor domain auto-appears in orchestration registry
+**Acceptance Criteria (Structured GWT)**:
+- 
+- 
+- 
+- 
+- 
 
 ### Sprint sprint-2: Step Definition Implementation & Test Integration
 **Status**: in-progress | **Duration**: 1w
@@ -100,11 +100,11 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Execute full BDD suite against orchestration engine
 - Establish baseline coverage metrics
 
-**Acceptance Criteria (Legacy)**:
-- ≥80% of step definitions implemented and passing
-- All orchestration interface calls properly mocked/stubbed
-- Test suite executes without errors
-- Coverage report shows baseline metrics
+**Acceptance Criteria (Structured GWT)**:
+- 
+- 
+- 
+- 
 
 ### Sprint sprint-3: Extended Domain BDD Specs (5 Additional Domains)
 **Status**: pending | **Duration**: 1w
@@ -115,11 +115,11 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Establish baseline feature coverage across all domains
 - Validate cross-domain orchestration patterns
 
-**Acceptance Criteria (Legacy)**:
-- All 6 domains have feature files registered in BDD manifest
-- Each domain has ≥1 scenario with Given-When-Then steps
-- Step definitions cover common orchestration patterns
-- BDD suite executes with ≥95% pass rate across all domains
+**Acceptance Criteria (Structured GWT)**:
+- 
+- 
+- 
+- 
 
 ### Sprint sprint-4: Governance Documentation & Compliance Validation
 **Status**: pending | **Duration**: 1w
@@ -130,12 +130,12 @@ Establish comprehensive BDD specification framework for orchestration domains, i
 - Auto-generate markdown documentation from JSON authority
 - Validate end-to-end governance compliance
 
-**Acceptance Criteria (Legacy)**:
-- Both JSON authority files created and well-formed
-- Manifest entries include proper hash_strategy and generator references
-- Auto-generated markdown files created with AUTO-GENERATED headers
-- verify:orchestration:governance passes with zero violations
-- Hash validation confirms no drift between JSON sources and markdown
+**Acceptance Criteria (Structured GWT)**:
+- 
+- 
+- 
+- 
+- 
 
 ## Key Insights
 - BDD pipeline is JSON-first: orchestration domain authority → feature specs → step implementations

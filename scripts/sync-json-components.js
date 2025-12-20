@@ -12,7 +12,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from 'fs/promises';
 import { join, dirname, resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
-import { logSection, logFileCopy, logSummary } from './build-logger.js';
+import { logSection, logFileCopy, logSummary, updateBuildStats } from './build-logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -140,11 +140,17 @@ async function syncJsonComponents() {
       console.log(`  ↪️  [local] ${fileName}`);
     }
 
+    const totalFiles = already.size + localCopied;
+
+    // Update build stats
+    updateBuildStats('components', 'files', totalFiles);
+    updateBuildStats('components', 'packages', pkgDirs.length);
+
     await logSummary('SYNC JSON COMPONENTS', {
       'Package Dirs Found': pkgDirs.length,
       'Files from Packages': already.size,
       'Files from Local Catalog': localCopied,
-      'Total Files': already.size + localCopied,
+      'Total Files': totalFiles,
       'Destination': targetDir
     });
 

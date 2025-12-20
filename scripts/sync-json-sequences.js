@@ -8,7 +8,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { logSection, logFileCopy, logSummary } from "./build-logger.js";
+import { logSection, logFileCopy, logSummary, updateBuildStats } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -56,6 +56,7 @@ async function copyTreeWithBase(src, dst, baseLabel, context = {}) {
     return [];
   });
   console.log(`📂 Reading ${src}: found ${entries.length} entries`);
+  let filesCopied = 0;
   for (const ent of entries) {
     const srcPath = join(src, ent.name);
     const dstPath = join(dst, ent.name);
@@ -66,13 +67,16 @@ async function copyTreeWithBase(src, dst, baseLabel, context = {}) {
       if (s) { isDir = s.isDirectory(); isFile = s.isFile(); }
     }
     if (isDir) {
-      await copyTreeWithBase(srcPath, dstPath, baseLabel, context);
+      const subFilesCopied = await copyTreeWithBase(srcPath, dstPath, baseLabel, context);
+      filesCopied += subFilesCopied;
     } else if (isFile && ent.name.endsWith(".json")) {
       await copyFile(srcPath, dstPath, context);
       const rel = srcPath.replace(baseLabel + "\\", "").replace(baseLabel + "/", "");
       console.log(`  ✅ Copied ${rel}`);
+      filesCopied++;
     }
   }
+  return filesCopied;
 }
 
 async function discoverRenderxSequencePackages(nodeModulesDir) {
@@ -134,7 +138,7 @@ async function syncJsonSequences() {
     let totalFiles = 0;
 
     // Copy repo-local sequences first
-    await copyTreeWithBase(sourceDir, targetDir, sourceDir, { source: 'repo-local' });
+    totalFiles += await copyTreeWithBase(sourceDir, targetDir, sourceDir, { source: 'repo-local' });
 
     // Then copy any package-provided sequences from node_modules (declared via package.json renderx.sequences)
     const nodeModulesDir = join(rootDir, 'node_modules');
@@ -144,7 +148,7 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel}`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+        totalFiles += await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
           source: 'node_modules-package',
           packageName: pkgName
         });
@@ -161,16 +165,21 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+        totalFiles += await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
           source: 'local-package',
           packageName: pkgName
         });
       }
     }
 
+    // Update build stats
+    updateBuildStats('sequences', 'files', totalFiles);
+    updateBuildStats('sequences', 'packages', pkgs.length + localPkgs.length);
+
     await logSummary("SYNC JSON SEQUENCES", {
       "Source Directory": sourceDir,
       "Destination": targetDir,
+      "Total Files Synced": totalFiles,
       "Node Modules Packages": pkgs.length,
       "Local Packages": localPkgs.length,
       "Total Package Sources": pkgs.length + localPkgs.length
