@@ -121,14 +121,29 @@ export async function writeExecutiveSummary() {
   let existingContent = '';
   try {
     existingContent = await fs.readFile(BUILD_LOG_PATH, 'utf-8');
-    // Extract everything after the "DETAILED OPERATIONS LOG" section
-    const detailsMarker = 'DETAILED OPERATIONS LOG\n' + '='.repeat(80);
-    const detailsIndex = existingContent.indexOf(detailsMarker);
-    if (detailsIndex !== -1) {
-      // Keep everything after the marker
-      existingContent = existingContent.substring(detailsIndex + detailsMarker.length);
+
+    // Check if this is the initial log (has placeholder text) or has real content
+    if (existingContent.includes('(This section will be updated')) {
+      // Initial log - extract everything after the placeholder
+      const lines = existingContent.split('\n');
+      let startIndex = 0;
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].includes('(This section will be updated')) {
+          startIndex = i + 2; // Skip the placeholder and next blank line
+          break;
+        }
+      }
+      existingContent = lines.slice(startIndex).join('\n');
     } else {
-      existingContent = '';
+      // Has executive summary - extract everything after the "DETAILED OPERATIONS LOG" section
+      const detailsMarker = 'DETAILED OPERATIONS LOG\n' + '='.repeat(80);
+      const detailsIndex = existingContent.indexOf(detailsMarker);
+      if (detailsIndex !== -1) {
+        // Keep everything after the marker
+        existingContent = existingContent.substring(detailsIndex + detailsMarker.length);
+      } else {
+        existingContent = '';
+      }
     }
   } catch {
     existingContent = '';
@@ -251,6 +266,29 @@ ${'-'.repeat(80)}
 ${'-'.repeat(80)}`;
 
   await appendToLog(section);
+}
+
+/**
+ * Log a package summary header
+ * Shows summary stats for a specific package being processed
+ */
+export async function logPackageSummary({ packageName, catalogType, stats = {} }) {
+  if (!isInitialized) {
+    await initBuildLogger();
+  }
+
+  const timestamp = new Date().toISOString();
+  let content = `
+[${timestamp}] 📦 PACKAGE: ${packageName} (${catalogType})`;
+
+  if (Object.keys(stats).length > 0) {
+    content += '\n  Summary:';
+    for (const [key, value] of Object.entries(stats)) {
+      content += `\n    ${key}: ${value}`;
+    }
+  }
+
+  await appendToLog(content);
 }
 
 /**

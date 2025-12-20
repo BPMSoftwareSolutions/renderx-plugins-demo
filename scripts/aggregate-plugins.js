@@ -21,7 +21,7 @@
 import { promises as fs } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { logSection, logPluginDiscovery, logSummary, updateBuildStats, writeExecutiveSummary } from "./build-logger.js";
+import { logSection, logPluginDiscovery, logSummary, logPackageSummary, updateBuildStats, writeExecutiveSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -131,9 +131,23 @@ async function aggregate() {
     if (info) external.push(info);
   }
 
-  // Log each discovered plugin
+  // Log each discovered plugin with package summaries
   for (const info of external) {
-    for (const plugin of info.fragment.plugins || []) {
+    const plugins = info.fragment.plugins || [];
+
+    // Log package summary
+    await logPackageSummary({
+      packageName: info.pkgJson?.name || info.pkgDir,
+      catalogType: 'plugins',
+      stats: {
+        'Plugins Found': plugins.length,
+        'UI Plugins': plugins.filter(p => p.ui).length,
+        'Runtime Plugins': plugins.filter(p => p.runtime).length
+      }
+    });
+
+    // Log each plugin detail
+    for (const plugin of plugins) {
       await logPluginDiscovery(
         info.pkgDir,
         plugin

@@ -8,7 +8,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { logSection, logFileCopy, logSummary, updateBuildStats } from "./build-logger.js";
+import { logSection, logFileCopy, logSummary, logPackageSummary, updateBuildStats } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -145,14 +145,28 @@ async function syncJsonSequences() {
     const pkgs = await discoverRenderxSequencePackages(nodeModulesDir);
     for (const pkg of pkgs) {
       const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
+      let pkgFileCount = 0;
+
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel}`);
-        totalFiles += await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+        const filesCopied = await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
           source: 'node_modules-package',
           packageName: pkgName
         });
+        pkgFileCount += filesCopied;
+        totalFiles += filesCopied;
       }
+
+      // Log package summary
+      await logPackageSummary({
+        packageName: pkgName,
+        catalogType: 'sequences',
+        stats: {
+          'Sequence Files': pkgFileCount,
+          'Sequence Paths': pkg.sequences.length
+        }
+      });
     }
 
     // Also copy sequences from local packages/ directory
@@ -162,14 +176,28 @@ async function syncJsonSequences() {
     console.log(`🔍 Found ${localPkgs.length} local packages with sequences`);
     for (const pkg of localPkgs) {
       const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
+      let pkgFileCount = 0;
+
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
-        totalFiles += await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+        const filesCopied = await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
           source: 'local-package',
           packageName: pkgName
         });
+        pkgFileCount += filesCopied;
+        totalFiles += filesCopied;
       }
+
+      // Log package summary
+      await logPackageSummary({
+        packageName: pkgName,
+        catalogType: 'sequences',
+        stats: {
+          'Sequence Files': pkgFileCount,
+          'Sequence Paths': pkg.sequences.length
+        }
+      });
     }
 
     // Update build stats

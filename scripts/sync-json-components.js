@@ -12,7 +12,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from 'fs/promises';
 import { join, dirname, resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
-import { logSection, logFileCopy, logSummary, updateBuildStats } from './build-logger.js';
+import { logSection, logFileCopy, logSummary, logPackageSummary, updateBuildStats } from './build-logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -118,6 +118,17 @@ async function syncJsonComponents() {
     if (pkgDirs.length) console.log(`  📦 Found ${pkgDirs.length} package component dir(s)`);
     for (const dir of pkgDirs) {
       const files = await listJsonFiles(dir);
+
+      // Log package summary
+      const pkgName = dir.split(sep).slice(-2).join('/'); // Get last 2 parts of path (e.g., @scope/package)
+      await logPackageSummary({
+        packageName: pkgName,
+        catalogType: 'components',
+        stats: {
+          'Component Files': files.length
+        }
+      });
+
       for (const abs of files) {
         const fileName = abs.split(sep).pop();
         if (!fileName) continue;
