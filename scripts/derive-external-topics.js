@@ -35,6 +35,7 @@ import { promises as fs } from "fs";
 import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { logSection, logCatalogOperation, logSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -536,6 +537,8 @@ function extractLifecycleTopicsFromSequence(seq) {
 }
 
 export async function generateExternalTopicsCatalog() {
+  await logSection('DERIVE EXTERNAL TOPICS FROM SEQUENCES');
+
   const sequences = await discoverSequenceFiles();
   const topicCatalogs = await discoverTopicCatalogs();
   const topics = {};
@@ -550,6 +553,19 @@ export async function generateExternalTopicsCatalog() {
           visibility: topicData.visibility || "public",
           notes: topicData.notes || `Declared in ${catalog.file}`
         };
+
+        await logCatalogOperation({
+          stage: 'DERIVE_TOPIC',
+          catalogType: 'topics',
+          source: catalog.sourcePath || catalog.file,
+          destination: 'topics-manifest.json',
+          metadata: {
+            topicName,
+            source: 'explicit-json-topics-catalog',
+            pluginId: catalog.plugin,
+            visibility: topicData.visibility || "public"
+          }
+        });
       }
     }
   }
@@ -592,6 +608,22 @@ export async function generateExternalTopicsCatalog() {
           visibility: "public",
           notes: `Auto-derived from ${seq.file}`
         };
+
+        await logCatalogOperation({
+          stage: 'DERIVE_TOPIC',
+          catalogType: 'topics',
+          source: seq.sourcePath || seq.file,
+          destination: 'topics-manifest.json',
+          metadata: {
+            topicName: routedTopicName,
+            source: 'sequence-file',
+            pluginId: seq.pluginId,
+            sequenceId: seq.sequenceId,
+            derivedFrom: seq.sequenceId,
+            isRequested,
+            routeToBase: routedTopicName !== topicName
+          }
+        });
       }
     }
 
@@ -610,6 +642,21 @@ export async function generateExternalTopicsCatalog() {
           visibility: "public",
           notes: lifecycleTopic.notes
         };
+
+        await logCatalogOperation({
+          stage: 'DERIVE_TOPIC',
+          catalogType: 'topics',
+          source: seq.sourcePath || seq.file,
+          destination: 'topics-manifest.json',
+          metadata: {
+            topicName: lifecycleTopic.name,
+            source: 'lifecycle-auto-generated',
+            pluginId: seq.pluginId,
+            sequenceId: seq.sequenceId,
+            type: lifecycleTopic.type,
+            routed: lifecycleTopic.routes.length > 0
+          }
+        });
       }
     }
 
@@ -625,9 +672,30 @@ export async function generateExternalTopicsCatalog() {
           visibility: "public",
           notes: beatTopic.notes
         };
+
+        await logCatalogOperation({
+          stage: 'DERIVE_TOPIC',
+          catalogType: 'topics',
+          source: seq.sourcePath || seq.file,
+          destination: 'topics-manifest.json',
+          metadata: {
+            topicName: beatTopic.name,
+            source: 'beat-event',
+            pluginId: beatTopic.pluginId,
+            sequenceId: beatTopic.sequenceId,
+            beatKind: beatTopic.kind,
+            isNotifyOnly
+          }
+        });
       }
     }
   }
+
+  await logSummary('DERIVE EXTERNAL TOPICS', {
+    'Total Topics Derived': Object.keys(topics).length,
+    'Sequences Processed': sequences.length,
+    'Topic Catalogs Found': topicCatalogs.length
+  });
 
   // Add backward compatibility aliases from sequence declarations
   const aliasesToAdd = {};
@@ -748,9 +816,11 @@ function findSimilarTopics(missingRoute, topics) {
 }
 
 export async function generateExternalInteractionsCatalog() {
+  await logSection('DERIVE EXTERNAL INTERACTIONS FROM SEQUENCES');
+
   const sequences = await discoverSequenceFiles();
   const routes = {};
-  
+
   for (const seq of sequences) {
     const interaction = deriveInteractionFromSequence(seq);
     if (interaction) {
@@ -758,9 +828,27 @@ export async function generateExternalInteractionsCatalog() {
         pluginId: interaction.pluginId,
         sequenceId: interaction.sequenceId
       };
+
+      await logCatalogOperation({
+        stage: 'DERIVE_INTERACTION',
+        catalogType: 'interactions',
+        source: seq.sourcePath || seq.file,
+        destination: 'interaction-manifest.json',
+        metadata: {
+          route: interaction.route,
+          pluginId: interaction.pluginId,
+          sequenceId: interaction.sequenceId,
+          derivedFrom: seq.sequenceId
+        }
+      });
     }
   }
-  
+
+  await logSummary('DERIVE EXTERNAL INTERACTIONS', {
+    'Total Interactions Derived': Object.keys(routes).length,
+    'Sequences Processed': sequences.length
+  });
+
   return { routes };
 }
 
