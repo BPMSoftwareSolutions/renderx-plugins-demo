@@ -35,7 +35,7 @@ import { promises as fs } from "fs";
 import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { logSection, logCatalogOperation, logSummary } from "./build-logger.js";
+import { logSection, logCatalogOperation, logSummary, updateBuildStats } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -691,10 +691,29 @@ export async function generateExternalTopicsCatalog() {
     }
   }
 
+  // Count topics by source based on notes patterns
+  const topicsBySource = {};
+  for (const [topicName, topicData] of Object.entries(topics)) {
+    const notes = topicData.notes || '';
+    const source = notes.includes('Auto-derived from beat event') ? 'beat-event' :
+                   notes.includes('Auto-derived from') ? 'sequence-file' :
+                   notes.includes('lifecycle') || notes.includes('Auto-generated') ? 'lifecycle-auto-generated' :
+                   notes.includes('Published when') || notes.includes('Declared') ? 'explicit-json-topics-catalog' :
+                   notes.includes('alias') ? 'alias' : 'other';
+    topicsBySource[source] = (topicsBySource[source] || 0) + 1;
+  }
+
+  // Update build stats
+  updateBuildStats('topics', 'derived', Object.keys(topics).length);
+  updateBuildStats('topics', 'sequences', sequences.length);
+  updateBuildStats('topics', 'catalogs', topicCatalogs.length);
+  updateBuildStats('topics', 'bySource', topicsBySource);
+
   await logSummary('DERIVE EXTERNAL TOPICS', {
     'Total Topics Derived': Object.keys(topics).length,
     'Sequences Processed': sequences.length,
-    'Topic Catalogs Found': topicCatalogs.length
+    'Topic Catalogs Found': topicCatalogs.length,
+    'By Source': topicsBySource
   });
 
   // Add backward compatibility aliases from sequence declarations
@@ -844,6 +863,10 @@ export async function generateExternalInteractionsCatalog() {
     }
   }
 
+  // Update build stats
+  updateBuildStats('interactions', 'derived', Object.keys(routes).length);
+  updateBuildStats('interactions', 'sequences', sequences.length);
+
   await logSummary('DERIVE EXTERNAL INTERACTIONS', {
     'Total Interactions Derived': Object.keys(routes).length,
     'Sequences Processed': sequences.length
@@ -854,6 +877,8 @@ export async function generateExternalInteractionsCatalog() {
 
 // CLI usage
 async function main() {
+  const { writeExecutiveSummary } = await import('./build-logger.js');
+
   const topics = await generateExternalTopicsCatalog();
   const interactions = await generateExternalInteractionsCatalog();
 
@@ -870,6 +895,9 @@ async function main() {
     join(rootDir, "derived-external-interactions.json"),
     JSON.stringify(interactions, null, 2)
   );
+
+  // Update executive summary in build log
+  await writeExecutiveSummary();
 
   console.log("✅ Written derived catalogs to temp files");
 }

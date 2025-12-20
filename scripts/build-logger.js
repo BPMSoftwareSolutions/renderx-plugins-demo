@@ -22,6 +22,13 @@ const BUILD_LOG_PATH = join(rootDir, 'build.log');
 let logStream = null;
 let logBuffer = [];
 let isInitialized = false;
+let buildStats = {
+  sequences: { files: 0, packages: 0 },
+  components: { files: 0, packages: 0 },
+  topics: { derived: 0, sequences: 0, catalogs: 0, bySource: {} },
+  interactions: { derived: 0, sequences: 0 },
+  plugins: { discovered: 0, total: 0 }
+};
 
 /**
  * Initialize the build logger
@@ -37,11 +44,77 @@ BUILD CATALOG TELEMETRY LOG
 Started: ${timestamp}
 ${'='.repeat(80)}
 
+EXECUTIVE SUMMARY
+(This section will be updated at the end of the build with final statistics)
+
 `;
 
   await fs.writeFile(BUILD_LOG_PATH, header, 'utf-8');
   isInitialized = true;
   console.log(`📋 Build log initialized: ${BUILD_LOG_PATH}`);
+}
+
+/**
+ * Update build statistics
+ */
+export function updateBuildStats(category, field, value) {
+  if (!buildStats[category]) buildStats[category] = {};
+  if (typeof value === 'number') {
+    buildStats[category][field] = (buildStats[category][field] || 0) + value;
+  } else {
+    buildStats[category][field] = value;
+  }
+}
+
+/**
+ * Write executive summary at the beginning of the log
+ */
+export async function writeExecutiveSummary() {
+  const timestamp = new Date().toISOString();
+  const summary = `
+${'='.repeat(80)}
+BUILD CATALOG TELEMETRY LOG
+Started: ${timestamp}
+${'='.repeat(80)}
+
+EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+Build Catalog Extraction Audit
+
+SEQUENCES:
+  Total Files Synced: ${buildStats.sequences.files || 0}
+  Source Packages: ${buildStats.sequences.packages || 0}
+
+COMPONENTS:
+  Total Files Synced: ${buildStats.components.files || 0}
+  Source Packages: ${buildStats.components.packages || 0}
+
+TOPICS:
+  Total Topics Derived: ${buildStats.topics.derived || 0}
+  Source Sequences Processed: ${buildStats.topics.sequences || 0}
+  Source Topic Catalogs: ${buildStats.topics.catalogs || 0}
+  By Derivation Method:
+    - Explicit json-topics catalog: ${buildStats.topics.bySource['explicit-json-topics-catalog'] || 0}
+    - Sequence file auto-derived: ${buildStats.topics.bySource['sequence-file'] || 0}
+    - Lifecycle auto-generated: ${buildStats.topics.bySource['lifecycle-auto-generated'] || 0}
+    - Beat events: ${buildStats.topics.bySource['beat-event'] || 0}
+
+INTERACTIONS:
+  Total Interactions Derived: ${buildStats.interactions.derived || 0}
+  Source Sequences Processed: ${buildStats.interactions.sequences || 0}
+
+PLUGINS:
+  Total Plugins Discovered: ${buildStats.plugins.discovered || 0}
+  Total Plugins in Manifest: ${buildStats.plugins.total || 0}
+
+${'='.repeat(80)}
+
+DETAILED OPERATIONS LOG
+${'='.repeat(80)}
+
+`;
+
+  await fs.writeFile(BUILD_LOG_PATH, summary, 'utf-8');
 }
 
 /**
