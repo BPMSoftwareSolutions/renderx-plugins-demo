@@ -12,6 +12,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from 'fs/promises';
 import { join, dirname, resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
+import { logSection, logFileCopy, logSummary } from './build-logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,10 +39,17 @@ async function ensureDir(dir) {
   try { await mkdir(dir, { recursive: true }); } catch (err) { if (err.code !== 'EEXIST') throw err; }
 }
 
-async function copyFile(source, target) {
+async function copyFile(source, target, context = {}) {
   const content = await readFile(source);
   await ensureDir(dirname(target));
   await writeFile(target, content);
+
+  // Log the copy operation
+  await logFileCopy(source, target, {
+    catalogType: 'components',
+    size: content.length,
+    metadata: context
+  });
 }
 
 async function safeJsonRead(p) {
@@ -98,6 +106,7 @@ async function discoverComponentPackageDirs() {
 
 async function syncJsonComponents() {
   console.log('🔄 Syncing component catalogs to public/json-components ...');
+  await logSection('SYNC JSON COMPONENTS');
 
   try {
     await ensureDir(targetDir);
@@ -113,7 +122,7 @@ async function syncJsonComponents() {
         const fileName = abs.split(sep).pop();
         if (!fileName) continue;
         const out = join(targetDir, fileName);
-        await copyFile(abs, out);
+        await copyFile(abs, out, { source: 'package', packageDir: dir });
         already.add(fileName);
         console.log(`  ✅ [pkg] ${fileName}`);
       }
@@ -126,10 +135,18 @@ async function syncJsonComponents() {
       const fileName = abs.split(sep).pop();
       if (!fileName || already.has(fileName)) continue; // prefer package
       const out = join(targetDir, fileName);
-      await copyFile(abs, out);
+      await copyFile(abs, out, { source: 'local-catalog' });
       localCopied++;
       console.log(`  ↪️  [local] ${fileName}`);
     }
+
+    await logSummary('SYNC JSON COMPONENTS', {
+      'Package Dirs Found': pkgDirs.length,
+      'Files from Packages': already.size,
+      'Files from Local Catalog': localCopied,
+      'Total Files': already.size + localCopied,
+      'Destination': targetDir
+    });
 
     console.log(`✨ Sync complete. Packages: ${already.size} file(s), Local added: ${localCopied} file(s)`);
   } catch (error) {

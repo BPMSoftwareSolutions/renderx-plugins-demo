@@ -8,6 +8,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { logSection, logFileCopy, logSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,12 +37,19 @@ async function ensureDir(dir) {
   }
 }
 
-async function copyFile(source, target) {
+async function copyFile(source, target, context = {}) {
   const content = await readFile(source);
   await writeFile(target, content);
+
+  // Log the copy operation
+  await logFileCopy(source, target, {
+    catalogType: 'sequences',
+    size: content.length,
+    metadata: context
+  });
 }
 
-async function copyTreeWithBase(src, dst, baseLabel) {
+async function copyTreeWithBase(src, dst, baseLabel, context = {}) {
   await ensureDir(dst);
   const entries = await readdir(src, { withFileTypes: true }).catch((err) => {
     console.log(`⚠️  Failed to read directory ${src}: ${err.message}`);
@@ -58,9 +66,9 @@ async function copyTreeWithBase(src, dst, baseLabel) {
       if (s) { isDir = s.isDirectory(); isFile = s.isFile(); }
     }
     if (isDir) {
-      await copyTreeWithBase(srcPath, dstPath, baseLabel);
+      await copyTreeWithBase(srcPath, dstPath, baseLabel, context);
     } else if (isFile && ent.name.endsWith(".json")) {
-      await copyFile(srcPath, dstPath);
+      await copyFile(srcPath, dstPath, context);
       const rel = srcPath.replace(baseLabel + "\\", "").replace(baseLabel + "/", "");
       console.log(`  ✅ Copied ${rel}`);
     }
@@ -109,6 +117,8 @@ async function discoverRenderxSequencePackages(nodeModulesDir) {
 
 async function syncJsonSequences() {
   console.log("🔄 Syncing json-sequences/ to public/json-sequences/...");
+  await logSection("SYNC JSON SEQUENCES");
+
   try {
     await ensureDir(targetDir);
     // Guardrail: prevent repo from carrying local library-component catalogs once externalized
@@ -121,8 +131,10 @@ async function syncJsonSequences() {
       }
     } catch {}
 
+    let totalFiles = 0;
+
     // Copy repo-local sequences first
-    await copyTreeWithBase(sourceDir, targetDir, sourceDir);
+    await copyTreeWithBase(sourceDir, targetDir, sourceDir, { source: 'repo-local' });
 
     // Then copy any package-provided sequences from node_modules (declared via package.json renderx.sequences)
     const nodeModulesDir = join(rootDir, 'node_modules');
@@ -132,7 +144,10 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel}`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+        await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+          source: 'node_modules-package',
+          packageName: pkgName
+        });
       }
     }
 
@@ -146,9 +161,20 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+        await copyTreeWithBase(seqRoot, targetDir, seqRoot, {
+          source: 'local-package',
+          packageName: pkgName
+        });
       }
     }
+
+    await logSummary("SYNC JSON SEQUENCES", {
+      "Source Directory": sourceDir,
+      "Destination": targetDir,
+      "Node Modules Packages": pkgs.length,
+      "Local Packages": localPkgs.length,
+      "Total Package Sources": pkgs.length + localPkgs.length
+    });
 
     console.log("✨ Synced json-sequences catalogs");
   } catch (error) {

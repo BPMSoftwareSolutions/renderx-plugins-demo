@@ -19,6 +19,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { buildInteractionManifest } from "@renderx-plugins/manifest-tools";
 import { generateExternalInteractionsCatalog } from "./derive-external-topics.js";
+import { logSection, logManifestGeneration } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -95,6 +96,8 @@ async function readComponentOverrides() {
 }
 
 async function main() {
+  await logSection('GENERATE INTERACTION MANIFEST');
+
   const localCatalogs = await readPluginCatalogs();
   const externalCatalog = await generateExternalInteractionsCatalog();
   const componentOverrides = await readComponentOverrides();
@@ -110,6 +113,24 @@ async function main() {
   const jsonText = JSON.stringify(manifest, null, 2) + "\n";
   await fs.writeFile(outRoot, jsonText, "utf-8");
   await fs.writeFile(outPublic, jsonText, "utf-8");
+
+  // Log manifest generation
+  const sources = [
+    `${localCatalogs.length} local interaction catalogs`,
+    '1 external interactions catalog',
+    `${componentOverrides.length} component overrides`
+  ];
+
+  await logManifestGeneration(
+    'interactions',
+    sources,
+    `${outRoot} + ${outPublic}`,
+    {
+      routeCount: Object.keys(manifest.routes).length,
+      localCatalogs: localCatalogs.length,
+      componentOverrides: componentOverrides.length
+    }
+  );
 
   console.log(
     "✅ interaction-manifest.json generated:",

@@ -21,6 +21,7 @@
 import { promises as fs } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { logSection, logPluginDiscovery, logSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -109,6 +110,8 @@ async function loadPackageManifest(pkgDir) {
 }
 
 async function aggregate() {
+  await logSection('AGGREGATE PLUGINS');
+
   const srcPluginsDir = join(rootDir, "catalog", "json-plugins");
   const generatedDir = join(srcPluginsDir, ".generated");
   const generatedOut = join(generatedDir, "plugin-manifest.json");
@@ -126,6 +129,16 @@ async function aggregate() {
   for (const dir of candidates) {
     const info = await loadPackageManifest(dir).catch(() => null);
     if (info) external.push(info);
+  }
+
+  // Log each discovered plugin
+  for (const info of external) {
+    for (const plugin of info.fragment.plugins || []) {
+      await logPluginDiscovery(
+        info.pkgDir,
+        plugin
+      );
+    }
   }
 
   // Merge
@@ -189,6 +202,15 @@ async function aggregate() {
   } catch {}
 
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
+
+  await logSummary('AGGREGATE PLUGINS', {
+    'Base Plugins': base.plugins?.length || 0,
+    'External Packages Discovered': external.length,
+    'External Plugins Found': external.flatMap((e) => e.fragment.plugins || []).length,
+    'Total Merged Plugins': merged.plugins.length,
+    'Output File': generatedOut
+  });
+
   console.log(
     `🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`
   );

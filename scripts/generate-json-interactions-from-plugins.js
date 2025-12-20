@@ -19,6 +19,7 @@ import { promises as fs } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { generateExternalInteractionsCatalog } from './derive-external-topics.js';
+import { logSection, logCatalogOperation, logSummary } from './build-logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -51,6 +52,8 @@ function pickGroupPluginId(pluginCounts) {
 }
 
 export async function generateJsonInteractionsFromPlugins() {
+  await logSection('GENERATE JSON INTERACTIONS FROM PLUGINS');
+
   const outDir = join(rootDir, 'catalog', 'json-interactions', '.generated');
   await ensureDir(outDir);
 
@@ -64,7 +67,27 @@ export async function generateJsonInteractionsFromPlugins() {
     const json = { plugin: pluginId, routes };
     await fs.writeFile(outPath, JSON.stringify(json, null, 2) + '\n', 'utf-8');
     written.push(outPath);
+
+    // Log each generated interaction catalog
+    await logCatalogOperation({
+      stage: 'GENERATE',
+      catalogType: 'interactions',
+      source: `derived from plugin sequences (group: ${group})`,
+      destination: outPath,
+      metadata: {
+        group,
+        pluginId,
+        routeCount: Object.keys(routes).length,
+        pluginCounts: Object.fromEntries(pluginCounts)
+      }
+    });
   }
+
+  await logSummary('GENERATE JSON INTERACTIONS FROM PLUGINS', {
+    'Groups Generated': groups.size,
+    'Total Catalogs Written': written.length,
+    'Output Directory': outDir
+  });
 
   return written;
 }

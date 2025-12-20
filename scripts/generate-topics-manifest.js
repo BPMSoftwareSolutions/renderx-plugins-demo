@@ -18,6 +18,7 @@ import { fileURLToPath } from "url";
 import { buildTopicsManifest } from "@renderx-plugins/manifest-tools";
 import { generateExternalTopicsCatalog } from "./derive-external-topics.js";
 import { spawnSync } from "child_process";
+import { logSection, logManifestGeneration } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -76,6 +77,8 @@ async function _readTopicCatalogs() {
 }
 
 async function main() {
+  await logSection('GENERATE TOPICS MANIFEST');
+
   // Ensure external package sequences are synced into public/json-sequences before deriving
   try {
     const syncScript = join(rootDir, "scripts", "sync-json-sequences.js");
@@ -104,6 +107,23 @@ async function main() {
   await fs.writeFile(outRoot, jsonText, "utf-8");
   await fs.mkdir(join(rootDir, "public"), { recursive: true });
   await fs.writeFile(outPublic, jsonText, "utf-8");
+
+  // Log manifest generation
+  const sources = [
+    '1 external topics catalog (derived from sequences)',
+    `${localCatalogs.length} local topic catalogs`
+  ];
+
+  await logManifestGeneration(
+    'topics',
+    sources,
+    `${outRoot} + ${outPublic}`,
+    {
+      topicCount: Object.keys(manifest.topics).length,
+      externalCatalog: 1,
+      localCatalogs: localCatalogs.length
+    }
+  );
 
   console.log(
     "✅ topics-manifest.json generated:",

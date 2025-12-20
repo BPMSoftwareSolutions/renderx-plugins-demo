@@ -10,6 +10,7 @@
 import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { logSection, logFileCopy, logSummary } from "./build-logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -41,15 +42,21 @@ async function ensureDir(dir) {
   }
 }
 
-async function copyJsonFile(src, dst) {
+async function copyJsonFile(src, dst, catalogType) {
   // Only copy .json files
   if (!src.toLowerCase().endsWith(".json")) return;
   const buf = await readFile(src);
   await ensureDir(dirname(dst));
   await writeFile(dst, buf);
+
+  // Log the copy operation
+  await logFileCopy(src, dst, {
+    catalogType,
+    size: buf.length
+  });
 }
 
-async function copyJsonTree(srcDir, dstDir) {
+async function copyJsonTree(srcDir, dstDir, catalogType) {
   const entries = await readdir(srcDir, { withFileTypes: true }).catch(
     () => []
   );
@@ -68,9 +75,9 @@ async function copyJsonTree(srcDir, dstDir) {
       }
     }
     if (isDir) {
-      await copyJsonTree(srcPath, dstPath);
+      await copyJsonTree(srcPath, dstPath, catalogType);
     } else if (isFile) {
-      await copyJsonFile(srcPath, dstPath);
+      await copyJsonFile(srcPath, dstPath, catalogType);
     }
   }
 }
@@ -78,14 +85,23 @@ async function copyJsonTree(srcDir, dstDir) {
 async function main() {
   try {
     console.log("🔄 Syncing JSON sources from catalog into repo root...");
+    await logSection("SYNC JSON SOURCES");
+
     await ensureDir(rootSequences);
     await ensureDir(rootComponents);
 
     // Copy sequences (deep)
-    await copyJsonTree(catalogSequences, rootSequences);
+    await copyJsonTree(catalogSequences, rootSequences, "sequences");
 
     // Copy components (deep to include nested json-topics)
-    await copyJsonTree(catalogComponents, rootComponents);
+    await copyJsonTree(catalogComponents, rootComponents, "components");
+
+    await logSummary("SYNC JSON SOURCES", {
+      "Sequences Source": catalogSequences,
+      "Sequences Destination": rootSequences,
+      "Components Source": catalogComponents,
+      "Components Destination": rootComponents
+    });
 
     console.log(
       "✨ Synced JSON sources to repo root (json-sequences/, json-components/)"
