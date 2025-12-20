@@ -172,19 +172,20 @@ function applyCompatibilityTransforms(name, seq) {
 }
 
 export async function discoverSequenceFiles() {
-  const nodeModulesDir = join(rootDir, "node_modules");
-  const localPackagesDir = join(rootDir, "packages");
   const sequences = [];
   const seen = new Set();
 
   // Helper function to scan a package directory for sequences
-  async function scanPackageForSequences(packagePath, packageName) {
-    const sequencesPath = join(packagePath, "json-sequences");
+  // packagePath can be either a package root (will append json-sequences) or already point to json-sequences
+  async function scanPackageForSequences(packagePath, packageName, isSequencesPath = false) {
+    const sequencesPath = isSequencesPath ? packagePath : join(packagePath, "json-sequences");
 
     try {
       // Check if this package has json-sequences directory
       const sequencesDirStat = await fs.stat(sequencesPath);
-      if (!sequencesDirStat.isDirectory()) return;
+      if (!sequencesDirStat.isDirectory()) {
+        return;
+      }
 
       // Scan for subdirectories and files in json-sequences
       const items = await readdir(sequencesPath);
@@ -238,39 +239,55 @@ export async function discoverSequenceFiles() {
     }
   }
 
-  // Discover all @renderx-plugins packages in node_modules
-  const renderxPluginsDir = join(nodeModulesDir, "@renderx-plugins");
-
+  // Discover from domain registry (renderx-web domain) - single source of truth
+  const domainRegistryPath = join(rootDir, 'domains', 'renderx-web', 'domain-registry.json');
+  let domainRegistry = null;
   try {
-    const packageDirs = await readdir(renderxPluginsDir);
-
-    for (const packageName of packageDirs) {
-      const packagePath = join(renderxPluginsDir, packageName);
-      await scanPackageForSequences(packagePath, packageName);
-    }
-  } catch {
-    // @renderx-plugins directory doesn't exist, skip
+    const registryContent = await fs.readFile(domainRegistryPath, 'utf-8');
+    domainRegistry = JSON.parse(registryContent);
+  } catch (err) {
+    console.warn(`⚠️  Could not read domain registry at ${domainRegistryPath}: ${err.message}`);
   }
 
-  // Also discover local packages in packages/ directory
-  try {
-    const localPackageDirs = await readdir(localPackagesDir);
+  if (domainRegistry && domainRegistry.plugins) {
+    // Process runtime plugins
+    if (Array.isArray(domainRegistry.plugins.runtime)) {
+      for (const plugin of domainRegistry.plugins.runtime) {
+        if (plugin.sequences && plugin.sequences.catalog) {
+          const catalogPath = plugin.sequences.catalog;
+          const seqRoot = join(rootDir, 'domains', 'renderx-web', catalogPath.replace('/index.json', ''));
+          const packageName = plugin.id;
 
-    for (const packageName of localPackageDirs) {
-      const packagePath = join(localPackagesDir, packageName);
-      // Check if it's a directory
-      try {
-        const stat = await fs.stat(packagePath);
-        if (stat.isDirectory()) {
-          await scanPackageForSequences(packagePath, packageName);
+          // Check if seqRoot has a subdirectory with the same name as packageName (skip it)
+          const potentialSubdir = join(seqRoot, packageName);
+          const actualSeqRoot = await fs.stat(potentialSubdir).then(() => potentialSubdir).catch(() => seqRoot);
+
+          // actualSeqRoot already points to json-sequences directory
+          await scanPackageForSequences(actualSeqRoot, packageName, true);
         }
-      } catch {
-        // Skip if not accessible
       }
     }
-  } catch {
-    // packages/ directory doesn't exist, skip
+
+    // Process UI plugins
+    if (Array.isArray(domainRegistry.plugins.ui)) {
+      for (const plugin of domainRegistry.plugins.ui) {
+        if (plugin.sequences && plugin.sequences.catalog) {
+          const catalogPath = plugin.sequences.catalog;
+          const seqRoot = join(rootDir, 'domains', 'renderx-web', catalogPath.replace('/index.json', ''));
+          const packageName = plugin.id;
+
+          // Check if seqRoot has a subdirectory with the same name as packageName (skip it)
+          const potentialSubdir = join(seqRoot, packageName);
+          const actualSeqRoot = await fs.stat(potentialSubdir).then(() => potentialSubdir).catch(() => seqRoot);
+
+          // actualSeqRoot already points to json-sequences directory
+          await scanPackageForSequences(actualSeqRoot, packageName, true);
+        }
+      }
+    }
   }
+
+
 
   return sequences;
 }

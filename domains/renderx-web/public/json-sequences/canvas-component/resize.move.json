@@ -1,0 +1,102 @@
+{
+  "pluginId": "CanvasComponentResizeMovePlugin",
+  "id": "canvas-component-resize-move-symphony",
+  "name": "Canvas Component Resize Move",
+  "topicMapping": {
+    "routeToBase": true
+  },
+  "movements": [
+    {
+      "id": "resize-move",
+      "name": "Resize Move",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:move",
+          "title": "Resize Move",
+          "dynamics": "mf",
+          "handler": "updateSize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Update or Modify update Size",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "update width/height and anchors with throttling in ≤100ms P95 and queue UI notifications",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "forwards drag position updates to Control Panel",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler updateSize is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateSize executes"
+              ],
+              "then": [
+                "updateSize performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:resize:forward",
+          "title": "Forward to Control Panel",
+          "dynamics": "mf",
+          "handler": "forwardToControlPanel",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "forward To Control Panel",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "addClass adds class and populates payload",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "size changes"
+              ],
+              "when": [
+                "forwardToControlPanel runs"
+              ],
+              "then": [
+                "update publishes to control panel within ≤ 20ms"
+              ],
+              "and": [
+                "messages are coalesced per frame"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint",
+        "benefit": "real-time content updates"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "resize move to update dimensions at ≤100ms P95 with deterministic snapping and minimal repaint",
+    "benefit": "real-time content updates"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
+}

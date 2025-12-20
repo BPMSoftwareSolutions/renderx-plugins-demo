@@ -1,0 +1,66 @@
+{
+  "pluginId": "CanvasComponentPlugin",
+  "id": "canvas-component-select-requested-symphony",
+  "name": "Canvas Component Select Requested",
+  "movements": [
+    {
+      "id": "route-selection",
+      "name": "Route Selection",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:select:route",
+          "title": "Route Selection Request",
+          "dynamics": "mf",
+          "handler": "routeSelectionRequest",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "route Selection Request",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "identify the target node and route to base",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "should route-selection-request",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler routeSelectionRequest is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "routeSelectionRequest executes"
+              ],
+              "then": [
+                "routeSelectionRequest performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "requested selection to resolve the target and route to base handlers reliably",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "requested selection to resolve the target and route to base handlers reliably",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

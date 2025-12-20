@@ -1,0 +1,66 @@
+{
+  "pluginId": "CanvasComponentResizeStartPlugin",
+  "id": "canvas-component-resize-start-symphony",
+  "name": "Canvas Component Resize Start",
+  "movements": [
+    {
+      "id": "resize-start",
+      "name": "Resize Start",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:start",
+          "title": "Resize Start",
+          "dynamics": "mf",
+          "handler": "startResize",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "start Resize",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "calculate bounds, lock aspect ratio (if set), and prepare overlay in ≤100ms P95",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "proportionally scales --x1/--y1/--x2/--y2 when resizing the element",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler startResize is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "startResize executes"
+              ],
+              "then": [
+                "startResize performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "resize start to attach handles and compute constraints within ≤100ms P95 so resizing feels responsive",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "resize start to attach handles and compute constraints within ≤100ms P95 so resizing feels responsive",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

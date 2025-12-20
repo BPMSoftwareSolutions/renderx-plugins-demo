@@ -1,0 +1,103 @@
+{
+  "pluginId": "CanvasComponentDeselectionPlugin",
+  "id": "canvas-component-deselect-symphony",
+  "name": "Canvas Component Deselect",
+  "movements": [
+    {
+      "id": "deselect",
+      "name": "Deselect",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:deselect",
+          "title": "Hide Overlays for ID",
+          "dynamics": "mf",
+          "handler": "deselectComponent",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "deselect Component",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler deselectComponent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "deselectComponent executes"
+              ],
+              "then": [
+                "deselectComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:deselection:changed",
+          "title": "Publish Deselection Changed",
+          "dynamics": "mf",
+          "handler": "publishDeselectionChanged",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Deselection Changed",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\deselection.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler publishDeselectionChanged is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "publishDeselectionChanged executes"
+              ],
+              "then": [
+                "publishDeselectionChanged performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "clear overlays and notify subscribers within ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "clear overlays and notify subscribers within ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

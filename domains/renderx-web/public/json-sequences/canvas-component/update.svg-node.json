@@ -1,0 +1,99 @@
+{
+  "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+  "id": "canvas-component-update-svg-node-symphony",
+  "name": "Canvas Component Update SVG Node",
+  "movements": [
+    {
+      "id": "update-svg-node",
+      "name": "Update SVG Node Attribute",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:update:svg-node:attribute",
+          "title": "Update SVG Node Attribute",
+          "dynamics": "mf",
+          "handler": "updateSvgNodeAttribute",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Update or Modify update Svg Node Attribute",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "updates rect fill attribute correctly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\svg-node.update.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler updateSvgNodeAttribute is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateSvgNodeAttribute executes"
+              ],
+              "then": [
+                "updateSvgNodeAttribute performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:update:svg-node:refresh",
+          "title": "Refresh Control Panel",
+          "dynamics": "mf",
+          "handler": "refreshControlPanel",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "refresh Control Panel",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "setDirty marks isDirty with timestamp",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "an SVG node update"
+              ],
+              "when": [
+                "refreshControlPanel runs"
+              ],
+              "then": [
+                "control panel reflects new SVG state within ≤ 50ms"
+              ],
+              "and": [
+                "publish a 'control-panel.refresh' event idempotently"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 100ms",
+        "benefit": "real-time content updates"
+      },
+      "persona": "System Operator",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 100ms",
+    "benefit": "real-time content updates"
+  },
+  "persona": "Product Owner",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
+}

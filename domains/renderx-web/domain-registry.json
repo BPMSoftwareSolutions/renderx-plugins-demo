@@ -94,7 +94,7 @@
         "export": "register",
         "sequences": {
           "count": 33,
-          "catalog": "./runtime/canvas-component/sequences/index.json",
+          "catalog": "./runtime/canvas-component/json-sequences/index.json",
           "handlersPath": "@renderx-web/canvas-component"
         },
         "description": "Core business logic for canvas component operations (create, select, drag, resize, export, etc.)",
@@ -122,7 +122,7 @@
         "export": "register",
         "sequences": {
           "count": 3,
-          "catalog": "./runtime/library-component/sequences/index.json",
+          "catalog": "./runtime/library-component/json-sequences/index.json",
           "handlersPath": "@renderx-web/library-component"
         },
         "description": "Business logic for library drag-and-drop operations",
@@ -153,7 +153,7 @@
         },
         "sequences": {
           "count": 13,
-          "catalog": "./ui-plugins/control-panel/sequences/index.json",
+          "catalog": "./ui-plugins/control-panel/json-sequences/index.json",
           "symphonies": {
             "selection": "./ui-plugins/control-panel/src/symphonies/selection/selection.symphony",
             "classes": "./ui-plugins/control-panel/src/symphonies/classes/classes.symphony",
@@ -194,7 +194,7 @@
         },
         "sequences": {
           "count": 2,
-          "catalog": "./ui-plugins/header/sequences/index.json",
+          "catalog": "./ui-plugins/header/json-sequences/index.json",
           "handlersPath": "@renderx-web/header"
         },
         "description": "Top navigation header with theme toggle functionality",
@@ -224,7 +224,7 @@
         },
         "sequences": {
           "count": 1,
-          "catalog": "./ui-plugins/library/sequences/index.json",
+          "catalog": "./ui-plugins/library/json-sequences/index.json",
           "handlersPath": "@renderx-web/library"
         },
         "description": "Component library panel displaying draggable components",

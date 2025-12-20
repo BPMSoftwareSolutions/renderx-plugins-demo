@@ -1,0 +1,258 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-init-batched-symphony",
+  "name": "Control Panel UI Init (Batched)",
+  "movements": [
+    {
+      "id": "init",
+      "name": "Init",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:init:config",
+          "title": "Init Config",
+          "dynamics": "mf",
+          "handler": "initConfig",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Initialize Control Panel with Configuration",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+          "testCase": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "complete in <200ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler initConfig is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "initConfig executes"
+              ],
+              "then": [
+                "initConfig performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:init:resolver",
+          "title": "Init Resolver",
+          "dynamics": "mf",
+          "handler": "initResolver",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "Initialize or Configure init Resolver",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
+          "testCase": "dedupes schema fetches across multiple calls and instances",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler initResolver is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "initResolver executes"
+              ],
+              "then": [
+                "initResolver performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:init:schemas",
+          "title": "Load Schemas",
+          "dynamics": "mf",
+          "handler": "loadSchemas",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "load Schemas",
+          "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\config-loader.test.js",
+          "testCase": "should load plugin-architecture sprite library",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler loadSchemas is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "loadSchemas executes"
+              ],
+              "then": [
+                "loadSchemas performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 4,
+          "event": "control:panel:ui:init:observers",
+          "title": "Register Observers",
+          "dynamics": "mf",
+          "handler": "registerObservers",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "register Observers",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\package.register.spec.ts",
+          "testCase": "exposes handlers and a register(conductor) function",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler registerObservers is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "registerObservers executes"
+              ],
+              "then": [
+                "registerObservers performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 5,
+          "event": "control:panel:ui:init:notify",
+          "title": "Notify Ready",
+          "dynamics": "mf",
+          "handler": "notifyReady",
+          "timing": "immediate",
+          "kind": "pure",
+          "number": 5,
+          "scenario": "Notify or Publish notify Ready",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler notifyReady is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "notifyReady executes"
+              ],
+              "then": [
+                "notifyReady performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 6,
+          "event": "control:panel:ui:init:movement",
+          "title": "Init Movement",
+          "dynamics": "mf",
+          "handler": "initMovement",
+          "timing": "immediate",
+          "kind": "pure",
+          "number": 6,
+          "scenario": "Initialize or Configure init Movement",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\ui-init.batched.spec.ts",
+          "testCase": "records sub-beat telemetry for the five init steps when run via iterator",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 500ms",
+            "benefit": "fast form rendering"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler initMovement is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "initMovement executes"
+              ],
+              "then": [
+                "initMovement performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "complete in <200ms",
+        "benefit": "fast form rendering"
+      },
+      "persona": "System Operator",
+      "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization"
+    }
+  ],
+  "beats": 6,
+  "tempo": 120,
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "complete in <200ms",
+    "benefit": "fast form rendering"
+  },
+  "persona": "Product Owner",
+  "businessValue": "Enables fast form rendering; reduces user wait time by 40%; supports complex multi-section forms with instant initialization",
+  "domainId": "renderx-web-orchestration"
+}

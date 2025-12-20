@@ -1,0 +1,62 @@
+{
+  "pluginId": "LibraryComponentPlugin",
+  "id": "library-component-drop-symphony",
+  "name": "Library Component Drop",
+  "movements": [
+    {
+      "id": "drop",
+      "name": "Drop",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "library:component:drop",
+          "title": "Publish Create Requested",
+          "dynamics": "mf",
+          "handler": "publishCreateRequested",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Create Requested",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "canvas-component create",
+            "benefit": "automated deployment"
+          },
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "valid drop target"
+              ],
+              "when": [
+                "onDrop runs"
+              ],
+              "then": [
+                "composes node and validates schema; latency ≤ 150ms"
+              ],
+              "and": [
+                "telemetry 'drop' includes target and success"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "publish create requests deterministically and clear preview state",
+        "benefit": "automated deployment"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "publish create requests deterministically and clear preview state",
+    "benefit": "automated deployment"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
+  "domainId": "renderx-web-orchestration"
+}

@@ -1,0 +1,182 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-field-change-symphony",
+  "name": "Control Panel UI Field Change",
+  "movements": [
+    {
+      "id": "field-change",
+      "name": "Field Change",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:field:prepare",
+          "title": "Prepare Field",
+          "dynamics": "mf",
+          "handler": "prepareField",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "prepare Field",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "normalize input and validate",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler prepareField is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "prepareField executes"
+              ],
+              "then": [
+                "prepareField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:field:dispatch",
+          "title": "Dispatch Field",
+          "dynamics": "mf",
+          "handler": "dispatchField",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "dispatch Field",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "route changes to the canvas component",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler dispatchField is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "dispatchField executes"
+              ],
+              "then": [
+                "dispatchField performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:field:dirty",
+          "title": "Set Dirty",
+          "dynamics": "mf",
+          "handler": "setDirty",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "set Dirty",
+          "testFile": "tests\\digital-assets.spec.ts",
+          "testCase": "resolves and exposes correct package name",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "mark state and enable save",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler setDirty is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "setDirty executes"
+              ],
+              "then": [
+                "setDirty performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 4,
+          "event": "control:panel:ui:field:await-refresh",
+          "title": "Await Refresh",
+          "dynamics": "mf",
+          "handler": "awaitRefresh",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 4,
+          "scenario": "await Refresh",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "testCase": "setDirty marks isDirty with timestamp",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "synchronize view updates",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler awaitRefresh is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "awaitRefresh executes"
+              ],
+              "then": [
+                "awaitRefresh performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 4,
+  "tempo": 120,
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "field changes to validate, dispatch, mark dirty, and refresh views within ≤1s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

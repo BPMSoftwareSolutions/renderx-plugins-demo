@@ -1,0 +1,108 @@
+{
+  "pluginId": "CanvasComponentPlugin",
+  "id": "canvas-component-rules-config-symphony",
+  "name": "Canvas Component Rules Config",
+  "movements": [
+    {
+      "id": "rulesConfig",
+      "name": "Rules Configuration",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:rules:setAll",
+          "title": "Set All Rules Config",
+          "dynamics": "mf",
+          "handler": "setAllRulesConfig",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "set All Rules Config",
+          "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler setAllRulesConfig is available"
+              ],
+              "when": [
+                "setAllRulesConfig executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
+              "and": [
+                "emits expected side effects or returns expected value"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:rules:loadWindow",
+          "title": "Load Rules From Window",
+          "dynamics": "mf",
+          "handler": "loadAllRulesFromWindow",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "load All Rules From Window",
+          "userStory": "As an operations system, I want loadAllRulesFromWindow to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler loadAllRulesFromWindow is available"
+              ],
+              "when": [
+                "loadAllRulesFromWindow executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
+              "and": [
+                "emits expected side effects or returns expected value"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:rules:getAll",
+          "title": "Get All Rules Config",
+          "dynamics": "mf",
+          "handler": "getAllRulesConfig",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "get All Rules Config",
+          "userStory": "As an operations system, I want getAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler getAllRulesConfig is available"
+              ],
+              "when": [
+                "getAllRulesConfig executes under normal conditions"
+              ],
+              "then": [
+                "it performs its expected orchestration logic"
+              ],
+              "and": [
+                "emits expected side effects or returns expected value"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 3,
+  "userStory": "As an operations system, I want setAllRulesConfig to execute reliably with latency < 1 second so that dependent services meet their SLA targets (goal: 99.9% success rate).",
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

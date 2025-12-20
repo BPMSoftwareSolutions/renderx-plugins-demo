@@ -1,0 +1,106 @@
+{
+  "pluginId": "CanvasComponentDragMovePlugin",
+  "id": "canvas-component-drag-move-symphony",
+  "name": "Canvas Component Drag Move",
+  "topicMapping": {
+    "routeToBase": true
+  },
+  "movements": [
+    {
+      "id": "drag-move",
+      "name": "Drag Move",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:drag:move",
+          "title": "Update Position",
+          "dynamics": "mf",
+          "handler": "updatePosition",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Update or Modify update Position",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "update DOM transform with throttling in ≤100ms P95 and emit selection updates",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler updatePosition is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updatePosition executes"
+              ],
+              "then": [
+                "updatePosition performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:drag:forward",
+          "title": "Forward to Control Panel",
+          "dynamics": "mf",
+          "handler": "forwardToControlPanel",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "forward To Control Panel",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "publish selection change events within ≤1s P95",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "addClass adds class and populates payload",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler forwardToControlPanel is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "forwardToControlPanel executes"
+              ],
+              "then": [
+                "forwardToControlPanel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably",
+        "benefit": "real-time content updates"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "drag move to update position at ≤100ms P95 and forward selection changes to the control panel reliably",
+    "benefit": "real-time content updates"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
+}

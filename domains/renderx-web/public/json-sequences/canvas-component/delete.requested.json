@@ -1,0 +1,66 @@
+{
+  "pluginId": "CanvasComponentDeleteRequestPlugin",
+  "id": "canvas-component-delete-requested-symphony",
+  "name": "Canvas Component Delete Requested",
+  "movements": [
+    {
+      "id": "route-delete",
+      "name": "Route Delete",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:delete:route",
+          "title": "Route Delete Request",
+          "dynamics": "mf",
+          "handler": "routeDeleteRequest",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "route Delete Request",
+          "userStory": {
+            "persona": "System Operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "should route-delete-request",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler routeDeleteRequest is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "routeDeleteRequest executes"
+              ],
+              "then": [
+                "routeDeleteRequest performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "System Operator",
+        "goal": "execute reliably with latency < 1 second",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "System Operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Product Owner",
+    "goal": "execute reliably with latency < 1 second",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Product Owner",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

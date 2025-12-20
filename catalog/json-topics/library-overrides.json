@@ -1,9 +1,0 @@
-{
-  "plugin": "LibraryPlugin",
-  "topics": {
-    "library.load.requested": {
-      "visibility": "public",
-      "notes": "Published when library load is requested"
-    }
-  }
-}

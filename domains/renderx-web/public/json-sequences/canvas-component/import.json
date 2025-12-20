@@ -1,0 +1,214 @@
+{
+  "pluginId": "CanvasComponentImportPlugin",
+  "id": "canvas-component-import-symphony",
+  "name": "Canvas Component Import",
+  "movements": [
+    {
+      "id": "import",
+      "name": "Import",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:ui:open",
+          "title": "Open UI File",
+          "handler": "openUiFile",
+          "timing": "immediate",
+          "dynamics": "mf",
+          "kind": "stage-crew",
+          "scenario": "open Ui File",
+          "userStory": {
+            "persona": "Frontend platform integrator",
+            "goal": "resolve local/remote paths, validate file type, and expose stream metadata in ≤1s P95 so downstream parsing can proceed without retries",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler openUiFile is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "openUiFile executes"
+              ],
+              "then": [
+                "openUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:ui:parse",
+          "title": "Parse UI File",
+          "handler": "parseUiFile",
+          "timing": "immediate",
+          "dynamics": "mf",
+          "kind": "pure",
+          "scenario": "parse Ui File",
+          "userStory": {
+            "persona": "Frontend platform integrator",
+            "goal": "produce a normalized AST and schema in ≤1s P95, emitting parse diagnostics and source maps for accurate transformations",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler parseUiFile is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "parseUiFile executes"
+              ],
+              "then": [
+                "parseUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:css:inject",
+          "title": "Inject CSS Classes",
+          "handler": "injectCssClasses",
+          "timing": "immediate",
+          "dynamics": "mf",
+          "kind": "stage-crew",
+          "scenario": "inject Css Classes",
+          "userStory": {
+            "persona": "Frontend platform integrator",
+            "goal": "collect and inject semantic classes from templates in ≤1s P95, deduping and ordering for deterministic styling across pages",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "collects CSS from components with template.classRefs (current export format)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler injectCssClasses is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "injectCssClasses executes"
+              ],
+              "then": [
+                "injectCssClasses performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 4,
+          "event": "canvas:component:nodes:create",
+          "title": "Create Components Sequentially",
+          "handler": "createComponentsSequentially",
+          "timing": "immediate",
+          "dynamics": "mf",
+          "kind": "stage-crew",
+          "scenario": "Generate or Create create Components Sequentially",
+          "userStory": {
+            "persona": "Frontend platform integrator",
+            "goal": "construct nodes from templates in ≤2s P95, honoring dependencies and avoiding direct rendering, forwarding to the drop symphony",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler createComponentsSequentially is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "createComponentsSequentially executes"
+              ],
+              "then": [
+                "createComponentsSequentially performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 5,
+          "event": "canvas:component:hierarchy:apply",
+          "title": "Apply Hierarchy & Order",
+          "handler": "applyHierarchyAndOrder",
+          "timing": "immediate",
+          "dynamics": "mf",
+          "kind": "stage-crew",
+          "scenario": "apply Hierarchy And Order",
+          "userStory": {
+            "persona": "Frontend platform integrator",
+            "goal": "compute parent/child relationships and z-order in ≤1s P95, with stable sorting and deterministic IDs",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "placeholder passes",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\handlers.handlers.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler applyHierarchyAndOrder is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "applyHierarchyAndOrder executes"
+              ],
+              "then": [
+                "applyHierarchyAndOrder performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Frontend platform integrator",
+        "goal": "the import symphony to open, parse, and map UI assets deterministically with beat SLAs (open ≤1s, parse ≤1s, injectCss ≤1s, createSequential ≤2s, hierarchy ≤1s) and 99.9% success so imported components render predictably",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Frontend platform integrator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 5,
+  "userStory": {
+    "persona": "Frontend platform integrator",
+    "goal": "the import symphony to open, parse, and map UI assets deterministically with beat SLAs (open ≤1s, parse ≤1s, injectCss ≤1s, createSequential ≤2s, hierarchy ≤1s) and 99.9% success so imported components render predictably",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Frontend platform integrator",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

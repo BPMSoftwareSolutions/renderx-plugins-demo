@@ -1,0 +1,69 @@
+{
+  "pluginId": "CanvasComponentDragEndPlugin",
+  "id": "canvas-component-drag-end-symphony",
+  "name": "Canvas Component Drag End",
+  "movements": [
+    {
+      "id": "drag-end",
+      "name": "Drag End",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:drag:end",
+          "title": "Drag End",
+          "dynamics": "mf",
+          "handler": "endDrag",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "end Drag",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "finalize position, snap to grid, and publish outcome telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "should end-drag",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler endDrag is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "endDrag executes"
+              ],
+              "then": [
+                "endDrag performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "drag end to finalize placement, snap to guides, and clear state within ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "topicMapping": {
+    "routeToBase": true
+  },
+  "beats": 1,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "drag end to finalize placement, snap to guides, and clear state within ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

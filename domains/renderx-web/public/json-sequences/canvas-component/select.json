@@ -1,0 +1,261 @@
+{
+  "pluginId": "CanvasComponentSelectionPlugin",
+  "id": "canvas-component-select-symphony",
+  "name": "Canvas Component Select",
+  "movements": [
+    {
+      "id": "select",
+      "name": "Select",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:select",
+          "title": "Show Selection",
+          "dynamics": "mf",
+          "handler": "showSelectionOverlay",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Render or Display show Selection Overlay",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "render selection affordances (overlay, resize handles, interactions) within <100ms P95, derive element ID from data/DOM/baton, and emit selection.shown telemetry",
+            "benefit": "uI controls remain responsive and analytics track user behavior"
+          },
+          "testCase": "derives ID from data.id, data.elementId, DOM target, or baton fallback and renders overlay with handlers",
+          "testFile": "__tests__\\selection-id-derivation.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "selection event contains data.id"
+              ],
+              "when": [
+                "showSelectionOverlay executes"
+              ],
+              "then": [
+                "element ID is derived from data.id",
+                "overlay container is created or reused with id='rx-overlay'",
+                "overlay rect is positioned to match selected element bounds",
+                "resize handles (8 corners/edges) are attached to overlay",
+                "selection interactions (drag, resize) are registered"
+              ],
+              "and": [
+                "operation completes within 100ms P95",
+                "selection.shown event is emitted with element ID",
+                "overlay is visible and positioned correctly"
+              ]
+            },
+            {
+              "given": [
+                "data.id is missing but data.elementId is provided"
+              ],
+              "when": [
+                "showSelectionOverlay derives ID"
+              ],
+              "then": [
+                "element ID is derived from data.elementId as fallback"
+              ],
+              "and": [
+                "overlay rendering proceeds normally"
+              ]
+            },
+            {
+              "given": [
+                "both data.id and data.elementId are missing"
+              ],
+              "when": [
+                "showSelectionOverlay derives ID from DOM target"
+              ],
+              "then": [
+                "element ID is derived from event target's id attribute",
+                "if target has no id, closest('.rx-comp') ancestor is used"
+              ],
+              "and": [
+                "nested element clicks are handled correctly"
+              ]
+            },
+            {
+              "given": [
+                "all ID sources are exhausted and baton contains ID"
+              ],
+              "when": [
+                "showSelectionOverlay uses baton fallback"
+              ],
+              "then": [
+                "element ID is derived from ctx.baton.id or ctx.baton.elementId"
+              ],
+              "and": [
+                "baton provides last-resort ID for legacy flows"
+              ]
+            },
+            {
+              "given": [
+                "no valid ID can be derived from any source"
+              ],
+              "when": [
+                "showSelectionOverlay validates ID"
+              ],
+              "then": [
+                "handler returns early without rendering overlay",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:select:notify",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "selection notifications published with <20ms end-to-end delivery, ordered FIFO",
+            "benefit": "control panel, property inspector, and analytics subscribers react consistently without missed transitions"
+          },
+          "testCase": "publishes canvas.component.selected with element ID via EventRouter using data.id or baton.id fallback",
+          "testFile": "__tests__\\selection-id-derivation.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "element is selected and data.id is present"
+              ],
+              "when": [
+                "notifyUi executes"
+              ],
+              "then": [
+                "canvas.component.selected event is published via EventRouter",
+                "event payload includes element ID from data.id",
+                "event is published with conductor context"
+              ],
+              "and": [
+                "delivery completes within 20ms end-to-end",
+                "events are ordered FIFO",
+                "subscribers receive notification consistently"
+              ]
+            },
+            {
+              "given": [
+                "data.id is missing but ctx.baton.id is available"
+              ],
+              "when": [
+                "notifyUi derives ID"
+              ],
+              "then": [
+                "element ID is derived from ctx.baton.id as fallback",
+                "canvas.component.selected event is published with baton ID"
+              ],
+              "and": [
+                "legacy flows with baton-based ID propagation are supported"
+              ]
+            },
+            {
+              "given": [
+                "both data.id and baton.id are missing"
+              ],
+              "when": [
+                "notifyUi validates ID"
+              ],
+              "then": [
+                "event publication is skipped",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:selection:changed",
+          "title": "Publish Selection Changed",
+          "dynamics": "mf",
+          "handler": "publishSelectionChanged",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Selection Changed",
+          "userStory": {
+            "persona": "interaction designer",
+            "goal": "publish canvas.component.selection.changed event within <50ms, with element ID and optional metadata",
+            "benefit": "dependent systems synchronize state reliably"
+          },
+          "testCase": "publishes canvas.component.selection.changed with element ID and metadata via EventRouter",
+          "testFile": "__tests__\\selection-topic-publishing.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "selection change occurs with element ID"
+              ],
+              "when": [
+                "publishSelectionChanged executes"
+              ],
+              "then": [
+                "canvas.component.selection.changed event is published via EventRouter",
+                "event payload includes element ID",
+                "event payload includes optional metadata (type, classes, dimensions)",
+                "event is published with conductor context"
+              ],
+              "and": [
+                "operation completes within 50ms P95",
+                "event delivery is guaranteed FIFO",
+                "dependent systems can synchronize state"
+              ]
+            },
+            {
+              "given": [
+                "element ID is missing"
+              ],
+              "when": [
+                "publishSelectionChanged validates input"
+              ],
+              "then": [
+                "event publication is skipped",
+                "warning is logged with context"
+              ],
+              "and": [
+                "system remains stable without errors"
+              ]
+            },
+            {
+              "given": [
+                "conductor is not available in context"
+              ],
+              "when": [
+                "publishSelectionChanged attempts to publish"
+              ],
+              "then": [
+                "event is published with undefined conductor",
+                "EventRouter handles missing conductor gracefully"
+              ],
+              "and": [
+                "legacy flows without conductor are supported"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "interaction designer",
+        "goal": "highlight target nodes, attach overlays, and notify control panel within ≤100ms P95",
+        "benefit": "smooth visual feedback and responsive interactions"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps"
+    }
+  ],
+  "beats": 3,
+  "userStory": {
+    "persona": "interaction designer",
+    "goal": "highlight target nodes, attach overlays, and notify control panel within ≤100ms P95",
+    "benefit": "smooth visual feedback and responsive interactions"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Improves page load time by 25%; enables smooth visual transitions; supports responsive design; maintains 60fps",
+  "domainId": "renderx-web-orchestration"
+}

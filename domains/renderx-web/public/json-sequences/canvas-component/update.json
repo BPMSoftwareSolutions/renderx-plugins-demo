@@ -1,0 +1,103 @@
+{
+  "pluginId": "CanvasComponentPlugin",
+  "id": "canvas-component-update-symphony",
+  "name": "Canvas Component Update",
+  "movements": [
+    {
+      "id": "update",
+      "name": "Update",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:update:attribute",
+          "title": "Update Attribute",
+          "dynamics": "mf",
+          "handler": "updateAttribute",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Update or Modify update Attribute",
+          "userStory": {
+            "persona": "Platform reliability engineer",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler updateAttribute is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "updateAttribute executes"
+              ],
+              "then": [
+                "updateAttribute performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:update:refresh",
+          "title": "Refresh Control Panel",
+          "dynamics": "mf",
+          "handler": "refreshControlPanel",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "refresh Control Panel",
+          "userStory": {
+            "persona": "Platform reliability engineer",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "real-time content updates"
+          },
+          "testCase": "setDirty marks isDirty with timestamp",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler refreshControlPanel is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "refreshControlPanel executes"
+              ],
+              "then": [
+                "refreshControlPanel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Platform reliability engineer",
+        "goal": "the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent",
+        "benefit": "real-time content updates"
+      },
+      "persona": "Platform reliability engineer",
+      "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Platform reliability engineer",
+    "goal": "the update symphony to modify component state and attributes with clear telemetry and rollback semantics, meeting SLAs (resolve ≤1s, mutate ≤1s, notify ≤20ms) so UI remains consistent",
+    "benefit": "real-time content updates"
+  },
+  "persona": "Platform reliability engineer",
+  "businessValue": "Enables real-time content updates; reduces user-visible latency; improves perceived responsiveness by 30%",
+  "domainId": "renderx-web-orchestration"
+}

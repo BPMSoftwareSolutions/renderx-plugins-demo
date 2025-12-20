@@ -13,6 +13,62 @@
       "visibility": "public",
       "notes": "Published when SVG node selection changes"
     },
+    "canvas.component.select.requested": {
+      "visibility": "public",
+      "notes": "Published when component selection is requested"
+    },
+    "canvas.component.select.svg-node.requested": {
+      "visibility": "public",
+      "notes": "Published when SVG node selection is requested"
+    },
+    "canvas.component.created": {
+      "visibility": "public",
+      "notes": "Published when a component is created on the canvas"
+    },
+    "canvas.component.create.requested": {
+      "visibility": "public",
+      "notes": "Published when component creation is requested"
+    },
+    "canvas.component.deleted": {
+      "visibility": "public",
+      "notes": "Published when a component is deleted from the canvas"
+    },
+    "canvas.component.deselection.changed": {
+      "visibility": "public",
+      "notes": "Published when component deselection state changes"
+    },
+    "canvas.component.selection.changed": {
+      "visibility": "public",
+      "notes": "Published when component selection state changes"
+    },
+    "canvas.component.drag.start": {
+      "visibility": "public",
+      "notes": "Published when component drag operation starts"
+    },
+    "canvas.component.drag.move": {
+      "visibility": "public",
+      "notes": "Published during component drag operation"
+    },
+    "canvas.component.drag.end": {
+      "visibility": "public",
+      "notes": "Published when component drag operation ends"
+    },
+    "canvas.component.import.requested": {
+      "visibility": "public",
+      "notes": "Published when component import is requested"
+    },
+    "canvas.component.import.started": {
+      "visibility": "public",
+      "notes": "Published when component import begins"
+    },
+    "canvas.component.import.completed": {
+      "visibility": "public",
+      "notes": "Published when component import is completed"
+    },
+    "canvas.component.update.svg-node.requested": {
+      "visibility": "public",
+      "notes": "Published when SVG node update is requested"
+    },
     "react.component.mounted": {
       "visibility": "public",
       "notes": "Published when a React component is successfully mounted on the canvas"
@@ -28,3 +84,4 @@
     }
   }
 }
+

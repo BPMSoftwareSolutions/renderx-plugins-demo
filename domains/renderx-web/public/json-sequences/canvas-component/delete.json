@@ -1,0 +1,103 @@
+{
+  "pluginId": "CanvasComponentDeletePlugin",
+  "id": "canvas-component-delete-symphony",
+  "name": "Canvas Component Delete",
+  "movements": [
+    {
+      "id": "delete",
+      "name": "Delete",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:delete",
+          "title": "Delete Component",
+          "dynamics": "mf",
+          "handler": "deleteComponent",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Delete or Remove delete Component",
+          "userStory": {
+            "persona": "Security-conscious operator",
+            "goal": "execute reliably with latency < 100ms",
+            "benefit": "data cleanup workflows"
+          },
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler deleteComponent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "deleteComponent executes"
+              ],
+              "then": [
+                "deleteComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:deleted",
+          "title": "Publish Deleted",
+          "dynamics": "mf",
+          "handler": "publishDeleted",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Deleted",
+          "userStory": {
+            "persona": "Security-conscious operator",
+            "goal": "execute reliably with latency < 1 minute",
+            "benefit": "data cleanup workflows"
+          },
+          "testCase": "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler publishDeleted is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "publishDeleted executes"
+              ],
+              "then": [
+                "publishDeleted performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Security-conscious operator",
+        "goal": "the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain",
+        "benefit": "data cleanup workflows"
+      },
+      "persona": "Security-conscious operator",
+      "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Security-conscious operator",
+    "goal": "the delete symphony to remove components safely, validating references and emitting audit trails in ≤1s P95 per beat, ensuring no orphaned links remain",
+    "benefit": "data cleanup workflows"
+  },
+  "persona": "Security-conscious operator",
+  "businessValue": "Enables data cleanup workflows; prevents data bloat; improves storage efficiency by 30%; supports compliance (data retention)",
+  "domainId": "renderx-web-orchestration"
+}

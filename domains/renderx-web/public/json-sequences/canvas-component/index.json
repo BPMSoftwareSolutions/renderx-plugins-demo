@@ -1,0 +1,122 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    {
+      "file": "create.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "select.requested.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "select.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "select.svg-node.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "deselect.requested.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "deselect.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "deselect-all.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "delete.requested.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "delete.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "drag.start.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "drag.move.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "drag.end.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.start.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.move.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.end.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "import.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "export.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "export-gif.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "export-mp4.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.line.start.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.line.move.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "resize.line.end.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "update.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "update.svg-node.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "line.manip.start.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "line.manip.move.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "line.manip.end.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "copy.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    },
+    {
+      "file": "paste.json",
+      "handlersPath": "@renderx-web/canvas-component"
+    }
+  ],
+  "domainId": "renderx-web-orchestration"
+}

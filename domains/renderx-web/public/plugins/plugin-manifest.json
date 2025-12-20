@@ -1,0 +1,130 @@
+{
+  "plugins": [
+    {
+      "id": "HeaderTitlePlugin",
+      "status": "production",
+      "ui": {
+        "slot": "headerLeft",
+        "module": "@renderx-web/header",
+        "export": "HeaderTitle"
+      },
+      "runtime": {
+        "module": "@renderx-web/header",
+        "export": "register"
+      }
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "status": "production",
+      "ui": {
+        "slot": "headerCenter",
+        "module": "@renderx-web/header",
+        "export": "HeaderControls"
+      },
+      "runtime": {
+        "module": "@renderx-web/header",
+        "export": "register"
+      }
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "status": "production",
+      "ui": {
+        "slot": "headerRight",
+        "module": "@renderx-web/header",
+        "export": "HeaderThemeToggle"
+      },
+      "runtime": {
+        "module": "@renderx-web/header",
+        "export": "register"
+      }
+    },
+    {
+      "id": "LibraryPlugin",
+      "status": "production",
+      "ui": {
+        "slot": "library",
+        "module": "@renderx-web/library",
+        "export": "LibraryPanel"
+      },
+      "runtime": {
+        "module": "@renderx-web/library",
+        "export": "register"
+      }
+    },
+    {
+      "id": "CanvasPlugin",
+      "status": "production",
+      "ui": {
+        "slot": "canvas",
+        "module": "@renderx-web/canvas",
+        "export": "CanvasPage"
+      },
+      "runtime": {
+        "module": "@renderx-web/canvas",
+        "export": "register"
+      }
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "status": "production",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "@renderx-web/control-panel",
+        "export": "ControlPanel"
+      },
+      "runtime": {
+        "module": "@renderx-web/control-panel",
+        "export": "register"
+      }
+    },
+    {
+      "id": "LibraryComponentPlugin",
+      "status": "production",
+      "runtime": {
+        "module": "@renderx-web/library-component",
+        "export": "register"
+      }
+    },
+    {
+      "id": "CanvasComponentPlugin",
+      "status": "production",
+      "runtime": {
+        "module": "@renderx-web/canvas-component",
+        "export": "register"
+      }
+    },
+    {
+      "id": "RealEstateAnalyzerPlugin",
+      "status": "production",
+      "ui": {
+        "slot": "library",
+        "module": "@renderx-web/real-estate-analyzer",
+        "export": "OpportunityAnalyzer"
+      },
+      "runtime": {
+        "module": "@renderx-web/real-estate-analyzer",
+        "export": "register"
+      }
+    },
+    {
+      "id": "SelfHealingPlugin",
+      "status": "development",
+      "description": "Self-healing system plugin - in development, not yet ready for production serving"
+    },
+    {
+      "id": "slo-dashboard",
+      "status": "development",
+      "description": "SLO governance & reliability dashboard",
+      "ui": {
+        "slot": "dashboard",
+        "module": "@slo-shape/dashboard",
+        "export": "Dashboard"
+      },
+      "runtime": {
+        "module": "@slo-shape/dashboard",
+        "export": "register"
+      }
+    }
+  ]
+}

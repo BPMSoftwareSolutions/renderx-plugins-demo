@@ -1,0 +1,66 @@
+{
+  "pluginId": "CanvasComponentExportGifPlugin",
+  "id": "canvas-component-export-gif-symphony",
+  "name": "Canvas Component Export GIF",
+  "movements": [
+    {
+      "id": "export-gif",
+      "name": "Export GIF",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:export-gif:rasterize-and-encode",
+          "title": "Rasterize SVG and Encode GIF",
+          "dynamics": "mf",
+          "handler": "exportSvgToGif",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "export Svg To Gif",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "rasterize frames and encode GIF with telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "success minimal export triggers download without error",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.gif.handler.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler exportSvgToGif is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "exportSvgToGif executes"
+              ],
+              "then": [
+                "exportSvgToGif performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Platform operator",
+        "goal": "gIF export to render frames and encode deterministically within ≤2s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Platform operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Platform operator",
+    "goal": "gIF export to render frames and encode deterministically within ≤2s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Platform operator",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

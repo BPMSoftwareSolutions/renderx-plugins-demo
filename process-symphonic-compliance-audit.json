@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2025-12-15T15:46:35.047Z",
+  "generatedAt": "2025-12-18T03:21:40.387Z",
   "summary": {
-    "totalProcesses": 603,
+    "totalProcesses": 606,
     "symphonic": 1,
     "partialSymphonic": 43,
-    "nonSymphonic": 307,
+    "nonSymphonic": 310,
     "shouldBeSymphonic": 252,
     "complianceScore": 0
   },
@@ -780,6 +780,17 @@
       "complianceLevel": "non-symphonic"
     },
     {
+      "name": "compare-plugin-migration.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compare-plugin-migration.js",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "moderate",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
       "name": "compute-benefit-scores.js",
       "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\compute-benefit-scores.js",
       "category": "utility",
@@ -864,6 +875,17 @@
       "registered": false,
       "inNpmScript": false,
       "complexity": "moderate",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
+    },
+    {
+      "name": "debug-discover-sequences.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\debug-discover-sequences.js",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "simple",
       "shouldBeSymphonic": false,
       "complianceLevel": "non-symphonic"
     },
@@ -2780,6 +2802,17 @@
       "complexity": "very-complex",
       "shouldBeSymphonic": false,
       "complianceLevel": "partial-symphonic"
+    },
+    {
+      "name": "map-plugin-structure.js",
+      "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\scripts\\map-plugin-structure.js",
+      "category": "utility",
+      "symphonic": false,
+      "registered": false,
+      "inNpmScript": false,
+      "complexity": "moderate",
+      "shouldBeSymphonic": false,
+      "complianceLevel": "non-symphonic"
     },
     {
       "name": "meta-analyze-pipeline.cjs",
@@ -4977,7 +5010,7 @@
       "name": "pre:manifests",
       "path": "package.json:scripts.pre:manifests",
       "type": "npm-script",
-      "command": "npm run regenerate:ographx && node scripts/generate-orchestration-domains-from-sequences.js && node scripts/gen-orchestration-diff.js && node scripts/gen-orchestration-docs.js && node scripts/gen-symphonic-code-analysis-docs.js && node scripts/gen-orchestration-registry-audit-docs.js && node scripts/verify-orchestration-governance.js && node scripts/gen-orchestration-project-plan.js && node scripts/generate-sprint-reports.js && node scripts/generate-canonical-hash-report.js && node scripts/generate-provenance-index.js && node scripts/generate-compliance-report.js && node scripts/advance-current-sprint.js && node scripts/generate-sprint-integrity-snapshots.js && node scripts/generate-handler-coverage.js && node scripts/generate-sprint-deltas.js && node scripts/generate-telemetry-matrix.js && node scripts/generate-sprint-telemetry-snapshots.js && node scripts/generate-release-notes.js && node scripts/generate-demo-readiness.js && node scripts/generate-telemetry-instrumentation.js && node scripts/generate-telemetry-quickstart.js && node scripts/generate-telemetry-verification.js && node scripts/generate-telemetry-complete.js && node scripts/generate-documentation-governance-framework.js && node scripts/generate-pattern-recognition-achievement.js && node scripts/generate-governance-implementation-report.js && node scripts/generate-documentation-governance-index.js && node scripts/generate-document-drift-audit.js && node scripts/generate-domain-documentation-structure.js && node scripts/allocate-documentation-files.js && node scripts/generate-domain-documentation-indexes.js && node scripts/archive-orphaned-documents.js && node scripts/generate-archive-search-index.js && node scripts/gen-context-session-docs.cjs && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-json-interactions-from-plugins.js && node scripts/generate-interaction-manifest.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/generate-topic-telemetry-signatures.cjs && node scripts/generate-layout-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog && node scripts/sync-control-panel-config.js && node scripts/generate-versions-manifest.js && node scripts/generate-build-pipeline-audit-report.js && node scripts/generate-build-pipeline-audit-action-plan.js && node scripts/generate-build-pipeline-scripts-inventory.js && npm run verify:process:symphonic",
+      "command": "npm run regenerate:ographx && node scripts/generate-orchestration-domains-from-sequences.js && node scripts/gen-orchestration-diff.js && node scripts/gen-orchestration-docs.js && node scripts/gen-symphonic-code-analysis-docs.js && node scripts/gen-orchestration-registry-audit-docs.js && node scripts/verify-orchestration-governance.js && node scripts/gen-orchestration-project-plan.js && node scripts/generate-sprint-reports.js && node scripts/generate-canonical-hash-report.js && node scripts/generate-provenance-index.js && node scripts/generate-compliance-report.js && node scripts/advance-current-sprint.js && node scripts/generate-sprint-integrity-snapshots.js && node scripts/generate-handler-coverage.js && node scripts/generate-sprint-deltas.js && node scripts/generate-telemetry-matrix.js && node scripts/generate-sprint-telemetry-snapshots.js && node scripts/generate-release-notes.js && node scripts/generate-demo-readiness.js && node scripts/generate-telemetry-instrumentation.js && node scripts/generate-telemetry-quickstart.js && node scripts/generate-telemetry-verification.js && node scripts/generate-telemetry-complete.js && node scripts/generate-documentation-governance-framework.js && node scripts/generate-pattern-recognition-achievement.js && node scripts/generate-governance-implementation-report.js && node scripts/generate-documentation-governance-index.js && node scripts/generate-document-drift-audit.js && node scripts/generate-domain-documentation-structure.js && node scripts/allocate-documentation-files.js && node scripts/generate-domain-documentation-indexes.js && node scripts/archive-orphaned-documents.js && node scripts/generate-archive-search-index.js && node scripts/gen-context-session-docs.cjs && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/generate-json-interactions-from-plugins.js && node scripts/generate-interaction-manifest.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/generate-topics-manifest.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/generate-topic-telemetry-signatures.cjs && node scripts/generate-layout-manifest.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/sync-control-panel-config.js && node scripts/generate-versions-manifest.js && node scripts/generate-build-pipeline-audit-report.js && node scripts/generate-build-pipeline-audit-action-plan.js && node scripts/generate-build-pipeline-scripts-inventory.js && npm run verify:process:symphonic",
       "category": "orchestration",
       "symphonic": true,
       "registered": false,
@@ -5016,7 +5049,7 @@
       "name": "pretest",
       "path": "package.json:scripts.pretest",
       "type": "npm-script",
-      "command": "node scripts/verify-bdd-spec.js && node scripts/verify-demo-spec.js && node scripts/verify-synthetic-telemetry.js && npm run regenerate:ographx:test-graph && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/generate-topic-telemetry-signatures.cjs && node scripts/validate-topic-telemetry-signatures.cjs && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog && node scripts/validate-shape-contracts.js && node scripts/verify-shape-bdd-alignment.js && node scripts/verify-slo-dashboard-project-plan.js && node scripts/verify-bdd-assertion-completeness.js",
+      "command": "node scripts/verify-bdd-spec.js && node scripts/verify-demo-spec.js && node scripts/verify-synthetic-telemetry.js && npm run regenerate:ographx:test-graph && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/generate-topics-manifest.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/generate-topic-telemetry-signatures.cjs && node scripts/validate-topic-telemetry-signatures.cjs && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog --outPublic=domains/renderx-web/public && node scripts/validate-shape-contracts.js && node scripts/verify-shape-bdd-alignment.js && node scripts/verify-slo-dashboard-project-plan.js && node scripts/verify-bdd-assertion-completeness.js",
       "category": "testing",
       "symphonic": false,
       "registered": false,

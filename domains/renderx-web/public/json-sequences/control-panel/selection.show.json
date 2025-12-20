@@ -1,0 +1,163 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-selection-show-symphony",
+  "name": "Control Panel Selection Show",
+  "movements": [
+    {
+      "id": "selection",
+      "name": "Selection",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:selection:derive",
+          "title": "Derive Selection Model",
+          "dynamics": "mf",
+          "handler": "deriveSelectionModel",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "derive Selection Model",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+          "testCase": "returns null selectionModel when id missing",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "compute selected fields and sections for the control panel",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler deriveSelectionModel is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "deriveSelectionModel executes"
+              ],
+              "then": [
+                "deriveSelectionModel performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:selection:notify",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure",
+          "number": 2,
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "testCase": "exports CanvasPage and register()",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "publish selection model events within <20ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "a class change operation completes"
+              ],
+              "when": [
+                "notifyUi is invoked with change details"
+              ],
+              "then": [
+                "an event is published to the central EventRouter within 5ms"
+              ],
+              "and": [
+                "the event contains element ID, action (add/remove), and class name",
+                "the event is stamped with microsecond-precision timestamp"
+              ]
+            },
+            {
+              "given": [
+                "multiple class operations occur in sequence"
+              ],
+              "when": [
+                "notifyUi publishes events"
+              ],
+              "then": [
+                "events are queued in FIFO order"
+              ],
+              "and": [
+                "subscribers receive events in the order they occurred",
+                "no events are dropped or duplicated"
+              ]
+            },
+            {
+              "given": [
+                "a subscriber is registered for UI change events"
+              ],
+              "when": [
+                "notifyUi publishes"
+              ],
+              "then": [
+                "the subscriber receives the event within 20ms"
+              ],
+              "and": [
+                "the subscriber can act on the notification",
+                "multiple subscribers can consume the same event"
+              ]
+            },
+            {
+              "given": [
+                "the event system is congested"
+              ],
+              "when": [
+                "notifyUi attempts to publish"
+              ],
+              "then": [
+                "the event is queued with backpressure"
+              ],
+              "and": [
+                "the operation does not block the caller",
+                "events are eventually delivered with bounded latency"
+              ]
+            },
+            {
+              "given": [
+                "notification occurs during error conditions"
+              ],
+              "when": [
+                "notifyUi is called"
+              ],
+              "then": [
+                "events are still published for traceability"
+              ],
+              "and": [
+                "error context is included in event payload",
+                "the system can reconstruct the failure chain from events"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 2,
+  "tempo": 120,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "selection overlays to reflect current canvas selection, derived deterministically and published to UI in <20ms",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

@@ -1,0 +1,68 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-section-toggle-symphony",
+  "name": "Control Panel UI Section Toggle",
+  "movements": [
+    {
+      "id": "section-toggle",
+      "name": "Section Toggle",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:section:toggle",
+          "title": "Toggle Section",
+          "dynamics": "mf",
+          "handler": "toggleSection",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "toggle Section",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
+          "testCase": "applies rx-button--<variant> from content.variant even if classRefs lacked it",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "apply state and notify UI",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler toggleSection is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "toggleSection executes"
+              ],
+              "then": [
+                "toggleSection performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "section toggles to update visibility and persist preference within ≤1s P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "tempo": 120,
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "section toggles to update visibility and persist preference within ≤1s P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

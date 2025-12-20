@@ -1,0 +1,62 @@
+{
+  "pluginId": "LibraryComponentPlugin",
+  "id": "library-component-container-drop-symphony",
+  "name": "Library Component Container Drop",
+  "movements": [
+    {
+      "id": "drop",
+      "name": "Drop",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "library:container:drop",
+          "title": "Publish Create Requested (Container)",
+          "dynamics": "mf",
+          "handler": "publishCreateRequested",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish or Deploy publish Create Requested",
+          "userStory": {
+            "persona": "Orchestration integrator",
+            "goal": "route drop events to canvas create",
+            "benefit": "automated deployment"
+          },
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "container target"
+              ],
+              "when": [
+                "onContainerDrop runs"
+              ],
+              "then": [
+                "inserts child at index, reflows minimal, latency ≤ 150ms"
+              ],
+              "and": [
+                "telemetry includes containerId and index"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Orchestration integrator",
+        "goal": "container drop to publish create requests deterministically with ≤1s P95 and route to canvas create",
+        "benefit": "automated deployment"
+      },
+      "persona": "Orchestration integrator",
+      "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Orchestration integrator",
+    "goal": "container drop to publish create requests deterministically with ≤1s P95 and route to canvas create",
+    "benefit": "automated deployment"
+  },
+  "persona": "Orchestration integrator",
+  "businessValue": "Enables automated deployment; reduces release cycle time by 70%; improves availability (target: 99.9%); supports CI/CD",
+  "domainId": "renderx-web-orchestration"
+}

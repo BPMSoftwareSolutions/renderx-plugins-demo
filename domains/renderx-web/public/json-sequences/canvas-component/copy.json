@@ -1,0 +1,143 @@
+{
+  "pluginId": "CanvasComponentCopyPlugin",
+  "id": "canvas-component-copy-symphony",
+  "name": "Canvas Component Copy",
+  "topicMapping": {
+    "routeToBase": true
+  },
+  "movements": [
+    {
+      "id": "copy-to-clipboard",
+      "name": "Copy to Clipboard",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:copy:serialize",
+          "title": "Serialize Component Data",
+          "dynamics": "mf",
+          "handler": "serializeSelectedComponent",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "serialize Selected Component",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler serializeSelectedComponent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "serializeSelectedComponent executes"
+              ],
+              "then": [
+                "serializeSelectedComponent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:copy:clipboard",
+          "title": "Copy to Clipboard",
+          "dynamics": "mf",
+          "handler": "copyToClipboard",
+          "timing": "immediate",
+          "kind": "io",
+          "scenario": "copy To Clipboard",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "does not throw for Map",
+          "testFile": "node_modules\\@sinonjs\\commons\\lib\\prototypes\\copy-prototype-methods.test.js",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler copyToClipboard is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "copyToClipboard executes"
+              ],
+              "then": [
+                "copyToClipboard performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:copy:notify",
+          "title": "Notify Copy Complete",
+          "dynamics": "mf",
+          "handler": "notifyCopyComplete",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Notify or Publish notify Copy Complete",
+          "userStory": {
+            "persona": "Content author",
+            "goal": "execute reliably with latency < 50ms",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler notifyCopyComplete is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "notifyCopyComplete executes"
+              ],
+              "then": [
+                "notifyCopyComplete performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Content author",
+        "goal": "duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Content author",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 3,
+  "userStory": {
+    "persona": "Content author",
+    "goal": "duplicate components with stable IDs and class refs within ≤1s P95, preserving hierarchy",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Content author",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

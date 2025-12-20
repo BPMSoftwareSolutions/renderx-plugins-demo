@@ -1,0 +1,144 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-render-symphony",
+  "name": "Control Panel UI Render",
+  "movements": [
+    {
+      "id": "render",
+      "name": "Render",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:fields:generate",
+          "title": "Generate Fields",
+          "dynamics": "mf",
+          "handler": "generateFields",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 1,
+          "scenario": "Generate Form Fields from Configuration Metadata",
+          "testFile": "node_modules\\@renderx-plugins\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "testCase": "generateFields populates fields array with layout/styling fields",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "derive UI elements from schema",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler generateFields is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "generateFields executes"
+              ],
+              "then": [
+                "generateFields performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:sections:generate",
+          "title": "Generate Sections",
+          "dynamics": "mf",
+          "handler": "generateSections",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 2,
+          "scenario": "Generate Grouped Form Sections from Configuration",
+          "testFile": "node_modules\\@renderx-plugins\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+          "testCase": "should achieve the desired business outcome",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "group fields semantically",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler generateSections is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "generateSections executes"
+              ],
+              "then": [
+                "generateSections performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:render",
+          "title": "Render View",
+          "dynamics": "mf",
+          "handler": "renderView",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "number": 3,
+          "scenario": "Render Complete Dynamic View with All Components",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
+          "testCase": "expands viewBox when endpoints extend beyond element bounds (no rotation)",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "render efficiently with memoization",
+            "benefit": "no-code form generation"
+          },
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler renderView is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "renderView executes"
+              ],
+              "then": [
+                "renderView performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "generate fields and sections and draw views in <200ms P95",
+        "benefit": "no-code form generation"
+      },
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant"
+    }
+  ],
+  "beats": 3,
+  "tempo": 120,
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "generate fields and sections and draw views in <200ms P95",
+    "benefit": "no-code form generation"
+  },
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables no-code form generation; reduces form creation time from hours to minutes; supports dynamic field generation per tenant",
+  "domainId": "renderx-web-orchestration"
+}

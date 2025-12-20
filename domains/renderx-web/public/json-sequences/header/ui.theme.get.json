@@ -1,0 +1,100 @@
+{
+  "pluginId": "HeaderThemePlugin",
+  "id": "header-ui-theme-get-symphony",
+  "name": "Header UI Theme Get",
+  "movements": [
+    {
+      "id": "get",
+      "name": "Get Current Theme",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "app:ui:theme:get",
+          "title": "Get Current Theme",
+          "dynamics": "mf",
+          "handler": "getCurrentTheme",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Retrieve Current Application Theme Configuration",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "read persisted theme and apply classes",
+            "benefit": "instant theme switching"
+          },
+          "testCase": "should have required metadata fields",
+          "testFile": "node_modules\\@renderx-plugins\\digital-assets\\tests\\themes.test.js",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler getCurrentTheme is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "getCurrentTheme executes"
+              ],
+              "then": [
+                "getCurrentTheme performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "app:ui:theme:notify",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "publish theme state in <20ms",
+            "benefit": "instant theme switching"
+          },
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "a theme fetch completes"
+              ],
+              "when": [
+                "notifyUi is invoked"
+              ],
+              "then": [
+                "an event is published to the EventRouter within 5ms"
+              ],
+              "and": [
+                "the event contains theme value and source",
+                "the event is timestamped and trace-linked"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "theme retrieval to load and apply preferences without blocking initial render (≤1s P95)",
+        "benefit": "instant theme switching"
+      },
+      "persona": "UI runtime engineer",
+      "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "theme retrieval to load and apply preferences without blocking initial render (≤1s P95)",
+    "benefit": "instant theme switching"
+  },
+  "persona": "UI runtime engineer",
+  "businessValue": "Enables instant theme switching; reduces user-perceived latency; supports dark mode preference with < 10ms detection",
+  "domainId": "renderx-web-orchestration"
+}

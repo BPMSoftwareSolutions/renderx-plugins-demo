@@ -1,0 +1,247 @@
+{
+  "pluginId": "CanvasComponentExportPlugin",
+  "id": "canvas-component-export-symphony",
+  "name": "Canvas Component Export",
+  "movements": [
+    {
+      "id": "export",
+      "name": "Export",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:query-all",
+          "title": "Query All Components",
+          "dynamics": "mf",
+          "handler": "queryAllComponents",
+          "timing": "immediate",
+          "kind": "io",
+          "scenario": "query All Components",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "allows relative and approved bare imports",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\allowed-imports.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler queryAllComponents is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "queryAllComponents executes"
+              ],
+              "then": [
+                "queryAllComponents performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:discover-components",
+          "title": "Discover Components from DOM",
+          "dynamics": "mf",
+          "handler": "discoverComponentsFromDom",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Scan, Discover, or Analyze discover Components From Dom",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 5 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "forwards to drop symphony and does not render React nodes directly",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\create-page.dom.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler discoverComponentsFromDom is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "discoverComponentsFromDom executes"
+              ],
+              "then": [
+                "discoverComponentsFromDom performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:collect-css",
+          "title": "Collect CSS Classes",
+          "dynamics": "mf",
+          "handler": "collectCssClasses",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "collect Css Classes",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "collects CSS from components with template.classRefs (current export format)",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler collectCssClasses is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "collectCssClasses executes"
+              ],
+              "then": [
+                "collectCssClasses performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:collect-layout",
+          "title": "Collect Layout Data",
+          "dynamics": "mf",
+          "handler": "collectLayoutData",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "collect Layout Data",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "discovered components"
+              ],
+              "when": [
+                "collectLayoutData runs"
+              ],
+              "then": [
+                "bounds/transform collected with precision ≤ 1px/0.5°"
+              ],
+              "and": [
+                "units normalize (px)"
+              ]
+            }
+          ],
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "builds create payload from clipboard-shaped component without preserving id",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\create.from-data.spec.ts"
+        },
+        {
+          "beat": 4,
+          "event": "canvas:component:build-ui-file",
+          "title": "Build UI File Content",
+          "dynamics": "mf",
+          "handler": "buildUiFileContent",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Generate or Create build Ui File Content",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 2 seconds",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "should build context for symbol generation",
+          "testFile": "src\\domain\\components\\vector-store\\ai\\__tests__\\ographx-context-builder.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler buildUiFileContent is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "buildUiFileContent executes"
+              ],
+              "then": [
+                "buildUiFileContent performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 5,
+          "event": "canvas:component:download-file",
+          "title": "Download UI File",
+          "dynamics": "mf",
+          "handler": "downloadUiFile",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "download Ui File",
+          "userStory": {
+            "persona": "Platform operator",
+            "goal": "execute reliably with latency < 1 second",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler downloadUiFile is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "downloadUiFile executes"
+              ],
+              "then": [
+                "downloadUiFile performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Platform operator",
+        "goal": "serialize canvas and assets deterministically within ≤2s P95 with traceable audit",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Platform operator",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 6,
+  "userStory": {
+    "persona": "Platform operator",
+    "goal": "serialize canvas and assets deterministically within ≤2s P95 with traceable audit",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Platform operator",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

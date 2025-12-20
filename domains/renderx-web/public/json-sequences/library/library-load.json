@@ -1,0 +1,95 @@
+{
+  "pluginId": "LibraryPlugin",
+  "id": "library-load-symphony",
+  "name": "Library Load",
+  "movements": [
+    {
+      "id": "load",
+      "name": "Load",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "library:components:load",
+          "title": "Load Components",
+          "dynamics": "mf",
+          "handler": "loadComponents",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Load and Initialize Application Components",
+          "userStory": {
+            "persona": "Library curator",
+            "goal": "to load all components with proper dependency resolution in <500ms",
+            "benefit": "reduces application startup time by 30%"
+          },
+          "testCase": "loadComponents uses Host SDK inventory when available and assigns payload components",
+          "testFile": "node_modules\\@renderx-plugins\\library\\__tests__\\handlers.loadComponents.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "a library path"
+              ],
+              "when": [
+                "requestLoad runs"
+              ],
+              "then": [
+                "emits 'library.load.requested' and validates path"
+              ],
+              "and": [
+                "telemetry includes path and requestId"
+              ]
+            }
+          ]
+        },
+        {
+          "beat": 2,
+          "event": "library:components:notify-ui",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "Publish UI State Change Notifications to Event System",
+          "userStory": {
+            "persona": "Library curator",
+            "goal": "uI state changes to be published as events with <20ms delivery latency",
+            "benefit": "reduces application startup time by 30%"
+          },
+          "testCase": "exports CanvasPage and register()",
+          "testFile": "node_modules\\@renderx-plugins\\canvas\\__tests__\\ui.export.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "request"
+              ],
+              "when": [
+                "loadLibrary runs"
+              ],
+              "then": [
+                "loads assets with P95 ≤ 2s, errors typed"
+              ],
+              "and": [
+                "telemetry 'library.load' includes size and duration"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Library curator",
+        "goal": "the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably",
+        "benefit": "reduces application startup time by 30%"
+      },
+      "persona": "Library curator",
+      "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance"
+    }
+  ],
+  "beats": 2,
+  "userStory": {
+    "persona": "Library curator",
+    "goal": "the library to load metadata, indexes, and assets deterministically with ≤1s P95 per beat and 99.9% success so developers can search and import reliably",
+    "benefit": "reduces application startup time by 30%"
+  },
+  "persona": "Library curator",
+  "businessValue": "Reduces application startup time by 30%; enables modular architecture; supports lazy-loading patterns for performance",
+  "domainId": "renderx-web-orchestration"
+}

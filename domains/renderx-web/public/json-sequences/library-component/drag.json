@@ -1,0 +1,62 @@
+{
+  "pluginId": "LibraryComponentPlugin",
+  "id": "library-component-drag-symphony",
+  "name": "Library Component Drag",
+  "movements": [
+    {
+      "id": "drag",
+      "name": "Drag",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "library.component.drag.start.requested",
+          "title": "Start Drag",
+          "dynamics": "mf",
+          "handler": "onDragStart",
+          "timing": "immediate",
+          "kind": "pure",
+          "scenario": "on Drag Start",
+          "userStory": {
+            "persona": "Interaction designer",
+            "goal": "prepare drag payload and emit telemetry",
+            "benefit": "reliable operations with measurable KPIs"
+          },
+          "testCase": "publishes drag.move with { id, position }",
+          "testFile": "node_modules\\@renderx-plugins\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "pointer down"
+              ],
+              "when": [
+                "dragStart runs"
+              ],
+              "then": [
+                "starts drag within ≤ 16ms and sets data payload"
+              ],
+              "and": [
+                "telemetry 'drag.start' includes elementId"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "Interaction designer",
+        "goal": "start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95",
+        "benefit": "reliable operations with measurable KPIs"
+      },
+      "persona": "Interaction designer",
+      "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "Interaction designer",
+    "goal": "start smoothly, prepare preview payloads, and communicate with canvas in ≤100ms P95",
+    "benefit": "reliable operations with measurable KPIs"
+  },
+  "persona": "Interaction designer",
+  "businessValue": "Enables reliable operations with measurable KPIs; ensures consistent service delivery with SLA compliance (target: 99.9%)",
+  "domainId": "renderx-web-orchestration"
+}

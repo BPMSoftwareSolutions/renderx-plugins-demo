@@ -1,0 +1,66 @@
+{
+  "pluginId": "HeaderThemePlugin",
+  "id": "header-ui-theme-toggle-symphony",
+  "name": "Header UI Theme Toggle",
+  "movements": [
+    {
+      "id": "toggle",
+      "name": "Toggle Theme",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "app:ui:theme:toggle",
+          "title": "Toggle Theme",
+          "dynamics": "mf",
+          "handler": "toggleTheme",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "scenario": "Switch Between Light and Dark Theme",
+          "userStory": {
+            "persona": "UI runtime engineer",
+            "goal": "switch theme and persist preference",
+            "benefit": "user satisfaction"
+          },
+          "testCase": "should render theme toggle component with light mode by default",
+          "testFile": "tests\\react-component-theme-toggle-e2e.spec.ts",
+          "acceptanceCriteria": [
+            {
+              "given": [
+                "handler toggleTheme is available",
+                "required inputs are provided"
+              ],
+              "when": [
+                "toggleTheme executes"
+              ],
+              "then": [
+                "toggleTheme performs its expected logic",
+                "output matches expected format",
+                "no errors are thrown"
+              ],
+              "and": [
+                "side effects are emitted correctly",
+                "performance meets SLA targets"
+              ]
+            }
+          ]
+        }
+      ],
+      "userStory": {
+        "persona": "UI runtime engineer",
+        "goal": "theme toggles to update preference, mutate classes, and notify subscribers within <20ms",
+        "benefit": "user satisfaction"
+      },
+      "persona": "UI runtime engineer",
+      "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience"
+    }
+  ],
+  "beats": 1,
+  "userStory": {
+    "persona": "UI runtime engineer",
+    "goal": "theme toggles to update preference, mutate classes, and notify subscribers within <20ms",
+    "benefit": "user satisfaction"
+  },
+  "persona": "UI runtime engineer",
+  "businessValue": "Improves user satisfaction; reduces eye strain with dark mode (user preference > 40%); enables accessible experience",
+  "domainId": "renderx-web-orchestration"
+}

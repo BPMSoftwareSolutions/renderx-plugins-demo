@@ -67,46 +67,6 @@ async function copyTreeWithBase(src, dst, baseLabel) {
   }
 }
 
-async function discoverRenderxSequencePackages(nodeModulesDir) {
-  let out = [];
-  let scopes = [];
-  try { scopes = await readdir(nodeModulesDir, { withFileTypes: true }); } catch {}
-  for (const ent of scopes) {
-    if (ent.name.startsWith('.')) continue;
-    const isDirLike = ent.isDirectory() || (ent.isSymbolicLink && ent.isSymbolicLink());
-    if (!isDirLike) continue;
-    if (ent.name.startsWith('@')) {
-      const scopePath = join(nodeModulesDir, ent.name);
-      let scoped = [];
-      try { scoped = await readdir(scopePath, { withFileTypes: true }); } catch {}
-      for (const p of scoped) {
-        const isPkgDirLike = p.isDirectory() || (p.isSymbolicLink && p.isSymbolicLink());
-        if (!isPkgDirLike) continue;
-        out.push(join(scopePath, p.name));
-      }
-    } else {
-      out.push(join(nodeModulesDir, ent.name));
-    }
-  }
-  const results = [];
-  for (const pkgDir of out) {
-    const pkgJsonPath = join(pkgDir, 'package.json');
-    const exists = await stat(pkgJsonPath).catch(()=>null);
-    if (!exists) continue;
-    let pkgJson = null;
-    try { pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8')); } catch { pkgJson = null; }
-    if (!pkgJson) continue;
-    const rx = pkgJson.renderx || null;
-    const keywords = Array.isArray(pkgJson.keywords) ? pkgJson.keywords.map(String) : [];
-    const isRenderx = !!rx || keywords.includes('renderx-plugin');
-    if (!isRenderx) continue;
-    const seqs = Array.isArray(rx?.sequences) ? rx.sequences : [];
-    if (seqs.length === 0) continue;
-    results.push({ pkgDir, pkgJson, sequences: seqs });
-  }
-  return results;
-}
-
 async function syncJsonSequences() {
   console.log("🔄 Syncing json-sequences/ to public/json-sequences/...");
   try {
@@ -121,32 +81,64 @@ async function syncJsonSequences() {
       }
     } catch {}
 
-    // Copy repo-local sequences first
+    // Copy repo-local sequences first (catalog/json-sequences/)
     await copyTreeWithBase(sourceDir, targetDir, sourceDir);
 
-    // Then copy any package-provided sequences from node_modules (declared via package.json renderx.sequences)
-    const nodeModulesDir = join(rootDir, 'node_modules');
-    const pkgs = await discoverRenderxSequencePackages(nodeModulesDir);
-    for (const pkg of pkgs) {
-      const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
-      for (const rel of pkg.sequences) {
-        const seqRoot = join(pkg.pkgDir, rel);
-        console.log(`📦 Including sequences from ${pkgName}/${rel}`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+    // Discover sequences from domain registry (renderx-web domain) - single source of truth
+    const domainRegistryPath = join(rootDir, 'domains', 'renderx-web', 'domain-registry.json');
+    let domainRegistry = null;
+    try {
+      const registryContent = await readFile(domainRegistryPath, 'utf-8');
+      domainRegistry = JSON.parse(registryContent);
+    } catch (err) {
+      console.error(`❌ Failed to read domain registry at ${domainRegistryPath}: ${err.message}`);
+      process.exit(1);
+    }
+
+    if (!domainRegistry || !domainRegistry.plugins) {
+      console.error(`❌ Domain registry missing plugins configuration`);
+      process.exit(1);
+    }
+
+    console.log(`📋 Using domain registry to discover plugins from: domains/renderx-web/`);
+
+    // Process runtime plugins
+    if (Array.isArray(domainRegistry.plugins.runtime)) {
+      for (const plugin of domainRegistry.plugins.runtime) {
+        if (plugin.sequences && plugin.sequences.catalog) {
+          const catalogPath = plugin.sequences.catalog;
+          // Resolve relative path from domain root
+          const seqRoot = join(rootDir, 'domains', 'renderx-web', catalogPath.replace('/index.json', ''));
+          const pkgName = plugin.package || plugin.id;
+          const pluginId = plugin.id;
+          console.log(`📦 Including sequences from ${pkgName} (domain runtime plugin)`);
+          // Create plugin subdirectory in target
+          const pluginTargetDir = join(targetDir, pluginId);
+          // Check if seqRoot has a subdirectory with the same name as pluginId (skip it)
+          const potentialSubdir = join(seqRoot, pluginId);
+          const actualSeqRoot = await stat(potentialSubdir).then(() => potentialSubdir).catch(() => seqRoot);
+          await copyTreeWithBase(actualSeqRoot, pluginTargetDir, actualSeqRoot);
+        }
       }
     }
 
-    // Also copy sequences from local packages/ directory
-    const packagesDir = join(rootDir, 'packages');
-    console.log(`🔍 Discovering sequences from local packages in: ${packagesDir}`);
-    const localPkgs = await discoverRenderxSequencePackages(packagesDir);
-    console.log(`🔍 Found ${localPkgs.length} local packages with sequences`);
-    for (const pkg of localPkgs) {
-      const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
-      for (const rel of pkg.sequences) {
-        const seqRoot = join(pkg.pkgDir, rel);
-        console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
-        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+    // Process UI plugins
+    if (Array.isArray(domainRegistry.plugins.ui)) {
+      for (const plugin of domainRegistry.plugins.ui) {
+        if (plugin.sequences && plugin.sequences.catalog) {
+          const catalogPath = plugin.sequences.catalog;
+          // Resolve relative path from domain root
+          const seqRoot = join(rootDir, 'domains', 'renderx-web', catalogPath.replace('/index.json', ''));
+          const pkgName = plugin.package || plugin.id;
+          const pluginId = plugin.id;
+          console.log(`📦 Including sequences from ${pkgName} (domain UI plugin)`);
+          // Create plugin subdirectory in target
+          const pluginTargetDir = join(targetDir, pluginId);
+          // Check if seqRoot has a subdirectory with the same name as pluginId (skip it)
+          const potentialSubdir = join(seqRoot, pluginId);
+          const actualSeqRoot = await stat(potentialSubdir).then(() => potentialSubdir).catch(() => seqRoot);
+          await copyTreeWithBase(actualSeqRoot, pluginTargetDir, actualSeqRoot);
+        }
       }
     }
 
