@@ -688,14 +688,12 @@
       "unit": "./__tests__/unit/",
       "integration": "./__tests__/integration/",
       "e2e": "./__tests__/e2e/",
-      "plugins": {
-        "canvas-component": "./runtime/canvas-component/__tests__/",
-        "library-component": "./runtime/library-component/__tests__/",
-        "control-panel": "./ui-plugins/control-panel/__tests__/",
-        "header": "./ui-plugins/header/__tests__/",
-        "library": "./ui-plugins/library/__tests__/",
-        "canvas": "./ui-plugins/canvas/__tests__/"
-      }
+      "plugins-canvas-component": "./runtime/canvas-component/__tests__/",
+      "plugins-library-component": "./runtime/library-component/__tests__/",
+      "plugins-control-panel": "./ui-plugins/control-panel/__tests__/",
+      "plugins-header": "./ui-plugins/header/__tests__/",
+      "plugins-library": "./ui-plugins/library/__tests__/",
+      "plugins-canvas": "./ui-plugins/canvas/__tests__/"
     }
   },
   "documentation": {
