@@ -31,19 +31,19 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ## 📊 Domain Registry Overview
 
-> **Auto-generated on 2025-12-18T03:20:15.834Z**
+> **Auto-generated on 2025-12-24T21:06:30.167Z**
 > This section is automatically maintained. To update: `npm run generate:readme`
 
-**Total Domains**: 85 (82 active, 1 deprecated, 1 experimental)
+**Total Domains**: 31 (28 active, 1 deprecated, 1 experimental)
 
 ### By Type
-- capability: 61
 - orchestration: 23
+- capability: 7
 - workflow: 1
 
 ### By Ownership
-- **RenderX-Web**: 60 domains
 - **Platform-Orchestration**: 17 domains
+- **RenderX-Web**: 6 domains
 - **Platform-Infrastructure**: 4 domains
 - **Platform-Observability**: 1 domains
 - **Platform-DevEx**: 1 domains
@@ -100,32 +100,16 @@ Check out these supporting projects for more detail on the underlying architectu
 
 ### 🔧 Capability Domains
 
-**57 capability domains** providing UI features, plugin sequences, and user interactions.
+**3 capability domains** providing UI features, plugin sequences, and user interactions.
 
-
-<details>
-<summary>View capability domains</summary>
-
-Top capabilities:
 - **self-healing**: Self-Healing capability domain
 - **slo-dashboard**: SLO Dashboard capability domain
-- **canvas-component-copy-symphony**: Plugin sequence: Canvas Component Copy
-- **canvas-component-create-symphony**: Plugin sequence: Canvas Component Create
-- **canvas-component-delete-symphony**: Plugin sequence: Canvas Component Delete
-- **canvas-component-delete-requested-symphony**: Plugin sequence: Canvas Component Delete Requested
-- **canvas-component-deselect-all-symphony**: Plugin sequence: Canvas Component Deselect All
-- **canvas-component-deselect-symphony**: Plugin sequence: Canvas Component Deselect
-- **canvas-component-deselect-requested-symphony**: Plugin sequence: Canvas Component Deselect Requested
-- **canvas-component-drag-end-symphony**: Plugin sequence: Canvas Component Drag End
-
-_...and 47 more_
-</details>
-
+- **real-estate-analyzer-search-symphony**: Plugin sequence: Real Estate Analyzer Search
 
 ### 📈 Analysis Status
 
 - **22** orchestration domains have analysis configuration
-- **Latest Validation**: 2025-12-18T03:20:15.510Z
+- **Latest Validation**: 2025-12-24T21:06:29.823Z
 - **Analysis Reports**: [View all](.generated/analysis/)
 
 ## 📚 Documentation
@@ -207,7 +191,7 @@ This README is automatically generated from:
 - `.generated/analysis/**` - Code analysis reports
 - Domain analysis configuration
 
-**Last Generated**: 2025-12-18T03:20:15.834Z
+**Last Generated**: 2025-12-24T21:06:30.167Z
 
 To update this README, run:
 ```bash

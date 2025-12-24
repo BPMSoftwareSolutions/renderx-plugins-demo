@@ -296,41 +296,6 @@
       "perf": {},
       "notes": "Auto-derived from control-panel/ui.section.toggle.json"
     },
-    "library.component.drag.start.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-drag-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from library-component/drag.json"
-    },
-    "library:component:drop": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Published when library component is dropped on canvas; triggers canvas component creation"
-    },
-    "library:container:drop": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Published when library component is dropped on a container; inserts child at index"
-    },
     "canvas.component.augment.requested": {
       "routes": [
         {
@@ -2416,6 +2381,31 @@
       "perf": {},
       "notes": "Auto-generated lifecycle topic (failed) for library.container.drop"
     },
+    "library:container:drop": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from beat event \"library:container:drop\" in library-component/container.drop.json"
+    },
+    "library.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/drag.json"
+    },
     "library.component.drag.start": {
       "routes": [],
       "payloadSchema": {
@@ -2520,6 +2510,16 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-generated lifecycle topic (failed) for library.component.drop"
+    },
+    "library:component:drop": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from beat event \"library:component:drop\" in library-component/drop.json"
     },
     "control.panel.classes.add.requested": {
       "routes": [
@@ -3860,7 +3860,7 @@
       "routes": [
         {
           "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-drag-symphony"
+          "sequenceId": "library-component-container-drop-symphony"
         }
       ],
       "payloadSchema": {
@@ -3869,7 +3869,7 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Auto-inferred alias for library.component.drag.start.requested (frontend expects library.drop)"
+      "notes": "Auto-inferred alias for library.container.drop.requested (frontend expects library.drop)"
     },
     "test.route": {
       "routes": [],

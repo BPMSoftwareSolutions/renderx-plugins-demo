@@ -258,7 +258,7 @@
     "@renderx-web/control-panel": "^0.1.0-rc.9",
     "@renderx-web/header": "*",
     "@renderx-web/library": "*",
-    "@renderx-web/library-component": "*",
+    "@renderx-web/library-component": "^1.0.5",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",
     "musical-conductor": "*",
