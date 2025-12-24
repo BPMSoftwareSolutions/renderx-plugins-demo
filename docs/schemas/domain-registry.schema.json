@@ -1,0 +1,294 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DomainRegistry",
+  "description": "Canonical Domain Registry JSON Schema - Central catalog of all domains, their contracts, governance, metrics, dependencies, and orchestration sequence references.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registryVersion", "lastUpdated", "project", "domains"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema URI for validators/readers"
+    },
+    "registryVersion": {
+      "type": "string",
+      "description": "Version of this registry document (semver recommended, e.g. 1.0.0)"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "ISO-8601 timestamp of last update",
+      "format": "date-time"
+    },
+    "project": {
+      "$ref": "#/definitions/ProjectInfo"
+    },
+    "domains": {
+      "type": "array",
+      "description": "All domains in the ecosystem",
+      "items": { "$ref": "#/definitions/Domain" },
+      "minItems": 1
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional registry-level metadata",
+      "additionalProperties": true
+    }
+  },
+
+  "definitions": {
+    "ProjectInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "description": "Project name (e.g., RenderX)" },
+        "repo": { "type": "string", "description": "Repo identifier or URL" },
+        "environment": { "type": "string", "description": "dev | staging | prod | local | ci" },
+        "owner": { "type": "string", "description": "Primary owner for the registry" }
+      }
+    },
+
+    "Domain": {
+      "type": "object",
+      "description": "A domain represents a bounded context or major functional area, with contracts, governance, and orchestration references.",
+      "additionalProperties": false,
+      "required": ["domainId", "name", "description", "status"],
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "description": "Unique domain identifier (stable key, e.g., 'renderx-web-orchestration')"
+        },
+        "name": { "type": "string", "description": "Human-readable domain name" },
+        "description": { "type": "string", "description": "What this domain does" },
+
+        "status": {
+          "type": "string",
+          "description": "Lifecycle status",
+          "enum": ["active", "experimental", "planned", "deprecated", "retired"]
+        },
+
+        "priority": {
+          "type": "string",
+          "description": "Relative importance / ordering hint",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+
+        "namespace": {
+          "type": "string",
+          "description": "Namespace/grouping (e.g., 'renderx', 'platform', 'plugins')"
+        },
+
+        "parentDomain": {
+          "type": ["string", "null"],
+          "description": "Optional parent domainId for hierarchy"
+        },
+
+        "codePaths": {
+          "type": "array",
+          "description": "Paths/globs where this domain's code lives",
+          "items": { "type": "string" }
+        },
+
+        "sequences": {
+          "type": "array",
+          "description": "References to canonical orchestration sequences for this domain",
+          "items": { "$ref": "#/definitions/SequenceReference" }
+        },
+
+        "subDomains": {
+          "type": "array",
+          "description": "Optional nested sub-domain definitions",
+          "items": { "$ref": "#/definitions/Domain" }
+        },
+
+        "dependencies": {
+          "type": "array",
+          "description": "Other domains/services this domain depends on",
+          "items": { "$ref": "#/definitions/DomainDependency" }
+        },
+
+        "contracts": {
+          "type": "array",
+          "description": "Contract artifacts (schemas, APIs, events, topics, files, etc.)",
+          "items": { "$ref": "#/definitions/DomainContract" }
+        },
+
+        "metrics": {
+          "$ref": "#/definitions/DomainMetrics"
+        },
+
+        "governance": {
+          "$ref": "#/definitions/DomainGovernance"
+        },
+
+        "owners": {
+          "type": "array",
+          "description": "People/teams owning this domain",
+          "items": { "$ref": "#/definitions/OwnerRef" }
+        },
+
+        "documentation": {
+          "type": "object",
+          "description": "Documentation pointers",
+          "additionalProperties": false,
+          "properties": {
+            "readme": { "type": "string" },
+            "architecture": { "type": "string" },
+            "adrPaths": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+
+        "metadata": {
+          "type": "object",
+          "description": "Domain-specific metadata (extensible)",
+          "additionalProperties": true
+        }
+      }
+    },
+
+    "SequenceReference": {
+      "type": "object",
+      "description": "Reference to a canonical sequence file for this domain (MusicalSequence).",
+      "additionalProperties": false,
+      "required": ["sequenceId", "sequenceFile", "name", "status"],
+      "properties": {
+        "sequenceId": { "type": "string", "description": "Unique sequence identifier" },
+        "sequenceFile": { "type": "string", "description": "Path/URI to the sequence JSON" },
+        "name": { "type": "string", "description": "Human-friendly sequence name" },
+        "description": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["active", "experimental", "planned", "deprecated", "retired"]
+        },
+        "testFiles": {
+          "type": "array",
+          "description": "Test files that validate this sequence end-to-end",
+          "items": { "type": "string" }
+        },
+        "version": { "type": "string", "description": "Sequence version (semver recommended)" },
+        "lastUpdated": { "type": "string", "format": "date-time" },
+
+        "schemaRef": {
+          "type": "string",
+          "description": "Optional schema reference for validation (e.g., musical-sequence.schema.json)"
+        }
+      }
+    },
+
+    "DomainDependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domainId", "type"],
+      "properties": {
+        "domainId": { "type": "string", "description": "Dependent domainId" },
+        "type": {
+          "type": "string",
+          "description": "Kind of dependency",
+          "enum": ["api", "event", "data", "library", "ui", "infra", "process"]
+        },
+        "notes": { "type": "string" },
+        "criticality": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        }
+      }
+    },
+
+    "DomainContract": {
+      "type": "object",
+      "description": "A contract artifact: API spec, schema, event, topic, file format, etc.",
+      "additionalProperties": false,
+      "required": ["kind", "name"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["openapi", "json-schema", "event", "topic", "queue", "file", "database", "ui-contract"]
+        },
+        "name": { "type": "string" },
+        "location": { "type": "string", "description": "Path/URI to the artifact" },
+        "version": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["active", "experimental", "planned", "deprecated", "retired"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "OwnerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string", "description": "Owner name (team/person)" },
+        "type": { "type": "string", "enum": ["person", "team", "org"] },
+        "contact": { "type": "string", "description": "Email/handle/link" }
+      }
+    },
+
+    "DomainMetrics": {
+      "type": "object",
+      "description": "Quantitative metrics for domain health and quality",
+      "additionalProperties": false,
+      "properties": {
+        "driftScore": { "type": "number", "minimum": 0, "maximum": 100 },
+        "testCoverage": { "type": "number", "minimum": 0, "maximum": 100 },
+        "documentationQuality": { "type": "number", "minimum": 0, "maximum": 100 },
+        "linesOfCode": { "type": "integer", "minimum": 0 },
+        "cyclomaticComplexity": { "type": "number", "minimum": 0 },
+        "technicalDebtRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "defectDensity": { "type": "number", "minimum": 0 },
+        "changeFrequency": { "type": "number", "minimum": 0 },
+        "lastMeasured": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "DomainGovernance": {
+      "type": "object",
+      "description": "Governance policies, compliance requirements, and security constraints for a domain",
+      "additionalProperties": false,
+      "properties": {
+        "policies": { "type": "array", "items": { "type": "string" } },
+        "complianceRequirements": { "type": "array", "items": { "type": "string" } },
+
+        "securityClassification": {
+          "type": "string",
+          "enum": ["public", "internal", "confidential", "restricted"]
+        },
+        "dataClassification": {
+          "type": "string",
+          "enum": ["public", "internal", "confidential", "regulated", "pii", "phi"]
+        },
+
+        "auditRequired": { "type": "boolean" },
+        "changeControlRequired": { "type": "boolean" },
+
+        "approvers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/OwnerRef" }
+        },
+
+        "sla": {
+          "type": "object",
+          "description": "Service Level Agreement targets",
+          "additionalProperties": false,
+          "properties": {
+            "availability": { "type": "number", "minimum": 0, "maximum": 100 },
+            "p95LatencyMs": { "type": "integer", "minimum": 0 },
+            "rtoMinutes": { "type": "integer", "minimum": 0 },
+            "rpoMinutes": { "type": "integer", "minimum": 0 }
+          }
+        },
+
+        "riskLevel": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Overall risk level if this domain fails"
+        }
+      }
+    }
+  }
+}
